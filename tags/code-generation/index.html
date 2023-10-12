@@ -191,6 +191,32 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>Code generation for Langium-based DSLs
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
+Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
+代码生成器的输入示例如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit &#43; laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold &#43; generalExpensesAndSales) / expectedNoOfSales &#43; desiredProfitPerUnit; DEF vat: 0....</p>
+  </div>
+  <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-12 14:43:44 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;1332字&nbsp;|&nbsp;时长: 7分钟&nbsp;|&nbsp;WFUing</footer>
+  <a class="entry-link" aria-label="post link to Code generation for Langium-based DSLs" href="https://WFUing.github.io/posts/tech/code-generation/code-generation-for-langium-based-dsls/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>Template Engine
     </h2>
   </header>

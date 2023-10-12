@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>langium on WFUing</title>
+    <link>https://WFUing.github.io/tags/langium/</link>
+    <description>Recent content in langium on WFUing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 12 Oct 2023 14:43:44 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/langium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code generation for Langium-based DSLs</title>
+      <link>https://WFUing.github.io/posts/tech/code-generation/code-generation-for-langium-based-dsls/</link>
+      <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/code-generation/code-generation-for-langium-based-dsls/</guid>
+      <description>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
+Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
+代码生成器的输入示例如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit + laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold + generalExpensesAndSales) / expectedNoOfSales + desiredProfitPerUnit; DEF vat: 0.</description>
+    </item>
+    
+  </channel>
+</rss>
