@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Code generator | WFUing</title>
+<title>👨🏻‍💻技术 | WFUing</title>
 <meta name="keywords" content="">
-<meta name="description" content="这是一个纯粹的博客......">
+<meta name="description" content="时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅">
 <meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/tags/code-generator/">
+<link rel="canonical" href="https://WFUing.github.io/posts/tech/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.678b5c47efa744d2e0dd0d61101075e6aecdc9a0631e7ad8538f4ec0cca79273.css" integrity="sha256-Z4tcR&#43;&#43;nRNLg3Q1hEBB15q7NyaBjHnrYU49OwMynknM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/tags/code-generator/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/posts/tech/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,15 +55,79 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Code generator" />
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="👨🏻‍💻技术" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://WFUing.github.io/tags/code-generator/" />
+<meta property="og:url" content="https://WFUing.github.io/posts/tech/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Code generator"/>
+<meta name="twitter:title" content="👨🏻‍💻技术"/>
 <meta name="twitter:description" content="这是一个纯粹的博客......"/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "👨🏻‍💻技术",
+      "item": "https://WFUing.github.io/posts/tech/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -140,24 +204,24 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/tags/">Tags</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a></div>
   <h1>
-    Code generator
+    👨🏻‍💻技术
   </h1>
 </header>
+<div class="post-content"><p>时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅</p>
 
-<article class="post-entry tag-entry"> 
+
+</div>
+
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2>A Guide to Code Generation
+    <h2>How to Build Github Blog With Hugo
     </h2>
   </header>
   <div class="entry-content">
-    <p>为什么要用代码生成 productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C&#43;&#43; 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成? 根据具体情况，代码生成既可以提高工作效率，也可以成为开发过程中的重要组成部分。许多现代集成开发环境就是一个有用的例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。你完全可以自己编写这样的代码，只不过会浪费一些时间来完成琐碎的任务。
-设计代码生成流水线的方法有很多种。基本上，我们需要定义两个要素：
-Input：用于生成代码的信息来自何处。 Output：如何获得生成的代码。 您也可以在输入和输出之间设置转换步骤。这些步骤可以简化输出层，并使输入和输出更加独立。
-Possible Inputs
-A DSL：例如，我们可以使用 ANTLR 来描述一种语言的语法。由此，我们可以生成一个解析器。 code in other formats：数据库模式。根据数据库模式，我们可以生成 DAO。 wizards：它们允许向用户询问信息。 reverse engineering：可通过处理复杂的代码工件获得信息。 data sources：比如一个DB，一个csv文件或者一个电子表格。 Possible Outputs
-template engine：大多数网络程序员都知道模板引擎，它用于在 HTML UI 中填充数据。 code building APIs：例如，Javaparser 可用于以编程方式创建 Java 文件。 Some Pipelines...</p>
+    <p>今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog
+Resources 系列文章，用hugo的PaperMod Theme 建站：https://www.sulvblog.cn/posts/blog/ Hugo &#43; GitHub Action，搭建你的博客自动发布系统：https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ PaperMod主题优化：https://kdjlyy.cn/posts/site/hugo-papermod-optimization </p>
   </div>
   <footer class="entry-footer">
 
@@ -170,8 +234,19 @@ template engine：大多数网络程序员都知道模板引擎，它用于在 H
 
 
 
-创建:&nbsp;<span title='2023-10-12 11:40:20 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;940字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;WFUing</footer>
-  <a class="entry-link" aria-label="post link to A Guide to Code Generation" href="https://WFUing.github.io/posts/tech/code-generation/a-guide-to-code-generation/"></a>
+创建:&nbsp;<span title='2023-10-12 14:39:05 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;13字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+  <a class="entry-link" aria-label="post link to How to Build Github Blog With Hugo" href="https://WFUing.github.io/posts/tech/git/github-blog/how-to-build-github-blog-with-hugo/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Code Generation
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>代码生成的 state of art</p>
+  </div>
+  <a class="entry-link" aria-label="post link to Code Generation" href="https://WFUing.github.io/posts/tech/code-generation/"></a>
 </article>
     </main>
     
