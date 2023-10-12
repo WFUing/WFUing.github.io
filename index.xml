@@ -6,7 +6,16 @@
     <description>Recent content on WFUing</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 12 Oct 2023 19:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Oct 2023 20:13:50 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Code Generators</title>
+      <link>https://WFUing.github.io/posts/tech/code-generation/ai-code-generators/</link>
+      <pubDate>Thu, 12 Oct 2023 20:13:50 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/code-generation/ai-code-generators/</guid>
+      <description>Resources 25 Best AI Code Generators: https://www.simplilearn.com/best-ai-code-generators-article </description>
+    </item>
+    
     <item>
       <title>How to Write a Git Commit Message</title>
       <link>https://WFUing.github.io/posts/tech/git/how-to-write-a-git-commit-message/</link>
@@ -176,6 +185,16 @@ Input：用于生成代码的信息来自何处。 Output：如何获得生成�
 Possible Inputs
 A DSL：例如，我们可以使用 ANTLR 来描述一种语言的语法。由此，我们可以生成一个解析器。 code in other formats：数据库模式。根据数据库模式，我们可以生成 DAO。 wizards：它们允许向用户询问信息。 reverse engineering：可通过处理复杂的代码工件获得信息。 data sources：比如一个DB，一个csv文件或者一个电子表格。 Possible Outputs
 template engine：大多数网络程序员都知道模板引擎，它用于在 HTML UI 中填充数据。 code building APIs：例如，Javaparser 可用于以编程方式创建 Java 文件。 Some Pipelines</description>
+    </item>
+    
+    <item>
+      <title>🙋🏻‍♂️关于</title>
+      <link>https://WFUing.github.io/about/</link>
+      <pubDate>Sat, 06 Nov 2021 14:57:28 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/about/</guid>
+      <description>关于我
+英文名: WDS 职业: 程序员 运动: 跑步、乒乓球、爬山 </description>
     </item>
     
     
