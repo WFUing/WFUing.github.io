@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>nat traversal on WFUing</title>
+    <link>https://WFUing.github.io/tags/nat-traversal/</link>
+    <description>Recent content in nat traversal on WFUing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 12 Oct 2023 19:38:48 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/nat-traversal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Frp Nat Traversal</title>
+      <link>https://WFUing.github.io/posts/tech/network/frp-nat-traversal/</link>
+      <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/network/frp-nat-traversal/</guid>
+      <description>Resources github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。
+使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。
+常见问题：https://www.derrors.cn/index.php/it-tech/frp.html Questions 大部分都是网络端口上的问题，下面先给出一张frp的原理图。
+ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
+使用ssh连接时，连接超时 原因：服务器防火墙未开放frp配置中对应的remote_port端口； 解决：在服务器的防火墙中开放相应端口。 ssh: connect to host xx.xx.xx.xx port xx: Connection refused
+连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
+1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。</description>
+    </item>
+    
+  </channel>
+</rss>
