@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>👨🏻‍💻技术 | WFUing</title>
+<title>cross entropy | WFUing</title>
 <meta name="keywords" content="">
-<meta name="description" content="时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅">
+<meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/posts/tech/">
+<link rel="canonical" href="https://WFUing.github.io/tags/cross-entropy/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.678b5c47efa744d2e0dd0d61101075e6aecdc9a0631e7ad8538f4ec0cca79273.css" integrity="sha256-Z4tcR&#43;&#43;nRNLg3Q1hEBB15q7NyaBjHnrYU49OwMynknM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/posts/tech/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/tags/cross-entropy/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -98,36 +98,15 @@
     }
 </style>
 
-<meta property="og:title" content="👨🏻‍💻技术" />
+<meta property="og:title" content="cross entropy" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/" />
+<meta property="og:url" content="https://WFUing.github.io/tags/cross-entropy/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="👨🏻‍💻技术"/>
+<meta name="twitter:title" content="cross entropy"/>
 <meta name="twitter:description" content="这是一个纯粹的博客......"/>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "👨🏻‍💻技术",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -204,102 +183,48 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/tags/">Tags</a></div>
   <h1>
-    👨🏻‍💻技术
+    cross entropy
   </h1>
 </header>
-<div class="post-content"><p>时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅</p>
 
-
-</div>
-
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>computer network
+    <h2>交叉熵
     </h2>
   </header>
   <div class="entry-content">
-    <p>计算机网络相关</p>
+    <p>案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
+第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
+每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
+第二个例子 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
+$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
+$$ \frac{1}{2}*1&#43;\frac{1}{4}*2&#43;\frac{1}{8}*3&#43;\frac{1}{8}*3=1.75 $$
+第三个例子 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
+总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
+在这个问题中，问题个数的期望是
+$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
+这个式子就是熵的表达式 。简单来说，其意义就是在最优化策略下，猜到颜色所需要的问题的个数。熵代表的是随机变量或整个系统的不确定性，熵越大，随机变量或系统的不确定性就越大。
+现在已经了解了熵是什么，那么，下面解释交叉熵（cross entropy） 的含义.对于第二个例子，如果仍然使用第一个例子中的策略，如下图:
+$\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ 的概率是蓝色，仍然需要两个问题，也就是说，认为小球的分布为 $(\frac{1}{4},\frac{1}{4},\frac{1}{4},\frac{1}{4})$ ，这个分布就是非真实分布。平均来说，需要的问题数是 $\frac{1}{8}*2&#43;\frac{1}{8}*2&#43;\frac{1}{4}*2&#43;\frac{1}{2}*2=2$ 。
+因此，在例子二中使用例子一的策略是一个比较差的策略。其中 $2$ 是这个方案中的交叉熵，而最优方案的交叉熵是 $1.75$。
+给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
+数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。...</p>
   </div>
-  <a class="entry-link" aria-label="post link to computer network" href="https://WFUing.github.io/posts/tech/network/"></a>
-</article>
+  <footer class="entry-footer">
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Internet of Things
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>物联网是一个由相互关联的设备组成的网络，这些设备与其他物联网设备和云连接并交换数据。物联网设备通常嵌入了传感器和软件等技术，包括 mechanical and digital machines 以及 consumer objects。</p>
-  </div>
-  <a class="entry-link" aria-label="post link to Internet of Things" href="https://WFUing.github.io/posts/tech/iot/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Code Generation
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>代码生成是指生成程序代码的软件技术。IDE就是一个典型例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。</p>
-  </div>
-  <a class="entry-link" aria-label="post link to Code Generation" href="https://WFUing.github.io/posts/tech/code-generation/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>git
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>git 相关</p>
-  </div>
-  <a class="entry-link" aria-label="post link to git" href="https://WFUing.github.io/posts/tech/git/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Artificial Intelligence
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>人工智能（缩写为AI）亦称机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。</p>
-  </div>
-  <a class="entry-link" aria-label="post link to Artificial Intelligence" href="https://WFUing.github.io/posts/tech/ai/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>operating system
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>操作系统相关</p>
-  </div>
-  <a class="entry-link" aria-label="post link to operating system" href="https://WFUing.github.io/posts/tech/os/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Algorithm
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>算法相关</p>
-  </div>
-  <a class="entry-link" aria-label="post link to Algorithm" href="https://WFUing.github.io/posts/tech/algorithm/"></a>
-</article>
 
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>operations
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>运维相关</p>
-  </div>
-  <a class="entry-link" aria-label="post link to operations" href="https://WFUing.github.io/posts/tech/operations/"></a>
+
+
+
+创建:&nbsp;<span title='2022-01-13 09:25:45 +0800 +0800'>2022-01-13</span>&nbsp;|&nbsp;更新:&nbsp;2022-01-13&nbsp;|&nbsp;字数:&nbsp;127字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+  <a class="entry-link" aria-label="post link to 交叉熵" href="https://WFUing.github.io/posts/tech/ai/cross-entropy/"></a>
 </article>
     </main>
     
