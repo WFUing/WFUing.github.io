@@ -232,6 +232,43 @@ AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。
 <article class="post-entry tag-entry">
   <div class="post-info"> 
     <header class="entry-header">
+      <h2>Openapi Code Generator
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
+如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
+Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
+使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
+OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
+1 2 3 4 5 6 7 8 9 openapi: &#34;3.0.2&#34; info: title: API Customer version: &#34;1.0&#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。...</p>
+    </div>
+    <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-13 16:46:21 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;1199字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/posts/tech/language/code-generation/openapi-code-generator/openapi-logo.png 200w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/posts/tech/language/code-generation/openapi-code-generator/openapi-logo.png" alt="" 
+            width="200" height="200">
+</figure>
+  <a class="entry-link" aria-label="post link to Openapi Code Generator" href="https://WFUing.github.io/posts/tech/language/code-generation/openapi-code-generator/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
       <h2>AI Code Generators
       </h2>
     </header>
