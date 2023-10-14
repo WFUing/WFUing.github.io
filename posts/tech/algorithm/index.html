@@ -10,7 +10,7 @@
 <meta name="description" content="AI、Leetcode">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/algorithm/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.187ead0206545aa4aedc8069469d6964301ece4665f36668ad87b34b6ca9ba38.css" integrity="sha256-GH6tAgZUWqSu3IBpRp1pZDAezkZl82ZorYezS2ypujg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e1e2622d88c4c5362fa6e3971c69fa4234d34f7bf5d12451104cb5f810ed1759.css" integrity="sha256-4eJiLYjExTYvpuOXHGn6QjTTT3v10SRREEy1&#43;BDtF1k=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -56,21 +56,48 @@
 
     </style>
 </noscript>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
 
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
 
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = ""; 
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 <meta property="og:title" content="Algorithm" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
@@ -86,20 +113,18 @@ var _hmt = _hmt || [];
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-
-        {
-          "@type": "ListItem",
-          "position":  1 ,
-          "name": "Posts",
-          "item": "https://WFUing.github.io/posts/"
-        },
-
-        {
-          "@type": "ListItem",
-          "position":  2 ,
-          "name": "👨🏻‍💻技术",
-          "item": "https://WFUing.github.io/posts/tech/"
-        }, 
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "👨🏻‍💻技术",
+      "item": "https://WFUing.github.io/posts/tech/"
+    }, 
     {
       "@type": "ListItem",
       "position":  3 ,
@@ -113,20 +138,6 @@ var _hmt = _hmt || [];
 
 <body class="list" id="top">
 <script>
-    (function () {
-        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
-        if(arr = document.cookie.match(reg)) {
-        } else {
-            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
-                document.body.classList.add('dark');
-                localStorage.setItem("pref-theme", 'dark');
-            } else {
-                document.body.classList.remove('dark');
-                localStorage.setItem("pref-theme", 'light');
-            }
-        }
-    })()
-
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -134,6 +145,7 @@ var _hmt = _hmt || [];
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
+
 </script>
 
 <header class="header">
@@ -142,14 +154,14 @@ var _hmt = _hmt || [];
             <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -166,40 +178,42 @@ var _hmt = _hmt || [];
         <ul id="menu">
             <li>
                 <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                <span>🔍</span>
+                    <span>🔍</span>
                 </a>
             </li>
             <li>
                 <a href="https://WFUing.github.io/" title="HOME">
-                <span>HOME</span>
+                    <span>HOME</span>
                 </a>
             </li>
             <li>
                 <a href="https://WFUing.github.io/posts" title="BLOGS">
-                <span>BLOGS</span>
+                    <span>BLOGS</span>
                 </a>
             </li>
             <li>
                 <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                <span>ARCHIVE</span>
+                    <span>ARCHIVE</span>
                 </a>
             </li>
             <li>
                 <a href="https://WFUing.github.io/tags" title="TAGS">
-                <span>TAGS</span>
+                    <span>TAGS</span>
                 </a>
             </li>
             <li>
                 <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                <span>🙋🏻‍♂️</span>
+                    <span>🙋🏻‍♂️</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
-  <h1>Algorithm</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
+  <h1>
+    Algorithm
+  </h1>
 </header>
 <div class="post-content"><p>AI、Leetcode</p>
 
@@ -207,101 +221,48 @@ var _hmt = _hmt || [];
 </div>
 
 <article class="post-entry">
-  <div class="post-info">
+  <div class="post-info"> 
     <header class="entry-header">
       <h2>Leetcode
       </h2>
     </header>
-    <section class="entry-content">
-      <p>
-        动态规划 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08.11】硬币 贪心算法 【LeetCode 55】跳跃游戏 【LeetCode 121】买卖股票的最佳时机 【LeetCode 122】买卖股票的最佳时机II 【LeetCode 123】买卖股票的最佳时机III 【LeetCode 42】接雨水 【LeetCode 135】分发糖果  
-        
-      </p>
-    </section>
+    <div class="entry-content">
+      <p>动态规划 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08.11】硬币 贪心算法 【LeetCode 55】跳跃游戏 【LeetCode 121】买卖股票的最佳时机 【LeetCode 122】买卖股票的最佳时机II 【LeetCode 123】买卖股票的最佳时机III 【LeetCode 42】接雨水 【LeetCode 135】分发糖果 </p>
+    </div>
     <footer class="entry-footer">
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>65字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/leetcode/" style="color: var(--secondary)!important;">leetcode</a>
-            </span>
-        </span>
-    </span>
-</span>
-</footer>
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-12 17:05:17 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;65字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
   </div> 
+
+   
   <a class="entry-link" aria-label="post link to Leetcode" href="https://WFUing.github.io/posts/tech/algorithm/leetcode/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info">
+  <div class="post-info"> 
     <header class="entry-header">
       <h2>Artificial Intelligence
       </h2>
     </header>
-    <section class="entry-content">
-      <p>
-        人工智能（缩写为AI）亦称机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。 
-        
-      </p>
-    </section>
+    <div class="entry-content">
+      <p>人工智能（缩写为AI）亦称机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。</p>
+    </div>
   </div> 
+
+   
   <a class="entry-link" aria-label="post link to Artificial Intelligence" href="https://WFUing.github.io/posts/tech/algorithm/ai/"></a>
 </article>
-
-<br />
-<br />
-
-<br />
-</main>
-
+    </main>
+    
 <footer class="footer">
     <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
     <span>
@@ -315,24 +276,6 @@ var _hmt = _hmt || [];
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <span class="topInner">
-        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z"/>
-        </svg>
-        <span id="read_progress"></span>
-    </span>
-</a>
-
-<script>
-    document.addEventListener('scroll', function (e) {
-        const readProgress = document.getElementById("read_progress");
-        const scrollHeight = document.documentElement.scrollHeight;
-        const clientHeight = document.documentElement.clientHeight;
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
-    })
-</script>
 
 <script>
     let menu = document.getElementById('menu')
@@ -361,11 +304,12 @@ var _hmt = _hmt || [];
             }
         });
     });
+
 </script>
 <script>
-    let mybutton = document.getElementById("top-link");
+    var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
@@ -373,13 +317,10 @@ var _hmt = _hmt || [];
             mybutton.style.opacity = "0";
         }
     };
+
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        (function() {
-            document.cookie = "change-themes" + "="+ escape ("false");
-        })()
-
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
@@ -387,28 +328,8 @@ var _hmt = _hmt || [];
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    });
-</script>
+    })
 
-<script>
-    document.body.addEventListener('copy', function (e) {
-        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
-            let clipboardData = e.clipboardData || window.clipboardData;
-            if (clipboardData) {
-                e.preventDefault();
-                let htmlData = window.getSelection().toString() +
-                    '\r\n\n————————————————\r\n' +
-                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
-                '\r\n原文链接：' + location.href;
-                let textData = window.getSelection().toString() +
-                    '\r\n\n————————————————\r\n' +
-                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
-                '\r\n原文链接：' + location.href;
-                clipboardData.setData('text/html', htmlData);
-                clipboardData.setData('text/plain', textData);
-            }
-        }
-    });
 </script>
 </body>
 
