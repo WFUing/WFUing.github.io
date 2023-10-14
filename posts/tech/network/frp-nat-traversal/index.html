@@ -16,7 +16,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
 1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.0a4d78af819ed1e54ea60c14ae96ae761161e9f6d5883fe7348777780f7603b3.css" integrity="sha256-Ck14r4Ge0eVOpgwUrpaudhFh6fbViD/nNId3eA92A7M=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
@@ -114,11 +114,13 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
 连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
 1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/" />
+<meta property="og:image" content="https://WFUing.github.io/frp.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-12T19:38:48+08:00" />
 <meta property="article:modified_time" content="2023-10-12T19:38:48+08:00" />
 
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/frp.png" />
 <meta name="twitter:title" content="Frp Nat Traversal"/>
 <meta name="twitter:description" content="Resources github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。
 使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。
@@ -149,7 +151,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "computer network",
+      "name": "Computer Network",
       "item": "https://WFUing.github.io/posts/tech/network/"
     }, 
     {
@@ -174,7 +176,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
   "articleBody": "Resources github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。\n使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。\n常见问题：https://www.derrors.cn/index.php/it-tech/frp.html Questions 大部分都是网络端口上的问题，下面先给出一张frp的原理图。\nssh: connect to host xx.xx.xx.xx port xx: Operation timed out\n使用ssh连接时，连接超时 原因：服务器防火墙未开放frp配置中对应的remote_port端口； 解决：在服务器的防火墙中开放相应端口。 ssh: connect to host xx.xx.xx.xx port xx: Connection refused\n连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来\n1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 source: 根据源地址过滤（优先级最高） interface: 根据网卡过滤（优先级次高） service: 根据服务名过滤 port: 根据端口过滤 icmp-block: icmp 报文过滤，按照 icmp 类型配置 masquerade: ip 地址伪装 forward-port: 端口转发 rule: 自定义规则 # 查看是否开启 systemctl status firewalld.service # 打开防火墙 systemctl start firewalld.service # 停用防火墙 systemctl disable firewalld # 禁用防火墙 systemctl stop firewalld.service # 开机启动 systemctl enable firewalld # 取消开机启动 systemctl disable firewalld # 查看运行状态 firewall-cmd --state # 查看接口信息 firewall-cmd --list-all # 更新防火墙规则方法1:无需断开连接，动态更改规则 firewall-cmd --reload # 更新防火墙规则方法2:断开连接，以重启的方式更改规则 firewall-cmd --complete-reload # 查看帮助 firewall-cmd --help --zone=NAME # 指定 Zone --permanent # 为永久生效 --timeout=seconds # 持续一段时间，到期后自动移除，经常用于调试，且不能与 --permanent 同时使用 # 追加一个8181端口，永久有效 firewall-cmd --add-port=8181/tcp --permanent # 追加一段端口范围 firewall-cmd --add-port=6000-6600/tcp # 开放 ftp 服务 firewall-cmd --add-service=ftp # 添加eth0 接口至 public 信任等级，永久有效 firewall-cmd --zone=public --add-interface=eth0 --permanent # 关闭防火墙 sudo systemctl stop firewalld # 关闭端口 sudo firewall-cmd --remove-port=3000/tcp --permanent # 配置 public zone 的端口转发 firewall-cmd --zone=public --add-masquerade # 然后转发 tcp 22 端口至 9527 firewall-cmd --zone=public --add-forward-port=port=22:proto=tcp:toport=9527 # 转发 22 端口数据至另一个 ip 的相同端口上 firewall-cmd --zone=public --add-forward-port=port=22:proto=tcp:toaddr=192.168.1.123 # 转发 22 端口数据至另一 ip 的 9527 端口上 firewall-cmd --zone=public --add-forward-port=port=22:proto=tcp:toport=9527:toaddr=192.168.1.100 # IP 封禁 firewall-cmd --permanent --add-rich-rule=\"rule family='ipv4' source address='192.168.1.123' reject\" # 通过 ipset 来封禁 ip firewall-cmd --permanent --zone=public --new-ipset=blacklist --type=hash:ip firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=192.168.1.123 # 封禁网段 firewall-cmd --permanent --zone=public --new-ipset=blacklist --type=hash:net firewall-cmd --permanent --zone=public --ipset=blacklist --add-entry=192.168.1.0/24 # 倒入 ipset 规则 blacklist，然后封禁 blacklist firewall-cmd --permanent --zone=public --new-ipset-from-file=/path/blacklist.xml firewall-cmd --permanent --zone=public --add-rich-rule='rule source ipset=blacklist drop' ",
   "wordCount" : "355",
   "inLanguage": "zh",
-  "datePublished": "2023-10-12T19:38:48+08:00",
+  "image":"https://WFUing.github.io/frp.png","datePublished": "2023-10-12T19:38:48+08:00",
   "dateModified": "2023-10-12T19:38:48+08:00",
   "author":{
     "@type": "Person",
@@ -273,7 +275,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/network/">computer network</a></div>
+    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/network/">Computer Network</a></div>
     <h1 class="post-title">
       Frp Nat Traversal
     </h1>
@@ -304,7 +306,13 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
         </span>
 
 </div>
-  </header> <aside id="toc-container" class="toc-container wide">
+  </header> 
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp_hu1269837f4bf6272fa66eae992994b0b2_841287_360x0_resize_box_3.png 360w ,https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp_hu1269837f4bf6272fa66eae992994b0b2_841287_480x0_resize_box_3.png 480w ,https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp_hu1269837f4bf6272fa66eae992994b0b2_841287_720x0_resize_box_3.png 720w ,https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp_hu1269837f4bf6272fa66eae992994b0b2_841287_1080x0_resize_box_3.png 1080w ,https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp_hu1269837f4bf6272fa66eae992994b0b2_841287_1500x0_resize_box_3.png 1500w ,https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp.png 1669w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/frp.png" alt="" 
+            width="1669" height="645">
+        
+</figure><aside id="toc-container" class="toc-container wide">
     <div class="toc">
         <details  open>
             <summary accesskey="c" title="(Alt + C)">

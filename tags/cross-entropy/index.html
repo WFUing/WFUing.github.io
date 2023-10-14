@@ -10,7 +10,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/tags/cross-entropy/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.0a4d78af819ed1e54ea60c14ae96ae761161e9f6d5883fe7348777780f7603b3.css" integrity="sha256-Ck14r4Ge0eVOpgwUrpaudhFh6fbViD/nNId3eA92A7M=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -189,13 +189,14 @@
   </h1>
 </header>
 
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>交叉熵
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>交叉熵
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
 第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
 每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
 第二个例子 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
@@ -211,8 +212,8 @@ $\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ �
 因此，在例子二中使用例子一的策略是一个比较差的策略。其中 $2$ 是这个方案中的交叉熵，而最优方案的交叉熵是 $1.75$。
 给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
 数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。...</p>
-  </div>
-  <footer class="entry-footer">
+    </div>
+    <footer class="entry-footer">
 
 
 
@@ -224,6 +225,9 @@ $\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ �
 
 
 创建:&nbsp;<span title='2022-01-13 09:25:45 +0800 +0800'>2022-01-13</span>&nbsp;|&nbsp;更新:&nbsp;2022-01-13&nbsp;|&nbsp;字数:&nbsp;127字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
   <a class="entry-link" aria-label="post link to 交叉熵" href="https://WFUing.github.io/posts/tech/ai/cross-entropy/"></a>
 </article>
     </main>
