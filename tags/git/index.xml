@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 12 Oct 2023 19:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Write a Git Commit Message</title>
-      <link>https://WFUing.github.io/posts/tech/git/how-to-write-a-git-commit-message/</link>
+      <link>https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/</link>
       <pubDate>Thu, 12 Oct 2023 19:47:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/git/how-to-write-a-git-commit-message/</guid>
+      <guid>https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/</guid>
       <description>Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
 Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。
 The seven rules of a great Git commit message

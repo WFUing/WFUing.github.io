@@ -3,24 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://WFUing.github.io/posts/tech/</loc>
-    <lastmod>2023-10-13T13:19:27+08:00</lastmod>
+    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/network/</loc>
-    <lastmod>2023-10-13T13:19:27+08:00</lastmod>
+    <loc>https://WFUing.github.io/posts/tech/distributed/</loc>
+    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/</loc>
+    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/distributed/zookeeper/</loc>
+    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/distributed/overview/</loc>
+    <lastmod>2023-10-13T19:07:16+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/code-generation/asyncapi-code-generator/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/asyncapi/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/code-generation/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/code-generation/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/dsl/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/xtext/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/network/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/restful/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/network/restful/</loc>
-    <lastmod>2023-10-13T13:19:27+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/tags/</loc>
-    <lastmod>2023-10-13T13:19:27+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/iot/actor/</loc>
@@ -32,16 +59,16 @@
     <loc>https://WFUing.github.io/posts/tech/code-generation/ai-code-generators/</loc>
     <lastmod>2023-10-12T20:13:50+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/</loc>
-    <lastmod>2023-10-12T20:13:50+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/tags/git/</loc>
     <lastmod>2023-10-12T19:47:45+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/git/</loc>
+    <loc>https://WFUing.github.io/posts/tech/operations/git/</loc>
     <lastmod>2023-10-12T19:47:45+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/git/how-to-write-a-git-commit-message/</loc>
+    <loc>https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/</loc>
+    <lastmod>2023-10-12T19:47:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/operations/</loc>
     <lastmod>2023-10-12T19:47:45+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/os/linux-instructions/</loc>
@@ -67,9 +94,6 @@
   </url><url>
     <loc>https://WFUing.github.io/tags/nat-traversal/</loc>
     <lastmod>2023-10-12T19:38:48+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/tags/code-generation/</loc>
-    <lastmod>2023-10-12T19:29:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/telosys/</loc>
     <lastmod>2023-10-12T19:29:44+08:00</lastmod>
@@ -107,10 +131,10 @@
     <loc>https://WFUing.github.io/tags/blog/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/git/github-blog/</loc>
+    <loc>https://WFUing.github.io/posts/tech/operations/git/github-blog/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/git/github-blog/how-to-build-github-blog-with-hugo/</loc>
+    <loc>https://WFUing.github.io/posts/tech/operations/git/github-blog/how-to-build-github-blog-with-hugo/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/hugo/</loc>
@@ -133,8 +157,6 @@
     <loc>https://WFUing.github.io/archives/</loc>
   </url><url>
     <loc>https://WFUing.github.io/categories/</loc>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/operations/</loc>
   </url><url>
     <loc>https://WFUing.github.io/search/</loc>
   </url><url>
