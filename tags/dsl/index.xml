@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>dsl on WFUing</title>
+    <title>dsl on Waiting For You</title>
     <link>https://WFUing.github.io/tags/dsl/</link>
-    <description>Recent content in dsl on WFUing</description>
+    <description>Recent content in dsl on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 13 Oct 2023 17:27:37 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/dsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI</title>
-      <link>https://WFUing.github.io/posts/tech/code-generation/asyncapi-code-generator/</link>
+      <link>https://WFUing.github.io/posts/tech/language/code-generation/asyncapi-code-generator/</link>
       <pubDate>Fri, 13 Oct 2023 17:27:37 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/code-generation/asyncapi-code-generator/</guid>
+      <guid>https://WFUing.github.io/posts/tech/language/code-generation/asyncapi-code-generator/</guid>
       <description>Background IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
 事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法：OpenAPI（源自 Swagger）。
 Introduction 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：

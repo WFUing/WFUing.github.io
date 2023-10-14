@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://WFUing.github.io/posts/tech/</loc>
-    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/distributed/</loc>
-    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/</loc>
-    <lastmod>2023-10-13T20:07:16+08:00</lastmod>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/distributed/zookeeper/</loc>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-code/</loc>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-theory/</loc>
     <lastmod>2023-10-13T20:07:16+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/distributed/overview/</loc>
     <lastmod>2023-10-13T19:07:16+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/asyncapi-code-generator/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/asyncapi-code-generator/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/asyncapi/</loc>
@@ -29,10 +35,13 @@
     <loc>https://WFUing.github.io/tags/code-generation/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/dsl/</loc>
+    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/</loc>
@@ -56,7 +65,7 @@
     <loc>https://WFUing.github.io/posts/tech/iot/</loc>
     <lastmod>2023-10-13T09:16:13+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/ai-code-generators/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/ai-code-generators/</loc>
     <lastmod>2023-10-12T20:13:50+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/git/</loc>
@@ -98,7 +107,7 @@
     <loc>https://WFUing.github.io/tags/telosys/</loc>
     <lastmod>2023-10-12T19:29:44+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/telosys-code-generation-tool/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/telosys-code-generation-tool/</loc>
     <lastmod>2023-10-12T19:29:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/read/</loc>
@@ -116,7 +125,7 @@
     <loc>https://WFUing.github.io/posts/tech/algorithm/leetcode/</loc>
     <lastmod>2023-10-12T17:05:17+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/code-generation-for-langium-based-dsls/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/code-generation-for-langium-based-dsls/</loc>
     <lastmod>2023-10-12T14:43:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/langium/</loc>
@@ -125,7 +134,7 @@
     <loc>https://WFUing.github.io/tags/template-engine/</loc>
     <lastmod>2023-10-12T14:43:44+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/template-engine/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/template-engine/</loc>
     <lastmod>2023-10-12T14:43:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/blog/</loc>
@@ -140,7 +149,7 @@
     <loc>https://WFUing.github.io/tags/hugo/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/code-generation/a-guide-to-code-generation/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/a-guide-to-code-generation/</loc>
     <lastmod>2023-10-12T11:40:20+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/cross-entropy/</loc>
