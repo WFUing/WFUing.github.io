@@ -10,7 +10,7 @@
 <meta name="description" content="主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/distributed/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.187ead0206545aa4aedc8069469d6964301ece4665f36668ad87b34b6ca9ba38.css" integrity="sha256-GH6tAgZUWqSu3IBpRp1pZDAezkZl82ZorYezS2ypujg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -56,48 +56,21 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
 
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <meta property="og:title" content="Distributed Technology" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
@@ -113,18 +86,20 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "👨🏻‍💻技术",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "Posts",
+          "item": "https://WFUing.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻技术",
+          "item": "https://WFUing.github.io/posts/tech/"
+        }, 
     {
       "@type": "ListItem",
       "position":  3 ,
@@ -138,6 +113,20 @@
 
 <body class="list" id="top">
 <script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -145,7 +134,6 @@
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <header class="header">
@@ -154,14 +142,14 @@
             <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -177,43 +165,41 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://WFUing.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
-                    <span>🔍搜索</span>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span>🔍</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/" title="🏠HOME">
-                    <span>🏠HOME</span>
+                <a href="https://WFUing.github.io/" title="HOME">
+                <span>HOME</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/posts" title="📚文章">
-                    <span>📚文章</span>
+                <a href="https://WFUing.github.io/posts" title="BLOGS">
+                <span>BLOGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/archives" title="⏱时间轴">
-                    <span>⏱时间轴</span>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span>ARCHIVE</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/tags" title="🔖标签">
-                    <span>🔖标签</span>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span>TAGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️关于">
-                    <span>🙋🏻‍♂️关于</span>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span>🙋🏻‍♂️</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
-  <h1>
-    Distributed Technology
-  </h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
+  <h1>Distributed Technology</h1>
 </header>
 <div class="post-content"><p>主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。</p>
 
@@ -221,53 +207,119 @@
 </div>
 
 <article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
       <h2>分布式系统概述
       </h2>
     </header>
-    <div class="entry-content">
-      <p>什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
+    <section class="entry-content">
+      <p>
+        什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
 特点
 分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
 脑裂 对于这种情况，我们也可以看出来，原本应该是统一的一个集群对外提供服务的，现在变成了两个集群同时对外提供服务，如果过了一会，断了的网络突然联通了，那么此时就会出现问题了，两个集群刚刚都对外提供服务了，数据该怎么合并，数据冲突怎么解决等等问题。
 CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节点的多个副本是否具有完全相同的值 类型 强一致性: 数据更新完成后，同一时刻，不同的读操作都能获得最新的值 弱一致性: 数据更新完成后，同一时刻，不同的读操作不一定都能获得最新的值，也无法保证多长时间之后可以获得最新的值 A(Availability，可用性) 含义: 对于每一次请求，系统是否都能在有限(指定)的时间内做出响应 P(Partition Tolerance，分区容错性) 含义: 当发生网络分区时，系统仍能对外提供满足 一致性C 和 可用性A 的服务 CAP定理 分布式系统在同一时间片段内，不可能同时满足一致性C、可用性A和分区容错性P，最多只能满足其中的两项。
-满足意味着100%， 满足C -&gt; 满足强一致性 满足A -&gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 BASE定理 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC...</p>
-    </div>
+满足意味着100%， 满足C -&gt; 满足强一致性 满足A -&gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 BASE定理 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC 
+        ...
+      </p>
+    </section>
     <footer class="entry-footer">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 19:07:16 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;90字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>90字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</footer>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to 分布式系统概述" href="https://WFUing.github.io/posts/tech/distributed/overview/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
       <h2>ZooKeeper
       </h2>
     </header>
-    <div class="entry-content">
-      <p>ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。 
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to ZooKeeper" href="https://WFUing.github.io/posts/tech/distributed/zookeeper/"></a>
 </article>
-    </main>
-    
+
+<article class="post-entry">
+  <div class="post-info">
+    <header class="entry-header">
+      <h2>Internet of Things
+      </h2>
+    </header>
+    <section class="entry-content">
+      <p>
+        物联网是一个由相互关联的设备组成的网络，这些设备与其他物联网设备和云连接并交换数据。物联网设备通常嵌入了传感器和软件等技术，包括 mechanical and digital machines 以及 consumer objects。 
+        
+      </p>
+    </section>
+  </div> 
+  <a class="entry-link" aria-label="post link to Internet of Things" href="https://WFUing.github.io/posts/tech/distributed/iot/"></a>
+</article>
+
+<br />
+<br />
+
+<br />
+</main>
+
 <footer class="footer">
     <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
     <span>
@@ -281,6 +333,24 @@ CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节�
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
 
 <script>
     let menu = document.getElementById('menu')
@@ -309,12 +379,11 @@ CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节�
             }
         });
     });
-
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    let mybutton = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
@@ -322,10 +391,13 @@ CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节�
             mybutton.style.opacity = "0";
         }
     };
-
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
@@ -333,8 +405,28 @@ CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节�
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    })
+    });
+</script>
 
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
 </script>
 </body>
 

@@ -10,7 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/archives.fr/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.187ead0206545aa4aedc8069469d6964301ece4665f36668ad87b34b6ca9ba38.css" integrity="sha256-GH6tAgZUWqSu3IBpRp1pZDAezkZl82ZorYezS2ypujg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -55,48 +55,21 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
 
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <meta property="og:title" content="Archive" />
 <meta property="og:description" content="archives" />
 <meta property="og:type" content="article" />
@@ -160,6 +133,20 @@
 
 <body class="list" id="top">
 <script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -167,7 +154,6 @@
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <header class="header">
@@ -176,14 +162,14 @@
             <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -199,39 +185,39 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://WFUing.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
-                    <span>🔍搜索</span>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span>🔍</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/" title="🏠HOME">
-                    <span>🏠HOME</span>
+                <a href="https://WFUing.github.io/" title="HOME">
+                <span>HOME</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/posts" title="📚文章">
-                    <span>📚文章</span>
+                <a href="https://WFUing.github.io/posts" title="BLOGS">
+                <span>BLOGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/archives" title="⏱时间轴">
-                    <span>⏱时间轴</span>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span>ARCHIVE</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/tags" title="🔖标签">
-                    <span>🔖标签</span>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span>TAGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️关于">
-                    <span>🙋🏻‍♂️关于</span>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span>🙋🏻‍♂️</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
-<main class="main">
+<main class="main page">
 
 <header class="page-header">
   <h1>
@@ -239,26 +225,132 @@
   </h1>
 </header>
 <div class="archive-year">
-  <h2 class="archive-year-header">2023<sup class="archive-count">&nbsp;&nbsp;18</sup>
+  <h2 class="archive-year-header">2023<sup class="archive-count">&nbsp;&nbsp;20</sup>
   </h2>
   <div class="archive-month">
-    <h3 class="archive-month-header">十月<sup class="archive-count">&nbsp;&nbsp;18</sup></h3>
+    <h3 class="archive-month-header">十月<sup class="archive-count">&nbsp;&nbsp;20</sup></h3>
     <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Programming Language List
+        </h3>
+        <div class="archive-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-14
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>322字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/language/" style="color: var(--secondary)!important;">language</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to Programming Language List" href="https://WFUing.github.io/posts/tech/language/programming-language-pool/"></a>
+      </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Zookeeper Code
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-14 12:00:54 +0800 +0800'>2023-10-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-14&nbsp;|&nbsp;字数:&nbsp;10字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-14
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>12字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Zookeeper Code" href="https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-code/"></a>
       </div>
       <div class="archive-entry">
@@ -266,16 +358,59 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 20:07:16 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;1151字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1151字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Zookeeper 原理" href="https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-theory/"></a>
       </div>
       <div class="archive-entry">
@@ -283,16 +418,59 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 19:07:16 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;90字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>90字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to 分布式系统概述" href="https://WFUing.github.io/posts/tech/distributed/overview/"></a>
       </div>
       <div class="archive-entry">
@@ -300,33 +478,188 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 17:27:37 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;2760字&nbsp;|&nbsp;时长: 13分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>2760字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>13分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/asyncapi/" style="color: var(--secondary)!important;">asyncapi</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/xtext/" style="color: var(--secondary)!important;">xtext</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI" href="https://WFUing.github.io/posts/tech/language/code-generation/asyncapi-code-generator/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Openapi Code Generator
+        </h3>
+        <div class="archive-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1199字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to Openapi Code Generator" href="https://WFUing.github.io/posts/tech/language/code-generation/openapi-code-generator/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Restful API Tutorial
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 13:19:27 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;732字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>732字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>4分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/restful/" style="color: var(--secondary)!important;">restful</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Restful API Tutorial" href="https://WFUing.github.io/posts/tech/network/restful/"></a>
       </div>
       <div class="archive-entry">
@@ -334,33 +667,123 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-13 09:16:13 +0800 +0800'>2023-10-13</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-13&nbsp;|&nbsp;字数:&nbsp;315字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;WFUing</div>
-        <a class="entry-link" aria-label="post link to Actor" href="https://WFUing.github.io/posts/tech/iot/actor/"></a>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>315字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to Actor" href="https://WFUing.github.io/posts/tech/distributed/iot/actor/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">AI Code Generators
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 20:13:50 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;7字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>10字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/ai/" style="color: var(--secondary)!important;">ai</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to AI Code Generators" href="https://WFUing.github.io/posts/tech/language/code-generation/ai-code-generators/"></a>
       </div>
       <div class="archive-entry">
@@ -368,16 +791,62 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:47:45 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;1156字&nbsp;|&nbsp;时长: 6分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1156字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/git/" style="color: var(--secondary)!important;">git</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to How to Write a Git Commit Message" href="https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/"></a>
       </div>
       <div class="archive-entry">
@@ -385,16 +854,62 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:43:45 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;2249字&nbsp;|&nbsp;时长: 11分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>2249字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>11分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/linux/" style="color: var(--secondary)!important;">linux</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to 45 个常用Linux 命令，让你轻松玩转Linux！" href="https://WFUing.github.io/posts/tech/os/linux-instructions/"></a>
       </div>
       <div class="archive-entry">
@@ -402,33 +917,125 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:43:45 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;103字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
-        <a class="entry-link" aria-label="post link to chatGPT 使用指南" href="https://WFUing.github.io/posts/tech/ai/chatgpt-guide/"></a>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>103字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/chatgpt/" style="color: var(--secondary)!important;">chatgpt</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to chatGPT 使用指南" href="https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Frp Nat Traversal
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:38:48 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;355字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>355字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/nat-traversal/" style="color: var(--secondary)!important;">nat traversal</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Frp Nat Traversal" href="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/"></a>
       </div>
       <div class="archive-entry">
@@ -436,16 +1043,63 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:29:44 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;5字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>5字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/telosys/" style="color: var(--secondary)!important;">telosys</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Telosys: a Code Generation Tool by Laurent Guerin" href="https://WFUing.github.io/posts/tech/language/code-generation/telosys-code-generation-tool/"></a>
       </div>
       <div class="archive-entry">
@@ -453,16 +1107,59 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 19:16:22 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;79字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>79字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to The Mythical Man Month Thoughts" href="https://WFUing.github.io/posts/read/the-mythical-man-month-thoughts/"></a>
       </div>
       <div class="archive-entry">
@@ -470,16 +1167,62 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 17:05:17 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;65字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>65字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/leetcode/" style="color: var(--secondary)!important;">leetcode</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Leetcode" href="https://WFUing.github.io/posts/tech/algorithm/leetcode/"></a>
       </div>
       <div class="archive-entry">
@@ -487,16 +1230,63 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 14:43:44 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;1332字&nbsp;|&nbsp;时长: 7分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1332字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>7分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/langium/" style="color: var(--secondary)!important;">langium</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Code generation for Langium-based DSLs" href="https://WFUing.github.io/posts/tech/language/code-generation/code-generation-for-langium-based-dsls/"></a>
       </div>
       <div class="archive-entry">
@@ -504,16 +1294,63 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 14:43:44 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;255字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>255字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/template-engine/" style="color: var(--secondary)!important;">template engine</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to Template Engine" href="https://WFUing.github.io/posts/tech/language/code-generation/template-engine/"></a>
       </div>
       <div class="archive-entry">
@@ -521,33 +1358,126 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 14:39:05 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;17字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
-        <a class="entry-link" aria-label="post link to How to Build Github Blog With Hugo" href="https://WFUing.github.io/posts/tech/operations/git/github-blog/how-to-build-github-blog-with-hugo/"></a>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>17字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/hugo/" style="color: var(--secondary)!important;">hugo</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/blog/" style="color: var(--secondary)!important;">blog</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to How to Build Github Blog With Hugo" href="https://WFUing.github.io/posts/tech/operations/git/how-to-build-github-blog-with-hugo/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">A Guide to Code Generation
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2023-10-12 11:40:20 +0800 +0800'>2023-10-12</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-12&nbsp;|&nbsp;字数:&nbsp;937字&nbsp;|&nbsp;时长: 5分钟&nbsp;|&nbsp;WFUing</div>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>937字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>5分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
         <a class="entry-link" aria-label="post link to A Guide to Code Generation" href="https://WFUing.github.io/posts/tech/language/code-generation/a-guide-to-code-generation/"></a>
       </div>
     </div>
@@ -564,23 +1494,69 @@
         </h3>
         <div class="archive-meta">
 
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
 
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
 
-
-
-
-
-
-
-
-创建:&nbsp;<span title='2022-01-13 09:25:45 +0800 +0800'>2022-01-13</span>&nbsp;|&nbsp;更新:&nbsp;2022-01-13&nbsp;|&nbsp;字数:&nbsp;127字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</div>
-        <a class="entry-link" aria-label="post link to 交叉熵" href="https://WFUing.github.io/posts/tech/ai/cross-entropy/"></a>
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2022-01-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>127字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/cross-entropy/" style="color: var(--secondary)!important;">cross entropy</a>
+            </span>
+        </span>
+    </span>
+</span>
+</div>
+        <a class="entry-link" aria-label="post link to 交叉熵" href="https://WFUing.github.io/posts/tech/algorithm/ai/cross-entropy/"></a>
       </div>
     </div>
   </div>
 </div>
-    </main>
-    
+</main>
+
 <footer class="footer">
     <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
     <span>
@@ -594,6 +1570,24 @@
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
 
 <script>
     let menu = document.getElementById('menu')
@@ -622,12 +1616,11 @@
             }
         });
     });
-
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    let mybutton = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
@@ -635,10 +1628,13 @@
             mybutton.style.opacity = "0";
         }
     };
-
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
@@ -646,8 +1642,28 @@
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    })
+    });
+</script>
 
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
 </script>
 </body>
 

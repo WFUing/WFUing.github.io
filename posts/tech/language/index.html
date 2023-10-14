@@ -7,10 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>Language | Waiting For You</title>
 <meta name="keywords" content="">
-<meta name="description" content=" ">
+<meta name="description" content="Language - Waiting For You">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/language/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.187ead0206545aa4aedc8069469d6964301ece4665f36668ad87b34b6ca9ba38.css" integrity="sha256-GH6tAgZUWqSu3IBpRp1pZDAezkZl82ZorYezS2ypujg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -56,48 +56,21 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
 
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <meta property="og:title" content="Language" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
@@ -113,18 +86,20 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "👨🏻‍💻技术",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "Posts",
+          "item": "https://WFUing.github.io/posts/"
+        },
+
+        {
+          "@type": "ListItem",
+          "position":  2 ,
+          "name": "👨🏻‍💻技术",
+          "item": "https://WFUing.github.io/posts/tech/"
+        }, 
     {
       "@type": "ListItem",
       "position":  3 ,
@@ -138,6 +113,20 @@
 
 <body class="list" id="top">
 <script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -145,7 +134,6 @@
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <header class="header">
@@ -154,14 +142,14 @@
             <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -177,66 +165,198 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://WFUing.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
-                    <span>🔍搜索</span>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span>🔍</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/" title="🏠HOME">
-                    <span>🏠HOME</span>
+                <a href="https://WFUing.github.io/" title="HOME">
+                <span>HOME</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/posts" title="📚文章">
-                    <span>📚文章</span>
+                <a href="https://WFUing.github.io/posts" title="BLOGS">
+                <span>BLOGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/archives" title="⏱时间轴">
-                    <span>⏱时间轴</span>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span>ARCHIVE</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/tags" title="🔖标签">
-                    <span>🔖标签</span>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span>TAGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️关于">
-                    <span>🙋🏻‍♂️关于</span>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span>🙋🏻‍♂️</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
-  <h1>
-    Language
-  </h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a></div>
+  <h1>Language</h1>
 </header>
-<div class="post-content"><p><img loading="lazy" src="rate.png" alt=""  />
-</p>
-
-
-</div>
 
 <article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
+    <header class="entry-header">
+      <h2>Programming Language List
+      </h2>
+    </header>
+    <section class="entry-content">
+      <p>
+        下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
+让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
+编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
+C
+C &#43;&#43;
+C＃
+ALGOL
+Cobol
+Fortran
+Java
+Visual Basic
+Smalltalk
+解释语言 解释语言是一种编程语言，在其中，无需将程序编译为机器语言的指令，我们就可以直接自由地执行指令。解释器逐行执行程序。语言解释为编译后的实现（如平台独立性，动态范围，动态类型等）提供了更多的灵活性。
+Python
+Ruby
+Perl
+Pascal
+Lisp
+BASIC
+APL
+脚本语言 脚本语言是控制应用程序的编程语言。可以在任何其他应用程序上独立执行的脚本。它们被广泛应用于它们所控制的应用中，并被用于自动化领域。
+PHP
+VBScript
+Windows PowerShell
+F-Script
+BeanShell
+AutoIt
+R
+Game Maker Language
+标记语言 标记语言是一种人工语言，用于对文档进行注释，以便在语法上与文本（可定义文本显示方式的文本）区分开。
+HTML
+XML
+XHTML
+SGML
+Curl
+程序语言 程序（命令式）编程意味着指定程序达到预期状态应采取的步骤。过程不过是一组可以通过过程调用引用的指令。这有助于代码的重用。这种类型的编程使程序结构化并易于跟踪程序流。
+HyperTalk
+Go
+PL/C
+PL/I
+MATLAB
+Curl
+Mathematica
+MATLAB
+函数式语言 函数式编程语言将每次计算都定义为数学评估。他们专注于函数的应用。一些函数式编程语言是纯函数式语言，但是许多所谓的函数式语言是不纯净的，包含命令式功能，它们不是纯函数式语言。
+Pure Functional
+Agda
+SAC
+SASL
+Cuneiform
+Curry
+Futhark
+Haskell
+不纯功能语言 APL
+C&#43;&#43; (since C&#43;&#43;11) 
+        ...
+      </p>
+    </section>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-14
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>322字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/language/" style="color: var(--secondary)!important;">language</a>
+            </span>
+        </span>
+    </span>
+</span>
+</footer>
+  </div> 
+<figure class="entry-cover">
+        <img loading="lazy" srcset="https://WFUing.github.io/posts/tech/language/programming-language-pool/rate_huc6cf8c3a8b29508cb65da106aab086b7_48743_360x0_resize_box_3.png 360w ,https://WFUing.github.io/posts/tech/language/programming-language-pool/rate_huc6cf8c3a8b29508cb65da106aab086b7_48743_480x0_resize_box_3.png 480w ,https://WFUing.github.io/posts/tech/language/programming-language-pool/rate.png 484w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/posts/tech/language/programming-language-pool/rate.png" alt="" 
+            width="484" height="300">
+</figure>
+  <a class="entry-link" aria-label="post link to Programming Language List" href="https://WFUing.github.io/posts/tech/language/programming-language-pool/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info">
     <header class="entry-header">
       <h2>Code Generation
       </h2>
     </header>
-    <div class="entry-content">
-      <p>代码生成是指生成程序代码的软件技术。IDE就是一个典型例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        代码生成是指生成程序代码的软件技术。IDE就是一个典型例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。 
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to Code Generation" href="https://WFUing.github.io/posts/tech/language/code-generation/"></a>
 </article>
-    </main>
-    
+
+<br />
+<br />
+
+<br />
+</main>
+
 <footer class="footer">
     <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
     <span>
@@ -250,6 +370,24 @@
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
 
 <script>
     let menu = document.getElementById('menu')
@@ -278,12 +416,11 @@
             }
         });
     });
-
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    let mybutton = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
@@ -291,10 +428,13 @@
             mybutton.style.opacity = "0";
         }
     };
-
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
@@ -302,8 +442,28 @@
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    })
+    });
+</script>
 
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
 </script>
 </body>
 

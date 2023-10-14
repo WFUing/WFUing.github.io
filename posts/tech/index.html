@@ -10,7 +10,7 @@
 <meta name="description" content="时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b9ee343ca4fc870fe0a9133cbdea06777117bfc8ecb5c81986d65e1d40abd21d.css" integrity="sha256-ue40PKT8hw/gqRM8veoGd3EXv8jstcgZhtZeHUCr0h0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.187ead0206545aa4aedc8069469d6964301ece4665f36668ad87b34b6ca9ba38.css" integrity="sha256-GH6tAgZUWqSu3IBpRp1pZDAezkZl82ZorYezS2ypujg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -56,48 +56,21 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
 
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
 
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = ""; 
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 <meta property="og:title" content="👨🏻‍💻技术" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
@@ -113,12 +86,13 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
+
+        {
+          "@type": "ListItem",
+          "position":  1 ,
+          "name": "Posts",
+          "item": "https://WFUing.github.io/posts/"
+        }, 
     {
       "@type": "ListItem",
       "position":  2 ,
@@ -132,6 +106,20 @@
 
 <body class="list" id="top">
 <script>
+    (function () {
+        let  arr,reg = new RegExp("(^| )"+"change-themes"+"=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)) {
+        } else {
+            if (new Date().getHours() >= 19 || new Date().getHours() < 6) {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            }
+        }
+    })()
+
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -139,7 +127,6 @@
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <header class="header">
@@ -148,14 +135,14 @@
             <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -171,43 +158,41 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://WFUing.github.io/search" title="🔍搜索 (Alt &#43; /)" accesskey=/>
-                    <span>🔍搜索</span>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span>🔍</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/" title="🏠HOME">
-                    <span>🏠HOME</span>
+                <a href="https://WFUing.github.io/" title="HOME">
+                <span>HOME</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/posts" title="📚文章">
-                    <span>📚文章</span>
+                <a href="https://WFUing.github.io/posts" title="BLOGS">
+                <span>BLOGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/archives" title="⏱时间轴">
-                    <span>⏱时间轴</span>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span>ARCHIVE</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/tags" title="🔖标签">
-                    <span>🔖标签</span>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span>TAGS</span>
                 </a>
             </li>
             <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️关于">
-                    <span>🙋🏻‍♂️关于</span>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span>🙋🏻‍♂️</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a></div>
-  <h1>
-    👨🏻‍💻技术
-  </h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">🏠 主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a></div>
+  <h1>👨🏻‍💻技术</h1>
 </header>
 <div class="post-content"><p>时间就像海绵里的水，只要你愿意挤，总还有的。&ndash;鲁迅</p>
 
@@ -215,141 +200,123 @@
 </div>
 
 <article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Distributed Technology
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to Distributed Technology" href="https://WFUing.github.io/posts/tech/distributed/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
       <h2>Language
       </h2>
     </header>
-    <div class="entry-content">
-      <p> </p>
-    </div>
+    <section class="entry-content">
+      <p>
+         
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to Language" href="https://WFUing.github.io/posts/tech/language/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
+    <header class="entry-header">
+      <h2>Distributed Technology
+      </h2>
+    </header>
+    <section class="entry-content">
+      <p>
+        主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。 
+        
+      </p>
+    </section>
+  </div> 
+  <a class="entry-link" aria-label="post link to Distributed Technology" href="https://WFUing.github.io/posts/tech/distributed/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info">
     <header class="entry-header">
       <h2>Computer Network
       </h2>
     </header>
-    <div class="entry-content">
-      <p>计算机网络相关</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        计算机网络相关 
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to Computer Network" href="https://WFUing.github.io/posts/tech/network/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Internet of Things
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>物联网是一个由相互关联的设备组成的网络，这些设备与其他物联网设备和云连接并交换数据。物联网设备通常嵌入了传感器和软件等技术，包括 mechanical and digital machines 以及 consumer objects。</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to Internet of Things" href="https://WFUing.github.io/posts/tech/iot/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
       <h2>operations
       </h2>
     </header>
-    <div class="entry-content">
-      <p>运维相关</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        运维相关 
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to operations" href="https://WFUing.github.io/posts/tech/operations/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Artificial Intelligence
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>人工智能（缩写为AI）亦称机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to Artificial Intelligence" href="https://WFUing.github.io/posts/tech/ai/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>operating system
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>操作系统相关</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to operating system" href="https://WFUing.github.io/posts/tech/os/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
       <h2>Algorithm
       </h2>
     </header>
-    <div class="entry-content">
-      <p>算法相关</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        AI、Leetcode 
+        
+      </p>
+    </section>
   </div> 
-
-   
   <a class="entry-link" aria-label="post link to Algorithm" href="https://WFUing.github.io/posts/tech/algorithm/"></a>
 </article>
 
 <article class="post-entry">
-  <div class="post-info"> 
+  <div class="post-info">
     <header class="entry-header">
-      <h2>Safety
+      <h2>operating system
       </h2>
     </header>
-    <div class="entry-content">
-      <p>安全相关</p>
-    </div>
+    <section class="entry-content">
+      <p>
+        操作系统相关 
+        
+      </p>
+    </section>
   </div> 
-
-   
-  <a class="entry-link" aria-label="post link to Safety" href="https://WFUing.github.io/posts/tech/safe/"></a>
+  <a class="entry-link" aria-label="post link to operating system" href="https://WFUing.github.io/posts/tech/os/"></a>
 </article>
-    </main>
+
+<br />
+<br />
+<footer class="page-footer">
+  <nav class="pagination">
     
+
+    <span class="pageNum">
+      <a class="pageNow" href="https://WFUing.github.io/posts/tech/">1</a>
+    </span>
+    <span class="numLast">
+        <a class="pageLast" href="https://WFUing.github.io/posts/tech/page/2/">2</a>
+      </span>
+
+    
+    
+    
+  </nav>
+</footer>
+
+<br />
+</main>
+
 <footer class="footer">
     <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
     <span>
@@ -363,6 +330,24 @@
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <span class="topInner">
+        <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z"/>
+        </svg>
+        <span id="read_progress"></span>
+    </span>
+</a>
+
+<script>
+    document.addEventListener('scroll', function (e) {
+        const readProgress = document.getElementById("read_progress");
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
+    })
+</script>
 
 <script>
     let menu = document.getElementById('menu')
@@ -391,12 +376,11 @@
             }
         });
     });
-
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    let mybutton = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
             mybutton.style.visibility = "visible";
             mybutton.style.opacity = "1";
         } else {
@@ -404,10 +388,13 @@
             mybutton.style.opacity = "0";
         }
     };
-
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
+        (function() {
+            document.cookie = "change-themes" + "="+ escape ("false");
+        })()
+
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
@@ -415,8 +402,28 @@
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
-    })
+    });
+</script>
 
+<script>
+    document.body.addEventListener('copy', function (e) {
+        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
+            let clipboardData = e.clipboardData || window.clipboardData;
+            if (clipboardData) {
+                e.preventDefault();
+                let htmlData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                let textData = window.getSelection().toString() +
+                    '\r\n\n————————————————\r\n' +
+                    '版权声明：本文为「'+"Waiting For You"+'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
+                '\r\n原文链接：' + location.href;
+                clipboardData.setData('text/html', htmlData);
+                clipboardData.setData('text/plain', textData);
+            }
+        }
+    });
 </script>
 </body>
 

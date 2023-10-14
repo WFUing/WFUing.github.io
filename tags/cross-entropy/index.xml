@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 13 Jan 2022 09:25:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/cross-entropy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>交叉熵</title>
-      <link>https://WFUing.github.io/posts/tech/ai/cross-entropy/</link>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/cross-entropy/</link>
       <pubDate>Thu, 13 Jan 2022 09:25:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/ai/cross-entropy/</guid>
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/cross-entropy/</guid>
       <description>案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
 第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
 每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。

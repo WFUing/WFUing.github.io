@@ -3,15 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://WFUing.github.io/posts/tech/</loc>
-    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/distributed/</loc>
-    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
+    <loc>https://WFUing.github.io/tags/language/</loc>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/</loc>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/programming-language-pool/</loc>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/</loc>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/</loc>
+    <lastmod>2023-10-14T19:29:44+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/distributed/</loc>
     <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/distributed/zookeeper/</loc>
@@ -41,14 +53,11 @@
     <loc>https://WFUing.github.io/tags/dsl/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/language/</loc>
-    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/tags/</loc>
-    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/tags/xtext/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/code-generation/openapi-code-generator/</loc>
+    <lastmod>2023-10-13T16:46:21+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/network/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
@@ -59,11 +68,14 @@
     <loc>https://WFUing.github.io/posts/tech/network/restful/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/iot/actor/</loc>
+    <loc>https://WFUing.github.io/posts/tech/distributed/iot/actor/</loc>
     <lastmod>2023-10-13T09:16:13+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/iot/</loc>
+    <loc>https://WFUing.github.io/posts/tech/distributed/iot/</loc>
     <lastmod>2023-10-13T09:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/ai/</loc>
+    <lastmod>2023-10-12T20:13:50+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/code-generation/ai-code-generators/</loc>
     <lastmod>2023-10-12T20:13:50+08:00</lastmod>
@@ -83,13 +95,16 @@
     <loc>https://WFUing.github.io/posts/tech/os/linux-instructions/</loc>
     <lastmod>2023-10-12T19:43:45+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/ai/</loc>
+    <loc>https://WFUing.github.io/posts/tech/algorithm/</loc>
+    <lastmod>2023-10-12T19:43:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/algorithm/ai/</loc>
     <lastmod>2023-10-12T19:43:45+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/chatgpt/</loc>
     <lastmod>2023-10-12T19:43:45+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/ai/chatgpt-guide/</loc>
+    <loc>https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/</loc>
     <lastmod>2023-10-12T19:43:45+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/linux/</loc>
@@ -116,9 +131,6 @@
     <loc>https://WFUing.github.io/posts/read/the-mythical-man-month-thoughts/</loc>
     <lastmod>2023-10-12T19:16:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/algorithm/</loc>
-    <lastmod>2023-10-12T17:05:17+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/tags/leetcode/</loc>
     <lastmod>2023-10-12T17:05:17+08:00</lastmod>
   </url><url>
@@ -140,10 +152,7 @@
     <loc>https://WFUing.github.io/tags/blog/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/operations/git/github-blog/</loc>
-    <lastmod>2023-10-12T14:39:05+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/operations/git/github-blog/how-to-build-github-blog-with-hugo/</loc>
+    <loc>https://WFUing.github.io/posts/tech/operations/git/how-to-build-github-blog-with-hugo/</loc>
     <lastmod>2023-10-12T14:39:05+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/hugo/</loc>
@@ -155,7 +164,7 @@
     <loc>https://WFUing.github.io/tags/cross-entropy/</loc>
     <lastmod>2022-01-13T09:25:45+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/ai/cross-entropy/</loc>
+    <loc>https://WFUing.github.io/posts/tech/algorithm/ai/cross-entropy/</loc>
     <lastmod>2022-01-13T09:25:45+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/about/</loc>

@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 12 Oct 2023 19:43:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/chatgpt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>chatGPT 使用指南</title>
-      <link>https://WFUing.github.io/posts/tech/ai/chatgpt-guide/</link>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/</link>
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/ai/chatgpt-guide/</guid>
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/</guid>
       <description>Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
 在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &amp;ldquo;少量 &amp;ldquo;提示。这就是所谓的 &amp;ldquo;少量 &amp;ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
 指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
