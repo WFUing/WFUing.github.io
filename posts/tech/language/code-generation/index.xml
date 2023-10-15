@@ -6,7 +6,16 @@
     <description>Recent content in Code Generation on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 13 Oct 2023 17:27:37 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/language/code-generation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 09:52:03 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/language/code-generation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Antlr Code Generation</title>
+      <link>https://WFUing.github.io/posts/tech/language/code-generation/antlr-code-generation/</link>
+      <pubDate>Sun, 15 Oct 2023 09:52:03 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/language/code-generation/antlr-code-generation/</guid>
+      <description>ANTLR 是 &lt;strong&gt;AN&lt;/strong&gt;other &lt;strong&gt;T&lt;/strong&gt;ool for &lt;strong&gt;L&lt;/strong&gt;anguage &lt;strong&gt;R&lt;/strong&gt;ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。</description>
+    </item>
+    
     <item>
       <title>A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI</title>
       <link>https://WFUing.github.io/posts/tech/language/code-generation/asyncapi-code-generator/</link>
