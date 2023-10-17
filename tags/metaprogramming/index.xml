@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>metaprogramming on Waiting For You</title>
+    <link>https://WFUing.github.io/tags/metaprogramming/</link>
+    <description>Recent content in metaprogramming on Waiting For You</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 16 Oct 2023 15:29:44 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/metaprogramming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>meta-programming</title>
+      <link>https://WFUing.github.io/posts/tech/language/metaprogramming/</link>
+      <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/language/metaprogramming/</guid>
+      <description>元编程 (Metaprogramming) 是一种编程技术，在这种技术中，计算机程序能够将其他程序视为自己的数据。这意味着一个程序可以被设计为读取、生成、分析或转换其他程序，甚至在运行时修改自身。在某些情况下，这允许程序员最大限度地减少表达解决方案的代码行数，从而缩短开发时间。它还允许程序具有更大的灵活性，无需重新编译即可有效处理新情况。
+元编程可用于将计算从运行时转移到编译时，利用编译时的计算生成代码，以及实现代码的自我修改。编程语言变成它自己的 metalanguage 的能力被称为反射。
+元编程使开发人员能够编写属于通用编程范式的程序和开发代码。将编程语言本身作为一级数据类型（如 Lisp、Prolog、SNOBOL 或 Rebol）也非常有用；这就是所谓的同源性（homoiconicity）。通用编程调用了语言中的元编程工具，允许用户在编写代码时无需指定数据类型，因为在使用时，数据类型可以作为参数提供。
+元编程通常有三种方式：
+第一种方法是通过应用程序接口（API）（如 .NET IL 发射器的应用程序接口）向编程代码公开运行时引擎的内部结构。 第二种方法是动态执行包含编程命令的表达式，通常由字符串组成，但也可以是使用参数或上下文的其他方法，如 JavaScript。因此，&amp;ldquo;程序可以编写程序&amp;rdquo;。虽然这两种方法可以在同一种语言中使用，但大多数语言都倾向于使用其中一种方法。 </description>
+    </item>
+    
+  </channel>
+</rss>
