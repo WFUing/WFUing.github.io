@@ -196,11 +196,11 @@
       </h2>
     </header>
     <div class="entry-content">
-      <p>元编程 (Metaprogramming) 是一种编程技术，在这种技术中，计算机程序能够将其他程序视为自己的数据。这意味着一个程序可以被设计为读取、生成、分析或转换其他程序，甚至在运行时修改自身。在某些情况下，这允许程序员最大限度地减少表达解决方案的代码行数，从而缩短开发时间。它还允许程序具有更大的灵活性，无需重新编译即可有效处理新情况。
-元编程可用于将计算从运行时转移到编译时，利用编译时的计算生成代码，以及实现代码的自我修改。编程语言变成它自己的 metalanguage 的能力被称为反射。
-元编程使开发人员能够编写属于通用编程范式的程序和开发代码。将编程语言本身作为一级数据类型（如 Lisp、Prolog、SNOBOL 或 Rebol）也非常有用；这就是所谓的同源性（homoiconicity）。通用编程调用了语言中的元编程工具，允许用户在编写代码时无需指定数据类型，因为在使用时，数据类型可以作为参数提供。
-元编程通常有三种方式：
-第一种方法是通过应用程序接口（API）（如 .NET IL 发射器的应用程序接口）向编程代码公开运行时引擎的内部结构。 第二种方法是动态执行包含编程命令的表达式，通常由字符串组成，但也可以是使用参数或上下文的其他方法，如 JavaScript。因此，“程序可以编写程序”。虽然这两种方法可以在同一种语言中使用，但大多数语言都倾向于使用其中一种方法。 </p>
+      <p>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
+Macros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
+使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C&#43;&#43; 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
+1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：
+1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout &lt;&lt; x &lt;&lt; &#34; &#34; &lt;&lt; y &lt;&lt; endl; } // output 4 3 通过向 g&#43;&#43; 传递 -E 标志，可以获得宏扩展的结果：...</p>
     </div>
     <footer class="entry-footer">
 
@@ -213,7 +213,7 @@
 
 
 
-创建:&nbsp;<span title='2023-10-16 15:29:44 +0800 +0800'>2023-10-16</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-16&nbsp;|&nbsp;字数:&nbsp;17字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+创建:&nbsp;<span title='2023-10-16 15:29:44 +0800 +0800'>2023-10-16</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-16&nbsp;|&nbsp;字数:&nbsp;769字&nbsp;|&nbsp;时长: 4分钟&nbsp;|&nbsp;WFUing</footer>
   </div> 
 
    

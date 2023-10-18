@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>serverless | Waiting For You</title>
+<meta name="keywords" content="">
+<meta name="description" content="这是一个纯粹的博客......">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/tags/serverless/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.e1e2622d88c4c5362fa6e3971c69fa4234d34f7bf5d12451104cb5f810ed1759.css" integrity="sha256-4eJiLYjExTYvpuOXHGn6QjTTT3v10SRREEy1&#43;BDtF1k=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/tags/serverless/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="serverless" />
+<meta property="og:description" content="这是一个纯粹的博客......" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://WFUing.github.io/tags/serverless/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="serverless"/>
+<meta name="twitter:description" content="这是一个纯粹的博客......"/>
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                    <span>🔍</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/" title="HOME">
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/posts" title="BLOGS">
+                    <span>BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                    <span>ARCHIVE</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                    <span>🙋🏻‍♂️</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/tags/">Tags</a></div>
+  <h1>
+    serverless
+  </h1>
+</header>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Serverless Dev
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Serverless Devs 是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者不仅可以一键体验多云 Serverless 产品，极速部署 Serverless 项目，还可以在 Serverless 应用全生命周期进行项目的管理，并且非常简单快速的将 Serverless Devs 与其他工具/平台进行结合，进一步提升研发、运维效能。
+平台/产品支持 目前 Serverless Devs 项目已经支持的 FaaS 平台/产品：
+Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百度智能云函数计算（CFC）: 项目仓库 华为云函数工作流（FG）: 项目仓库 腾讯云云函数（SCF）: 项目仓库 Installable OpenFunction（ofn）: 项目仓库 Laf: 开发中… 项目期望 Serverless Devs 希望可以为 Serverless 开发者们提供一款可以无厂商锁定的，可以在 Serverless 应用全生命周期发挥作用的 Serverless 开发者工具； Serverless Registry 希望可以为 Serverless 生态提供一套完整的包管理规范，与 Python 中的 pypi， Nodejs 中的 npm 等类似，将以此来开放和分享 Serverless Package，建设 Serverless 生态； Serverless Developer Meetup 希望可以打造最符合 Serverless 开发者的社区活动，通过这个活动，希望更多人可以一起交流、学习 Serverless 相关的产品； 快速上手 本快速上手案例以 阿里云函数计算 为例的快速上手 Serverless Devs...</p>
+    </div>
+    <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-17 11:47:45 +0800 +0800'>2023-10-17</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-17&nbsp;|&nbsp;字数:&nbsp;1335字&nbsp;|&nbsp;时长: 7分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo_hu5d98ca782c8bcb789c89210a0f8e3e46_71419_360x0_resize_q75_box.jpeg 360w ,https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo_hu5d98ca782c8bcb789c89210a0f8e3e46_71419_480x0_resize_q75_box.jpeg 480w ,https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo_hu5d98ca782c8bcb789c89210a0f8e3e46_71419_720x0_resize_q75_box.jpeg 720w ,https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo_hu5d98ca782c8bcb789c89210a0f8e3e46_71419_1080x0_resize_q75_box.jpeg 1080w ,https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo_hu5d98ca782c8bcb789c89210a0f8e3e46_71419_1500x0_resize_q75_box.jpeg 1500w ,https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo.jpeg 2410w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/logo.jpeg" alt="" 
+            width="2410" height="862">
+</figure>
+  <a class="entry-link" aria-label="post link to Serverless Dev" href="https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Serverless Concept Models
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。
+Serverless 的特点
+按需分配 无服务器计算基于事件驱动和按需调用，只在需要时才会进行计算资源的分配和管理 弹性伸缩 无服务器计算平台会自动根据负载量的变化进行资源的动态分配和优化，无需手动干预 简化开发与部署 开发者专注于编写核心业务逻辑代码，简化应用开发以及部署流程 Concept Models Serverless 核心资源 Service
+阿里云提供服务这一抽象 服务是函数计算资源管理的单位，同一服务下的所有函数共享一些设置，如服务授权和日志配置 一个应用可拆分为多个服务，一个服务可由多个函数组成 Function
+云函数，云函数由代码和运行环境描述组成 云函数可能依赖于其他云函数，或者外部服务，如对象存储，API 网关，消息队列 Trigger
+触发器，用于在满足某些条件时，触发 Function 的执行 基于事件驱动 常见的触发器类型 定时触发器 Cron Trigger API 网关触发器 HTTP Trigger 消息队列触发器 MQ Trigger External Service
+云函数在运行过程中，可能调用外部的服务完成任务，如调用 Redis 或 RDBMS 存储状态 Function 表示 Serverless 函数
+Function 基本信息
+包括函数的代码 URI，运行时，处理函数名称等
+Function 资源需求
+指定函数运行时所需的计算资源，如内存，CPU 等
+Function 触发器
+1 2 3 4 5 6 7 8 9 export interface Function { runtime: string; codeDir: string; // source code directory to bundle resource: { memory: string; cpu: string; }; triggers: {}[]; } Trigger 函数触发器，基于事件驱动机制触发函数执行...</p>
+    </div>
+    <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-17 10:47:45 +0800 +0800'>2023-10-17</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-17&nbsp;|&nbsp;字数:&nbsp;172字&nbsp;|&nbsp;时长: 1分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Serverless Concept Models" href="https://WFUing.github.io/posts/tech/architecture/serverless/serverless-concept-models/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

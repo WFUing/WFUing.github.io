@@ -6,26 +6,58 @@
     <description>Recent content on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 16 Oct 2023 15:29:44 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 11:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Serverless Dev</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/</link>
+      <pubDate>Tue, 17 Oct 2023 11:47:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/</guid>
+      <description>Serverless Devs 是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者不仅可以一键体验多云 Serverless 产品，极速部署 Serverless 项目，还可以在 Serverless 应用全生命周期进行项目的管理，并且非常简单快速的将 Serverless Devs 与其他工具/平台进行结合，进一步提升研发、运维效能。
+平台/产品支持 目前 Serverless Devs 项目已经支持的 FaaS 平台/产品：
+Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百度智能云函数计算（CFC）: 项目仓库 华为云函数工作流（FG）: 项目仓库 腾讯云云函数（SCF）: 项目仓库 Installable OpenFunction（ofn）: 项目仓库 Laf: 开发中&amp;hellip; 项目期望 Serverless Devs 希望可以为 Serverless 开发者们提供一款可以无厂商锁定的，可以在 Serverless 应用全生命周期发挥作用的 Serverless 开发者工具； Serverless Registry 希望可以为 Serverless 生态提供一套完整的包管理规范，与 Python 中的 pypi， Nodejs 中的 npm 等类似，将以此来开放和分享 Serverless Package，建设 Serverless 生态； Serverless Developer Meetup 希望可以打造最符合 Serverless 开发者的社区活动，通过这个活动，希望更多人可以一起交流、学习 Serverless 相关的产品； 快速上手 本快速上手案例以 阿里云函数计算 为例的快速上手 Serverless Devs</description>
+    </item>
+    
+    <item>
+      <title>Serverless Concept Models</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-concept-models/</link>
+      <pubDate>Tue, 17 Oct 2023 10:47:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-concept-models/</guid>
+      <description>Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。
+Serverless 的特点
+按需分配 无服务器计算基于事件驱动和按需调用，只在需要时才会进行计算资源的分配和管理 弹性伸缩 无服务器计算平台会自动根据负载量的变化进行资源的动态分配和优化，无需手动干预 简化开发与部署 开发者专注于编写核心业务逻辑代码，简化应用开发以及部署流程 Concept Models Serverless 核心资源 Service
+阿里云提供服务这一抽象 服务是函数计算资源管理的单位，同一服务下的所有函数共享一些设置，如服务授权和日志配置 一个应用可拆分为多个服务，一个服务可由多个函数组成 Function
+云函数，云函数由代码和运行环境描述组成 云函数可能依赖于其他云函数，或者外部服务，如对象存储，API 网关，消息队列 Trigger
+触发器，用于在满足某些条件时，触发 Function 的执行 基于事件驱动 常见的触发器类型 定时触发器 Cron Trigger API 网关触发器 HTTP Trigger 消息队列触发器 MQ Trigger External Service
+云函数在运行过程中，可能调用外部的服务完成任务，如调用 Redis 或 RDBMS 存储状态 Function 表示 Serverless 函数
+Function 基本信息
+包括函数的代码 URI，运行时，处理函数名称等
+Function 资源需求
+指定函数运行时所需的计算资源，如内存，CPU 等
+Function 触发器
+1 2 3 4 5 6 7 8 9 export interface Function { runtime: string; codeDir: string; // source code directory to bundle resource: { memory: string; cpu: string; }; triggers: {}[]; } Trigger 函数触发器，基于事件驱动机制触发函数执行</description>
+    </item>
+    
     <item>
       <title>meta-programming</title>
       <link>https://WFUing.github.io/posts/tech/language/metaprogramming/</link>
       <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/tech/language/metaprogramming/</guid>
-      <description>元编程 (Metaprogramming) 是一种编程技术，在这种技术中，计算机程序能够将其他程序视为自己的数据。这意味着一个程序可以被设计为读取、生成、分析或转换其他程序，甚至在运行时修改自身。在某些情况下，这允许程序员最大限度地减少表达解决方案的代码行数，从而缩短开发时间。它还允许程序具有更大的灵活性，无需重新编译即可有效处理新情况。
-元编程可用于将计算从运行时转移到编译时，利用编译时的计算生成代码，以及实现代码的自我修改。编程语言变成它自己的 metalanguage 的能力被称为反射。
-元编程使开发人员能够编写属于通用编程范式的程序和开发代码。将编程语言本身作为一级数据类型（如 Lisp、Prolog、SNOBOL 或 Rebol）也非常有用；这就是所谓的同源性（homoiconicity）。通用编程调用了语言中的元编程工具，允许用户在编写代码时无需指定数据类型，因为在使用时，数据类型可以作为参数提供。
-元编程通常有三种方式：
-第一种方法是通过应用程序接口（API）（如 .NET IL 发射器的应用程序接口）向编程代码公开运行时引擎的内部结构。 第二种方法是动态执行包含编程命令的表达式，通常由字符串组成，但也可以是使用参数或上下文的其他方法，如 JavaScript。因此，&amp;ldquo;程序可以编写程序&amp;rdquo;。虽然这两种方法可以在同一种语言中使用，但大多数语言都倾向于使用其中一种方法。 </description>
+      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
+Macros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
+使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
+1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：
+1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout &amp;lt;&amp;lt; x &amp;lt;&amp;lt; &amp;#34; &amp;#34; &amp;lt;&amp;lt; y &amp;lt;&amp;lt; endl; } // output 4 3 通过向 g++ 传递 -E 标志，可以获得宏扩展的结果：</description>
     </item>
     
     <item>
       <title>State Machine</title>
-      <link>https://WFUing.github.io/posts/tech/distributed/iot/state-machine/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/iot/state-machine/</link>
       <pubDate>Mon, 16 Oct 2023 11:16:13 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/distributed/iot/state-machine/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/iot/state-machine/</guid>
       <description>有限状态机 (finite-state machine, FSM) 是一种抽象机器，在任何给定时间内都可以处于有限个状态中的一个状态。FSM 可以根据某些外部输入从一种状态转换到另一种状态，从一种状态转换到另一种状态称为转换。</description>
     </item>
     
@@ -103,19 +135,19 @@ C++ (since C++11)</description>
     
     <item>
       <title>Zookeeper Code</title>
-      <link>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-code/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/zookeeper-code/</link>
       <pubDate>Sat, 14 Oct 2023 12:00:54 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-code/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/zookeeper-code/</guid>
       <description>Resources 官方 ZooKeeper 官网 ZooKeeper 官方文档 ZooKeeper Github 博客 ZooKeeper源码阅读心得分享+源码基本结构+源码环境搭建 手摸手教你阅读和调试大型开源项目 ZooKeeper </description>
     </item>
     
     <item>
       <title>Zookeeper 原理</title>
-      <link>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-theory/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/zookeeper-theory/</link>
       <pubDate>Fri, 13 Oct 2023 20:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/distributed/zookeeper/zookeeper-theory/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/zookeeper-theory/</guid>
       <description>ZooKeeper 简介 ZooKeeper 是什么 ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
 ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
 很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
@@ -126,10 +158,10 @@ ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取�
     
     <item>
       <title>分布式系统概述</title>
-      <link>https://WFUing.github.io/posts/tech/distributed/overview/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/overview/</link>
       <pubDate>Fri, 13 Oct 2023 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/distributed/overview/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/overview/</guid>
       <description>什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
 特点
 分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
@@ -186,10 +218,10 @@ RESTful 架构应该遵循统一接口原则，统一接口包含了一组受限
     
     <item>
       <title>Actor</title>
-      <link>https://WFUing.github.io/posts/tech/distributed/iot/actor/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/iot/actor/</link>
       <pubDate>Fri, 13 Oct 2023 09:16:13 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/distributed/iot/actor/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/iot/actor/</guid>
       <description>Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
 actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
 actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
@@ -212,10 +244,10 @@ actor 之间通过发送异步消息进行通信。这些 message 会保存在�
     
     <item>
       <title>How to Write a Git Commit Message</title>
-      <link>https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/git/how-to-write-a-git-commit-message/</link>
       <pubDate>Thu, 12 Oct 2023 19:47:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/operations/git/how-to-write-a-git-commit-message/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/git/how-to-write-a-git-commit-message/</guid>
       <description>Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
 Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。
 The seven rules of a great Git commit message
@@ -282,44 +314,6 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
     </item>
     
     <item>
-      <title>The Mythical Man Month Thoughts</title>
-      <link>https://WFUing.github.io/posts/read/the-mythical-man-month-thoughts/</link>
-      <pubDate>Thu, 12 Oct 2023 19:16:22 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/read/the-mythical-man-month-thoughts/</guid>
-      <description>一、书名和作者 书名：《人月神话》 作者：布鲁克斯(FrederickP.Brooks.Jr.) 二、书籍概览 主要论点和结构 《人月神话》是一本旨在深入探讨软件工程中的管理和工程问题的经典著作。本书强调了软件开发过程中的复杂性和挑战，尤其是在大规模项目中。书中还探讨了许多经典观点，如&amp;quot;人月神话&amp;quot;、&amp;ldquo;二八定律&amp;quot;和&amp;quot;沟通成本&amp;rdquo;，为软件行业的专业人员提供了宝贵的见解和管理原则，使他们能够更好地理解和应对软件项目的挑战。
-目标读者和应用场景 该书的目标读者包括软件工程师、项目经理、团队领导和决策者，以及任何对软件开发过程感兴趣的人。对于软件开发工程师来说，这本书提供了宝贵的洞察，帮助他们更好地理解项目管理和团队协作的挑战；对于项目经理来说，本书提供了管理大型软件项目所需的关键原则和策略；领导小型或大型软件团队的人员可以从本书中获得关于如何优化团队协作、提高效率和管理项目的方法；即使不是专业人员，任何对软件开发过程感兴趣的人都可以从本书中获得对软件工程领域的深入了解，从而更好地理解和评估不同软件项目。总的来说，《人月神话》适用于各种软件项目，无论是大规模的企业级项目还是小规模的个人项目。
-三、核心观点与主题 1. 人月神话
-人月神话的产生 《人月神话》的核心观点之一是关于&amp;quot;人月神话&amp;quot;本身的产生。这一概念源自于普遍存在的一种误解，即认为增加项目开发的人员数量会自动缩短项目完成时间。作者布鲁克斯解释了这种误解的根源，即对软件工程的特殊性和复杂性的不理解。这种误解在早期的计算机领域中非常普遍，导致了一些项目的失败和项目时间的延长。
-后果和启发 项目增加人员后出现的管理问题和沟通成本的急剧上升，最后导致了项目的失败，包括延期、成本超支和低质量交付等。这些后果为软件开发的实践带来了极大的挑战，但也激发了对更好方法的追求。软件工程领域需要更多的规划、需求管理和团队协作，以避免人员增加引发的问题。
-实例或案例 一个鲜明的案例是IBM的OS/360项目，该项目是为了开发一种崭新的操作系统。初期，这个项目规模宏大，聚集了大量人员资源，充满了雄心壮志，然而，很快就陷入了严重的延期和质量问题的泥淖。在这个项目中，管理层采取了一种常见的措施，即试图通过增加项目开发的人员数量来加快进度。然而，结果却截然不同于期望。
-2. 二八定律
-二八定律的阐述 本书的第二个重要主题是&amp;quot;二八定律&amp;quot;，它强调了在软件开发中常见的现象，即80%的工作通常需要80%的时间，而剩下的20%工作同样需要80%的时间。这一定律揭示了工作任务的不均衡性，以及为什么某些部分的工作似乎总是比预期需要更多的时间。作者详细探讨了这一定律的背后原因，以及它在软件工程中的应用。
-重要任务的优先性 项目中的关键任务和非关键任务应当被明智地区分开来。关键任务往往占据大部分时间和资源，因此它们的规划和执行至关重要。这个观点呼吁项目管理者和团队要明智地设置优先级，确保关键任务首先得到充分关注，以确保项目能够按计划顺利进行。
-实例或案例 一个生动的例子是在软件开发项目中的功能开发和测试。根据二八定律，80%的开发工作可能会占用80%的时间，但剩下的20%的时间可能都被用于测试和调试。这种情况表明，关键任务（测试）常常被放在项目的后期，从而导致项目延期和问题的累积。通过理解这一现象，团队可以更好地规划项目，提前考虑到测试和质量保证，从而避免在后期因紧急问题而忙乱无序。这个案例强调了二八定律的实际应用，以提高项目的效率和成功率。
-3. 沟通成本
-沟通成本的重要性 这本书的第三个主题关注了&amp;quot;沟通成本&amp;quot;的概念。沟通在软件开发项目中是至关重要的，因为团队成员需要共同合作、协调工作和共享信息。然而，随着团队规模的增大，沟通的复杂性也随之增加。所以为了有效地合作，必须投入时间和精力来解决沟通问题。
-沟通成本的增加 随着团队规模的增加，沟通成本的急剧上升。当团队规模庞大时，需要花更多的时间来协调、汇报和共享信息。这不仅仅是人员增加导致的问题，还包括了更多的管理层次、更多的会议和文档。这会消耗时间和资源，导致项目时间表的延迟。
-实例或案例 在大型软件开发项目中，特别是在跨地理位置分布的全球团队中，沟通成本的急剧上升。团队成员分布在不同的时区，可能使用不同的语言和文化，这会增加沟通的困难。管理层必须花更多的时间来协调跨团队合作，编写文档以确保信息传递清晰，以及组织跨地域的会议。这些额外的沟通成本不仅会影响项目进度，还可能导致误解和沟通失败。通过理解沟通成本的重要性和增加，团队可以采取更有效的沟通策略，包括利用技术工具、清晰的沟通计划和团队培训，以减轻这一问题带来的负面影响。这个案例强调了如何通过降低沟通成本来提高项目的成功机会。
-4. 团队工作
-团队工作的重要性 软件开发项目往往需要多个团队成员之间的有效合作，包括程序员、测试人员、设计师和管理者，团队协作的不可或缺，才能保证项目成功完成。
-团队协作所面临的挑战 随着团队规模的扩大，不同成员之间的协调和沟通变得更加困难。这可能导致沟通失误、工作分配的混乱和项目的延期。有效的团队协作不仅涉及技术层面，还需要关注人际关系和沟通技巧。
-实例或案例 考虑一个涉及多个团队的复杂项目，每个团队负责不同的模块或组件。如果团队之间的协调和沟通不顺畅，可能会导致不同部分之间的不一致，甚至出现集成问题。
-四、亮点与启发 最有影响的观点或实例 在《人月神话》中，最有影响的观点之一是关于&amp;quot;人月神话&amp;quot;本身。这一观点深刻地揭示了在软件开发项目中的一个普遍误解，即增加项目开发的人员数量会缩短项目时间。通过生动的IBM的OS/360项目的案例，作者清晰地展示了增加人员数量并不总是解决方案，反而可能导致更多的管理和沟通成本，从而延长项目时间表。这个观点对软件工程领域产生了深远的影响，提醒我们要谨慎处理人员规模的增长，强调了规划、管理和沟通的重要性。
-另一个关键观点是&amp;quot;二八定律&amp;quot;，它解释了为什么80%的工作通常需要80%的时间，而剩下的20%同样需要80%的时间。这一定律强调了项目中关键任务的优先性和规划的必要性。通过理解这一观点，团队可以更好地分配资源和精力，确保项目关键任务的顺利执行，从而避免时间表的延迟和资源浪费。
-对个人或专业发展的启示 它提醒我们要对软件工程项目的复杂性和挑战有充分的认识。软件开发不同于传统工程，它涉及到人、技术和管理的多层次交互。因此，我们需要谨慎规划、有效沟通和管理，以确保项目的成功。此外，书中的案例和观点强调了团队协作的不可或缺性。无论是在大型企业项目还是小型团队中，团队成员之间的合作和协调至关重要。这启示我们要发展良好的团队协作技能，倾听他人的意见，学会解决冲突，以实现共同的目标。通过《人月神话》，我们能够深入理解软件工程的本质，从中汲取宝贵的经验教训，不仅提高专业素养，还能应用于各种项目和团队，推动软件工程领域的不断进步。
-五、批评与局限性 任何有争议、模糊或过时的信息 尽管《人月神话》包含了许多宝贵的观点和经验教训，但也存在一些有争议、模糊或过时的信息。首先，书中的一些案例和观点可能仅适用于特定的历史背景，因为软件工程领域在书写时已经发生了巨大的变化。例如，书中提到的硬件和软件环境可能与现代技术和工具有很大不同，因此某些观点可能已经过时。此外，一些观点可能在不同背景下产生争议。例如，在某些敏捷开发项目中，强调小团队、快速迭代和自组织可能与书中的一些建议相悖。因此，读者需要谨慎评估书中的观点，以确保其适用于其具体的项目和环境。
-可能的不足或缺陷 一个潜在的不足是书中强调的某些问题可能过于简化了复杂的软件工程现实。例如，书中提到的&amp;quot;人月神话&amp;quot;观点虽然有其价值，但它可能过于一概而论。在实际项目中，项目规模、团队结构和技术要求各不相同，因此不同项目可能会有不同的最佳实践。这种简化可能导致读者忽视了项目的特定需求。此外，书中强调的一些建议和技巧可能需要更多的上下文和实际操作指南。读者可能需要额外的资源来理解如何具体应用这些原则。因此，书中的一些内容可能缺乏具体的实施细节，这可能对一些读者而言是不足之处。
-六、实际应用和拓展 在实际工作 / 学习中如何应用这些概念 《人月神话》中的概念对实际工作和学习有重要意义。首先，对于软件工程领域的专业人士，书中的观点提供了宝贵的指导，如如何有效地管理项目、规划资源、协调团队和降低沟通成本。对于项目经理、团队领导和决策者，这些观点有助于更好地理解软件项目的特殊性和复杂性，从而提高项目的成功机会。
-其次，这些概念也适用于其他领域，特别是项目管理领域。无论是在制造业、医疗保健、建筑业还是任何需要团队合作和资源管理的领域，书中的原则都具有通用性。学习如何应对复杂性、规划和协调资源以及降低沟通成本对于任何项目的成功都是至关重要的。
-对未来研究或实践的建议 随着技术的不断发展，需要考虑新兴技术对软件工程和项目管理的影响。例如，人工智能、云计算和大数据等新技术如何改变项目的性质和需求。
-其次，可以深入研究如何应对全球化和跨文化团队合作的挑战。随着全球化趋势的加强，团队成员可能分布在不同国家和文化中，如何有效协作和沟通将成为一个重要的研究领域。
-七、总结与评价 对书籍的整体评价 《人月神话》是一本经典的软件工程管理著作，提供了深刻的洞察和宝贵的经验教训。它以清晰、易懂的语言讨论了软件开发中的复杂性和挑战，强调了管理和工程方面的重要性。这本书的长期影响力可见一斑，许多软件专业人士将其视为必读之作。
-书籍的长处和短处 长处：
-经典观点： 书中的观点，如&amp;quot;人月神话&amp;quot;和&amp;quot;二八定律&amp;quot;，具有深远的影响，为软件工程管理提供了宝贵的指导。 实际建议： 书中提供了许多实际的管理建议和案例，读者可以在实际项目中应用。 通俗易懂： 作者以平易近人的语言阐释了复杂的概念，使其对广大读者更容易理解。 跨学科性： 书中的原则和观点不仅适用于软件工程领域，还适用于其他项目管理领域。 短处：</description>
-    </item>
-    
-    <item>
       <title>Leetcode</title>
       <link>https://WFUing.github.io/posts/tech/algorithm/leetcode/</link>
       <pubDate>Thu, 12 Oct 2023 17:05:17 +0800</pubDate>
@@ -359,10 +353,10 @@ Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-ds
     
     <item>
       <title>How to Build Github Blog With Hugo</title>
-      <link>https://WFUing.github.io/posts/tech/operations/git/how-to-build-github-blog-with-hugo/</link>
+      <link>https://WFUing.github.io/posts/tech/architecture/git/how-to-build-github-blog-with-hugo/</link>
       <pubDate>Thu, 12 Oct 2023 14:39:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/operations/git/how-to-build-github-blog-with-hugo/</guid>
+      <guid>https://WFUing.github.io/posts/tech/architecture/git/how-to-build-github-blog-with-hugo/</guid>
       <description>今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog
 Resources 系列文章，用hugo的PaperMod Theme 建站: https://www.sulvblog.cn/posts/blog/ Hugo + GitHub Action，搭建你的博客自动发布系统: https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ PaperMod主题优化： https://kdjlyy.cn/posts/site/hugo-papermod-optimization https://dvel.me/posts/hugo-papermod-config/ </description>
     </item>
@@ -412,6 +406,19 @@ $\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ �
       
       <guid>https://WFUing.github.io/about/</guid>
       <description> 英文名: WDS 职业: 程序员 运动: 跑步、乒乓球、爬山 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://WFUing.github.io/posts/tech/architecture/jyy/02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/jyy/02/</guid>
+      <description>shell matros
+tmax
+fzf
+journalctl see also
+keyboard</description>
     </item>
     
     
