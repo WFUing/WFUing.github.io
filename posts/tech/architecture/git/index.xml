@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>git on Waiting For You</title>
+    <title>Git on Waiting For You</title>
     <link>https://WFUing.github.io/posts/tech/architecture/git/</link>
-    <description>Recent content in git on Waiting For You</description>
+    <description>Recent content in Git on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 12 Oct 2023 19:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Oct 2023 20:58:09 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git Principle</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/git/git-principle/</link>
+      <pubDate>Thu, 19 Oct 2023 20:58:09 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/git/git-principle/</guid>
+      <description>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方式。 从概念上来说，其它大部分系统以文件变更列表的方式存储信息，而 Git 是把数据看作是对小型文件系统的一系列快照。</description>
+    </item>
+    
+    <item>
+      <title>Git Tutorial</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/git/git-tutorial/</link>
+      <pubDate>Thu, 19 Oct 2023 20:40:43 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/git/git-tutorial/</guid>
+      <description>Git 帮助手册 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
+本节选择性介绍 git 中比较常用的命令行场景。
+安装 （1）Debian/Ubuntu 环境安装
+如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
+1 2 3 4 5 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &amp;gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
+如果你使用的系统是 Centos/RedHat ，安装命令为：
+1 2 3 4 5 $ yum install curl-devel expat-devel gettext-devel \ &amp;gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.</description>
+    </item>
+    
     <item>
       <title>How to Write a Git Commit Message</title>
       <link>https://WFUing.github.io/posts/tech/architecture/git/how-to-write-a-git-commit-message/</link>

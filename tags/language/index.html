@@ -225,6 +225,37 @@ Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表
 <article class="post-entry tag-entry">
   <div class="post-info"> 
     <header class="entry-header">
+      <h2>meta-programming
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
+Macros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
+使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C&#43;&#43; 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
+1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：
+1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout &lt;&lt; x &lt;&lt; &#34; &#34; &lt;&lt; y &lt;&lt; endl; } // output 4 3 通过向 g&#43;&#43; 传递 -E 标志，可以获得宏扩展的结果：...</p>
+    </div>
+    <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-16 15:29:44 +0800 +0800'>2023-10-16</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-16&nbsp;|&nbsp;字数:&nbsp;1851字&nbsp;|&nbsp;时长: 9分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to meta-programming" href="https://WFUing.github.io/posts/tech/language/metaprogramming/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
       <h2>Programming Language List
       </h2>
     </header>

@@ -6,7 +6,7 @@
     <description>Recent content in architecture on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 19 Oct 2023 11:47:47 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Oct 2023 20:58:09 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shell</title>
       <link>https://WFUing.github.io/posts/tech/architecture/shell/</link>
@@ -20,16 +20,12 @@
     </item>
     
     <item>
-      <title></title>
-      <link>https://WFUing.github.io/posts/tech/architecture/jyy/02/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>DevOps 简介</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/devoops/</link>
+      <pubDate>Thu, 12 Oct 2023 17:16:02 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/tech/architecture/jyy/02/</guid>
-      <description>shell matros
-tmax
-fzf
-journalctl see also
-keyboard</description>
+      <guid>https://WFUing.github.io/posts/tech/architecture/devoops/</guid>
+      <description>DevOps 集文化理念、实践和工具于一身，它强调团队授权、跨团队沟通和协作以及技术自动化，其最终目标是优化质量和交付</description>
     </item>
     
   </channel>
