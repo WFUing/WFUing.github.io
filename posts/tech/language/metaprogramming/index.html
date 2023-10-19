@@ -14,7 +14,7 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
 1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout &lt;&lt; x &lt;&lt; &#34; &#34; &lt;&lt; y &lt;&lt; endl; } // output 4 3 通过向 g&#43;&#43; 传递 -E 标志，可以获得宏扩展的结果：">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/language/metaprogramming/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e1e2622d88c4c5362fa6e3971c69fa4234d34f7bf5d12451104cb5f810ed1759.css" integrity="sha256-4eJiLYjExTYvpuOXHGn6QjTTT3v10SRREEy1&#43;BDtF1k=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.053344f784fc1772e1ec75736699a395a68a8232248bd41219e258c3b93fb2eb.css" integrity="sha256-BTNE94T8F3Lh7HVzZpmjlaaKgjIki9QSGeJYw7k/sus=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
@@ -165,8 +165,8 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
   "keywords": [
     "metaprogramming"
   ],
-  "articleBody": "元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。\nMacros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。\n使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：\n1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：\n1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c endl; } // output 4 3 通过向 g++ 传递 -E 标志，可以获得宏扩展的结果：\n1 $ g++ -E 不过，如果使用 #includes 指令，结果可能会非常混乱，因为该指令会从给定文件中调入代码。\nCPP macros perform text 替换，因此上述代码等同于：\n1 2 3 4 5 6 int main() { int x = 3; int y = 4; { auto tmp = y; y = x; x = tmp; }; cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c endl; } 使用 SWAP 宏后的分号仍然保留，表示空语句。不过，在需要使用单一语句的情况下，例如一个没有被 block 括住的条件分支，这就会造成问题：\n1 2 3 4 if (x \u003c y) SWAP(x, y); else cout \u003c\u003c \"no swap\" \u003c\u003c endl; 避免这一问题的常用方法是将 macro 的扩展代码放在 do/while 中：\n1 2 3 4 5 #define SWAP(a, b) do { \\ auto tmp = b; \\ b = a; \\ a = tmp; \\ } while (false) 在这里，我们在一行的末尾添加了一个 \\，表示下一行应被视为上一行的继续。do/while 循环在语法上以分号结束，因此 SWAP(x, y); 中的分号在语法上是 do/while 循环的一部分。因此，扩展代码的语法是正确的：\n1 2 3 4 if (x \u003c y) do { auto tmp = b; b = a; a = tmp; } while (false); else cout \u003c\u003c \"no swap\" \u003c\u003c endl; 虽然 textual replacement 很有用，但它也有缺点，因为虽然宏在语法上类似函数，但它们的行为却不像函数。具体来说，它们不把参数作为自己的实体，也不引入独立的作用域。请看下面的例子：\n1 2 3 4 5 6 7 8 9 10 int main() { int x = 3; int y = 4; int z = 5; SWAP(x \u003c y ? x : y, z); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } // output 3 4 3 使用 g++ -E，我们可以看到预处理后的代码。只看 main() 的输出，我们会发现\n1 2 3 4 5 6 7 8 9 10 11 int main() { int x = 3; int y = 4; int z = 5; do { auto tmp = z; z = x \u003c y ? x : y; x \u003c y ? x : y = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } 在这里，我们手动添加了换行符和空格，以使输出更易读；而预处理器本身会将宏输出放在一行中。罪魁祸首是最后生成的语句：\n1 x \u003c y ? x : y = tmp; 在 C++ 中，条件运算符 ? : 和赋值运算符 = 具有相同的优先级，并且从右向左关联，因此这等同于\n1 x \u003c y ? x : (y = tmp); 由于 x \u003c y，这里没有赋值。因此，x 的值保持不变。\n我们可以在每次使用 macro argument 时加上括号来解决这个问题：\n1 2 3 4 5 #define SWAP(a, b) do { \\ auto tmp = (b); \\ (b) = (a); \\ (a) = tmp; \\ } while (false) Ranking the Operator Precedence in C++ 现在会产生预期的结果，因为括号明确地将这些操作联系起来：\n1 2 3 4 5 6 7 8 9 10 11 int main() { int x = 3; int y = 4; int z = 5; do { auto tmp = (z); (z) = (x \u003c y ? x : y); (x \u003c y ? x : y) = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } 然而，第二个问题并不那么容易解决。考虑一下当我们将 SWAP 宏应用于名为 tmp 的变量时会发生什么：\n1 2 3 4 5 6 7 8 9 int main() { int x = 3; int tmp = 4; SWAP(tmp, x); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c tmp \u003c\u003c endl; } // output 3 4 没有发生交换！再次使用 g++ -E 检查输出，我们可以看到（模数间隔）\n1 2 3 4 5 6 7 8 9 10 int main() { int x = 3; int tmp = 4; do { auto tmp = (x); (x) = (tmp); (tmp) = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c tmp \u003c\u003c endl; } 由于 SWAP 使用的临时变量与参数同名，因此临时变量会捕获生成代码中出现的参数。这是因为宏只是执行文本替换，并不能确保名称被解析到适当的作用域。因此，宏实际上并不使用按名称调用，而按名称调用可确保参数中的名称解析到适当的作用域。对文本替换的依赖使 CPP 成为一个不卫生的宏系统。其他系统（如 Scheme 的系统）是卫生的，它们为宏引入的名称创建了单独的作用域，并确保参数不会被捕获。\nScheme Macros 作为 R5RS Scheme 规范的一部分，宏系统是卫生的。宏由 define-syntax、let-syntax 或 letrec-syntax 中的一种形式引入，并将给定的名称与宏绑定。例如，下面是 let 作为宏的定义：\n1 2 3 4 5 6 7 8 9 10 11 12 13 (define-syntax let (syntax-rules () ((let ((name val) ...) body1 body2 ... ) ((lambda (name ...) body1 body2 ... ) val ... ) ) ) ) syntax-rules 指定了宏转换的规则。第一个参数是规则模式与输入之间必须匹配的字面形式列表。例如，cond 形式中的 else 标识符。但在这种情况下，没有字面意义。syntax-rules 的其余参数指定了转换。转换的第一项是输入模式，第二项是输出模式。...的作用类似于克莱因星，将前一项与输入中出现的零次或多次相匹配。输入模式中出现但不在字面量列表中的名称，除了作为宏名称的第一项，都是与输入元素相匹配的卫生变量。这些变量可以在输出模式中引用，以指定如何构造输出。\n在全局环境中评估上述表达式时，会将 let 名称与一个转换为 lambda 的宏绑定。\n宏主体引入的标识符保证避免与其他标识符冲突，解释器通常会重命名标识符以避免冲突。下面是 swap 宏的定义：\n1 2 3 4 5 6 7 8 9 10 (define-syntax swap (syntax-rules () ((swap a b) (let ((tmp b)) (set! b a) (set! a tmp) ) ) ) ) 这就将 swap 的使用转化为一个表达式，通过临时变量 tmp 交换两个参数。因此\n1 2 3 4 5 6 7 \u003e (define x 3) \u003e (define y 4) \u003e (swap x y) \u003e x 4 \u003e y 3 不过，与 CPP 宏不同的是，swap 宏引入的 tmp 与其他任何 tmp 都是不同的：\n1 2 3 4 5 6 \u003e (define tmp 5) \u003e (swap x tmp) \u003e x 5 \u003e tmp 4 因为宏在 Scheme 中是卫生的，所以我们会得到预期的行为。\n为了支持宏，Scheme 解释器的评估过程会像往常一样评估列表中的第一个项目。如果评估结果是一个宏，那么解释器将对列表的其余部分执行宏扩展，而不会首先评估参数。扩展引入的任何名称都与其他名称置于不同的作用域。扩展后，解释器会对扩展结果重复求值过程，因此，如果最终结果是一个 let 表达式 (如上文 swap 中的表达式)，就会对该表达式进行求值。\n一个宏定义可以指定多个模式规则。再加上扩展的结果会被求值，这使得宏定义可以递归，如下面的 let* 定义：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 (define-syntax let* (syntax-rules () ((let* () body1 body2 ... ) (let () body1 body2 ... ) ) ((let* ((name1 val1) (name2 val2) ...) body1 body2 ... ) (let ((name1 val1)) (let* ((name2 val2) ...) body1 body2 ... ) ) ) ) ) 当 let* 没有绑定时，有一种基本模式，在这种情况下，它直接转化为一个 let。当至少有一个绑定时，也有一个递归模式，在这种情况下，let* 会转化为一个嵌套在 let 中的更简单的 let*。宏定义中的省略号 (...) 类似于正则表达式中的 Kleene 星号 (*)，表示前一项可以匹配零次或多次。因此，具有单一绑定的 let* 与上述第二条模式规则相匹配，其中 (name2 val2) 匹配次数为零。\nCPP Macros 我们再来看看 CPP 宏。尽管宏不卫生，但在涉及元编程的任务中却非常有用。\nCPP 允许我们使用 #define 来定义两种类型的 macro，即 object-like macro 和 function-like macro。object-like macro 是一种简单的文本替换，用一个文本序列替换另一个文本序列。在历史上，定义常量是一种常用的方法：\n1 2 3 4 5 6 #define PI 3.1415926535 int main() { cout \u003c\u003c \"pi = \" \u003c\u003c PI \u003c\u003c endl; cout \u003c\u003c \"tau = \" \u003c\u003c PI * 2 \u003c\u003c endl; } 在 C++ 中，更好的做法是使用 const 或 constexpr 定义常量。\nfunction-like macro 接受参数 (如上文的 SWAP)，并能将参数文本替换到替换文本中的特定位置。\n使用 function-like macro 的一个更复杂的例子是对遵循相同模式的多段代码进行抽象定义。请看表示复数的类型定义：\n1 2 3 4 5 6 7 8 struct Complex { double real; double imag; }; ostream \u0026operator\u003c\u003c(ostream \u0026os, Complex c) { return os \u003c\u003c \"(\" \u003c\u003c c.real \u003c\u003c \"+\" \u003c\u003c c.imag \u003c\u003c \"i)\"; } 假设除了上述重载的流插入操作符之外，我们还希望支持算术运算 +、- 和 *。这些运算的基本形式相同：\n1 2 3 Complex operator \u003cop\u003e(Complex a, Complex b) { return Complex{ \u003cexpression for real\u003e, \u003cexpression for imag\u003e }; } 在这里，我们使用了 uniform initialization syntax 来初始化一个含有其成员值的 Complex。然后，我们可以编写一个 function-like macro 来抽象这个结构：\n1 2 3 4 #define COMPLEX_OP(op, real_part, imag_part) \\ Complex operator op(Complex a, Complex b) { \\ return Complex{ real_part, imag_part }; \\ } 该 macro 的参数包括运算符、计算实部的表达式和计算虚部的表达式。我们可以使用下面的宏来定义运算：\n1 2 3 4 COMPLEX_OP(+, a.real+b.real, a.imag+b.imag); COMPLEX_OP(-, a.real-b.real, a.imag-b.imag); COMPLEX_OP(*, a.real*b.real - a.imag*b.imag, a.imag*b.real + a.real*b.imag); 与我们最初的 SWAP 实现一样，尾部的分号是多余的，但却提高了可读性以及与语法高亮程序的交互性。使用 g++ -E 在预处理器中运行代码，我们可以得到（修改间距）：\n1 2 3 4 5 6 7 8 9 10 Complex operator +(Complex a, Complex b) { return Complex{ a.real+b.real, a.imag+b.imag }; }; Complex operator -(Complex a, Complex b) { return Complex{ a.real-b.real, a.imag-b.imag }; }; Complex operator *(Complex a, Complex b) { return Complex{ a.real*b.real - a.imag*b.imag, a.imag*b.real + a.real*b.imag }; }; 接下来，我们可以定义 Complex 和 double 之间的运算。我们再次发现，这种操作具有特定的模式：\n1 2 3 Complex operator \u003cop\u003e(\u003ctype1\u003e a, \u003ctype2\u003e b) { return \u003cexpr1\u003e \u003cop\u003e \u003cexpr2\u003e; } 这里， 是转换为 Complex 表示的相应参数。我们可以使用宏对其进行抽象：\n1 2 3 4 #define REAL_OP(op, typeA, typeB, argA, argB) \\ Complex operator op(typeA a, typeB b) { \\ return argA op argB; \\ } 我们还可以定义一个宏，将 double 转换为 Complex：\n1 2 #define CONVERT(a) \\ (Complex{ a, 0 }) 这样，我们就可以对操作进行如下定义：\n1 2 3 4 5 6 REAL_OP(+, Complex, double, a, CONVERT(b)); REAL_OP(+, double, Complex, CONVERT(a), b); REAL_OP(-, Complex, double, a, CONVERT(b)); REAL_OP(-, double, Complex, CONVERT(a), b); REAL_OP(*, Complex, double, a, CONVERT(b)); REAL_OP(*, double, Complex, CONVERT(a), b); 通过预处理器运行，我们可以得到\n1 2 3 4 5 6 Complex operator +(Complex a, double b) { return a + (Complex{ b, 0 }); }; Complex operator +(double a, Complex b) { return (Complex{ a, 0 }) + b; }; Complex operator -(Complex a, double b) { return a - (Complex{ b, 0 }); }; Complex operator -(double a, Complex b) { return (Complex{ a, 0 }) - b; }; Complex operator *(Complex a, double b) { return a * (Complex{ b, 0 }); }; Complex operator *(double a, Complex b) { return (Complex{ a, 0 }) * b; }; 现在我们可以如下使用复数：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 int main() { Complex c1{ 3, 4 }; Complex c2{ -1, 2 }; double d = 0.5; cout \u003c\u003c c1 + c2 \u003c\u003c endl; cout \u003c\u003c c1 - c2 \u003c\u003c endl; cout \u003c\u003c c1 * c2 \u003c\u003c endl; cout \u003c\u003c c1 + d \u003c\u003c endl; cout \u003c\u003c c1 - d \u003c\u003c endl; cout \u003c\u003c c1 * d \u003c\u003c endl; cout \u003c\u003c d + c1 \u003c\u003c endl; cout \u003c\u003c d - c1 \u003c\u003c endl; cout \u003c\u003c d * c1 \u003c\u003c endl; } 1 2 3 4 5 6 7 8 9 (2+6i) (4+2i) (-11+2i) (3.5+4i) (2.5+4i) (1.5+2i) (3.5+4i) (-2.5+-4i) (1.5+2i) Stringification and Concatenation 在使用宏时，将宏参数转换为字符串或将其与其他标记连接起来可能很有用。例如，假设我们要编写一个交互式应用程序，读取用户的输入并执行相应的操作。对于复数，目标函数可能如下：\n1 2 3 4 5 6 7 8 Complex Complex_conjugate(Complex c) { return Complex{ c.real, -c.imag }; } string Complex_polar(Complex c) { return \"(\" + to_string(sqrt(pow(c.real, 2) + pow(c.imag, 2))) + \",\" + to_string(atan(c.imag / c.real)) + \")\"; } 应用程序会将用户输入与代表操作的字符串进行比较，调用相应的函数，并打印出结果。这就是常见的模式：\n1 2 if (\u003cinput\u003e == \"\") cout \u003c\u003c Complex_\u003caction\u003e(\u003cvalue\u003e) \u003c\u003c endl; 在这里，我们既需要动作的字符串表示法，也需要将 Complex_ 标记与动作标记本身连接起来的能力。我们可以为这种模式定义如下宏：\n1 2 3 #define ACTION(str, name, arg) \\ if (str == #name) \\ cout \u003c\u003c Complex_ ## name(arg) \u003c\u003c endl 标记前的 ## 是字符串化运算符，将标记转换为字符串。Complex_ 和 name 之间的 ## 是标记粘贴操作符，用于连接两边的标记。\n这样，我们就可以编写如下应用代码：\n1 2 3 4 5 6 Complex c1 { 3, 4 }; string s; while (cin \u003e\u003e s) { ACTION(s, conjugate, c1); ACTION(s, polar, c1); } 通过预处理器运行这个程序，我们就能得到想要的结果：\n1 2 3 4 5 6 Complex c1 { 3, 4 }; string s; while (cin \u003e\u003e s) { if (s == \"conjugate\") cout \u003c\u003c Complex_conjugate(c1) \u003c\u003c endl; if (s == \"polar\") cout \u003c\u003c Complex_polar(c1) \u003c\u003c endl; } RESOURCES https://eecs390.github.io/notes/metaprogramming.html http://philo.top/2021/03/14/metaprogramming/ ",
-  "wordCount" : "1561",
+  "articleBody": "元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。\nMacros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。\n使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：\n1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：\n1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c endl; } // output 4 3 通过向 g++ 传递 -E 标志，可以获得宏扩展的结果：\n1 $ g++ -E 不过，如果使用 #includes 指令，结果可能会非常混乱，因为该指令会从给定文件中调入代码。\nCPP macros perform text 替换，因此上述代码等同于：\n1 2 3 4 5 6 int main() { int x = 3; int y = 4; { auto tmp = y; y = x; x = tmp; }; cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c endl; } 使用 SWAP 宏后的分号仍然保留，表示空语句。不过，在需要使用单一语句的情况下，例如一个没有被 block 括住的条件分支，这就会造成问题：\n1 2 3 4 if (x \u003c y) SWAP(x, y); else cout \u003c\u003c \"no swap\" \u003c\u003c endl; 避免这一问题的常用方法是将 macro 的扩展代码放在 do/while 中：\n1 2 3 4 5 #define SWAP(a, b) do { \\ auto tmp = b; \\ b = a; \\ a = tmp; \\ } while (false) 在这里，我们在一行的末尾添加了一个 \\，表示下一行应被视为上一行的继续。do/while 循环在语法上以分号结束，因此 SWAP(x, y); 中的分号在语法上是 do/while 循环的一部分。因此，扩展代码的语法是正确的：\n1 2 3 4 if (x \u003c y) do { auto tmp = b; b = a; a = tmp; } while (false); else cout \u003c\u003c \"no swap\" \u003c\u003c endl; 虽然 textual replacement 很有用，但它也有缺点，因为虽然宏在语法上类似函数，但它们的行为却不像函数。具体来说，它们不把参数作为自己的实体，也不引入独立的作用域。请看下面的例子：\n1 2 3 4 5 6 7 8 9 10 int main() { int x = 3; int y = 4; int z = 5; SWAP(x \u003c y ? x : y, z); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } // output 3 4 3 使用 g++ -E，我们可以看到预处理后的代码。只看 main() 的输出，我们会发现\n1 2 3 4 5 6 7 8 9 10 11 int main() { int x = 3; int y = 4; int z = 5; do { auto tmp = z; z = x \u003c y ? x : y; x \u003c y ? x : y = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } 在这里，我们手动添加了换行符和空格，以使输出更易读；而预处理器本身会将宏输出放在一行中。罪魁祸首是最后生成的语句：\n1 x \u003c y ? x : y = tmp; 在 C++ 中，条件运算符 ? : 和赋值运算符 = 具有相同的优先级，并且从右向左关联，因此这等同于\n1 x \u003c y ? x : (y = tmp); 由于 x \u003c y，这里没有赋值。因此，x 的值保持不变。\n我们可以在每次使用 macro argument 时加上括号来解决这个问题：\n1 2 3 4 5 #define SWAP(a, b) do { \\ auto tmp = (b); \\ (b) = (a); \\ (a) = tmp; \\ } while (false) Ranking the Operator Precedence in C++ 现在会产生预期的结果，因为括号明确地将这些操作联系起来：\n1 2 3 4 5 6 7 8 9 10 11 int main() { int x = 3; int y = 4; int z = 5; do { auto tmp = (z); (z) = (x \u003c y ? x : y); (x \u003c y ? x : y) = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c y \u003c\u003c \" \" \u003c\u003c z \u003c\u003c endl; } 然而，第二个问题并不那么容易解决。考虑一下当我们将 SWAP 宏应用于名为 tmp 的变量时会发生什么：\n1 2 3 4 5 6 7 8 9 int main() { int x = 3; int tmp = 4; SWAP(tmp, x); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c tmp \u003c\u003c endl; } // output 3 4 没有发生交换！再次使用 g++ -E 检查输出，我们可以看到（模数间隔）\n1 2 3 4 5 6 7 8 9 10 int main() { int x = 3; int tmp = 4; do { auto tmp = (x); (x) = (tmp); (tmp) = tmp; } while (false); cout \u003c\u003c x \u003c\u003c \" \" \u003c\u003c tmp \u003c\u003c endl; } 由于 SWAP 使用的临时变量与参数同名，因此临时变量会捕获生成代码中出现的参数。这是因为宏只是执行文本替换，并不能确保名称被解析到适当的作用域。因此，宏实际上并不使用按名称调用，而按名称调用可确保参数中的名称解析到适当的作用域。对文本替换的依赖使 CPP 成为一个不卫生的宏系统。其他系统（如 Scheme 的系统）是卫生的，它们为宏引入的名称创建了单独的作用域，并确保参数不会被捕获。\nScheme Macros 作为 R5RS Scheme 规范的一部分，宏系统是卫生的。宏由 define-syntax、let-syntax 或 letrec-syntax 中的一种形式引入，并将给定的名称与宏绑定。例如，下面是 let 作为宏的定义：\n1 2 3 4 5 6 7 8 9 10 11 12 13 (define-syntax let (syntax-rules () ((let ((name val) ...) body1 body2 ... ) ((lambda (name ...) body1 body2 ... ) val ... ) ) ) ) syntax-rules 指定了宏转换的规则。第一个参数是规则模式与输入之间必须匹配的字面形式列表。例如，cond 形式中的 else 标识符。但在这种情况下，没有字面意义。syntax-rules 的其余参数指定了转换。转换的第一项是输入模式，第二项是输出模式。...的作用类似于克莱因星，将前一项与输入中出现的零次或多次相匹配。输入模式中出现但不在字面量列表中的名称，除了作为宏名称的第一项，都是与输入元素相匹配的卫生变量。这些变量可以在输出模式中引用，以指定如何构造输出。\n在全局环境中评估上述表达式时，会将 let 名称与一个转换为 lambda 的宏绑定。\n宏主体引入的标识符保证避免与其他标识符冲突，解释器通常会重命名标识符以避免冲突。下面是 swap 宏的定义：\n1 2 3 4 5 6 7 8 9 10 (define-syntax swap (syntax-rules () ((swap a b) (let ((tmp b)) (set! b a) (set! a tmp) ) ) ) ) 这就将 swap 的使用转化为一个表达式，通过临时变量 tmp 交换两个参数。因此\n1 2 3 4 5 6 7 \u003e (define x 3) \u003e (define y 4) \u003e (swap x y) \u003e x 4 \u003e y 3 不过，与 CPP 宏不同的是，swap 宏引入的 tmp 与其他任何 tmp 都是不同的：\n1 2 3 4 5 6 \u003e (define tmp 5) \u003e (swap x tmp) \u003e x 5 \u003e tmp 4 因为宏在 Scheme 中是卫生的，所以我们会得到预期的行为。\n为了支持宏，Scheme 解释器的评估过程会像往常一样评估列表中的第一个项目。如果评估结果是一个宏，那么解释器将对列表的其余部分执行宏扩展，而不会首先评估参数。扩展引入的任何名称都与其他名称置于不同的作用域。扩展后，解释器会对扩展结果重复求值过程，因此，如果最终结果是一个 let 表达式 (如上文 swap 中的表达式)，就会对该表达式进行求值。\n一个宏定义可以指定多个模式规则。再加上扩展的结果会被求值，这使得宏定义可以递归，如下面的 let* 定义：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 (define-syntax let* (syntax-rules () ((let* () body1 body2 ... ) (let () body1 body2 ... ) ) ((let* ((name1 val1) (name2 val2) ...) body1 body2 ... ) (let ((name1 val1)) (let* ((name2 val2) ...) body1 body2 ... ) ) ) ) ) 当 let* 没有绑定时，有一种基本模式，在这种情况下，它直接转化为一个 let。当至少有一个绑定时，也有一个递归模式，在这种情况下，let* 会转化为一个嵌套在 let 中的更简单的 let*。宏定义中的省略号 (...) 类似于正则表达式中的 Kleene 星号 (*)，表示前一项可以匹配零次或多次。因此，具有单一绑定的 let* 与上述第二条模式规则相匹配，其中 (name2 val2) 匹配次数为零。\nCPP Macros 我们再来看看 CPP 宏。尽管宏不卫生，但在涉及元编程的任务中却非常有用。\nCPP 允许我们使用 #define 来定义两种类型的 macro，即 object-like macro 和 function-like macro。object-like macro 是一种简单的文本替换，用一个文本序列替换另一个文本序列。在历史上，定义常量是一种常用的方法：\n1 2 3 4 5 6 #define PI 3.1415926535 int main() { cout \u003c\u003c \"pi = \" \u003c\u003c PI \u003c\u003c endl; cout \u003c\u003c \"tau = \" \u003c\u003c PI * 2 \u003c\u003c endl; } 在 C++ 中，更好的做法是使用 const 或 constexpr 定义常量。\nfunction-like macro 接受参数 (如上文的 SWAP)，并能将参数文本替换到替换文本中的特定位置。\n使用 function-like macro 的一个更复杂的例子是对遵循相同模式的多段代码进行抽象定义。请看表示复数的类型定义：\n1 2 3 4 5 6 7 8 struct Complex { double real; double imag; }; ostream \u0026operator\u003c\u003c(ostream \u0026os, Complex c) { return os \u003c\u003c \"(\" \u003c\u003c c.real \u003c\u003c \"+\" \u003c\u003c c.imag \u003c\u003c \"i)\"; } 假设除了上述重载的流插入操作符之外，我们还希望支持算术运算 +、- 和 *。这些运算的基本形式相同：\n1 2 3 Complex operator \u003cop\u003e(Complex a, Complex b) { return Complex{ \u003cexpression for real\u003e, \u003cexpression for imag\u003e }; } 在这里，我们使用了 uniform initialization syntax 来初始化一个含有其成员值的 Complex。然后，我们可以编写一个 function-like macro 来抽象这个结构：\n1 2 3 4 #define COMPLEX_OP(op, real_part, imag_part) \\ Complex operator op(Complex a, Complex b) { \\ return Complex{ real_part, imag_part }; \\ } 该 macro 的参数包括运算符、计算实部的表达式和计算虚部的表达式。我们可以使用下面的宏来定义运算：\n1 2 3 4 COMPLEX_OP(+, a.real+b.real, a.imag+b.imag); COMPLEX_OP(-, a.real-b.real, a.imag-b.imag); COMPLEX_OP(*, a.real*b.real - a.imag*b.imag, a.imag*b.real + a.real*b.imag); 与我们最初的 SWAP 实现一样，尾部的分号是多余的，但却提高了可读性以及与语法高亮程序的交互性。使用 g++ -E 在预处理器中运行代码，我们可以得到（修改间距）：\n1 2 3 4 5 6 7 8 9 10 Complex operator +(Complex a, Complex b) { return Complex{ a.real+b.real, a.imag+b.imag }; }; Complex operator -(Complex a, Complex b) { return Complex{ a.real-b.real, a.imag-b.imag }; }; Complex operator *(Complex a, Complex b) { return Complex{ a.real*b.real - a.imag*b.imag, a.imag*b.real + a.real*b.imag }; }; 接下来，我们可以定义 Complex 和 double 之间的运算。我们再次发现，这种操作具有特定的模式：\n1 2 3 Complex operator \u003cop\u003e(\u003ctype1\u003e a, \u003ctype2\u003e b) { return \u003cexpr1\u003e \u003cop\u003e \u003cexpr2\u003e; } 这里， 是转换为 Complex 表示的相应参数。我们可以使用宏对其进行抽象：\n1 2 3 4 #define REAL_OP(op, typeA, typeB, argA, argB) \\ Complex operator op(typeA a, typeB b) { \\ return argA op argB; \\ } 我们还可以定义一个宏，将 double 转换为 Complex：\n1 2 #define CONVERT(a) \\ (Complex{ a, 0 }) 这样，我们就可以对操作进行如下定义：\n1 2 3 4 5 6 REAL_OP(+, Complex, double, a, CONVERT(b)); REAL_OP(+, double, Complex, CONVERT(a), b); REAL_OP(-, Complex, double, a, CONVERT(b)); REAL_OP(-, double, Complex, CONVERT(a), b); REAL_OP(*, Complex, double, a, CONVERT(b)); REAL_OP(*, double, Complex, CONVERT(a), b); 通过预处理器运行，我们可以得到\n1 2 3 4 5 6 Complex operator +(Complex a, double b) { return a + (Complex{ b, 0 }); }; Complex operator +(double a, Complex b) { return (Complex{ a, 0 }) + b; }; Complex operator -(Complex a, double b) { return a - (Complex{ b, 0 }); }; Complex operator -(double a, Complex b) { return (Complex{ a, 0 }) - b; }; Complex operator *(Complex a, double b) { return a * (Complex{ b, 0 }); }; Complex operator *(double a, Complex b) { return (Complex{ a, 0 }) * b; }; 现在我们可以如下使用复数：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 int main() { Complex c1{ 3, 4 }; Complex c2{ -1, 2 }; double d = 0.5; cout \u003c\u003c c1 + c2 \u003c\u003c endl; cout \u003c\u003c c1 - c2 \u003c\u003c endl; cout \u003c\u003c c1 * c2 \u003c\u003c endl; cout \u003c\u003c c1 + d \u003c\u003c endl; cout \u003c\u003c c1 - d \u003c\u003c endl; cout \u003c\u003c c1 * d \u003c\u003c endl; cout \u003c\u003c d + c1 \u003c\u003c endl; cout \u003c\u003c d - c1 \u003c\u003c endl; cout \u003c\u003c d * c1 \u003c\u003c endl; } 1 2 3 4 5 6 7 8 9 (2+6i) (4+2i) (-11+2i) (3.5+4i) (2.5+4i) (1.5+2i) (3.5+4i) (-2.5+-4i) (1.5+2i) Stringification and Concatenation 在使用宏时，将宏参数转换为字符串或将其与其他标记连接起来可能很有用。例如，假设我们要编写一个交互式应用程序，读取用户的输入并执行相应的操作。对于复数，目标函数可能如下：\n1 2 3 4 5 6 7 8 Complex Complex_conjugate(Complex c) { return Complex{ c.real, -c.imag }; } string Complex_polar(Complex c) { return \"(\" + to_string(sqrt(pow(c.real, 2) + pow(c.imag, 2))) + \",\" + to_string(atan(c.imag / c.real)) + \")\"; } 应用程序会将用户输入与代表操作的字符串进行比较，调用相应的函数，并打印出结果。这就是常见的模式：\n1 2 if (\u003cinput\u003e == \"\") cout \u003c\u003c Complex_\u003caction\u003e(\u003cvalue\u003e) \u003c\u003c endl; 在这里，我们既需要动作的字符串表示法，也需要将 Complex_ 标记与动作标记本身连接起来的能力。我们可以为这种模式定义如下宏：\n1 2 3 #define ACTION(str, name, arg) \\ if (str == #name) \\ cout \u003c\u003c Complex_ ## name(arg) \u003c\u003c endl 标记前的 ## 是字符串化运算符，将标记转换为字符串。Complex_ 和 name 之间的 ## 是标记粘贴操作符，用于连接两边的标记。\n这样，我们就可以编写如下应用代码：\n1 2 3 4 5 6 Complex c1 { 3, 4 }; string s; while (cin \u003e\u003e s) { ACTION(s, conjugate, c1); ACTION(s, polar, c1); } 通过预处理器运行这个程序，我们就能得到想要的结果：\n1 2 3 4 5 6 Complex c1 { 3, 4 }; string s; while (cin \u003e\u003e s) { if (s == \"conjugate\") cout \u003c\u003c Complex_conjugate(c1) \u003c\u003c endl; if (s == \"polar\") cout \u003c\u003c Complex_polar(c1) \u003c\u003c endl; } The Macro Namespace 使用 CPP 宏的一个缺陷是，它们不包含在任何特定的命名空间中。事实上，只要定义了宏，它就能替换任何符合条件的标识符，无论该标识符位于何处。因此，定义一个宏就相当于让一个特定的标识符充当保留关键字，程序员无法使用。这也是为什么常量通常最好定义为变量，限定为 const 或 constexpr，而不是类似对象的宏的原因之一。\n为避免污染全局命名空间，使用了几种约定。\n第一种是在所有宏的前缀加上定义宏的库所特有的字符，以避免与其他库发生冲突。例如，我们的复数宏可以用 COMPLEX_ 作为前缀，以避免与其他宏或标识符冲突。 第二种策略是在不再需要宏时，使用 #undef 预处理器指令取消对宏的定义。例如，在库代码的末尾，我们可能有如下代码： 1 2 3 4 #undef COMPLEX_OP #undef REAL_OP #undef CONVERT #undef ACTION 这样，标识符就可以在以后的代码中用于其他目的。\nCode Generation 虽然 macros 允许我们使用一种语言提供的宏设施生成代码，但在某些情况下，这种设施无法使用或不足以满足我们的目的。在这种情况下，在外部程序中用同一种语言或另一种语言编写代码生成器可能会比较方便。这种技术也称为 automatic programming。\n例如，R5RS Scheme 规范要求实现提供 car 和 cdr 的组合，最深可达四层。例如，(caar x) 应等同于 (car (car x))，(caddar x) 应等同于 (car (cdr (cdr (car x))))。除了 car 和 cdr 本身外，还需要提供 28 种组合，手工编写既繁琐又容易出错。相反，我们可以定义下面的 Python 脚本来生成一个 Scheme 库文件：\n1 2 3 4 5 6 7 8 9 10 11 12 13 import itertools def cadrify(seq): if len(seq): return '(c{0}r {1})'.format(seq[0], cadrify(seq[1:])) return 'x' def defun(seq): return '(define (c{0}r x) {1})'.format(''.join(seq), cadrify(seq)) for i in range(2, 5): for seq in itertools.product(('a', 'd'), repeat=i): print(defun(seq)) cadrify() 函数是一个递归函数，它接收一个序列，如 ('a','d','a')，并使用第一个项目和序列其余部分的递归结果构造一个调用。在本例中，后者是 (cdr (car x))，因此结果是 (car (cdr (car x)))。基本情况是序列为空，只产生 x。\ndefun() 函数接收一个序列，并用它为相应的组合构建定义。它调用 cadrify() 构建正文。对于序列 ('a','d','a')，结果是\n1 (define (cadar x) (car (cdr (car x)))) 最后，循环结束时会产生每个长度的 a 和 d 的所有组合。它使用函数库中的 itertools.product() 函数来获得一个序列，该序列是元组 ('a','d') 的第 i 次幂。对于每个组合，它都会调用 defun() 生成该组合的函数。\n1 2 3 4 5 6 7 8 9 (define (caar x) (car (car x))) (define (cadr x) (car (cdr x))) (define (cdar x) (cdr (car x))) (define (cddr x) (cdr (cdr x))) (define (caaar x) (car (car (car x)))) (define (caadr x) (car (car (cdr x)))) ... (define (cdddar x) (cdr (cdr (cdr (car x))))) (define (cddddr x) (cdr (cdr (cdr (cdr x))))) 我们可以将生成的代码放入标准库中，由 Scheme 解释器加载。\nTemplate Metaprogramming Template metaprogramming 是一种在编译时使用模板生成源代码的技术，然后将源代码与程序的其他代码一起编译。它通常是指利用语言的模板实例化规则进行编译时执行的一种形式。Template metaprogramming 在 C++ 中最为常见，但也有少数其他语言可以使用。\nC++ 中模板元编程的关键是 template specialization，它允许编写专门的定义来实例化带有特定参数的模板。例如，考虑一个包含静态值域的类模板，如果模板参数为 int，该值域为 true，否则为 false。我们可以如下编写通用模板：\n1 2 3 4 template \u003cclass T\u003e struct is_int { static const bool value = false; }; 现在我们可以定义当参数为 int 时该模板的特殊化：\n1 2 3 4 template \u003c\u003e struct is_int\u003cint\u003e { static const bool value = true; }; 特化中的模板参数列表包含非特化参数。在上面的例子中，没有任何参数，所以是空的。然后，在模板名称之后，我们提供了实例化的全部参数集，在本例中只有 int。然后，我们提供实例化的其余定义。\n现在，当我们使用模板时，如果模板参数与特化兼容，编译器就会使用特化，否则就会使用通用模板：\n1 2 3 4 5 cout \u003c\u003c is_int\u003cdouble\u003e::value \u003c\u003c endl; cout \u003c\u003c is_int\u003cint\u003e::value \u003c\u003c endl; // output 0 1 模板特化使我们能够编写以模板参数为条件的代码。与递归实例化相结合，这使得模板实例化具有图灵完备性。模板不对可变变量进行编码，因此模板元编程实际上是函数式编程的一种形式。\nPairs RESOURCES https://eecs390.github.io/notes/metaprogramming.html http://philo.top/2021/03/14/metaprogramming/ ",
+  "wordCount" : "1851",
   "inLanguage": "zh",
   "datePublished": "2023-10-16T15:29:44+08:00",
   "dateModified": "2023-10-16T15:29:44+08:00",
@@ -282,7 +282,7 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
 
 
 
-创建:&nbsp;<span title='2023-10-16 15:29:44 +0800 +0800'>2023-10-16</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-16&nbsp;|&nbsp;字数:&nbsp;1561字&nbsp;|&nbsp;时长: 8分钟&nbsp;|&nbsp;WFUing
+创建:&nbsp;<span title='2023-10-16 15:29:44 +0800 +0800'>2023-10-16</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-16&nbsp;|&nbsp;字数:&nbsp;1851字&nbsp;|&nbsp;时长: 9分钟&nbsp;|&nbsp;WFUing
         &nbsp;|&nbsp;标签: &nbsp;
         <ul class="post-tags-meta">
             <a href="https://WFUing.github.io/tags/metaprogramming/">metaprogramming</a>
@@ -315,8 +315,20 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
                         <a href="#cpp-macros" aria-label="CPP Macros">CPP Macros</a><ul>
                             
                     <li>
-                        <a href="#stringification-and-concatenation" aria-label="Stringification and Concatenation">Stringification and Concatenation</a></li></ul>
-                    </li></ul>
+                        <a href="#stringification-and-concatenation" aria-label="Stringification and Concatenation">Stringification and Concatenation</a></li>
+                    <li>
+                        <a href="#the-macro-namespace" aria-label="The Macro Namespace">The Macro Namespace</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#code-generation" aria-label="Code Generation">Code Generation</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#template-metaprogramming" aria-label="Template Metaprogramming">Template Metaprogramming</a><ul>
+                            <ul>
+                            
+                    <li>
+                        <a href="#pairs" aria-label="Pairs">Pairs</a></li></ul>
+                        </ul>
                     </li>
                     <li>
                         <a href="#resources" aria-label="RESOURCES">RESOURCES</a>
@@ -1171,7 +1183,152 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="resources">RESOURCES<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h2>
+</div><h4 id="the-macro-namespace">The Macro Namespace<a hidden class="anchor" aria-hidden="true" href="#the-macro-namespace">#</a></h4>
+<p>使用 CPP 宏的一个缺陷是，它们不包含在任何特定的命名空间中。事实上，只要定义了宏，它就能替换任何符合条件的标识符，无论该标识符位于何处。因此，定义一个宏就相当于让一个特定的标识符充当保留关键字，程序员无法使用。这也是为什么常量通常最好定义为变量，限定为 const 或 constexpr，而不是类似对象的宏的原因之一。</p>
+<p>为避免污染全局命名空间，使用了几种约定。</p>
+<ul>
+<li>第一种是在所有宏的前缀加上定义宏的库所特有的字符，以避免与其他库发生冲突。例如，我们的复数宏可以用 COMPLEX_ 作为前缀，以避免与其他宏或标识符冲突。</li>
+<li>第二种策略是在不再需要宏时，使用 <code>#undef</code> 预处理器指令取消对宏的定义。例如，在库代码的末尾，我们可能有如下代码：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#undef COMPLEX_OP
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef REAL_OP
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef CONVERT
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef ACTION
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样，标识符就可以在以后的代码中用于其他目的。</p>
+<h3 id="code-generation">Code Generation<a hidden class="anchor" aria-hidden="true" href="#code-generation">#</a></h3>
+<p>虽然 macros 允许我们使用一种语言提供的宏设施生成代码，但在某些情况下，这种设施无法使用或不足以满足我们的目的。在这种情况下，在外部程序中用同一种语言或另一种语言编写代码生成器可能会比较方便。这种技术也称为 <strong>automatic programming</strong>。</p>
+<p>例如，R5RS Scheme 规范要求实现提供 car 和 cdr 的组合，最深可达四层。例如，<code>(caar x)</code> 应等同于 <code>(car (car x))</code>，<code>(caddar x)</code> 应等同于 <code>(car (cdr (cdr (car x))))</code>。除了 <code>car</code> 和 <code>cdr</code> 本身外，还需要提供 28 种组合，手工编写既繁琐又容易出错。相反，我们可以定义下面的 Python 脚本来生成一个 Scheme 库文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">itertools</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;(c</span><span class="si">{0}</span><span class="s1">r </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;x&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">defun</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;(define (c</span><span class="si">{0}</span><span class="s1">r x) </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="n">i</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">defun</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>cadrify()</code> 函数是一个递归函数，它接收一个序列，如 <code>('a','d','a')</code>，并使用第一个项目和序列其余部分的递归结果构造一个调用。在本例中，后者是 <code>(cdr (car x))</code>，因此结果是 <code>(car (cdr (car x)))</code>。基本情况是序列为空，只产生 <code>x</code>。</p>
+<p><code>defun()</code> 函数接收一个序列，并用它为相应的组合构建定义。它调用 <code>cadrify()</code> 构建正文。对于序列 <code>('a','d','a')</code>，结果是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(define (cadar x) (car (cdr (car x))))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，循环结束时会产生每个长度的 <code>a</code> 和 <code>d</code> 的所有组合。它使用函数库中的 <code>itertools.product()</code> 函数来获得一个序列，该序列是元组 <code>('a','d')</code> 的第 <code>i</code> 次幂。对于每个组合，它都会调用 <code>defun()</code> 生成该组合的函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(define (caar x) (car (car x)))
+</span></span><span class="line"><span class="cl">(define (cadr x) (car (cdr x)))
+</span></span><span class="line"><span class="cl">(define (cdar x) (cdr (car x)))
+</span></span><span class="line"><span class="cl">(define (cddr x) (cdr (cdr x)))
+</span></span><span class="line"><span class="cl">(define (caaar x) (car (car (car x))))
+</span></span><span class="line"><span class="cl">(define (caadr x) (car (car (cdr x))))
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">(define (cdddar x) (cdr (cdr (cdr (car x)))))
+</span></span><span class="line"><span class="cl">(define (cddddr x) (cdr (cdr (cdr (cdr x)))))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以将生成的代码放入标准库中，由 Scheme 解释器加载。</p>
+<h2 id="template-metaprogramming">Template Metaprogramming<a hidden class="anchor" aria-hidden="true" href="#template-metaprogramming">#</a></h2>
+<p>Template metaprogramming 是一种在编译时使用模板生成源代码的技术，然后将源代码与程序的其他代码一起编译。它通常是指利用语言的模板实例化规则进行编译时执行的一种形式。Template metaprogramming 在 C++ 中最为常见，但也有少数其他语言可以使用。</p>
+<p>C++ 中模板元编程的关键是 template specialization，它允许编写专门的定义来实例化带有特定参数的模板。例如，考虑一个包含静态值域的类模板，如果模板参数为 int，该值域为 true，否则为 false。我们可以如下编写通用模板：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">template</span> <span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">is_int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在我们可以定义当参数为 int 时该模板的特殊化：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">template</span> <span class="o">&lt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>特化中的模板参数列表包含非特化参数。在上面的例子中，没有任何参数，所以是空的。然后，在模板名称之后，我们提供了实例化的全部参数集，在本例中只有 <code>int</code>。然后，我们提供实例化的其余定义。</p>
+<p>现在，当我们使用模板时，如果模板参数与特化兼容，编译器就会使用特化，否则就会使用通用模板：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// output
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">0</span> <span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>模板特化使我们能够编写以模板参数为条件的代码。与递归实例化相结合，这使得模板实例化具有图灵完备性。模板不对可变变量进行编码，因此模板元编程实际上是函数式编程的一种形式。</p>
+<h4 id="pairs">Pairs<a hidden class="anchor" aria-hidden="true" href="#pairs">#</a></h4>
+<h2 id="resources">RESOURCES<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h2>
 <ul>
 <li><a href="https://eecs390.github.io/notes/metaprogramming.html">https://eecs390.github.io/notes/metaprogramming.html</a></li>
 <li><a href="http://philo.top/2021/03/14/metaprogramming/">http://philo.top/2021/03/14/metaprogramming/</a></li>

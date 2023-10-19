@@ -6,7 +6,34 @@
     <description>Recent content on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 17 Oct 2023 11:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Oct 2023 11:47:47 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/shell/</link>
+      <pubDate>Thu, 19 Oct 2023 11:47:47 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/shell/</guid>
+      <description>由于 bash 是 Linux 标准默认的 shell 解释器，可以说 bash 是 shell 编程的基础。
+本文主要介绍 bash 的语法，对于 linux 指令不做任何介绍。
+1 2 3 4 5 ███████╗██╗ ██╗███████╗██╗ ██╗ ██╔════╝██║ ██║██╔════╝██║ ██║ ███████╗███████║█████╗ ██║ ██║ ╚════██║██╔══██║██╔══╝ ██║ ██║ ███████║██║ ██║███████╗███████╗███████╗ 简介 什么是 shell Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。 Shell 既是一种命令语言，又是一种程序设计语言。 Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问 Linux 内核的服务。 Ken Thompson 的 sh 是第一种 Unix Shell，Windows Explorer 是一个典型的图形界面 Shell。
+什么是 shell 脚本 Shell 脚本（shell script），是一种为 shell 编写的脚本程序，一般文件后缀为 .sh。</description>
+    </item>
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>https://WFUing.github.io/posts/tech/language/functional-programming/</link>
+      <pubDate>Wed, 18 Oct 2023 20:14:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/language/functional-programming/</guid>
+      <description>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
+1 2 &amp;gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 + 和 *。复合表达式可以嵌套，也可以跨一行以上：
+1 2 3 4 5 6 7 8 9 10 11 12 &amp;gt; (+ (* 3 5) (- 10 6)) 19 &amp;gt; (+ (* 3 (+ (* 2 4) (+ 3 5) ) ) (+ (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。</description>
+    </item>
+    
     <item>
       <title>Serverless Dev</title>
       <link>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/</link>
@@ -78,7 +105,7 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
       <guid>https://WFUing.github.io/posts/tech/language/programming-language-pool/</guid>
       <description>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
 让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
-编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
+编程语言流行度排名 编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
 C
 C ++
 C＃

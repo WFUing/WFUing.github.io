@@ -10,7 +10,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/tags/language/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.e1e2622d88c4c5362fa6e3971c69fa4234d34f7bf5d12451104cb5f810ed1759.css" integrity="sha256-4eJiLYjExTYvpuOXHGn6QjTTT3v10SRREEy1&#43;BDtF1k=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.053344f784fc1772e1ec75736699a395a68a8232248bd41219e258c3b93fb2eb.css" integrity="sha256-BTNE94T8F3Lh7HVzZpmjlaaKgjIki9QSGeJYw7k/sus=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -192,13 +192,46 @@
 <article class="post-entry tag-entry">
   <div class="post-info"> 
     <header class="entry-header">
+      <h2>Functional Programming
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
+1 2 &gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 &#43; 和 *。复合表达式可以嵌套，也可以跨一行以上：
+1 2 3 4 5 6 7 8 9 10 11 12 &gt; (&#43; (* 3 5) (- 10 6)) 19 &gt; (&#43; (* 3 (&#43; (* 2 4) (&#43; 3 5) ) ) (&#43; (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。...</p>
+    </div>
+    <footer class="entry-footer">
+
+
+
+
+
+
+
+
+
+
+创建:&nbsp;<span title='2023-10-18 20:14:26 +0800 +0800'>2023-10-18</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-18&nbsp;|&nbsp;字数:&nbsp;3235字&nbsp;|&nbsp;时长: 16分钟&nbsp;|&nbsp;WFUing</footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Functional Programming" href="https://WFUing.github.io/posts/tech/language/functional-programming/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
       <h2>Programming Language List
       </h2>
     </header>
     <div class="entry-content">
       <p>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
 让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
-编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
+编程语言流行度排名 编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
 C
 C &#43;&#43;
 C＃
@@ -263,7 +296,7 @@ C&#43;&#43; (since C&#43;&#43;11)...</p>
 
 
 
-创建:&nbsp;<span title='2023-10-14 19:29:44 +0800 +0800'>2023-10-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-14&nbsp;|&nbsp;字数:&nbsp;322字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;WFUing</footer>
+创建:&nbsp;<span title='2023-10-14 19:29:44 +0800 +0800'>2023-10-14</span>&nbsp;|&nbsp;更新:&nbsp;2023-10-14&nbsp;|&nbsp;字数:&nbsp;323字&nbsp;|&nbsp;时长: 2分钟&nbsp;|&nbsp;WFUing</footer>
   </div> 
 
    
