@@ -32,15 +32,12 @@
     </item>
     
     <item>
-      <title>Shell</title>
+      <title>Shell 简介</title>
       <link>https://WFUing.github.io/posts/tech/architecture/shell/</link>
       <pubDate>Thu, 19 Oct 2023 11:47:47 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/tech/architecture/shell/</guid>
-      <description>由于 bash 是 Linux 标准默认的 shell 解释器，可以说 bash 是 shell 编程的基础。
-本文主要介绍 bash 的语法，对于 linux 指令不做任何介绍。
-1 2 3 4 5 ███████╗██╗ ██╗███████╗██╗ ██╗ ██╔════╝██║ ██║██╔════╝██║ ██║ ███████╗███████║█████╗ ██║ ██║ ╚════██║██╔══██║██╔══╝ ██║ ██║ ███████║██║ ██║███████╗███████╗███████╗ 简介 什么是 shell Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。 Shell 既是一种命令语言，又是一种程序设计语言。 Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问 Linux 内核的服务。 Ken Thompson 的 sh 是第一种 Unix Shell，Windows Explorer 是一个典型的图形界面 Shell。
-什么是 shell 脚本 Shell 脚本（shell script），是一种为 shell 编写的脚本程序，一般文件后缀为 .sh。</description>
+      <description>Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。</description>
     </item>
     
     <item>
