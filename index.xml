@@ -6,7 +6,514 @@
     <description>Recent content on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 20 Oct 2023 13:12:03 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Oct 2023 16:25:26 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown公式语法.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</guid>
+      <description>一、公式使用参考 1．如何插入公式 $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。
+行中公式可以用如下方法表示： $ 数学公式 $
+独立公式可以用如下方法表示： $$ 数学公式 $$
+自动编号的公式可以用如下方法表示： 若需要手动编号，参见“大括号和行标的使用”。 \begin{equation} 数学公式 \label{eq:当前公式名} \end{equation}
+自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。
+例子： 1 $ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $ 显示：$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
+例子：
+1 $$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，独立公式示例} $$ 显示：$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!</description>
+    </item>
+    
+    <item>
+      <title>二、回归模型.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/</guid>
+      <description>二、回归模型 [toc]
+2.1 线性回归模型 回归模型应用案例 股票市场预测（Stock Market Forecast）：预测某个公司明天的股票情况 自动驾驶车（Self-Driving Car）：预测方向盘的转动角度 推荐系统（Recommendation）：预测某用户购买某商品的可能性 线性回归模型（Linear Regression Model） 形式如下： $y= f(x) = w \cdot x + b $
+y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b是偏置（bias） x是输入（input），也可叫做特征（feature）。数据集中一般包含多个object，每个object一般包含多个component。此时，上标是object的索引，下标是component的索引 损失函数（Loss Function）如果不考虑模型的好坏，衡量一个函数的好坏，其实是衡量模型参数的好坏。以线性模型为例，就是衡量参数和的好坏。如 $ L(f) = L(w,b) = \sum_{n=1} ^{10}{ \widehat{y} - (b + w \cdot x_n)} $ ，把所有的样本误差的平方和作为损失函数 输入：一个函数 输出：多么地不好（how bad it is）。损失函数值越大，则这个函数越差、与数据集中内容月不相符 梯度下降（Gradient Descent） 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上模拟效果最好）的模型参数。 现在假设模型$f$中只有一个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下
+初始化参数：随机选取一个 $ w_0 $（并不一定是随机选取），令 $ w = w_0 $ 计算梯度 $\frac{dL(f)}{dw}|_{w=w_0}$ ，如果小于0，此时w增大则L（f）减小，如果大于0，此时w减小则L（w）会减小。如果模型中有多个参数，则计算损失函数在各个参数方向上的偏导数 更新模型参数，$w_1 = w_0 - lr \frac{dL(f)}{dw}|_{w=w_0}$ ，w的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则w变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步，经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 现在假设模型$f$中只有两个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下（若模型中有多个参数，按相同方法更新各参数）</description>
+    </item>
+    
+    <item>
+      <title>六、Tips for Training DNN.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/</guid>
+      <description>Tips for Training DNN [toc]
+6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：
+在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
+处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
+Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
+warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
+Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。</description>
+    </item>
+    
+    <item>
+      <title>七、Convolutional Neural Network.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/</guid>
+      <description>七、Convolutional Neural Network [toc]
+7.1 CNN入门详解 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？
+FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN）处理图片时的缺点：
+需要很多的参数： 假设有一张尺寸100×100的图片（尺寸已经算很小了），那输入层就有100×100×3=30K个像素，假设第一个隐藏层有1K个神经元（一个神经元包含30K个参数），这就已经需要30M个参数了…… 该架构中每个神经元就是一个分类器，这是没必要的： 第一个隐藏层作为最基础的pattern分类器（比如判断有无绿色、边缘等），第二个隐藏层基于第一个隐藏层继续做pattern分类（比如木头、肉类），以此类推…… 按照人类的直观理解，我们不是像全连接神经网络一样去处理图片的。具体来看，有哪些方面呢？
+图片的一些性质 结合全连接前馈神经网络的缺点和人类对图片的直观理解，可以得到下述图片的3个性质。
+性质1：Some patterns are much smaller than the whole image. 在识别某个模式（pattern）时，一个神经元并不需要图片的所有像素点。对于一张人类全身照的图片，我们只需要看到头部而非整张图片就可以判断它是一个人脸。所以我们应该是可以用少量参数去识别这些pattern的。
+性质2：The same patterns appear in different regions. 比如说人脸可以在图片的中间区域，也可以在图片的某个角落区域。所以识别不同区域中的相同pattern的多个分类器（或detector）应该用同一组参数或者共享参数。
+性质3：Subsampling the pixels will not change the object CNN架构说明 2014年在ECCV上提出，针对上述的图片的3个性质，确定了CNN的架构如下。
+如上图所示，图片经过卷积层然后进行最大池化（max pooling），这个步骤可以进行多次；然后将数据展开（Flatten），然后将数据传进全连接前馈网络得到最后的图片分类结果。
+如上图所示，卷积是针对了图片的性质1和性质2，最大池化是针对了图片的性质3。
+卷积(Convolution) ★ 假设有一张6×6的二值图，即一个6×6的矩阵。
+卷积核（Filter） 神经元就是一个计算/函数，卷积核其实就是神经元。如下图所示，1个卷积层可以有多个卷积核，矩阵里元素的值就是需要通过学习得到的参数。因为这里的输入是一个矩阵，所以卷积核也是1个矩阵（卷积核的通道数等于输入的通道数）。假设卷积核大小是3×3，这对应了图片的性质1，即用小的卷积核识别一个小的pattern。
+怎么做卷积 如下图所示
+卷积区域： 根据该卷积核的大小（以3×3为例），选择图片中相同大小的区域进行卷积。 卷积的计算方法： 从图片中扫描得到的3×3矩阵和卷积核的3×3矩阵，这2个矩阵相同位置的元素相乘可以得到9个值并求和（也就是内积）得到1个值，这就是1次卷积操作。 卷积顺序和方向： 卷积核按照从左到右、从上到下的顺序，从图片左上角开始移动，移动步长（stride）可以设置（以1为例）。在扫描到的每个区域中，都进行1次卷积。1个卷积核移动结束后，则得到1个新的矩阵（大小为4×4），即1个卷积核的输出是1个矩阵。 卷积层有多个卷积核，每个卷积核都按照该方式进行卷积得到多个矩阵，这些矩阵合起来就形成了1个卷积层的特征图（Feature Map），这个特征图也就是卷积层的输出。 卷积层特征图的通道数等于该卷积层中卷积核的数量，即某卷积层有多少个卷积核，那该卷积层的特征图就有多少个通道。 </description>
+    </item>
+    
+    <item>
+      <title>三、梯度下降.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</guid>
+      <description>三、梯度下降 [toc]
+梯度下降伪代码 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上拟合效果最好）的模型参数。现在假设模型 $f$ 中只有一个参数 $w$ ，则损失函数为 $L(f) = L(w)$ ，梯度下降算法如下（若模型有多个参数，按相同方法更新各方法）
+初始化参数：随机选取一个 $w_0$ （$w_0$ 并不一定是随机选取） 计算梯度 $\frac{dL(f)}{dw}$ ，如果小于0，此时 $w$ 增大则 $L(f)$ 会减小；如果大于0，此时 $w$ 增大则 $L(w)$ 会减小。如果模型有多个参数，则计算损失函数在各个参数方向上的偏导数。 更新模型参数 $w_1=w_0-lr\frac{dL(f)}{dw}$ ，$w$ 的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则 $w$ 变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步。经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 自适应学习率（Adaptive Learning Rate） 梯度下降的过程中，固定学习率并不合理。学习率太大，可能导致loss不减小反而增大；学习率太小，loss会减小得很慢。基本原则是随着参数迭代更新，学习率应该越来越小，比如 $\eta_t = \frac{\eta}{\sqrt{t+1}}$ 。更好的办法是每个参数都有各自的学习率，比如Adagrad。
+Adagrad Adaptive Gradient Descent，自适应梯度下降。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ ，其中 $t$ 是迭代次数，$w$ 是参数，$g$ 是梯度，$\eta$ 是初始学习率。随着参数迭代，$t$ 越来越大，$\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 也越来越大，因此学习率的变化趋势是越来越小。
+Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t+1}=w_t-\eta_tg_t$ ，其中 $\eta_t$ 是常数，梯度越大时，则参数更新的步幅越大，这是由 $g_t$ 项决定的。在Adagrad中，$\eta$ 是常量，梯度 $g_t$ 越大时，会使得参数更新的步幅越大，但 $\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 越大会使得参数更新的步幅越小，这是一个矛盾吗？</description>
+    </item>
+    
+    <item>
+      <title>四、分类模型.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/</guid>
+      <description>四、分类模型 [toc]
+4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行
+假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
+概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
+根据贝叶斯公式（Bayes&amp;rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&amp;gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)+P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&amp;hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1+N_2}\sum_1+\frac{N_2}{N_1+N_2}\sum_2$，可以减少模型参数，缓解过拟合</description>
+    </item>
+    
+    <item>
+      <title>五、深度学习.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description>五、深度学习 [toc]
+5.1引言 深度学习的历史 1958年：心理学家Rosenblatt提出感知机（Perceptron） 它是一个线性模型。 1969年：有人说感知机是线性模型，具有局限性。 1980年代：多层感知机（Multi-layer Perceptron） 和当今的神经网络是没有本质差别的。 1986年：Hinton提出反向传播算法（Backpropagation） 但是超过3个隐藏层的神经网络，还是训练不出好的结果。 1989年：有人提出一个隐藏层就可以得到任何函数，为什么要多层？ 多层感知机慢慢淡出大家的视野。 2006年：受限玻尔兹曼机初始化（RBM Initialization） Hinton提出用受限玻尔兹曼机做初始化，很多人觉得这是个大突破，但实际上用处并不大。 至少让多层感知机回到大家的视野。 2009年：GPU 2011年：神经网络用于语音识别 2012年：神经网络技术赢得ILSVRC（ImageNet Large Scale Visual Recognition Challenge） 深度学习的三个步骤 和机器学习一样：
+确定模型（Model）/函数集（Function Set），在深度学习中就是定义一个神经网络。 不同的连接会构成多样的网络结构。 确定如何评价函数的好坏 如果是多分类，那和Classification一章中一样，计算每个样本预测结果与Ground Truth的交叉熵，然后求和，即为Loss。 确定如何找到最好的函数 还是Gradient Descent。 神经网络模型对应的函数比较复杂，而反向传播算法（Backpropagation）是一个很有效的计算神经网络梯度的方法。 神经网络的结构 输入层（Input Layer）：实际上就是输入，并不是真正的“层”。 隐藏层（Hidden Layers）：输入层和输出层之间的层，Deep指有很多隐藏层，多少层才算Deep并没有统一标准。可以看成特征提取器（Feature Extractor），作用是代替特征工程（Feature Engineering）。 输出层（Output Layer）：最后一层，可以看成分类器 全连接前反馈神经网络 即Fully Connected Feedforward Neural Network，FFN。
+全连接是指每个神经元与上一层的所有神经元相连。 前馈神经网络（FNN，Feedforward Neural Network）是指各神经元分层排列，每个神经元只与前一层的神经元相连，接收前一层的输出，并输出给下一层，各层间没有反馈。 一些网络 其中Residual Net并不是一般的全连接前馈神经网络
+网络结构 提出年份 层数 ImageNet错误率 AlexNet 2012 8 16.4% 2014 19 7.</description>
+    </item>
+    
+    <item>
+      <title>一、机器学习概论.md</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/</link>
+      <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/</guid>
+      <description>李宏毅机器学习笔记 [toc]
+一、机器学习概论 机器学习是什么 机器学习就是让机器能自动找到一个函数function
+语音识别（Speech Recognition）：输入是音频，输出是音频对应的文字 图像分类：输入是图片，输出是类别（比如猫、狗） AlphaGo下围棋：输入是当前棋盘的状态，输出是下一步落棋的位置 对话/问答系统 机器能够找到哪些函数 为解决不同的问题、完成不同的任务，需要找到不同的函数，那机器学习能找到哪些函数呢？
+回归（Regression）：输出是一个连续的数值、标量，比如PM2.5预测 分类（Classification）：输出是一个离散的值。 二分类（Binary Classification）的输出就是0或1、Yes或No、&amp;hellip;，比如文本情感分析的输出可以是正面和负面 多分类（Multi-Category Classification）的输出就是[1,2,3,&amp;hellip;,N]，比如图像分类里判断一张图片是猫还是狗还是杯子 生成（Generation）：很多教科书吧机器学习划分为回归问题和分类问题，但其实不止这两种问题，比如生成（Generation）。生成是指让机器学习如何创造/生成，比如生成文本、图片等。 如何告诉机器我们希望找到什么函数 我们该如何为机器提供学习资料？
+有监督学习（Supervised Learning）：可以把有监督学习种的“监督”理解为标签（Label），即数据集种不仅包括特征还包括标签。有了标签，我们就可以评价一个函数的好坏，进而优化这个函数。使用Loss判断函数的好坏，Loss越小，函数越好。 强化学习（Reinforcement Learning）：原始的AlphaGo是先通过有监督学习优化到一定程度，然后用强化学习继续优化。新版本的AlphaGo是完全通过强化学习实现的，优于原始的AlphaGo。 无监督学习（Unsupervised Learning）：只给机器提供数据特征，但不提供数据标签。那机器能学到什么呢？ 下面以让机器学习下围棋为例：有监督学习VS强化学习
+有监督学习：函数的输入（数据特征）就是期盼状态，函数的输出（数据标签）就是下一步落棋的位置。此时，我们需要为机器提供的数据就类似棋谱（如果现在棋局是这样，那下一步怎么落棋最好），但其实人类不一定知道怎么落棋最好。 强化学习：让机器跟自己、别人下棋，把结果（赢或输）作为Reward，引导机器学习如何下棋。如果它赢了，那它就知道这一盘里有几步棋下得好，但不知道是哪几步；如果它输了，它就知道这一盘里有几步棋下得不好，但不知道是哪几步。 机器如何找出我们想找到的函数 我们要给定函数形式/范围（模型），比如假定函数是线性模型、神经网络等等。模型就是一个函数集，模型的参数确定以后，才得到一个函数。 找到更好的函数： 使用梯度下降（Gradient Descent），找到更好的函数。 前沿研究 AI的可解释性（Explainable AI）：比如，机器为什么认为这张图片里有一只猫？ 对抗攻击（Adversarial Attack）：对输入故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出。 模型压缩（Network Compression）： 把模型压缩以减少模型对计算资源消耗。 异常检测（Anomaly Detection）：使机器知道它遇到了自己不知道的东西。 迁移学习（Transfer Learning/Domain Adversarial Learning）： 一个模型已经学到了一些知识，将这些知识应用到另一个任务中。 元学习（Meta Learning）： 让机器学习如何学习。机器学习是我们教机器学习某种知识，元学习是我们教机器如何学习。 终身学习（Life-Long Learning）：让机器终身学习，学习完任务1、再继续学任务2、…… 机器学习的三个步骤 确定模型（Model）/函数集（Function Set） 确定如何评价函数的好坏 确定如何找到最好的函数 </description>
+    </item>
+    
+    <item>
+      <title>cluster.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/stdlib/cluster/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/stdlib/cluster/</guid>
+      <description>cluster 模块 cluster模块用于组建 Node.js 应用的集群。
+cluster.isMaster属性表示当前进程是否为主进程。
+1 2 const cluster = require(&amp;#39;cluster&amp;#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 const cluster = require(&amp;#39;cluster&amp;#39;); const { cpus } = require(&amp;#39;os&amp;#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&amp;#39;master process&amp;#39;); const workers = []; for(let i = 0; i &amp;lt; numWorkers; i++) { workers.push(cluster.fork()); } } else { process.</description>
+    </item>
+    
+    <item>
+      <title>events.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/stdlib/events/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/stdlib/events/</guid>
+      <description>events 模块 Node 通过 events 模块提供事件，形成模块之间的通信机制，消除模块与模块的强耦合。
+概述 events模块提供一个构造函数，可以用来生成事件发生器的实例。
+1 2 const EventEmitter = require(&amp;#39;events&amp;#39;); const emitter = new EventEmitter(); 上面代码中，emitter就是事件发生器的实例。
+emit()方法用于触发事件。
+1 emitter.emit(&amp;#39;user-registered&amp;#39;, user); 上面代码触发了user-registered事件，第二个参数user是事件传递的数据。
+on()方法用于监听事件。
+1 2 3 emitter.on(&amp;#39;user-registered&amp;#39;, (user) =&amp;gt; { console.log(&amp;#39;event has occured&amp;#39;); }); 注意，emit()方法和on()方法都是同步的，请看下面的例子。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 emitter.on(&amp;#39;someEvent&amp;#39;, function () { console.log(&amp;#39;event has occured&amp;#39;); }); function f() { console.log(&amp;#39;start&amp;#39;); emitter.emit(&amp;#39;someEvent&amp;#39;); console.log(&amp;#39;end&amp;#39;); } f() // start // event has occured // end 上面代码中，emit()方法执行以后，on()方法会立刻执行。只有等到on()方法执行结束以后，emit()后面的方法才会继续执行。</description>
+    </item>
+    
+    <item>
+      <title>http.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/stdlib/http/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/stdlib/http/</guid>
+      <description>http 模块 http模块用于 HTTP 通信。
+http.Server http.Server属性指向一个类，表示 Web 服务器实例。
+这个类继承了net.Server，而net.Server继承了 EventEmitter 接口，因此可以使用server.on()方法监听事情。最重要的一个事件是request，表示收到 HTTP 请求。
+1 2 3 server.on(&amp;#39;request&amp;#39;, (request, response) =&amp;gt; { response.end(&amp;#39;Hello, world!&amp;#39;); }); server.listen()方法用于启动 Web 服务。这个方法需要指定监听的端口，以及一个回调函数（启动后要做什么）。
+1 2 3 server.listen(PORT, () =&amp;gt; { console.log(`starting server at port ${PORT}`); }); http.createServer() http.createServer()方法用于创建一个 Web 服务器，它的返回值就是一个http.Server实例。
+1 2 3 4 5 6 7 8 9 10 11 12 13 const { createServer } = require(&amp;#39;http&amp;#39;); // 指定端口 const PORT = process.env.PORT || 8080; const server = createServer(); server.</description>
+    </item>
+    
+    <item>
+      <title>os.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/stdlib/os/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/stdlib/os/</guid>
+      <description>os 模块 cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
+1 2 const { cpus } = require(&amp;#39;os&amp;#39;); const numWorkers = cpus().length; </description>
+    </item>
+    
+    <item>
+      <title>process.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/stdlib/process/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/stdlib/process/</guid>
+      <description>process 对象 process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
+process.argv process.argv是一个数组，表示启动脚本时的命令行参数。
+它的前两项是固定的。
+第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
+1 $ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
+process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&amp;ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
+1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &amp;#34;--watch&amp;#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
+参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas </description>
+    </item>
+    
+    <item>
+      <title>npm-update.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-update/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-update/</guid>
+      <description>npm update 更新所有依赖项。
+1 $ npm update 更新单个依赖。
+1 $ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
+1 $ npm update --save </description>
+    </item>
+    
+    <item>
+      <title>npm-version.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-version/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-version/</guid>
+      <description>npm version npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
+它的命令行用法如下。
+1 2 3 4 5 npm version [ &amp;lt;newversion&amp;gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
+（1）&amp;lt;newversion&amp;gt;：自己指定版本号。
+（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
+major：规则如下。
+（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
+1 2 # 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
+1 2 3 4 5 # 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.0.0-0 变为 5.0.0 $ npm version major （3）如果有预发布号，且次版本号和补丁号都不为0，则增加主版本号，将次版本号和补丁号都置为0，并去掉预发布号。</description>
+    </item>
+    
+    <item>
+      <title>npm-view.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-view/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-view/</guid>
+      <description>npm view 命令 查看某个模块发布过的所有版本。
+1 $ npm view [PackageName] versions </description>
+    </item>
+    
+    <item>
+      <title>npm-whoami.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-whoami/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-whoami/</guid>
+      <description>npm whoami npm whoami命令返回当前登录的 npm 用户名。
+1 $ npm whoami </description>
+    </item>
+    
+    <item>
+      <title>npx.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npx/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npx/</guid>
+      <description>npx 使用教程 npm 从5.2版开始，增加了 npx 命令，它有很多用处。
+Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
+1 $ npm install -g npx 调用项目安装的模块 npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
+1 $ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的scripts字段里面， 如果想在命令行下调用，必须像下面这样。
+1 2 # 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
+1 $ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。
+1 2 # 等同于 ls $ npx ls 注意，Bash 内置的命令不在$PATH里面，所以不能用。比如，cd是 Bash 命令，因此就不能用npx cd。
+避免全局安装模块 除了调用项目内部模块，npx 还能避免全局安装的模块。比如，create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装。</description>
+    </item>
+    
+    <item>
+      <title>package.json.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/package.json/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/package.json/</guid>
+      <description>package.json files 字段 files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
+1 2 3 4 5 6 7 8 9 10 { &amp;#34;name&amp;#34;: &amp;#34;@adam_baldwin/wombats&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;files&amp;#34;: [ &amp;#34;index.js&amp;#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
+项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
+以下文件，发布的时候总是会包含。
+package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
+以下文件，发布的时候总是会被排除。
+.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .npmrc node_modules config.gypi *.orig package-lock.json 基本上，npm 会发布files字段指定的文件和目录，以及那些总是会包含在内的文件（比如package.json），然后再除去那些被其他规则排除的文件和目录。
+npm-packlist 模块会列出所有将要打包发布的文件和模块。npm pack命令则会将那些将要发布的内容打成一个tgz压缩包，放在项目的根目录下。</description>
+    </item>
+    
+    <item>
+      <title>publish.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/publish/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/publish/</guid>
+      <description>发布 发布标签 npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
+新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
+这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
+1 $ npm install &amp;lt;package&amp;gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
+解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
+1 $ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
+安装时，必须指定这个标签，才能安装到3.2.14。
+1 2 3 $ npm install &amp;lt;package&amp;gt;@previous # 或者 $ npm install &amp;lt;package&amp;gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
+1 2 3 $ npm install &amp;lt;package&amp;gt; # 等同于 $ npm install &amp;lt;package&amp;gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
+1 2 3 4 5 # 发布 $ npm publish --tag=next # 安装 $ npm publish &amp;lt;package&amp;gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。
+等到新版本足够可靠以后，再把latest标签指定到新版本。</description>
+    </item>
+    
+    <item>
+      <title>scripts.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/scripts/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/scripts/</guid>
+      <description>脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
+1 2 3 4 5 6 7 8 9 10 11 12 { &amp;#34;name&amp;#34;: &amp;#34;myproject&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;jshint&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;browserify&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;mocha&amp;#34;: &amp;#34;latest&amp;#34; }, &amp;#34;scripts&amp;#34;: { &amp;#34;lint&amp;#34;: &amp;#34;jshint **.js&amp;#34;, &amp;#34;test&amp;#34;: &amp;#34;mocha test/&amp;#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
+npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
+npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
+npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
+npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
+举例来说，你执行ESLint的安装命令。
+1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.</description>
+    </item>
+    
+    <item>
+      <title>yarn.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/yarn/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/yarn/</guid>
+      <description>Yarn 的用法 简介 Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。
+（1）安装速度较快。
+Yarn 采用平行安装模式，而 npm 采用的是线性模式，只有前一个模块安装完，才会安装下一个。
+（2）默认开启“版本锁定”功能
+Yarn 希望安装依赖时，所有依赖的版本在不同机器都保持相同。为了达到这个目的，第一次安装依赖时，它默认生成一个锁定文件yarn.lock，将这个文件放到代码库之中，下次安装时就能保证，总是安装相同版本的依赖。这与npm shrinkwrap命令生成的npm-shrinkwrap.json的作用相似，只不过 Yarn 默认就可以生成这个文件。
+全局参数 global 如果要全局执行一个命令，必须加上global参数。目前，add、bin、ls和remove四个命令，支持global参数。
+1 $ yarn global add create-react-app --prefix /usr/local yarn install yarn install命令用于安装一个模块。如果yarn.lock文件存在，会优先读取该文件，按照该文件指定的版本安装。
+使用--production参数或环境变量NODE_ENV等于production，将不会安装devDependencies字段指定的模块。
+1 $ yarn install --production 如果使用--no-lockfile参数，yarn install将不会读取或生成yarn.lock。
+1 $ yarn install --no-lockfile yarn add yarn add命令允许新增安装一个模块。它默认会将该模块加入package.json文件的dependencies字段。如果想加入devDependencies字段，要使用--dev参数。
+1 2 3 $ yarn add package-name $ yarn add package-name@1.2.3 $ yarn add package-name@tag yarn licenses yarn licenses命令有两个子命令。</description>
+    </item>
+    
+    <item>
+      <title>basic.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/basic/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/basic/</guid>
+      <description>概述 npm有两种含义。
+首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为npmjs.org。
+其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
+安装 npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
+但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
+1 $ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
+1 2 3 $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
+1 2 3 4 5 6 7 8 # 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init npm init用来初始化生成一个新的package.</description>
+    </item>
+    
+    <item>
+      <title>install.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/install/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/install/</guid>
+      <description>安装 npm install 基本用法 npm install命令用于安装模块。npm i是该命令的别名。
+1 $ npm install lodash 上面命令在当前目录中安装了lodash模块。
+默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
+1 2 3 4 5 6 7 8 9 10 11 # 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&amp;#34;&amp;gt;=4.15.0 &amp;lt;4.18.0&amp;#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
+默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
+1 2 3 4 5 6 7 # 将模块写入 package.json 的 dependencies 字段 $ npm install lodash --save $ npm install lodash -S # 将模块写入 package.</description>
+    </item>
+    
+    <item>
+      <title>npm-exec.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-exec/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-exec/</guid>
+      <description>npm exec 命令 npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
+该命令与npx命令的作用类似，但是使用上有所不同。
+npx会将所有参数原样传入模块内部。
+1 2 3 $ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
+1 2 3 $ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
+1 2 3 $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。
+1 2 3 $ npm exec -c &amp;#39;eslint &amp;amp;&amp;amp; say &amp;#34;hooray, lint passed&amp;#34;&amp;#39; # 等同于 $ npx -c &amp;#39;eslint &amp;amp;&amp;amp; say &amp;#34;hooray, lint passed&amp;#34;&amp;#39; </description>
+    </item>
+    
+    <item>
+      <title>npm-init.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-init/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-init/</guid>
+      <description>npm init 命令 npm init命令的作用，是生成package.json文件。它的别名是create。
+新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
+1 $ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
+1 2 3 $ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
+1 2 3 $ npm set init-author-email &amp;#34;example-user@example.com&amp;#34; $ npm set init-author-name &amp;#34;example_user&amp;#34; $ npm set init-license &amp;#34;MIT&amp;#34; npm init也可以格式化创建项目。
+1 2 3 $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.json的bin属性）。
+举例来说，如果要执行create-react-app创建一个 React 项目，可以执行下面的命令。
+1 $ npm init react-app .</description>
+    </item>
+    
+    <item>
+      <title>npm-link.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-link/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-link/</guid>
+      <description>npm link 命令 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
+一种方法是使用npm install的--save参数。
+1 $ npm install --no-save &amp;lt;模块的本地路径h&amp;gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
+另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
+它分成两步，第一步先在本地模块的目录里，执行npm link。
+1 $ npm link 第二步是到你的应用目录，执行npm link &amp;lt;本地模块名&amp;gt;，在node_modules目录里面产生本地模块的符号链接。
+1 $ npm link &amp;lt;本地模块名&amp;gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
+1 $ npm link &amp;lt;本地模块的路径&amp;gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
+1 $ npm unlink --no-save &amp;lt;本地模块名&amp;gt; 再到本地模块的目录里面，执行npm unlink。
+1 $ npm unlink </description>
+    </item>
+    
+    <item>
+      <title>npm-tag.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-tag/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-tag/</guid>
+      <description>npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
+发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
+如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
+1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
+下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
+1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
+1 2 3 $ npm install &amp;lt;package&amp;gt;@&amp;lt;tag&amp;gt; # 或者 $ npm install --tag &amp;lt;tag&amp;gt; 下面的命令查看所有 tag 和对应的版本。
+1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。</description>
+    </item>
+    
+    <item>
+      <title>npm-token.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/npm/npm-token/</link>
+      <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/npm/npm-token/</guid>
+      <description>npm token npm token命令用来管理认证令牌。
+npm token list命令列出所有激活的认证令牌。
+1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
+npm token create命令生成一个新的认证令牌。
+1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&amp;lt;cidr-ranges&amp;gt;参数用来指定令牌生效的 IP 地址范围。
+npm token revoke命令收回令牌。
+1 $ npm token revoke &amp;lt;token|id&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>timer</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/timer/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:20 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/timer/</guid>
+      <description>定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 </description>
+    </item>
+    
+    <item>
+      <title>fs</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/fs/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/fs/</guid>
+      <description>fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &amp;#39;utf8&amp;#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&amp;#39;data&amp;#39;, (chunk) =&amp;gt; { console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt; &amp;#39;+chunk); }); readStream.on(&amp;#39;end&amp;#39;, () =&amp;gt; { console.log(&amp;#39;### DONE ###&amp;#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.</description>
+    </item>
+    
+    <item>
+      <title>promise</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/promise/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/promise/</guid>
+      <description>Promise UnhandledPromiseRejectionWarning 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
+1 2 3 4 5 new Promise(function (resolve, reject) { throw new Error(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
+消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }).catch(function (err) { console.</description>
+    </item>
+    
+    <item>
+      <title>repl</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/repl/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/repl/</guid>
+      <description>Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
+命令行下输入node，就可以进入 Node 的 REPL 环境。
+1 2 $ node &amp;gt; REPL 环境的提示符是一个大于号（&amp;gt;）。
+退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
+REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
+REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
+1 2 3 $ node &amp;gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
+node命令的-e参数，实际上就是在 REPL 环境运行代码。
+1 2 $ node -e &amp;#34;console.log(os.platform())&amp;#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
+1 2 3 4 &amp;gt; require(&amp;#39;.</description>
+    </item>
+    
+    <item>
+      <title>this.md</title>
+      <link>https://WFUing.github.io/posts/tech/nodejs/module/this/</link>
+      <pubDate>Mon, 23 Oct 2023 16:16:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/nodejs/module/this/</guid>
+      <description>this 变量 Node 应用的顶层变量是global，对应浏览器的window变量。
+顶层的 this 在 REPL 环境，顶层的this就指向global。
+1 2 &amp;gt; global === this true 顶层变量是global和this的属性。
+1 2 3 4 5 &amp;gt; var foo = &amp;#34;bar&amp;#34;; &amp;gt; this.foo bar &amp;gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
+在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
+1 2 3 // 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
+1 2 3 4 // 模块环境 var foo = &amp;#34;bar&amp;#34;; console.log(this.foo); // undefined console.log(global.foo); // undefined 上面代码中，顶层变量foo并不会生成this.foo和global.foo两个属性。这是因为foo是模块内部的变量，不是全局有效，因此不是global的属性，而this是当前的模块对象，this.foo代表模块实例的属性，这跟变量foo是两回事情。
+另外，如果声明变量的时候，不使用var命令，而是直接赋值，那么该变量在 REPL 环境下将成为global和this的属性，在模块环境将只成为 global 的属性。</description>
+    </item>
+    
     <item>
       <title>Tencentyun Serverless Api</title>
       <link>https://WFUing.github.io/posts/tech/architecture/serverless/tencentyun-serverless-api/</link>
