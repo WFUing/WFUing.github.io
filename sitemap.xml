@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/</loc>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/</loc>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
     <loc>https://WFUing.github.io/posts/tech/</loc>
-    <lastmod>2023-10-23T16:25:26+08:00</lastmod>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/</loc>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/reactive-manifesto/</loc>
+    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/akka/</loc>
+    <lastmod>2023-10-27T09:16:13+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/algorithm/</loc>
     <lastmod>2023-10-23T16:25:26+08:00</lastmod>
@@ -12,12 +30,6 @@
     <lastmod>2023-10-23T16:25:26+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2023-10-23T16:25:26+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2023-10-23T16:25:26+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/</loc>
     <lastmod>2023-10-23T16:25:26+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/</loc>
@@ -41,98 +53,98 @@
     <loc>https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/</loc>
     <lastmod>2023-10-23T16:25:26+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/cluster/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/cluster/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/events/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/events/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/http/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/http/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/os/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/stdlib/process/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/os/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/process/</loc>
+    <lastmod>2023-10-23T16:19:36+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-update/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-update/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-version/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-version/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-view/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-view/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-whoami/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-whoami/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npx/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npx/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/package.json/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/package.json/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/publish/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/publish/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/scripts/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/scripts/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/yarn/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/yarn/</loc>
     <lastmod>2023-10-23T16:19:22+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/basic/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/basic/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/install/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/install/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-exec/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-exec/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-init/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-init/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-link/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-link/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-tag/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-tag/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/npm/npm-token/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/npm/npm-token/</loc>
     <lastmod>2023-10-23T16:19:21+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/timer/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/timer/</loc>
     <lastmod>2023-10-23T16:17:20+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/fs/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/fs/</loc>
     <lastmod>2023-10-23T16:17:19+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/promise/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/promise/</loc>
     <lastmod>2023-10-23T16:17:19+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/repl/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/repl/</loc>
     <lastmod>2023-10-23T16:17:19+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/module/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/module/</loc>
     <lastmod>2023-10-23T16:16:08+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/nodejs/module/this/</loc>
+    <loc>https://WFUing.github.io/posts/tech/language/nodejs/module/this/</loc>
     <lastmod>2023-10-23T16:16:08+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/</loc>
-    <lastmod>2023-10-20T13:12:03+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/serverless/</loc>
     <lastmod>2023-10-20T13:12:03+08:00</lastmod>
@@ -182,9 +194,6 @@
     <loc>https://WFUing.github.io/tags/language/</loc>
     <lastmod>2023-10-18T20:14:26+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/language/</loc>
-    <lastmod>2023-10-18T20:14:26+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/posts/tech/architecture/serverless/serverless-dev/</loc>
     <lastmod>2023-10-17T11:47:45+08:00</lastmod>
   </url><url>
@@ -197,13 +206,7 @@
     <loc>https://WFUing.github.io/tags/metaprogramming/</loc>
     <lastmod>2023-10-16T15:29:44+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/distributed/</loc>
-    <lastmod>2023-10-16T11:16:13+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/distributed/iot/</loc>
-    <lastmod>2023-10-16T11:16:13+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/distributed/iot/state-machine/</loc>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/state-machine/</loc>
     <lastmod>2023-10-16T11:16:13+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/antlr/</loc>
@@ -223,6 +226,9 @@
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/programming-language-pool/</loc>
     <lastmod>2023-10-14T19:29:44+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/distributed/</loc>
+    <lastmod>2023-10-14T12:00:54+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/</loc>
     <lastmod>2023-10-14T12:00:54+08:00</lastmod>
@@ -263,7 +269,7 @@
     <loc>https://WFUing.github.io/posts/tech/network/restful/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/distributed/iot/actor/</loc>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/actor/</loc>
     <lastmod>2023-10-13T09:16:13+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/ai/</loc>
@@ -344,13 +350,13 @@
     <loc>https://WFUing.github.io/about/</loc>
     <lastmod>2021-11-06T14:57:28+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/read/</loc>
-  </url><url>
     <loc>https://WFUing.github.io/archives.fr/</loc>
   </url><url>
     <loc>https://WFUing.github.io/archives/</loc>
   </url><url>
     <loc>https://WFUing.github.io/categories/</loc>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/read/</loc>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/safe/</loc>
   </url><url>

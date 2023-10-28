@@ -16,7 +16,7 @@ warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum 
 Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6057cad90c357f0a4aa1070c8561d594134511691f58fea4b25fee66bbb953e2.css" integrity="sha256-YFfK2Qw1fwpKoQcMhWHVlBNFEWkfWP6ksl/uZru5U&#43;I=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.c299e9bf5c68d9b79ebcdb13eaeb522bec488ea4d2320f2efda34f655c03c6a3.css" integrity="sha256-wpnpv1xo2beevNsT6utSK&#43;xIjqTSMg8u/aNPZVwDxqM=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
@@ -143,7 +143,7 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "👨🏻‍💻技术",
+      "name": "Technology",
       "item": "https://WFUing.github.io/posts/tech/"
     }, 
     {
@@ -279,7 +279,7 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">👨🏻‍💻技术</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/">Algorithm</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/ai/">Artificial Intelligence</a></div>
+    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/">Algorithm</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/ai/">Artificial Intelligence</a></div>
     <h1 class="post-title">
       六、Tips for Training DNN.md
     </h1>
