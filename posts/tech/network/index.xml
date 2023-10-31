@@ -6,20 +6,43 @@
     <description>Recent content in Computer Network on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 13 Oct 2023 13:19:27 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 19:43:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Http 详解</title>
+      <link>https://WFUing.github.io/posts/tech/network/http/</link>
+      <pubDate>Mon, 30 Oct 2023 19:43:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/network/http/</guid>
+      <description>Resources 小林coding 3.1 HTTP 常见面试题 一次完整的HTTP请求过程 当我们在web浏览器的地址栏中输入：www.baidu.com，具体发生了什么？
+对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址 根据这个IP，找到对应的服务器，发起TCP的三次握手 建立TCP连接后发起HTTP请求 服务器响应HTTP请求，浏览器得到html代码 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等）（先得到html代码，才能去找这些资源） 浏览器对页面进行渲染呈现给用户 服务器关闭关闭TCP连接 1.DNS怎么找到域名的？
+DNS域名解析采用的是递归查询的方式，过程是，先去找DNS缓存-&amp;gt;缓存找不到就去找根域名服务器-&amp;gt;根域名又会去找下一级，这样递归查找之后，找到了，给我们的web浏览器
+2.为什么HTTP协议要基于TCP来实现？
+TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输的各种问题（当发生错误时，会重传）
+3.最后一步浏览器是如何对页面进行渲染的？
+a）解析html文件构成 DOM树 b）解析CSS文件构成渲染树 c）边解析，边渲染 d）JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载
+DNS解析（域名解析服务器） 首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）
+如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存
+如果还没有找到，那么尝试从 hosts文件 里面去找
+在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下
+DNS优化两个方面：DNS缓存、DNS负载均衡
+TCP连接建立（三次握手） 拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024&amp;lt;端口&amp;lt;65535）向服务器的WEB程序（常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过 TCP/IP 4层模型的层层封包）到达服务器端后（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了 TCP/IP 的连接。
+TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而建立连接是通过三次握手来进行的。三次握手的过程如下图：
+发起HTTP请求(建立连接后) HTTP请求报文由四部分组成：请求行、请求头、空格、请求正文
+请求行：用于描述客户端的请求方式（GET/POST等），请求的资源名称(URL)以及使用的HTTP协议的版本号 请求头：用于描述客户端请求哪台主机及其端口，以及客户端的一些环境信息等 空行：空行就是\r\n (POST请求时候有) 请求正文：当使用POST等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中（GET方式是保存在url地址后面，不会放到这里） GET请求
+下面是浏览器对 http://localhost:8081/test?name=XXG&amp;amp;age=23的GET 请求时发送给服务器的数据：
+可以看出请求包含请求行和请求头两部分。其中请求行中包含 method（例如 GET、POST）、URI（通一资源标志符）和协议版本三部分，三个部分之间以空格分开。请求行和每个请求头各占一行，以换行符 CRLF（即 \r\n）分割。
+POST请求
+下面是浏览器对 http://localhost:8081/test 的 POST 请求时发送给服务器的数据，消息体中带上参数 name=XXG&amp;amp;age=23
+可以看出，上面的请求包含四个部分：请求行、请求头、空格、消息体，比之前的 GET 请求多了一个请求消息，其中 请求头和消息体之间用一个空行分割。POST 请求的参数不在 URL 中，而是在消息体中，请求头中多了一项 Content-Length 用于表示消息体的字节数，这样服务器才能知道请求是否发送结束。这也就是 GET 请求和 POST 请求的主要区别。</description>
+    </item>
+    
     <item>
       <title>Restful API Tutorial</title>
       <link>https://WFUing.github.io/posts/tech/network/restful/</link>
       <pubDate>Fri, 13 Oct 2023 13:19:27 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/tech/network/restful/</guid>
-      <description>REST 全称是 Representational State Transfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文 https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm 这一章。
-REST 指的是一组架构约束条件和原则：
-为设计一个功能强、性能好、适宜通信的 web 应用 如果一个架构符合 REST 的约束条件和原则，我们就称它为 RESTful 结构 Resources restful petclinic tutorial docter paper bilibili-软件体系结构-2022.7-REST Create REST APIs with JAX-RS 核心概念 资源（Resources） 表现层（Representation） 状态转化（State Transfer） 资源 网络上的一个实体，或者说是网络上的一个具体信息，任何事物，只要有被引用到的必要，它就是一个资源。
-一段文本，一张图片，一首歌曲 数据库中的一行数据 一个手机号码，某用户的个人信息 一种服务 资源标识 要让一个资源可以被识别，需要有个唯一标识，在Web中这个唯一标识就是URI（Uniform Resource Identifier）。例如：
-https://www.ex.com/software/releases/latest.tar.gz https://www.ex.com/map/roads/USA/CA/17_mile_drive https://www.ex.com/search/cs578 URI 设计原则
-易读： https://www.oschina.net/news/38119/oschina-translate-reward-plan 表达资源的层级关系： https://github.com/git/git/commit/e3ae056f87e1d675913d08/orders/2012/10 表示资源的同级关系： /git/block-sha1/sha1.h/compare/e3af72cda056f87e;bd63e61bdf38eb264 表达资源的过滤： https://github.com/git/git/pulls?q=is%3Aclosed 统一资源接口
-RESTful 架构应该遵循统一接口原则，统一接口包含了一组受限的预定义的操作，不论什么样的资源，都是通过使用相同的接口进行资源的访问。接口应该使用标准的 HTTP 方法如 GET，PUT 和 POST，并遵循这些方法的语义 如果按照HTTP方法的语义来暴露资源，那么接口将会拥有安全性和幂等性的特性 GET和HEAD请求是安全的，无论请求多少次，都不改变服务器状态 GET、HEAD、PUT和DELETE请求是幂等的，无论对资源操作多少次，结果总是一样的，后面的请求并不会产生比第一次更多的影响 GET 获取表示，变更时获取表示（缓存）。安全且幂等。</description>
+      <description>REST 全称是 &lt;strong&gt;Re&lt;/strong&gt;presentational &lt;strong&gt;S&lt;/strong&gt;tate &lt;strong&gt;T&lt;/strong&gt;ransfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文</description>
     </item>
     
     <item>

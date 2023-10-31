@@ -2,20 +2,68 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/</loc>
-    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+    <loc>https://WFUing.github.io/tags/dsl/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/posts/tech/architecture/iot/</loc>
-    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+    <loc>https://WFUing.github.io/tags/langium/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/dsl/langium/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/</loc>
-    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/vscode/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/dsl/vscode-language-server/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/</loc>
-    <lastmod>2023-10-28T21:16:13+08:00</lastmod>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/xtext/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/language/dsl/xtext/</loc>
+    <lastmod>2023-10-31T10:46:20+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/network/</loc>
+    <lastmod>2023-10-30T19:43:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/http/</loc>
+    <lastmod>2023-10-30T19:43:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/network/http/</loc>
+    <lastmod>2023-10-30T19:43:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/interview/</loc>
+    <lastmod>2023-10-30T19:43:45+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/tags/akka/</loc>
+    <lastmod>2023-10-30T09:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/</loc>
+    <lastmod>2023-10-30T09:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/</loc>
+    <lastmod>2023-10-30T09:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</loc>
+    <lastmod>2023-10-30T09:16:13+08:00</lastmod>
+  </url><url>
+    <loc>https://WFUing.github.io/posts/tech/architecture/iot/concept/</loc>
+    <lastmod>2023-10-28T22:05:13+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/architecture/iot/reactive-manifesto/</loc>
     <lastmod>2023-10-28T21:16:13+08:00</lastmod>
@@ -60,9 +108,6 @@
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/nodejs/stdlib/http/</loc>
-    <lastmod>2023-10-23T16:19:36+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/language/</loc>
     <lastmod>2023-10-23T16:19:36+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/nodejs/</loc>
@@ -152,9 +197,6 @@
     <loc>https://WFUing.github.io/posts/tech/architecture/serverless/</loc>
     <lastmod>2023-10-20T13:12:03+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/tags/</loc>
-    <lastmod>2023-10-20T13:12:03+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/tags/tencentyun/</loc>
     <lastmod>2023-10-20T13:12:03+08:00</lastmod>
   </url><url>
@@ -221,9 +263,6 @@
     <loc>https://WFUing.github.io/posts/tech/language/code-generation/</loc>
     <lastmod>2023-10-15T09:52:03+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/tags/dsl/</loc>
-    <lastmod>2023-10-15T09:52:03+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/programming-language-pool/</loc>
     <lastmod>2023-10-14T19:29:44+08:00</lastmod>
   </url><url>
@@ -248,9 +287,6 @@
     <loc>https://WFUing.github.io/tags/asyncapi/</loc>
     <lastmod>2023-10-13T17:27:37+08:00</lastmod>
   </url><url>
-    <loc>https://WFUing.github.io/tags/xtext/</loc>
-    <lastmod>2023-10-13T17:27:37+08:00</lastmod>
-  </url><url>
     <loc>https://WFUing.github.io/tags/openapi/</loc>
     <lastmod>2023-10-13T16:46:21+08:00</lastmod>
   </url><url>
@@ -259,9 +295,6 @@
   </url><url>
     <loc>https://WFUing.github.io/tags/spring/</loc>
     <lastmod>2023-10-13T16:46:21+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/posts/tech/network/</loc>
-    <lastmod>2023-10-13T13:19:27+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/restful/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
@@ -318,9 +351,6 @@
     <lastmod>2023-10-12T17:05:17+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/posts/tech/language/code-generation/code-generation-for-langium-based-dsls/</loc>
-    <lastmod>2023-10-12T14:43:44+08:00</lastmod>
-  </url><url>
-    <loc>https://WFUing.github.io/tags/langium/</loc>
     <lastmod>2023-10-12T14:43:44+08:00</lastmod>
   </url><url>
     <loc>https://WFUing.github.io/tags/template-engine/</loc>

@@ -13,13 +13,7 @@
       <pubDate>Fri, 13 Oct 2023 13:19:27 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/tech/network/restful/</guid>
-      <description>REST 全称是 Representational State Transfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文 https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm 这一章。
-REST 指的是一组架构约束条件和原则：
-为设计一个功能强、性能好、适宜通信的 web 应用 如果一个架构符合 REST 的约束条件和原则，我们就称它为 RESTful 结构 Resources restful petclinic tutorial docter paper bilibili-软件体系结构-2022.7-REST Create REST APIs with JAX-RS 核心概念 资源（Resources） 表现层（Representation） 状态转化（State Transfer） 资源 网络上的一个实体，或者说是网络上的一个具体信息，任何事物，只要有被引用到的必要，它就是一个资源。
-一段文本，一张图片，一首歌曲 数据库中的一行数据 一个手机号码，某用户的个人信息 一种服务 资源标识 要让一个资源可以被识别，需要有个唯一标识，在Web中这个唯一标识就是URI（Uniform Resource Identifier）。例如：
-https://www.ex.com/software/releases/latest.tar.gz https://www.ex.com/map/roads/USA/CA/17_mile_drive https://www.ex.com/search/cs578 URI 设计原则
-易读： https://www.oschina.net/news/38119/oschina-translate-reward-plan 表达资源的层级关系： https://github.com/git/git/commit/e3ae056f87e1d675913d08/orders/2012/10 表示资源的同级关系： /git/block-sha1/sha1.h/compare/e3af72cda056f87e;bd63e61bdf38eb264 表达资源的过滤： https://github.com/git/git/pulls?q=is%3Aclosed 统一资源接口
-RESTful 架构应该遵循统一接口原则，统一接口包含了一组受限的预定义的操作，不论什么样的资源，都是通过使用相同的接口进行资源的访问。接口应该使用标准的 HTTP 方法如 GET，PUT 和 POST，并遵循这些方法的语义 如果按照HTTP方法的语义来暴露资源，那么接口将会拥有安全性和幂等性的特性 GET和HEAD请求是安全的，无论请求多少次，都不改变服务器状态 GET、HEAD、PUT和DELETE请求是幂等的，无论对资源操作多少次，结果总是一样的，后面的请求并不会产生比第一次更多的影响 GET 获取表示，变更时获取表示（缓存）。安全且幂等。</description>
+      <description>REST 全称是 &lt;strong&gt;Re&lt;/strong&gt;presentational &lt;strong&gt;S&lt;/strong&gt;tate &lt;strong&gt;T&lt;/strong&gt;ransfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文</description>
     </item>
     
   </channel>

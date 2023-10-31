@@ -6,7 +6,25 @@
     <description>Recent content in Internet of Things on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 28 Oct 2023 21:16:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 09:16:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>快速入门 Akka Java 指南</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</link>
+      <pubDate>Mon, 30 Oct 2023 09:16:13 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</guid>
+      <description>Akka 是一个用于在 JVM 上构建高并发、分布式和可容错的事件驱动应用程序的运行时工具包。Akka 既可以用于 Java，也可以用于 Scala。本指南通过描述 Java 版本的&lt;code&gt;Hello World&lt;/code&gt;示例来介绍 Akka。</description>
+    </item>
+    
+    <item>
+      <title>术语与概念</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/iot/concept/</link>
+      <pubDate>Sat, 28 Oct 2023 22:05:13 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/iot/concept/</guid>
+      <description>试图建立一个通用的术语来定义一个坚实的基础以对并发、分布式系统这些 Akka 的目标问题展开交流。请注意，对于这些术语并没有一个统一的定义。我们只是为了寻找一些可行的定义以便在整个文档中进行引用。</description>
+    </item>
+    
     <item>
       <title>响应式宣言(Reactive Manifesto)</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/reactive-manifesto/</link>
