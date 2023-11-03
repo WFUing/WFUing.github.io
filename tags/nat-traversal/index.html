@@ -204,7 +204,63 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
 连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
 1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-12 19:38:48 &#43;0800 &#43;0800&#39;&gt;2023-10-12&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>355字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/nat-traversal/" style="color: var(--secondary)!important;">nat traversal</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    

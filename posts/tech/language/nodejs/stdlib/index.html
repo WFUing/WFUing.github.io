@@ -240,7 +240,60 @@ cluster.isMaster属性表示当前进程是否为主进程。
 1 2 const cluster = require(&#39;cluster&#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 const cluster = require(&#39;cluster&#39;); const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&#39;master process&#39;); const workers = []; for(let i = 0; i &lt; numWorkers; i&#43;&#43;) { workers.push(cluster.fork()); } } else { process....</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:19:36 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>181字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -263,7 +316,60 @@ on()方法用于监听事件。
 1 2 3 emitter.on(&#39;user-registered&#39;, (user) =&gt; { console.log(&#39;event has occured&#39;); }); 注意，emit()方法和on()方法都是同步的，请看下面的例子。
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 emitter.on(&#39;someEvent&#39;, function () { console.log(&#39;event has occured&#39;); }); function f() { console.log(&#39;start&#39;); emitter.emit(&#39;someEvent&#39;); console.log(&#39;end&#39;); } f() // start // event has occured // end 上面代码中，emit()方法执行以后，on()方法会立刻执行。只有等到on()方法执行结束以后，emit()后面的方法才会继续执行。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:19:36 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;4 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>765字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>4分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -284,7 +390,60 @@ http.Server http.Server属性指向一个类，表示 Web 服务器实例。
 1 2 3 server.listen(PORT, () =&gt; { console.log(`starting server at port ${PORT}`); }); http.createServer() http.createServer()方法用于创建一个 Web 服务器，它的返回值就是一个http.Server实例。
 1 2 3 4 5 6 7 8 9 10 11 12 13 const { createServer } = require(&#39;http&#39;); // 指定端口 const PORT = process.env.PORT || 8080; const server = createServer(); server....</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:19:36 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;3 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>569字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>3分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -301,7 +460,60 @@ http.Server http.Server属性指向一个类，表示 Web 服务器实例。
       <p>os 模块 cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
 1 2 const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; </p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:19:36 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>19字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -324,7 +536,60 @@ process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv
 1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
 参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas </p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:19:36 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>53字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    

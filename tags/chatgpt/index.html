@@ -202,7 +202,63 @@
 使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to “think” 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
 在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-12 19:43:45 &#43;0800 &#43;0800&#39;&gt;2023-10-12&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>103字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/chatgpt/" style="color: var(--secondary)!important;">chatgpt</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    

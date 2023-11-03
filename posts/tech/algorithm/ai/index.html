@@ -242,7 +242,60 @@
 例子：
 1 $$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m &#43; \alpha &#43; 1)} {\left({ \frac{x}{2} }\right)}^{2m &#43; \alpha} \text {，独立公式示例} $$ 显示：$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;23 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>4856字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>23分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -261,7 +314,60 @@
 y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b是偏置（bias） x是输入（input），也可叫做特征（feature）。数据集中一般包含多个object，每个object一般包含多个component。此时，上标是object的索引，下标是component的索引 损失函数（Loss Function）如果不考虑模型的好坏，衡量一个函数的好坏，其实是衡量模型参数的好坏。以线性模型为例，就是衡量参数和的好坏。如 $ L(f) = L(w,b) = \sum_{n=1} ^{10}{ \widehat{y} - (b &#43; w \cdot x_n)} $ ，把所有的样本误差的平方和作为损失函数 输入：一个函数 输出：多么地不好（how bad it is）。损失函数值越大，则这个函数越差、与数据集中内容月不相符 梯度下降（Gradient Descent） 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上模拟效果最好）的模型参数。 现在假设模型$f$中只有一个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下
 初始化参数：随机选取一个 $ w_0 $（并不一定是随机选取），令 $ w = w_0 $ 计算梯度 $\frac{dL(f)}{dw}|_{w=w_0}$ ，如果小于0，此时w增大则L（f）减小，如果大于0，此时w减小则L（w）会减小。如果模型中有多个参数，则计算损失函数在各个参数方向上的偏导数 更新模型参数，$w_1 = w_0 - lr \frac{dL(f)}{dw}|_{w=w_0}$ ，w的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则w变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步，经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 现在假设模型$f$中只有两个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下（若模型中有多个参数，按相同方法更新各参数）...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>188字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -283,7 +389,60 @@ Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成
 warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
 Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>304字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -312,7 +471,60 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
 怎么做卷积 如下图所示
 卷积区域： 根据该卷积核的大小（以3×3为例），选择图片中相同大小的区域进行卷积。 卷积的计算方法： 从图片中扫描得到的3×3矩阵和卷积核的3×3矩阵，这2个矩阵相同位置的元素相乘可以得到9个值并求和（也就是内积）得到1个值，这就是1次卷积操作。 卷积顺序和方向： 卷积核按照从左到右、从上到下的顺序，从图片左上角开始移动，移动步长（stride）可以设置（以1为例）。在扫描到的每个区域中，都进行1次卷积。1个卷积核移动结束后，则得到1个新的矩阵（大小为4×4），即1个卷积核的输出是1个矩阵。 卷积层有多个卷积核，每个卷积核都按照该方式进行卷积得到多个矩阵，这些矩阵合起来就形成了1个卷积层的特征图（Feature Map），这个特征图也就是卷积层的输出。 卷积层特征图的通道数等于该卷积层中卷积核的数量，即某卷积层有多少个卷积核，那该卷积层的特征图就有多少个通道。 </p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>63字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -332,7 +544,60 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
 Adagrad Adaptive Gradient Descent，自适应梯度下降。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t&#43;1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ ，其中 $t$ 是迭代次数，$w$ 是参数，$g$ 是梯度，$\eta$ 是初始学习率。随着参数迭代，$t$ 越来越大，$\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 也越来越大，因此学习率的变化趋势是越来越小。
 Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t&#43;1}=w_t-\eta_tg_t$ ，其中 $\eta_t$ 是常数，梯度越大时，则参数更新的步幅越大，这是由 $g_t$ 项决定的。在Adagrad中，$\eta$ 是常量，梯度 $g_t$ 越大时，会使得参数更新的步幅越大，但 $\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 越大会使得参数更新的步幅越小，这是一个矛盾吗？...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>91字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -352,7 +617,60 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t&#43;1}=
 概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
 根据贝叶斯公式（Bayes’ theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}…f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1&#43;N_2}\sum_1&#43;\frac{N_2}{N_1&#43;N_2}\sum_2$，可以减少模型参数，缓解过拟合...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;3 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>594字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>3分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -372,7 +690,60 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t&#43;1}=
 全连接是指每个神经元与上一层的所有神经元相连。 前馈神经网络（FNN，Feedforward Neural Network）是指各神经元分层排列，每个神经元只与前一层的神经元相连，接收前一层的输出，并输出给下一层，各层间没有反馈。 一些网络 其中Residual Net并不是一般的全连接前馈神经网络
 网络结构 提出年份 层数 ImageNet错误率 AlexNet 2012 8 16.4% 2014 19 7....</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;2 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>291字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -393,7 +764,60 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t&#43;1}=
 有监督学习（Supervised Learning）：可以把有监督学习种的“监督”理解为标签（Label），即数据集种不仅包括特征还包括标签。有了标签，我们就可以评价一个函数的好坏，进而优化这个函数。使用Loss判断函数的好坏，Loss越小，函数越好。 强化学习（Reinforcement Learning）：原始的AlphaGo是先通过有监督学习优化到一定程度，然后用强化学习继续优化。新版本的AlphaGo是完全通过强化学习实现的，优于原始的AlphaGo。 无监督学习（Unsupervised Learning）：只给机器提供数据特征，但不提供数据标签。那机器能学到什么呢？ 下面以让机器学习下围棋为例：有监督学习VS强化学习
 有监督学习：函数的输入（数据特征）就是期盼状态，函数的输出（数据标签）就是下一步落棋的位置。此时，我们需要为机器提供的数据就类似棋谱（如果现在棋局是这样，那下一步怎么落棋最好），但其实人类不一定知道怎么落棋最好。 强化学习：让机器跟自己、别人下棋，把结果（赢或输）作为Reward，引导机器学习如何下棋。如果它赢了，那它就知道这一盘里有几步棋下得好，但不知道是哪几步；如果它输了，它就知道这一盘里有几步棋下得不好，但不知道是哪几步。 机器如何找出我们想找到的函数 我们要给定函数形式/范围（模型），比如假定函数是线性模型、神经网络等等。模型就是一个函数集，模型的参数确定以后，才得到一个函数。 找到更好的函数： 使用梯度下降（Gradient Descent），找到更好的函数。 前沿研究 AI的可解释性（Explainable AI）：比如，机器为什么认为这张图片里有一只猫？ 对抗攻击（Adversarial Attack）：对输入故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出。 模型压缩（Network Compression）： 把模型压缩以减少模型对计算资源消耗。 异常检测（Anomaly Detection）：使机器知道它遇到了自己不知道的东西。 迁移学习（Transfer Learning/Domain Adversarial Learning）： 一个模型已经学到了一些知识，将这些知识应用到另一个任务中。 元学习（Meta Learning）： 让机器学习如何学习。机器学习是我们教机器学习某种知识，元学习是我们教机器如何学习。 终身学习（Life-Long Learning）：让机器终身学习，学习完任务1、再继续学任务2、…… 机器学习的三个步骤 确定模型（Model）/函数集（Function Set） 确定如何评价函数的好坏 确定如何找到最好的函数 </p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-23 16:25:26 &#43;0800 &#43;0800&#39;&gt;2023-10-23&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>60字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -413,7 +837,63 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t&#43;1}=
 使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to “think” 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
 在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2023-10-12 19:43:45 &#43;0800 &#43;0800&#39;&gt;2023-10-12&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>103字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/chatgpt/" style="color: var(--secondary)!important;">chatgpt</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
@@ -444,7 +924,63 @@ $\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ �
 给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
 数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。...</p>
     </div>
-    <footer class="entry-footer">&lt;span title=&#39;2022-01-13 09:25:45 &#43;0800 &#43;0800&#39;&gt;2022-01-13&lt;/span&gt;&amp;nbsp;·&amp;nbsp;1 分钟&amp;nbsp;·&amp;nbsp;WFUing</footer>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2022-01-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>127字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/cross-entropy/" style="color: var(--secondary)!important;">cross entropy</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
   </div> 
 
    
