@@ -225,6 +225,95 @@
 <article class="post-entry">
   <div class="post-info"> 
     <header class="entry-header">
+      <h2>Java类加载机制
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>https://cloud.tencent.com/developer/article/1948324 类加载机制简介 类加载整体流程如下图所示，这也是类的生命周期：
+字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象
+需要注意的是，图中红框所代表的加载，验证，准备，初始化，卸载这五个阶段的顺序是确定的，类加载必须严格按照这五个阶段的顺序来开始，但解析阶段则未必，有可能在初始化之后才开始，主要是为了支持 Java 的动态绑定特性，那么各个阶段主要做了哪些事呢？
+加载 在加载阶段，虚拟机需要完成以下三件事
+通过一个类的全限定名来获取此类的二进制字节流 将这个字节流所代表的静态存储结构转化为方法区的运行时结构 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口 如上图所示，加载后生成的类对象与对象间的关系如上图所示，什么是类对象呢，比如实例的 getClass() 或 Foo.Class 即为类对象
+每个类只有一个对象实例（类对象），多个对象共享类对象，这里有个需要注意的点是类对象是在堆中而不是在方法区（这里针对的是 Java 7 及以后的版本），所有的对象都是分配在堆中的，类对象也是对象，所以也是分配在堆中，这点网上挺多人混淆了，需要注意一下
+有人可能会奇怪，只看上面这张图，对象和类对象貌似联系不起来，实际上在虚拟机底层，比如 Java Hotspot 虚拟机，对象和类是以一种被称为 oop-klass 的模型来表示的，每个对象或类都有对应的 C&#43;&#43; 类表示方式，它的底层其实是如下这样来表示的，通过下图可以看到，通过这种方式实例对象和 Class 对象就能联系起来了。
+有人可能会困惑，为啥需要做这些校验工作呢，字节码文件难道不安全？字节码文件一般来说是通过正常的 Java 编译器编译而成的，但字节码文件也是可以编辑修改的，也是有可能被篡改注入恶意的字节码的，就会对程序造成不可预知的风险，所以加载阶段的验证是非常有必要的。
+我们可以在执行 java 程序的时候加上 -verbose:class 或 -XX:&#43;TraceClassLoading 这两个 JVM 参数来观察一下类的加载情况，比如我们写了如下测试类：
+1 2 3 4 public class Test { public static void main(String[] args) { } } 编译后执行 java -XX:&#43;TraceClassLoading Test
+可以看到如下加载过程
+1 2 3 4 5 6 7 [Opened /Library/Internet Plug-Ins/JavaAppletPlugin....</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-11-07
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>574字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>3分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/java/" style="color: var(--secondary)!important;">java</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/interview/" style="color: var(--secondary)!important;">interview</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/posts/tech/language/java/class-loader/class-loader_hu083056cdc82304ddf96d21075785dd49_115187_360x0_resize_box_3.png 360w ,https://WFUing.github.io/posts/tech/language/java/class-loader/class-loader_hu083056cdc82304ddf96d21075785dd49_115187_480x0_resize_box_3.png 480w ,https://WFUing.github.io/posts/tech/language/java/class-loader/class-loader_hu083056cdc82304ddf96d21075785dd49_115187_720x0_resize_box_3.png 720w ,https://WFUing.github.io/posts/tech/language/java/class-loader/class-loader.png 722w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/posts/tech/language/java/class-loader/class-loader.png" alt="" 
+            width="722" height="337">
+</figure>
+  <a class="entry-link" aria-label="post link to Java类加载机制" href="https://WFUing.github.io/posts/tech/language/java/class-loader/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
       <h2>Junit 运行流程
       </h2>
     </header>

@@ -219,228 +219,6 @@
 <article class="post-entry">
   <div class="post-info"> 
     <header class="entry-header">
-      <h2>langium简介
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift&#43;Command&#43;P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构...</p>
-    </div>
-    <footer class="entry-footer">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
-
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
-
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-31
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>135字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/langium/" style="color: var(--secondary)!important;">langium</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to langium简介" href="https://WFUing.github.io/posts/tech/language/dsl/langium/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>vscode-language-server
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Resource Protocol specification https://microsoft.github.io/language-server-protocol/ Syntax highlight guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Language Server Tools https://langserver.org/ Language Server Protocol https://microsoft.github.io/language-server-protocol/ VSCode Syntax Highlight Guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Scope Lists https://macromates.com/manual/en/language_grammars https://www.apeth.com/nonblog/stories/textmatebundle.html </p>
-    </div>
-    <footer class="entry-footer">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
-
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
-
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-31
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>25字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/vscode/" style="color: var(--secondary)!important;">vscode</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to vscode-language-server" href="https://WFUing.github.io/posts/tech/language/dsl/vscode-language-server/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>xtext简介
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Usage 项目创建 XText 开发一个新的语言
-定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构
-xxx.dsl 定义 DSL 的核心处理类，包括 Format，Scope，Validation，Code Generation xxx....</p>
-    </div>
-    <footer class="entry-footer">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
-
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
-
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-31
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>343字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>2分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/xtext/" style="color: var(--secondary)!important;">xtext</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to xtext简介" href="https://WFUing.github.io/posts/tech/language/dsl/xtext/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
       <h2>Functional Programming
       </h2>
     </header>
@@ -485,7 +263,7 @@ Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表
     
     <span id="post_meta_style_3">
         <span class="fa fa-file-word-o"></span>
-        <span>3235字
+        <span>3251字
             &nbsp;&nbsp;
         </span>
     </span>
@@ -723,6 +501,21 @@ C&#43;&#43; (since C&#43;&#43;11)...</p>
             width="484" height="300">
 </figure>
   <a class="entry-link" aria-label="post link to Programming Language List" href="https://WFUing.github.io/posts/tech/language/programming-language-pool/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Domain Specific Language
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>领域特定语言（DSL）是一种用于特定领域或任务的编程语言，针对特定需求进行优化。DSL具有专门的语法和语义，使其更容易用于解决特定领域的问题，提高了代码的可读性和表达力。DSL广泛应用于领域如数据分析、硬件描述、自然语言处理等，有助于提高开发效率和降低错误风险。</p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Domain Specific Language" href="https://WFUing.github.io/posts/tech/language/dsl/"></a>
 </article>
 
 <article class="post-entry">
