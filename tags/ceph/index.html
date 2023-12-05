@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Distributed Technology | Waiting For You</title>
+<title>ceph | Waiting For You</title>
 <meta name="keywords" content="">
-<meta name="description" content="主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。">
+<meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/posts/tech/architecture/distributed/">
+<link rel="canonical" href="https://WFUing.github.io/tags/ceph/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/posts/tech/architecture/distributed/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/tags/ceph/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -98,48 +98,15 @@
     }
 </style>
 
-<meta property="og:title" content="Distributed Technology" />
+<meta property="og:title" content="ceph" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/architecture/distributed/" />
+<meta property="og:url" content="https://WFUing.github.io/tags/ceph/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Distributed Technology"/>
+<meta name="twitter:title" content="ceph"/>
 <meta name="twitter:description" content="这是一个纯粹的博客......"/>
 
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Technology",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "Architecture",
-      "item": "https://WFUing.github.io/posts/tech/architecture/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "Distributed Technology",
-      "item": "https://WFUing.github.io/posts/tech/architecture/distributed/"
-    }
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -216,13 +183,13 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/architecture/">Architecture</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/tags/">Tags</a></div>
   <h1>
-    Distributed Technology
+    ceph
   </h1>
 </header>
 
-<article class="post-entry">
+<article class="post-entry tag-entry">
   <div class="post-info"> 
     <header class="entry-header">
       <h2>Ceph集群部署
@@ -292,110 +259,6 @@
 
    
   <a class="entry-link" aria-label="post link to Ceph集群部署" href="https://WFUing.github.io/posts/tech/architecture/distributed/ceph/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>分布式系统概述
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
-特点
-分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
-脑裂 对于这种情况，我们也可以看出来，原本应该是统一的一个集群对外提供服务的，现在变成了两个集群同时对外提供服务，如果过了一会，断了的网络突然联通了，那么此时就会出现问题了，两个集群刚刚都对外提供服务了，数据该怎么合并，数据冲突怎么解决等等问题。
-CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节点的多个副本是否具有完全相同的值 类型 强一致性: 数据更新完成后，同一时刻，不同的读操作都能获得最新的值 弱一致性: 数据更新完成后，同一时刻，不同的读操作不一定都能获得最新的值，也无法保证多长时间之后可以获得最新的值 A(Availability，可用性) 含义: 对于每一次请求，系统是否都能在有限(指定)的时间内做出响应 P(Partition Tolerance，分区容错性) 含义: 当发生网络分区时，系统仍能对外提供满足 一致性C 和 可用性A 的服务 CAP定理 分布式系统在同一时间片段内，不可能同时满足一致性C、可用性A和分区容错性P，最多只能满足其中的两项。
-满足意味着100%， 满足C -&gt; 满足强一致性 满足A -&gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 BASE定理 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC...</p>
-    </div>
-    <footer class="entry-footer">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
-
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
-
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-13
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>90字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to 分布式系统概述" href="https://WFUing.github.io/posts/tech/architecture/distributed/overview/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>kubernetes
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>kubernetes 是一个开源的容器编排平台，用于自动化、部署、扩展和运维容器化应用，提供高度可扩展性和强大的管理工具。</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to kubernetes" href="https://WFUing.github.io/posts/tech/architecture/distributed/k8s/"></a>
-</article>
-
-<article class="post-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>ZooKeeper
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。</p>
-    </div>
-  </div> 
-
-   
-  <a class="entry-link" aria-label="post link to ZooKeeper" href="https://WFUing.github.io/posts/tech/architecture/distributed/zookeeper/"></a>
 </article>
     </main>
     
