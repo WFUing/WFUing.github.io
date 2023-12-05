@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>本项目用kubevela部署mall-swarm，mall-swarm是一套微服务商城系统，采用了 Spring Cloud 2021 &amp; Alibaba、Spring Boot 2.7、Oauth2、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术。 on Waiting For You</title>
+    <link>https://WFUing.github.io/tags/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E7%94%A8kubevela%E9%83%A8%E7%BD%B2mall-swarmmall-swarm%E6%98%AF%E4%B8%80%E5%A5%97%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8%E4%BA%86-spring-cloud-2021-alibabaspring-boot-2.7oauth2mybatiselasticsearchdockerkubernetes%E7%AD%89%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/</link>
+    <description>Recent content in 本项目用kubevela部署mall-swarm，mall-swarm是一套微服务商城系统，采用了 Spring Cloud 2021 &amp; Alibaba、Spring Boot 2.7、Oauth2、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术。 on Waiting For You</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 05 Dec 2023 10:27:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/%E6%9C%AC%E9%A1%B9%E7%9B%AE%E7%94%A8kubevela%E9%83%A8%E7%BD%B2mall-swarmmall-swarm%E6%98%AF%E4%B8%80%E5%A5%97%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8%E4%BA%86-spring-cloud-2021-alibabaspring-boot-2.7oauth2mybatiselasticsearchdockerkubernetes%E7%AD%89%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Kubevela 部署 mall-swarm 项目</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela-mall-swarm/</link>
+      <pubDate>Tue, 05 Dec 2023 10:27:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela-mall-swarm/</guid>
+      <description>kubevela</description>
+    </item>
+    
+  </channel>
+</rss>
