@@ -6,7 +6,16 @@
     <description>Recent content in kubevela on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 27 Nov 2023 16:11:01 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/kubevela/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Dec 2023 10:27:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/kubevela/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Kubevela 部署 mall-swarm 项目</title>
+      <link>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela-mall-swarm/</link>
+      <pubDate>Tue, 05 Dec 2023 10:27:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela-mall-swarm/</guid>
+      <description>本项目用kubevela部署mall-swarm，mall-swarm是一套微服务商城系统，采用了 Spring Cloud 2021 &amp;amp; Alibaba、Spring Boot 2.7、Oauth2、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术。</description>
+    </item>
+    
     <item>
       <title>Kubevela</title>
       <link>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela/</link>
