@@ -6,7 +6,16 @@
     <description>Recent content on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sat, 09 Dec 2023 10:14:52 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Dec 2023 13:21:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Language Server Protocol 的工作原理</title>
+      <link>https://WFUing.github.io/posts/tech/language/lsp/lsp-principle/</link>
+      <pubDate>Sun, 10 Dec 2023 13:21:20 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/language/lsp/lsp-principle/</guid>
+      <description>Language Server Protocol （语言服务器协议，简称 LSP）是微软于 2016 年提出的一套统一的通讯协议方案。该方案定义了一套编辑器或 IDE 与语言服务器之间使用的协议，该语言服务器提供自动完成、转到定义、查找所有引用等语言功能。</description>
+    </item>
+    
     <item>
       <title>数据仓库与知识发现概览</title>
       <link>https://WFUing.github.io/posts/tech/algorithm/data-warehouse-mining/overview/</link>
