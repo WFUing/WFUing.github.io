@@ -6,7 +6,20 @@
     <description>Recent content on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 05 Dec 2023 10:27:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Dec 2023 10:14:52 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据仓库与知识发现概览</title>
+      <link>https://WFUing.github.io/posts/tech/algorithm/data-warehouse-mining/overview/</link>
+      <pubDate>Sat, 09 Dec 2023 10:14:52 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/tech/algorithm/data-warehouse-mining/overview/</guid>
+      <description>What are data? What is knowledge? We can easily get a lot of data, while these data are meaningless to us. Then what is the thing we really need? Knowledge is something meaningful drawn from data. Knowledge is just what is useful to you.
+我们可以轻松地获取大量数据，而这些数据对我们来说毫无意义。那么我们真正需要的是什么？knowledge 是从 data 中提取出的有意义的信息。knowledge 就是对你有用的东西。
+We are drowning in data, but starving for knowledge!
+Solution: Data warehousing and data mining
+数据仓储和在线分析处理 从大型数据库中提取有趣的知识（规则、规律、模式、约束） What Is Data Mining? 数据挖掘（在数据库中发现知识，KDD）：从大型数据库中提取有趣（非平凡、隐含、先前未知且潜在有用）的信息或模式。</description>
+    </item>
+    
     <item>
       <title>使用 Kubevela 部署 mall-swarm 项目</title>
       <link>https://WFUing.github.io/posts/tech/architecture/distributed/k8s/kubevela-mall-swarm/</link>
