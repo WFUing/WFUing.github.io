@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>四、分类模型.md | Waiting For You</title>
+<meta name="keywords" content="">
+<meta name="description" content="四、分类模型 [toc]
+4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行
+假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
+概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
+根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1&#43;N_2}\sum_1&#43;\frac{N_2}{N_1&#43;N_2}\sum_2$，可以减少模型参数，缓解过拟合">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="四、分类模型.md" />
+<meta property="og:description" content="四、分类模型 [toc]
+4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行
+假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
+概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
+根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1&#43;N_2}\sum_1&#43;\frac{N_2}{N_1&#43;N_2}\sum_2$，可以减少模型参数，缓解过拟合" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-10-23T16:25:26+08:00" />
+<meta property="article:modified_time" content="2023-10-23T16:25:26+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="四、分类模型.md"/>
+<meta name="twitter:description" content="四、分类模型 [toc]
+4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行
+假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
+概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
+根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1&#43;N_2}\sum_1&#43;\frac{N_2}{N_1&#43;N_2}\sum_2$，可以减少模型参数，缓解过拟合"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Technology",
+      "item": "https://WFUing.github.io/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Algorithm",
+      "item": "https://WFUing.github.io/post/tech/algorithm/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Artificial Intelligence",
+      "item": "https://WFUing.github.io/post/tech/algorithm/ai/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "四、分类模型.md",
+      "item": "https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "四、分类模型.md",
+  "name": "四、分类模型.md",
+  "description": "四、分类模型 [toc]\n4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行\n假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\\sum_n{\\sigma(f(x_n) \\neq \\hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \\cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \\frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$\n概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。\n根据贝叶斯公式（Bayes\u0026rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \\frac{P(x|C_1)P(C_1)}{P(x)}=\\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)\u0026gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)+P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \\frac{1}{3}$、$P(C_2)= \\frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\\mu,\\sum{(x)}}=\\frac{1}{(2\\pi)^\\frac{D}{2}} \\frac{1}{|\\sum|^\\frac{1}{2}} {e^{-\\frac{1}{2}(x-\\mu)^T\\sum^{-1}{x-\\mu}}}$ 。正太分布有2个参数，即均值 $\\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\\sum$ （代表正态分布的离散程度），计算出均值 $\\mu$ 和协方差 $\\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \\mu^* $ 和 $ \\sum^* $ 。 根据某正态分布的均值 $\\mu$ 和协方差 $\\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\\mu,\\sum) = f_{\\mu,\\sum}{x_1} f_{\\mu,\\sum}{x_2}f_{\\mu,\\sum}{x_3}\u0026hellip;f_{\\mu,\\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\\mu^,\\sum^=\\arg\\max_{\\mu,\\sum}{L(\\mu,\\sum)}$，当然可以求导。直觉：$\\mu^=\\frac{1}{N}\\sum_{i=1}^{N}{x_i}$，$\\sum^ = \\frac{1}{N}\\sum_{i=1}^{N}(x_i-\\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\\sum = \\frac{N_1}{N_1+N_2}\\sum_1+\\frac{N_2}{N_1+N_2}\\sum_2$，可以减少模型参数，缓解过拟合",
+  "keywords": [
+    
+  ],
+  "articleBody": "四、分类模型 [toc]\n4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行\n假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\\sum_n{\\sigma(f(x_n) \\neq \\hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \\cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \\frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$\n概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。\n根据贝叶斯公式（Bayes’ theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \\frac{P(x|C_1)P(C_1)}{P(x)}=\\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)\u003e0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)+P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \\frac{1}{3}$、$P(C_2)= \\frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\\mu,\\sum{(x)}}=\\frac{1}{(2\\pi)^\\frac{D}{2}} \\frac{1}{|\\sum|^\\frac{1}{2}} {e^{-\\frac{1}{2}(x-\\mu)^T\\sum^{-1}{x-\\mu}}}$ 。正太分布有2个参数，即均值 $\\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\\sum$ （代表正态分布的离散程度），计算出均值 $\\mu$ 和协方差 $\\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \\mu^* $ 和 $ \\sum^* $ 。 根据某正态分布的均值 $\\mu$ 和协方差 $\\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\\mu,\\sum) = f_{\\mu,\\sum}{x_1} f_{\\mu,\\sum}{x_2}f_{\\mu,\\sum}{x_3}…f_{\\mu,\\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\\mu^,\\sum^=\\arg\\max_{\\mu,\\sum}{L(\\mu,\\sum)}$，当然可以求导。直觉：$\\mu^=\\frac{1}{N}\\sum_{i=1}^{N}{x_i}$，$\\sum^ = \\frac{1}{N}\\sum_{i=1}^{N}(x_i-\\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\\sum = \\frac{N_1}{N_1+N_2}\\sum_1+\\frac{N_2}{N_1+N_2}\\sum_2$，可以减少模型参数，缓解过拟合\n极大似然估计 极大似然估计指已知某个随机样本满足某种概率分布，但是其中具体的参数不清楚，然后通过若干次试验，观察其结果，利用结果推出参数的大概值。一般说来，在一次试验中如果事件A发生了，则认为此时的参数值会使得 $P(A|\\theta)$ 最大，极大似然估计法就是要这样估计出的参数值，使所选取的样本在被选的总体中出现的可能性为最大。\n求极大似然函数估计值的一般步骤：\n写出似然函数 对似然函数取对数，并整理 求导数 解似然函数 当共享协方差矩阵时，此时似然函数是$L(\\mu_1,\\mu_2,\\sum)=f_{\\mu_1,\\sum}(x_1)f_{\\mu_1,\\sum}(x_2)…f_{\\mu_1,\\sum}{(x_{N1}) \\times f_{\\mu_2,\\sum}(x_{N1+1})f_{\\mu_2,\\sum}(x_{N1+2})…f_{\\mu_2,\\sum}(x_{N1+N2})}$ ，其中 $N_1$ 为训练集中类别 $C_1$ 的样本数、$N_2$ 为训练集中类别 $C_2$ 的样本数。当只有两个类别、两个特征时，如果共享协方差矩阵，那最终得到的两个类别的分界线是直线（横纵轴是两个特征），这一点可以在下文解释。\n除了正态分布，还可以用其它的概率模型。 比如对于二值特征，可以使用伯努利分布（Bernouli Distribution）。 朴素贝叶斯分类：如果假设样本各个维度的数据是互相独立的，那这就是朴素贝叶斯分类器（Naive Bayes Classfier）。 Sigmoid 函数 由上我们可知，$P(C_1|x)= \\frac{P(x|C_1)P(C_1)}{P(x)}=\\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}=\\frac{1} {1+\\frac{P(x|C_2)P(C_2)}{P(x|C_1)P(C_1)}}$ ，令 $z=\\ln{\\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)}}$ ，则 $P(C_1|x) =\\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}=\\frac{1} {1+\\frac{P(x|C_2)P(C_2)}{P(x|C_1)P(C_1)}}=\\frac{1}{1+e^{-z}} = \\delta(z)$ ，这就是Sigmoid函数。\n如果共享协方差矩阵，经过运算可以得到 $z=w_T+b$ 的形式，其中常量 $w_T = (\\mu_1-\\mu_2)^T\\sum^{-1}$，常量 $b=-\\frac{1}{2}(\\mu_1)^T(\\sum_1)^{-1}\\mu_1+\\frac{1}{2}(\\mu_2)^T(\\sum_2)^{-1}\\mu_2+\\ln{\\frac{N_1}{N_2}}$ ，即形如 $P(C_1|x) = \\delta(w\\cdot x+b)$ 。\n4.3 分类模型之逻辑回归 逻辑回归 假设训练集如下图所示，有2个类别 $C_1$ 和 $C_2$ ，下图表格中的每列为一个样本。\n$x_1$ $x_2$ $x_3$ … $x_N$ $C_1$ $C_1$ $C_2$ … $C_1$ $\\hat{y_1} =1$ $\\hat{y_2} =1$ $\\hat{y_3} = 0$ … $\\hat{y_n} =1$ 例如，第一列表示样本 $x_1$ 的类别为 $C_1$ ，所以它标签是 $\\hat{y_1}$ 是1。\n模型定义 在分类（Classification）一节中，我们要找到一个模型 $P_{w,b}(C_1|x)$ ，如果 $P_{w,b}(C_1|x)\\geq0.5$ ，则 $x$ 属于类别 $C_1$ ，否则属于类别 $C_2$ 。可知 $P_{w,b}(C_1|x) = \\sigma(z)$ ，其中 $\\sigma(z)=\\frac{1}{1+e^{-z}}$ （Sigmoid Fuction），$z=w \\cdot x+b=\\sum^{N}{i=1}{w_ix_i+b} $ 。最终我们找到了模型 $f{w,b(x)}=\\sigma(\\sum^N_{i=1}{w_ix_i+b})$。 最终我们找到了模型 $f_{w,b(x)=\\sigma(\\sum^N_{i=1}{w_ix_i+b})}$ ，这其实就是逻辑回归（Logistic Regression）。\n损失函数 从模型 $ f_{w,b}(x)=P_{w,b}(C_1|x) $ 中取样得到训练集的概率为： $ L(w,b)=f_{w,b}(x_1)f_{w,b}(x_2)(1-f_{w,b}(x_3))…f_{w,b}(x_N) $ （似然函数）。\n我们要求出 $w^,b^=\\arg\\max_{w,b}L(w,b)$，等同于 $w^,b^=\\arg\\min_{w,b}-\\ln{L(w,b)}$ （对数似然方程，Log-likelihood Equation）。\n而 $ -\\ln{L(w,b)=-\\ln{f_{w,b}{x_1}} -\\ln{f_{w,b}{x_2}}} -\\ln{(1-f_{w,b}{x_3})}…$ ，其中 $ \\ln{f_{w,b}(x_N)=\\hat{y^N}\\ln{f_{w,b}{(x^N)}} + (1-\\hat{y^N})\\ln{(1-f_{w,b}{(x^N)})}} $ ，所以 $ -\\ln{L(w,b)=\\sum^N_{n=1}{-[\\hat y^N\\ln{f_{w,b}(x^N)}+(1-\\hat y^n)\\ln(1-f_{w,b}(x^N))]}} $ ，式中N用来选择某个样本。\n假设有两个伯努利分布 $p$ 和 $q$ ，在 $p$ 中有 $p(x=1)=\\hat {y^N}$ ，$p(x=0)=1-\\hat{y^N}$ ，在 $q$ 中有 $q(x=1)=f(x_N)$ ，$q(x=0)=1-f(x_N)$ ，则 $p$ 和 $q$ 的交叉熵（Cross Entropy，代表两个分布有多接近，两个分布一摸一样时交叉熵为0），为 $H(p,q)=-\\sum_x{p(x)\\ln(q(x))}$ 。所以损失函数 $L(f)=\\sum^N_{n=1}{C(f(x_n),\\hat{y^N})}$ ，其中 $C(f(x_N),\\hat{y^N})=-[\\hat y^N\\ln{f_{w,b}(x^N)}+(1-\\hat y^n)\\ln(1-f_{w,b}(x^N))]$ ，即损失函数为所有样本的 $f(x_N)$ 与 $\\hat{y_N}$ 的交叉熵之和，式中 $N$ 用来选择某个样本。\n梯度 $ \\frac{-\\ln{L(w,b)}}{\\sigma_{w_i}} = \\sum^N_{n=1}{-(\\hat{y^n}-f_{w,b}{(x^n)})x_i^n} $ ，其中 $i$ 用来选择数据的某个维度， $n$ 用来选择某个样本， $ N $ 为数据集中样本个数。该式表明，预测值与label相差越大时，参数更新的步幅越大，这符合常理。\n逻辑回归 VS 线性回归 模型 逻辑函数模型比线性回归模型多了一个sigmoid函数。逻辑函数输出是[0,1]，而线性回归的输出是任意值。\n损失函数 逻辑回归模型使用的数据集中label的值必须是0或1，而线性回归模型训练集中label的值是真实值。\n图中的 $\\frac{1}{2}$ 是为了方便求导 。这里有一个问题，为什么逻辑回归模型中不适用Square Error呢？这个问题的答案见下文\n梯度 逻辑回归模型和线性回归模型的梯度公式一样\n为什么逻辑回归模型中不使用Square Error 由上图可知，当label的值为1时，不管预测值是0还是1，梯度都为0，当label值为0时也是这样。\n如下图所示，如果在逻辑回归中使用Square Error，当梯度接近0时，我们无法判断目前与最优解的距离，也就无法调节学习率；并且在大多数时候梯度都是接近0的，收敛速度会很慢。\n判别模型 VS 生成模型 形式对比 逻辑回归是一个判别模型（Discriminative Model），用正态分布描述后验概率（Posterior Probability）则是生成模型（Generative Model）。如果生成模型中公用协方差矩阵，那两个模型/函数集其实是一样的，都是 $ P(C_1|x)=\\sigma(w \\cdot x+b) $ 。因为做了不同的假，即使是使用同一个数据集、同一个模型，找到的函数是不一样的。\n优劣对比 如果现在数据很少，当假设了概率分布以后，就可以需要更少的数据用于训练，受数据影响较小；而判别模型就只根据数据来学习，易受数据影响，需要更多数据 当假设了概率分布后，生成模型受数据影响小，对噪声的鲁棒性更强 对于生成模型来讲，先验的和基于类别的概率（Prors and class-dependent probabilities），即 $ P(C_1) $ 和 $ P(C_2) $ ，可以从不同的来源估计得到。以语音识别为例，如果用生成模型，可能并不需要声音的数据，网上的文本也可以用来估计某段文本出现的概率 多分类（Multi-class Classification） 以3个类别 $C_1、C2和 C3$ 为例，分别对应参数$w_1、b_1、W_2、b_2、W_3、b_3$，即$z_1=w_1 \\cdot x+b_1、z_2=w_2 \\cdot x+b_2、z_3=w_3 \\cdot x+b_3$\nSoftmax 使用softmax（$y_i=\\frac{e_{z_i}}{\\sum^c_{j=1}{e_{z_j}}}$）\nsoftmax公式中为什么要用$e$？这是由原因的/可解释的，可以看下PRML，也可以搜一下最大熵\n最大熵（Maximum Entropy）其实也是一种分类器，和逻辑回归一样，只是从信息论的角度来看\n损失函数 计算预测值$y$和$\\hat y$都是一个向量，即$-\\sum^3_{i=1}{{\\hat y}_i\\ln{y_i}}$\n这时需要使用one-hot编码：如果$x\\in C_1$，则$y=\\begin{bmatrix} 1\\ 0\\ 0\\ \\end{bmatrix}$；如果$x\\in C_1$，则$y=\\begin{bmatrix} 0\\ 1\\ 0\\ \\end{bmatrix}$；如果$x\\in C_1$，则$y=\\begin{bmatrix} 0\\ 0\\ 1\\ \\end{bmatrix}$。\n梯度 和逻辑回归的思路一样。\n逻辑回归的局限性 如下图所示，假如有2个类别，数据集中有4个样本，每个样本有2维特征，将这4个样本画在图上。\n如下图所示，假如用逻辑回归做分类，即$y=\\sigma(z)=\\sigma(w_1\\cdot x_1+w_2\\cdot x_2+b)$，我们找不到一个可以把“蓝色”样本和“红色”样本间隔开的函数。\n假如一定要用逻辑回归，那我们可以怎么办呢？我们可以尝试特征变换（Feature Transformation）。\n特征变换（Feature Transformation） 在上面的例子中，我们并不能找到一个能将蓝色样本和红色样本间隔开的函数。如下图所示，我们可以把原始的数据/特征转换到另外一个空间，在这个新的特征空间中，找到一个函数将“蓝色”样本和“红色”样本间隔开。比如把原始的两维特征变换为$\\begin{bmatrix} 0\\ 0\\ \\end{bmatrix} 和 \\begin{bmatrix} 1\\ 1\\ \\end{bmatrix}$ 的距离，在这个新的特征空间，“蓝色”样本和“红色”样本是可分的。\n但有一个问题是，我们并不一定知道怎么进行特征变换。或者说我们想让机器自己学会特征变换，这可以通过级联逻辑回归模型实现，即把多个逻辑回归模型连接起来，如下图所示。下图中有3个逻辑回归模型，根据颜色称它们为小蓝、小绿和小红。小蓝和小绿的作用是分别将原始的2维特征变换为新的特征$x_1’和x_2’$，小红的作用是在新的特征空间$\\begin{bmatrix} x_1’\\ x_2’\\ \\end{bmatrix}$上将样本分类。\n如下图所示，举一个例子。小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1’$越大；小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1’$越小。小蓝和小绿将特征映射到新的特征空间$\\begin{bmatrix} x_1’\\ x_2’\\ \\end{bmatrix}$中，结果见下图右下角，然后小红就能找到一个函数将“蓝色”样本和“红色”样本间隔开。\n神经网络（Neural Network） 假如把上例中的一个逻辑回归叫做神经元（Neuron），那我们就形成了一个神经网络。\nROC 在信号检测理论中，接收者操作特征曲线(receiver operating characteristic curve，或者叫ROC曲线)是坐标图式的分析工具，用于 (1) 选择最佳的信号侦测模型、舍弃次佳的模型。 (2) 在同一模型中设定最佳阈值。在做决策时，ROC分析能不受成本／效益的影响，给出客观中立的建议。\nROC曲线首先是由二战中的电子工程师和雷达工程师发明的，用来侦测战场上的敌军载具(飞机、船舰)，也就是信号检测理论。之后很快就被引入了心理学来进行信号的知觉检测。数十年来，ROC分析被用于医学、无线电、生物学、犯罪心理学领域中，而且最近在机器学习(machine learning)和数据挖掘(data mining)领域也得到了很好的发展。\n术语\n阳性(P, positive) 阴性(N, Negative) 真阳性 (TP, true positive) 正确的肯定。又称：命中 (hit) 真阴性 (TN, true negative) 正确的否定。又称：正确拒绝 (correct rejection) 伪阳性 (FP, false positive) 错误的肯定，又称：假警报 (false alarm)，第一型错误伪阴性 (FN, false negative) 错误的否定，又称：未命中 (miss)，第二型错误 真阳性率 (TPR, true positive rate) 又称：命中率 (hit rate)、敏感度(sensitivity) TPR = TP / P = TP / (TP+FN) 伪阳性率(FPR, false positive rate) 又称：错误命中率，假警报率 (false alarm rate) FPR = FP / N = FP / (FP + TN) 准确度 (ACC, accuracy) ACC = (TP + TN) / (P + N) 即：(真阳性+真阴性) / 总样本数真阴性率 (TNR) 又称：特异度 (SPC, specificity) SPC = TN / N = TN / (FP + TN) = 1 - FPR 阳性预测值 (PPV) PPV = TP / (TP + FP) 阴性预测值 (NPV) NPV = TN / (TN + FN) 假发现率 (FDR) FDR = FP / (FP + TP) ",
+  "wordCount" : "594",
+  "inLanguage": "zh",
+  "datePublished": "2023-10-23T16:25:26+08:00",
+  "dateModified": "2023-10-23T16:25:26+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "WFUing"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Waiting For You",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://WFUing.github.io/img/logo.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                    <span>🔍</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/" title="HOME">
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/post" title="BLOGS">
+                    <span>BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                    <span>ARCHIVE</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                    <span>🙋🏻‍♂️</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/algorithm/">Algorithm</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/algorithm/ai/">Artificial Intelligence</a></div>
+    <h1 class="post-title">
+      四、分类模型.md
+    </h1>
+    <div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>594字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>3分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span>
+        &nbsp;|&nbsp;标签: &nbsp;
+
+        
+        
+        
+        
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_page_pv">
+            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+        </span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%9b%9b%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b" aria-label="四、分类模型">四、分类模型</a><ul>
+                            
+                    <li>
+                        <a href="#41-%e5%88%86%e7%b1%bb%e7%ae%80%e4%bb%8b%e5%8f%8a%e5%85%b6%e4%b8%8e%e5%9b%9e%e5%bd%92%e7%9a%84%e5%8c%ba%e5%88%ab" aria-label="4.1 分类简介及其与回归的区别">4.1 分类简介及其与回归的区别</a></li>
+                    <li>
+                        <a href="#%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b%e5%ba%94%e7%94%a8%e6%a1%88%e4%be%8bclassification-cases" aria-label="分类模型应用案例（Classification Cases）">分类模型应用案例（Classification Cases）</a></li>
+                    <li>
+                        <a href="#%e6%8a%8a%e5%88%86%e7%b1%bb%e5%bd%93%e6%88%90%e5%9b%9e%e5%bd%92%e5%8e%bb%e5%81%9a" aria-label="把分类当成回归去做">把分类当成回归去做</a></li>
+                    <li>
+                        <a href="#%e7%90%86%e6%83%b3%e6%9b%bf%e4%bb%a3%e6%96%b9%e6%a1%88ideal-alternatives" aria-label="理想替代方案（Ideal Alternatives）">理想替代方案（Ideal Alternatives）</a></li>
+                    <li>
+                        <a href="#42-%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b%e6%8c%87%e6%a6%82%e7%8e%87%e7%94%9f%e6%88%90%e6%a8%a1%e5%9e%8b" aria-label="4.2 分类模型指概率生成模型">4.2 分类模型指概率生成模型</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%b4%9d%e5%8f%b6%e6%96%af%e5%85%ac%e5%bc%8f" aria-label="贝叶斯公式">贝叶斯公式</a></li>
+                    <li>
+                        <a href="#%e5%85%a8%e6%a6%82%e7%8e%87%e5%85%ac%e5%bc%8f" aria-label="全概率公式">全概率公式</a></li>
+                    <li>
+                        <a href="#%e6%a6%82%e7%8e%87%e7%94%9f%e6%88%90%e6%a8%a1%e5%9e%8bprobalitity-genetative-model" aria-label="概率生成模型（Probalitity Genetative Model）">概率生成模型（Probalitity Genetative Model）</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%90%86%e8%ae%ba%e4%b8%8e%e5%ae%9a%e4%b9%89" aria-label="理论与定义">理论与定义</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%8d%8f%e6%96%b9%e5%b7%ae%e7%9f%a9%e9%98%b5%e5%85%b1%e4%ba%ab" aria-label="协方差矩阵共享">协方差矩阵共享</a></li>
+                    <li>
+                        <a href="#%e6%9e%81%e5%a4%a7%e4%bc%bc%e7%84%b6%e4%bc%b0%e8%ae%a1" aria-label="极大似然估计">极大似然估计</a></li>
+                    <li>
+                        <a href="#sigmoid-%e5%87%bd%e6%95%b0" aria-label="Sigmoid 函数">Sigmoid 函数</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#43-%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b%e4%b9%8b%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92" aria-label="4.3 分类模型之逻辑回归">4.3 分类模型之逻辑回归</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92" aria-label="逻辑回归">逻辑回归</a></li>
+                    <li>
+                        <a href="#%e6%a8%a1%e5%9e%8b%e5%ae%9a%e4%b9%89" aria-label="模型定义">模型定义</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0" aria-label="损失函数">损失函数</a></li>
+                    <li>
+                        <a href="#%e6%a2%af%e5%ba%a6" aria-label="梯度">梯度</a></li>
+                    <li>
+                        <a href="#%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92-vs-%e7%ba%bf%e6%80%a7%e5%9b%9e%e5%bd%92" aria-label="逻辑回归 VS 线性回归">逻辑回归 VS 线性回归</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%a8%a1%e5%9e%8b" aria-label="模型">模型</a></li>
+                    <li>
+                        <a href="#%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0-1" aria-label="损失函数">损失函数</a></li>
+                    <li>
+                        <a href="#%e6%a2%af%e5%ba%a6-1" aria-label="梯度">梯度</a></li>
+                    <li>
+                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92%e6%a8%a1%e5%9e%8b%e4%b8%ad%e4%b8%8d%e4%bd%bf%e7%94%a8square-error" aria-label="为什么逻辑回归模型中不使用Square Error">为什么逻辑回归模型中不使用Square Error</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%88%a4%e5%88%ab%e6%a8%a1%e5%9e%8b-vs-%e7%94%9f%e6%88%90%e6%a8%a1%e5%9e%8b" aria-label="判别模型 VS 生成模型">判别模型 VS 生成模型</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%bd%a2%e5%bc%8f%e5%af%b9%e6%af%94" aria-label="形式对比">形式对比</a></li>
+                    <li>
+                        <a href="#%e4%bc%98%e5%8a%a3%e5%af%b9%e6%af%94" aria-label="优劣对比">优劣对比</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%a4%9a%e5%88%86%e7%b1%bbmulti-class-classification" aria-label="多分类（Multi-class Classification）">多分类（Multi-class Classification）</a><ul>
+                            
+                    <li>
+                        <a href="#softmax" aria-label="Softmax">Softmax</a></li>
+                    <li>
+                        <a href="#%e6%8d%9f%e5%a4%b1%e5%87%bd%e6%95%b0-2" aria-label="损失函数">损失函数</a></li>
+                    <li>
+                        <a href="#%e6%a2%af%e5%ba%a6-2" aria-label="梯度">梯度</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e9%80%bb%e8%be%91%e5%9b%9e%e5%bd%92%e7%9a%84%e5%b1%80%e9%99%90%e6%80%a7" aria-label="逻辑回归的局限性">逻辑回归的局限性</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%89%b9%e5%be%81%e5%8f%98%e6%8d%a2feature-transformation" aria-label="特征变换（Feature Transformation）">特征变换（Feature Transformation）</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9cneural-network" aria-label="神经网络（Neural Network）">神经网络（Neural Network）</a></li>
+                    <li>
+                        <a href="#roc" aria-label="ROC">ROC</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="四分类模型">四、分类模型<a hidden class="anchor" aria-hidden="true" href="#四分类模型">#</a></h2>
+<p>[toc]</p>
+<h3 id="41-分类简介及其与回归的区别">4.1 分类简介及其与回归的区别<a hidden class="anchor" aria-hidden="true" href="#41-分类简介及其与回归的区别">#</a></h3>
+<h3 id="分类模型应用案例classification-cases">分类模型应用案例（Classification Cases）<a hidden class="anchor" aria-hidden="true" href="#分类模型应用案例classification-cases">#</a></h3>
+<ul>
+<li>信用评分（Credit Scoring）
+<ul>
+<li>输入：收入、储蓄、职业、年龄、信用历史等等</li>
+<li>输出：是否贷款</li>
+</ul>
+</li>
+<li>医疗诊断（Medical Diagnosis）
+<ul>
+<li>输入：现在症状、年龄、性别、病史</li>
+<li>输出：哪种疾病</li>
+</ul>
+</li>
+<li>手写文字识别（Handwritten Character Recognition）
+<ul>
+<li>输入：文字图片</li>
+<li>输出：是哪一个汉字</li>
+</ul>
+</li>
+<li>人脸识别（Face Recognition）
+<ul>
+<li>输入：面部图片</li>
+<li>输出：是哪个人</li>
+</ul>
+</li>
+</ul>
+<h3 id="把分类当成回归去做">把分类当成回归去做<a hidden class="anchor" aria-hidden="true" href="#把分类当成回归去做">#</a></h3>
+<p>不行</p>
+<ul>
+<li>假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。
+<ul>
+<li><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220110213105315.png" alt="image-20220110213105315"  />
+</li>
+</ul>
+</li>
+<li>假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。</li>
+</ul>
+<h3 id="理想替代方案ideal-alternatives">理想替代方案（Ideal Alternatives）<a hidden class="anchor" aria-hidden="true" href="#理想替代方案ideal-alternatives">#</a></h3>
+<ul>
+<li>模型：模型可以根据特征判断类型，输入是特征，输出是类别</li>
+<li>损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。</li>
+<li>如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM）</li>
+</ul>
+<h3 id="42-分类模型指概率生成模型">4.2 分类模型指概率生成模型<a hidden class="anchor" aria-hidden="true" href="#42-分类模型指概率生成模型">#</a></h3>
+<h4 id="贝叶斯公式">贝叶斯公式<a hidden class="anchor" aria-hidden="true" href="#贝叶斯公式">#</a></h4>
+<ul>
+<li>$P(A \cap B) = P(A)P(B|A) =  P(B)P(A|B)$</li>
+<li>$P(A|B) = \frac{P(A)P(B|A)}{P(B)}$</li>
+</ul>
+<h4 id="全概率公式">全概率公式<a hidden class="anchor" aria-hidden="true" href="#全概率公式">#</a></h4>
+<p>$P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$</p>
+<h4 id="概率生成模型probalitity-genetative-model">概率生成模型（Probalitity Genetative Model）<a hidden class="anchor" aria-hidden="true" href="#概率生成模型probalitity-genetative-model">#</a></h4>
+<h5 id="理论与定义">理论与定义<a hidden class="anchor" aria-hidden="true" href="#理论与定义">#</a></h5>
+<p>假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。</p>
+<ol>
+<li>根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。</li>
+<li>概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)+P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。</li>
+<li>可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。</li>
+<li>要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。<strong>该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。</strong></li>
+<li>正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。</li>
+<li>实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以<strong>找到取样得到训练集特征的概率最大的那个正态分布</strong>，假设其均值和协方差矩阵为  $ \mu^* $  和  $ \sum^* $  。
+<ol>
+<li>根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $  ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。</li>
+<li>$\mu^<em>,\sum^</em>=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^<em>=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^</em> = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$</li>
+</ol>
+</li>
+</ol>
+<h4 id="协方差矩阵共享">协方差矩阵共享<a hidden class="anchor" aria-hidden="true" href="#协方差矩阵共享">#</a></h4>
+<p>每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1+N_2}\sum_1+\frac{N_2}{N_1+N_2}\sum_2$，可以减少模型参数，缓解过拟合</p>
+<h4 id="极大似然估计">极大似然估计<a hidden class="anchor" aria-hidden="true" href="#极大似然估计">#</a></h4>
+<p>极大似然估计指已知某个随机样本满足某种概率分布，但是其中具体的参数不清楚，然后通过若干次试验，观察其结果，利用结果推出参数的大概值。一般说来，在一次试验中如果事件A发生了，则认为此时的参数值会使得 $P(A|\theta)$ 最大，极大似然估计法就是要这样估计出的参数值，使所选取的样本在被选的总体中出现的可能性为最大。</p>
+<p>求极大似然函数估计值的一般步骤：</p>
+<ol>
+<li>写出似然函数</li>
+<li>对似然函数取对数，并整理</li>
+<li>求导数</li>
+<li>解似然函数</li>
+</ol>
+<p>当共享协方差矩阵时，此时似然函数是$L(\mu_1,\mu_2,\sum)=f_{\mu_1,\sum}(x_1)f_{\mu_1,\sum}(x_2)&hellip;f_{\mu_1,\sum}{(x_{N1}) \times f_{\mu_2,\sum}(x_{N1+1})f_{\mu_2,\sum}(x_{N1+2})&hellip;f_{\mu_2,\sum}(x_{N1+N2})}$ ，其中 $N_1$ 为训练集中类别 $C_1$ 的样本数、$N_2$ 为训练集中类别 $C_2$ 的样本数。当只有两个类别、两个特征时，如果共享协方差矩阵，那最终得到的两个类别的分界线是直线（横纵轴是两个特征），这一点可以在下文解释。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/v2-97436b02d3c5c7702959cc388e71f217_r.jpg" alt="preview"  />
+</p>
+<ul>
+<li>除了正态分布，还可以用其它的概率模型。 比如对于二值特征，可以使用伯努利分布（Bernouli Distribution）。</li>
+<li>朴素贝叶斯分类：如果假设样本各个维度的数据是互相独立的，那这就是朴素贝叶斯分类器（Naive Bayes Classfier）。</li>
+</ul>
+<h4 id="sigmoid-函数">Sigmoid 函数<a hidden class="anchor" aria-hidden="true" href="#sigmoid-函数">#</a></h4>
+<p>由上我们可知，$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}=\frac{1} {1+\frac{P(x|C_2)P(C_2)}{P(x|C_1)P(C_1)}}$ ，令 $z=\ln{\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)}}$ ，则 $P(C_1|x) =\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}=\frac{1} {1+\frac{P(x|C_2)P(C_2)}{P(x|C_1)P(C_1)}}=\frac{1}{1+e^{-z}} = \delta(z)$ ，这就是Sigmoid函数。</p>
+<p>如果共享协方差矩阵，经过运算可以得到 $z=w_T+b$ 的形式，其中常量 $w_T = (\mu_1-\mu_2)^T\sum^{-1}$，常量 $b=-\frac{1}{2}(\mu_1)^T(\sum_1)^{-1}\mu_1+\frac{1}{2}(\mu_2)^T(\sum_2)^{-1}\mu_2+\ln{\frac{N_1}{N_2}}$ ，即形如 $P(C_1|x) = \delta(w\cdot x+b)$ 。</p>
+<h3 id="43-分类模型之逻辑回归">4.3 分类模型之逻辑回归<a hidden class="anchor" aria-hidden="true" href="#43-分类模型之逻辑回归">#</a></h3>
+<h4 id="逻辑回归">逻辑回归<a hidden class="anchor" aria-hidden="true" href="#逻辑回归">#</a></h4>
+<p>假设训练集如下图所示，有2个类别 $C_1$ 和 $C_2$ ，下图表格中的每列为一个样本。</p>
+<table>
+<thead>
+<tr>
+<th>$x_1$</th>
+<th>$x_2$</th>
+<th>$x_3$</th>
+<th>&hellip;</th>
+<th>$x_N$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_1$</td>
+<td>$C_1$</td>
+<td>$C_2$</td>
+<td>&hellip;</td>
+<td>$C_1$</td>
+</tr>
+<tr>
+<td>$\hat{y_1} =1$</td>
+<td>$\hat{y_2} =1$</td>
+<td>$\hat{y_3} = 0$</td>
+<td>&hellip;</td>
+<td>$\hat{y_n} =1$</td>
+</tr>
+</tbody>
+</table>
+<p>例如，第一列表示样本 $x_1$ 的类别为 $C_1$ ，所以它标签是 $\hat{y_1}$ 是1。</p>
+<h4 id="模型定义">模型定义<a hidden class="anchor" aria-hidden="true" href="#模型定义">#</a></h4>
+<p>在分类（Classification）一节中，我们要找到一个模型 $P_{w,b}(C_1|x)$ ，如果 $P_{w,b}(C_1|x)\geq0.5$ ，则 $x$ 属于类别 $C_1$ ，否则属于类别 $C_2$ 。可知 $P_{w,b}(C_1|x) = \sigma(z)$ ，其中 $\sigma(z)=\frac{1}{1+e^{-z}}$ （Sigmoid Fuction），$z=w \cdot x+b=\sum^{N}<em>{i=1}{w_ix_i+b} $ 。最终我们找到了模型 $f</em>{w,b(x)}=\sigma(\sum^N_{i=1}{w_ix_i+b})$。 最终我们找到了模型  $f_{w,b(x)=\sigma(\sum^N_{i=1}{w_ix_i+b})}$ ，这其实就是逻辑回归（Logistic Regression）。</p>
+<h3 id="损失函数">损失函数<a hidden class="anchor" aria-hidden="true" href="#损失函数">#</a></h3>
+<p>从模型 $ f_{w,b}(x)=P_{w,b}(C_1|x) $ 中取样得到训练集的概率为： $ L(w,b)=f_{w,b}(x_1)f_{w,b}(x_2)(1-f_{w,b}(x_3))&hellip;f_{w,b}(x_N) $ （似然函数）。</p>
+<p>我们要求出  $w^<em>,b^</em>=\arg\max_{w,b}L(w,b)$，等同于  $w^<em>,b^</em>=\arg\min_{w,b}-\ln{L(w,b)}$ （对数似然方程，Log-likelihood Equation）。</p>
+<p>而 $ -\ln{L(w,b)=-\ln{f_{w,b}{x_1}} -\ln{f_{w,b}{x_2}}} -\ln{(1-f_{w,b}{x_3})}&hellip;$ ，其中 $ \ln{f_{w,b}(x_N)=\hat{y^N}\ln{f_{w,b}{(x^N)}} + (1-\hat{y^N})\ln{(1-f_{w,b}{(x^N)})}} $ ，所以 $ -\ln{L(w,b)=\sum^N_{n=1}{-[\hat y^N\ln{f_{w,b}(x^N)}+(1-\hat y^n)\ln(1-f_{w,b}(x^N))]}} $ ，式中N用来选择某个样本。</p>
+<p>假设有两个伯努利分布 $p$ 和 $q$ ，在 $p$ 中有 $p(x=1)=\hat {y^N}$ ，$p(x=0)=1-\hat{y^N}$ ，在  $q$ 中有  $q(x=1)=f(x_N)$ ，$q(x=0)=1-f(x_N)$ ，则 $p$ 和 $q$ 的交叉熵（Cross Entropy，代表两个分布有多接近，两个分布一摸一样时交叉熵为0），为 $H(p,q)=-\sum_x{p(x)\ln(q(x))}$ 。所以损失函数 $L(f)=\sum^N_{n=1}{C(f(x_n),\hat{y^N})}$ ，其中 $C(f(x_N),\hat{y^N})=-[\hat y^N\ln{f_{w,b}(x^N)}+(1-\hat y^n)\ln(1-f_{w,b}(x^N))]$ ，即损失函数为所有样本的 $f(x_N)$ 与 $\hat{y_N}$ 的交叉熵之和，式中 $N$ 用来选择某个样本。</p>
+<h3 id="梯度">梯度<a hidden class="anchor" aria-hidden="true" href="#梯度">#</a></h3>
+<p>$ \frac{-\ln{L(w,b)}}{\sigma_{w_i}} = \sum^N_{n=1}{-(\hat{y^n}-f_{w,b}{(x^n)})x_i^n} $ ，其中 $i$ 用来选择数据的某个维度， $n$ 用来选择某个样本， $ N $ 为数据集中样本个数。该式表明，预测值与label相差越大时，参数更新的步幅越大，这符合常理。</p>
+<h3 id="逻辑回归-vs-线性回归">逻辑回归 VS 线性回归<a hidden class="anchor" aria-hidden="true" href="#逻辑回归-vs-线性回归">#</a></h3>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114095456941.png" alt="image-20220114095456941"  />
+</p>
+<h4 id="模型">模型<a hidden class="anchor" aria-hidden="true" href="#模型">#</a></h4>
+<p>逻辑函数模型比线性回归模型多了一个sigmoid函数。逻辑函数输出是[0,1]，而线性回归的输出是任意值。</p>
+<h4 id="损失函数-1">损失函数<a hidden class="anchor" aria-hidden="true" href="#损失函数-1">#</a></h4>
+<p>逻辑回归模型使用的数据集中label的值必须是0或1，而线性回归模型训练集中label的值是真实值。</p>
+<p>图中的 $\frac{1}{2}$ 是为了方便求导 。这里有一个问题，为什么逻辑回归模型中不适用Square Error呢？这个问题的答案见下文</p>
+<h4 id="梯度-1">梯度<a hidden class="anchor" aria-hidden="true" href="#梯度-1">#</a></h4>
+<p>逻辑回归模型和线性回归模型的梯度公式一样</p>
+<h4 id="为什么逻辑回归模型中不使用square-error">为什么逻辑回归模型中不使用Square Error<a hidden class="anchor" aria-hidden="true" href="#为什么逻辑回归模型中不使用square-error">#</a></h4>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114100921433.png" alt="image-20220114100921433"  />
+</p>
+<p>由上图可知，当label的值为1时，不管预测值是0还是1，梯度都为0，当label值为0时也是这样。</p>
+<p>如下图所示，如果在逻辑回归中使用Square Error，当梯度接近0时，我们无法判断目前与最优解的距离，也就无法调节学习率；并且在大多数时候梯度都是接近0的，收敛速度会很慢。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114100950925.png" alt="image-20220114100950925"  />
+</p>
+<h3 id="判别模型-vs-生成模型">判别模型 VS 生成模型<a hidden class="anchor" aria-hidden="true" href="#判别模型-vs-生成模型">#</a></h3>
+<h4 id="形式对比">形式对比<a hidden class="anchor" aria-hidden="true" href="#形式对比">#</a></h4>
+<p>逻辑回归是一个判别模型（Discriminative Model），用正态分布描述后验概率（Posterior Probability）则是生成模型（Generative Model）。如果生成模型中公用协方差矩阵，那两个模型/函数集其实是一样的，都是 $ P(C_1|x)=\sigma(w \cdot x+b) $ 。因为做了不同的假，即使是使用同一个数据集、同一个模型，找到的函数是不一样的。</p>
+<h4 id="优劣对比">优劣对比<a hidden class="anchor" aria-hidden="true" href="#优劣对比">#</a></h4>
+<ul>
+<li>如果现在数据很少，当假设了概率分布以后，就可以需要更少的数据用于训练，受数据影响较小；而判别模型就只根据数据来学习，易受数据影响，需要更多数据</li>
+<li>当假设了概率分布后，生成模型受数据影响小，对噪声的鲁棒性更强</li>
+<li>对于生成模型来讲，先验的和基于类别的概率（Prors and class-dependent probabilities），即 $ P(C_1) $ 和 $ P(C_2) $ ，可以从不同的来源估计得到。以语音识别为例，如果用生成模型，可能并不需要声音的数据，网上的文本也可以用来估计某段文本出现的概率</li>
+</ul>
+<h3 id="多分类multi-class-classification">多分类（Multi-class Classification）<a hidden class="anchor" aria-hidden="true" href="#多分类multi-class-classification">#</a></h3>
+<p>以3个类别 $C_1、C2和 C3$ 为例，分别对应参数$w_1、b_1、W_2、b_2、W_3、b_3$，即$z_1=w_1 \cdot x+b_1、z_2=w_2 \cdot x+b_2、z_3=w_3 \cdot x+b_3$</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119141011956.png" alt="image-20220119141011956"  />
+</p>
+<h4 id="softmax">Softmax<a hidden class="anchor" aria-hidden="true" href="#softmax">#</a></h4>
+<p>使用softmax（$y_i=\frac{e_{z_i}}{\sum^c_{j=1}{e_{z_j}}}$）</p>
+<p>softmax公式中为什么要用$e$？这是由原因的/可解释的，可以看下PRML，也可以搜一下最大熵</p>
+<p>最大熵（Maximum Entropy）其实也是一种分类器，和逻辑回归一样，只是从信息论的角度来看</p>
+<img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119141353415.png" alt="image-20220119141353415"  />
+<h4 id="损失函数-2">损失函数<a hidden class="anchor" aria-hidden="true" href="#损失函数-2">#</a></h4>
+<p>计算预测值$y$和$\hat y$都是一个向量，即$-\sum^3_{i=1}{{\hat y}_i\ln{y_i}}$</p>
+<p>这时需要使用one-hot编码：如果$x\in C_1$，则$y=\begin{bmatrix}
+1\
+0\
+0\
+\end{bmatrix}$；如果$x\in C_1$，则$y=\begin{bmatrix}
+0\
+1\
+0\
+\end{bmatrix}$；如果$x\in C_1$，则$y=\begin{bmatrix}
+0\
+0\
+1\
+\end{bmatrix}$。</p>
+<h4 id="梯度-2">梯度<a hidden class="anchor" aria-hidden="true" href="#梯度-2">#</a></h4>
+<p>和逻辑回归的思路一样。</p>
+<h3 id="逻辑回归的局限性">逻辑回归的局限性<a hidden class="anchor" aria-hidden="true" href="#逻辑回归的局限性">#</a></h3>
+<p>如下图所示，假如有2个类别，数据集中有4个样本，每个样本有2维特征，将这4个样本画在图上。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119143941226.png" alt="image-20220119143941226"  />
+</p>
+<p>如下图所示，假如用逻辑回归做分类，即$y=\sigma(z)=\sigma(w_1\cdot x_1+w_2\cdot x_2+b)$，我们找不到一个可以把“蓝色”样本和“红色”样本间隔开的函数。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144059137.png" alt="image-20220119144059137"  />
+</p>
+<p>假如一定要用逻辑回归，那我们可以怎么办呢？我们可以尝试特征变换（Feature Transformation）。</p>
+<h4 id="特征变换feature-transformation">特征变换（Feature Transformation）<a hidden class="anchor" aria-hidden="true" href="#特征变换feature-transformation">#</a></h4>
+<p>在上面的例子中，我们并不能找到一个能将蓝色样本和红色样本间隔开的函数。如下图所示，我们可以把原始的数据/特征转换到另外一个空间，在这个新的特征空间中，找到一个函数将“蓝色”样本和“红色”样本间隔开。比如把原始的两维特征变换为$\begin{bmatrix}
+0\
+0\
+\end{bmatrix} 和 \begin{bmatrix}
+1\
+1\
+\end{bmatrix}$ 的距离，在这个新的特征空间，“蓝色”样本和“红色”样本是可分的。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144323062.png" alt="image-20220119144323062"  />
+</p>
+<p>但有一个问题是，我们并不一定知道怎么进行特征变换。或者说我们想让机器自己学会特征变换，这可以通过级联逻辑回归模型实现，即把多个逻辑回归模型连接起来，如下图所示。下图中有3个逻辑回归模型，根据颜色称它们为小蓝、小绿和小红。小蓝和小绿的作用是分别将原始的2维特征变换为新的特征$x_1&rsquo;和x_2&rsquo;$，小红的作用是在新的特征空间$\begin{bmatrix}
+x_1&rsquo;\
+x_2&rsquo;\
+\end{bmatrix}$上将样本分类。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144455564.png" alt="image-20220119144455564"  />
+</p>
+<p>如下图所示，举一个例子。小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1&rsquo;$越大；小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1&rsquo;$越小。小蓝和小绿将特征映射到新的特征空间$\begin{bmatrix}
+x_1&rsquo;\
+x_2&rsquo;\
+\end{bmatrix}$中，结果见下图右下角，然后小红就能找到一个函数将“蓝色”样本和“红色”样本间隔开。</p>
+<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144927053.png" alt="image-20220119144927053"  />
+</p>
+<h3 id="神经网络neural-network">神经网络（Neural Network）<a hidden class="anchor" aria-hidden="true" href="#神经网络neural-network">#</a></h3>
+<p>假如把上例中的一个逻辑回归叫做神经元（Neuron），那我们就形成了一个神经网络。</p>
+<h3 id="roc">ROC<a hidden class="anchor" aria-hidden="true" href="#roc">#</a></h3>
+<p>在信号检测理论中，接收者操作特征曲线(receiver operating characteristic curve，或者叫ROC曲线)是<a href="https://www.zhihu.com/search?q=%E5%9D%90%E6%A0%87%E5%9B%BE%E5%BC%8F&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">坐标图式</a>的分析工具，用于 (1) 选择最佳的<a href="https://www.zhihu.com/search?q=%E4%BF%A1%E5%8F%B7%E4%BE%A6%E6%B5%8B%E6%A8%A1%E5%9E%8B&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">信号侦测模型</a>、舍弃次佳的模型。 (2) 在同一模型中设定最佳阈值。在做决策时，ROC分析能不受成本／效益的影响，给出客观中立的建议。</p>
+<p><a href="https://www.zhihu.com/search?q=ROC%E6%9B%B2%E7%BA%BF&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">ROC曲线</a>首先是由二战中的电子工程师和雷达工程师发明的，用来侦测战场上的敌军载具(飞机、船舰)，也就是信号检测理论。之后很快就被引入了心理学来进行信号的知觉检测。数十年来，ROC分析被用于医学、无线电、生物学、<a href="https://www.zhihu.com/search?q=%E7%8A%AF%E7%BD%AA%E5%BF%83%E7%90%86%E5%AD%A6&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">犯罪心理学</a>领域中，而且最近在机器学习(machine  learning)和数据挖掘(data mining)领域也得到了很好的发展。</p>
+<p>术语</p>
+<ul>
+<li>阳性(P, positive)</li>
+<li>阴性(N, Negative)</li>
+<li>真阳性 (TP, true positive) 正确的肯定。又称：命中 (hit)</li>
+<li>真阴性 (TN, true negative) 正确的否定。又称：正确拒绝 (correct rejection)</li>
+<li>伪阳性 (FP, false positive) 错误的肯定，又称：假警报 (false alarm)，第一型错误伪阴性 (FN, false negative) 错误的否定，又称：未命中 (miss)，第二型错误</li>
+<li>真阳性率 (TPR, true positive rate) 又称：命中率 (hit rate)、<a href="https://www.zhihu.com/search?q=%E6%95%8F%E6%84%9F%E5%BA%A6&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">敏感度</a>(sensitivity)
+TPR = TP / P = TP / (TP+FN)</li>
+<li>伪阳性率(FPR, false positive rate) 又称：错误命中率，假警报率 (false alarm rate) FPR = FP / N = FP / (FP + TN)</li>
+<li>准确度 (ACC, accuracy) ACC = (TP + TN) / (P + N) 即：(真阳性+真阴性) / 总样本数真阴性率 (TNR) 又称：特异度 (SPC, specificity) SPC = TN / N = TN / (FP + TN) = 1 - FPR</li>
+<li><a href="https://www.zhihu.com/search?q=%E9%98%B3%E6%80%A7%E9%A2%84%E6%B5%8B%E5%80%BC&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">阳性预测值</a> (PPV) PPV = TP / (TP + FP)</li>
+<li><a href="https://www.zhihu.com/search?q=%E9%98%B4%E6%80%A7%E9%A2%84%E6%B5%8B%E5%80%BC&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A603394642%7D">阴性预测值</a> (NPV) NPV = TN / (TN + FN)</li>
+<li>假发现率 (FDR) FDR = FP / (FP + TP)</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>三、梯度下降.md</span>
+  </a>
+  <a class="next" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>五、深度学习.md</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on twitter"
+        href="https://twitter.com/intent/tweet/?text=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f&amp;title=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md&amp;summary=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md&amp;source=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f&title=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on whatsapp"
+        href="https://api.whatsapp.com/send?text=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md%20-%20https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on telegram"
+        href="https://telegram.me/share/url?text=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share 四、分类模型.md on ycombinator"
+        href="https://news.ycombinator.com/submitlink?t=%e5%9b%9b%e3%80%81%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b.md&u=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%259B%259B%25E5%2588%2586%25E7%25B1%25BB%25E6%25A8%25A1%25E5%259E%258B%2f">
+        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+            <path
+                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

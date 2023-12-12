@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>nodejs on Waiting For You</title>
+    <link>https://WFUing.github.io/post/tech/language/nodejs/</link>
+    <description>Recent content in nodejs on Waiting For You</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Mon, 23 Oct 2023 16:19:36 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/post/tech/language/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>timer</title>
+      <link>https://WFUing.github.io/post/tech/language/nodejs/timer/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:20 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/nodejs/timer/</guid>
+      <description>定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 </description>
+    </item>
+    
+    <item>
+      <title>fs</title>
+      <link>https://WFUing.github.io/post/tech/language/nodejs/fs/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/nodejs/fs/</guid>
+      <description>fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &amp;#39;utf8&amp;#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&amp;#39;data&amp;#39;, (chunk) =&amp;gt; { console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt; &amp;#39;+chunk); }); readStream.on(&amp;#39;end&amp;#39;, () =&amp;gt; { console.log(&amp;#39;### DONE ###&amp;#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.</description>
+    </item>
+    
+    <item>
+      <title>promise</title>
+      <link>https://WFUing.github.io/post/tech/language/nodejs/promise/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/nodejs/promise/</guid>
+      <description>Promise UnhandledPromiseRejectionWarning 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
+1 2 3 4 5 new Promise(function (resolve, reject) { throw new Error(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
+消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }).catch(function (err) { console.</description>
+    </item>
+    
+    <item>
+      <title>repl</title>
+      <link>https://WFUing.github.io/post/tech/language/nodejs/repl/</link>
+      <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/nodejs/repl/</guid>
+      <description>Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
+命令行下输入node，就可以进入 Node 的 REPL 环境。
+1 2 $ node &amp;gt; REPL 环境的提示符是一个大于号（&amp;gt;）。
+退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
+REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
+REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
+1 2 3 $ node &amp;gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
+node命令的-e参数，实际上就是在 REPL 环境运行代码。
+1 2 $ node -e &amp;#34;console.log(os.platform())&amp;#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
+1 2 3 4 &amp;gt; require(&amp;#39;.</description>
+    </item>
+    
+  </channel>
+</rss>

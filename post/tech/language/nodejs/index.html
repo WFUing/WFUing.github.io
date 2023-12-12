@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>nodejs | Waiting For You</title>
+<meta name="keywords" content="">
+<meta name="description" content="nodejs - Waiting For You">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/post/tech/language/nodejs/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/post/tech/language/nodejs/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="nodejs" />
+<meta property="og:description" content="这是一个纯粹的博客......" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://WFUing.github.io/post/tech/language/nodejs/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="nodejs"/>
+<meta name="twitter:description" content="这是一个纯粹的博客......"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Technology",
+      "item": "https://WFUing.github.io/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Language",
+      "item": "https://WFUing.github.io/post/tech/language/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "nodejs",
+      "item": "https://WFUing.github.io/post/tech/language/nodejs/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                    <span>🔍</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/" title="HOME">
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/post" title="BLOGS">
+                    <span>BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                    <span>ARCHIVE</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                    <span>🙋🏻‍♂️</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/language/">Language</a></div>
+  <h1>
+    nodejs
+  </h1>
+</header>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>timer
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 </p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>28字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to timer" href="https://WFUing.github.io/post/tech/language/nodejs/timer/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>fs
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;&#43;chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs....</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>103字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to fs" href="https://WFUing.github.io/post/tech/language/nodejs/fs/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>promise
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Promise UnhandledPromiseRejectionWarning 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
+1 2 3 4 5 new Promise(function (resolve, reject) { throw new Error(&#39;message&#39;); console.log(&#39;hello&#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
+消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }).catch(function (err) { console....</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>155字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to promise" href="https://WFUing.github.io/post/tech/language/nodejs/promise/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>repl
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
+命令行下输入node，就可以进入 Node 的 REPL 环境。
+1 2 $ node &gt; REPL 环境的提示符是一个大于号（&gt;）。
+退出 REPL，可以在行首按下 Ctrl &#43; d，或者连续两次按下 Ctrl &#43; c。
+REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
+REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
+1 2 3 $ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
+node命令的-e参数，实际上就是在 REPL 环境运行代码。
+1 2 $ node -e &#34;console.log(os.platform())&#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
+1 2 3 4 &gt; require(&#39;....</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-23
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>251字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to repl" href="https://WFUing.github.io/post/tech/language/nodejs/repl/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>nodejs/stdlib
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p></p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to nodejs/stdlib" href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>nodejs/npm
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p></p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to nodejs/npm" href="https://WFUing.github.io/post/tech/language/nodejs/npm/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>nodejs/module
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p></p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to nodejs/module" href="https://WFUing.github.io/post/tech/language/nodejs/module/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

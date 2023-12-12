@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>linux on Waiting For You</title>
     <link>https://WFUing.github.io/tags/linux/</link>
     <description>Recent content in linux on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 12 Oct 2023 19:43:45 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Oct 2023 19:43:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>45 个常用Linux 命令，让你轻松玩转Linux！</title>
-      <link>https://WFUing.github.io/posts/tech/os/linux-instructions/</link>
+      <link>https://WFUing.github.io/post/tech/os/linux-instructions/</link>
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/os/linux-instructions/</guid>
-      <description>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。&#xA;接下来，让我们一起来看看都有那些常用的 Linux 命令吧！&#xA;一、文件目录操作 1.ls 命令 ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限（包括目录、文件夹、文件权限）查看目录信息等等。&#xA;命令格式&#xA;1 ls [选项][目录名] 常用参数&#xA;-l ：列出长数据串，包含文件的属性与权限数据等 -a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用） -d ：仅列出目录本身，而不是列出目录的文件数据 -h ：将文件容量以较易读的方式（GB，kB等）列出来 -R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来 使用实例&#xA;1.列出 home 目录下的所有文件和目录的详细资料。&#xA;1 2 ls -a -l /home ls -al /home 2.列出当前目录下所有以&amp;quot;d&amp;quot;开头的文件目录详情内容。&#xA;1 ls -l d* 2.cd命令 最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。&#xA;命令格式&#xA;1 cd [目录名] 操作案例&#xA;1.从当前目录进入系统根目录。&#xA;1 cd / 2.跳转到 home/Code 目录。&#xA;1 cd /home/Code 3.pwd 命令 查看&amp;quot;当前工作目录&amp;quot;的完整路径。</description>
+      
+      <guid>https://WFUing.github.io/post/tech/os/linux-instructions/</guid>
+      <description>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。
+接下来，让我们一起来看看都有那些常用的 Linux 命令吧！
+一、文件目录操作 1.ls 命令 ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限（包括目录、文件夹、文件权限）查看目录信息等等。
+命令格式
+1 ls [选项][目录名] 常用参数
+-l ：列出长数据串，包含文件的属性与权限数据等 -a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用） -d ：仅列出目录本身，而不是列出目录的文件数据 -h ：将文件容量以较易读的方式（GB，kB等）列出来 -R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来 使用实例
+1.列出 home 目录下的所有文件和目录的详细资料。
+1 2 ls -a -l /home ls -al /home 2.列出当前目录下所有以&amp;quot;d&amp;quot;开头的文件目录详情内容。
+1 ls -l d* 2.cd命令 最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。
+命令格式
+1 cd [目录名] 操作案例
+1.从当前目录进入系统根目录。
+1 cd / 2.跳转到 home/Code 目录。
+1 cd /home/Code 3.pwd 命令 查看&amp;quot;当前工作目录&amp;quot;的完整路径。</description>
     </item>
+    
   </channel>
 </rss>

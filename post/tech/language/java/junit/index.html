@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Junit 运行流程 | Waiting For You</title>
+<meta name="keywords" content="junit, interview, java">
+<meta name="description" content="Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
+在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &mdash; Martin Fowler
+从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
+junit4
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&#34;.....this is before test.">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/post/tech/language/java/junit/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="Junit 运行流程" />
+<meta property="og:description" content="Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
+在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &mdash; Martin Fowler
+从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
+junit4
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&#34;.....this is before test." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/post/tech/language/java/junit/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-05T18:15:08+08:00" />
+<meta property="article:modified_time" content="2023-11-05T18:15:08+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Junit 运行流程"/>
+<meta name="twitter:description" content="Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
+在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &mdash; Martin Fowler
+从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
+junit4
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&#34;.....this is before test."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Technology",
+      "item": "https://WFUing.github.io/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Language",
+      "item": "https://WFUing.github.io/post/tech/language/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Java",
+      "item": "https://WFUing.github.io/post/tech/language/java/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "Junit 运行流程",
+      "item": "https://WFUing.github.io/post/tech/language/java/junit/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Junit 运行流程",
+  "name": "Junit 运行流程",
+  "description": "Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。\n在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 \u0026mdash; Martin Fowler\n从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：\njunit4\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(\u0026#34;.....this is before test.",
+  "keywords": [
+    "junit", "interview", "java"
+  ],
+  "articleBody": "Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。\n在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 — Martin Fowler\n从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：\njunit4\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(\".....this is before test......\"); } @After public void after(){ System.out.println(\".....this is after test......\"); } @BeforeClass public static void beforeClass(){ System.out.println(\".....this is before class test......\"); } @AfterClass public static void afterClass(){ System.out.println(\".....this is after class test......\"); } @Test public void testOne(){ System.out.println(\"this is test one\"); } @Test public void testTwo(){ System.out.println(\"this is test two\"); } } 执行结果如下：\n1 2 3 4 5 6 7 8 9 .....this is before class test...... Disconnected from the target VM, address: '127.0.0.1:65400', transport: 'socket' .....this is before test...... this is test one .....this is after test...... .....this is before test...... this is test two .....this is after test...... .....this is after class test...... 从代码和执行结果来看，BeforeClass 和 AfterClass 注解分别在测试类开始之前和之后执行，Before 和 After 注解在测试类中每个测试方法的前后执行。\n问题 从开发者的角度来看，对于任何一个技术产品组件，如果想要更好的使用它，就意味着必须了解它。通过上面提供的 case 可以看到，Junit 使用非常简单，基本 0 门槛上手，通过给测试的方法加一个 @Test 注解，然后将待测试逻辑放在 被 @Test 标注的方法内，然后 run 就好了。简单源于组件开发者的顶层抽象和封装，将技术细节屏蔽，然后以最简洁的 API 或者注解面向用户，这也是 Junit 能够让广大开发者容易接受的根本原因，值得我们借鉴学习。\n回归正题，基于上面分析，Junit 使用简单在于其提供了非常简洁的 API 和注解，那对于我们来说，这些就是作为分析 Junit 的基本着手点；通过这些，来拨开 Junit 的基本原理。基于第一节的小案例，这里抛出这样几个问题：\nJunit 是怎么触发执行的 为什么被标注 @Test 注解的方法会被执行，而没有标注的不会 Before 和 After 执行时机 BeforeClass 和 AfterClass 执行时机 Junit 是怎么将执行结果收集并返回的（这里不关注 IDE 提供的渲染） Junit 是如何执行的？ 这里把断点直接打在目标测试方法位置，然后 debug 执行\n通过堆栈来找到用例执行的整个路径。因为本 case 是通过 vscode 启动执行，所以可以看到的入口实际是被 vscode 包装过的。但是这里也抓到了 JUnitCore 这样的一个入口。\nJUnitCore 是运行测试用例的门面入口，通过源码注释可以看到，JUnitCore 从 junit 4 才有，但是其向下兼容了 3.8.x 版本系列。我们在跑测试用例时，其实大多数情况下在本地都是通过 IDE 来触发用例运行，或者通过 mvn test 来运行用例，实际上，不管是 IDE 还是 mvn 都是对 JUnitCore 的封装。我们完全可以通过 main 方法的方式来运行，比如运行下面代码的 main 方法来通过一个 JUnitCore 实例，然后指定被测试类来触发用例执行，为了尽量使得堆栈更贴近 Junit 自己的代码，我们通过这种方式启动来减少堆栈对于代码执行路径的干扰。\n这里得到了最简化的测试执行入口：\n如果使用 java 命令来引导启动，其实就是从 JunitCore 内部自己的 main 方法开始执行的\n1 2 3 4 5 6 7 8 9 10 11 12 /** * Run the tests contained in the classes named in the args. * If all tests run successfully, exit with a status of 0. Otherwise exit with a status of 1. * Write feedback while tests are running and write * stack traces for all failed tests after the tests all complete. * * @param args names of classes in which to find tests to run */ public static void main(String... args) { Result result = new JUnitCore().runMain(new RealSystem(), args); System.exit(result.wasSuccessful() ? 0 : 1); } 为什么被标注 @Test 注解的方法会被执行，而没有标注的不会 这里比较好理解，被打了 @Test 注解的方法，一定是 Junit 通过某种方式将其扫描到了，然后作为待执行的一个集合或者队列中。下面通过分析代码来论证下。\norg.junit.runners.BlockJUnit4ClassRunner#getChildren\n1 2 3 4 @Override protected List\u003cFrameworkMethod\u003e getChildren() { return computeTestMethods(); } 通过方法 computeTestMethods 方法名其实就可以看出其目的，就是计算出所有的测试方法。\ngetAnnotatedMethods 通过指定的 annotationClass 类型，将当前 TestClass 中类型为 annotationClass 类型注解标注的方法过滤出来，\ngetFilteredChildren 中最后将获取得到的测试方法放在 filteredChildren 中缓存起来。这里简单汇总下 @Test 注解被识别的整个过程（其他注解如 @Before 都是一样的）\nJunit 在初始化构建 Runner 的过程，内部会基于给定的 测试类创建一个 TestClass 对象模型，用于描述当前测试类在 Junit 中的表示。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 // clazz 是待测试类 public TestClass(Class\u003c?\u003e clazz) { this.clazz = clazz; if (clazz != null \u0026\u0026 clazz.getConstructors().length \u003e 1) { // 测试类不能有有参构造函数 throw new IllegalArgumentException( \"Test class can only have one constructor\"); } Map\u003cClass\u003c? extends Annotation\u003e, List\u003cFrameworkMethod\u003e\u003e methodsForAnnotations = new LinkedHashMap\u003cClass\u003c? extends Annotation\u003e, List\u003cFrameworkMethod\u003e\u003e(); Map\u003cClass\u003c? extends Annotation\u003e, List\u003cFrameworkField\u003e\u003e fieldsForAnnotations = new LinkedHashMap\u003cClass\u003c? extends Annotation\u003e, List\u003cFrameworkField\u003e\u003e(); // 扫描待测试类中所有的 Junit 注解，包括 @Test @Before @After 等等 scanAnnotatedMembers(methodsForAnnotations, fieldsForAnnotations); // 过滤出打在方法上的注解， this.methodsForAnnotations = makeDeeplyUnmodifiable(methodsForAnnotations); // 过滤出打在变量上的注解 this.fieldsForAnnotations = makeDeeplyUnmodifiable(fieldsForAnnotations); } methodsForAnnotations 和 fieldsForAnnotations 缓存了当前待测试类所有被 junit 注解标注过的方法和变量\ngetFilteredChildren 中，从 methodsForAnnotations 中筛选出所有 @Test 注解标注的方法。（getDescription()-\u003e getFilteredChildren -\u003e computeTestMethods -\u003e 从 methodsForAnnotations 按类型过滤） 返回所有 @Test 注解标注的方法 Before 和 After 执行时机 要搞定这个问题，其实有必要了解下 Junit 中一个比较重要的概念 Statement。\n1 2 3 4 5 6 public abstract class Statement { /** * Run the action, throwing a {@code Throwable} if anything goes wrong. */ public abstract void evaluate() throws Throwable; } Statement 从 junit 4.5 版本被提出，Statement 表示在运行 JUnit 测试组件的过程中要在运行时执行的一个或多个操作，简单说就是，对于被 @Before @After 注解标注的方法，在 JUnit 会被作为一种 Statement 存在，分别对应于 RunBefores 和 RunnerAfter，这些 statement 中持有了当前运行所有的 FrameworkMethod。\nFrameworkMethod 是 JUnit 中所有被 junit 注解标注方式的内部描述，@Test, @Before, @After, @BeforeClass, @AfterClass 标注的方法最终都作为 FrameworkMethod 实例存在。\nStatement 的创建有两种方式，基于 FrameworkMethod 的 methodBlock 和基于 RunNotifier 的 classBlock，这里介绍 methodBlock ，classBlock 下节讨论。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 protected Statement methodBlock(final FrameworkMethod method) { Object test; try { test = new ReflectiveCallable() { @Override protected Object runReflectiveCall() throws Throwable { return createTest(method); } }.run(); } catch (Throwable e) { return new Fail(e); } Statement statement = methodInvoker(method, test); statement = possiblyExpectingExceptions(method, test, statement); statement = withPotentialTimeout(method, test, statement); statement = withBefores(method, test, statement); statement = withAfters(method, test, statement); statement = withRules(method, test, statement); statement = withInterruptIsolation(statement); return statement; } withAfters、withBefores 会将 RunAfters 和 RunBefore 绑定到 statement，最后 形成一个 statement 链，这个链的执行入口时 RunAfters#evaluate。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 @Override public void evaluate() throws Throwable { List\u003cThrowable\u003e errors = new ArrayList\u003cThrowable\u003e(); try { next.evaluate(); } catch (Throwable e) { errors.add(e); } finally { // 在 finally 中执行 after 方法 for (FrameworkMethod each : afters) { try { invokeMethod(each); } catch (Throwable e) { errors.add(e); } } } MultipleFailureException.assertEmpty(errors); } next 链中包括 before 和待执行的测试方法\n所以我们看到的就是 before -\u003e testMethod -\u003e after。\n这里其实和预想的不太一样，关于 before 和 after 这种逻辑，第一想法是通过代理的方式，对测试方法进行代理拦截，类似 Spring AOP 中的 Before 和 After，其实不然。\nBeforeClass 和 AfterClass 执行时机 前面分析了 methodBlock，了解到 junit 中通过这个方法创建 statement 并且将 before 和 after 的方法绑定给 statement，以此推断，classBlock 的作用就是将 BeforeClass 和 AfterClass 绑定给statement 。\n1 2 3 4 5 6 7 8 9 10 11 protected Statement classBlock(final RunNotifier notifier) { // childrenInvoker 这里会调用到 methodBlock Statement statement = childrenInvoker(notifier); if (!areAllChildrenIgnored()) { statement = withBeforeClasses(statement); statement = withAfterClasses(statement); statement = withClassRules(statement); statement = withInterruptIsolation(statement); } return statement; } BeforeClass 和 before 都会对应创建一个 RunnerBefores，区别在于 BeforeClass 在创建 RunnerBefores 时，不会指定目标测试方法。\nBeforeClass 在执行 statement 之前，运行该类和超类上所有非覆盖的@BeforeClass方法;如果有抛出异常，停止执行并传递异常。 AfterClass 在执行 statement链最后，在该类和超类上运行所有未覆盖的 @AfterClass 方法；始终执行所有 AfterClass 方法：如有必要，将前面步骤抛出的异常与来自 AfterClass 方法的异常合并到 org.junit.runners.model.MultipleFailureException 中。 Junit 是怎么将执行结果收集并返回的 junit 所有执行的结果都存放在 Result 中\n1 2 3 4 5 6 7 8 9 10 11 12 // 所有 case 数 private final AtomicInteger count; // 忽略执行的 case 数（被打了 ignore） private final AtomicInteger ignoreCount; // 失败 case 数 private final AtomicInteger assumptionFailureCount; // 所有失败 case 的结果 private final CopyOnWriteArrayList\u003cFailure\u003e failures; // 执行时间 private final AtomicLong runTime; // 开始时间 private final AtomicLong startTime; Result 中内置了一个默认的来监听器，这个监听器会在每个 case 执行完成之后进行相应的回调，Listener 如下：\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 @RunListener.ThreadSafe private class Listener extends RunListener { // 设置开始时间 @Override public void testRunStarted(Description description) throws Exception { startTime.set(System.currentTimeMillis()); } // 执行完所有 case @Override public void testRunFinished(Result result) throws Exception { long endTime = System.currentTimeMillis(); runTime.addAndGet(endTime - startTime.get()); } // 执行完某个 case @Override public void testFinished(Description description) throws Exception { count.getAndIncrement(); } // 执行完某个 case 失败 @Override public void testFailure(Failure failure) throws Exception { failures.add(failure); } // 执行完某个ignore case @Override public void testIgnored(Description description) throws Exception { ignoreCount.getAndIncrement(); } @Override public void testAssumptionFailure(Failure failure) { // Assumption 产生的失败 assumptionFailureCount.getAndIncrement(); } } JUnit 4 开始在测试中支持假设 Assumptions，在 Assumptions 中，封装了一组使用的方法，以支持基于假设的条件测试执行。假设实际就是指定某个特定条件，假如不能满足假设条件，假设不会导致测试失败，只是终止当前测试。这也是假设与断言的最大区别，因为对于断言而言，会导致测试失败。\n所以 JUnit 通过监听器机制收集所有的测试信息，最终封装到 Result 中返回。\n总结 Junit 中有一些比较基本的概念，比如 Runner，statement 等；在初始化时，默认情况下 junit 会构建出 BlockJUnit4ClassRunner 这样的一个 Runner，并且在这个 Runner 中会持有被测试类的所有信息。Runner 运行测试并在执行此操作时将重要事件通知 RunNotifier。\n",
+  "wordCount" : "1129",
+  "inLanguage": "zh",
+  "datePublished": "2023-11-05T18:15:08+08:00",
+  "dateModified": "2023-11-05T18:15:08+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "WFUing"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://WFUing.github.io/post/tech/language/java/junit/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Waiting For You",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://WFUing.github.io/img/logo.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                    <span>🔍</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/" title="HOME">
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/post" title="BLOGS">
+                    <span>BLOGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                    <span>ARCHIVE</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/tags" title="TAGS">
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                    <span>🙋🏻‍♂️</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/language/">Language</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/language/java/">Java</a></div>
+    <h1 class="post-title">
+      Junit 运行流程
+    </h1>
+    <div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-11-05
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1129字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/junit/" style="color: var(--secondary)!important;">junit</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/interview/" style="color: var(--secondary)!important;">interview</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/java/" style="color: var(--secondary)!important;">java</a>
+            </span>
+        </span>
+    </span>
+</span>
+        &nbsp;|&nbsp;标签: &nbsp;
+        <ul class="post-tags-meta">
+            <a href="https://WFUing.github.io/tags/junit/">junit</a>
+            <a href="https://WFUing.github.io/tags/interview/">、interview</a>
+            <a href="https://WFUing.github.io/tags/java/">、java</a>
+        </ul>
+
+        
+        
+        
+        
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_page_pv">
+            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+        </span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%bb%8e%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95%e7%9a%84%e4%be%8b%e5%ad%90%e5%bc%80%e5%a7%8b%e8%ae%a4%e8%af%86-junit" aria-label="从一个简单的例子开始认识 Junit">从一个简单的例子开始认识 Junit</a></li>
+                    <li>
+                        <a href="#%e9%97%ae%e9%a2%98" aria-label="问题">问题</a><ul>
+                            
+                    <li>
+                        <a href="#junit-%e6%98%af%e5%a6%82%e4%bd%95%e6%89%a7%e8%a1%8c%e7%9a%84" aria-label="Junit 是如何执行的？">Junit 是如何执行的？</a></li>
+                    <li>
+                        <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a2%ab%e6%a0%87%e6%b3%a8-test-%e6%b3%a8%e8%a7%a3%e7%9a%84%e6%96%b9%e6%b3%95%e4%bc%9a%e8%a2%ab%e6%89%a7%e8%a1%8c%e8%80%8c%e6%b2%a1%e6%9c%89%e6%a0%87%e6%b3%a8%e7%9a%84%e4%b8%8d%e4%bc%9a" aria-label="为什么被标注 @Test 注解的方法会被执行，而没有标注的不会">为什么被标注 @Test 注解的方法会被执行，而没有标注的不会</a><ul>
+                            
+                    <li>
+                        <a href="#before-%e5%92%8c-after-%e6%89%a7%e8%a1%8c%e6%97%b6%e6%9c%ba" aria-label="Before 和 After 执行时机">Before 和 After 执行时机</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#beforeclass-%e5%92%8c-afterclass-%e6%89%a7%e8%a1%8c%e6%97%b6%e6%9c%ba" aria-label="BeforeClass 和 AfterClass 执行时机">BeforeClass 和 AfterClass 执行时机</a></li>
+                    <li>
+                        <a href="#junit-%e6%98%af%e6%80%8e%e4%b9%88%e5%b0%86%e6%89%a7%e8%a1%8c%e7%bb%93%e6%9e%9c%e6%94%b6%e9%9b%86%e5%b9%b6%e8%bf%94%e5%9b%9e%e7%9a%84" aria-label="Junit 是怎么将执行结果收集并返回的">Junit 是怎么将执行结果收集并返回的</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%80%bb%e7%bb%93" aria-label="总结">总结</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。</p>
+<blockquote>
+<p>在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &mdash; Martin Fowler</p>
+</blockquote>
+<h2 id="从一个简单的例子开始认识-junit">从一个简单的例子开始认识 Junit<a hidden class="anchor" aria-hidden="true" href="#从一个简单的例子开始认识-junit">#</a></h2>
+<p>本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：</p>
+<p><strong>junit4</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JunitSamplesTest</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Before</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">before</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;.....this is before test......&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@After</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">after</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;.....this is after test......&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@BeforeClass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">beforeClass</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;.....this is before class test......&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@AfterClass</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterClass</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;.....this is after class test......&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testOne</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;this is test one&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testTwo</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;this is test two&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">.....this is before class test......
+</span></span><span class="line"><span class="cl">Disconnected from the target VM, address: &#39;127.0.0.1:65400&#39;, transport: &#39;socket&#39;
+</span></span><span class="line"><span class="cl">.....this is before test......
+</span></span><span class="line"><span class="cl">this is test one
+</span></span><span class="line"><span class="cl">.....this is after test......
+</span></span><span class="line"><span class="cl">.....this is before test......
+</span></span><span class="line"><span class="cl">this is test two
+</span></span><span class="line"><span class="cl">.....this is after test......
+</span></span><span class="line"><span class="cl">.....this is after class test......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从代码和执行结果来看，BeforeClass 和 AfterClass 注解分别在测试类开始之前和之后执行，Before 和 After 注解在测试类中每个测试方法的前后执行。</p>
+<h2 id="问题">问题<a hidden class="anchor" aria-hidden="true" href="#问题">#</a></h2>
+<p>从开发者的角度来看，对于任何一个技术产品组件，如果想要更好的使用它，就意味着必须了解它。通过上面提供的 case 可以看到，Junit  使用非常简单，基本 0 门槛上手，通过给测试的方法加一个 @Test 注解，然后将待测试逻辑放在 被 @Test 标注的方法内，然后 run 就好了。简单源于组件开发者的顶层抽象和封装，将技术细节屏蔽，然后以最简洁的 API 或者注解面向用户，这也是 Junit 能够让广大开发者容易接受的根本原因，值得我们借鉴学习。</p>
+<p>回归正题，基于上面分析，Junit 使用简单在于其提供了非常简洁的 API 和注解，那对于我们来说，这些就是作为分析 Junit 的基本着手点；通过这些，来拨开 Junit  的基本原理。基于第一节的小案例，这里抛出这样几个问题：</p>
+<ul>
+<li>Junit 是怎么触发执行的</li>
+<li>为什么被标注 @Test 注解的方法会被执行，而没有标注的不会</li>
+<li>Before 和 After 执行时机</li>
+<li>BeforeClass 和 AfterClass 执行时机</li>
+<li>Junit 是怎么将执行结果收集并返回的（这里不关注 IDE 提供的渲染）</li>
+</ul>
+<h3 id="junit-是如何执行的">Junit 是如何执行的？<a hidden class="anchor" aria-hidden="true" href="#junit-是如何执行的">#</a></h3>
+<p>这里把断点直接打在目标测试方法位置，然后 debug 执行</p>
+<p><img loading="lazy" src="./juint-testone.png" alt=""  />
+</p>
+<p>通过堆栈来找到用例执行的整个路径。因为本 case 是通过 vscode 启动执行，所以可以看到的入口实际是被 vscode 包装过的。但是这里也抓到了 JUnitCore 这样的一个入口。</p>
+<p>JUnitCore  是运行测试用例的门面入口，通过源码注释可以看到，JUnitCore 从 junit 4 才有，但是其向下兼容了 3.8.x 版本系列。我们在跑测试用例时，其实大多数情况下在本地都是通过 IDE 来触发用例运行，或者通过 mvn test 来运行用例，实际上，不管是 IDE 还是 mvn 都是对 JUnitCore 的封装。我们完全可以通过 main 方法的方式来运行，比如运行下面代码的 main 方法来通过一个 JUnitCore 实例，然后指定被测试类来触发用例执行，为了尽量使得堆栈更贴近 Junit 自己的代码，我们通过这种方式启动来减少堆栈对于代码执行路径的干扰。</p>
+<p>这里得到了最简化的测试执行入口：</p>
+<p><img loading="lazy" src="./junitcore.png" alt=""  />
+</p>
+<p>如果使用 java 命令来引导启动，其实就是从 JunitCore 内部自己的 main 方法开始执行的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Run the tests contained in the classes named in the &lt;code&gt;args&lt;/code&gt;.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * If all tests run successfully, exit with a status of 0. Otherwise exit with a status of 1.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Write feedback while tests are running and write
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * stack traces for all failed tests after the tests all complete.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param args names of classes in which to find tests to run
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Result</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JUnitCore</span><span class="p">().</span><span class="na">runMain</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RealSystem</span><span class="p">(),</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">exit</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="na">wasSuccessful</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="为什么被标注-test-注解的方法会被执行而没有标注的不会">为什么被标注 @Test 注解的方法会被执行，而没有标注的不会<a hidden class="anchor" aria-hidden="true" href="#为什么被标注-test-注解的方法会被执行而没有标注的不会">#</a></h3>
+<p>这里比较好理解，被打了 @Test 注解的方法，一定是 Junit 通过某种方式将其扫描到了，然后作为待执行的一个集合或者队列中。下面通过分析代码来论证下。</p>
+<blockquote>
+<p>org.junit.runners.BlockJUnit4ClassRunner#getChildren</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">protected</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FrameworkMethod</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getChildren</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">computeTestMethods</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过方法 computeTestMethods 方法名其实就可以看出其目的，就是计算出所有的测试方法。</p>
+<p><img loading="lazy" src="./BlockJUnit4ClassRunner.png" alt=""  />
+</p>
+<p>getAnnotatedMethods 通过指定的 annotationClass 类型，将当前 TestClass 中类型为 annotationClass 类型注解标注的方法过滤出来，</p>
+<p><img loading="lazy" src="./getFilteredChildren.png" alt=""  />
+</p>
+<p>getFilteredChildren 中最后将获取得到的测试方法放在 filteredChildren 中缓存起来。这里简单汇总下 @Test 注解被识别的整个过程（其他注解如 @Before 都是一样的）</p>
+<ol>
+<li>Junit 在初始化构建 Runner 的过程，内部会基于给定的 测试类创建一个 TestClass 对象模型，用于描述当前测试类在 Junit 中的表示。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// clazz 是待测试类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nf">TestClass</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">clazz</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">clazz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clazz</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getConstructors</span><span class="p">().</span><span class="na">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 测试类不能有有参构造函数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="s">&#34;Test class can only have one constructor&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Annotation</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FrameworkMethod</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">methodsForAnnotations</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Annotation</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FrameworkMethod</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Annotation</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FrameworkField</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fieldsForAnnotations</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Annotation</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FrameworkField</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 扫描待测试类中所有的 Junit 注解，包括 @Test @Before @After 等等</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">scanAnnotatedMembers</span><span class="p">(</span><span class="n">methodsForAnnotations</span><span class="p">,</span><span class="w"> </span><span class="n">fieldsForAnnotations</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1">// 过滤出打在方法上的注解，</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">methodsForAnnotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDeeplyUnmodifiable</span><span class="p">(</span><span class="n">methodsForAnnotations</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 过滤出打在变量上的注解</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">fieldsForAnnotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeDeeplyUnmodifiable</span><span class="p">(</span><span class="n">fieldsForAnnotations</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>methodsForAnnotations 和 fieldsForAnnotations 缓存了当前待测试类所有被 junit 注解标注过的方法和变量</p>
+<ol start="2">
+<li>getFilteredChildren 中，从 methodsForAnnotations 中筛选出所有 @Test 注解标注的方法。（getDescription()-&gt; getFilteredChildren  -&gt; computeTestMethods -&gt; 从 methodsForAnnotations 按类型过滤）</li>
+<li>返回所有 @Test 注解标注的方法</li>
+</ol>
+<h4 id="before-和-after-执行时机">Before 和 After 执行时机<a hidden class="anchor" aria-hidden="true" href="#before-和-after-执行时机">#</a></h4>
+<p>要搞定这个问题，其实有必要了解下 Junit 中一个比较重要的概念 Statement。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Statement</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * Run the action, throwing a {@code Throwable} if anything goes wrong.
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Statement 从 junit 4.5 版本被提出，Statement 表示在运行 JUnit 测试组件的过程中要在运行时执行的一个或多个操作，简单说就是，对于被 @Before @After 注解标注的方法，在 JUnit  会被作为一种 Statement  存在，分别对应于 RunBefores 和 RunnerAfter，这些 statement 中持有了当前运行所有的 FrameworkMethod。</p>
+<p>FrameworkMethod 是 JUnit   中所有被 junit 注解标注方式的内部描述，@Test, @Before, @After, @BeforeClass, @AfterClass 标注的方法最终都作为 FrameworkMethod  实例存在。</p>
+<p>Statement  的创建有两种方式，基于 FrameworkMethod 的 methodBlock 和基于 RunNotifier 的 classBlock，这里介绍 methodBlock ，classBlock 下节讨论。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">protected</span><span class="w"> </span><span class="n">Statement</span><span class="w"> </span><span class="nf">methodBlock</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">FrameworkMethod</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Object</span><span class="w"> </span><span class="n">test</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReflectiveCallable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">runReflectiveCall</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">createTest</span><span class="p">(</span><span class="n">method</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}.</span><span class="na">run</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Throwable</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Fail</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">methodInvoker</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">possiblyExpectingExceptions</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withPotentialTimeout</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withBefores</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withAfters</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withRules</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withInterruptIsolation</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">statement</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>withAfters、withBefores 会将 RunAfters 和 RunBefore 绑定到 statement，最后 形成一个 statement 链，这个链的执行入口时 RunAfters#evaluate。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Throwable</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Throwable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Throwable</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">next</span><span class="p">.</span><span class="na">evaluate</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Throwable</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">errors</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 在 finally 中执行 after 方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FrameworkMethod</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">afters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">invokeMethod</span><span class="p">(</span><span class="n">each</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Throwable</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">errors</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">MultipleFailureException</span><span class="p">.</span><span class="na">assertEmpty</span><span class="p">(</span><span class="n">errors</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>next 链中包括 before 和待执行的测试方法</p>
+<p><img loading="lazy" src="./runbefore.png" alt=""  />
+</p>
+<p>所以我们看到的就是 before -&gt; testMethod -&gt; after。</p>
+<blockquote>
+<p>这里其实和预想的不太一样，关于 before 和 after 这种逻辑，第一想法是通过代理的方式，对测试方法进行代理拦截，类似 Spring AOP 中的 Before 和 After，其实不然。</p>
+</blockquote>
+<h2 id="beforeclass-和-afterclass-执行时机">BeforeClass 和 AfterClass 执行时机<a hidden class="anchor" aria-hidden="true" href="#beforeclass-和-afterclass-执行时机">#</a></h2>
+<p>前面分析了 methodBlock，了解到 junit 中通过这个方法创建 statement 并且将 before 和 after 的方法绑定给 statement，以此推断，classBlock 的作用就是将 BeforeClass 和 AfterClass 绑定给statement 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">protected</span><span class="w"> </span><span class="n">Statement</span><span class="w"> </span><span class="nf">classBlock</span><span class="p">(</span><span class="kd">final</span><span class="w"> </span><span class="n">RunNotifier</span><span class="w"> </span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// childrenInvoker 这里会调用到 methodBlock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Statement</span><span class="w"> </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">childrenInvoker</span><span class="p">(</span><span class="n">notifier</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">areAllChildrenIgnored</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withBeforeClasses</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withAfterClasses</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withClassRules</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withInterruptIsolation</span><span class="p">(</span><span class="n">statement</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">statement</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>BeforeClass  和 before  都会对应创建一个 RunnerBefores，区别在于 BeforeClass   在创建 RunnerBefores 时，不会指定目标测试方法。</p>
+<ul>
+<li>BeforeClass  在执行 statement 之前，运行该类和超类上所有非覆盖的@BeforeClass方法;如果有抛出异常，停止执行并传递异常。</li>
+<li>AfterClass 在执行 statement链最后，在该类和超类上运行所有未覆盖的 @AfterClass 方法；始终执行所有 AfterClass 方法：如有必要，将前面步骤抛出的异常与来自 AfterClass 方法的异常合并到 org.junit.runners.model.MultipleFailureException 中。</li>
+</ul>
+<h2 id="junit-是怎么将执行结果收集并返回的">Junit 是怎么将执行结果收集并返回的<a hidden class="anchor" aria-hidden="true" href="#junit-是怎么将执行结果收集并返回的">#</a></h2>
+<p>junit 所有执行的结果都存放在 Result 中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 所有 case 数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 忽略执行的 case 数（被打了 ignore）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">ignoreCount</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 失败 case 数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">assumptionFailureCount</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 所有失败 case 的结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CopyOnWriteArrayList</span><span class="o">&lt;</span><span class="n">Failure</span><span class="o">&gt;</span><span class="w"> </span><span class="n">failures</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 执行时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicLong</span><span class="w"> </span><span class="n">runTime</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 开始时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicLong</span><span class="w"> </span><span class="n">startTime</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Result 中内置了一个默认的来监听器，这个监听器会在每个 case 执行完成之后进行相应的回调，Listener 如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RunListener.ThreadSafe</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Listener</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RunListener</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 设置开始时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testRunStarted</span><span class="p">(</span><span class="n">Description</span><span class="w"> </span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">startTime</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 执行完所有 case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testRunFinished</span><span class="p">(</span><span class="n">Result</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">endTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">runTime</span><span class="p">.</span><span class="na">addAndGet</span><span class="p">(</span><span class="n">endTime</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">startTime</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 执行完某个 case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testFinished</span><span class="p">(</span><span class="n">Description</span><span class="w"> </span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">count</span><span class="p">.</span><span class="na">getAndIncrement</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 执行完某个 case 失败</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testFailure</span><span class="p">(</span><span class="n">Failure</span><span class="w"> </span><span class="n">failure</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">failures</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">failure</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 执行完某个ignore case</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testIgnored</span><span class="p">(</span><span class="n">Description</span><span class="w"> </span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ignoreCount</span><span class="p">.</span><span class="na">getAndIncrement</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testAssumptionFailure</span><span class="p">(</span><span class="n">Failure</span><span class="w"> </span><span class="n">failure</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Assumption 产生的失败</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">assumptionFailureCount</span><span class="p">.</span><span class="na">getAndIncrement</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>JUnit 4 开始在测试中支持假设 Assumptions，在 Assumptions 中，封装了一组使用的方法，以支持基于假设的条件测试执行。假设实际就是指定某个特定条件，假如不能满足假设条件，假设不会导致测试失败，只是终止当前测试。这也是假设与断言的最大区别，因为对于断言而言，会导致测试失败。</p>
+</blockquote>
+<p>所以 JUnit 通过监听器机制收集所有的测试信息，最终封装到 Result 中返回。</p>
+<h3 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h3>
+<p>Junit 中有一些比较基本的概念，比如 Runner，statement 等；在初始化时，默认情况下 junit 会构建出 BlockJUnit4ClassRunner 这样的一个 Runner，并且在这个 Runner 中会持有被测试类的所有信息。Runner 运行测试并在执行此操作时将重要事件通知 RunNotifier。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://WFUing.github.io/tags/junit/">junit</a></li>
+      <li><a href="https://WFUing.github.io/tags/interview/">interview</a></li>
+      <li><a href="https://WFUing.github.io/tags/java/">java</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://WFUing.github.io/post/tech/language/java/class-loader/">
+    <span class="title">« 上一页</span>
+    <br>
+    <span>Java类加载机制</span>
+  </a>
+  <a class="next" href="https://WFUing.github.io/post/tech/network/netty/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Netty</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on twitter"
+        href="https://twitter.com/intent/tweet/?text=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f&amp;hashtags=junit%2cinterview%2cjava">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f&amp;title=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b&amp;summary=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b&amp;source=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f&title=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on whatsapp"
+        href="https://api.whatsapp.com/send?text=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b%20-%20https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on telegram"
+        href="https://telegram.me/share/url?text=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Junit 运行流程 on ycombinator"
+        href="https://news.ycombinator.com/submitlink?t=Junit%20%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b&u=https%3a%2f%2fWFUing.github.io%2fpost%2ftech%2flanguage%2fjava%2fjunit%2f">
+        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+            <path
+                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

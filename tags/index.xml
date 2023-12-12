@@ -1,369 +1,470 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Waiting For You</title>
     <link>https://WFUing.github.io/tags/</link>
     <description>Recent content in Tags on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 10 Dec 2023 13:21:20 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Dec 2023 13:21:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lsp</title>
       <link>https://WFUing.github.io/tags/lsp/</link>
       <pubDate>Sun, 10 Dec 2023 13:21:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/lsp/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>data</title>
       <link>https://WFUing.github.io/tags/data/</link>
       <pubDate>Sat, 09 Dec 2023 10:14:52 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/data/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>kubevela</title>
       <link>https://WFUing.github.io/tags/kubevela/</link>
       <pubDate>Tue, 05 Dec 2023 10:27:02 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/kubevela/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>ceph</title>
       <link>https://WFUing.github.io/tags/ceph/</link>
       <pubDate>Tue, 05 Dec 2023 09:46:05 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/ceph/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>oam</title>
       <link>https://WFUing.github.io/tags/oam/</link>
       <pubDate>Fri, 17 Nov 2023 09:21:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/oam/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>dsl</title>
       <link>https://WFUing.github.io/tags/dsl/</link>
       <pubDate>Thu, 16 Nov 2023 21:46:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/dsl/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>iot</title>
       <link>https://WFUing.github.io/tags/iot/</link>
       <pubDate>Thu, 16 Nov 2023 21:46:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/iot/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>BaaS</title>
       <link>https://WFUing.github.io/tags/baas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/baas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>CaaS</title>
       <link>https://WFUing.github.io/tags/caas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/caas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>DaaS</title>
       <link>https://WFUing.github.io/tags/daas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/daas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>FaaS</title>
       <link>https://WFUing.github.io/tags/faas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/faas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>IaaS</title>
       <link>https://WFUing.github.io/tags/iaas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/iaas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>MaaS</title>
       <link>https://WFUing.github.io/tags/maas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/maas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>PaaS</title>
       <link>https://WFUing.github.io/tags/paas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/paas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>SaaS</title>
       <link>https://WFUing.github.io/tags/saas/</link>
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/saas/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>iac</title>
       <link>https://WFUing.github.io/tags/iac/</link>
       <pubDate>Thu, 16 Nov 2023 10:47:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/iac/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>interview</title>
       <link>https://WFUing.github.io/tags/interview/</link>
       <pubDate>Tue, 07 Nov 2023 23:15:08 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/interview/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>java</title>
       <link>https://WFUing.github.io/tags/java/</link>
       <pubDate>Tue, 07 Nov 2023 23:15:08 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/java/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>junit</title>
       <link>https://WFUing.github.io/tags/junit/</link>
       <pubDate>Sun, 05 Nov 2023 18:15:08 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/junit/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>netty</title>
       <link>https://WFUing.github.io/tags/netty/</link>
       <pubDate>Wed, 01 Nov 2023 18:53:17 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/netty/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>https</title>
       <link>https://WFUing.github.io/tags/https/</link>
       <pubDate>Wed, 01 Nov 2023 09:43:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/https/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>http</title>
       <link>https://WFUing.github.io/tags/http/</link>
       <pubDate>Tue, 31 Oct 2023 14:43:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/http/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>websocket</title>
       <link>https://WFUing.github.io/tags/websocket/</link>
       <pubDate>Tue, 31 Oct 2023 14:43:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/websocket/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>langium</title>
       <link>https://WFUing.github.io/tags/langium/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/langium/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>vscode</title>
       <link>https://WFUing.github.io/tags/vscode/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/vscode/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>xtext</title>
       <link>https://WFUing.github.io/tags/xtext/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/xtext/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>akka</title>
       <link>https://WFUing.github.io/tags/akka/</link>
       <pubDate>Mon, 30 Oct 2023 09:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/akka/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>serverless</title>
       <link>https://WFUing.github.io/tags/serverless/</link>
       <pubDate>Fri, 20 Oct 2023 13:12:03 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/serverless/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>tencentyun</title>
       <link>https://WFUing.github.io/tags/tencentyun/</link>
       <pubDate>Fri, 20 Oct 2023 13:12:03 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/tencentyun/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>alicloud</title>
       <link>https://WFUing.github.io/tags/alicloud/</link>
       <pubDate>Fri, 20 Oct 2023 12:47:12 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/alicloud/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>git</title>
       <link>https://WFUing.github.io/tags/git/</link>
       <pubDate>Thu, 19 Oct 2023 20:40:43 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/git/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>shell</title>
       <link>https://WFUing.github.io/tags/shell/</link>
       <pubDate>Thu, 19 Oct 2023 11:47:47 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/shell/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>functional programming</title>
       <link>https://WFUing.github.io/tags/functional-programming/</link>
       <pubDate>Wed, 18 Oct 2023 20:14:26 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/functional-programming/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>language</title>
       <link>https://WFUing.github.io/tags/language/</link>
       <pubDate>Wed, 18 Oct 2023 20:14:26 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/language/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>metaprogramming</title>
       <link>https://WFUing.github.io/tags/metaprogramming/</link>
       <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/metaprogramming/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>antlr</title>
       <link>https://WFUing.github.io/tags/antlr/</link>
       <pubDate>Sun, 15 Oct 2023 09:52:03 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/antlr/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>code generation</title>
       <link>https://WFUing.github.io/tags/code-generation/</link>
       <pubDate>Sun, 15 Oct 2023 09:52:03 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/code-generation/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>asyncapi</title>
       <link>https://WFUing.github.io/tags/asyncapi/</link>
       <pubDate>Fri, 13 Oct 2023 17:27:37 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/asyncapi/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>openapi</title>
       <link>https://WFUing.github.io/tags/openapi/</link>
       <pubDate>Fri, 13 Oct 2023 16:46:21 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/openapi/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>spring</title>
       <link>https://WFUing.github.io/tags/spring/</link>
       <pubDate>Fri, 13 Oct 2023 16:46:21 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/spring/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>restful</title>
       <link>https://WFUing.github.io/tags/restful/</link>
       <pubDate>Fri, 13 Oct 2023 13:19:27 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/restful/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>ai</title>
       <link>https://WFUing.github.io/tags/ai/</link>
       <pubDate>Thu, 12 Oct 2023 20:13:50 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/ai/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>chatgpt</title>
       <link>https://WFUing.github.io/tags/chatgpt/</link>
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/chatgpt/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>linux</title>
       <link>https://WFUing.github.io/tags/linux/</link>
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/linux/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>nat traversal</title>
       <link>https://WFUing.github.io/tags/nat-traversal/</link>
       <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/nat-traversal/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>telosys</title>
       <link>https://WFUing.github.io/tags/telosys/</link>
       <pubDate>Thu, 12 Oct 2023 19:29:44 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/telosys/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>leetcode</title>
       <link>https://WFUing.github.io/tags/leetcode/</link>
       <pubDate>Thu, 12 Oct 2023 17:05:17 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/leetcode/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>template engine</title>
       <link>https://WFUing.github.io/tags/template-engine/</link>
       <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/template-engine/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>blog</title>
       <link>https://WFUing.github.io/tags/blog/</link>
       <pubDate>Thu, 12 Oct 2023 14:39:05 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/blog/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>hugo</title>
       <link>https://WFUing.github.io/tags/hugo/</link>
       <pubDate>Thu, 12 Oct 2023 14:39:05 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/hugo/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>cross entropy</title>
       <link>https://WFUing.github.io/tags/cross-entropy/</link>
       <pubDate>Thu, 13 Jan 2022 09:25:45 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/tags/cross-entropy/</guid>
       <description></description>
     </item>
+    
   </channel>
 </rss>

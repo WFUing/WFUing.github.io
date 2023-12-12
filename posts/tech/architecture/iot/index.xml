@@ -6,49 +6,68 @@
     <description>Recent content in Internet of Things on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 30 Oct 2023 09:16:13 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/posts/tech/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 09:16:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>快速入门 Akka Java 指南</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</link>
       <pubDate>Mon, 30 Oct 2023 09:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</guid>
       <description>Akka 是一个用于在 JVM 上构建高并发、分布式和可容错的事件驱动应用程序的运行时工具包。Akka 既可以用于 Java，也可以用于 Scala。本指南通过描述 Java 版本的&lt;code&gt;Hello World&lt;/code&gt;示例来介绍 Akka。</description>
     </item>
+    
     <item>
       <title>术语与概念</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/concept/</link>
       <pubDate>Sat, 28 Oct 2023 22:05:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/concept/</guid>
       <description>试图建立一个通用的术语来定义一个坚实的基础以对并发、分布式系统这些 Akka 的目标问题展开交流。请注意，对于这些术语并没有一个统一的定义。我们只是为了寻找一些可行的定义以便在整个文档中进行引用。</description>
     </item>
+    
     <item>
       <title>响应式宣言(Reactive Manifesto)</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/reactive-manifesto/</link>
       <pubDate>Sat, 28 Oct 2023 21:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/reactive-manifesto/</guid>
       <description>响应式系统具有响应性、复原性、弹性和消息驱动性。</description>
     </item>
+    
     <item>
       <title>akka框架</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/akka/</link>
       <pubDate>Fri, 27 Oct 2023 09:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/akka/</guid>
       <description>Akka 是一个开源项目，基于 Apache 2 License。AKKA框架是用Scala写的，主要用于高并发与分布式应用，目前已经得到广泛地运用，例如Spark、Spray等框架在底层都使用了AKKA进行并发处理。</description>
     </item>
+    
     <item>
       <title>State Machine</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/state-machine/</link>
       <pubDate>Mon, 16 Oct 2023 11:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/state-machine/</guid>
       <description>有限状态机 (finite-state machine, FSM) 是一种抽象机器，在任何给定时间内都可以处于有限个状态中的一个状态。FSM 可以根据某些外部输入从一种状态转换到另一种状态，从一种状态转换到另一种状态称为转换。</description>
     </item>
+    
     <item>
       <title>Actor</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iot/actor/</link>
       <pubDate>Fri, 13 Oct 2023 09:16:13 +0800</pubDate>
+      
       <guid>https://WFUing.github.io/posts/tech/architecture/iot/actor/</guid>
-      <description>Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。&#xA;actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。&#xA;actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。&#xA;这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。&#xA;主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。&#xA;一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。&#xA;mailbox 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。&#xA;message 是异步发送给角色的，角色在处理另一条消息时需要将消息存储在某个地方。mailbox 就是存储这些 message 的地方。&#xA;actor 之间通过发送异步消息进行通信。这些 message 会保存在其他 actor 的 mailbox 中，直到它们被处理。</description>
+      <description>Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
+actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
+actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
+这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
+主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
+一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
+mailbox 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。
+message 是异步发送给角色的，角色在处理另一条消息时需要将消息存储在某个地方。mailbox 就是存储这些 message 的地方。
+actor 之间通过发送异步消息进行通信。这些 message 会保存在其他 actor 的 mailbox 中，直到它们被处理。</description>
     </item>
+    
   </channel>
 </rss>

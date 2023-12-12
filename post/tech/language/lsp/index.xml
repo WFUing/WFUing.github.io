@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Language Server Protocol on Waiting For You</title>
+    <link>https://WFUing.github.io/post/tech/language/lsp/</link>
+    <description>Recent content in Language Server Protocol on Waiting For You</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 10 Dec 2023 13:21:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/post/tech/language/lsp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Language Server Protocol 的工作原理</title>
+      <link>https://WFUing.github.io/post/tech/language/lsp/lsp-principle/</link>
+      <pubDate>Sun, 10 Dec 2023 13:21:20 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/lsp/lsp-principle/</guid>
+      <description>Language Server Protocol （语言服务器协议，简称 LSP）是微软于 2016 年提出的一套统一的通讯协议方案。该方案定义了一套编辑器或 IDE 与语言服务器之间使用的协议，该语言服务器提供自动完成、转到定义、查找所有引用等语言功能。</description>
+    </item>
+    
+    <item>
+      <title>Monaco Editor</title>
+      <link>https://WFUing.github.io/post/tech/language/lsp/monaco-editor/</link>
+      <pubDate>Sun, 10 Dec 2023 12:54:21 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/lsp/monaco-editor/</guid>
+      <description>Resources 官网： https://microsoft.github.io/monaco-editor/ https://github.com/microsoft/monaco-editor 非官方博客 Building a code editor with Monaco </description>
+    </item>
+    
+  </channel>
+</rss>

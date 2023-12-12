@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>template engine on Waiting For You</title>
     <link>https://WFUing.github.io/tags/template-engine/</link>
     <description>Recent content in template engine on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 12 Oct 2023 14:43:44 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/tags/template-engine/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Oct 2023 14:43:44 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/template-engine/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Template Engine</title>
-      <link>https://WFUing.github.io/posts/tech/language/code-generation/template-engine/</link>
+      <link>https://WFUing.github.io/post/tech/language/code-generation/template-engine/</link>
       <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/language/code-generation/template-engine/</guid>
-      <description>模板引擎 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。&#xA;模板引擎如何工作 上图说明了模板引擎的所有基本元素和处理流程。&#xA;使用模板引擎构建服务器端应用程序时，模板引擎会将模板文件中的变量替换为实际值，并将此值显示给客户端。这样，我们就能更轻松地快速构建应用程序。&#xA;使用 expressJS 和 ejs 模板引擎的示例 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。&#xA;以下步骤演示了模板引擎如何使用 expressJs 和 ejs 模板引擎工作。下面的示例在网页上渲染用户数据。&#xA;步骤 1：安装 express 和 ejs 模板引擎&#xA;安装 ejs 模板引擎和 express 框架，&#xA;1 npm install express ejs 步骤 2：设置视图引擎&#xA;1 2 3 4 5 6 7 8 const express = require(&amp;#34;express&amp;#34;) const app = express(); // Set the View Engine or Template Engine app.set(&amp;#39;view engine&amp;#39;, &amp;#39;ejs&amp;#39;); app.listen(3000) 在上面的代码中，我们创建了 express 应用程序。该应用程序通过 3000 端口监听。</description>
+      
+      <guid>https://WFUing.github.io/post/tech/language/code-generation/template-engine/</guid>
+      <description>模板引擎 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
+模板引擎如何工作 上图说明了模板引擎的所有基本元素和处理流程。
+使用模板引擎构建服务器端应用程序时，模板引擎会将模板文件中的变量替换为实际值，并将此值显示给客户端。这样，我们就能更轻松地快速构建应用程序。
+使用 expressJS 和 ejs 模板引擎的示例 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。
+以下步骤演示了模板引擎如何使用 expressJs 和 ejs 模板引擎工作。下面的示例在网页上渲染用户数据。
+步骤 1：安装 express 和 ejs 模板引擎
+安装 ejs 模板引擎和 express 框架，
+1 npm install express ejs 步骤 2：设置视图引擎
+1 2 3 4 5 6 7 8 const express = require(&amp;#34;express&amp;#34;) const app = express(); // Set the View Engine or Template Engine app.set(&amp;#39;view engine&amp;#39;, &amp;#39;ejs&amp;#39;); app.listen(3000) 在上面的代码中，我们创建了 express 应用程序。该应用程序通过 3000 端口监听。</description>
     </item>
+    
   </channel>
 </rss>

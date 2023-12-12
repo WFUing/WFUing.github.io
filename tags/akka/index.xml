@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>akka on Waiting For You</title>
     <link>https://WFUing.github.io/tags/akka/</link>
     <description>Recent content in akka on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 30 Oct 2023 09:16:13 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/tags/akka/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 09:16:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/akka/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>快速入门 Akka Java 指南</title>
-      <link>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/iot/akka-java/</link>
       <pubDate>Mon, 30 Oct 2023 09:16:13 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/architecture/iot/akka-java/</guid>
+      
+      <guid>https://WFUing.github.io/post/tech/architecture/iot/akka-java/</guid>
       <description>Akka 是一个用于在 JVM 上构建高并发、分布式和可容错的事件驱动应用程序的运行时工具包。Akka 既可以用于 Java，也可以用于 Scala。本指南通过描述 Java 版本的&lt;code&gt;Hello World&lt;/code&gt;示例来介绍 Akka。</description>
     </item>
+    
     <item>
       <title>akka框架</title>
-      <link>https://WFUing.github.io/posts/tech/architecture/iot/akka/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/iot/akka/</link>
       <pubDate>Fri, 27 Oct 2023 09:16:13 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/architecture/iot/akka/</guid>
+      
+      <guid>https://WFUing.github.io/post/tech/architecture/iot/akka/</guid>
       <description>Akka 是一个开源项目，基于 Apache 2 License。AKKA框架是用Scala写的，主要用于高并发与分布式应用，目前已经得到广泛地运用，例如Spark、Spray等框架在底层都使用了AKKA进行并发处理。</description>
     </item>
+    
   </channel>
 </rss>

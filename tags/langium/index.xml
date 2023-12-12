@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>langium on Waiting For You</title>
     <link>https://WFUing.github.io/tags/langium/</link>
     <description>Recent content in langium on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 31 Oct 2023 10:46:20 +0800</lastBuildDate>
-    <atom:link href="https://WFUing.github.io/tags/langium/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Oct 2023 10:46:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/langium/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>langium简介</title>
-      <link>https://WFUing.github.io/posts/tech/language/dsl/langium/</link>
+      <link>https://WFUing.github.io/post/tech/language/dsl/langium/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/language/dsl/langium/</guid>
-      <description>Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language&#xA;document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构</description>
+      
+      <guid>https://WFUing.github.io/post/tech/language/dsl/langium/</guid>
+      <description>Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language
+document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构</description>
     </item>
+    
     <item>
       <title>Code generation for Langium-based DSLs</title>
-      <link>https://WFUing.github.io/posts/tech/language/code-generation/code-generation-for-langium-based-dsls/</link>
+      <link>https://WFUing.github.io/post/tech/language/code-generation/code-generation-for-langium-based-dsls/</link>
       <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
-      <guid>https://WFUing.github.io/posts/tech/language/code-generation/code-generation-for-langium-based-dsls/</guid>
-      <description>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。&#xA;Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium&#xA;代码生成器的输入示例如下：&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit + laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold + generalExpensesAndSales) / expectedNoOfSales + desiredProfitPerUnit; DEF vat: 0.</description>
+      
+      <guid>https://WFUing.github.io/post/tech/language/code-generation/code-generation-for-langium-based-dsls/</guid>
+      <description>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
+Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
+代码生成器的输入示例如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit + laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold + generalExpensesAndSales) / expectedNoOfSales + desiredProfitPerUnit; DEF vat: 0.</description>
     </item>
+    
   </channel>
 </rss>
