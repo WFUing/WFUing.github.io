@@ -1,537 +1,226 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>六、Tips for Training DNN.md | Waiting For You</title>
-<meta name="keywords" content="">
-<meta name="description" content="Tips for Training DNN [toc]
-6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：
-在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
-处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
-Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
-warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
-Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。">
-<meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
-<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
-<meta property="og:title" content="六、Tips for Training DNN.md" />
-<meta property="og:description" content="Tips for Training DNN [toc]
-6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：
-在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
-处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
-Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
-warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
-Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-10-23T16:25:26+08:00" />
-<meta property="article:modified_time" content="2023-10-23T16:25:26+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="六、Tips for Training DNN.md"/>
-<meta name="twitter:description" content="Tips for Training DNN [toc]
-6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：
-在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
-处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
-Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
-warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
-Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Technology",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "Algorithm",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "Artificial Intelligence",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/ai/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  5 ,
-      "name": "六、Tips for Training DNN.md",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "六、Tips for Training DNN.md",
-  "name": "六、Tips for Training DNN.md",
-  "description": "Tips for Training DNN [toc]\n6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：\n在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。\n处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。\nShuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧\nwarm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数\nNormalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。",
-  "keywords": [
     
-  ],
-  "articleBody": "Tips for Training DNN [toc]\n6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：\n在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。\n处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。\nShuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧\nwarm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数\nNormalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。\n如上图所示，当神经网络层数很多时，靠近输入层的参数的梯度会很小，靠近输出层的参数的梯度会很大。当每个参数的学习率相同时，靠近输入层的参数会更新得很慢，靠近输出层的几层参数会更新得很快。所以，当靠近输入层的参数几乎还是随机数时，靠近输出层的参数已经收敛了。\n原因： 按照反向传播的式子，这确实是会发生的。直观感觉上，sigmoid函数输入的范围是无穷大，但输出的范围是[0,1]，也就是说sigmoid函数减弱了输入变化导致输出变化的幅度。那为什么靠近输出层的参数的梯度更大呢？sigmoid函数是一层层叠起来的，不断地减弱靠近输入层的参数的变化导致输出变化的幅度，所以更靠后的参数的梯度越大。 解决方法： Hinton提出无监督逐层训练方法以解决这个问题，其基本思想是每次训练一层隐节点。 后来Hinton等人提出修改激活函数，比如换成ReLU。 ReLU（Rectified Linear Unit） 定义： 当输入小于等于0时，输出为0；当输入大于0时，输出等于输入，如下图所示。\n优点： 相比于sigmoid函数，它有以下优点\n运算更快 更符合生物学 等同于无穷多个bias不同的sigmoid函数叠加起来 可以解决梯度消失问题 如何解决梯度消失问题？ 当ReLU输出为0时该激活函数对神经网络不起作用，所以在神经网络中生效的激活函数都是输出等于输入，所以就不会出现sigmoid函数导致的减弱输入变化导致输出变化的幅度的情况。 ReLU会使整个神经网络变成线性的吗？ 可知有效的激活函数都是线性的，但整个神经网络还是非线性的。当输入改变很小、不改变每个激活函数的Operation Region（操作区域，大概意思就是输入范围）时，整个神经网络是线性的；当输入改变很大、改变了Operation Region时，整个神经网络就是非线性的。==目前我是凭直觉理解这一点，还未细究== ReLU可以做微分吗？ 不用处理输入为0的情况，当输入小于0时，微分就是0，当输入大于0时微分就是1。 Leaky ReLU 当输入小于等于0时，输出为输入的0.01倍；当输入大于0时，输出等于输入。\nParametric ReLU 当输入小于等于0时，输出为输入的 $\\alpha$ 倍；当输入大于0时，输出等于输入。\n其中 $\\alpha$ 是通过梯度下降学习到的参数\nMaxout 通过学习得到一个激活函数，人为将每层输出的多个值分组，然后输出每组值中的最大值。（跟maxpooling一模一样），其实ReLU是Maxout的一个特例。\nMaxout比ReLU包含了更多的函数\nMaxout 可以得到任意的分段线性凸函数（piecewise linear convex），有几个分段取决于每组里有几个值\n如何训练Maxout Maxout只是选择输出哪一个线性函数的值而已，因此Maxout激活函数还是线性的。 因为在多个值中只选择最大值进行输出，所以会形成一个比较瘦长/窄深的神经网络。 在多个值中只选择最大值进行输出，这并不会导致一些参数无法被训练：因为输入不同导致一组值中的最大值不同，所以各个参数都可能被训练到。 当输入不同时，形成的也是不同结构的神经网络。\n6.4 学习率调整方法（训练集） Adagrad Adaptive Gradient Descent，自适应梯度下降，解决不同参数应该使用不同的更新速率的问题。Adagrad自适应地为各个参数分配不同学习率的算法。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\\frac{\\eta}{\\sqrt{\\sum_{i=0}^{t}{(g_t)^2}}}g_t$ 。\nRMSProp 背景 RMSProp是Adagrad的升级版，在2013年Hinton在Coursera提出。 在训练神经网络时，损失函数不一定是凸函数（局部最小值即为全局最小值），可能是各种各样的函数，有时需要较大的学习率，有时需要较小的学习率，而Adagrad并不能实现这种效果，因此产生了RMSProp。\n定义 $w_{t+1}=w_{t}-\\frac{\\eta}{\\sigma_t}g_t$ （$\\sigma_0=g_0 , \\sigma_t=\\sqrt{\\alpha(\\sigma_{t+1})^2+(1-\\alpha)(g_t)^2}$），其中 $w$ 是某个参数， $\\eta$ 是学习率，$g$ 是梯度， $\\alpha$ 代表旧的梯度的重要性，值越小则旧的梯度越不重要。\n神经网络中很难找到最优的参数吗？ 面临的问题有plateau、saddle point和local minima。\n2007年有人（名字读音好像是young la ken）指出神经网络的error surface是很平滑的，没有很多局部最优。假设有1000个参数，一个参数处于局部最优的概率是 $p$ ，则整个神经网络处于局部最优的概率是 $p^{1000}$ ，这个值是很小的。\nMomentum 如何处理停滞期、鞍点、局部最小值等问题？ 考虑现实世界中物体具有惯性、动量（Momentum）的特点，尽可能避免“小球”陷入error surface上的这几种位置。\n定义 1986年提出。如下图所示，不仅考虑当前的梯度，还考虑上一次的移动方向：$v_t = \\lambda v_{t-1}-\\eta g_t$ ， $v_0=0$，其中 $t$ 是迭代次数，$v$ 指移动方向（movement），类似物理里的速度，$g$ 是梯度（gradient），$\\lambda$ 用来控制惯性的重要性，值越大代表惯性越重要，$\\eta$ 是学习率\nAdam RMSProp+Momentum+Bias Correction，2015年提出\nAdam VS SGDM 目前常用的就是Adam和SGDM。\nAdam训练速度快，large generalization gap（在训练集和验证集上的性能差异大），但不稳定； SGDM更稳定，little generalization gap，更加converge（收敛）。 SGDM适用于计算机视觉，Adam适用于NLP、Speech Synthesis、GAN、Reinforcement Learning。 ####　SWATS\n2017年提出，尝试把Adam和SGDM结合，其实就是前一段时间用Adam，后一段时间用SGDM，但在切换时需要解决一些问题。\n尝试改进Adam AMSGrad Adam的问题: Non-informative gradients contribute more than informative gradients. 在Adam中，之前所有的梯度都会对第 $t$ 步的movement产生影响。然而较早阶段(比如第1、2步)的梯度信息是相对无效的，较晚阶段（比如 $t-1$ 、$t-2$ 步)的梯度信息是相对有效的。在Adam中，可能发生较早阶段梯度相对于较晚阶段梯度比重更大的问题。 提出AMSGrad: 2018年提出 AdaBound 2019年提出，目的也是改进Adam。 Adam需要warm up吗？需要。 warm up：开始时学习率小，后面学习率大。 因为实验结果说明在刚开始的几次（大概是10次）迭代中，参数值的分布比较散乱（distort），因此梯度值就比较散乱，导致梯度下降不稳定。 RAdam 2020年提出 Lookahead 2019年提出，像一个wrapper一样套在优化器外面，适用于Adam、SGDM等任何优化器。 迭代几次后会回头检查一下。 Nadam 2016年提出，把NAG的概念应用到Adam上。 AdamW 2017年提出，这个优化器还是有重要应用的（训练出了某个BERT模型）。 尝试改进SGDM LR range test 2017年提出 Cyclical LR 2017年提出 SGDR 2017年提出，模拟Cosine但并不是Cosine One-cycle LR 2017年提出，warm-up+annealing+fine-tuning SGDW 2017年提出 改进Momentum 背景 如果梯度指出要停下来，但动量说要继续走，这样可能导致坏的结果。\nNAG（Nesterov accelerated gradient） 1983年提出，会预测下一步。 6.5 处理测试集性能不好的方法 6.5.1 Early Stopping 如果学习率调整得较好，随着迭代次数增加，神经网络在训练集上的loss会越来越小，但因为验证集（Validation set）和训练集不完全一样，所以神经网络在验证集上的loss可能不降反升，所以我们应该在神经网络在验证集上loss最小时停止训练。\n6.5.2 Regularization 正则化，L2 regularization如下图所示（$||\\theta||^2$ ，L2范式的平方），一般不考虑bias项。\nL2 regularization 的偏微分，每次都会使 $w_t$ 接近0，因为 $1-\\eta\\lambda$ 接近1但是小于1，比如0.99，每次成0.99，都会向0接近。\n当然，regularization 也可以有其他形式，比如是 $w_i$ 绝对值的集合，成为L1 regularization，具体如下图。但是，这个方法每次使得梯度减少的速度都一样，都是 1 或 -1 乘上 $\\eta\\lambda$ 。\n6.5.3 Dropout dropout是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个mini-batch都在训练不同的网络。\ndropout 在test集合上不使用，只用在Validation set上，并且在test集合上的时候，需要把weight 乘上 $(1-p)%$ 。\n直观的解释：一个团队中，每个人都希望自己的同伴会做这个工作，最后什么都没有做；但是如果你知道你的同伴会dropdout，你就会做的更好，去carry他；不过当testing的时候，没有人会去dropout，所以最后的结果会更好。\n为什么要乘 $(1-p)%$ ？直观的解释如下图。\ndropout是一个整体\n做dropout 的时候是训练了一堆 neural structual\n那这些值的 average 与一开始算的 $\\hat y$ 是否相等呢？\n其实是一样的。\n",
-  "wordCount" : "304",
-  "inLanguage": "zh",
-  "datePublished": "2023-10-23T16:25:26+08:00",
-  "dateModified": "2023-10-23T16:25:26+08:00",
-  "author":{
-    "@type": "Person",
-    "name": "WFUing"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Waiting For You",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://WFUing.github.io/img/logo.gif"
-    }
-  }
-}
-</script>
+    <meta property="og:site_name" content="Waiting For You">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://WFUing.github.io//">
+    <meta property="twitter:image" content="https://WFUing.github.io//" />
+    
+
+    
+    <meta name="title" content="六、Tips for Training DNN.md" />
+    <meta property="og:title" content="六、Tips for Training DNN.md" />
+    <meta property="twitter:title" content="六、Tips for Training DNN.md" />
+    
+
+    
+    <meta name="description" content="这是一个纯粹的博客......">
+    <meta property="og:description" content="这是一个纯粹的博客......" />
+    <meta property="twitter:description" content="这是一个纯粹的博客......" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>六、Tips for Training DNN.md | </title>
+
+    <link rel="canonical" href="/posts/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
 
-</script>
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Waiting For You</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
             </div>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                    <span>🔍</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/" title="HOME">
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/posts" title="BLOGS">
-                    <span>BLOGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                    <span>ARCHIVE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/tags" title="TAGS">
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                    <span>🙋🏻‍♂️</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/">Algorithm</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/ai/">Artificial Intelligence</a></div>
-    <h1 class="post-title">
-      六、Tips for Training DNN.md
-    </h1>
-    <div class="post-meta">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
     }
+</script>
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/')
     }
 </style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-23
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>304字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>2分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-        </span>
-    </span>
-</span>
-        &nbsp;|&nbsp;标签: &nbsp;
+<header class="intro-header" >
 
-        
-        
-        
-        
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_page_pv">
-            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-        </span>
-
-</div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
-
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#tips-for-training-dnn" aria-label="Tips for Training DNN">Tips for Training DNN</a><ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>六、Tips for Training DNN.md</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
                             
-                    <li>
-                        <a href="#61-%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e8%ae%ad%e7%bb%83%e9%97%ae%e9%a2%98%e4%b8%8e%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="6.1 神经网络训练问题与解决方案">6.1 神经网络训练问题与解决方案</a><ul>
+                                    Waiting For You
+                             
+                            on 
+                            Monday, October 23, 2023
                             
-                    <li>
-                        <a href="#%e6%98%8e%e7%a1%ae%e9%97%ae%e9%a2%98%e7%b1%bb%e5%9e%8b%e5%8f%8a%e5%85%b6%e5%af%b9%e5%ba%94%e6%96%b9%e6%b3%95" aria-label="明确问题类型及其对应方法">明确问题类型及其对应方法</a></li>
-                    <li>
-                        <a href="#%e5%a4%84%e7%90%86%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e5%9c%a8%e8%ae%ad%e7%bb%83%e9%9b%86%e4%b8%8a%e6%80%a7%e8%83%bd%e4%b8%8d%e5%a5%bd%e7%9a%84%e6%83%85%e5%86%b5%e5%92%8c%e6%96%b9%e6%b3%95" aria-label="处理神经网络在训练集上性能不好的情况和方法">处理神经网络在训练集上性能不好的情况和方法</a></li>
-                    <li>
-                        <a href="#%e5%a4%84%e7%90%86%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e5%9c%a8%e6%b5%8b%e8%af%95%e9%9b%86%e4%b8%8a%e6%80%a7%e8%83%bd%e4%b8%8d%e5%a5%bd%e7%9a%84%e6%83%85%e5%86%b5%e5%92%8c%e6%96%b9%e6%b3%95" aria-label="处理神经网络在测试集上性能不好的情况和方法">处理神经网络在测试集上性能不好的情况和方法</a></li>
-                    <li>
-                        <a href="#%e4%b8%80%e4%ba%9b%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e6%96%b9%e6%b3%95%e7%9a%84%e7%ae%80%e4%bb%8b" aria-label="一些性能优化方法的简介">一些性能优化方法的简介</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#62-%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e7%b2%be%e5%ba%a6%e4%bd%8e%e4%b8%8d%e4%b8%80%e5%ae%9a%e6%98%af%e5%9b%a0%e4%b8%ba%e8%bf%87%e6%8b%9f%e5%90%88" aria-label="6.2 神经网络精度低不一定是因为过拟合">6.2 神经网络精度低不一定是因为过拟合</a></li>
-                    <li>
-                        <a href="#63-%e5%b8%b8%e7%94%a8%e6%bf%80%e6%b4%bb%e5%87%bd%e6%95%b0%e8%ae%ad%e7%bb%83%e9%9b%86" aria-label="6.3 常用激活函数（训练集）">6.3 常用激活函数（训练集）</a><ul>
                             
-                    <li>
-                        <a href="#%e6%a2%af%e5%ba%a6%e6%b6%88%e5%a4%b1vanishing-gradient-problem" aria-label="梯度消失（Vanishing Gradient Problem）">梯度消失（Vanishing Gradient Problem）</a></li>
-                    <li>
-                        <a href="#relurectified-linear-unit" aria-label="ReLU（Rectified Linear Unit）">ReLU（Rectified Linear Unit）</a></li>
-                    <li>
-                        <a href="#leaky-relu" aria-label="Leaky ReLU">Leaky ReLU</a></li>
-                    <li>
-                        <a href="#parametric-relu" aria-label="Parametric ReLU">Parametric ReLU</a></li>
-                    <li>
-                        <a href="#maxout" aria-label="Maxout">Maxout</a><ul>
                             
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e8%ae%ad%e7%bb%83maxout" aria-label="如何训练Maxout">如何训练Maxout</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#64-%e5%ad%a6%e4%b9%a0%e7%8e%87%e8%b0%83%e6%95%b4%e6%96%b9%e6%b3%95%e8%ae%ad%e7%bb%83%e9%9b%86" aria-label="6.4 学习率调整方法（训练集）">6.4 学习率调整方法（训练集）</a><ul>
                             
-                    <li>
-                        <a href="#adagrad" aria-label="Adagrad">Adagrad</a></li>
-                    <li>
-                        <a href="#rmsprop" aria-label="RMSProp">RMSProp</a><ul>
-                            
-                    <li>
-                        <a href="#%e8%83%8c%e6%99%af" aria-label="背景">背景</a></li>
-                    <li>
-                        <a href="#%e5%ae%9a%e4%b9%89" aria-label="定义">定义</a></li>
-                    <li>
-                        <a href="#%e7%a5%9e%e7%bb%8f%e7%bd%91%e7%bb%9c%e4%b8%ad%e5%be%88%e9%9a%be%e6%89%be%e5%88%b0%e6%9c%80%e4%bc%98%e7%9a%84%e5%8f%82%e6%95%b0%e5%90%97" aria-label="神经网络中很难找到最优的参数吗？">神经网络中很难找到最优的参数吗？</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#momentum" aria-label="Momentum">Momentum</a><ul>
-                            
-                    <li>
-                        <a href="#%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e5%81%9c%e6%bb%9e%e6%9c%9f%e9%9e%8d%e7%82%b9%e5%b1%80%e9%83%a8%e6%9c%80%e5%b0%8f%e5%80%bc%e7%ad%89%e9%97%ae%e9%a2%98" aria-label="如何处理停滞期、鞍点、局部最小值等问题？">如何处理停滞期、鞍点、局部最小值等问题？</a></li>
-                    <li>
-                        <a href="#%e5%ae%9a%e4%b9%89-1" aria-label="定义">定义</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#adam" aria-label="Adam">Adam</a></li>
-                    <li>
-                        <a href="#adam-vs-sgdm" aria-label="Adam VS SGDM">Adam VS SGDM</a></li>
-                    <li>
-                        <a href="#%e5%b0%9d%e8%af%95%e6%94%b9%e8%bf%9badam" aria-label="尝试改进Adam">尝试改进Adam</a></li>
-                    <li>
-                        <a href="#%e5%b0%9d%e8%af%95%e6%94%b9%e8%bf%9bsgdm" aria-label="尝试改进SGDM">尝试改进SGDM</a></li>
-                    <li>
-                        <a href="#%e6%94%b9%e8%bf%9bmomentum" aria-label="改进Momentum">改进Momentum</a><ul>
-                            
-                    <li>
-                        <a href="#%e8%83%8c%e6%99%af-1" aria-label="背景">背景</a></li></ul>
-                    </li></ul>
-                    </li>
-                    <li>
-                        <a href="#65-%e5%a4%84%e7%90%86%e6%b5%8b%e8%af%95%e9%9b%86%e6%80%a7%e8%83%bd%e4%b8%8d%e5%a5%bd%e7%9a%84%e6%96%b9%e6%b3%95" aria-label="6.5 处理测试集性能不好的方法">6.5 处理测试集性能不好的方法</a><ul>
-                            
-                    <li>
-                        <a href="#651-early-stopping" aria-label="6.5.1 Early Stopping">6.5.1 Early Stopping</a></li>
-                    <li>
-                        <a href="#652-regularization" aria-label="6.5.2 Regularization">6.5.2 Regularization</a></li>
-                    <li>
-                        <a href="#653-dropout" aria-label="6.5.3 Dropout">6.5.3 Dropout</a>
-                    </li>
-                </ul>
-                </li>
-                </ul>
-                </li>
-                </ul>
+                    </span>
+                </div>
             </div>
-        </details>
+        </div>
     </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+</header>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
 
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
 
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
 
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
+<article>
+    <div class="container">
+        <div class="row">
 
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
-  <div class="post-content"><h2 id="tips-for-training-dnn">Tips for Training DNN<a hidden class="anchor" aria-hidden="true" href="#tips-for-training-dnn">#</a></h2>
+                
+                <h2 id="tips-for-training-dnn">Tips for Training DNN</h2>
 <p>[toc]</p>
-<h3 id="61-神经网络训练问题与解决方案">6.1 神经网络训练问题与解决方案<a hidden class="anchor" aria-hidden="true" href="#61-神经网络训练问题与解决方案">#</a></h3>
-<h4 id="明确问题类型及其对应方法">明确问题类型及其对应方法<a hidden class="anchor" aria-hidden="true" href="#明确问题类型及其对应方法">#</a></h4>
+<h3 id="61-神经网络训练问题与解决方案">6.1 神经网络训练问题与解决方案</h3>
+<h4 id="明确问题类型及其对应方法">明确问题类型及其对应方法</h4>
 <p>在深度学习中，一般有两种问题：</p>
 <ol>
 <li>在训练集上性能不好</li>
 <li>在测试集上性能不好。</li>
 </ol>
 <p>当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。</p>
-<h4 id="处理神经网络在训练集上性能不好的情况和方法">处理神经网络在训练集上性能不好的情况和方法<a hidden class="anchor" aria-hidden="true" href="#处理神经网络在训练集上性能不好的情况和方法">#</a></h4>
+<h4 id="处理神经网络在训练集上性能不好的情况和方法">处理神经网络在训练集上性能不好的情况和方法</h4>
 <ul>
 <li>修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout</li>
 <li>调整学习率： 比如RMSProp、Momentum、Adam</li>
 </ul>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181842946.png" alt="image-20220121181842946"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181842946.png" alt="image-20220121181842946">
+
 </p>
-<h4 id="处理神经网络在测试集上性能不好的情况和方法">处理神经网络在测试集上性能不好的情况和方法<a hidden class="anchor" aria-hidden="true" href="#处理神经网络在测试集上性能不好的情况和方法">#</a></h4>
+<h4 id="处理神经网络在测试集上性能不好的情况和方法">处理神经网络在测试集上性能不好的情况和方法</h4>
 <ul>
 <li>Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习</li>
 <li>Dropout，比较有深度学习的特色</li>
 </ul>
-<h4 id="一些性能优化方法的简介">一些性能优化方法的简介<a hidden class="anchor" aria-hidden="true" href="#一些性能优化方法的简介">#</a></h4>
+<h4 id="一些性能优化方法的简介">一些性能优化方法的简介</h4>
 <p>下面3点都是在增加<strong>模型的随机性</strong>，鼓励模型做更多的exploration。</p>
 <ul>
 <li>Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成</li>
@@ -549,25 +238,29 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
 <li>Normalization：   有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization</li>
 <li>Regularization</li>
 </ul>
-<h3 id="62-神经网络精度低不一定是因为过拟合">6.2 神经网络精度低不一定是因为过拟合<a hidden class="anchor" aria-hidden="true" href="#62-神经网络精度低不一定是因为过拟合">#</a></h3>
+<h3 id="62-神经网络精度低不一定是因为过拟合">6.2 神经网络精度低不一定是因为过拟合</h3>
 <ul>
 <li>相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。</li>
 <li>不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。<strong>如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了</strong>。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。</li>
 <li>感兴趣可以看看ResNet论文**<a href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a>**，这篇论文可能与该问题有关。</li>
 </ul>
-<h3 id="63-常用激活函数训练集">6.3 常用激活函数（训练集）<a hidden class="anchor" aria-hidden="true" href="#63-常用激活函数训练集">#</a></h3>
-<h4 id="梯度消失vanishing-gradient-problem">梯度消失（Vanishing Gradient Problem）<a hidden class="anchor" aria-hidden="true" href="#梯度消失vanishing-gradient-problem">#</a></h4>
+<h3 id="63-常用激活函数训练集">6.3 常用激活函数（训练集）</h3>
+<h4 id="梯度消失vanishing-gradient-problem">梯度消失（Vanishing Gradient Problem）</h4>
 <p>定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121002804394.png" alt="image-20220121002804394"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121002804394.png" alt="image-20220121002804394">
+
 </p>
 <p>如上图所示，当神经网络层数很多时，靠近输入层的参数的梯度会很小，靠近输出层的参数的梯度会很大。当每个参数的学习率相同时，靠近输入层的参数会更新得很慢，靠近输出层的几层参数会更新得很快。所以，当靠近输入层的参数几乎还是随机数时，靠近输出层的参数已经收敛了。</p>
 <ul>
 <li>原因： 按照反向传播的式子，这确实是会发生的。直观感觉上，sigmoid函数输入的范围是无穷大，但输出的范围是[0,1]，也就是说sigmoid函数减弱了输入变化导致输出变化的幅度。那为什么靠近输出层的参数的梯度更大呢？sigmoid函数是一层层叠起来的，不断地减弱靠近输入层的参数的变化导致输出变化的幅度，所以更靠后的参数的梯度越大。</li>
 <li>解决方法： Hinton提出无监督逐层训练方法以解决这个问题，其基本思想是每次训练一层隐节点。 后来Hinton等人<strong>提出修改激活函数</strong>，比如换成ReLU。</li>
 </ul>
-<h4 id="relurectified-linear-unit">ReLU（Rectified Linear Unit）<a hidden class="anchor" aria-hidden="true" href="#relurectified-linear-unit">#</a></h4>
+<h4 id="relurectified-linear-unit">ReLU（Rectified Linear Unit）</h4>
 <p>定义： 当输入小于等于0时，输出为0；当输入大于0时，输出等于输入，如下图所示。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121093655977.png" alt="image-20220121093655977"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121093655977.png" alt="image-20220121093655977">
+
 </p>
 <p>优点： 相比于sigmoid函数，它有以下优点</p>
 <ol>
@@ -581,63 +274,81 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
 <li>ReLU会使整个神经网络变成线性的吗？ 可知有效的激活函数都是线性的，但整个神经网络还是非线性的。当输入改变很小、不改变每个激活函数的Operation  Region（操作区域，大概意思就是输入范围）时，整个神经网络是线性的；当输入改变很大、改变了Operation  Region时，整个神经网络就是非线性的。==目前我是凭直觉理解这一点，还未细究==</li>
 <li>ReLU可以做微分吗？ 不用处理输入为0的情况，当输入小于0时，微分就是0，当输入大于0时微分就是1。</li>
 </ul>
-<h4 id="leaky-relu">Leaky ReLU<a hidden class="anchor" aria-hidden="true" href="#leaky-relu">#</a></h4>
+<h4 id="leaky-relu">Leaky ReLU</h4>
 <p>当输入小于等于0时，输出为输入的0.01倍；当输入大于0时，输出等于输入。</p>
-<h4 id="parametric-relu">Parametric ReLU<a hidden class="anchor" aria-hidden="true" href="#parametric-relu">#</a></h4>
+<h4 id="parametric-relu">Parametric ReLU</h4>
 <p>当输入小于等于0时，输出为输入的 $\alpha$ 倍；当输入大于0时，输出等于输入。</p>
 <p>其中 $\alpha$ 是通过梯度下降学习到的参数</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121093800890.png" alt="image-20220121093800890"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121093800890.png" alt="image-20220121093800890">
+
 </p>
-<h4 id="maxout">Maxout<a hidden class="anchor" aria-hidden="true" href="#maxout">#</a></h4>
+<h4 id="maxout">Maxout</h4>
 <p>通过学习得到一个激活函数，人为将每层输出的多个值分组，然后输出每组值中的最大值。（跟maxpooling一模一样），其实ReLU是Maxout的一个特例。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121094059002.png" alt="image-20220121094059002"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121094059002.png" alt="image-20220121094059002">
+
 </p>
 <p>Maxout比ReLU包含了更多的函数</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121094851221.png" alt="image-20220121094851221"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121094851221.png" alt="image-20220121094851221">
+
 </p>
 <p>Maxout 可以得到任意的分段线性凸函数（piecewise linear convex），有几个分段取决于每组里有几个值</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121095033371.png" alt="image-20220121095033371"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121095033371.png" alt="image-20220121095033371">
+
 </p>
-<h5 id="如何训练maxout">如何训练Maxout<a hidden class="anchor" aria-hidden="true" href="#如何训练maxout">#</a></h5>
+<h5 id="如何训练maxout">如何训练Maxout</h5>
 <p>Maxout只是选择输出哪一个线性函数的值而已，因此Maxout激活函数还是线性的。 因为在多个值中只选择最大值进行输出，所以会形成一个比较瘦长/窄深的神经网络。 在多个值中只选择最大值进行输出，这并不会导致一些参数无法被训练：<strong>因为输入不同导致一组值中的最大值不同，所以各个参数都可能被训练到</strong>。 当输入不同时，形成的也是不同结构的神经网络。</p>
-<h3 id="64-学习率调整方法训练集">6.4 学习率调整方法（训练集）<a hidden class="anchor" aria-hidden="true" href="#64-学习率调整方法训练集">#</a></h3>
-<h4 id="adagrad">Adagrad<a hidden class="anchor" aria-hidden="true" href="#adagrad">#</a></h4>
+<h3 id="64-学习率调整方法训练集">6.4 学习率调整方法（训练集）</h3>
+<h4 id="adagrad">Adagrad</h4>
 <p>Adaptive Gradient Descent，自适应梯度下降，解决不同参数应该使用不同的更新速率的问题。Adagrad自适应地为各个参数分配不同学习率的算法。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ 。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121114218225.png" alt="image-20220121114218225"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121114218225.png" alt="image-20220121114218225">
+
 </p>
-<h4 id="rmsprop">RMSProp<a hidden class="anchor" aria-hidden="true" href="#rmsprop">#</a></h4>
-<h5 id="背景">背景<a hidden class="anchor" aria-hidden="true" href="#背景">#</a></h5>
+<h4 id="rmsprop">RMSProp</h4>
+<h5 id="背景">背景</h5>
 <p>RMSProp是Adagrad的升级版，在2013年Hinton在Coursera提出。 在训练神经网络时，损失函数不一定是凸函数（局部最小值即为全局最小值），可能是各种各样的函数，有时需要较大的学习率，有时需要较小的学习率，而Adagrad并不能实现这种效果，因此产生了RMSProp。</p>
-<h5 id="定义">定义<a hidden class="anchor" aria-hidden="true" href="#定义">#</a></h5>
+<h5 id="定义">定义</h5>
 <p>$w_{t+1}=w_{t}-\frac{\eta}{\sigma_t}g_t$ （$\sigma_0=g_0 , \sigma_t=\sqrt{\alpha(\sigma_{t+1})^2+(1-\alpha)(g_t)^2}$），其中 $w$ 是某个参数， $\eta$ 是学习率，$g$ 是梯度， $\alpha$ 代表旧的梯度的重要性，值越小则旧的梯度越不重要。</p>
-<h5 id="神经网络中很难找到最优的参数吗">神经网络中很难找到最优的参数吗？<a hidden class="anchor" aria-hidden="true" href="#神经网络中很难找到最优的参数吗">#</a></h5>
+<h5 id="神经网络中很难找到最优的参数吗">神经网络中很难找到最优的参数吗？</h5>
 <p>面临的问题有plateau、saddle point和local minima。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121115827871.png" alt="image-20220121115827871"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121115827871.png" alt="image-20220121115827871">
+
 </p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121120226050.png" alt="image-20220121120226050"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121120226050.png" alt="image-20220121120226050">
+
 </p>
 <p>2007年有人（名字读音好像是young la ken）指出神经网络的error surface是很平滑的，没有很多局部最优。假设有1000个参数，一个参数处于局部最优的概率是 $p$ ，则整个神经网络处于局部最优的概率是 $p^{1000}$ ，这个值是很小的。</p>
-<h4 id="momentum">Momentum<a hidden class="anchor" aria-hidden="true" href="#momentum">#</a></h4>
-<h5 id="如何处理停滞期鞍点局部最小值等问题">如何处理停滞期、鞍点、局部最小值等问题？<a hidden class="anchor" aria-hidden="true" href="#如何处理停滞期鞍点局部最小值等问题">#</a></h5>
+<h4 id="momentum">Momentum</h4>
+<h5 id="如何处理停滞期鞍点局部最小值等问题">如何处理停滞期、鞍点、局部最小值等问题？</h5>
 <p>考虑现实世界中物体具有惯性、动量（Momentum）的特点，尽可能避免“小球”陷入error surface上的这几种位置。</p>
-<h5 id="定义-1">定义<a hidden class="anchor" aria-hidden="true" href="#定义-1">#</a></h5>
+<h5 id="定义-1">定义</h5>
 <p>1986年提出。如下图所示，不仅考虑当前的梯度，还考虑上一次的移动方向：$v_t = \lambda v_{t-1}-\eta g_t$ ， $v_0=0$，其中 $t$ 是迭代次数，$v$ 指移动方向（movement），类似物理里的速度，$g$ 是梯度（gradient），$\lambda$ 用来控制惯性的重要性，值越大代表惯性越重要，$\eta$ 是学习率</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121131251914.png" alt="image-20220121131251914"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121131251914.png" alt="image-20220121131251914">
+
 </p>
-<h4 id="adam">Adam<a hidden class="anchor" aria-hidden="true" href="#adam">#</a></h4>
+<h4 id="adam">Adam</h4>
 <p>RMSProp+Momentum+Bias Correction，2015年提出</p>
-<h4 id="adam-vs-sgdm">Adam VS SGDM<a hidden class="anchor" aria-hidden="true" href="#adam-vs-sgdm">#</a></h4>
+<h4 id="adam-vs-sgdm">Adam VS SGDM</h4>
 <p>目前常用的就是Adam和SGDM。</p>
 <ul>
 <li>Adam训练速度快，large generalization gap（在训练集和验证集上的性能差异大），但不稳定；</li>
 <li>SGDM更稳定，little generalization gap，更加converge（收敛）。</li>
 <li>SGDM适用于计算机视觉，Adam适用于NLP、Speech Synthesis、GAN、Reinforcement Learning。</li>
 </ul>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121131446379.png" alt="image-20220121131446379"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121131446379.png" alt="image-20220121131446379">
+
 </p>
 <p>####　SWATS</p>
 <p>2017年提出，尝试把Adam和SGDM结合，其实就是前一段时间用Adam，后一段时间用SGDM，但在切换时需要解决一些问题。</p>
-<h4 id="尝试改进adam">尝试改进Adam<a hidden class="anchor" aria-hidden="true" href="#尝试改进adam">#</a></h4>
+<h4 id="尝试改进adam">尝试改进Adam</h4>
 <ul>
 <li>AMSGrad
 <ul>
@@ -652,7 +363,7 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
 <li>Nadam    2016年提出，把NAG的概念应用到Adam上。</li>
 <li>AdamW    2017年提出，这个优化器还是有重要应用的（训练出了某个BERT模型）。</li>
 </ul>
-<h4 id="尝试改进sgdm">尝试改进SGDM<a hidden class="anchor" aria-hidden="true" href="#尝试改进sgdm">#</a></h4>
+<h4 id="尝试改进sgdm">尝试改进SGDM</h4>
 <ul>
 <li>LR range test    2017年提出</li>
 <li>Cyclical LR    2017年提出</li>
@@ -660,263 +371,289 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
 <li>One-cycle LR     2017年提出，warm-up+annealing+fine-tuning</li>
 <li>SGDW    2017年提出</li>
 </ul>
-<h4 id="改进momentum">改进Momentum<a hidden class="anchor" aria-hidden="true" href="#改进momentum">#</a></h4>
-<h5 id="背景-1">背景<a hidden class="anchor" aria-hidden="true" href="#背景-1">#</a></h5>
+<h4 id="改进momentum">改进Momentum</h4>
+<h5 id="背景-1">背景</h5>
 <p>如果梯度指出要停下来，但动量说要继续走，这样可能导致坏的结果。</p>
 <ul>
 <li>NAG（Nesterov accelerated gradient） 1983年提出，会预测下一步。</li>
 </ul>
-<h3 id="65-处理测试集性能不好的方法">6.5 处理测试集性能不好的方法<a hidden class="anchor" aria-hidden="true" href="#65-处理测试集性能不好的方法">#</a></h3>
-<h4 id="651-early-stopping">6.5.1 Early Stopping<a hidden class="anchor" aria-hidden="true" href="#651-early-stopping">#</a></h4>
+<h3 id="65-处理测试集性能不好的方法">6.5 处理测试集性能不好的方法</h3>
+<h4 id="651-early-stopping">6.5.1 Early Stopping</h4>
 <p>如果学习率调整得较好，随着迭代次数增加，神经网络在训练集上的loss会越来越小，但因为验证集（Validation set）和训练集不完全一样，所以神经网络在验证集上的loss可能不降反升，所以我们应该在神经网络在验证集上loss最小时停止训练。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121175626937.png" alt="image-20220121175626937"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121175626937.png" alt="image-20220121175626937">
+
 </p>
-<h4 id="652-regularization">6.5.2 Regularization<a hidden class="anchor" aria-hidden="true" href="#652-regularization">#</a></h4>
+<h4 id="652-regularization">6.5.2 Regularization</h4>
 <p>正则化，L2 regularization如下图所示（$||\theta||^2$ ，L2范式的平方），一般不考虑bias项。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121180116795.png" alt="image-20220121180116795"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121180116795.png" alt="image-20220121180116795">
+
 </p>
 <p>L2 regularization 的偏微分，每次都会使 $w_t$ 接近0，因为 $1-\eta\lambda$ 接近1但是小于1，比如0.99，每次成0.99，都会向0接近。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181149440.png" alt="image-20220121181149440"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181149440.png" alt="image-20220121181149440">
+
 </p>
 <p>当然，regularization 也可以有其他形式，比如是 $w_i$ 绝对值的集合，成为L1 regularization，具体如下图。但是，这个方法每次使得梯度减少的速度都一样，都是 1 或 -1 乘上 $\eta\lambda$ 。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181641152.png" alt="image-20220121181641152"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121181641152.png" alt="image-20220121181641152">
+
 </p>
-<h4 id="653-dropout">6.5.3 Dropout<a hidden class="anchor" aria-hidden="true" href="#653-dropout">#</a></h4>
+<h4 id="653-dropout">6.5.3 Dropout</h4>
 <p>dropout是指在<a href="https://so.csdn.net/so/search?q=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0&amp;spm=1001.2101.3001.7020">深度学习</a>网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个mini-batch都在训练不同的网络。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182241382.png" alt="image-20220121182241382"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182241382.png" alt="image-20220121182241382">
+
 </p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182318836.png" alt="image-20220121182318836"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182318836.png" alt="image-20220121182318836">
+
 </p>
 <p>dropout 在test集合上不使用，只用在Validation set上，并且在test集合上的时候，需要把weight 乘上 $(1-p)%$ 。</p>
 <p>直观的解释：一个团队中，每个人都希望自己的同伴会做这个工作，最后什么都没有做；但是如果你知道你的同伴会dropdout，你就会做的更好，去carry他；不过当testing的时候，没有人会去dropout，所以最后的结果会更好。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182629058.png" alt="image-20220121182629058"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121182629058.png" alt="image-20220121182629058">
+
 </p>
 <p>为什么要乘 $(1-p)%$ ？直观的解释如下图。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121183338383.png" alt="image-20220121183338383"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121183338383.png" alt="image-20220121183338383">
+
 </p>
 <p>dropout是一个整体</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190304915.png" alt="image-20220121190304915"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190304915.png" alt="image-20220121190304915">
+
 </p>
 <p>做dropout 的时候是训练了一堆 neural structual</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190446601.png" alt="image-20220121190446601"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190446601.png" alt="image-20220121190446601">
+
 </p>
 <p>那这些值的 average 与一开始算的 $\hat y$ 是否相等呢？</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190759249.png" alt="image-20220121190759249"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121190759249.png" alt="image-20220121190759249">
+
 </p>
 <p>其实是一样的。</p>
-<p><img loading="lazy" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121191028004.png" alt="image-20220121191028004"  />
+<p>
+  <img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121191028004.png" alt="image-20220121191028004">
+
 </p>
 
 
-  </div>
+                
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
-    <span class="title">« 上一页</span>
-    <br>
-    <span>二、回归模型.md</span>
-  </a>
-  <a class="next" href="https://WFUing.github.io/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">
-    <span class="title">下一页 »</span>
-    <br>
-    <span>七、Convolutional Neural Network.md</span>
-  </a>
-</nav>
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/" data-toggle="tooltip" data-placement="top" title="七、Convolutional Neural Network.md">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/posts/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/" data-toggle="tooltip" data-placement="top" title="二、回归模型.md">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
-<div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on twitter"
-        href="https://twitter.com/intent/tweet/?text=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f&amp;hashtags=">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f&amp;title=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md&amp;summary=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md&amp;source=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f&title=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on whatsapp"
-        href="https://api.whatsapp.com/send?text=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md%20-%20https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on telegram"
-        href="https://telegram.me/share/url?text=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f">
-        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share 六、Tips for Training DNN.md on ycombinator"
-        href="https://news.ycombinator.com/submitlink?t=%e5%85%ad%e3%80%81Tips%20for%20Training%20DNN.md&u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fli-hongyis-notes%2f%25E5%2585%25ADtips-for-training-dnn%2f">
-        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-            <path
-                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-        </svg>
-    </a>
-</div>
 
-  </footer>
-<div>
-    <div class="pagination__title">
-        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
-        <hr />
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+            </div>
+        </div>
     </div>
-    <div id="tcomment"></div>
-    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
-    <script>
-        twikoo.init({
-            envId: "https://twikoo-api-three-gamma.vercel.app/",  
-            el: "#tcomment",
-            lang: 'zh-CN',
-            region: 'ap-guangzhou',  
-            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
-        });
-    </script>
-</div>
-
 </article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Waiting For You 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+
+
+
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
         });
     });
-
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '复制';
 
-        function copyingDone() {
-            copybutton.innerHTML = '已复制！';
-            setTimeout(() => {
-                copybutton.innerHTML = '复制';
-            }, 2000);
-        }
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
 </body>
-
 </html>

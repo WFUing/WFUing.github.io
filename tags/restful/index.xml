@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>restful on Waiting For You</title>
     <link>https://WFUing.github.io/tags/restful/</link>
     <description>Recent content in restful on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 13 Oct 2023 13:19:27 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Oct 2023 13:19:27 +0800</lastBuildDate>
+    <atom:link href="https://WFUing.github.io/tags/restful/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Restful API Tutorial</title>
       <link>https://WFUing.github.io/posts/tech/network/restful/</link>
       <pubDate>Fri, 13 Oct 2023 13:19:27 +0800</pubDate>
-      
       <guid>https://WFUing.github.io/posts/tech/network/restful/</guid>
       <description>REST 全称是 &lt;strong&gt;Re&lt;/strong&gt;presentational &lt;strong&gt;S&lt;/strong&gt;tate &lt;strong&gt;T&lt;/strong&gt;ransfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文</description>
     </item>
-    
   </channel>
 </rss>

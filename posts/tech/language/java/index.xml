@@ -1,44 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Waiting For You</title>
     <link>https://WFUing.github.io/posts/tech/language/java/</link>
     <description>Recent content in Java on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Tue, 07 Nov 2023 23:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/tech/language/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Nov 2023 23:15:08 +0800</lastBuildDate>
+    <atom:link href="https://WFUing.github.io/posts/tech/language/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java类加载机制</title>
       <link>https://WFUing.github.io/posts/tech/language/java/class-loader/</link>
       <pubDate>Tue, 07 Nov 2023 23:15:08 +0800</pubDate>
-      
       <guid>https://WFUing.github.io/posts/tech/language/java/class-loader/</guid>
-      <description>https://cloud.tencent.com/developer/article/1948324 类加载机制简介 类加载整体流程如下图所示，这也是类的生命周期：
-字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象
-需要注意的是，图中红框所代表的加载，验证，准备，初始化，卸载这五个阶段的顺序是确定的，类加载必须严格按照这五个阶段的顺序来开始，但解析阶段则未必，有可能在初始化之后才开始，主要是为了支持 Java 的动态绑定特性，那么各个阶段主要做了哪些事呢？
-加载 在加载阶段，虚拟机需要完成以下三件事
-通过一个类的全限定名来获取此类的二进制字节流 将这个字节流所代表的静态存储结构转化为方法区的运行时结构 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口 如上图所示，加载后生成的类对象与对象间的关系如上图所示，什么是类对象呢，比如实例的 getClass() 或 Foo.Class 即为类对象
-每个类只有一个对象实例（类对象），多个对象共享类对象，这里有个需要注意的点是类对象是在堆中而不是在方法区（这里针对的是 Java 7 及以后的版本），所有的对象都是分配在堆中的，类对象也是对象，所以也是分配在堆中，这点网上挺多人混淆了，需要注意一下
-有人可能会奇怪，只看上面这张图，对象和类对象貌似联系不起来，实际上在虚拟机底层，比如 Java Hotspot 虚拟机，对象和类是以一种被称为 oop-klass 的模型来表示的，每个对象或类都有对应的 C++ 类表示方式，它的底层其实是如下这样来表示的，通过下图可以看到，通过这种方式实例对象和 Class 对象就能联系起来了。
-有人可能会困惑，为啥需要做这些校验工作呢，字节码文件难道不安全？字节码文件一般来说是通过正常的 Java 编译器编译而成的，但字节码文件也是可以编辑修改的，也是有可能被篡改注入恶意的字节码的，就会对程序造成不可预知的风险，所以加载阶段的验证是非常有必要的。
-我们可以在执行 java 程序的时候加上 -verbose:class 或 -XX:+TraceClassLoading 这两个 JVM 参数来观察一下类的加载情况，比如我们写了如下测试类：
-1 2 3 4 public class Test { public static void main(String[] args) { } } 编译后执行 java -XX:+TraceClassLoading Test
-可以看到如下加载过程
-1 2 3 4 5 6 7 [Opened /Library/Internet Plug-Ins/JavaAppletPlugin.</description>
+      <description>https://cloud.tencent.com/developer/article/1948324 类加载机制简介 类加载整体流程如下图所示，这也是类的生命周期：&#xA;字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象&#xA;需要注意的是，图中红框所代表的加载，验证，准备，初始化，卸载这五个阶段的顺序是确定的，类加载必须严格按照这五个阶段的顺序来开始，但解析阶段则未必，有可能在初始化之后才开始，主要是为了支持 Java 的动态绑定特性，那么各个阶段主要做了哪些事呢？&#xA;加载 在加载阶段，虚拟机需要完成以下三件事&#xA;通过一个类的全限定名来获取此类的二进制字节流 将这个字节流所代表的静态存储结构转化为方法区的运行时结构 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口 如上图所示，加载后生成的类对象与对象间的关系如上图所示，什么是类对象呢，比如实例的 getClass() 或 Foo.Class 即为类对象&#xA;每个类只有一个对象实例（类对象），多个对象共享类对象，这里有个需要注意的点是类对象是在堆中而不是在方法区（这里针对的是 Java 7 及以后的版本），所有的对象都是分配在堆中的，类对象也是对象，所以也是分配在堆中，这点网上挺多人混淆了，需要注意一下&#xA;有人可能会奇怪，只看上面这张图，对象和类对象貌似联系不起来，实际上在虚拟机底层，比如 Java Hotspot 虚拟机，对象和类是以一种被称为 oop-klass 的模型来表示的，每个对象或类都有对应的 C++ 类表示方式，它的底层其实是如下这样来表示的，通过下图可以看到，通过这种方式实例对象和 Class 对象就能联系起来了。&#xA;有人可能会困惑，为啥需要做这些校验工作呢，字节码文件难道不安全？字节码文件一般来说是通过正常的 Java 编译器编译而成的，但字节码文件也是可以编辑修改的，也是有可能被篡改注入恶意的字节码的，就会对程序造成不可预知的风险，所以加载阶段的验证是非常有必要的。&#xA;我们可以在执行 java 程序的时候加上 -verbose:class 或 -XX:+TraceClassLoading 这两个 JVM 参数来观察一下类的加载情况，比如我们写了如下测试类：&#xA;1 2 3 4 public class Test { public static void main(String[] args) { } } 编译后执行 java -XX:+TraceClassLoading Test&#xA;可以看到如下加载过程&#xA;1 2 3 4 5 6 7 [Opened /Library/Internet Plug-Ins/JavaAppletPlugin.</description>
     </item>
-    
     <item>
       <title>Junit 运行流程</title>
       <link>https://WFUing.github.io/posts/tech/language/java/junit/</link>
       <pubDate>Sun, 05 Nov 2023 18:15:08 +0800</pubDate>
-      
       <guid>https://WFUing.github.io/posts/tech/language/java/junit/</guid>
-      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
-在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &amp;mdash; Martin Fowler
-从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
-junit4
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&amp;#34;.....this is before test.</description>
+      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。&#xA;在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &amp;mdash; Martin Fowler&#xA;从一个简单的例子开始认识 Junit 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：&#xA;junit4&#xA;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&amp;#34;.....this is before test.</description>
     </item>
-    
   </channel>
 </rss>

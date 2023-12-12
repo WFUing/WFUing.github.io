@@ -1,448 +1,207 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>chatGPT 使用指南 | Waiting For You</title>
-<meta name="keywords" content="chatgpt">
-<meta name="description" content="Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
-在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
-指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
-使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
-在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。">
-<meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
-<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+    
+    <meta property="og:site_name" content="Waiting For You">
+    <meta property="og:type" content="article">
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
+    
+    <meta property="og:image" content="https://WFUing.github.io//">
+    <meta property="twitter:image" content="https://WFUing.github.io//" />
+    
 
-            .list {
-                background: var(--theme);
-            }
+    
+    <meta name="title" content="chatGPT 使用指南" />
+    <meta property="og:title" content="chatGPT 使用指南" />
+    <meta property="twitter:title" content="chatGPT 使用指南" />
+    
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
+    
+    <meta name="description" content="这是一个纯粹的博客......">
+    <meta property="og:description" content="这是一个纯粹的博客......" />
+    <meta property="twitter:description" content="这是一个纯粹的博客......" />
+    
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
 
-    </style>
-</noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
+    <title>chatGPT 使用指南 | </title>
 
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
+    <link rel="canonical" href="/posts/tech/algorithm/ai/chatgpt-guide/">
 
-<meta property="og:title" content="chatGPT 使用指南" />
-<meta property="og:description" content="Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
-在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
-指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
-使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
-在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-10-12T19:43:45+08:00" />
-<meta property="article:modified_time" content="2023-10-12T19:43:45+08:00" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="chatGPT 使用指南"/>
-<meta name="twitter:description" content="Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
-在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
-指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
-使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
-在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。"/>
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
 
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Technology",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "Algorithm",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "Artificial Intelligence",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/ai/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  5 ,
-      "name": "chatGPT 使用指南",
-      "item": "https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "chatGPT 使用指南",
-  "name": "chatGPT 使用指南",
-  "description": "Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。\n在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 \u0026ldquo;少量 \u0026ldquo;提示。这就是所谓的 \u0026ldquo;少量 \u0026ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。\n指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。\n使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to \u0026ldquo;think\u0026rdquo; 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。\n在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。",
-  "keywords": [
-    "chatgpt"
-  ],
-  "articleBody": "Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。\n在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 “少量 “提示。这就是所谓的 “少量 “提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。\n指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。\n使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to “think” 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。\n在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。\n利用嵌入式搜索实现高效知识检索：如果将外部信息源作为输入的一部分，模型可以利用外部信息源。这可以帮助模型生成更多信息和最新回复。例如，如果用户询问有关特定电影的问题，那么在模型输入中添加有关电影的高质量信息（如演员、导演等……）可能会很有用。嵌入可用于实现高效的知识检索，以便在运行时将相关信息动态添加到模型输入中。文本嵌入是一个可以衡量文本字符串之间相关性的向量。相似或相关的字符串会比不相关的字符串靠得更近。这一事实以及快速向量搜索算法的存在，意味着嵌入可以用来实现高效的知识检索。特别是，文本语料库可以分割成若干块，每个块都可以嵌入和存储。然后，可以嵌入给定的查询，并执行矢量搜索，从语料库中找到与查询最相关的嵌入文本块（即在嵌入空间中最接近的文本块）。 使用代码执行来执行更精确的计算或调用外部应用程序接口：不能依靠 GPT 自行准确执行算术运算或长时间计算。在需要的情况下，可以指示模型编写和运行代码，而不是自己进行计算。特别是，可以指示模型将需要运行的代码放入指定格式（如三重回溯）中。产生输出后，可提取并运行代码。最后，如有必要，可将代码执行引擎（即 Python 解释器）的输出作为下一次查询的模型输入。 让模型访问特定功能：聊天完成 API 允许在请求中传递函数描述列表。这样，模型就能根据提供的模式生成函数参数。生成的函数参数由 API 以 JSON 格式返回，可用于执行函数调用。然后，函数调用提供的输出可以在下一个请求中反馈到模型中，以结束循环。这是使用 GPT 模型调用外部函数的推荐方式。 Test changes systematically 如果能对性能进行测量，提高性能就会变得更容易。在某些情况下，对提示符的修改会在一些孤立的示例上取得更好的性能，但在更具代表性的示例集上却会导致整体性能下降。因此，为了确保修改对性能的净积极影响，可能有必要定义一个综合测试套件（也称为 “评估”）。\nResources https://platform.openai.com/docs/guides/gpt-best-practices https://github.com/mattnigh/ChatGPT3-Free-Prompt-List https://style.mla.org/citing-generative-ai/ ",
-  "wordCount" : "103",
-  "inLanguage": "zh",
-  "datePublished": "2023-10-12T19:43:45+08:00",
-  "dateModified": "2023-10-12T19:43:45+08:00",
-  "author":{
-    "@type": "Person",
-    "name": "WFUing"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://WFUing.github.io/posts/tech/algorithm/ai/chatgpt-guide/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Waiting For You",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://WFUing.github.io/img/logo.gif"
-    }
-  }
-}
-</script>
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
 
-</script>
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Waiting For You</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
             </div>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                    <span>🔍</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/" title="HOME">
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/posts" title="BLOGS">
-                    <span>BLOGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                    <span>ARCHIVE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/tags" title="TAGS">
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                    <span>🙋🏻‍♂️</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/">Algorithm</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/algorithm/ai/">Artificial Intelligence</a></div>
-    <h1 class="post-title">
-      chatGPT 使用指南
-    </h1>
-    <div class="post-meta">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
     }
+</script>
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/')
     }
 </style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>103字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/chatgpt/" style="color: var(--secondary)!important;">chatgpt</a>
-            </span>
-        </span>
-    </span>
-</span>
-        &nbsp;|&nbsp;标签: &nbsp;
-        <ul class="post-tags-meta">
-            <a href="https://WFUing.github.io/tags/chatgpt/">chatgpt</a>
-        </ul>
+<header class="intro-header" >
 
-        
-        
-        
-        
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_page_pv">
-            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-        </span>
-
-</div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
-
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#six-strategies-for-getting-better-results" aria-label="Six strategies for getting better results">Six strategies for getting better results</a><ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/chatgpt" title="chatgpt">
+                            chatgpt
+                        </a>
+                        
+                    </div>
+                    <h1>chatGPT 使用指南</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
                             
-                    <li>
-                        <a href="#write-clear-instructions" aria-label="Write clear instructions">Write clear instructions</a></li>
-                    <li>
-                        <a href="#provide-reference-text" aria-label="Provide reference text">Provide reference text</a></li>
-                    <li>
-                        <a href="#split-complex-tasks-into-simpler-subtasks" aria-label="Split complex tasks into simpler subtasks">Split complex tasks into simpler subtasks</a></li>
-                    <li>
-                        <a href="#give-gpts-time-to-think" aria-label="Give GPTs time to &amp;ldquo;think&amp;rdquo;">Give GPTs time to &ldquo;think&rdquo;</a></li>
-                    <li>
-                        <a href="#use-external-tools" aria-label="Use external tools">Use external tools</a></li>
-                    <li>
-                        <a href="#test-changes-systematically" aria-label="Test changes systematically">Test changes systematically</a></li></ul>
-                    </li>
-                    <li>
-                        <a href="#resources" aria-label="Resources">Resources</a>
-                    </li>
-                </ul>
+                                    Waiting For You
+                             
+                            on 
+                            Thursday, October 12, 2023
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
             </div>
-        </details>
+        </div>
     </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+</header>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
 
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
 
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
 
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
+<article>
+    <div class="container">
+        <div class="row">
 
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
-  <div class="post-content"><h2 id="six-strategies-for-getting-better-results">Six strategies for getting better results<a hidden class="anchor" aria-hidden="true" href="#six-strategies-for-getting-better-results">#</a></h2>
-<h3 id="write-clear-instructions">Write clear instructions<a hidden class="anchor" aria-hidden="true" href="#write-clear-instructions">#</a></h3>
+                
+                <h2 id="six-strategies-for-getting-better-results">Six strategies for getting better results</h2>
+<h3 id="write-clear-instructions">Write clear instructions</h3>
 <p>GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。</p>
 <ul>
 <li>在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。</li>
@@ -452,35 +211,35 @@
 <li>举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。</li>
 <li>指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。</li>
 </ul>
-<h3 id="provide-reference-text">Provide reference text<a hidden class="anchor" aria-hidden="true" href="#provide-reference-text">#</a></h3>
+<h3 id="provide-reference-text">Provide reference text</h3>
 <p>GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。</p>
 <ul>
 <li>指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。</li>
 <li>指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。</li>
 </ul>
-<h3 id="split-complex-tasks-into-simpler-subtasks">Split complex tasks into simpler subtasks<a hidden class="anchor" aria-hidden="true" href="#split-complex-tasks-into-simpler-subtasks">#</a></h3>
+<h3 id="split-complex-tasks-into-simpler-subtasks">Split complex tasks into simpler subtasks</h3>
 <p>在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。</p>
 <ul>
 <li>使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。</li>
 <li>对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。</li>
 <li>对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。</li>
 </ul>
-<h3 id="give-gpts-time-to-think">Give GPTs time to &ldquo;think&rdquo;<a hidden class="anchor" aria-hidden="true" href="#give-gpts-time-to-think">#</a></h3>
+<h3 id="give-gpts-time-to-think">Give GPTs time to &ldquo;think&rdquo;</h3>
 <p>如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。</p>
 <ul>
 <li>在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。</li>
 <li>使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。</li>
 </ul>
-<h3 id="use-external-tools">Use external tools<a hidden class="anchor" aria-hidden="true" href="#use-external-tools">#</a></h3>
+<h3 id="use-external-tools">Use external tools</h3>
 <p>向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。</p>
 <ul>
 <li>利用嵌入式搜索实现高效知识检索：如果将外部信息源作为输入的一部分，模型可以利用外部信息源。这可以帮助模型生成更多信息和最新回复。例如，如果用户询问有关特定电影的问题，那么在模型输入中添加有关电影的高质量信息（如演员、导演等&hellip;&hellip;）可能会很有用。嵌入可用于实现高效的知识检索，以便在运行时将相关信息动态添加到模型输入中。文本嵌入是一个可以衡量文本字符串之间相关性的向量。相似或相关的字符串会比不相关的字符串靠得更近。这一事实以及快速向量搜索算法的存在，意味着嵌入可以用来实现高效的知识检索。特别是，文本语料库可以分割成若干块，每个块都可以嵌入和存储。然后，可以嵌入给定的查询，并执行矢量搜索，从语料库中找到与查询最相关的嵌入文本块（即在嵌入空间中最接近的文本块）。</li>
 <li>使用代码执行来执行更精确的计算或调用外部应用程序接口：不能依靠 GPT 自行准确执行算术运算或长时间计算。在需要的情况下，可以指示模型编写和运行代码，而不是自己进行计算。特别是，可以指示模型将需要运行的代码放入指定格式（如三重回溯）中。产生输出后，可提取并运行代码。最后，如有必要，可将代码执行引擎（即 Python 解释器）的输出作为下一次查询的模型输入。</li>
 <li>让模型访问特定功能：聊天完成 API 允许在请求中传递函数描述列表。这样，模型就能根据提供的模式生成函数参数。生成的函数参数由 API 以 JSON 格式返回，可用于执行函数调用。然后，函数调用提供的输出可以在下一个请求中反馈到模型中，以结束循环。这是使用 GPT 模型调用外部函数的推荐方式。</li>
 </ul>
-<h3 id="test-changes-systematically">Test changes systematically<a hidden class="anchor" aria-hidden="true" href="#test-changes-systematically">#</a></h3>
+<h3 id="test-changes-systematically">Test changes systematically</h3>
 <p>如果能对性能进行测量，提高性能就会变得更容易。在某些情况下，对提示符的修改会在一些孤立的示例上取得更好的性能，但在更具代表性的示例集上却会导致整体性能下降。因此，为了确保修改对性能的净积极影响，可能有必要定义一个综合测试套件（也称为 &ldquo;评估&rdquo;）。</p>
-<h2 id="resources">Resources<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h2>
+<h2 id="resources">Resources</h2>
 <ul>
 <li><a href="https://platform.openai.com/docs/guides/gpt-best-practices">https://platform.openai.com/docs/guides/gpt-best-practices</a></li>
 <li><a href="https://github.com/mattnigh/ChatGPT3-Free-Prompt-List">https://github.com/mattnigh/ChatGPT3-Free-Prompt-List</a></li>
@@ -488,216 +247,217 @@
 </ul>
 
 
-  </div>
+                
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://WFUing.github.io/tags/chatgpt/">chatgpt</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://WFUing.github.io/posts/tech/os/linux-instructions/">
-    <span class="title">« 上一页</span>
-    <br>
-    <span>45 个常用Linux 命令，让你轻松玩转Linux！</span>
-  </a>
-  <a class="next" href="https://WFUing.github.io/posts/tech/network/frp-nat-traversal/">
-    <span class="title">下一页 »</span>
-    <br>
-    <span>Frp Nat Traversal</span>
-  </a>
-</nav>
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/posts/tech/algorithm/ai/cross-entropy/" data-toggle="tooltip" data-placement="top" title="交叉熵">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/posts/tech/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/" data-toggle="tooltip" data-placement="top" title="一、机器学习概论.md">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
-<div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on twitter"
-        href="https://twitter.com/intent/tweet/?text=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f&amp;hashtags=chatgpt">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f&amp;title=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97&amp;summary=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97&amp;source=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f&title=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on whatsapp"
-        href="https://api.whatsapp.com/send?text=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97%20-%20https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on telegram"
-        href="https://telegram.me/share/url?text=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f">
-        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share chatGPT 使用指南 on ycombinator"
-        href="https://news.ycombinator.com/submitlink?t=chatGPT%20%e4%bd%bf%e7%94%a8%e6%8c%87%e5%8d%97&u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2falgorithm%2fai%2fchatgpt-guide%2f">
-        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-            <path
-                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-        </svg>
-    </a>
-</div>
 
-  </footer>
-<div>
-    <div class="pagination__title">
-        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
-        <hr />
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+            </div>
+        </div>
     </div>
-    <div id="tcomment"></div>
-    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
-    <script>
-        twikoo.init({
-            envId: "https://twikoo-api-three-gamma.vercel.app/",  
-            el: "#tcomment",
-            lang: 'zh-CN',
-            region: 'ap-guangzhou',  
-            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
-        });
-    </script>
-</div>
-
 </article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Waiting For You 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+
+
+
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
         });
     });
-
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '复制';
 
-        function copyingDone() {
-            copybutton.innerHTML = '已复制！';
-            setTimeout(() => {
-                copybutton.innerHTML = '复制';
-            }, 2000);
-        }
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
 </body>
-
 </html>

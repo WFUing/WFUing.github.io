@@ -1,459 +1,203 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>scripts.md | Waiting For You</title>
-<meta name="keywords" content="">
-<meta name="description" content="脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
-1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
-npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
-npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
-npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
-npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
-举例来说，你执行ESLint的安装命令。
-1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.">
-<meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/posts/tech/language/nodejs/npm/scripts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
-<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
-<meta property="og:title" content="scripts.md" />
-<meta property="og:description" content="脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
-1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
-npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
-npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
-npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
-npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
-举例来说，你执行ESLint的安装命令。
-1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/tech/language/nodejs/npm/scripts/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-10-23T16:19:22+08:00" />
-<meta property="article:modified_time" content="2023-10-23T16:19:22+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="scripts.md"/>
-<meta name="twitter:description" content="脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
-1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
-npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
-npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
-npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
-npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
-举例来说，你执行ESLint的安装命令。
-1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/."/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://WFUing.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Technology",
-      "item": "https://WFUing.github.io/posts/tech/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  3 ,
-      "name": "Language",
-      "item": "https://WFUing.github.io/posts/tech/language/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  4 ,
-      "name": "nodejs",
-      "item": "https://WFUing.github.io/posts/tech/language/nodejs/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  5 ,
-      "name": "nodejs/npm",
-      "item": "https://WFUing.github.io/posts/tech/language/nodejs/npm/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  6 ,
-      "name": "scripts.md",
-      "item": "https://WFUing.github.io/posts/tech/language/nodejs/npm/scripts/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "scripts.md",
-  "name": "scripts.md",
-  "description": "脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。\n1 2 3 4 5 6 7 8 9 10 11 12 { \u0026#34;name\u0026#34;: \u0026#34;myproject\u0026#34;, \u0026#34;devDependencies\u0026#34;: { \u0026#34;jshint\u0026#34;: \u0026#34;latest\u0026#34;, \u0026#34;browserify\u0026#34;: \u0026#34;latest\u0026#34;, \u0026#34;mocha\u0026#34;: \u0026#34;latest\u0026#34; }, \u0026#34;scripts\u0026#34;: { \u0026#34;lint\u0026#34;: \u0026#34;jshint **.js\u0026#34;, \u0026#34;test\u0026#34;: \u0026#34;mocha test/\u0026#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。\nnpm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。\nnpm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。\nnpm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。\nnpm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。\n举例来说，你执行ESLint的安装命令。\n1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.",
-  "keywords": [
     
-  ],
-  "articleBody": "脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。\n1 2 3 4 5 6 7 8 9 10 11 12 { \"name\": \"myproject\", \"devDependencies\": { \"jshint\": \"latest\", \"browserify\": \"latest\", \"mocha\": \"latest\" }, \"scripts\": { \"lint\": \"jshint **.js\", \"test\": \"mocha test/\" } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。\nnpm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。\nnpm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。\nnpm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。\nnpm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。\n举例来说，你执行ESLint的安装命令。\n1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.bin目录会生成一个符号链接node_modules/.bin/eslint，指向ESLint模块的可执行脚本。\n然后，你就可以在package.json的script属性里面，不带路径的引用eslint这个脚本。\n1 2 3 4 5 6 7 8 9 { \"name\": \"Test Project\", \"devDependencies\": { \"eslint\": \"^1.10.3\" }, \"scripts\": { \"lint\": \"eslint .\" } } 等到运行npm run lint的时候，它会自动执行./node_modules/.bin/eslint .。\n如果直接运行npm run不给出任何参数，就会列出scripts属性下所有命令。\n1 2 3 4 5 6 $ npm run Available scripts in the user-service package: lint jshint **.js test mocha test/ 下面是另一个package.json文件的例子。\n1 2 3 4 5 6 \"scripts\": { \"watch\": \"watchify client/main.js -o public/app.js -v\", \"build\": \"browserify client/main.js -o public/app.js\", \"start\": \"npm run watch \u0026 nodemon server.js\", \"test\": \"node test/all.js\" }, 上面代码在scripts项，定义了四个别名，每个别名都有对应的脚本命令。\n1 2 3 4 $ npm run watch $ npm run build $ npm run start $ npm run test 其中，start和test属于特殊命令，可以省略run。\n1 2 $ npm start $ npm test 如果希望一个操作的输出，是另一个操作的输入，可以借用Linux系统的管道命令，将两个操作连在一起。\n1 \"build-js\": \"browserify browser/main.js | uglifyjs -mc \u003e static/bundle.js\" 但是，更方便的写法是引用其他npm run命令。\n1 \"build\": \"npm run build-js \u0026\u0026 npm run build-css\" 上面的写法是先运行npm run build-js，然后再运行npm run build-css，两个命令中间用\u0026\u0026连接。如果希望两个命令同时平行执行，它们中间可以用\u0026连接。\n下面是一个流操作的例子。\n1 2 3 4 5 6 7 8 \"devDependencies\": { \"autoprefixer\": \"latest\", \"cssmin\": \"latest\" }, \"scripts\": { \"build:css\": \"autoprefixer -b 'last 2 versions' \u003c assets/styles/main.css | cssmin \u003e dist/main.css\" } 写在scripts属性中的命令，也可以在node_modules/.bin目录中直接写成bash脚本。下面是一个bash脚本。\n1 2 3 4 #!/bin/bash cd site/main browserify browser/main.js | uglifyjs -mc \u003e static/bundle.js 假定上面的脚本文件名为build.sh，并且权限为可执行，就可以在scripts属性中引用该文件。\n1 \"build-js\": \"bin/build.sh\" 参数 npm run命令还可以添加参数。\n1 2 3 \"scripts\": { \"test\": \"mocha test/\" } 上面代码指定npm test，实际运行mocha test/。如果要通过npm test命令，将参数传到mocha，则参数之前要加上两个连词线。\n1 2 3 $ npm run test -- anothertest.js # 等同于 $ mocha test/ anothertest.js 上面命令表示，mocha要运行所有test子目录的测试脚本，以及另外一个测试脚本anothertest.js。\nnpm run本身有一个参数-s，表示关闭npm本身的输出，只输出脚本产生的结果。\n1 2 3 4 5 // 输出npm命令头 $ npm run test // 不输出npm命令头 $ npm run -s test scripts脚本命令最佳实践 scripts字段的脚本命令，有一些最佳实践，可以方便开发。首先，安装npm-run-all模块。\n1 $ npm install npm-run-all --save-dev 这个模块用于运行多个scripts脚本命令。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # 继发执行 $ npm-run-all build:html build:js # 等同于 $ npm run build:html \u0026\u0026 npm run build:js # 并行执行 $ npm-run-all --parallel watch:html watch:js # 等同于 $ npm run watch:html \u0026 npm run watch:js # 混合执行 $ npm-run-all clean lint --parallel watch:html watch:js # 等同于 $ npm-run-all clean lint $ npm-run-all --parallel watch:html watch:js # 通配符 $ npm-run-all --parallel watch:* （1）start脚本命令\nstart脚本命令，用于启动应用程序。\n1 \"start\": \"npm-run-all --parallel dev serve\" 上面命令并行执行dev脚本命令和serve脚本命令，等同于下面的形式。\n1 $ npm run dev \u0026 npm run serve 如果start脚本没有配置，npm start命令默认执行下面的脚本，前提是模块的根目录存在一个server.js文件。\n1 $ node server.js （2）dev脚本命令\ndev脚本命令，规定开发阶段所要做的处理，比如构建网页资源。\n1 \"dev\": \"npm-run-all dev:*\" 上面命令用于继发执行所有dev的子命令。\n1 \"predev:sass\": \"node-sass --source-map src/css/hoodie.css.map --output-style nested src/sass/base.scss src/css/hoodie.css\" 上面命令将sass文件编译为css文件，并生成source map文件。\n1 \"dev:sass\": \"node-sass --source-map src/css/hoodie.css.map --watch --output-style nested src/sass/base.scss src/css/hoodie.css\" 上面命令会监视sass文件的变动，只要有变动，就自动将其编译为css文件。\n1 \"dev:autoprefix\": \"postcss --use autoprefixer --autoprefixer.browsers \\\"\u003e 5%\\\" --output src/css/hoodie.css src/css/hoodie.css\" 上面命令为css文件加上浏览器前缀，限制条件是只考虑市场份额大于5%的浏览器。\n（3）serve脚本命令\nserve脚本命令用于启动服务。\n1 \"serve\": \"live-server dist/ --port=9090\" 上面命令启动服务，用的是live-server模块，将服务启动在9090端口，展示dist子目录。\nlive-server模块有三个功能。\n启动一个HTTP服务器，展示指定目录的index.html文件，通过该文件加载各种网络资源，这是file://协议做不到的。 添加自动刷新功能。只要指定目录之中，文件有任何变化，它就会刷新页面。 npm run serve命令执行以后，自动打开浏览器。、 以前，上面三个功能需要三个模块来完成：http-server、live-reload和opener，现在只要live-server一个模块就够了。\n（4）test脚本命令\ntest脚本命令用于执行测试。\n1 2 \"test\": \"npm-run-all test:*\", \"test:lint\": \"sass-lint --verbose --config .sass-lint.yml src/sass/*\" 上面命令规定，执行测试时，运行lint脚本，检查脚本之中的语法错误。\n（5）prod脚本命令\nprod脚本命令，规定进入生产环境时需要做的处理。\n1 2 3 \"prod\": \"npm-run-all prod:*\", \"prod:sass\": \"node-sass --output-style compressed src/sass/base.scss src/css/prod/hoodie.min.css\", \"prod:autoprefix\": \"postcss --use autoprefixer --autoprefixer.browsers \"\u003e 5%\" --output src/css/prod/hoodie.min.css src/css/prod/hoodie.min.css\" 上面命令将sass文件转为css文件，并加上浏览器前缀。\n（6）help脚本命令\nhelp脚本命令用于展示帮助信息。\n1 \"help\": \"markdown-chalk --input DEVELOPMENT.md\" 上面命令之中，markdown-chalk模块用于将指定的markdown文件，转为彩色文本显示在终端之中。\n（7）docs脚本命令\ndocs脚本命令用于生成文档。\n1 \"docs\": \"kss-node --source src/sass --homepage ../../styleguide.md\" 上面命令使用kss-node模块，提供源码的注释生成markdown格式的文档。\npre- 和 post- 脚本 npm run为每条命令提供了pre-和post-两个钩子（hook）。以npm run lint为例，执行这条命令之前，npm会先查看有没有定义prelint和postlint两个钩子，如果有的话，就会先执行npm run prelint，然后执行npm run lint，最后执行npm run postlint。\n1 2 3 4 5 6 7 8 9 10 11 12 13 { \"name\": \"myproject\", \"devDependencies\": { \"eslint\": \"latest\" \"karma\": \"latest\" }, \"scripts\": { \"lint\": \"eslint --cache --ext .js --ext .jsx src\", \"test\": \"karma start --log-leve=error karma.config.js --single-run=true\", \"pretest\": \"npm run lint\", \"posttest\": \"echo 'Finished running tests'\" } } 上面代码是一个package.json文件的例子。如果执行npm test，会按下面的顺序执行相应的命令。\npretest test posttest 如果执行过程出错，就不会执行排在后面的脚本，即如果prelint脚本执行出错，就不会接着执行lint和postlint脚本。\n下面是一个例子。\n1 2 3 4 5 { \"test\": \"karma start\", \"test:lint\": \"eslint . --ext .js --ext .jsx\", \"pretest\": \"npm run test:lint\" } 上面代码中，在运行npm run test之前，会自动检查代码，即运行npm run test:lint命令。\n下面是一些常见的pre-和post-脚本。\nprepublish：发布一个模块前执行。 postpublish：发布一个模块后执行。 preinstall：用户执行npm install命令时，先执行该脚本。 postinstall：用户执行npm install命令时，安装结束后执行该脚本，通常用于将下载的源码编译成用户需要的格式，比如有些模块需要在用户机器上跟本地的C++模块一起编译。 preuninstall：卸载一个模块前执行。 postuninstall：卸载一个模块后执行。 preversion：更改模块版本前执行。 postversion：更改模块版本后执行。 pretest：运行npm test命令前执行。 posttest：运行npm test命令后执行。 prestop：运行npm stop命令前执行。 poststop：运行npm stop命令后执行。 prestart：运行npm start命令前执行。 poststart：运行npm start命令后执行。 prerestart：运行npm restart命令前执行。 postrestart：运行npm restart命令后执行。 对于最后一个npm restart命令，如果没有设置restart脚本，prerestart和postrestart会依次执行stop和start脚本。\n另外，不能在pre脚本之前再加pre，即prepretest脚本不起作用。\n注意，即使Npm可以自动运行pre和post脚本，也可以手动执行它们。\n1 $ npm run prepublish 下面是post install的例子。\n1 2 3 { \"postinstall\": \"node lib/post_install.js\" } 上面的这个命令，主要用于处理从Git仓库拉下来的源码。比如，有些源码是用TypeScript写的，可能需要转换一下。\n下面是publish钩子的一个例子。\n1 2 3 4 5 6 7 { \"dist:modules\": \"babel ./src --out-dir ./dist-modules\", \"gh-pages\": \"webpack\", \"gh-pages:deploy\": \"gh-pages -d gh-pages\", \"prepublish\": \"npm run dist:modules\", \"postpublish\": \"npm run gh-pages \u0026\u0026 npm run gh-pages:deploy\" } 上面命令在运行npm run publish时，会先执行Babel编译，然后调用Webpack构建，最后发到Github Pages上面。\n以上都是npm相关操作的钩子，如果安装某些模块，还能支持Git相关的钩子。下面以husky模块为例。\n1 $ npm install husky --save-dev 安装以后，就能在package.json添加precommit、prepush等钩子。\n1 2 3 4 5 6 7 8 { \"scripts\": { \"lint\": \"eslint yourJsFiles.js\", \"precommit\": \"npm run test \u0026\u0026 npm run lint\", \"prepush\": \"npm run test \u0026\u0026 npm run lint\", \"...\": \"...\" } } 类似作用的模块还有pre-commit、precommit-hook等。\n内部变量 scripts字段可以使用一些内部变量，主要是package.json的各种字段。\n比如，package.json的内容是{\"name\":\"foo\", \"version\":\"1.2.5\"}，那么变量npm_package_name的值是foo，变量npm_package_version的值是1.2.5。\n1 2 3 4 5 { \"scripts\":{ \"bundle\": \"mkdir -p build/$npm_package_version/\" } } 运行npm run bundle以后，将会生成build/1.2.5/子目录。\nconfig字段也可以用于设置内部字段。\n1 2 3 4 5 6 7 \"name\": \"fooproject\", \"config\": { \"reporter\": \"xunit\" }, \"scripts\": { \"test\": \"mocha test/ --reporter $npm_package_config_reporter\" } 上面代码中，变量npm_package_config_reporter对应的就是reporter。\n通配符 npm 的通配符的规则如下。\n* 匹配0个或多个字符 ? 匹配1个字符 [...] 匹配某个范围的字符。如果该范围的第一个字符是!或^，则匹配不在该范围的字符。 !(pattern|pattern|pattern) 匹配任何不符合给定的模式 ?(pattern|pattern|pattern) 匹配0个或1个给定的模式 +(pattern|pattern|pattern) 匹配1个或多个给定的模式 *(a|b|c) 匹配0个或多个给定的模式 @(pattern|pat*|pat?erN) 只匹配给定模式之一 ** 如果出现在路径部分，表示0个或多个子目录。 ",
-  "wordCount" : "826",
-  "inLanguage": "zh",
-  "datePublished": "2023-10-23T16:19:22+08:00",
-  "dateModified": "2023-10-23T16:19:22+08:00",
-  "author":{
-    "@type": "Person",
-    "name": "WFUing"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://WFUing.github.io/posts/tech/language/nodejs/npm/scripts/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Waiting For You",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://WFUing.github.io/img/logo.gif"
-    }
-  }
-}
-</script>
+    <meta property="og:site_name" content="Waiting For You">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://WFUing.github.io//">
+    <meta property="twitter:image" content="https://WFUing.github.io//" />
+    
+
+    
+    <meta name="title" content="scripts.md" />
+    <meta property="og:title" content="scripts.md" />
+    <meta property="twitter:title" content="scripts.md" />
+    
+
+    
+    <meta name="description" content="这是一个纯粹的博客......">
+    <meta property="og:description" content="这是一个纯粹的博客......" />
+    <meta property="twitter:description" content="这是一个纯粹的博客......" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>scripts.md | </title>
+
+    <link rel="canonical" href="/posts/tech/language/nodejs/npm/scripts/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
 </head>
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
 
-</script>
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Waiting For You</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
             </div>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                    <span>🔍</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/" title="HOME">
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/posts" title="BLOGS">
-                    <span>BLOGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                    <span>ARCHIVE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/tags" title="TAGS">
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                    <span>🙋🏻‍♂️</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-<article class="post-single">
-  <header class="post-header">
-    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/language/">Language</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/language/nodejs/">nodejs</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/posts/tech/language/nodejs/npm/">nodejs/npm</a></div>
-    <h1 class="post-title">
-      scripts.md
-    </h1>
-    <div class="post-meta">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
     }
+</script>
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/')
     }
 </style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-23
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>826字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>4分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-        </span>
-    </span>
-</span>
-        &nbsp;|&nbsp;标签: &nbsp;
+<header class="intro-header" >
 
-        
-        
-        
-        
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_page_pv">
-            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
-        </span>
-
-</div>
-  </header> <aside id="toc-container" class="toc-container wide">
-    <div class="toc">
-        <details  open>
-            <summary accesskey="c" title="(Alt + C)">
-                <span class="details">目录</span>
-            </summary>
-
-            <div class="inner"><ul>
-                    <li>
-                        <a href="#%e8%84%9a%e6%9c%ac%e5%8a%9f%e8%83%bd" aria-label="脚本功能">脚本功能</a><ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1>scripts.md</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
                             
-                    <li>
-                        <a href="#npm-run" aria-label="npm run">npm run</a><ul>
+                                    Waiting For You
+                             
+                            on 
+                            Monday, October 23, 2023
                             
-                    <li>
-                        <a href="#%e5%8f%82%e6%95%b0" aria-label="参数">参数</a></li>
-                    <li>
-                        <a href="#scripts%e8%84%9a%e6%9c%ac%e5%91%bd%e4%bb%a4%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" aria-label="scripts脚本命令最佳实践">scripts脚本命令最佳实践</a></li>
-                    <li>
-                        <a href="#pre--%e5%92%8c-post--%e8%84%9a%e6%9c%ac" aria-label="pre- 和 post- 脚本">pre- 和 post- 脚本</a></li>
-                    <li>
-                        <a href="#%e5%86%85%e9%83%a8%e5%8f%98%e9%87%8f" aria-label="内部变量">内部变量</a></li>
-                    <li>
-                        <a href="#%e9%80%9a%e9%85%8d%e7%ac%a6" aria-label="通配符">通配符</a>
-                    </li>
-                </ul>
-                </li>
-                </ul>
-                </li>
-                </ul>
+                            
+                            
+                            
+                    </span>
+                </div>
             </div>
-        </details>
+        </div>
     </div>
-</aside>
-<script>
-    let activeElement;
-    let elements;
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+</header>
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-         
-         activeElement = elements[0];
-         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-     }, false);
 
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
 
-    window.addEventListener('scroll', () => {
-        
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
 
-        elements.forEach(element => {
-             const id = encodeURI(element.getAttribute('id')).toLowerCase();
-             if (element === activeElement){
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
-             } else {
-                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
-             }
-         })
-     }, false);
+<article>
+    <div class="container">
+        <div class="row">
 
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            document.getElementById("toc-container").classList.add("wide");
-        } else {
-            document.getElementById("toc-container").classList.remove("wide");
-        }
-    }
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;   
-    }
-</script>
-
-  <div class="post-content"><h1 id="脚本功能">脚本功能<a hidden class="anchor" aria-hidden="true" href="#脚本功能">#</a></h1>
-<h2 id="npm-run">npm run<a hidden class="anchor" aria-hidden="true" href="#npm-run">#</a></h2>
+                
+                <h1 id="脚本功能">脚本功能</h1>
+<h2 id="npm-run">npm run</h2>
 <p><code>npm</code>不仅可以用于模块管理，还可以用于执行脚本。<code>package.json</code>文件有一个<code>scripts</code>字段，可以用于指定脚本命令，供<code>npm</code>直接调用。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -656,7 +400,7 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="s2">&#34;build-js&#34;</span><span class="o">:</span> <span class="s2">&#34;bin/build.sh&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="参数">参数<a hidden class="anchor" aria-hidden="true" href="#参数">#</a></h3>
+</div><h3 id="参数">参数</h3>
 <p><code>npm run</code>命令还可以添加参数。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -701,7 +445,7 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 </span></span><span class="line"><span class="cl">$ npm run -s <span class="nb">test</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="scripts脚本命令最佳实践">scripts脚本命令最佳实践<a hidden class="anchor" aria-hidden="true" href="#scripts脚本命令最佳实践">#</a></h3>
+</div><h3 id="scripts脚本命令最佳实践">scripts脚本命令最佳实践</h3>
 <p><code>scripts</code>字段的脚本命令，有一些最佳实践，可以方便开发。首先，安装<code>npm-run-all</code>模块。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -888,7 +632,7 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面命令使用<code>kss-node</code>模块，提供源码的注释生成markdown格式的文档。</p>
-<h3 id="pre--和-post--脚本">pre- 和 post- 脚本<a hidden class="anchor" aria-hidden="true" href="#pre--和-post--脚本">#</a></h3>
+<h3 id="pre--和-post--脚本">pre- 和 post- 脚本</h3>
 <p><code>npm run</code>为每条命令提供了<code>pre-</code>和<code>post-</code>两个钩子（hook）。以<code>npm run lint</code>为例，执行这条命令之前，npm会先查看有没有定义prelint和postlint两个钩子，如果有的话，就会先执行<code>npm run prelint</code>，然后执行<code>npm run lint</code>，最后执行<code>npm run postlint</code>。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1046,7 +790,7 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>类似作用的模块还有<code>pre-commit</code>、<code>precommit-hook</code>等。</p>
-<h3 id="内部变量">内部变量<a hidden class="anchor" aria-hidden="true" href="#内部变量">#</a></h3>
+<h3 id="内部变量">内部变量</h3>
 <p>scripts字段可以使用一些内部变量，主要是package.json的各种字段。</p>
 <p>比如，package.json的内容是<code>{&quot;name&quot;:&quot;foo&quot;, &quot;version&quot;:&quot;1.2.5&quot;}</code>，那么变量<code>npm_package_name</code>的值是foo，变量<code>npm_package_version</code>的值是1.2.5。</p>
 <div class="highlight"><div class="chroma">
@@ -1088,7 +832,7 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面代码中，变量<code>npm_package_config_reporter</code>对应的就是reporter。</p>
-<h3 id="通配符">通配符<a hidden class="anchor" aria-hidden="true" href="#通配符">#</a></h3>
+<h3 id="通配符">通配符</h3>
 <p>npm 的通配符的规则如下。</p>
 <ul>
 <li><code>*</code> 匹配0个或多个字符</li>
@@ -1103,215 +847,217 @@ npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.
 </ul>
 
 
-  </div>
+                
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://WFUing.github.io/posts/tech/language/nodejs/npm/publish/">
-    <span class="title">« 上一页</span>
-    <br>
-    <span>publish.md</span>
-  </a>
-  <a class="next" href="https://WFUing.github.io/posts/tech/language/nodejs/npm/yarn/">
-    <span class="title">下一页 »</span>
-    <br>
-    <span>yarn.md</span>
-  </a>
-</nav>
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/posts/tech/language/nodejs/npm/yarn/" data-toggle="tooltip" data-placement="top" title="yarn.md">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/posts/tech/language/nodejs/npm/publish/" data-toggle="tooltip" data-placement="top" title="publish.md">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
 
 
-<div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on twitter"
-        href="https://twitter.com/intent/tweet/?text=scripts.md&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f&amp;hashtags=">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f&amp;title=scripts.md&amp;summary=scripts.md&amp;source=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f&title=scripts.md">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on facebook"
-        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on whatsapp"
-        href="https://api.whatsapp.com/send?text=scripts.md%20-%20https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f">
-        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on telegram"
-        href="https://telegram.me/share/url?text=scripts.md&amp;url=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f">
-        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-            <path
-                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-        </svg>
-    </a>
-    <a target="_blank" rel="noopener noreferrer" aria-label="share scripts.md on ycombinator"
-        href="https://news.ycombinator.com/submitlink?t=scripts.md&u=https%3a%2f%2fWFUing.github.io%2fposts%2ftech%2flanguage%2fnodejs%2fnpm%2fscripts%2f">
-        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-            <path
-                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-        </svg>
-    </a>
-</div>
 
-  </footer>
-<div>
-    <div class="pagination__title">
-        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
-        <hr />
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+            </div>
+        </div>
     </div>
-    <div id="tcomment"></div>
-    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
-    <script>
-        twikoo.init({
-            envId: "https://twikoo-api-three-gamma.vercel.app/",  
-            el: "#tcomment",
-            lang: 'zh-CN',
-            region: 'ap-guangzhou',  
-            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
-        });
-    </script>
-</div>
-
 </article>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Waiting For You 2023
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+
+
+
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
         });
     });
-
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = '复制';
 
-        function copyingDone() {
-            copybutton.innerHTML = '已复制！';
-            setTimeout(() => {
-                copybutton.innerHTML = '复制';
-            }, 2000);
-        }
 
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
 </body>
-
 </html>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>oam on Waiting For You</title>
     <link>https://WFUing.github.io/tags/oam/</link>
     <description>Recent content in oam on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Fri, 17 Nov 2023 09:21:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/oam/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Nov 2023 09:21:20 +0800</lastBuildDate>
+    <atom:link href="https://WFUing.github.io/tags/oam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Open Application Model</title>
       <link>https://WFUing.github.io/posts/tech/architecture/iac/oam/</link>
       <pubDate>Fri, 17 Nov 2023 09:21:20 +0800</pubDate>
-      
       <guid>https://WFUing.github.io/posts/tech/architecture/iac/oam/</guid>
       <description>Open Application Model 的目标是定义一种标准的、与基础设施无关的方法，用于描述跨混合环境、云甚至边缘设备的应用部署。该模型要解决的核心问题是如何组成分布式应用程序，然后成功地将其交给负责操作的人员。问题不在于如何编写程序，而在于如何采用面向服务（或面向微服务）架构的组件，并简化围绕此类应用的工作流程。</description>
     </item>
-    
   </channel>
 </rss>
