@@ -23,7 +23,7 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
 卷积区域： 根据该卷积核的大小（以3×3为例），选择图片中相同大小的区域进行卷积。 卷积的计算方法： 从图片中扫描得到的3×3矩阵和卷积核的3×3矩阵，这2个矩阵相同位置的元素相乘可以得到9个值并求和（也就是内积）得到1个值，这就是1次卷积操作。 卷积顺序和方向： 卷积核按照从左到右、从上到下的顺序，从图片左上角开始移动，移动步长（stride）可以设置（以1为例）。在扫描到的每个区域中，都进行1次卷积。1个卷积核移动结束后，则得到1个新的矩阵（大小为4×4），即1个卷积核的输出是1个矩阵。 卷积层有多个卷积核，每个卷积核都按照该方式进行卷积得到多个矩阵，这些矩阵合起来就形成了1个卷积层的特征图（Feature Map），这个特征图也就是卷积层的输出。 卷积层特征图的通道数等于该卷积层中卷积核的数量，即某卷积层有多少个卷积核，那该卷积层的特征图就有多少个通道。 ">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
@@ -234,68 +234,68 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
     }
 
 </script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
+<header class="header"><nav class="nav">
+    <div class="logo">
+        <a style="color: rgb(218, 218, 219);" href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+        <div class="logo-switches">
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" style="color: rgb(218, 218, 219);">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                    <span>🔍</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/" title="HOME">
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/post" title="BLOGS">
-                    <span>BLOGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                    <span>ARCHIVE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/tags" title="TAGS">
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                    <span>🙋🏻‍♂️</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    </div>
+    <ul id="menu">
+        <li>
+            <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span style="color: rgb(218, 218, 219);">🔍</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/" title="HOME">
+                <span style="color: rgb(218, 218, 219);">HOME</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/post" title="BLOGS">
+                <span style="color: rgb(218, 218, 219);">BLOGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span style="color: rgb(218, 218, 219);">ARCHIVE</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span style="color: rgb(218, 218, 219);">TAGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span style="color: rgb(218, 218, 219);">🙋🏻‍♂️</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 </header>
+
+
 <main class="main">
 
 <article class="post-single">

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Architecture | Waiting For You</title>
+<meta name="keywords" content="">
+<meta name="description" content="软件架构是关于如何组织和设计软件系统的原则和模式的领域，它关注应用程序的结构、组件互操作和数据流。它在高层次上决定软件的整体布局，以满足功能需求和性能要求；计算机体系结构则是计算机硬件组件的布局和互连方式的设计，包括中央处理器、内存、输入输出设备等。计算机体系结构决定了计算机如何执行程序和处理数据，对性能、能效性和可扩展性产生影响。">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/post/tech/architecture/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/post/tech/architecture/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="Architecture" />
+<meta property="og:description" content="这是一个纯粹的博客......" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://WFUing.github.io/post/tech/architecture/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Architecture"/>
+<meta name="twitter:description" content="这是一个纯粹的博客......"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Technology",
+      "item": "https://WFUing.github.io/post/tech/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Architecture",
+      "item": "https://WFUing.github.io/post/tech/architecture/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header"><nav class="nav">
+    <div class="logo">
+        <a style="color: rgb(218, 218, 219);" href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+        <div class="logo-switches">
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" style="color: rgb(218, 218, 219);">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <ul id="menu">
+        <li>
+            <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span style="color: rgb(218, 218, 219);">🔍</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/" title="HOME">
+                <span style="color: rgb(218, 218, 219);">HOME</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/post" title="BLOGS">
+                <span style="color: rgb(218, 218, 219);">BLOGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span style="color: rgb(218, 218, 219);">ARCHIVE</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span style="color: rgb(218, 218, 219);">TAGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span style="color: rgb(218, 218, 219);">🙋🏻‍♂️</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</header>
+
+
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a></div>
+  <h1>
+    Architecture
+  </h1>
+</header>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Internet of Things
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>物联网是一个由相互关联的设备组成的网络，这些设备与其他物联网设备和云连接并交换数据。物联网设备通常嵌入了传感器和软件等技术，包括 mechanical and digital machines 以及 consumer objects。</p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Internet of Things" href="https://WFUing.github.io/post/tech/architecture/iot/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Serverless
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。</p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Serverless" href="https://WFUing.github.io/post/tech/architecture/serverless/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Git
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Git 是一个开源的分布式版本控制系统。</p>
+    </div>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Git" href="https://WFUing.github.io/post/tech/architecture/git/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    
+    
+    
+    <span class="numFirst">
+        <a class="pageFirst" href="https://WFUing.github.io/post/tech/architecture/">1</a>
+      </span>
+
+    <span class="pageNum">
+      <a class="pageNow" href="https://WFUing.github.io/post/tech/architecture/page/2/">2</a>
+    </span>
+
+    
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

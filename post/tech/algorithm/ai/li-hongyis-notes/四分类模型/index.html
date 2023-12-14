@@ -14,7 +14,7 @@
 根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)&#43;P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1&#43;N_2}\sum_1&#43;\frac{N_2}{N_1&#43;N_2}\sum_2$，可以减少模型参数，缓解过拟合">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4826a65311a560dd509e51c68a8ba0b686724e899e3dd2073a0aabed6d1af607.css" integrity="sha256-SCamUxGlYN1QnlHGiougtoZyTomePdIHOgqr7W0a9gc=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
@@ -207,68 +207,68 @@
     }
 
 </script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
+<header class="header"><nav class="nav">
+    <div class="logo">
+        <a style="color: rgb(218, 218, 219);" href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+        <div class="logo-switches">
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" style="color: rgb(218, 218, 219);">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
-                    <span>🔍</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/" title="HOME">
-                    <span>HOME</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/post" title="BLOGS">
-                    <span>BLOGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                    <span>ARCHIVE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/tags" title="TAGS">
-                    <span>TAGS</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
-                    <span>🙋🏻‍♂️</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    </div>
+    <ul id="menu">
+        <li>
+            <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span style="color: rgb(218, 218, 219);">🔍</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/" title="HOME">
+                <span style="color: rgb(218, 218, 219);">HOME</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/post" title="BLOGS">
+                <span style="color: rgb(218, 218, 219);">BLOGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span style="color: rgb(218, 218, 219);">ARCHIVE</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span style="color: rgb(218, 218, 219);">TAGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span style="color: rgb(218, 218, 219);">🙋🏻‍♂️</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 </header>
+
+
 <main class="main">
 
 <article class="post-single">
