@@ -236,6 +236,36 @@
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/module/this/">
+                            <h2 class="post-title">
+                                this.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                this 变量 Node 应用的顶层变量是global，对应浏览器的window变量。
+顶层的 this 在 REPL 环境，顶层的this就指向global。
+1 2 &gt; global === this true 顶层变量是global和this的属性。
+1 2 3 4 5 &gt; var foo = &#34;bar&#34;; &gt; this.foo bar &gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
+在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
+1 2 3 // 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
+1 2 3 4 // 模块环境 var foo = &#34;bar&#34;; console.log(this.foo); // undefined console.log(global.foo); // undefined 上面代码中，顶层变量foo并不会生成this.foo和global.foo两个属性。这是因为foo是模块内部的变量，不是全局有效，因此不是global的属性，而this是当前的模块对象，this.foo代表模块实例的属性，这跟变量foo是两回事情。
+另外，如果声明变量的时候，不使用var命令，而是直接赋值，那么该变量在 REPL 环境下将成为global和this的属性，在模块环境将只成为 global 的属性。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/architecture/serverless/tencentyun-serverless-api/">
                             <h2 class="post-title">
                                 Tencentyun Serverless Api
@@ -319,29 +349,6 @@
 1 2 3 4 5 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
 如果你使用的系统是 Centos/RedHat ，安装命令为：
 1 2 3 4 5 $ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/shell/">
-                            <h2 class="post-title">
-                                Shell 简介
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。
                         
                             </div>
                         </a>
@@ -508,6 +515,10 @@
                             
                             
                             
+                            
+                                    <a href="/tags/data" title="data">
+                                        data
+                                    </a>
                             
                             
                             

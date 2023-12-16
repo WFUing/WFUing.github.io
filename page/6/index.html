@@ -236,6 +236,29 @@
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/architecture/iot/reactive-manifesto/">
+                            <h2 class="post-title">
+                                响应式宣言(Reactive Manifesto)
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                响应式系统具有响应性、复原性、弹性和消息驱动性。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Saturday, October 28, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/architecture/iot/akka/">
                             <h2 class="post-title">
                                 akka框架
@@ -329,42 +352,6 @@ y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b
 Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
 warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
 Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">
-                            <h2 class="post-title">
-                                七、Convolutional Neural Network.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                七、Convolutional Neural Network [toc]
-7.1 CNN入门详解 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？
-FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN）处理图片时的缺点：
-需要很多的参数： 假设有一张尺寸100×100的图片（尺寸已经算很小了），那输入层就有100×100×3=30K个像素，假设第一个隐藏层有1K个神经元（一个神经元包含30K个参数），这就已经需要30M个参数了…… 该架构中每个神经元就是一个分类器，这是没必要的： 第一个隐藏层作为最基础的pattern分类器（比如判断有无绿色、边缘等），第二个隐藏层基于第一个隐藏层继续做pattern分类（比如木头、肉类），以此类推…… 按照人类的直观理解，我们不是像全连接神经网络一样去处理图片的。具体来看，有哪些方面呢？
-图片的一些性质 结合全连接前馈神经网络的缺点和人类对图片的直观理解，可以得到下述图片的3个性质。
-性质1：Some patterns are much smaller than the whole image. 在识别某个模式（pattern）时，一个神经元并不需要图片的所有像素点。对于一张人类全身照的图片，我们只需要看到头部而非整张图片就可以判断它是一个人脸。所以我们应该是可以用少量参数去识别这些pattern的。
-性质2：The same patterns appear in different regions. 比如说人脸可以在图片的中间区域，也可以在图片的某个角落区域。所以识别不同区域中的相同pattern的多个分类器（或detector）应该用同一组参数或者共享参数。
-性质3：Subsampling the pixels will not change the object CNN架构说明 2014年在ECCV上提出，针对上述的图片的3个性质，确定了CNN的架构如下。
-如上图所示，图片经过卷积层然后进行最大池化（max pooling），这个步骤可以进行多次；然后将数据展开（Flatten），然后将数据传进全连接前馈网络得到最后的图片分类结果。
-如上图所示，卷积是针对了图片的性质1和性质2，最大池化是针对了图片的性质3。
-卷积(Convolution) ★ 假设有一张6×6的二值图，即一个6×6的矩阵。
-卷积核（Filter） 神经元就是一个计算/函数，卷积核其实就是神经元。如下图所示，1个卷积层可以有多个卷积核，矩阵里元素的值就是需要通过学习得到的参数。因为这里的输入是一个矩阵，所以卷积核也是1个矩阵（卷积核的通道数等于输入的通道数）。假设卷积核大小是3×3，这对应了图片的性质1，即用小的卷积核识别一个小的pattern。
-怎么做卷积 如下图所示
-卷积区域： 根据该卷积核的大小（以3×3为例），选择图片中相同大小的区域进行卷积。 卷积的计算方法： 从图片中扫描得到的3×3矩阵和卷积核的3×3矩阵，这2个矩阵相同位置的元素相乘可以得到9个值并求和（也就是内积）得到1个值，这就是1次卷积操作。 卷积顺序和方向： 卷积核按照从左到右、从上到下的顺序，从图片左上角开始移动，移动步长（stride）可以设置（以1为例）。在扫描到的每个区域中，都进行1次卷积。1个卷积核移动结束后，则得到1个新的矩阵（大小为4×4），即1个卷积核的输出是1个矩阵。 卷积层有多个卷积核，每个卷积核都按照该方式进行卷积得到多个矩阵，这些矩阵合起来就形成了1个卷积层的特征图（Feature Map），这个特征图也就是卷积层的输出。 卷积层特征图的通道数等于该卷积层中卷积核的数量，即某卷积层有多少个卷积核，那该卷积层的特征图就有多少个通道。 
                         
                             </div>
                         </a>
@@ -531,6 +518,10 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
                             
                             
                             
+                            
+                                    <a href="/tags/data" title="data">
+                                        data
+                                    </a>
                             
                             
                             

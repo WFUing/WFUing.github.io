@@ -236,6 +236,34 @@
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/install/">
+                            <h2 class="post-title">
+                                install.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                安装 npm install 基本用法 npm install命令用于安装模块。npm i是该命令的别名。
+1 $ npm install lodash 上面命令在当前目录中安装了lodash模块。
+默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
+1 2 3 4 5 6 7 8 9 10 11 # 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&#34;&gt;=4.15.0 &lt;4.18.0&#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
+默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
+1 2 3 4 5 6 7 # 将模块写入 package.json 的 dependencies 字段 $ npm install lodash --save $ npm install lodash -S # 将模块写入 package.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-exec/">
                             <h2 class="post-title">
                                 npm-exec.md
@@ -342,35 +370,6 @@ npx会将所有参数原样传入模块内部。
 1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
 1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
 1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
-                            <h2 class="post-title">
-                                npm-token.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm token npm token命令用来管理认证令牌。
-npm token list命令列出所有激活的认证令牌。
-1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
-npm token create命令生成一个新的认证令牌。
-1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
-npm token revoke命令收回令牌。
-1 $ npm token revoke &lt;token|id&gt; 
                         
                             </div>
                         </a>
@@ -537,6 +536,10 @@ npm token revoke命令收回令牌。
                             
                             
                             
+                            
+                                    <a href="/tags/data" title="data">
+                                        data
+                                    </a>
                             
                             
                             

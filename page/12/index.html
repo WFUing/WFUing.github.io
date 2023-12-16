@@ -236,6 +236,35 @@
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
+                            <h2 class="post-title">
+                                npm-token.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm token npm token命令用来管理认证令牌。
+npm token list命令列出所有激活的认证令牌。
+1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
+npm token create命令生成一个新的认证令牌。
+1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
+npm token revoke命令收回令牌。
+1 $ npm token revoke &lt;token|id&gt; 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/timer/">
                             <h2 class="post-title">
                                 timer
@@ -336,36 +365,6 @@ REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，�
 node命令的-e参数，实际上就是在 REPL 环境运行代码。
 1 2 $ node -e &#34;console.log(os.platform())&#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
 1 2 3 4 &gt; require(&#39;.
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/module/this/">
-                            <h2 class="post-title">
-                                this.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                this 变量 Node 应用的顶层变量是global，对应浏览器的window变量。
-顶层的 this 在 REPL 环境，顶层的this就指向global。
-1 2 &gt; global === this true 顶层变量是global和this的属性。
-1 2 3 4 5 &gt; var foo = &#34;bar&#34;; &gt; this.foo bar &gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
-在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
-1 2 3 // 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
-1 2 3 4 // 模块环境 var foo = &#34;bar&#34;; console.log(this.foo); // undefined console.log(global.foo); // undefined 上面代码中，顶层变量foo并不会生成this.foo和global.foo两个属性。这是因为foo是模块内部的变量，不是全局有效，因此不是global的属性，而this是当前的模块对象，this.foo代表模块实例的属性，这跟变量foo是两回事情。
-另外，如果声明变量的时候，不使用var命令，而是直接赋值，那么该变量在 REPL 环境下将成为global和this的属性，在模块环境将只成为 global 的属性。
                         
                             </div>
                         </a>
@@ -532,6 +531,10 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
                             
                             
                             
+                            
+                                    <a href="/tags/data" title="data">
+                                        data
+                                    </a>
                             
                             
                             

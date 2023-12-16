@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Data Warehousing | Waiting For You</title>
+<meta name="keywords" content="data">
+<meta name="description" content="数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。">
+<meta name="author" content="WFUing">
+<link rel="canonical" href="https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
+<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
+<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
+<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="Data Warehousing" />
+<meta property="og:description" content="数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-12-15T10:29:14+08:00" />
+<meta property="article:modified_time" content="2023-12-15T10:29:14+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Warehousing"/>
+<meta name="twitter:description" content="数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://WFUing.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "研一复习",
+      "item": "https://WFUing.github.io/post/review/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "数据仓库与知识发现",
+      "item": "https://WFUing.github.io/post/review/data-warehouse-mining/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  4 ,
+      "name": "Data Warehousing",
+      "item": "https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Warehousing",
+  "name": "Data Warehousing",
+  "description": "数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。",
+  "keywords": [
+    "data"
+  ],
+  "articleBody": "What is a data warehouse? 数据仓库以许多不同的方式定义，但并不严格。\n一个与组织的运营数据库分开维护的决策支持数据库 通过提供一个坚实的平台，整合历史数据，支持信息处理以进行分析。 A data warehouse is a subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of management’s decision-making process. —- W. H. Inmon\n数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。\n数据仓库：构建和使用数据仓库的过程\nSubject-Oriented 围绕主要主题组织，如客户、产品、销售。 侧重于为决策者建模和分析数据，而不是日常运营或交易处理。 通过排除在决策支持过程中无用的数据，提供关于特定主题问题的简单而简明的视图。 Integrated 通过整合多个异构数据源构建 关系数据库、平面文件、在线交易记录 应用数据清理和数据集成技术。 确保不同数据源之间的命名约定、编码结构、属性度量等的一致性 例如，酒店价格：货币、税收、包括早餐等。 将数据移动到仓库时进行转换。 Time Variant 数据仓库的时间范围明显长于操作系统的时间范围。 操作数据库：当前值数据。 数据仓库数据：提供历史透视的信息（例如，过去5-10年）。 数据仓库中的每个关键结构 包含明确或隐含的时间元素 但操作数据的关键可能包含或不包含时间元素。 Non-Volatile 从操作环境转换而来的数据的物理分离存储。 数据仓库环境中不发生数据的操作更新。 不需要事务处理、恢复和并发控制机制 仅需要两个数据访问操作：数据的初始加载和数据的访问。 Data Warehouse vs. Heterogeneous DBMS Traditional heterogeneous DB integration（传统的异构数据库集成）:\n在异构数据库之上构建包装器/中介 查询驱动的方法 当向客户站点提出查询时，使用元字典将查询转换为适用于涉及的各个异构站点的查询，并将结果集成到全局答案集中 复杂的信息过滤，争夺资源 Data warehouse: 更新驱动，高性能\n信息来自异构来源，在预先集成并存储在仓库中，以供直接查询和分析。 OLTP vs OLAP OLTP (On-Line Transaction Processing，联机事务处理)\n传统关系数据库管理系统的主要任务 日常运营：采购、库存、银行业务、制造、工资、注册、会计等。 OLAP (On-Line Analytical Processing，联机分析处理)\n数据仓库系统的主要任务 数据分析和决策制定 Distinct features (OLTP vs. OLAP):\nUser and system orientation: customer vs. market Data contents: current, detailed vs. historical, consolidated Database design: ER + application vs. star + subject View: current, local vs. evolutionary, integrated Access patterns: update vs. read-only but complex queries Why Separate Data Warehouse? 两个系统都具有高性能 DBMS — 针对OLTP进行调整：访问方法、索引、并发控制、恢复 仓库 — 针对OLAP进行调整：复杂的OLAP查询、多维视图、汇总。 不同的功能和不同的数据： 缺失的数据：决策支持需要操作数据库通常不维护的历史数据 数据汇总：决策支持需要从异构来源聚合（汇总、摘要）的数据 数据质量：不同的来源通常使用不一致的数据表示、代码和格式，需要协调。 A multi-dimensional data model 从表格和电子表格到数据立方体\n数据仓库基于多维数据模型，以数据立方体的形式查看数据。 数据立方体（如销售）允许数据在多个维度上建模和查看 维度表，如项目（项目名称、品牌、类型）或时间（日、周、月、季度、年） 事实表包含度量（如销售额）和与每个相关维度表的键 Multi-Dimensional Data Model（多维数据模型，立方体）\n立方体：立方体的晶格\n在数据仓库文献中，n-D基本立方体被称为基本小立方体。最顶层的0-D小立方体，它包含最高级别的摘要，被称为尖点小立方体。小立方体的晶格形成一个数据立方体。\n数据仓库的概念建模 建模数据仓库：维度和度量\nStar schema: 星型模式，中间有一个事实表与一组维度表相连 Example of Star Schema\nSnowflake schema: 雪花模式，星型模式的一种改进，其中一些维度层次被规范化为一组较小的维度表，形成类似雪花的形状 Example of Snowflake Schema\nFact constellations: 事实星座，多个事实表共享维度表，被视为一组星型，因此被称为星系模式或事实星座 Example of Fact Constellation\nA Data Mining Query Language, DMQL Cube Definition (Fact Table)\n1 define cube []: Dimension Definition ( Dimension Table )\n1 define dimension as () Special Case (Shared Dimension Tables)\nFirst time as “cube definition” Other, 1 define dimension as in cube Defining a Star Schema in DMQL 1 2 3 4 5 define cube sales_star [time, item, branch, location]: dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*) define dimension time as (time_key, day, day_of_week, month, quarter, year) define dimension item as (item_key, item_name, brand, type, supplier_type) define dimension branch as (branch_key, branch_name, branch_type) define dimension location as (location_key, street, city, province_or_state, country) Defining a Snowflake Schema in DMQL 1 2 3 4 5 define cube sales_snowflake [time, item, branch, location]: dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*) define dimension time as (time_key, day, day_of_week, month, quarter, year) define dimension item as (item_key, item_name, brand, type, supplier(supplier_key, supplier_type)) define dimension branch as (branch_key, branch_name, branch_type) define dimension location as (location_key, street, city(city_key, province_or_state, country)) Defining a Fact Constellation in DMQL 1 2 3 4 5 6 7 8 9 10 11 12 13 define cube sales [time, item, branch, location]: dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*) define dimension time as (time_key, day, day_of_week, month, quarter, year) define dimension item as (item_key, item_name, brand, type, supplier_type) define dimension branch as (branch_key, branch_name, branch_type) define dimension location as (location_key, street, city, province_or_state, country) define cube shipping [time, item, shipper, from_location, to_location]: dollar_cost = sum(cost_in_dollars), unit_shipped = count(*) define dimension time as time in cube sales define dimension item as item in cube sales define dimension shipper as (shipper_key, shipper_name, location as location in cube sales, shipper_type) define dimension from_location as location in cube sales define dimension to_location as location in cube sales Measures: Three Categories distributive: 如果将函数应用于n个聚合值的结果与在不分区的所有数据上应用函数的结果相同。 E.g., count(), sum(), min(), max(). algebraic: 如果它可以通过具有M个参数的代数函数计算（其中M是有界整数），每个参数都是通过应用分布式聚合函数获得的。 E.g., avg(), standard_deviation(). holistic: 如果描述子聚合所需的存储大小没有常量界限。 E.g., median(), mode(), rank(). A Concept Hierarchy: Dimension (location)\nMultidimensional Data\nSales volume as a function of product, month, and region\nBrowsing a Data Cube\nVisualization OLAP capabilities Interactive manipulation Typical OLAP Operations Roll up (drill-up): 汇总数据 通过沿着层次结构向上爬升或通过减少维度来实现 Drill down (roll down): reverse of roll-up 从较高级别的摘要到较低级别的摘要或详细数据，或引入新的维度 Slice and dice: 投影和选择 Pivot (rotate): 重新定位立方体，可视化，从3D到一系列2D平面。 Other operations drill across: 涉及（跨越）多个事实表 drill through: 通过底层的立方体穿透到其后端关系表（使用SQL） A Star-Net Query Model Data Warehousing and OLAP Technology 多层次体系结构\nThree Data Warehouse Models Enterprise warehouse\n收集整个组织跨足的有关主题的所有信息 Data Mart\n是对公司范围内数据的子集，对特定用户组有价值。其范围限于特定的、选择的群体，如营销数据集市 独立 vs. 依赖（直接来自仓库）数据集市 Virtual warehouse\n对操作性数据库的一组视图 可能仅有一些可能的摘要视图会被实体化 Data Warehouse Development: A Recommended Approach OLAP Server Architectures Relational OLAP (ROLAP) 使用关系型或扩展关系型数据库管理系统存储和管理仓库数据，使用OLAP中间件支持缺失的部分 包括优化DBMS后端、实现聚合导航逻辑以及其他工具和服务 更大的可伸缩性 Multidimensional OLAP (MOLAP) 基于数组的多维存储引擎（稀疏矩阵技术） 针对预先计算的汇总数据进行快速索引 Hybrid OLAP (HOLAP) 用户灵活性，例如，低级别：关系型，高级别：数组 Specialized SQL servers 针对星型/雪花模式的SQL查询提供专门支持 Data warehouse implementation Data Warehouse Design 数据仓库设计和数据库设计的差异\n面向需求不同：数据库面向具体应用，需求一开始就很明确，而数据仓库是一个渐进的过程 设计目标不同：OLTP vs. OLAP 处理类型不同：面向操作型应用 vs. 面向分析型应用 数据来源不同：业务员输入 vs. 已存在的业务系统数据 系统设计的方法不同： 数据仓库可以采用数据驱动的设计方法 数据仓库设计可以分为数据仓库模型设计和数据装载接口设计两部分 数据仓库的设计步骤\n例如，将企业模型映射到数据仓库系统的过程\n分析建立企业模型并映射到数据仓库概念模型 逻辑模型设计 物理模型设计 OLAP Modeling Methods 维表设计\n维的变化 维表的共享 层次信息和分类信息的位置 事实表设计\n事实表的特性 通用数据和专用数据事实表 维表的变化 维表通过记录因素的属性描述事件中包含的诸多因素 维表的本质是多维分析空间在某个角度上的投影 由于维表描述的是事物的属性，因此随着事物本身的变化，其属性也会产生改变 如果该属性与决策没有太大关系，例如电话号码属性对于分析顾客购买行为没有什么作用，则此属性的变化可以忽略不计 如果该属性与决策有关，例如某位顾客搬家后离超市更远了，我们试图分析其购买行为与家里距离变远有何关系，则不能将之忽略 对于需要记录其改变的维，有若干方法可以进行处理 当属性进行变化时，创建一个新记录 例如： 缺点：由于ID产生变化，被认为是两条记录 创建一个新的字段，将新地址填入 例如： 缺点：可扩展性不佳 增加一个修订号码字段和当前标记字段 例如： 缺点：维表和事实表连接时需要采用主关键字＋修订号码，增加了事实表的复杂性 最为理想的解决方案：新建一个关键字客户ID，通过主关键字与之相连，使用时间字段标志当前的值 例如： 缺点：相对较为复杂 维表的共享 多个维表中可能包含相同的属性： 供货商维中包含地址维，而销售商维中可能也包含地址维，因而可能共享维表 由于数据仓库中时间维的重要性，各个维中都有可能包含时间维，因而可能共享时间维表 可以采用扩展的星座结构来描述共享维表 具体内容请参见上节 层次信息的位置 将维层次信息放入事实表\n优点：计算极为方便 缺点：事实表会因此变得极为庞大 将维层次放在各自的维表中，通过主关键字与事实表相连\n优点：减少了事实表的大小 缺点：OLAP性能比上一种方式差 分类信息的位置 在事实表中体现维分类\n优点： OLAP性能好 缺点： 事实表的字段数和记录数增加 在维表中体现维分类\n事实表的特征 与维表相比，事实表具有以下特征： 记录数量非常多 除了度量外，其他字段都是维表或者中间维表（雪花模型）的关键字 如果事实相关的维度很多，则事实表的字段数也会比较多 因此应当尽量减小一条记录的长度，才能避免事实表过大而难于管理 数据的粒度是影响事实表大小的关键因素，因而必须认真设计 通用数据和专用数据事实表 对应一个问题通常采用一个事实表，但在特殊情况下，也允许采用多个事实表 例如：超市里出售多种商品，由于商品本身分类不同，因此所采用的量度可能也不相同 如果将这些量度全部置于一个事实表中，由于某种类型的商品的量度其他商品可能不具备，因此则不可避免将在事实表中造成- 大量的数据空缺 解决办法：采用多个事实表，分为通用数据事实表与专用数据事实表加以管理 Optimization of Logical Model/Physical Model 数据仓库的逻辑模型设计 系统数据量估算 数据粒度的选择 数据的分割 表的合理划分 去除纯操作数据 增加导出字段 定义关系模式 定义元数据存储 定义记录系统 系统数据量估算 设在概念模型中出现的表的个数为$N$（这些表中应不包含不会放进数据仓库的表），对于每个表 $i$ ($0\\leq u \\leq N$), 计算表的大小$S_i$和表的主关键字大小$K_i$，然后估计每张表$i$在单位时间内最大记录数$L_{max}$和最少记录数$L_{min}$,则数据仓库的粗略数据量在以下范围： 其中，$T$是数据在数据仓库中存在的周期。$\\alpha$是考虑由于数据冗余和数据索引而使数据量增大的冗余因子,通常取$1.2~2$\n本公式的含义是：\n数据仓库数据量＝{累加[(每张表记录大小＋每张表主关键字大小)*每张表单位时间内记录的数量]*存储时间}*冗余因子\n公式估算出的结果仅能作为参考\n数据粒度的选择 数据量较小的情况下使用单一的数据粒度，即直接存储细节数据并定期在细节数据基础上进行数据综合\n对于大数据量需要采用双重粒度，对于细节数据只保存近期的数据在数据仓库之中，当保留周期到达时，将距离当前较远的数据导出到磁带或存储设备上\n数据粒度策略\n数据的分割 为何要进行数据分割？ 数据仓库中数据量过大时，检索速度很慢 数据分割是指将数据分散到各自的物理单元里以便能够独立处理，以提高数据处理的效率 数据分割没有固定的标准，分割的方法和粒度应当根据实际情况确定 通常选择时间、地点、业务等划分 一般按照时间分割数据分布比较均匀，因此按照时间分割最为常见 合理的表划分 直接存储字段数目很大的表，会造成以下问题：\n各个字段的更新频率不一，放在一张表里造成数据追加工作的浪费 各个字段的访问频率不一，放在一张表里影响访问效率 因此需要对表中的内容进行合理的划分\n按数据的稳定性划分 按业务规则进行表划分(略) 按数据稳定性进行表划分\n删除纯操作数据及增加导出字段 在将业务系统中的数据抽取到数据仓库系统中的过程里，如果发现某些数据对于决策没有作用，属于纯操作型数据,则可以将之删除 例：收款人字段 导出数据本身是冗余的，但是增加导出字段有利于数据以后的使用 例：在按月综合表中，可以加入平均价格，供货总价，供货总数量等导出字段 Meta Data What is meta data?\n元数据是描述数据的数据。\n在数据仓库中，有几个数据层次：\nmeta data，元数据 current detailed data，当前详细数据 older detailed data，较旧的详细数据 lightly summarized data，轻度汇总数据 highly summarized data，高度汇总数据 元数据是定义数据仓库对象的数据。它具有以下类型：\n仓库结构的描述 模式、视图、维度、层次结构、派生数据定义、数据集市位置和内容 操作元数据 数据谱系（迁移数据和转换路径的历史）、数据的状态（活动、存档或清除）、监控信息（仓库使用统计、错误报告、审计追踪） 用于汇总的算法 从操作环境到数据仓库的映射 业务数据 业务术语和定义、数据所有权、收费政策 记录系统的定义 记录系统是操作型元数据的一部分 记录系统指明数据仓库中关系表的各个字段来源于业务数据库何处 例： 数据仓库物理模型设计 确定数据的存储结构 索引策略 数据存储策略与性能优化 多路聚集优化 表的归并 分割表的存放 按列存储 存储分配优化 数据装载接口设计 并行优化设计 Define the Storage Structure 一般的数据库数据量相对较小，除非业务要求必须保证数据的安全性和可恢复性，否则可以不采用并行存储结构\n数据仓库由于数据的巨量存储，必须采用并行存储结构，例如RAID\n索引技术：为什么不使用B树？ B树是数据库中广泛使用的技术 在数据库中查找记录时，B树索引具有很高的性能 虽然B树对于数据仓库来说并不是一个好的技术，为什么呢？ B-tree Indexing Technology\n原因是：\nB树要求属性必须有许多不同的值，例如itemID，customer ID等。 B树要求查询条件较简单且结果较少 创建B树的空间复杂度和时间复杂度都很大 Indexing OLAP Data: Bitmap Index\n特定列上的索引 列中的每个值都有一个位向量：位运算速度快 位向量的长度：基表中的记录数 如果基表的第i行具有索引列的值，则第i位设置为1 不适用于高基数域 Indexing OLAP Data: Join Index\n连接索引：JI(R-id, S-id)，其中 R（R-id，…）\u003e\u003c S（S-id，…） 传统索引将值映射到记录id列表 在数据仓库中，连接索引将星型模式的维度值与事实表中的行相关联。 例如，事实表：销售和两个维度城市和产品 对于每个不同的城市，连接索引维护一个包含记录城市销售的元组的R-ID列表 连接索引可以跨越多个维度 Data Storage Strategy Table Mergence\nAdd Redundancy\nDividing Table\n在逻辑设计中，大表可以分成小表。当访问大表时，可以用小表替代。 在物理设计中，可以使用分布式存储方法。 表可以存储到磁盘阵列中。 Efficient Methods for Data Cube Computation Data Cube: High Efficiency Computing\n数据立方体可以看作是一个立方体格点的网格 最底部的立方体是基本立方体 最顶部的立方体（顶点）仅包含一个单元格 在具有L级的n维立方体中有多少个立方体？ Materialization of data cube\n物化每个（立方体）（完全物化）、无（不物化）或一些（部分物化） 选择要物化的哪些立方体 基于大小、共享、访问频率等 Data Cube Operation 在DMQL中定义和计算立方体 1 2 define cube sales[item, city, year]: sum(sales_in_dollars) compute cube sales 转换为类似SQL的语言 (with a new operator cube by, introduced by Gray et al.‘96) 1 2 3 SELECT item, city, year, SUM (amount) FROM SALES CUBE BY item, city, year 需要计算以下的Group-Bys 1 2 3 4 (date, product, customer), (date,product),(date, customer), (product, customer), (date), (product), (customer) () Iceberg Cube\n仅计算计数或其他满足条件（如 HAVING COUNT(*) \u003e= minsup）的立方体单元格！\nMotivation\n在稀疏立方体中，只有一小部分立方体单元格可能位于“水面”之上 仅计算“有趣”的单元格——超过一定阈值的数据 避免立方体的爆炸性增长 Multiway Array Aggregation 将数组分成块（适应内存的小子立方体）。 压缩稀疏数组寻址：（chunk_id, offset） 通过按最小化每个单元格访问的次数的顺序访问立方体单元格，减少内存访问和存储成本。 方法：应按照其大小升序排序并计算平面。 思路：将最小的平面保留在主内存中，仅为最大平面获取和计算一个块 该方法的限制：仅对小型维数计算良好 如果维度较多，可以研究冰山立方体计算方法 有效处理OLAP查询 确定应在可用立方体上执行哪些操作： 将钻取、卷动等转换为相应的SQL和/或OLAP操作，例如，切片=选择+投影 确定相关操作应应用于哪些物化立方体 在MOLAP中探索索引结构和稠密数组结构与压缩数组结构的差异 Bottom-Up Computation (BUC) 自底向上计算（BUC） BUC（Beyer＆Ramakrishnan，SIGMOD'99） 自底向上的立方体计算 将维度划分为分区，并促进冰山修剪 如果一个分区不满足min_sup，则可以修剪其后代 如果minsup = 1 =\u003e 计算完整的CUBE！ BUC: Partitioning\n通常，整个数据集无法适应主内存 对不同的值进行排序，将其分为适合的块 Plan and Implementation of Data Warehouse 数据仓库的应用目标 企业的核心业务 优化企业内部管理控制 为企业增加商业机会 建设数据仓库的必要性 可通过计算ROI（Return of Investment）来衡量投资回报的价值\n数据仓库主题的选择和阶段规划\n数据仓库的实施是一个极为复杂的长期过程，因此，应选择当前最急需、能在短期内产生效益、业务模型清晰的任务首期实现 选择首期实现主题的参考原则： 优先实现管理者目前需求最迫切和最关心的主题 优先选择能在短期内产生效益的主题 推后选择业务逻辑准备不充分的主题 推后实施技术难度较大、可实现性较低、投资风险大的主题 维护阶段 数据仓库的维护极为重要，一般数据仓库在建立完成之后，都需要一至两年的维护 数据仓库的维护过程就是DSS逐步产生效益的过程 数据仓库后端工具 数据抽取(Data extraction): get data from multiple, heterogeneous, and external sources 数据清洗(Data cleaning): detect errors in the data and rectify them when possible 数据转换(Data transformation):convert data from legacy or host format to warehouse format 数据装载(Load): sort, summarize, consolidate, compute views, check integrity, and build indicies and partitions 刷新(Refresh): propagate the updates from the data sources to the warehouse Further development of data cube technology Discovery-Driven Exploration of Data Cubes Hypothesis-driven: 由用户进行探索，搜索空间巨大 Discovery-driven (Sarawagi et al.‘98) 预先计算指示异常的度量，引导用户在所有聚合级别进行数据分析 异常：基于统计模型，与预期值明显不同的值 使用背景颜色等视觉提示反映每个单元格的异常程度 异常指标的计算（建模拟合和计算SelfExp、InExp和PathExp值）可以与立方体构建重叠 Examples: Discovery-Driven Data Cubes\nFrom data warehousing to data mining Data Warehouse Usage 三种数据仓库应用 信息处理 支持查询、基本统计分析和使用十字表、表格、图表和图形的报告 分析处理 对数据仓库数据进行多维分析 支持基本的OLAP操作，如切片、切块、钻取、旋转 数据挖掘 从隐藏的模式中发现知识 支持关联、构建分析模型、执行分类和预测，并使用可视化工具呈现挖掘结果。 三个任务之间的差异 From On-Line Analytical Processing to On Line Analytical Mining (OLAM) 为什么联机分析挖掘？ 数据仓库中数据的高质量 DW包含集成的、一致的、清理过的数据 围绕数据仓库的可用信息处理结构 ODBC、OLEDB、Web访问、服务设施、报告和OLAP工具 基于OLAP的探索性数据分析 带有钻取、切片、切块、旋转等的挖掘 在线选择数据挖掘功能 集成和交换多个挖掘功能、算法和任务 Summary Data warehouse A subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of management’s decision-making process A multi-dimensional model of a data warehouse Star schema, snowflake schema, fact constellations A data cube consists of dimensions \u0026 measures OLAP operations: drilling, rolling, slicing, dicing and pivoting OLAP servers: ROLAP, MOLAP, HOLAP Data warehouse implementation Efficient computation of data cubes Partial vs. full vs. no materialization Multiway array aggregation Bitmap index and join index implementations Further development of data cube technology Discovery-drive and multi-feature cubes From OLAP to OLAM (on-line analytical mining) ",
+  "wordCount" : "1218",
+  "inLanguage": "zh",
+  "datePublished": "2023-12-15T10:29:14+08:00",
+  "dateModified": "2023-12-15T10:29:14+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "WFUing"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Waiting For You",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://WFUing.github.io/img/logo.gif"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<header class="header"><nav class="nav">
+    <div class="logo">
+        <a style="color: rgb(218, 218, 219);" href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
+        <div class="logo-switches">
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" style="color: rgb(218, 218, 219);">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <ul id="menu">
+        <li>
+            <a href="https://WFUing.github.io/search" title="🔍 (Alt &#43; /)" accesskey=/>
+                <span style="color: rgb(218, 218, 219);">🔍</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/" title="HOME">
+                <span style="color: rgb(218, 218, 219);">HOME</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/post" title="BLOGS">
+                <span style="color: rgb(218, 218, 219);">BLOGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/archives" title="ARCHIVE">
+                <span style="color: rgb(218, 218, 219);">ARCHIVE</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/tags" title="TAGS">
+                <span style="color: rgb(218, 218, 219);">TAGS</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://WFUing.github.io/about" title="🙋🏻‍♂️">
+                <span style="color: rgb(218, 218, 219);">🙋🏻‍♂️</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</header>
+
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/review/">研一复习</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/review/data-warehouse-mining/">数据仓库与知识发现</a></div>
+    <h1 class="post-title">
+      Data Warehousing
+    </h1>
+    <div class="post-meta">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-12-15
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1218字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/data/" style="color: var(--secondary)!important;">data</a>
+            </span>
+        </span>
+    </span>
+</span>
+        &nbsp;|&nbsp;标签: &nbsp;
+        <ul class="post-tags-meta">
+            <a href="https://WFUing.github.io/tags/data/">data</a>
+        </ul>
+
+        
+        
+        
+        
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_page_pv">
+            &nbsp;| 访问: <span id="busuanzi_value_page_pv"></span>
+        </span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#what-is-a-data-warehouse" aria-label="What is a data warehouse?">What is a data warehouse?</a><ul>
+                            
+                    <li>
+                        <a href="#subject-oriented" aria-label="Subject-Oriented">Subject-Oriented</a></li>
+                    <li>
+                        <a href="#integrated" aria-label="Integrated">Integrated</a></li>
+                    <li>
+                        <a href="#time-variant" aria-label="Time Variant">Time Variant</a></li>
+                    <li>
+                        <a href="#non-volatile" aria-label="Non-Volatile">Non-Volatile</a></li>
+                    <li>
+                        <a href="#data-warehouse-vs-heterogeneous-dbms" aria-label="Data Warehouse vs. Heterogeneous DBMS">Data Warehouse vs. Heterogeneous DBMS</a></li>
+                    <li>
+                        <a href="#oltp-vs-olap" aria-label="OLTP vs OLAP">OLTP vs OLAP</a></li>
+                    <li>
+                        <a href="#why-separate-data-warehouse" aria-label="Why Separate Data Warehouse?">Why Separate Data Warehouse?</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#a-multi-dimensional-data-model" aria-label="A multi-dimensional data model">A multi-dimensional data model</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e4%bb%93%e5%ba%93%e7%9a%84%e6%a6%82%e5%bf%b5%e5%bb%ba%e6%a8%a1" aria-label="数据仓库的概念建模">数据仓库的概念建模</a></li>
+                    <li>
+                        <a href="#a-data-mining-query-language-dmql" aria-label="A Data Mining Query Language, DMQL">A Data Mining Query Language, DMQL</a><ul>
+                            
+                    <li>
+                        <a href="#defining-a-star-schema-in-dmql" aria-label="Defining a Star Schema in DMQL">Defining a Star Schema in DMQL</a></li>
+                    <li>
+                        <a href="#defining-a-snowflake-schema-in-dmql" aria-label="Defining a Snowflake Schema in DMQL">Defining a Snowflake Schema in DMQL</a></li>
+                    <li>
+                        <a href="#defining-a-fact-constellation-in-dmql" aria-label="Defining a Fact Constellation in DMQL">Defining a Fact Constellation in DMQL</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#measures-three-categories" aria-label="Measures: Three Categories">Measures: Three Categories</a></li>
+                    <li>
+                        <a href="#typical-olap-operations" aria-label="Typical OLAP Operations">Typical OLAP Operations</a></li>
+                    <li>
+                        <a href="#a-star-net-query-model" aria-label="A Star-Net Query Model">A Star-Net Query Model</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#data-warehousing-and-olap-technology" aria-label="Data Warehousing and OLAP Technology">Data Warehousing and OLAP Technology</a><ul>
+                            
+                    <li>
+                        <a href="#three-data-warehouse-models" aria-label="Three Data Warehouse Models">Three Data Warehouse Models</a></li>
+                    <li>
+                        <a href="#data-warehouse-development-a-recommended-approach" aria-label="Data Warehouse Development: A Recommended Approach">Data Warehouse Development: A Recommended Approach</a><ul>
+                            
+                    <li>
+                        <a href="#olap-server-architectures" aria-label="OLAP Server Architectures">OLAP Server Architectures</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#data-warehouse-implementation" aria-label="Data warehouse implementation">Data warehouse implementation</a><ul>
+                            
+                    <li>
+                        <a href="#data-warehouse-design" aria-label="Data Warehouse Design">Data Warehouse Design</a></li>
+                    <li>
+                        <a href="#olap-modeling-methods" aria-label="OLAP Modeling Methods">OLAP Modeling Methods</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%bb%b4%e8%a1%a8%e7%9a%84%e5%8f%98%e5%8c%96" aria-label="维表的变化">维表的变化</a></li>
+                    <li>
+                        <a href="#%e7%bb%b4%e8%a1%a8%e7%9a%84%e5%85%b1%e4%ba%ab" aria-label="维表的共享">维表的共享</a></li>
+                    <li>
+                        <a href="#%e5%b1%82%e6%ac%a1%e4%bf%a1%e6%81%af%e7%9a%84%e4%bd%8d%e7%bd%ae" aria-label="层次信息的位置">层次信息的位置</a></li>
+                    <li>
+                        <a href="#%e5%88%86%e7%b1%bb%e4%bf%a1%e6%81%af%e7%9a%84%e4%bd%8d%e7%bd%ae" aria-label="分类信息的位置">分类信息的位置</a></li>
+                    <li>
+                        <a href="#%e4%ba%8b%e5%ae%9e%e8%a1%a8%e7%9a%84%e7%89%b9%e5%be%81" aria-label="事实表的特征">事实表的特征</a></li>
+                    <li>
+                        <a href="#%e9%80%9a%e7%94%a8%e6%95%b0%e6%8d%ae%e5%92%8c%e4%b8%93%e7%94%a8%e6%95%b0%e6%8d%ae%e4%ba%8b%e5%ae%9e%e8%a1%a8" aria-label="通用数据和专用数据事实表">通用数据和专用数据事实表</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#optimization-of-logical-modelphysical-model" aria-label="Optimization of Logical Model/Physical Model">Optimization of Logical Model/Physical Model</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e4%bb%93%e5%ba%93%e7%9a%84%e9%80%bb%e8%be%91%e6%a8%a1%e5%9e%8b%e8%ae%be%e8%ae%a1" aria-label="数据仓库的逻辑模型设计">数据仓库的逻辑模型设计</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%b3%bb%e7%bb%9f%e6%95%b0%e6%8d%ae%e9%87%8f%e4%bc%b0%e7%ae%97" aria-label="系统数据量估算">系统数据量估算</a></li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e7%b2%92%e5%ba%a6%e7%9a%84%e9%80%89%e6%8b%a9" aria-label="数据粒度的选择">数据粒度的选择</a></li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e7%9a%84%e5%88%86%e5%89%b2" aria-label="数据的分割">数据的分割</a></li>
+                    <li>
+                        <a href="#%e5%90%88%e7%90%86%e7%9a%84%e8%a1%a8%e5%88%92%e5%88%86" aria-label="合理的表划分">合理的表划分</a></li>
+                    <li>
+                        <a href="#%e5%88%a0%e9%99%a4%e7%ba%af%e6%93%8d%e4%bd%9c%e6%95%b0%e6%8d%ae%e5%8f%8a%e5%a2%9e%e5%8a%a0%e5%af%bc%e5%87%ba%e5%ad%97%e6%ae%b5" aria-label="删除纯操作数据及增加导出字段">删除纯操作数据及增加导出字段</a></li>
+                    <li>
+                        <a href="#meta-data" aria-label="Meta Data">Meta Data</a></li>
+                    <li>
+                        <a href="#%e8%ae%b0%e5%bd%95%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%ae%9a%e4%b9%89" aria-label="记录系统的定义">记录系统的定义</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e4%bb%93%e5%ba%93%e7%89%a9%e7%90%86%e6%a8%a1%e5%9e%8b%e8%ae%be%e8%ae%a1" aria-label="数据仓库物理模型设计">数据仓库物理模型设计</a><ul>
+                            
+                    <li>
+                        <a href="#define-the-storage-structure" aria-label="Define the Storage Structure">Define the Storage Structure</a></li>
+                    <li>
+                        <a href="#%e7%b4%a2%e5%bc%95%e6%8a%80%e6%9c%af%e4%b8%ba%e4%bb%80%e4%b9%88%e4%b8%8d%e4%bd%bf%e7%94%a8b%e6%a0%91" aria-label="索引技术：为什么不使用B树？">索引技术：为什么不使用B树？</a></li>
+                    <li>
+                        <a href="#data-storage-strategy" aria-label="Data Storage Strategy">Data Storage Strategy</a></li>
+                    <li>
+                        <a href="#efficient-methods-for-data-cube-computation" aria-label="Efficient Methods for Data Cube Computation">Efficient Methods for Data Cube Computation</a></li>
+                    <li>
+                        <a href="#data-cube-operation" aria-label="Data Cube Operation">Data Cube Operation</a></li>
+                    <li>
+                        <a href="#multiway-array-aggregation" aria-label="Multiway Array Aggregation">Multiway Array Aggregation</a></li>
+                    <li>
+                        <a href="#%e6%9c%89%e6%95%88%e5%a4%84%e7%90%86olap%e6%9f%a5%e8%af%a2" aria-label="有效处理OLAP查询">有效处理OLAP查询</a></li>
+                    <li>
+                        <a href="#bottom-up-computation-buc" aria-label="Bottom-Up Computation (BUC)">Bottom-Up Computation (BUC)</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#plan-and-implementation-of-data-warehouse" aria-label="Plan and Implementation of Data Warehouse">Plan and Implementation of Data Warehouse</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e4%bb%93%e5%ba%93%e5%90%8e%e7%ab%af%e5%b7%a5%e5%85%b7" aria-label="数据仓库后端工具">数据仓库后端工具</a></li></ul>
+                    </li></ul>
+                    </li>
+                    <li>
+                        <a href="#further-development-of-data-cube-technology" aria-label="Further development of data cube technology">Further development of data cube technology</a><ul>
+                            
+                    <li>
+                        <a href="#discovery-driven-exploration-of-data-cubes" aria-label="Discovery-Driven Exploration of Data Cubes">Discovery-Driven Exploration of Data Cubes</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#from-data-warehousing-to-data-mining" aria-label="From data warehousing to data mining">From data warehousing to data mining</a><ul>
+                            
+                    <li>
+                        <a href="#data-warehouse-usage" aria-label="Data Warehouse Usage">Data Warehouse Usage</a></li>
+                    <li>
+                        <a href="#from-on-line-analytical-processing-to-on-line-analytical-mining-olam" aria-label="From On-Line Analytical Processing to On Line Analytical Mining (OLAM)">From On-Line Analytical Processing to On Line Analytical Mining (OLAM)</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#summary" aria-label="Summary">Summary</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="what-is-a-data-warehouse">What is a data warehouse?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-data-warehouse">#</a></h2>
+<p>数据仓库以许多不同的方式定义，但并不严格。</p>
+<ul>
+<li>一个与组织的运营数据库分开维护的决策支持数据库</li>
+<li>通过提供一个坚实的平台，整合历史数据，支持信息处理以进行分析。</li>
+</ul>
+<blockquote>
+<p>A data warehouse is a subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of management&rsquo;s decision-making process. —- W. H. Inmon</p>
+<p>数据仓库是一个面向主题的、集成的、时变的和非易失性的数据集合，支持管理决策过程。</p>
+</blockquote>
+<p>数据仓库：构建和使用数据仓库的过程</p>
+<h3 id="subject-oriented">Subject-Oriented<a hidden class="anchor" aria-hidden="true" href="#subject-oriented">#</a></h3>
+<ul>
+<li>围绕主要主题组织，如客户、产品、销售。</li>
+<li>侧重于为决策者建模和分析数据，而不是日常运营或交易处理。</li>
+<li>通过排除在决策支持过程中无用的数据，提供关于特定主题问题的简单而简明的视图。</li>
+</ul>
+<h3 id="integrated">Integrated<a hidden class="anchor" aria-hidden="true" href="#integrated">#</a></h3>
+<ul>
+<li>通过整合多个异构数据源构建
+<ul>
+<li>关系数据库、平面文件、在线交易记录</li>
+</ul>
+</li>
+<li>应用数据清理和数据集成技术。
+<ul>
+<li>确保不同数据源之间的命名约定、编码结构、属性度量等的一致性
+<ul>
+<li>例如，酒店价格：货币、税收、包括早餐等。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>将数据移动到仓库时进行转换。</li>
+</ul>
+<h3 id="time-variant">Time Variant<a hidden class="anchor" aria-hidden="true" href="#time-variant">#</a></h3>
+<ul>
+<li>数据仓库的时间范围明显长于操作系统的时间范围。
+<ul>
+<li>操作数据库：当前值数据。</li>
+<li>数据仓库数据：提供历史透视的信息（例如，过去5-10年）。</li>
+</ul>
+</li>
+<li>数据仓库中的每个关键结构
+<ul>
+<li>包含明确或隐含的时间元素</li>
+<li>但操作数据的关键可能包含或不包含<em>时间元素</em>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="non-volatile">Non-Volatile<a hidden class="anchor" aria-hidden="true" href="#non-volatile">#</a></h3>
+<ul>
+<li>从操作环境转换而来的数据的物理分离存储。</li>
+<li>数据仓库环境中不发生数据的操作更新。
+<ul>
+<li>不需要事务处理、恢复和并发控制机制</li>
+<li>仅需要两个数据访问操作：数据的初始加载和数据的访问。</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-warehouse-vs-heterogeneous-dbms">Data Warehouse vs. Heterogeneous DBMS<a hidden class="anchor" aria-hidden="true" href="#data-warehouse-vs-heterogeneous-dbms">#</a></h3>
+<p><strong>Traditional heterogeneous DB integration</strong>（传统的异构数据库集成）:</p>
+<ul>
+<li>在异构数据库之上构建包装器/中介</li>
+<li>查询驱动的方法
+<ul>
+<li>当向客户站点提出查询时，使用元字典将查询转换为适用于涉及的各个异构站点的查询，并将结果集成到全局答案集中</li>
+<li>复杂的信息过滤，争夺资源</li>
+</ul>
+</li>
+</ul>
+<p><strong>Data warehouse</strong>: 更新驱动，高性能</p>
+<ul>
+<li>信息来自异构来源，在预先集成并存储在仓库中，以供直接查询和分析。</li>
+</ul>
+<h3 id="oltp-vs-olap">OLTP vs OLAP<a hidden class="anchor" aria-hidden="true" href="#oltp-vs-olap">#</a></h3>
+<p><strong>OLTP</strong> (On-Line Transaction Processing，联机事务处理)</p>
+<ul>
+<li>传统关系数据库管理系统的主要任务</li>
+<li>日常运营：采购、库存、银行业务、制造、工资、注册、会计等。</li>
+</ul>
+<p><strong>OLAP</strong> (On-Line Analytical Processing，联机分析处理)</p>
+<ul>
+<li>数据仓库系统的主要任务</li>
+<li>数据分析和决策制定</li>
+</ul>
+<p><strong>Distinct features</strong> (OLTP vs. OLAP):</p>
+<ul>
+<li>User and system orientation: customer vs. market</li>
+<li>Data contents: current, detailed vs. historical, consolidated</li>
+<li>Database design: ER + application vs. star + subject</li>
+<li>View: current, local vs. evolutionary, integrated</li>
+<li>Access patterns: update vs. read-only but complex queries</li>
+</ul>
+<p><img loading="lazy" src="oltpvsolap.png" alt=""  />
+</p>
+<h3 id="why-separate-data-warehouse">Why Separate Data Warehouse?<a hidden class="anchor" aria-hidden="true" href="#why-separate-data-warehouse">#</a></h3>
+<ul>
+<li>两个系统都具有高性能
+<ul>
+<li>DBMS — 针对OLTP进行调整：访问方法、索引、并发控制、恢复</li>
+<li>仓库 — 针对OLAP进行调整：复杂的OLAP查询、多维视图、汇总。</li>
+</ul>
+</li>
+<li>不同的功能和不同的数据：
+<ul>
+<li>缺失的数据：决策支持需要操作数据库通常不维护的历史数据</li>
+<li>数据汇总：决策支持需要从异构来源聚合（汇总、摘要）的数据</li>
+<li>数据质量：不同的来源通常使用不一致的数据表示、代码和格式，需要协调。</li>
+</ul>
+</li>
+</ul>
+<h2 id="a-multi-dimensional-data-model">A multi-dimensional data model<a hidden class="anchor" aria-hidden="true" href="#a-multi-dimensional-data-model">#</a></h2>
+<p>从表格和电子表格到数据立方体</p>
+<ul>
+<li>数据仓库基于多维数据模型，以数据立方体的形式查看数据。</li>
+<li>数据立方体（如销售）允许数据在多个维度上建模和查看
+<ul>
+<li>维度表，如项目（项目名称、品牌、类型）或时间（日、周、月、季度、年）</li>
+<li>事实表包含度量（如销售额）和与每个相关维度表的键</li>
+</ul>
+</li>
+</ul>
+<p>Multi-Dimensional Data Model（多维数据模型，立方体）</p>
+<p><img loading="lazy" src="cube.png" alt=""  />
+</p>
+<p>立方体：立方体的晶格</p>
+<p><img loading="lazy" src="cube1.png" alt=""  />
+</p>
+<p>在数据仓库文献中，n-D基本立方体被称为基本小立方体。最顶层的0-D小立方体，它包含最高级别的摘要，被称为尖点小立方体。小立方体的晶格形成一个数据立方体。</p>
+<p><img loading="lazy" src="cube2.png" alt=""  />
+</p>
+<h3 id="数据仓库的概念建模">数据仓库的概念建模<a hidden class="anchor" aria-hidden="true" href="#数据仓库的概念建模">#</a></h3>
+<p>建模数据仓库：维度和度量</p>
+<ul>
+<li>Star schema: 星型模式，中间有一个事实表与一组维度表相连</li>
+</ul>
+<p>Example of Star Schema</p>
+<p><img loading="lazy" src="examstar.png" alt=""  />
+</p>
+<ul>
+<li>Snowflake schema: 雪花模式，星型模式的一种改进，其中一些维度层次被规范化为一组较小的维度表，形成类似雪花的形状</li>
+</ul>
+<p>Example of Snowflake Schema</p>
+<p><img loading="lazy" src="exam-snowflake.png" alt=""  />
+</p>
+<ul>
+<li>Fact constellations: 事实星座，多个事实表共享维度表，被视为一组星型，因此被称为星系模式或事实星座</li>
+</ul>
+<p>Example of Fact Constellation</p>
+<p><img loading="lazy" src="exam-fact-constellation.png" alt=""  />
+</p>
+<h3 id="a-data-mining-query-language-dmql">A Data Mining Query Language, DMQL<a hidden class="anchor" aria-hidden="true" href="#a-data-mining-query-language-dmql">#</a></h3>
+<p>Cube Definition (Fact Table)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define cube &lt;cube_name&gt; [&lt;dimension_list&gt;]: &lt;measure_list&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Dimension Definition ( Dimension Table )</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define dimension &lt;dimension_name&gt; as (&lt;attribute_or_subdimension_list&gt;)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Special Case (Shared Dimension Tables)</p>
+<ul>
+<li>First time as &ldquo;cube definition&rdquo;</li>
+<li>Other,</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define dimension &lt;dimension_name&gt; as &lt;dimension_name_first_time&gt; in cube &lt;cube_name_first_time&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="defining-a-star-schema-in-dmql">Defining a Star Schema in DMQL<a hidden class="anchor" aria-hidden="true" href="#defining-a-star-schema-in-dmql">#</a></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define cube sales_star [time, item, branch, location]: dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*)
+</span></span><span class="line"><span class="cl">define dimension time as (time_key, day, day_of_week, month, quarter, year)
+</span></span><span class="line"><span class="cl">define dimension item as (item_key, item_name, brand, type, supplier_type)
+</span></span><span class="line"><span class="cl">define dimension branch as (branch_key, branch_name, branch_type)
+</span></span><span class="line"><span class="cl">define dimension location as (location_key, street, city, province_or_state, country)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="defining-a-snowflake-schema-in-dmql">Defining a Snowflake Schema in DMQL<a hidden class="anchor" aria-hidden="true" href="#defining-a-snowflake-schema-in-dmql">#</a></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define cube sales_snowflake [time, item, branch, location]: dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*)
+</span></span><span class="line"><span class="cl">define dimension time as (time_key, day, day_of_week, month, quarter, year)
+</span></span><span class="line"><span class="cl">define dimension item as (item_key, item_name, brand, type, supplier(supplier_key, supplier_type))
+</span></span><span class="line"><span class="cl">define dimension branch as (branch_key, branch_name, branch_type)
+</span></span><span class="line"><span class="cl">define dimension location as (location_key, street, city(city_key, province_or_state, country))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="defining-a-fact-constellation-in-dmql">Defining a Fact Constellation in DMQL<a hidden class="anchor" aria-hidden="true" href="#defining-a-fact-constellation-in-dmql">#</a></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define cube sales [time, item, branch, location]:
+</span></span><span class="line"><span class="cl">dollars_sold = sum(sales_in_dollars), avg_sales = avg(sales_in_dollars), units_sold = count(*)
+</span></span><span class="line"><span class="cl">define dimension time as (time_key, day, day_of_week, month, quarter, year)
+</span></span><span class="line"><span class="cl">define dimension item as (item_key, item_name, brand, type, supplier_type)
+</span></span><span class="line"><span class="cl">define dimension branch as (branch_key, branch_name, branch_type)
+</span></span><span class="line"><span class="cl">define dimension location as (location_key, street, city, province_or_state, country)
+</span></span><span class="line"><span class="cl">define cube shipping [time, item, shipper, from_location, to_location]:
+</span></span><span class="line"><span class="cl">dollar_cost = sum(cost_in_dollars), unit_shipped = count(*)
+</span></span><span class="line"><span class="cl">define dimension time as time in cube sales
+</span></span><span class="line"><span class="cl">define dimension item as item in cube sales
+</span></span><span class="line"><span class="cl">define dimension shipper as (shipper_key, shipper_name, location as location in cube sales, shipper_type)
+</span></span><span class="line"><span class="cl">define dimension from_location as location in cube sales
+</span></span><span class="line"><span class="cl">define dimension to_location as location in cube sales
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="measures-three-categories">Measures: Three Categories<a hidden class="anchor" aria-hidden="true" href="#measures-three-categories">#</a></h3>
+<ul>
+<li>distributive: 如果将函数应用于n个聚合值的结果与在不分区的所有数据上应用函数的结果相同。
+<ul>
+<li>E.g., count(), sum(), min(), max().</li>
+</ul>
+</li>
+<li>algebraic: 如果它可以通过具有M个参数的代数函数计算（其中M是有界整数），每个参数都是通过应用分布式聚合函数获得的。
+<ul>
+<li>E.g., avg(), standard_deviation().</li>
+</ul>
+</li>
+<li>holistic: 如果描述子聚合所需的存储大小没有常量界限。
+<ul>
+<li>E.g., median(), mode(), rank().</li>
+</ul>
+</li>
+</ul>
+<p><strong>A Concept Hierarchy: Dimension (location)</strong></p>
+<p><img loading="lazy" src="demo.png" alt=""  />
+</p>
+<p><strong>Multidimensional Data</strong></p>
+<p>Sales volume as a function of product, month, and region</p>
+<p><img loading="lazy" src="demo2.png" alt=""  />
+</p>
+<p><img loading="lazy" src="demo3.png" alt=""  />
+</p>
+<p><strong>Browsing a Data Cube</strong></p>
+<ul>
+<li>Visualization</li>
+<li>OLAP capabilities</li>
+<li>Interactive manipulation</li>
+</ul>
+<p><img loading="lazy" src="data-cube.png" alt=""  />
+</p>
+<h3 id="typical-olap-operations">Typical OLAP Operations<a hidden class="anchor" aria-hidden="true" href="#typical-olap-operations">#</a></h3>
+<ul>
+<li>Roll up (drill-up): 汇总数据
+<ul>
+<li>通过沿着层次结构向上爬升或通过减少维度来实现</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="rollup.png" alt=""  />
+</p>
+<ul>
+<li>Drill down (roll down): reverse of roll-up
+<ul>
+<li>从较高级别的摘要到较低级别的摘要或详细数据，或引入新的维度</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="rolldown.png" alt=""  />
+</p>
+<ul>
+<li>Slice and dice:
+<ul>
+<li>投影和选择</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="slice.png" alt=""  />
+</p>
+<p><img loading="lazy" src="dice.png" alt=""  />
+</p>
+<ul>
+<li>Pivot (rotate):
+<ul>
+<li>重新定位立方体，可视化，从3D到一系列2D平面。</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="pivot.png" alt=""  />
+</p>
+<ul>
+<li>Other operations
+<ul>
+<li>drill across: 涉及（跨越）多个事实表</li>
+<li>drill through: 通过底层的立方体穿透到其后端关系表（使用SQL）</li>
+</ul>
+</li>
+</ul>
+<h3 id="a-star-net-query-model">A Star-Net Query Model<a hidden class="anchor" aria-hidden="true" href="#a-star-net-query-model">#</a></h3>
+<p><img loading="lazy" src="star-net-query.png" alt=""  />
+</p>
+<h2 id="data-warehousing-and-olap-technology">Data Warehousing and OLAP Technology<a hidden class="anchor" aria-hidden="true" href="#data-warehousing-and-olap-technology">#</a></h2>
+<p>多层次体系结构</p>
+<p><img loading="lazy" src="multi-tiered.png" alt=""  />
+</p>
+<h3 id="three-data-warehouse-models">Three Data Warehouse Models<a hidden class="anchor" aria-hidden="true" href="#three-data-warehouse-models">#</a></h3>
+<ul>
+<li>
+<p>Enterprise warehouse</p>
+<ul>
+<li>收集整个组织跨足的有关主题的所有信息</li>
+</ul>
+</li>
+<li>
+<p>Data Mart</p>
+<ul>
+<li>是对公司范围内数据的子集，对特定用户组有价值。其范围限于特定的、选择的群体，如营销数据集市
+<ul>
+<li>独立 vs. 依赖（直接来自仓库）数据集市</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Virtual warehouse</p>
+<ul>
+<li>对操作性数据库的一组视图</li>
+<li>可能仅有一些可能的摘要视图会被实体化</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-warehouse-development-a-recommended-approach">Data Warehouse Development: A Recommended Approach<a hidden class="anchor" aria-hidden="true" href="#data-warehouse-development-a-recommended-approach">#</a></h3>
+<p><img loading="lazy" src="approach.png" alt=""  />
+</p>
+<h4 id="olap-server-architectures">OLAP Server Architectures<a hidden class="anchor" aria-hidden="true" href="#olap-server-architectures">#</a></h4>
+<ul>
+<li>Relational OLAP (ROLAP)
+<ul>
+<li>使用关系型或扩展关系型数据库管理系统存储和管理仓库数据，使用OLAP中间件支持缺失的部分</li>
+<li>包括优化DBMS后端、实现聚合导航逻辑以及其他工具和服务</li>
+<li>更大的可伸缩性</li>
+</ul>
+</li>
+<li>Multidimensional OLAP (MOLAP)
+<ul>
+<li>基于数组的多维存储引擎（稀疏矩阵技术）</li>
+<li>针对预先计算的汇总数据进行快速索引</li>
+</ul>
+</li>
+<li>Hybrid OLAP (HOLAP)
+<ul>
+<li>用户灵活性，例如，低级别：关系型，高级别：数组</li>
+</ul>
+</li>
+<li>Specialized SQL servers
+<ul>
+<li>针对星型/雪花模式的SQL查询提供专门支持</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-warehouse-implementation">Data warehouse implementation<a hidden class="anchor" aria-hidden="true" href="#data-warehouse-implementation">#</a></h2>
+<h3 id="data-warehouse-design">Data Warehouse Design<a hidden class="anchor" aria-hidden="true" href="#data-warehouse-design">#</a></h3>
+<p><strong>数据仓库设计和数据库设计的差异</strong></p>
+<ul>
+<li>面向需求不同：数据库面向具体应用，需求一开始就很明确，而数据仓库是一个渐进的过程</li>
+<li>设计目标不同：OLTP vs. OLAP</li>
+<li>处理类型不同：面向操作型应用 vs. 面向分析型应用</li>
+<li>数据来源不同：业务员输入 vs. 已存在的业务系统数据</li>
+<li>系统设计的方法不同：
+<ul>
+<li>数据仓库可以采用<em>数据驱动</em>的设计方法</li>
+<li>数据仓库设计可以分为数据仓库模型设计和数据装载接口设计两部分</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据仓库的设计步骤</strong></p>
+<p><img loading="lazy" src="design.png" alt=""  />
+</p>
+<p>例如，将企业模型映射到数据仓库系统的过程</p>
+<ul>
+<li>分析建立企业模型并映射到数据仓库概念模型</li>
+<li>逻辑模型设计</li>
+<li>物理模型设计</li>
+</ul>
+<h3 id="olap-modeling-methods">OLAP Modeling Methods<a hidden class="anchor" aria-hidden="true" href="#olap-modeling-methods">#</a></h3>
+<ul>
+<li>
+<p>维表设计</p>
+<ul>
+<li>维的变化</li>
+<li>维表的共享</li>
+<li>层次信息和分类信息的位置</li>
+</ul>
+</li>
+<li>
+<p>事实表设计</p>
+<ul>
+<li>事实表的特性</li>
+<li>通用数据和专用数据事实表</li>
+</ul>
+</li>
+</ul>
+<h4 id="维表的变化">维表的变化<a hidden class="anchor" aria-hidden="true" href="#维表的变化">#</a></h4>
+<ul>
+<li>维表通过记录因素的属性描述事件中包含的诸多因素</li>
+<li>维表的本质是多维分析空间在某个角度上的投影</li>
+<li>由于维表描述的是事物的属性，因此随着事物本身的变化，其属性也会产生改变
+<ul>
+<li>如果该属性与决策没有太大关系，例如电话号码属性对于分析顾客购买行为没有什么作用，则此属性的变化可以忽略不计</li>
+<li>如果该属性与决策有关，例如某位顾客搬家后离超市更远了，我们试图分析其购买行为与家里距离变远有何关系，则不能将之忽略</li>
+</ul>
+</li>
+<li>对于需要记录其改变的维，有若干方法可以进行处理
+<ul>
+<li>当属性进行变化时，创建一个新记录</li>
+<li>例如： <img loading="lazy" src="change1.png" alt=""  />
+</li>
+<li>缺点：由于ID产生变化，被认为是两条记录</li>
+</ul>
+</li>
+<li>创建一个新的字段，将新地址填入
+<ul>
+<li>例如：<img loading="lazy" src="change2.png" alt=""  />
+</li>
+<li>缺点：可扩展性不佳</li>
+</ul>
+</li>
+<li>增加一个修订号码字段和当前标记字段
+<ul>
+<li>例如：<img loading="lazy" src="change3.png" alt=""  />
+</li>
+<li>缺点：维表和事实表连接时需要采用<em>主关键字</em>＋<em>修订号码</em>，增加了事实表的复杂性</li>
+</ul>
+</li>
+<li>最为理想的解决方案：新建一个关键字客户ID，通过主关键字与之相连，使用时间字段标志当前的值
+<ul>
+<li>例如：<img loading="lazy" src="change4.png" alt=""  />
+</li>
+<li>缺点：相对较为复杂</li>
+</ul>
+</li>
+</ul>
+<h4 id="维表的共享">维表的共享<a hidden class="anchor" aria-hidden="true" href="#维表的共享">#</a></h4>
+<ul>
+<li>多个维表中可能包含相同的属性：
+<ul>
+<li>供货商维中包含地址维，而销售商维中可能也包含地址维，因而可能共享维表</li>
+<li>由于数据仓库中时间维的重要性，各个维中都有可能包含时间维，因而可能共享时间维表</li>
+</ul>
+</li>
+<li>可以采用扩展的星座结构来描述共享维表</li>
+<li>具体内容请参见<a href="#a-multi-dimensional-data-model">上节</a></li>
+</ul>
+<h4 id="层次信息的位置">层次信息的位置<a hidden class="anchor" aria-hidden="true" href="#层次信息的位置">#</a></h4>
+<ul>
+<li>
+<p>将维层次信息放入事实表</p>
+<ul>
+<li><img loading="lazy" src="location1.png" alt=""  />
+</li>
+<li>优点：计算极为方便</li>
+<li>缺点：事实表会因此变得极为庞大</li>
+</ul>
+</li>
+<li>
+<p>将维层次放在各自的维表中，通过主关键字与事实表相连</p>
+<ul>
+<li><img loading="lazy" src="location2.png" alt=""  />
+</li>
+<li>优点：减少了事实表的大小</li>
+<li>缺点：OLAP性能比上一种方式差</li>
+</ul>
+</li>
+</ul>
+<h4 id="分类信息的位置">分类信息的位置<a hidden class="anchor" aria-hidden="true" href="#分类信息的位置">#</a></h4>
+<ul>
+<li>
+<p>在事实表中体现维分类</p>
+<ul>
+<li><img loading="lazy" src="location3.png" alt=""  />
+</li>
+<li>优点： OLAP性能好</li>
+<li>缺点： 事实表的字段数和记录数增加</li>
+</ul>
+</li>
+<li>
+<p>在维表中体现维分类</p>
+<ul>
+<li><img loading="lazy" src="location4.png" alt=""  />
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="事实表的特征">事实表的特征<a hidden class="anchor" aria-hidden="true" href="#事实表的特征">#</a></h4>
+<ul>
+<li>与维表相比，事实表具有以下特征：
+<ul>
+<li>记录数量非常多</li>
+<li>除了度量外，其他字段都是维表或者中间维表（雪花模型）的关键字</li>
+<li>如果事实相关的维度很多，则事实表的字段数也会比较多</li>
+</ul>
+</li>
+<li>因此应当尽量减小一条记录的长度，才能避免事实表过大而难于管理</li>
+<li>数据的粒度是影响事实表大小的关键因素，因而必须认真设计</li>
+</ul>
+<h4 id="通用数据和专用数据事实表">通用数据和专用数据事实表<a hidden class="anchor" aria-hidden="true" href="#通用数据和专用数据事实表">#</a></h4>
+<ul>
+<li>对应一个问题通常采用一个事实表，但在特殊情况下，也允许采用多个事实表</li>
+<li>例如：超市里出售多种商品，由于商品本身分类不同，因此所采用的量度可能也不相同
+<ul>
+<li>如果将这些量度全部置于一个事实表中，由于某种类型的商品的量度其他商品可能不具备，因此则不可避免将在事实表中造成- 大量的数据空缺</li>
+<li>解决办法：采用多个事实表，分为通用数据事实表与专用数据事实表加以管理</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="image.png" alt=""  />
+</p>
+<h3 id="optimization-of-logical-modelphysical-model">Optimization of Logical Model/Physical Model<a hidden class="anchor" aria-hidden="true" href="#optimization-of-logical-modelphysical-model">#</a></h3>
+<h4 id="数据仓库的逻辑模型设计">数据仓库的逻辑模型设计<a hidden class="anchor" aria-hidden="true" href="#数据仓库的逻辑模型设计">#</a></h4>
+<ul>
+<li>系统数据量估算</li>
+<li>数据粒度的选择</li>
+<li>数据的分割</li>
+<li>表的合理划分</li>
+<li>去除纯操作数据</li>
+<li>增加导出字段</li>
+<li>定义关系模式</li>
+<li>定义元数据存储</li>
+<li>定义记录系统</li>
+</ul>
+<h5 id="系统数据量估算">系统数据量估算<a hidden class="anchor" aria-hidden="true" href="#系统数据量估算">#</a></h5>
+<p>设在概念模型中出现的表的个数为$N$（这些表中应不包含不会放进数据仓库的表），对于每个表 $i$ ($0\leq u \leq N$), 计算表的大小$S_i$和表的主关键字大小$K_i$，然后估计每张表$i$在单位时间内最大记录数$L_{max}$和最少记录数$L_{min}$,则数据仓库的粗略数据量在以下范围： <img loading="lazy" src="ar.png" alt=""  />
+</p>
+<p>其中，$T$是数据在数据仓库中存在的周期。$\alpha$是考虑由于数据冗余和数据索引而使数据量增大的冗余因子,通常取$1.2~2$</p>
+<p>本公式的含义是：</p>
+<p><code>数据仓库数据量＝{累加[(每张表记录大小＋每张表主关键字大小)*每张表单位时间内记录的数量]*存储时间}*冗余因子</code></p>
+<p>公式估算出的结果仅能作为参考</p>
+<h5 id="数据粒度的选择">数据粒度的选择<a hidden class="anchor" aria-hidden="true" href="#数据粒度的选择">#</a></h5>
+<p>数据量较小的情况下使用单一的数据粒度，即直接存储细节数据并定期在细节数据基础上进行数据综合</p>
+<p>对于大数据量需要采用双重粒度，对于细节数据只保存近期的数据在数据仓库之中，当保留周期到达时，将距离当前较远的数据导出到磁带或存储设备上</p>
+<p><img loading="lazy" src="data3.png" alt=""  />
+</p>
+<p><strong>数据粒度策略</strong></p>
+<p><img loading="lazy" src="data2.png" alt=""  />
+</p>
+<h5 id="数据的分割">数据的分割<a hidden class="anchor" aria-hidden="true" href="#数据的分割">#</a></h5>
+<ul>
+<li>为何要进行数据分割？
+<ul>
+<li>数据仓库中数据量过大时，检索速度很慢</li>
+</ul>
+</li>
+<li>数据分割是指将数据分散到各自的物理单元里以便能够独立处理，以提高数据处理的效率</li>
+<li>数据分割没有固定的标准，分割的方法和粒度应当根据实际情况确定
+<ul>
+<li>通常选择时间、地点、业务等划分</li>
+<li>一般按照时间分割数据分布比较均匀，因此按照时间分割最为常见</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="data4.png" alt="Alt text"  />
+</p>
+<h5 id="合理的表划分">合理的表划分<a hidden class="anchor" aria-hidden="true" href="#合理的表划分">#</a></h5>
+<ul>
+<li>
+<p>直接存储字段数目很大的表，会造成以下问题：</p>
+<ul>
+<li>各个字段的更新频率不一，放在一张表里造成数据追加工作的浪费</li>
+<li>各个字段的访问频率不一，放在一张表里影响访问效率</li>
+</ul>
+</li>
+<li>
+<p>因此需要对表中的内容进行合理的划分</p>
+<ul>
+<li>按数据的稳定性划分</li>
+<li>按业务规则进行表划分(略)</li>
+</ul>
+</li>
+</ul>
+<p><strong>按数据稳定性进行表划分</strong></p>
+<p><img loading="lazy" src="data5.png" alt=""  />
+</p>
+<h5 id="删除纯操作数据及增加导出字段">删除纯操作数据及增加导出字段<a hidden class="anchor" aria-hidden="true" href="#删除纯操作数据及增加导出字段">#</a></h5>
+<ul>
+<li>在将业务系统中的数据抽取到数据仓库系统中的过程里，如果发现某些数据对于决策没有作用，属于纯操作型数据,则可以将之删除
+<ul>
+<li>例：<em>收款人</em>字段</li>
+</ul>
+</li>
+<li>导出数据本身是冗余的，但是增加导出字段有利于数据以后的使用
+<ul>
+<li>例：在按月综合表中，可以加入<em>平均价格</em>，<em>供货总价</em>，<em>供货总数量</em>等导出字段</li>
+</ul>
+</li>
+</ul>
+<h5 id="meta-data">Meta Data<a hidden class="anchor" aria-hidden="true" href="#meta-data">#</a></h5>
+<p>What is meta data?</p>
+<p>元数据是描述数据的数据。</p>
+<p>在数据仓库中，有几个数据层次：</p>
+<ul>
+<li>meta data，元数据</li>
+<li>current detailed data，当前详细数据</li>
+<li>older detailed data，较旧的详细数据</li>
+<li>lightly summarized data，轻度汇总数据</li>
+<li>highly summarized data，高度汇总数据</li>
+</ul>
+<p>元数据是定义数据仓库对象的数据。它具有以下类型：</p>
+<ul>
+<li>仓库结构的描述
+<ul>
+<li>模式、视图、维度、层次结构、派生数据定义、数据集市位置和内容</li>
+</ul>
+</li>
+<li>操作元数据
+<ul>
+<li>数据谱系（迁移数据和转换路径的历史）、数据的状态（活动、存档或清除）、监控信息（仓库使用统计、错误报告、审计追踪）</li>
+</ul>
+</li>
+<li>用于汇总的算法</li>
+<li>从操作环境到数据仓库的映射</li>
+<li>业务数据
+<ul>
+<li>业务术语和定义、数据所有权、收费政策</li>
+</ul>
+</li>
+</ul>
+<h5 id="记录系统的定义">记录系统的定义<a hidden class="anchor" aria-hidden="true" href="#记录系统的定义">#</a></h5>
+<ul>
+<li>记录系统是操作型元数据的一部分</li>
+<li>记录系统指明数据仓库中关系表的各个字段来源于业务数据库何处
+<ul>
+<li>例：<img loading="lazy" src="data7.png" alt=""  />
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据仓库物理模型设计">数据仓库物理模型设计<a hidden class="anchor" aria-hidden="true" href="#数据仓库物理模型设计">#</a></h4>
+<ul>
+<li>确定数据的存储结构</li>
+<li>索引策略</li>
+<li>数据存储策略与性能优化
+<ul>
+<li>多路聚集优化</li>
+<li>表的归并</li>
+<li>分割表的存放</li>
+<li>按列存储</li>
+<li>存储分配优化</li>
+</ul>
+</li>
+<li>数据装载接口设计</li>
+<li>并行优化设计</li>
+</ul>
+<h5 id="define-the-storage-structure">Define the Storage Structure<a hidden class="anchor" aria-hidden="true" href="#define-the-storage-structure">#</a></h5>
+<p>一般的数据库数据量相对较小，除非业务要求必须保证数据的安全性和可恢复性，否则可以不采用并行存储结构</p>
+<p>数据仓库由于数据的巨量存储，必须采用并行存储结构，例如RAID</p>
+<h5 id="索引技术为什么不使用b树">索引技术：为什么不使用B树？<a hidden class="anchor" aria-hidden="true" href="#索引技术为什么不使用b树">#</a></h5>
+<ul>
+<li>B树是数据库中广泛使用的技术
+<ul>
+<li>在数据库中查找记录时，B树索引具有很高的性能</li>
+</ul>
+</li>
+<li>虽然B树对于数据仓库来说并不是一个好的技术，为什么呢？</li>
+</ul>
+<p><strong>B-tree Indexing Technology</strong></p>
+<p>原因是：</p>
+<ul>
+<li>B树要求属性必须有许多不同的值，例如itemID，customer ID等。</li>
+<li>B树要求查询条件较简单且结果较少</li>
+<li>创建B树的空间复杂度和时间复杂度都很大</li>
+</ul>
+<p><img loading="lazy" src="data8.png" alt=""  />
+</p>
+<p><strong>Indexing OLAP Data: Bitmap Index</strong></p>
+<ul>
+<li>特定列上的索引</li>
+<li>列中的每个值都有一个位向量：位运算速度快</li>
+<li>位向量的长度：基表中的记录数</li>
+<li>如果基表的第i行具有索引列的值，则第i位设置为1</li>
+<li>不适用于高基数域</li>
+</ul>
+<p><img loading="lazy" src="data9.png" alt=""  />
+</p>
+<p><strong>Indexing OLAP Data: Join Index</strong></p>
+<ul>
+<li>连接索引：JI(R-id, S-id)，其中 R（R-id，…）&gt;&lt; S（S-id，…）</li>
+<li>传统索引将值映射到记录id列表</li>
+<li>在数据仓库中，连接索引将星型模式的维度值与事实表中的行相关联。
+<ul>
+<li>例如，事实表：销售和两个维度城市和产品
+<ul>
+<li>对于每个不同的城市，连接索引维护一个包含记录城市销售的元组的R-ID列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>连接索引可以跨越多个维度</li>
+</ul>
+<p><img loading="lazy" src="data10.png" alt=""  />
+</p>
+<h5 id="data-storage-strategy">Data Storage Strategy<a hidden class="anchor" aria-hidden="true" href="#data-storage-strategy">#</a></h5>
+<p><strong>Table Mergence</strong></p>
+<p><img loading="lazy" src="table1.png" alt=""  />
+</p>
+<p><img loading="lazy" src="table.png" alt=""  />
+</p>
+<p><strong>Add Redundancy</strong></p>
+<p><img loading="lazy" src="table2.png" alt=""  />
+</p>
+<p><strong>Dividing Table</strong></p>
+<ul>
+<li>在逻辑设计中，大表可以分成小表。当访问大表时，可以用小表替代。</li>
+<li>在物理设计中，可以使用分布式存储方法。</li>
+<li>表可以存储到磁盘阵列中。</li>
+</ul>
+<h5 id="efficient-methods-for-data-cube-computation">Efficient Methods for Data Cube Computation<a hidden class="anchor" aria-hidden="true" href="#efficient-methods-for-data-cube-computation">#</a></h5>
+<p><strong>Data Cube: High Efficiency Computing</strong></p>
+<ul>
+<li>数据立方体可以看作是一个立方体格点的网格
+<ul>
+<li>最底部的立方体是基本立方体</li>
+<li>最顶部的立方体（顶点）仅包含一个单元格</li>
+<li>在具有L级的n维立方体中有多少个立方体？</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="ar2.png" alt=""  />
+</p>
+<p><strong>Materialization of data cube</strong></p>
+<ul>
+<li>物化每个（立方体）（完全物化）、无（不物化）或一些（部分物化）</li>
+<li>选择要物化的哪些立方体
+<ul>
+<li>基于大小、共享、访问频率等</li>
+</ul>
+</li>
+</ul>
+<h5 id="data-cube-operation">Data Cube Operation<a hidden class="anchor" aria-hidden="true" href="#data-cube-operation">#</a></h5>
+<ul>
+<li>在DMQL中定义和计算立方体</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define cube sales[item, city, year]: sum(sales_in_dollars)
+</span></span><span class="line"><span class="cl">compute cube sales
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>转换为类似SQL的语言 (with a new operator cube by, introduced by Gray et al.&lsquo;96)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT item, city, year, SUM (amount)
+</span></span><span class="line"><span class="cl">FROM SALES
+</span></span><span class="line"><span class="cl">CUBE BY item, city, year
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>需要计算以下的Group-Bys</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">(date, product, customer),
+</span></span><span class="line"><span class="cl">(date,product),(date, customer), (product, customer),
+</span></span><span class="line"><span class="cl">(date), (product), (customer)
+</span></span><span class="line"><span class="cl">() 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img loading="lazy" src="table4.png" alt=""  />
+</p>
+<p><strong>Iceberg Cube</strong></p>
+<p>仅计算计数或其他满足条件（如 <code>HAVING COUNT(*) &gt;= minsup</code>）的立方体单元格！</p>
+<p><img loading="lazy" src="image-2.png" alt=""  />
+</p>
+<p>Motivation</p>
+<ul>
+<li>在稀疏立方体中，只有一小部分立方体单元格可能位于“水面”之上</li>
+<li>仅计算“有趣”的单元格——超过一定阈值的数据</li>
+<li>避免立方体的爆炸性增长</li>
+</ul>
+<h5 id="multiway-array-aggregation">Multiway Array Aggregation<a hidden class="anchor" aria-hidden="true" href="#multiway-array-aggregation">#</a></h5>
+<ul>
+<li>将数组分成块（适应内存的小子立方体）。</li>
+<li>压缩稀疏数组寻址：（chunk_id, offset）</li>
+<li>通过按最小化每个单元格访问的次数的顺序访问立方体单元格，减少内存访问和存储成本。</li>
+</ul>
+<p><img loading="lazy" src="cube3.png" alt=""  />
+</p>
+<p><img loading="lazy" src="cube4.png" alt=""  />
+</p>
+<p><img loading="lazy" src="cube5.png" alt=""  />
+</p>
+<p><img loading="lazy" src="cube6.png" alt=""  />
+</p>
+<p><img loading="lazy" src="cube8.png" alt=""  />
+</p>
+<p><img loading="lazy" src="cube9.png" alt=""  />
+</p>
+<ul>
+<li>方法：应按照其大小升序排序并计算平面。
+<ul>
+<li>思路：将最小的平面保留在主内存中，仅为最大平面获取和计算一个块</li>
+</ul>
+</li>
+<li>该方法的限制：仅对小型维数计算良好
+<ul>
+<li>如果维度较多，可以研究冰山立方体计算方法</li>
+</ul>
+</li>
+</ul>
+<h5 id="有效处理olap查询">有效处理OLAP查询<a hidden class="anchor" aria-hidden="true" href="#有效处理olap查询">#</a></h5>
+<ul>
+<li>确定应在可用立方体上执行哪些操作：
+<ul>
+<li>将钻取、卷动等转换为相应的SQL和/或OLAP操作，例如，切片=选择+投影</li>
+</ul>
+</li>
+<li>确定相关操作应应用于哪些物化立方体</li>
+<li>在MOLAP中探索索引结构和稠密数组结构与压缩数组结构的差异</li>
+</ul>
+<h5 id="bottom-up-computation-buc">Bottom-Up Computation (BUC)<a hidden class="anchor" aria-hidden="true" href="#bottom-up-computation-buc">#</a></h5>
+<ul>
+<li>自底向上计算（BUC）</li>
+<li>BUC（Beyer＆Ramakrishnan，SIGMOD'99）</li>
+<li>自底向上的立方体计算</li>
+<li>将维度划分为分区，并促进冰山修剪
+<ul>
+<li>如果一个分区不满足min_sup，则可以修剪其后代</li>
+<li>如果minsup = 1 =&gt; 计算完整的CUBE！</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="image-3.png" alt=""  />
+</p>
+<p><img loading="lazy" src="image-4.png" alt=""  />
+</p>
+<p><strong>BUC: Partitioning</strong></p>
+<ul>
+<li>通常，整个数据集无法适应主内存</li>
+<li>对不同的值进行排序，将其分为适合的块</li>
+</ul>
+<p><img loading="lazy" src="buc.png" alt=""  />
+</p>
+<h3 id="plan-and-implementation-of-data-warehouse">Plan and Implementation of Data Warehouse<a hidden class="anchor" aria-hidden="true" href="#plan-and-implementation-of-data-warehouse">#</a></h3>
+<ul>
+<li>数据仓库的应用目标
+<ul>
+<li>企业的核心业务</li>
+<li>优化企业内部管理控制</li>
+<li>为企业增加商业机会</li>
+</ul>
+</li>
+<li>建设数据仓库的必要性
+<ul>
+<li><img loading="lazy" src="demo4.png" alt=""  />
+</li>
+</ul>
+</li>
+</ul>
+<p>可通过计算ROI（Return of Investment）来衡量投资回报的价值</p>
+<p><strong>数据仓库主题的选择和阶段规划</strong></p>
+<ul>
+<li>数据仓库的实施是一个极为复杂的长期过程，因此，应选择当前最急需、能在短期内产生效益、业务模型清晰的任务首期实现</li>
+<li>选择首期实现主题的参考原则：
+<ul>
+<li>优先实现管理者目前需求最迫切和最关心的主题</li>
+<li>优先选择能在短期内产生效益的主题</li>
+<li>推后选择业务逻辑准备不充分的主题</li>
+<li>推后实施技术难度较大、可实现性较低、投资风险大的主题</li>
+</ul>
+</li>
+<li>维护阶段
+<ul>
+<li>数据仓库的维护极为重要，一般数据仓库在建立完成之后，都需要一至两年的维护</li>
+<li>数据仓库的维护过程就是DSS逐步产生效益的过程</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据仓库后端工具">数据仓库后端工具<a hidden class="anchor" aria-hidden="true" href="#数据仓库后端工具">#</a></h4>
+<ul>
+<li>数据抽取(Data extraction): get data from multiple, heterogeneous, and external sources</li>
+<li>数据清洗(Data cleaning): detect errors in the data and rectify them when possible</li>
+<li>数据转换(Data transformation):convert data from legacy or host format to warehouse format</li>
+<li>数据装载(Load): sort, summarize, consolidate, compute views, check integrity, and build indicies and partitions</li>
+<li>刷新(Refresh): propagate the updates from the data sources to the warehouse</li>
+</ul>
+<h2 id="further-development-of-data-cube-technology">Further development of data cube technology<a hidden class="anchor" aria-hidden="true" href="#further-development-of-data-cube-technology">#</a></h2>
+<h3 id="discovery-driven-exploration-of-data-cubes">Discovery-Driven Exploration of Data Cubes<a hidden class="anchor" aria-hidden="true" href="#discovery-driven-exploration-of-data-cubes">#</a></h3>
+<ul>
+<li>Hypothesis-driven: 由用户进行探索，搜索空间巨大</li>
+<li>Discovery-driven (Sarawagi et al.&lsquo;98)
+<ul>
+<li>预先计算指示异常的度量，引导用户在所有聚合级别进行数据分析</li>
+<li>异常：基于统计模型，与预期值明显不同的值</li>
+<li>使用背景颜色等视觉提示反映每个单元格的异常程度</li>
+<li>异常指标的计算（建模拟合和计算SelfExp、InExp和PathExp值）可以与立方体构建重叠</li>
+</ul>
+</li>
+</ul>
+<p>Examples: Discovery-Driven Data Cubes</p>
+<p><img loading="lazy" src="data11.png" alt=""  />
+</p>
+<h2 id="from-data-warehousing-to-data-mining">From data warehousing to data mining<a hidden class="anchor" aria-hidden="true" href="#from-data-warehousing-to-data-mining">#</a></h2>
+<h3 id="data-warehouse-usage">Data Warehouse Usage<a hidden class="anchor" aria-hidden="true" href="#data-warehouse-usage">#</a></h3>
+<ul>
+<li>三种数据仓库应用
+<ul>
+<li>信息处理
+<ul>
+<li>支持查询、基本统计分析和使用十字表、表格、图表和图形的报告</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分析处理
+<ul>
+<li>对数据仓库数据进行多维分析</li>
+<li>支持基本的OLAP操作，如切片、切块、钻取、旋转</li>
+</ul>
+</li>
+<li>数据挖掘
+<ul>
+<li>从隐藏的模式中发现知识</li>
+<li>支持关联、构建分析模型、执行分类和预测，并使用可视化工具呈现挖掘结果。</li>
+</ul>
+</li>
+<li>三个任务之间的差异</li>
+</ul>
+<h3 id="from-on-line-analytical-processing-to-on-line-analytical-mining-olam">From On-Line Analytical Processing to On Line Analytical Mining (OLAM)<a hidden class="anchor" aria-hidden="true" href="#from-on-line-analytical-processing-to-on-line-analytical-mining-olam">#</a></h3>
+<ul>
+<li>为什么联机分析挖掘？
+<ul>
+<li>数据仓库中数据的高质量
+<ul>
+<li>DW包含集成的、一致的、清理过的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>围绕数据仓库的可用信息处理结构
+<ul>
+<li>ODBC、OLEDB、Web访问、服务设施、报告和OLAP工具</li>
+</ul>
+</li>
+<li>基于OLAP的探索性数据分析
+<ul>
+<li>带有钻取、切片、切块、旋转等的挖掘</li>
+</ul>
+</li>
+<li>在线选择数据挖掘功能
+<ul>
+<li>集成和交换多个挖掘功能、算法和任务</li>
+</ul>
+</li>
+</ul>
+<p><img loading="lazy" src="ar3.png" alt=""  />
+</p>
+<h2 id="summary">Summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<ul>
+<li>Data warehouse
+<ul>
+<li>A subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of management&rsquo;s decision-making process</li>
+</ul>
+</li>
+<li>A multi-dimensional model of a data warehouse
+<ul>
+<li>Star schema, snowflake schema, fact constellations</li>
+<li>A data cube consists of dimensions &amp; measures</li>
+</ul>
+</li>
+<li>OLAP operations: drilling, rolling, slicing, dicing and pivoting</li>
+<li>OLAP servers: ROLAP, MOLAP, HOLAP</li>
+<li>Data warehouse implementation</li>
+<li>Efficient computation of data cubes
+<ul>
+<li>Partial vs. full vs. no materialization</li>
+<li>Multiway array aggregation</li>
+<li>Bitmap index and join index implementations</li>
+</ul>
+</li>
+<li>Further development of data cube technology
+<ul>
+<li>Discovery-drive and multi-feature cubes</li>
+<li>From OLAP to OLAM (on-line analytical mining)</li>
+</ul>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://WFUing.github.io/tags/data/">data</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://WFUing.github.io/post/review/safe/analysis/flawfinder/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Flawfinder</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on twitter"
+        href="https://twitter.com/intent/tweet/?text=Data%20Warehousing&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f&amp;hashtags=data">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f&amp;title=Data%20Warehousing&amp;summary=Data%20Warehousing&amp;source=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f&title=Data%20Warehousing">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on whatsapp"
+        href="https://api.whatsapp.com/send?text=Data%20Warehousing%20-%20https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on telegram"
+        href="https://telegram.me/share/url?text=Data%20Warehousing&amp;url=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Warehousing on ycombinator"
+        href="https://news.ycombinator.com/submitlink?t=Data%20Warehousing&u=https%3a%2f%2fWFUing.github.io%2fpost%2freview%2fdata-warehouse-mining%2fdata-warehousing%2f">
+        <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+            <path
+                d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://WFUing.github.io/">Waiting For You</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

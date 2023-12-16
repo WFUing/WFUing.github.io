@@ -236,6 +236,32 @@
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/cluster/">
+                            <h2 class="post-title">
+                                cluster.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                cluster 模块 cluster模块用于组建 Node.js 应用的集群。
+cluster.isMaster属性表示当前进程是否为主进程。
+1 2 const cluster = require(&#39;cluster&#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 const cluster = require(&#39;cluster&#39;); const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&#39;master process&#39;); const workers = []; for(let i = 0; i &lt; numWorkers; i++) { workers.push(cluster.fork()); } } else { process.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/events/">
                             <h2 class="post-title">
                                 events.md
@@ -333,32 +359,6 @@ process.argv process.argv是一个数组，表示启动脚本时的命令行参�
 process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
 1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
 参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas 
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-update/">
-                            <h2 class="post-title">
-                                npm-update.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm update 更新所有依赖项。
-1 $ npm update 更新单个依赖。
-1 $ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
-1 $ npm update --save 
                         
                             </div>
                         </a>
@@ -525,6 +525,10 @@ process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv
                             
                             
                             
+                            
+                                    <a href="/tags/data" title="data">
+                                        data
+                                    </a>
                             
                             
                             
