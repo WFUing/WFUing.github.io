@@ -61,48 +61,30 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 <meta property="og:title" content="五、深度学习.md" />
 <meta property="og:description" content="五、深度学习 [toc]
 5.1引言 深度学习的历史 1958年：心理学家Rosenblatt提出感知机（Perceptron） 它是一个线性模型。 1969年：有人说感知机是线性模型，具有局限性。 1980年代：多层感知机（Multi-layer Perceptron） 和当今的神经网络是没有本质差别的。 1986年：Hinton提出反向传播算法（Backpropagation） 但是超过3个隐藏层的神经网络，还是训练不出好的结果。 1989年：有人提出一个隐藏层就可以得到任何函数，为什么要多层？ 多层感知机慢慢淡出大家的视野。 2006年：受限玻尔兹曼机初始化（RBM Initialization） Hinton提出用受限玻尔兹曼机做初始化，很多人觉得这是个大突破，但实际上用处并不大。 至少让多层感知机回到大家的视野。 2009年：GPU 2011年：神经网络用于语音识别 2012年：神经网络技术赢得ILSVRC（ImageNet Large Scale Visual Recognition Challenge） 深度学习的三个步骤 和机器学习一样：

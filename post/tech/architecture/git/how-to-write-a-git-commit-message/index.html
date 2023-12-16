@@ -60,48 +60,30 @@ Separate subject from body with a blank line Limit the subject line to 50 charac
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 <meta property="og:title" content="How to Write a Git Commit Message" />
 <meta property="og:description" content="Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
 Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。

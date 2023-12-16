@@ -86,48 +86,30 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 <meta property="og:title" content="《人月神话》阅读笔记" />
 <meta property="og:description" content="一、书名和作者 书名：《人月神话》 作者：布鲁克斯(FrederickP.Brooks.Jr.) 二、书籍概览 主要论点和结构 《人月神话》是一本旨在深入探讨软件工程中的管理和工程问题的经典著作。本书强调了软件开发过程中的复杂性和挑战，尤其是在大规模项目中。书中还探讨了许多经典观点，如&quot;人月神话&quot;、&ldquo;二八定律&quot;和&quot;沟通成本&rdquo;，为软件行业的专业人员提供了宝贵的见解和管理原则，使他们能够更好地理解和应对软件项目的挑战。
 目标读者和应用场景 该书的目标读者包括软件工程师、项目经理、团队领导和决策者，以及任何对软件开发过程感兴趣的人。对于软件开发工程师来说，这本书提供了宝贵的洞察，帮助他们更好地理解项目管理和团队协作的挑战；对于项目经理来说，本书提供了管理大型软件项目所需的关键原则和策略；领导小型或大型软件团队的人员可以从本书中获得关于如何优化团队协作、提高效率和管理项目的方法；即使不是专业人员，任何对软件开发过程感兴趣的人都可以从本书中获得对软件工程领域的深入了解，从而更好地理解和评估不同软件项目。总的来说，《人月神话》适用于各种软件项目，无论是大规模的企业级项目还是小规模的个人项目。

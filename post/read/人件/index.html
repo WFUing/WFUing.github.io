@@ -100,48 +100,30 @@
 
     </style>
 </noscript>
-<script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-                processEscapes: true,
-                processEnvironments: true,
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-                TeX: {
-                    equationNumbers: { autoNumber: "AMS" },
-                    extensions: ["AMSmath.js", "AMSsymbols.js"]
-                }
-            },
-            "HTML-CSS": {
-                availableFonts: ["Arial", "TeX"],
-                preferredFont: "TeX",
-                webFont: "TeX"
-            }
-        });
-
-        MathJax.Hub.Queue(function () {
-            
-            
-            
-            var all = MathJax.Hub.getAllJax(), i;
-            for (i = 0; i < all.length; i += 1) {
-                all[i].SourceElement().parentNode.className += ' has-jax';
-            }
-        });
-    </script>
-
-<style>
-    code.has-jax {
-        font: inherit;
-        font-size: 100%;
-        background: inherit;
-        border: inherit;
-        color: #515151;
-    }
-</style>
-
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 <meta property="og:title" content="《人件》读书笔记" />
 <meta property="og:description" content="一、书名和作者 《人件》 作者： Tom DeMarco Timothy Lister 二、书籍概览 主要论点和结构：软件开发不仅仅是技术问题，更是管理问题。它强调了管理人力资源的关键性，特别是在软件领域，由于脑力劳动的特性，软件开发者与传统的体力劳动者有很大的不同。这本书提供了许多实际的管理方法，以促进团队协作，提高生产效率，同时提供了实例和案例来支持这些观点。 目标读者和应用场景：该书的主要目标读者是软件组织的管理者，项目经理，团队领导者以及任何对软件开发和团队管理感兴趣的人。它适用于各种软件开发项目，从小型创业公司到大型企业。这本书提供的原则和实践可以适用于各种团队管理场景，不仅限于软件开发。 三、核心观点与主题 1. 主题一: 管理人力资源 子观点1
 软件开发是一项知识密集型工作，与传统体力劳动有着明显的不同。因此，管理者应该鼓励开发人员参与关键决策，包括允许他们犯错。这种方式可以增强员工的责任感和参与度。
