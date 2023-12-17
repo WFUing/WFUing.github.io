@@ -854,19 +854,19 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
     
     <item>
       <title>Git Principle</title>
-      <link>https://WFUing.github.io/post/tech/architecture/git/git-principle/</link>
+      <link>https://WFUing.github.io/post/tech/devoops/git/git-principle/</link>
       <pubDate>Thu, 19 Oct 2023 20:58:09 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/git/git-principle/</guid>
+      <guid>https://WFUing.github.io/post/tech/devoops/git/git-principle/</guid>
       <description>Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方式。 从概念上来说，其它大部分系统以文件变更列表的方式存储信息，而 Git 是把数据看作是对小型文件系统的一系列快照。</description>
     </item>
     
     <item>
       <title>Git Tutorial</title>
-      <link>https://WFUing.github.io/post/tech/architecture/git/git-tutorial/</link>
+      <link>https://WFUing.github.io/post/tech/devoops/git/git-tutorial/</link>
       <pubDate>Thu, 19 Oct 2023 20:40:43 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/git/git-tutorial/</guid>
+      <guid>https://WFUing.github.io/post/tech/devoops/git/git-tutorial/</guid>
       <description>Git 帮助手册 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
 本节选择性介绍 git 中比较常用的命令行场景。
 安装 （1）Debian/Ubuntu 环境安装
@@ -1207,10 +1207,10 @@ actor 之间通过发送异步消息进行通信。这些 message 会保存在�
     
     <item>
       <title>How to Write a Git Commit Message</title>
-      <link>https://WFUing.github.io/post/tech/architecture/git/how-to-write-a-git-commit-message/</link>
+      <link>https://WFUing.github.io/post/tech/devoops/git/how-to-write-a-git-commit-message/</link>
       <pubDate>Thu, 12 Oct 2023 19:47:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/git/how-to-write-a-git-commit-message/</guid>
+      <guid>https://WFUing.github.io/post/tech/devoops/git/how-to-write-a-git-commit-message/</guid>
       <description>Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
 Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。
 The seven rules of a great Git commit message
@@ -1316,10 +1316,10 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
     
     <item>
       <title>DevOps 简介</title>
-      <link>https://WFUing.github.io/post/tech/architecture/devoops/</link>
+      <link>https://WFUing.github.io/post/tech/devoops/overview/</link>
       <pubDate>Thu, 12 Oct 2023 17:16:02 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/devoops/</guid>
+      <guid>https://WFUing.github.io/post/tech/devoops/overview/</guid>
       <description>DevOps 集文化理念、实践和工具于一身，它强调团队授权、跨团队沟通和协作以及技术自动化，其最终目标是优化质量和交付</description>
     </item>
     
@@ -1363,12 +1363,12 @@ Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-ds
     
     <item>
       <title>How to Build Github Blog With Hugo</title>
-      <link>https://WFUing.github.io/post/tech/architecture/git/how-to-build-github-blog-with-hugo/</link>
+      <link>https://WFUing.github.io/post/tech/devoops/git/how-to-build-github-blog-with-hugo/</link>
       <pubDate>Thu, 12 Oct 2023 14:39:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/git/how-to-build-github-blog-with-hugo/</guid>
+      <guid>https://WFUing.github.io/post/tech/devoops/git/how-to-build-github-blog-with-hugo/</guid>
       <description>今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog
-Resources 系列文章，用hugo的PaperMod Theme 建站: https://www.sulvblog.cn/posts/blog/ Hugo + GitHub Action，搭建你的博客自动发布系统: https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ PaperMod主题优化： https://kdjlyy.cn/posts/site/hugo-papermod-optimization https://dvel.me/posts/hugo-papermod-config/ </description>
+Resources 系列文章，用hugo的PaperMod Theme 建站: https://www.sulvblog.cn/posts/blog/ Hugo + GitHub Action，搭建你的博客自动发布系统: https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ PaperMod主题优化： https://kdjlyy.cn/posts/site/hugo-papermod-optimization https://dvel.me/posts/hugo-papermod-config/ 在博客中加入数学公式 MathJax 3全新版本配置指南 官方提供的从mathjax2to3的转换工具 MathJax常见问题 </description>
     </item>
     
     <item>
