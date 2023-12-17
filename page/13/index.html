@@ -213,6 +213,38 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/repl/">
+                            <h2 class="post-title">
+                                repl
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
+命令行下输入node，就可以进入 Node 的 REPL 环境。
+1 2 $ node &gt; REPL 环境的提示符是一个大于号（&gt;）。
+退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
+REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
+REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
+1 2 3 $ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
+node命令的-e参数，实际上就是在 REPL 环境运行代码。
+1 2 $ node -e &#34;console.log(os.platform())&#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
+1 2 3 4 &gt; require(&#39;.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/module/this/">
                             <h2 class="post-title">
                                 this.md
@@ -297,35 +329,6 @@ window.MathJax = {
                             <div class="post-content-preview">
                         
                                 Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方式。 从概念上来说，其它大部分系统以文件变更列表的方式存储信息，而 Git 是把数据看作是对小型文件系统的一系列快照。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/devoops/git/git-tutorial/">
-                            <h2 class="post-title">
-                                Git Tutorial
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Git 帮助手册 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
-本节选择性介绍 git 中比较常用的命令行场景。
-安装 （1）Debian/Ubuntu 环境安装
-如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
-1 2 3 4 5 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
-如果你使用的系统是 Centos/RedHat ，安装命令为：
-1 2 3 4 5 $ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.
                         
                             </div>
                         </a>

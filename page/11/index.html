@@ -213,6 +213,36 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/basic/">
+                            <h2 class="post-title">
+                                basic.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                概述 npm有两种含义。
+首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为npmjs.org。
+其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
+安装 npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
+但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
+1 $ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
+1 2 3 $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
+1 2 3 4 5 6 7 8 # 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init npm init用来初始化生成一个新的package.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/install/">
                             <h2 class="post-title">
                                 install.md
@@ -317,36 +347,6 @@ npx会将所有参数原样传入模块内部。
 1 $ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
 1 $ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
 1 $ npm unlink 
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
-                            <h2 class="post-title">
-                                npm-tag.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
-发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
-如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
-1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
-下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
-1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
-1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
-1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
                         
                             </div>
                         </a>

@@ -169,6 +169,82 @@ window.MathJax = {
 <article class="post-entry tag-entry">
   <div class="post-info"> 
     <header class="entry-header">
+      <h2>Data Preprocessing
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Why data preprocessing? 现实世界中的数据存在问题 不完整：缺少属性值，缺少感兴趣的某些属性，或仅包含聚合数据 有噪声：包含错误或异常值 不一致：包含代码或名称上的差异 没有高质量的数据，就没有高质量的挖掘结果！ 质量决策必须基于质量数据 数据仓库需要对质量数据进行一致的集成 Major Tasks in Data Preprocessing
+Data cleaning 数据清理，填充缺失值，平滑嘈杂数据，识别或删除异常值，并解决不一致性 Data integration 数据集成，集成多个数据库、数据立方体或文件 Data transformation 数据转换，归一化和聚合 Data reduction 数据缩减，以体积较小的形式获得减少表示，但产生相同或相似的分析结果 Data discretization 数据离散化，针对数值数据尤其重要的数据缩减的一部分 Forms of data preprocessing
+Data cleaning Data cleaning tasks
+填充缺失值 识别异常值和平滑嘈杂数据 更正不一致的数据 Missing Data 数据不总是可用 例如，许多元组对于几个属性没有记录的值，例如销售数据中的客户收入 缺失数据可能是由于 设备故障 与其他记录的数据不一致，因此被删除 由于误解而没有输入数据 在输入时可能不认为某些数据重要 不注册数据的历史或更改 可能需要推断缺失的数据。 How to Handle Missing Data?
+忽略元组：通常在缺少类标签时执行（假设分类中的任务）——当每个属性的缺失值的百分比变化很大时，效果不佳。 手动填写缺失值：繁琐 &#43; 不可行？ 使用全局常数填充缺失值：例如，“unknown”，一个新的类别？ 使用属性均值填充缺失值 使用同一类别中所有样本的属性均值填充缺失值：更智能 使用最有可能的值填充缺失值：基于推理的方法，如贝叶斯公式或决策树 Noisy Data 噪声：测量变量中的随机错误或方差 不正确的属性值可能是由于 错误的数据收集工具 数据输入问题 数据传输问题 技术限制（例如，输入缓存容量） 命名约定的不一致性 需要数据清理的其他数据问题 重复的记录 不完整的数据 不一致的数据 How to Handle Noisy Data?...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-12-16
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>532字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>3分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/data/" style="color: var(--secondary)!important;">data</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Data Preprocessing" href="https://WFUing.github.io/post/review/data-warehouse-mining/data-preprocessing/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
       <h2>Data Warehousing
       </h2>
     </header>
@@ -235,6 +311,11 @@ window.MathJax = {
   </div> 
 
    
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/design_hu3de3cc1b3480b5146a9d7878357bc4d9_410708_360x0_resize_box_3.png 360w ,https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/design_hu3de3cc1b3480b5146a9d7878357bc4d9_410708_480x0_resize_box_3.png 480w ,https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/design.png 527w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/design.png" alt="" 
+            width="527" height="470">
+</figure>
   <a class="entry-link" aria-label="post link to Data Warehousing" href="https://WFUing.github.io/post/review/data-warehouse-mining/data-warehousing/"></a>
 </article>
 

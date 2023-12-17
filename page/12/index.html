@@ -213,6 +213,36 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
+                            <h2 class="post-title">
+                                npm-tag.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
+发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
+如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
+1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
+下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
+1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
+1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
+1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
                             <h2 class="post-title">
                                 npm-token.md
@@ -310,38 +340,6 @@ stream 以事件的形式获取。
 1 2 3 4 5 new Promise(function (resolve, reject) { throw new Error(&#39;message&#39;); console.log(&#39;hello&#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
 消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
 1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }).catch(function (err) { console.
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/repl/">
-                            <h2 class="post-title">
-                                repl
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
-命令行下输入node，就可以进入 Node 的 REPL 环境。
-1 2 $ node &gt; REPL 环境的提示符是一个大于号（&gt;）。
-退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
-REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
-REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
-1 2 3 $ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
-node命令的-e参数，实际上就是在 REPL 环境运行代码。
-1 2 $ node -e &#34;console.log(os.platform())&#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
-1 2 3 4 &gt; require(&#39;.
                         
                             </div>
                         </a>

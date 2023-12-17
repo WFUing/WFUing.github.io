@@ -213,6 +213,40 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/java/class-loader/">
+                            <h2 class="post-title">
+                                Java类加载机制
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                https://cloud.tencent.com/developer/article/1948324 类加载机制简介 类加载整体流程如下图所示，这也是类的生命周期：
+字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象
+需要注意的是，图中红框所代表的加载，验证，准备，初始化，卸载这五个阶段的顺序是确定的，类加载必须严格按照这五个阶段的顺序来开始，但解析阶段则未必，有可能在初始化之后才开始，主要是为了支持 Java 的动态绑定特性，那么各个阶段主要做了哪些事呢？
+加载 在加载阶段，虚拟机需要完成以下三件事
+通过一个类的全限定名来获取此类的二进制字节流 将这个字节流所代表的静态存储结构转化为方法区的运行时结构 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口 如上图所示，加载后生成的类对象与对象间的关系如上图所示，什么是类对象呢，比如实例的 getClass() 或 Foo.Class 即为类对象
+每个类只有一个对象实例（类对象），多个对象共享类对象，这里有个需要注意的点是类对象是在堆中而不是在方法区（这里针对的是 Java 7 及以后的版本），所有的对象都是分配在堆中的，类对象也是对象，所以也是分配在堆中，这点网上挺多人混淆了，需要注意一下
+有人可能会奇怪，只看上面这张图，对象和类对象貌似联系不起来，实际上在虚拟机底层，比如 Java Hotspot 虚拟机，对象和类是以一种被称为 oop-klass 的模型来表示的，每个对象或类都有对应的 C++ 类表示方式，它的底层其实是如下这样来表示的，通过下图可以看到，通过这种方式实例对象和 Class 对象就能联系起来了。
+有人可能会困惑，为啥需要做这些校验工作呢，字节码文件难道不安全？字节码文件一般来说是通过正常的 Java 编译器编译而成的，但字节码文件也是可以编辑修改的，也是有可能被篡改注入恶意的字节码的，就会对程序造成不可预知的风险，所以加载阶段的验证是非常有必要的。
+我们可以在执行 java 程序的时候加上 -verbose:class 或 -XX:+TraceClassLoading 这两个 JVM 参数来观察一下类的加载情况，比如我们写了如下测试类：
+1 2 3 4 public class Test { public static void main(String[] args) { } } 编译后执行 java -XX:+TraceClassLoading Test
+可以看到如下加载过程
+1 2 3 4 5 6 7 [Opened /Library/Internet Plug-Ins/JavaAppletPlugin.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Tuesday, November 7, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/java/junit/">
                             <h2 class="post-title">
                                 Junit 运行流程
@@ -310,30 +344,6 @@ HTTP 协议是一个双向协议。
 就好像第一排的同学想传递纸条给最后一排的同学，那么传递的过程中就需要经过好多个同学（中间人），这样的传输方式就从「A &lt; &mdash; &gt; B」，变成了「A &lt;-&gt; N &lt;-&gt; M &lt;-&gt; B」。
 而在 HTTP 里，需要中间人遵从 HTTP 协议，只要不打扰基本的数据传输，就可以添加任意额外的东西。
 针对传输，我们可以进一步理解了 HTTP。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Tuesday, October 31, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/dsl/langium/">
-                            <h2 class="post-title">
-                                langium简介
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install 'code' command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构
                         
                             </div>
                         </a>
