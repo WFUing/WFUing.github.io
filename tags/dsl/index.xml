@@ -6,7 +6,16 @@
     <description>Recent content in dsl on Waiting For You</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 16 Nov 2023 21:46:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/dsl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Dec 2023 22:23:15 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/dsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cuelang 简介</title>
+      <link>https://WFUing.github.io/post/tech/language/dsl/cuelang/</link>
+      <pubDate>Sun, 17 Dec 2023 22:23:15 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/post/tech/language/dsl/cuelang/</guid>
+      <description>CUE 是一种开源数据验证语言和推理引擎，源于逻辑编程。虽然该语言不是通用编程语言，但它有许多应用，如数据验证、数据模板、配置、查询、代码生成甚至脚本编写。推理引擎可用于验证代码中的数据，或将其作为代码生成管道的一部分。</description>
+    </item>
+    
     <item>
       <title>iot 相关 dsl</title>
       <link>https://WFUing.github.io/post/tech/language/dsl/iot-dsl/</link>

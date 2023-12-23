@@ -11,7 +11,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -213,20 +213,20 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/fs/">
                             <h2 class="post-title">
-                                六、Tips for Training DNN.md
+                                fs
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Tips for Training DNN [toc]
-6.1 神经网络训练问题与解决方案 明确问题类型及其对应方法 在深度学习中，一般有两种问题：
-在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
-处理神经网络在训练集上性能不好的情况和方法 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
-Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
-warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
-Normalization： 有Batch Normalization、Instance Normalization、Group Normalization、Layer Normalization、Positional Normalization Regularization 6.2 神经网络精度低不一定是因为过拟合 相比于决策树等方法，神经网络更不容易过拟合：K近邻、决策树等方法在训练集上更容易得到100%等很高的正确率，神经网络一般不能，训练神经网络首先遇到的问题一般是在训练集上的精度不高。 不要总是把精度低归咎于过拟合：如果模型在训练集上精度高，对于K近邻、决策树等方法我们可以直接判断为过拟合，但对于神经网络来说我们还需要检查神经网络在测试集上的精度。如果神经网络在训练集上精度高但在测试集上精度低，这才说明神经网络过拟合了。 如果56层的神经网络和20层的神经网络相比，56层网络在测试集上的精度低于20层网络，这还不能判断为56层网络包含了过多参数导致过拟合。一般来讲，56层网络优于20层网络，但如果我们发现56层网络在训练集上的精度本来就低于20层网络，那原因可能有很多而非过拟合，比如56层网络没训练好导致一个不好的局部最优、虽然56层网络的参数多但结构有问题等等。 感兴趣可以看看ResNet论文**Deep Residual Learning for Image Recognition**，这篇论文可能与该问题有关。 6.3 常用激活函数（训练集） 梯度消失（Vanishing Gradient Problem） 定义：1980年代常用的激活函数是sigmoid函数。以MNIST手写数字识别为例，在使用sigmoid函数时会发现随着神经网络层数增加，识别准确率逐渐下降，这个现象的原因并不是过拟合（原因见上文），而是梯度消失。
+                                fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;+chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.
                         
                             </div>
                         </a>
@@ -242,27 +242,18 @@ Normalization： 有Batch Normalization、Instance Normalization、Group Normali
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/promise/">
                             <h2 class="post-title">
-                                七、Convolutional Neural Network.md
+                                promise
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                七、Convolutional Neural Network [toc]
-7.1 CNN入门详解 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？
-FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN）处理图片时的缺点：
-需要很多的参数： 假设有一张尺寸100×100的图片（尺寸已经算很小了），那输入层就有100×100×3=30K个像素，假设第一个隐藏层有1K个神经元（一个神经元包含30K个参数），这就已经需要30M个参数了…… 该架构中每个神经元就是一个分类器，这是没必要的： 第一个隐藏层作为最基础的pattern分类器（比如判断有无绿色、边缘等），第二个隐藏层基于第一个隐藏层继续做pattern分类（比如木头、肉类），以此类推…… 按照人类的直观理解，我们不是像全连接神经网络一样去处理图片的。具体来看，有哪些方面呢？
-图片的一些性质 结合全连接前馈神经网络的缺点和人类对图片的直观理解，可以得到下述图片的3个性质。
-性质1：Some patterns are much smaller than the whole image. 在识别某个模式（pattern）时，一个神经元并不需要图片的所有像素点。对于一张人类全身照的图片，我们只需要看到头部而非整张图片就可以判断它是一个人脸。所以我们应该是可以用少量参数去识别这些pattern的。
-性质2：The same patterns appear in different regions. 比如说人脸可以在图片的中间区域，也可以在图片的某个角落区域。所以识别不同区域中的相同pattern的多个分类器（或detector）应该用同一组参数或者共享参数。
-性质3：Subsampling the pixels will not change the object CNN架构说明 2014年在ECCV上提出，针对上述的图片的3个性质，确定了CNN的架构如下。
-如上图所示，图片经过卷积层然后进行最大池化（max pooling），这个步骤可以进行多次；然后将数据展开（Flatten），然后将数据传进全连接前馈网络得到最后的图片分类结果。
-如上图所示，卷积是针对了图片的性质1和性质2，最大池化是针对了图片的性质3。
-卷积(Convolution) ★ 假设有一张6×6的二值图，即一个6×6的矩阵。
-卷积核（Filter） 神经元就是一个计算/函数，卷积核其实就是神经元。如下图所示，1个卷积层可以有多个卷积核，矩阵里元素的值就是需要通过学习得到的参数。因为这里的输入是一个矩阵，所以卷积核也是1个矩阵（卷积核的通道数等于输入的通道数）。假设卷积核大小是3×3，这对应了图片的性质1，即用小的卷积核识别一个小的pattern。
-怎么做卷积 如下图所示
-卷积区域： 根据该卷积核的大小（以3×3为例），选择图片中相同大小的区域进行卷积。 卷积的计算方法： 从图片中扫描得到的3×3矩阵和卷积核的3×3矩阵，这2个矩阵相同位置的元素相乘可以得到9个值并求和（也就是内积）得到1个值，这就是1次卷积操作。 卷积顺序和方向： 卷积核按照从左到右、从上到下的顺序，从图片左上角开始移动，移动步长（stride）可以设置（以1为例）。在扫描到的每个区域中，都进行1次卷积。1个卷积核移动结束后，则得到1个新的矩阵（大小为4×4），即1个卷积核的输出是1个矩阵。 卷积层有多个卷积核，每个卷积核都按照该方式进行卷积得到多个矩阵，这些矩阵合起来就形成了1个卷积层的特征图（Feature Map），这个特征图也就是卷积层的输出。 卷积层特征图的通道数等于该卷积层中卷积核的数量，即某卷积层有多少个卷积核，那该卷积层的特征图就有多少个通道。 
+                                Promise UnhandledPromiseRejectionWarning 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
+1 2 3 4 5 new Promise(function (resolve, reject) { throw new Error(&#39;message&#39;); console.log(&#39;hello&#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
+消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
+1 2 3 4 5 6 new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }).catch(function (err) { console.
                         
                             </div>
                         </a>
@@ -278,18 +269,23 @@ FNN用于图片处理的缺点 使用一般的全连接前馈神经网络（FNN�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/repl/">
                             <h2 class="post-title">
-                                三、梯度下降.md
+                                repl
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                三、梯度下降 [toc]
-梯度下降伪代码 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上拟合效果最好）的模型参数。现在假设模型 $f$ 中只有一个参数 $w$ ，则损失函数为 $L(f) = L(w)$ ，梯度下降算法如下（若模型有多个参数，按相同方法更新各方法）
-初始化参数：随机选取一个 $w_0$ （$w_0$ 并不一定是随机选取） 计算梯度 $\frac{dL(f)}{dw}$ ，如果小于0，此时 $w$ 增大则 $L(f)$ 会减小；如果大于0，此时 $w$ 增大则 $L(w)$ 会减小。如果模型有多个参数，则计算损失函数在各个参数方向上的偏导数。 更新模型参数 $w_1=w_0-lr\frac{dL(f)}{dw}$ ，$w$ 的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则 $w$ 变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步。经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 自适应学习率（Adaptive Learning Rate） 梯度下降的过程中，固定学习率并不合理。学习率太大，可能导致loss不减小反而增大；学习率太小，loss会减小得很慢。基本原则是随着参数迭代更新，学习率应该越来越小，比如 $\eta_t = \frac{\eta}{\sqrt{t+1}}$ 。更好的办法是每个参数都有各自的学习率，比如Adagrad。
-Adagrad Adaptive Gradient Descent，自适应梯度下降。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ ，其中 $t$ 是迭代次数，$w$ 是参数，$g$ 是梯度，$\eta$ 是初始学习率。随着参数迭代，$t$ 越来越大，$\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 也越来越大，因此学习率的变化趋势是越来越小。
-Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t+1}=w_t-\eta_tg_t$ ，其中 $\eta_t$ 是常数，梯度越大时，则参数更新的步幅越大，这是由 $g_t$ 项决定的。在Adagrad中，$\eta$ 是常量，梯度 $g_t$ 越大时，会使得参数更新的步幅越大，但 $\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 越大会使得参数更新的步幅越小，这是一个矛盾吗？
+                                Node 的 REPL 环境 简介 REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
+命令行下输入node，就可以进入 Node 的 REPL 环境。
+1 2 $ node &gt; REPL 环境的提示符是一个大于号（&gt;）。
+退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
+REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
+REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
+1 2 3 $ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.read方法，不必先加载fs模块。
+node命令的-e参数，实际上就是在 REPL 环境运行代码。
+1 2 $ node -e &#34;console.log(os.platform())&#34; darwin _变量 REPL 环境下，有一个内置变量_，上一个表达式的值就存放在这个变量之中。
+1 2 3 4 &gt; require(&#39;.
                         
                             </div>
                         </a>
@@ -305,18 +301,21 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t+1}=w_t-
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/module/this/">
                             <h2 class="post-title">
-                                四、分类模型.md
+                                this.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                四、分类模型 [toc]
-4.1 分类简介及其与回归的区别 分类模型应用案例（Classification Cases） 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 不行
-假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 贝叶斯公式 $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
-概率生成模型（Probalitity Genetative Model） 理论与定义 假设有两个类别的$C_1和C_2$，要判断对象$x$属于哪个类别，这样把分类问题变成了概率计算问题。
-根据贝叶斯公式（Bayes&rsquo; theorem）和全概率公式（Total Probability Theorem）可以知道，$x$属于类别$C_1$的概率为$P(C_1|x)= \frac{P(x|C_1)P(C_1)}{P(x)}=\frac{P(x|C_1)P(C_1)}{P(x|C_1)P(C_1)+P(x|C_2)P(C_2)}$ ，如果$P(C_1|x)&gt;0.5$ 则类别为$C_1$ ，否则类别为$C_2$。 概率生成模型的意思就是可以通过这个模型生成一个$$x$$。具体来讲就是，根据$P(x)=P(x|C_1)P(C_1)+P(x|C_2)P(C_2)$ 计算出$P(x)$，就可以知道 $x$ 的分布进而生成 $x$ 。如果想要计算出$P(x)$，就要根据训练集估计出$P(C_1)$、$P(x|C_1)$、$P(C_2)$、$P(x|C_2)$这四个值。更直观一点地讲，每个类别就是一个多元正态分布，其中多元是因为每个样本有多个维度的特征。 可以根据数据集中属于两个类别的对象的数量计算 $P(C_1)$ 和 $P(C_2)$ 这两个先验概率（Prior Probability）。如果有2个样本属于类别$C_1$ ，4个样本属于类别$C_2$ ，那$P(C_1)= \frac{1}{3}$、$P(C_2)= \frac{2}{3}$。 要计算后验概率（Posterior Probability）$P(x|C_1)$ 和 $P(x|C_2)$，可以假设训练集中的各类别样本的特征分别是从某个多元正太分布（多元对应特征的多维）中取样得到的，或者说是假设训练集中各类别样本的特征分别符合某多元正态分布。该正太分布的输入是一个样本的特征 $x$，输出为样本 $x$ 是从这个正太分布取样得到（或者说该样本属于某类别）的概率密度，然后通过积分就可以求得 $P(x|C_1)$ 和 $P(x|C_2)$ 。 正太分布公式为 $f_{\mu,\sum{(x)}}=\frac{1}{(2\pi)^\frac{D}{2}} \frac{1}{|\sum|^\frac{1}{2}} {e^{-\frac{1}{2}(x-\mu)^T\sum^{-1}{x-\mu}}}$ 。正太分布有2个参数，即均值 $\mu$ （代表正太分布的中心位置）和协方差矩阵（Covariance Matrix）$\sum$ （代表正态分布的离散程度），计算出均值 $\mu$ 和协方差 $\sum$ 即可得到该正态分布。公式中的 $D$ 为多维特征的维度。 实际上从任何一个正态分布中取样都有可能得到训练集中的特征，只是概率不同而已。通过极大值似然估计（Maximum Likelihood Estimate，MLE），我们可以找到取样得到训练集特征的概率最大的那个正态分布，假设其均值和协方差矩阵为 $ \mu^* $ 和 $ \sum^* $ 。 根据某正态分布的均值 $\mu$ 和协方差 $\sum$ ，可以计算出从该正态分布取样得到训练集的概率。 $ L(\mu,\sum) = f_{\mu,\sum}{x_1} f_{\mu,\sum}{x_2}f_{\mu,\sum}{x_3}&hellip;f_{\mu,\sum}{x_N} $ ，这就是似然函数（Likelihood Function），其中$N$ 是训练集中某个类别样本的数量。 $\mu^,\sum^=\arg\max_{\mu,\sum}{L(\mu,\sum)}$，当然可以求导。直觉：$\mu^=\frac{1}{N}\sum_{i=1}^{N}{x_i}$，$\sum^ = \frac{1}{N}\sum_{i=1}^{N}(x_i-\mu^*)^2T$ 协方差矩阵共享 每个类别的特征符合一个多元正态分布，每个多元正态分布也有不同的均值和协方差矩阵。让每个类别对应的多元正态分布共享一个协方差矩阵（各个协方差矩阵的加权平均和），公式为 $\sum = \frac{N_1}{N_1+N_2}\sum_1+\frac{N_2}{N_1+N_2}\sum_2$，可以减少模型参数，缓解过拟合
+                                this 变量 Node 应用的顶层变量是global，对应浏览器的window变量。
+顶层的 this 在 REPL 环境，顶层的this就指向global。
+1 2 &gt; global === this true 顶层变量是global和this的属性。
+1 2 3 4 5 &gt; var foo = &#34;bar&#34;; &gt; this.foo bar &gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
+在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
+1 2 3 // 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
+1 2 3 4 // 模块环境 var foo = &#34;bar&#34;; console.log(this.foo); // undefined console.log(global.foo); // undefined 上面代码中，顶层变量foo并不会生成this.foo和global.foo两个属性。这是因为foo是模块内部的变量，不是全局有效，因此不是global的属性，而this是当前的模块对象，this.foo代表模块实例的属性，这跟变量foo是两回事情。
+另外，如果声明变量的时候，不使用var命令，而是直接赋值，那么该变量在 REPL 环境下将成为global和this的属性，在模块环境将只成为 global 的属性。
                         
                             </div>
                         </a>
@@ -332,24 +331,147 @@ Adagrad的矛盾（Contradiction） 一般的梯度下降方法中 $w_{t+1}=w_t-
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                        <a href="https://WFUing.github.io/post/tech/architecture/serverless/tencentyun-serverless-api/">
                             <h2 class="post-title">
-                                五、深度学习.md
+                                Tencentyun Serverless Api
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                五、深度学习 [toc]
-5.1引言 深度学习的历史 1958年：心理学家Rosenblatt提出感知机（Perceptron） 它是一个线性模型。 1969年：有人说感知机是线性模型，具有局限性。 1980年代：多层感知机（Multi-layer Perceptron） 和当今的神经网络是没有本质差别的。 1986年：Hinton提出反向传播算法（Backpropagation） 但是超过3个隐藏层的神经网络，还是训练不出好的结果。 1989年：有人提出一个隐藏层就可以得到任何函数，为什么要多层？ 多层感知机慢慢淡出大家的视野。 2006年：受限玻尔兹曼机初始化（RBM Initialization） Hinton提出用受限玻尔兹曼机做初始化，很多人觉得这是个大突破，但实际上用处并不大。 至少让多层感知机回到大家的视野。 2009年：GPU 2011年：神经网络用于语音识别 2012年：神经网络技术赢得ILSVRC（ImageNet Large Scale Visual Recognition Challenge） 深度学习的三个步骤 和机器学习一样：
-确定模型（Model）/函数集（Function Set），在深度学习中就是定义一个神经网络。 不同的连接会构成多样的网络结构。 确定如何评价函数的好坏 如果是多分类，那和Classification一章中一样，计算每个样本预测结果与Ground Truth的交叉熵，然后求和，即为Loss。 确定如何找到最好的函数 还是Gradient Descent。 神经网络模型对应的函数比较复杂，而反向传播算法（Backpropagation）是一个很有效的计算神经网络梯度的方法。 神经网络的结构 输入层（Input Layer）：实际上就是输入，并不是真正的“层”。 隐藏层（Hidden Layers）：输入层和输出层之间的层，Deep指有很多隐藏层，多少层才算Deep并没有统一标准。可以看成特征提取器（Feature Extractor），作用是代替特征工程（Feature Engineering）。 输出层（Output Layer）：最后一层，可以看成分类器 全连接前反馈神经网络 即Fully Connected Feedforward Neural Network，FFN。
-全连接是指每个神经元与上一层的所有神经元相连。 前馈神经网络（FNN，Feedforward Neural Network）是指各神经元分层排列，每个神经元只与前一层的神经元相连，接收前一层的输出，并输出给下一层，各层间没有反馈。 一些网络 其中Residual Net并不是一般的全连接前馈神经网络
-网络结构 提出年份 层数 ImageNet错误率 AlexNet 2012 8 16.4% 2014 19 7.
+                                腾讯云官方推荐并提供了使用控制台和使用Serverless 组件（Tencent Serverless Cloud Framework）两种方式用于管理云函数，分别在浏览器中和本地CLI中进行开发
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 20, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/architecture/serverless/alicloud-fc-api/">
+                            <h2 class="post-title">
+                                Alicloud Function Compute API
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                函数计算（Function Compute）是一个事件驱动的全托管 Serverless 计算服务，您无需管理服务器等基础设施，只需编写代码并上传，函数计算会为您准备好计算资源，并以弹性、可靠的方式运行您的代码。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Friday, October 20, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/devoops/git/git-principle/">
+                            <h2 class="post-title">
+                                Git Principle
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方式。 从概念上来说，其它大部分系统以文件变更列表的方式存储信息，而 Git 是把数据看作是对小型文件系统的一系列快照。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 19, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/devoops/git/git-tutorial/">
+                            <h2 class="post-title">
+                                Git Tutorial
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Git 帮助手册 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
+本节选择性介绍 git 中比较常用的命令行场景。
+安装 （1）Debian/Ubuntu 环境安装
+如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
+1 2 3 4 5 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
+如果你使用的系统是 Centos/RedHat ，安装命令为：
+1 2 3 4 5 $ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 19, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/architecture/shell/">
+                            <h2 class="post-title">
+                                Shell 简介
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 19, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/functional-programming/">
+                            <h2 class="post-title">
+                                Functional Programming
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
+1 2 &gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 + 和 *。复合表达式可以嵌套，也可以跨一行以上：
+1 2 3 4 5 6 7 8 9 10 11 12 &gt; (+ (* 3 5) (- 10 6)) 19 &gt; (+ (* 3 (+ (* 2 4) (+ 3 5) ) ) (+ (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Wednesday, October 18, 2023
                             
                             
                         

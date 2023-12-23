@@ -10,7 +10,7 @@
 <meta name="description" content="物联网是一个由相互关联的设备组成的网络，这些设备与其他物联网设备和云连接并交换数据。物联网设备通常嵌入了传感器和软件等技术，包括 mechanical and digital machines 以及 consumer objects。">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/post/tech/architecture/iot/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -564,22 +564,88 @@ window.MathJax = {
 </figure>
   <a class="entry-link" aria-label="post link to State Machine" href="https://WFUing.github.io/post/tech/architecture/iot/state-machine/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    
 
-    <span class="pageNum">
-      <a class="pageNow" href="https://WFUing.github.io/post/tech/architecture/iot/">1</a>
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Actor
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
+actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
+actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
+这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
+主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
+一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
+mailbox 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。
+message 是异步发送给角色的，角色在处理另一条消息时需要将消息存储在某个地方。mailbox 就是存储这些 message 的地方。
+actor 之间通过发送异步消息进行通信。这些 message 会保存在其他 actor 的 mailbox 中，直到它们被处理。...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
     </span>
-    <span class="numLast">
-        <a class="pageLast" href="https://WFUing.github.io/post/tech/architecture/iot/page/2/">2</a>
-      </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>315字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
 
-    
-    
-    
-  </nav>
-</footer>
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/post/tech/architecture/iot/actor/mailbox_hu3e7c9f0f679cb09d75211514460ffd98_27099_360x0_resize_box_3.png 360w ,https://WFUing.github.io/post/tech/architecture/iot/actor/mailbox_hu3e7c9f0f679cb09d75211514460ffd98_27099_480x0_resize_box_3.png 480w ,https://WFUing.github.io/post/tech/architecture/iot/actor/mailbox.png 604w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/tech/architecture/iot/actor/mailbox.png" alt="" 
+            width="604" height="376">
+</figure>
+  <a class="entry-link" aria-label="post link to Actor" href="https://WFUing.github.io/post/tech/architecture/iot/actor/"></a>
+</article>
     </main>
     
 <footer class="footer">

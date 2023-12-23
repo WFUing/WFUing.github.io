@@ -13,7 +13,7 @@ y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b
 初始化参数：随机选取一个 $ w_0 $（并不一定是随机选取），令 $ w = w_0 $ 计算梯度 $\frac{dL(f)}{dw}|_{w=w_0}$ ，如果小于0，此时w增大则L（f）减小，如果大于0，此时w减小则L（w）会减小。如果模型中有多个参数，则计算损失函数在各个参数方向上的偏导数 更新模型参数，$w_1 = w_0 - lr \frac{dL(f)}{dw}|_{w=w_0}$ ，w的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则w变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步，经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 现在假设模型$f$中只有两个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下（若模型中有多个参数，按相同方法更新各参数）">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">

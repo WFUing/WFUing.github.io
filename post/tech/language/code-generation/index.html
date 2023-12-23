@@ -10,7 +10,7 @@
 <meta name="description" content="代码生成是指生成程序代码的软件技术。IDE就是一个典型例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/post/tech/language/code-generation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -594,22 +594,240 @@ OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版�
    
   <a class="entry-link" aria-label="post link to Telosys: a Code Generation Tool by Laurent Guerin" href="https://WFUing.github.io/post/tech/language/code-generation/telosys-code-generation-tool/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    
 
-    <span class="pageNum">
-      <a class="pageNow" href="https://WFUing.github.io/post/tech/language/code-generation/">1</a>
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Code generation for Langium-based DSLs
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
+Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
+代码生成器的输入示例如下：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit &#43; laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold &#43; generalExpensesAndSales) / expectedNoOfSales &#43; desiredProfitPerUnit; DEF vat: 0....</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
     </span>
-    <span class="numLast">
-        <a class="pageLast" href="https://WFUing.github.io/post/tech/language/code-generation/page/2/">2</a>
-      </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1332字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>7分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/langium/" style="color: var(--secondary)!important;">langium</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
 
+   
+  <a class="entry-link" aria-label="post link to Code generation for Langium-based DSLs" href="https://WFUing.github.io/post/tech/language/code-generation/code-generation-for-langium-based-dsls/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Template Engine
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>模板引擎 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
+模板引擎如何工作 上图说明了模板引擎的所有基本元素和处理流程。
+使用模板引擎构建服务器端应用程序时，模板引擎会将模板文件中的变量替换为实际值，并将此值显示给客户端。这样，我们就能更轻松地快速构建应用程序。
+使用 expressJS 和 ejs 模板引擎的示例 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。
+以下步骤演示了模板引擎如何使用 expressJs 和 ejs 模板引擎工作。下面的示例在网页上渲染用户数据。
+步骤 1：安装 express 和 ejs 模板引擎
+安装 ejs 模板引擎和 express 框架，
+1 npm install express ejs 步骤 2：设置视图引擎
+1 2 3 4 5 6 7 8 const express = require(&#34;express&#34;) const app = express(); // Set the View Engine or Template Engine app.set(&#39;view engine&#39;, &#39;ejs&#39;); app.listen(3000) 在上面的代码中，我们创建了 express 应用程序。该应用程序通过 3000 端口监听。...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
     
     
     
-  </nav>
-</footer>
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>255字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>2分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/template-engine/" style="color: var(--secondary)!important;">template engine</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Template Engine" href="https://WFUing.github.io/post/tech/language/code-generation/template-engine/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>A Guide to Code Generation
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>为什么要用代码生成 productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C&#43;&#43; 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成? 根据具体情况，代码生成既可以提高工作效率，也可以成为开发过程中的重要组成部分。许多现代集成开发环境就是一个有用的例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。你完全可以自己编写这样的代码，只不过会浪费一些时间来完成琐碎的任务。
+设计代码生成流水线的方法有很多种。基本上，我们需要定义两个要素：
+Input：用于生成代码的信息来自何处。 Output：如何获得生成的代码。 您也可以在输入和输出之间设置转换步骤。这些步骤可以简化输出层，并使输入和输出更加独立。
+Possible Inputs
+A DSL：例如，我们可以使用 ANTLR 来描述一种语言的语法。由此，我们可以生成一个解析器。 code in other formats：数据库模式。根据数据库模式，我们可以生成 DAO。 wizards：它们允许向用户询问信息。 reverse engineering：可通过处理复杂的代码工件获得信息。 data sources：比如一个DB，一个csv文件或者一个电子表格。 Possible Outputs
+template engine：大多数网络程序员都知道模板引擎，它用于在 HTML UI 中填充数据。 code building APIs：例如，Javaparser 可用于以编程方式创建 Java 文件。 Some Pipelines...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-12
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>937字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>5分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to A Guide to Code Generation" href="https://WFUing.github.io/post/tech/language/code-generation/a-guide-to-code-generation/"></a>
+</article>
     </main>
     
 <footer class="footer">

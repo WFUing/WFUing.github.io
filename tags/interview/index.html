@@ -10,7 +10,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/tags/interview/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -579,22 +579,177 @@ HTTP 协议是一个双向协议。
 </figure>
   <a class="entry-link" aria-label="post link to HTTP-1 HTTPS HTTP-2 HTTP-3" href="https://WFUing.github.io/post/tech/network/http123-https/"></a>
 </article>
-<footer class="page-footer">
-  <nav class="pagination">
-    
 
-    <span class="pageNum">
-      <a class="pageNow" href="https://WFUing.github.io/tags/interview/">1</a>
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>一次完整的HTTP请求过程
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>Resources 小林coding 3.1 HTTP 常见面试题 一次完整的HTTP请求过程 当我们在web浏览器的地址栏中输入：www.baidu.com，具体发生了什么？
+对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址 根据这个IP，找到对应的服务器，发起TCP的三次握手 建立TCP连接后发起HTTP请求 服务器响应HTTP请求，浏览器得到html代码 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等）（先得到html代码，才能去找这些资源） 浏览器对页面进行渲染呈现给用户 服务器关闭关闭TCP连接 1.DNS怎么找到域名的？
+DNS域名解析采用的是递归查询的方式，过程是，先去找DNS缓存-&gt;缓存找不到就去找根域名服务器-&gt;根域名又会去找下一级，这样递归查找之后，找到了，给我们的web浏览器
+2.为什么HTTP协议要基于TCP来实现？
+TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输的各种问题（当发生错误时，会重传）
+3.最后一步浏览器是如何对页面进行渲染的？
+a）解析html文件构成 DOM树 b）解析CSS文件构成渲染树 c）边解析，边渲染 d）JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载
+DNS解析（域名解析服务器） 首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）
+如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存
+如果还没有找到，那么尝试从 hosts文件 里面去找
+在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下
+DNS优化两个方面：DNS缓存、DNS负载均衡
+TCP连接建立（三次握手） 拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024&lt;端口&lt;65535）向服务器的WEB程序（常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过 TCP/IP 4层模型的层层封包）到达服务器端后（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了 TCP/IP 的连接。
+TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而建立连接是通过三次握手来进行的。三次握手的过程如下图：
+发起HTTP请求(建立连接后) HTTP请求报文由四部分组成：请求行、请求头、空格、请求正文
+请求行：用于描述客户端的请求方式（GET/POST等），请求的资源名称(URL)以及使用的HTTP协议的版本号 请求头：用于描述客户端请求哪台主机及其端口，以及客户端的一些环境信息等 空行：空行就是\r\n (POST请求时候有) 请求正文：当使用POST等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中（GET方式是保存在url地址后面，不会放到这里） GET请求
+下面是浏览器对 http://localhost:8081/test?name=XXG&amp;age=23的GET 请求时发送给服务器的数据：
+可以看出请求包含请求行和请求头两部分。其中请求行中包含 method（例如 GET、POST）、URI（通一资源标志符）和协议版本三部分，三个部分之间以空格分开。请求行和每个请求头各占一行，以换行符 CRLF（即 \r\n）分割。
+POST请求
+下面是浏览器对 http://localhost:8081/test 的 POST 请求时发送给服务器的数据，消息体中带上参数 name=XXG&amp;age=23
+可以看出，上面的请求包含四个部分：请求行、请求头、空格、消息体，比之前的 GET 请求多了一个请求消息，其中 请求头和消息体之间用一个空行分割。POST 请求的参数不在 URL 中，而是在消息体中，请求头中多了一项 Content-Length 用于表示消息体的字节数，这样服务器才能知道请求是否发送结束。这也就是 GET 请求和 POST 请求的主要区别。...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-30
+            &nbsp;&nbsp;
+        </span>
     </span>
-    <span class="numLast">
-        <a class="pageLast" href="https://WFUing.github.io/tags/interview/page/2/">2</a>
-      </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>155字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>1分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/http/" style="color: var(--secondary)!important;">http</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/interview/" style="color: var(--secondary)!important;">interview</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
 
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/post/tech/network/http-process/dns_hu329ef20a695cfbc5cf65d368f7fae2b5_956739_360x0_resize_box_3.png 360w ,https://WFUing.github.io/post/tech/network/http-process/dns_hu329ef20a695cfbc5cf65d368f7fae2b5_956739_480x0_resize_box_3.png 480w ,https://WFUing.github.io/post/tech/network/http-process/dns_hu329ef20a695cfbc5cf65d368f7fae2b5_956739_720x0_resize_box_3.png 720w ,https://WFUing.github.io/post/tech/network/http-process/dns_hu329ef20a695cfbc5cf65d368f7fae2b5_956739_1080x0_resize_box_3.png 1080w ,https://WFUing.github.io/post/tech/network/http-process/dns_hu329ef20a695cfbc5cf65d368f7fae2b5_956739_1500x0_resize_box_3.png 1500w ,https://WFUing.github.io/post/tech/network/http-process/dns.png 2022w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/tech/network/http-process/dns.png" alt="" 
+            width="2022" height="1272">
+</figure>
+  <a class="entry-link" aria-label="post link to 一次完整的HTTP请求过程" href="https://WFUing.github.io/post/tech/network/http-process/"></a>
+</article>
+
+<article class="post-entry tag-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Restful API Tutorial
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>REST 全称是 Representational State Transfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
     
     
     
-  </nav>
-</footer>
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>732字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>4分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+            <span class="post-tags-meta">
+                <a href="https://WFUing.github.io/tags/restful/" style="color: var(--secondary)!important;">restful</a>
+                &nbsp;<a href="https://WFUing.github.io/tags/interview/" style="color: var(--secondary)!important;">interview</a>
+            </span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+  <a class="entry-link" aria-label="post link to Restful API Tutorial" href="https://WFUing.github.io/post/tech/network/restful/"></a>
+</article>
     </main>
     
 <footer class="footer">

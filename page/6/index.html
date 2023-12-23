@@ -11,7 +11,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -213,90 +213,21 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/concept/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/scripts/">
                             <h2 class="post-title">
-                                术语与概念
+                                scripts.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                试图建立一个通用的术语来定义一个坚实的基础以对并发、分布式系统这些 Akka 的目标问题展开交流。请注意，对于这些术语并没有一个统一的定义。我们只是为了寻找一些可行的定义以便在整个文档中进行引用。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Saturday, October 28, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/reactive-manifesto/">
-                            <h2 class="post-title">
-                                响应式宣言(Reactive Manifesto)
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                响应式系统具有响应性、复原性、弹性和消息驱动性。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Saturday, October 28, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/akka/">
-                            <h2 class="post-title">
-                                akka框架
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Akka 是一个开源项目，基于 Apache 2 License。AKKA框架是用Scala写的，主要用于高并发与分布式应用，目前已经得到广泛地运用，例如Spark、Spray等框架在底层都使用了AKKA进行并发处理。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Friday, October 27, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/">
-                            <h2 class="post-title">
-                                Markdown公式语法.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                一、公式使用参考 1．如何插入公式 $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。
-行中公式可以用如下方法表示： $ 数学公式 $
-独立公式可以用如下方法表示： $$ 数学公式 $$
-自动编号的公式可以用如下方法表示： 若需要手动编号，参见“大括号和行标的使用”。 \begin{equation} 数学公式 \label{eq:当前公式名} \end{equation}
-自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。
-例子： 1 $ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $ 显示：$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
-例子：
-1 $$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，独立公式示例} $$ 显示：$$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!
+                                脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
+1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
+npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
+npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
+npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
+npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
+举例来说，你执行ESLint的安装命令。
+1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.
                         
                             </div>
                         </a>
@@ -312,17 +243,259 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/yarn/">
                             <h2 class="post-title">
-                                二、回归模型.md
+                                yarn.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                二、回归模型 [toc]
-2.1 线性回归模型 回归模型应用案例 股票市场预测（Stock Market Forecast）：预测某个公司明天的股票情况 自动驾驶车（Self-Driving Car）：预测方向盘的转动角度 推荐系统（Recommendation）：预测某用户购买某商品的可能性 线性回归模型（Linear Regression Model） 形式如下： $y= f(x) = w \cdot x + b $
-y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b是偏置（bias） x是输入（input），也可叫做特征（feature）。数据集中一般包含多个object，每个object一般包含多个component。此时，上标是object的索引，下标是component的索引 损失函数（Loss Function）如果不考虑模型的好坏，衡量一个函数的好坏，其实是衡量模型参数的好坏。以线性模型为例，就是衡量参数和的好坏。如 $ L(f) = L(w,b) = \sum_{n=1} ^{10}{ \widehat{y} - (b + w \cdot x_n)} $ ，把所有的样本误差的平方和作为损失函数 输入：一个函数 输出：多么地不好（how bad it is）。损失函数值越大，则这个函数越差、与数据集中内容月不相符 梯度下降（Gradient Descent） 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上模拟效果最好）的模型参数。 现在假设模型$f$中只有一个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下
-初始化参数：随机选取一个 $ w_0 $（并不一定是随机选取），令 $ w = w_0 $ 计算梯度 $\frac{dL(f)}{dw}|_{w=w_0}$ ，如果小于0，此时w增大则L（f）减小，如果大于0，此时w减小则L（w）会减小。如果模型中有多个参数，则计算损失函数在各个参数方向上的偏导数 更新模型参数，$w_1 = w_0 - lr \frac{dL(f)}{dw}|_{w=w_0}$ ，w的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则w变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步，经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 现在假设模型$f$中只有两个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下（若模型中有多个参数，按相同方法更新各参数）
+                                Yarn 的用法 简介 Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。
+（1）安装速度较快。
+Yarn 采用平行安装模式，而 npm 采用的是线性模式，只有前一个模块安装完，才会安装下一个。
+（2）默认开启“版本锁定”功能
+Yarn 希望安装依赖时，所有依赖的版本在不同机器都保持相同。为了达到这个目的，第一次安装依赖时，它默认生成一个锁定文件yarn.lock，将这个文件放到代码库之中，下次安装时就能保证，总是安装相同版本的依赖。这与npm shrinkwrap命令生成的npm-shrinkwrap.json的作用相似，只不过 Yarn 默认就可以生成这个文件。
+全局参数 global 如果要全局执行一个命令，必须加上global参数。目前，add、bin、ls和remove四个命令，支持global参数。
+1 $ yarn global add create-react-app --prefix /usr/local yarn install yarn install命令用于安装一个模块。如果yarn.lock文件存在，会优先读取该文件，按照该文件指定的版本安装。
+使用--production参数或环境变量NODE_ENV等于production，将不会安装devDependencies字段指定的模块。
+1 $ yarn install --production 如果使用--no-lockfile参数，yarn install将不会读取或生成yarn.lock。
+1 $ yarn install --no-lockfile yarn add yarn add命令允许新增安装一个模块。它默认会将该模块加入package.json文件的dependencies字段。如果想加入devDependencies字段，要使用--dev参数。
+1 2 3 $ yarn add package-name $ yarn add package-name@1.2.3 $ yarn add package-name@tag yarn licenses yarn licenses命令有两个子命令。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/basic/">
+                            <h2 class="post-title">
+                                basic.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                概述 npm有两种含义。
+首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为npmjs.org。
+其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
+安装 npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
+但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
+1 $ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
+1 2 3 $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
+1 2 3 4 5 6 7 8 # 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init npm init用来初始化生成一个新的package.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/install/">
+                            <h2 class="post-title">
+                                install.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                安装 npm install 基本用法 npm install命令用于安装模块。npm i是该命令的别名。
+1 $ npm install lodash 上面命令在当前目录中安装了lodash模块。
+默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
+1 2 3 4 5 6 7 8 9 10 11 # 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&#34;&gt;=4.15.0 &lt;4.18.0&#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
+默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
+1 2 3 4 5 6 7 # 将模块写入 package.json 的 dependencies 字段 $ npm install lodash --save $ npm install lodash -S # 将模块写入 package.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-exec/">
+                            <h2 class="post-title">
+                                npm-exec.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm exec 命令 npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
+该命令与npx命令的作用类似，但是使用上有所不同。
+npx会将所有参数原样传入模块内部。
+1 2 3 $ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
+1 2 3 $ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
+1 2 3 $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。
+1 2 3 $ npm exec -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39; # 等同于 $ npx -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39; 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-init/">
+                            <h2 class="post-title">
+                                npm-init.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm init 命令 npm init命令的作用，是生成package.json文件。它的别名是create。
+新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
+1 $ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
+1 2 3 $ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
+1 2 3 $ npm set init-author-email &#34;example-user@example.com&#34; $ npm set init-author-name &#34;example_user&#34; $ npm set init-license &#34;MIT&#34; npm init也可以格式化创建项目。
+1 2 3 $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.json的bin属性）。
+举例来说，如果要执行create-react-app创建一个 React 项目，可以执行下面的命令。
+1 $ npm init react-app .
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-link/">
+                            <h2 class="post-title">
+                                npm-link.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm link 命令 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
+一种方法是使用npm install的--save参数。
+1 $ npm install --no-save &lt;模块的本地路径h&gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
+另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
+它分成两步，第一步先在本地模块的目录里，执行npm link。
+1 $ npm link 第二步是到你的应用目录，执行npm link &lt;本地模块名&gt;，在node_modules目录里面产生本地模块的符号链接。
+1 $ npm link &lt;本地模块名&gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
+1 $ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
+1 $ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
+1 $ npm unlink 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
+                            <h2 class="post-title">
+                                npm-tag.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
+发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
+如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
+1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
+下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
+1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
+1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
+1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
+                            <h2 class="post-title">
+                                npm-token.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm token npm token命令用来管理认证令牌。
+npm token list命令列出所有激活的认证令牌。
+1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
+npm token create命令生成一个新的认证令牌。
+1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
+npm token revoke命令收回令牌。
+1 $ npm token revoke &lt;token|id&gt; 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/timer/">
+                            <h2 class="post-title">
+                                timer
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 
                         
                             </div>
                         </a>

@@ -11,7 +11,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -213,21 +213,25 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/dsl/langium/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/http/">
                             <h2 class="post-title">
-                                langium简介
+                                http.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install 'code' command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构
+                                http 模块 http模块用于 HTTP 通信。
+http.Server http.Server属性指向一个类，表示 Web 服务器实例。
+这个类继承了net.Server，而net.Server继承了 EventEmitter 接口，因此可以使用server.on()方法监听事情。最重要的一个事件是request，表示收到 HTTP 请求。
+1 2 3 server.on(&#39;request&#39;, (request, response) =&gt; { response.end(&#39;Hello, world!&#39;); }); server.listen()方法用于启动 Web 服务。这个方法需要指定监听的端口，以及一个回调函数（启动后要做什么）。
+1 2 3 server.listen(PORT, () =&gt; { console.log(`starting server at port ${PORT}`); }); http.createServer() http.createServer()方法用于创建一个 Web 服务器，它的返回值就是一个http.Server实例。
+1 2 3 4 5 6 7 8 9 10 11 12 13 const { createServer } = require(&#39;http&#39;); // 指定端口 const PORT = process.env.PORT || 8080; const server = createServer(); server.
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Tuesday, October 31, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -237,20 +241,21 @@ document: https://langium.org/docs/grammar-language/ Language Declaration: Langi
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/dsl/vscode-language-server/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/os/">
                             <h2 class="post-title">
-                                vscode-language-server
+                                os.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Resource Protocol specification https://microsoft.github.io/language-server-protocol/ Syntax highlight guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Language Server Tools https://langserver.org/ Language Server Protocol https://microsoft.github.io/language-server-protocol/ VSCode Syntax Highlight Guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Scope Lists https://macromates.com/manual/en/language_grammars https://www.apeth.com/nonblog/stories/textmatebundle.html 
+                                os 模块 cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
+1 2 const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Tuesday, October 31, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -260,23 +265,27 @@ document: https://langium.org/docs/grammar-language/ Language Declaration: Langi
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/dsl/xtext/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/process/">
                             <h2 class="post-title">
-                                xtext简介
+                                process.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Usage 项目创建 XText 开发一个新的语言
-定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构
-xxx.dsl 定义 DSL 的核心处理类，包括 Format，Scope，Validation，Code Generation xxx.
+                                process 对象 process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
+process.argv process.argv是一个数组，表示启动脚本时的命令行参数。
+它的前两项是固定的。
+第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
+1 $ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
+process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
+1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
+参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Tuesday, October 31, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -286,40 +295,23 @@ xxx.dsl 定义 DSL 的核心处理类，包括 Format，Scope，Validation，Cod
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/network/http-process/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-update/">
                             <h2 class="post-title">
-                                一次完整的HTTP请求过程
+                                npm-update.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Resources 小林coding 3.1 HTTP 常见面试题 一次完整的HTTP请求过程 当我们在web浏览器的地址栏中输入：www.baidu.com，具体发生了什么？
-对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址 根据这个IP，找到对应的服务器，发起TCP的三次握手 建立TCP连接后发起HTTP请求 服务器响应HTTP请求，浏览器得到html代码 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等）（先得到html代码，才能去找这些资源） 浏览器对页面进行渲染呈现给用户 服务器关闭关闭TCP连接 1.DNS怎么找到域名的？
-DNS域名解析采用的是递归查询的方式，过程是，先去找DNS缓存-&gt;缓存找不到就去找根域名服务器-&gt;根域名又会去找下一级，这样递归查找之后，找到了，给我们的web浏览器
-2.为什么HTTP协议要基于TCP来实现？
-TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输的各种问题（当发生错误时，会重传）
-3.最后一步浏览器是如何对页面进行渲染的？
-a）解析html文件构成 DOM树 b）解析CSS文件构成渲染树 c）边解析，边渲染 d）JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载
-DNS解析（域名解析服务器） 首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）
-如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存
-如果还没有找到，那么尝试从 hosts文件 里面去找
-在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下
-DNS优化两个方面：DNS缓存、DNS负载均衡
-TCP连接建立（三次握手） 拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024&lt;端口&lt;65535）向服务器的WEB程序（常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过 TCP/IP 4层模型的层层封包）到达服务器端后（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了 TCP/IP 的连接。
-TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而建立连接是通过三次握手来进行的。三次握手的过程如下图：
-发起HTTP请求(建立连接后) HTTP请求报文由四部分组成：请求行、请求头、空格、请求正文
-请求行：用于描述客户端的请求方式（GET/POST等），请求的资源名称(URL)以及使用的HTTP协议的版本号 请求头：用于描述客户端请求哪台主机及其端口，以及客户端的一些环境信息等 空行：空行就是\r\n (POST请求时候有) 请求正文：当使用POST等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中（GET方式是保存在url地址后面，不会放到这里） GET请求
-下面是浏览器对 http://localhost:8081/test?name=XXG&amp;age=23的GET 请求时发送给服务器的数据：
-可以看出请求包含请求行和请求头两部分。其中请求行中包含 method（例如 GET、POST）、URI（通一资源标志符）和协议版本三部分，三个部分之间以空格分开。请求行和每个请求头各占一行，以换行符 CRLF（即 \r\n）分割。
-POST请求
-下面是浏览器对 http://localhost:8081/test 的 POST 请求时发送给服务器的数据，消息体中带上参数 name=XXG&amp;age=23
-可以看出，上面的请求包含四个部分：请求行、请求头、空格、消息体，比之前的 GET 请求多了一个请求消息，其中 请求头和消息体之间用一个空行分割。POST 请求的参数不在 URL 中，而是在消息体中，请求头中多了一项 Content-Length 用于表示消息体的字节数，这样服务器才能知道请求是否发送结束。这也就是 GET 请求和 POST 请求的主要区别。
+                                npm update 更新所有依赖项。
+1 $ npm update 更新单个依赖。
+1 $ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
+1 $ npm update --save 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 30, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -329,20 +321,170 @@ POST请求
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/akka-java/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-version/">
                             <h2 class="post-title">
-                                快速入门 Akka Java 指南
+                                npm-version.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Akka 是一个用于在 JVM 上构建高并发、分布式和可容错的事件驱动应用程序的运行时工具包。Akka 既可以用于 Java，也可以用于 Scala。本指南通过描述 Java 版本的<code>Hello World</code>示例来介绍 Akka。
+                                npm version npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
+它的命令行用法如下。
+1 2 3 4 5 npm version [ &lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
+（1）&lt;newversion&gt;：自己指定版本号。
+（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
+major：规则如下。
+（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
+1 2 # 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
+1 2 3 4 5 # 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.0.0-0 变为 5.0.0 $ npm version major （3）如果有预发布号，且次版本号和补丁号都不为0，则增加主版本号，将次版本号和补丁号都置为0，并去掉预发布号。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 30, 2023
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-view/">
+                            <h2 class="post-title">
+                                npm-view.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm view 命令 查看某个模块发布过的所有版本。
+1 $ npm view [PackageName] versions 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-whoami/">
+                            <h2 class="post-title">
+                                npm-whoami.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm whoami npm whoami命令返回当前登录的 npm 用户名。
+1 $ npm whoami 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npx/">
+                            <h2 class="post-title">
+                                npx.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npx 使用教程 npm 从5.2版开始，增加了 npx 命令，它有很多用处。
+Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
+1 $ npm install -g npx 调用项目安装的模块 npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
+1 $ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的scripts字段里面， 如果想在命令行下调用，必须像下面这样。
+1 2 # 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
+1 $ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。
+1 2 # 等同于 ls $ npx ls 注意，Bash 内置的命令不在$PATH里面，所以不能用。比如，cd是 Bash 命令，因此就不能用npx cd。
+避免全局安装模块 除了调用项目内部模块，npx 还能避免全局安装的模块。比如，create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/package.json/">
+                            <h2 class="post-title">
+                                package.json.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                package.json files 字段 files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
+1 2 3 4 5 6 7 8 9 10 { &#34;name&#34;: &#34;@adam_baldwin/wombats&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;files&#34;: [ &#34;index.js&#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
+项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
+以下文件，发布的时候总是会包含。
+package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
+以下文件，发布的时候总是会被排除。
+.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .npmrc node_modules config.gypi *.orig package-lock.json 基本上，npm 会发布files字段指定的文件和目录，以及那些总是会包含在内的文件（比如package.json），然后再除去那些被其他规则排除的文件和目录。
+npm-packlist 模块会列出所有将要打包发布的文件和模块。npm pack命令则会将那些将要发布的内容打成一个tgz压缩包，放在项目的根目录下。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/publish/">
+                            <h2 class="post-title">
+                                publish.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                发布 发布标签 npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
+新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
+这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
+1 $ npm install &lt;package&gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
+解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
+1 $ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
+安装时，必须指定这个标签，才能安装到3.2.14。
+1 2 3 $ npm install &lt;package&gt;@previous # 或者 $ npm install &lt;package&gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
+1 2 3 $ npm install &lt;package&gt; # 等同于 $ npm install &lt;package&gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
+1 2 3 4 5 # 发布 $ npm publish --tag=next # 安装 $ npm publish &lt;package&gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。
+等到新版本足够可靠以后，再把latest标签指定到新版本。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         

@@ -11,7 +11,7 @@
 <meta name="description" content="这是一个纯粹的博客......">
 <meta name="author" content="WFUing">
 <link rel="canonical" href="https://WFUing.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.00df2c63d31378f82bdd3d6780bedc31e5d2013d38e77c1200d684111fe6ab84.css" integrity="sha256-AN8sY9MTePgr3T1ngL7cMeXSAT0453wSANaEER/mq4Q=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
@@ -213,27 +213,28 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/process/">
+                        <a href="https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/">
                             <h2 class="post-title">
-                                process.md
+                                A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                process 对象 process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
-process.argv process.argv是一个数组，表示启动脚本时的命令行参数。
-它的前两项是固定的。
-第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
-1 $ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
-process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
-1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
-参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas 
+                                Background IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
+事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法：OpenAPI（源自 Swagger）。
+Introduction 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
+AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
+在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
+AsyncAPI 最初的贡献就是上图中展示的方法。
+AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
+有了 AsyncAPI 元模型和作为符合模型的应用程序接口规范，就可以通过执行 M2T 转换（生成内部 DSL）来继续工作流程。目前，AsyncAPI Toolkit 支持 Java 语言，并生成一个库，通过提供流畅的 API 来协助开发人员创建、发布和接收格式良好的消息。
+值得注意的是，由于这些架构都是基于 message 的，因此数据建模起着至关重要的作用。因此，我们在上述工作流程中使用了另一种（图形化）具体语法，重点是对要交换的消息进行建模。这可用于引导 AsyncAPI JSON 定义，随后可对其进行手动完善。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 13, 2023
                             
                             
                         
@@ -243,23 +244,25 @@ process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-update/">
+                        <a href="https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/">
                             <h2 class="post-title">
-                                npm-update.md
+                                Openapi Code Generator
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                npm update 更新所有依赖项。
-1 $ npm update 更新单个依赖。
-1 $ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
-1 $ npm update --save 
+                                OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
+如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
+Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
+使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
+OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
+1 2 3 4 5 6 7 8 9 openapi: &#34;3.0.2&#34; info: title: API Customer version: &#34;1.0&#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 13, 2023
                             
                             
                         
@@ -269,28 +272,20 @@ process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-version/">
+                        <a href="https://WFUing.github.io/post/tech/network/restful/">
                             <h2 class="post-title">
-                                npm-version.md
+                                Restful API Tutorial
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                npm version npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
-它的命令行用法如下。
-1 2 3 4 5 npm version [ &lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
-（1）&lt;newversion&gt;：自己指定版本号。
-（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
-major：规则如下。
-（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
-1 2 # 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
-1 2 3 4 5 # 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.0.0-0 变为 5.0.0 $ npm version major （3）如果有预发布号，且次版本号和补丁号都不为0，则增加主版本号，将次版本号和补丁号都置为0，并去掉预发布号。
+                                REST 全称是 <strong>Re</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 13, 2023
                             
                             
                         
@@ -300,21 +295,35 @@ major：规则如下。
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-view/">
+                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/cross-entropy/">
                             <h2 class="post-title">
-                                npm-view.md
+                                交叉熵
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                npm view 命令 查看某个模块发布过的所有版本。
-1 $ npm view [PackageName] versions 
+                                案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
+第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
+每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
+第二个例子 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
+$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
+$$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
+第三个例子 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
+总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
+在这个问题中，问题个数的期望是
+$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
+这个式子就是熵的表达式 。简单来说，其意义就是在最优化策略下，猜到颜色所需要的问题的个数。熵代表的是随机变量或整个系统的不确定性，熵越大，随机变量或系统的不确定性就越大。
+现在已经了解了熵是什么，那么，下面解释交叉熵（cross entropy） 的含义.对于第二个例子，如果仍然使用第一个例子中的策略，如下图:
+$\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ 的概率是蓝色，仍然需要两个问题，也就是说，认为小球的分布为 $(\frac{1}{4},\frac{1}{4},\frac{1}{4},\frac{1}{4})$ ，这个分布就是非真实分布。平均来说，需要的问题数是 $\frac{1}{8}*2+\frac{1}{8}*2+\frac{1}{4}*2+\frac{1}{2}*2=2$ 。
+因此，在例子二中使用例子一的策略是一个比较差的策略。其中 $2$ 是这个方案中的交叉熵，而最优方案的交叉熵是 $1.75$。
+给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
+数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 13, 2023
                             
                             
                         
@@ -324,21 +333,169 @@ major：规则如下。
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-whoami/">
+                        <a href="https://WFUing.github.io/post/tech/architecture/iot/actor/">
                             <h2 class="post-title">
-                                npm-whoami.md
+                                Actor
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                npm whoami npm whoami命令返回当前登录的 npm 用户名。
-1 $ npm whoami 
+                                Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
+actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
+actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
+这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
+主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
+一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
+mailbox 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。
+message 是异步发送给角色的，角色在处理另一条消息时需要将消息存储在某个地方。mailbox 就是存储这些 message 的地方。
+actor 之间通过发送异步消息进行通信。这些 message 会保存在其他 actor 的 mailbox 中，直到它们被处理。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 23, 2023
+                            Posted by WFUing on Friday, October 13, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/code-generation/ai-code-generators/">
+                            <h2 class="post-title">
+                                AI Code Generators
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Resources Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 12, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/devoops/git/how-to-write-a-git-commit-message/">
+                            <h2 class="post-title">
+                                How to Write a Git Commit Message
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
+Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。
+The seven rules of a great Git commit message
+Separate subject from body with a blank line Limit the subject line to 50 characters Capitalize the subject line Do not end the subject line with a period Use the imperative mood in the subject line Wrap the body at 72 characters Use the body to explain what and why vs.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 12, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/os/linux-instructions/">
+                            <h2 class="post-title">
+                                45 个常用Linux 命令，让你轻松玩转Linux！
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。
+接下来，让我们一起来看看都有那些常用的 Linux 命令吧！
+一、文件目录操作 1.ls 命令 ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限（包括目录、文件夹、文件权限）查看目录信息等等。
+命令格式
+1 ls [选项][目录名] 常用参数
+-l ：列出长数据串，包含文件的属性与权限数据等 -a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用） -d ：仅列出目录本身，而不是列出目录的文件数据 -h ：将文件容量以较易读的方式（GB，kB等）列出来 -R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来 使用实例
+1.列出 home 目录下的所有文件和目录的详细资料。
+1 2 ls -a -l /home ls -al /home 2.列出当前目录下所有以&quot;d&quot;开头的文件目录详情内容。
+1 ls -l d* 2.cd命令 最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。
+命令格式
+1 cd [目录名] 操作案例
+1.从当前目录进入系统根目录。
+1 cd / 2.跳转到 home/Code 目录。
+1 cd /home/Code 3.pwd 命令 查看&quot;当前工作目录&quot;的完整路径。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 12, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/chatgpt-guide/">
+                            <h2 class="post-title">
+                                chatGPT 使用指南
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Six strategies for getting better results Write clear instructions GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
+在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
+指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
+使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
+在匆忙得出结论之前，指示模型自己找出解决方案：如果我们明确指示模型在得出结论之前先从第一性原理进行推理，会得到更好的结果。例如，假设我们想要一个模型来评估学生对数学问题的解答。最明显的方法是简单地问模型学生的解法是否正确。 使用内心独白或一系列查询来隐藏模型的推理过程：前面的策略表明，在回答具体问题之前，模型有时必须对问题进行详细推理。对于某些应用，模型得出最终答案的推理过程不宜与用户共享。例如，在辅导应用中，我们可能希望鼓励学生自己找出答案，但模型对学生解决方案的推理过程可能会向学生透露答案。内心独白是一种可以用来缓解这种情况的策略。内心独白的原理是指示模型将输出结果中不对用户公开的部分转化为结构化格式，以便于解析。然后，在向用户展示输出结果之前，先对输出结果进行解析，只让部分输出结果可见。 Use external tools 向 GPT 提供其他工具的输出结果，弥补 GPT 的不足。例如，文本检索系统可以告诉 GPT 相关文档的信息。代码执行引擎可以帮助 GPT 进行数学运算和运行代码。如果某项任务可以通过工具而不是 GPT 更可靠或更高效地完成，那么就将其卸载，以获得两者的最佳效果。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 12, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/network/frp-nat-traversal/">
+                            <h2 class="post-title">
+                                Frp Nat Traversal
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Resources github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。
+使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。
+常见问题：https://www.derrors.cn/index.php/it-tech/frp.html Questions 大部分都是网络端口上的问题，下面先给出一张frp的原理图。
+ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
+使用ssh连接时，连接超时 原因：服务器防火墙未开放frp配置中对应的remote_port端口； 解决：在服务器的防火墙中开放相应端口。 ssh: connect to host xx.xx.xx.xx port xx: Connection refused
+连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
+1 2 3 4 5 6 7 8 9 #开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 12, 2023
                             
                             
                         
