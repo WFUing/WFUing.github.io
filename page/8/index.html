@@ -213,6 +213,58 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/architecture/shell/">
+                            <h2 class="post-title">
+                                Shell 简介
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Thursday, October 19, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/functional-programming/">
+                            <h2 class="post-title">
+                                Functional Programming
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
+1 2 &gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 + 和 *。复合表达式可以嵌套，也可以跨一行以上：
+1 2 3 4 5 6 7 8 9 10 11 12 &gt; (+ (* 3 5) (- 10 6)) 19 &gt; (+ (* 3 (+ (* 2 4) (+ 3 5) ) ) (+ (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Wednesday, October 18, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/read/%E4%BA%BA%E4%BB%B6/">
                             <h2 class="post-title">
                                 《人件》读书笔记
@@ -503,62 +555,6 @@ C++ (since C++11)
                         <p class="post-meta">
                         
                             Posted by WFUing on Saturday, October 14, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-theory/">
-                            <h2 class="post-title">
-                                Zookeeper 原理
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                ZooKeeper 简介 ZooKeeper 是什么 ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
-ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
-很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
-ZooKeeper 官方支持 Java 和 C 的 Client API。ZooKeeper 社区为大多数语言（.NET，python 等）提供非官方 API。
-ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取启动配置 更简单的部署 分布式集群管理 节点加入/离开 节点的实时状态 命名服务，如：DNS 分布式同步：如锁、栅栏、队列 分布式系统的选主 中心化和高可靠的数据注册 ZooKeeper 的特性 ZooKeeper 具有以下特性：
-顺序一致性 - 所有客户端看到的服务端数据模型都是一致的。从一个客户端发起的事务请求，最终都会严格按照其发起顺序被应用到 ZooKeeper 中。具体的实现可见：原子广播 原子性 - 所有事务请求的处理结果在整个集群中所有机器上的应用情况是一致的，即整个集群要么都成功应用了某个事务，要么都没有应用。 实现方式可见：事务 单一视图 - 无论客户端连接的是哪个 Zookeeper 服务器，其看到的服务端数据模型都是一致的。 高性能 - ZooKeeper 将数据全量存储在内存中，所以其性能很高。需要注意的是：由于 ZooKeeper 的所有更新和删除都是基于事务的，因此 ZooKeeper 在读多写少的应用场景中有性能表现较好，如果写操作频繁，性能会大大下滑。 高可用 - ZooKeeper 的高可用是基于副本机制实现的，此外 ZooKeeper 支持故障恢复，可见：选举 Leader ZooKeeper 的设计目标 简单的数据模型：ZooKeeper 的数据模型是一个树形结构的文件系统，树中的节点被称为 znode。 可以构建集群：ZooKeeper 支持集群模式，可以通过伸缩性，来控制集群的吞吐量。需要注意的是：由于 ZooKeeper 采用一主多从架构，所以其写性能是有上限的，比较适合于读多写少的场景。 顺序访问：对于来自客户端的每个更新请求，Zookeeper 都会分配一个全局唯一的递增 ID，这个 ID 反映了所有事务请求的先后顺序。 高性能、高可用：ZooKeeper 将数据存全量储在内存中以保持高性能，并通过服务集群来实现高可用，由于 Zookeeper 的所有更新和删除都是基于事务的，所以其在读多写少的应用场景中有着很高的性能表现。 ZooKeeper 核心概念 服务 Zookeeper 服务是一个基于主从复制的高可用集群，集群中每个节点都存储了一份数据副本（内存中）。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Friday, October 13, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/distributed/overview/">
-                            <h2 class="post-title">
-                                分布式系统概述
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
-特点
-分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
-脑裂 对于这种情况，我们也可以看出来，原本应该是统一的一个集群对外提供服务的，现在变成了两个集群同时对外提供服务，如果过了一会，断了的网络突然联通了，那么此时就会出现问题了，两个集群刚刚都对外提供服务了，数据该怎么合并，数据冲突怎么解决等等问题。
-CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节点的多个副本是否具有完全相同的值 类型 强一致性: 数据更新完成后，同一时刻，不同的读操作都能获得最新的值 弱一致性: 数据更新完成后，同一时刻，不同的读操作不一定都能获得最新的值，也无法保证多长时间之后可以获得最新的值 A(Availability，可用性) 含义: 对于每一次请求，系统是否都能在有限(指定)的时间内做出响应 P(Partition Tolerance，分区容错性) 含义: 当发生网络分区时，系统仍能对外提供满足 一致性C 和 可用性A 的服务 CAP定理 分布式系统在同一时间片段内，不可能同时满足一致性C、可用性A和分区容错性P，最多只能满足其中的两项。
-满足意味着100%， 满足C -&gt; 满足强一致性 满足A -&gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 BASE定理 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Friday, October 13, 2023
                             
                             
                         

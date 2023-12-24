@@ -213,6 +213,62 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/cluster/">
+                            <h2 class="post-title">
+                                cluster.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                cluster 模块 cluster模块用于组建 Node.js 应用的集群。
+cluster.isMaster属性表示当前进程是否为主进程。
+1 2 const cluster = require(&#39;cluster&#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 const cluster = require(&#39;cluster&#39;); const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&#39;master process&#39;); const workers = []; for(let i = 0; i &lt; numWorkers; i++) { workers.push(cluster.fork()); } } else { process.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/events/">
+                            <h2 class="post-title">
+                                events.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                events 模块 Node 通过 events 模块提供事件，形成模块之间的通信机制，消除模块与模块的强耦合。
+概述 events模块提供一个构造函数，可以用来生成事件发生器的实例。
+1 2 const EventEmitter = require(&#39;events&#39;); const emitter = new EventEmitter(); 上面代码中，emitter就是事件发生器的实例。
+emit()方法用于触发事件。
+1 emitter.emit(&#39;user-registered&#39;, user); 上面代码触发了user-registered事件，第二个参数user是事件传递的数据。
+on()方法用于监听事件。
+1 2 3 emitter.on(&#39;user-registered&#39;, (user) =&gt; { console.log(&#39;event has occured&#39;); }); 注意，emit()方法和on()方法都是同步的，请看下面的例子。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 emitter.on(&#39;someEvent&#39;, function () { console.log(&#39;event has occured&#39;); }); function f() { console.log(&#39;start&#39;); emitter.emit(&#39;someEvent&#39;); console.log(&#39;end&#39;); } f() // start // event has occured // end 上面代码中，emit()方法执行以后，on()方法会立刻执行。只有等到on()方法执行结束以后，emit()后面的方法才会继续执行。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/http/">
                             <h2 class="post-title">
                                 http.md
@@ -416,69 +472,6 @@ Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用�
 由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。
 1 2 # 等同于 ls $ npx ls 注意，Bash 内置的命令不在$PATH里面，所以不能用。比如，cd是 Bash 命令，因此就不能用npx cd。
 避免全局安装模块 除了调用项目内部模块，npx 还能避免全局安装的模块。比如，create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/package.json/">
-                            <h2 class="post-title">
-                                package.json.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                package.json files 字段 files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
-1 2 3 4 5 6 7 8 9 10 { &#34;name&#34;: &#34;@adam_baldwin/wombats&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;files&#34;: [ &#34;index.js&#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
-项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
-以下文件，发布的时候总是会包含。
-package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
-以下文件，发布的时候总是会被排除。
-.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .npmrc node_modules config.gypi *.orig package-lock.json 基本上，npm 会发布files字段指定的文件和目录，以及那些总是会包含在内的文件（比如package.json），然后再除去那些被其他规则排除的文件和目录。
-npm-packlist 模块会列出所有将要打包发布的文件和模块。npm pack命令则会将那些将要发布的内容打成一个tgz压缩包，放在项目的根目录下。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/publish/">
-                            <h2 class="post-title">
-                                publish.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                发布 发布标签 npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
-新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
-这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
-1 $ npm install &lt;package&gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
-解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
-1 $ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
-安装时，必须指定这个标签，才能安装到3.2.14。
-1 2 3 $ npm install &lt;package&gt;@previous # 或者 $ npm install &lt;package&gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
-1 2 3 $ npm install &lt;package&gt; # 等同于 $ npm install &lt;package&gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
-1 2 3 4 5 # 发布 $ npm publish --tag=next # 安装 $ npm publish &lt;package&gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。
-等到新版本足够可靠以后，再把latest标签指定到新版本。
                         
                             </div>
                         </a>
