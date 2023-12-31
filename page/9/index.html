@@ -213,25 +213,30 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-theory/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/yarn/">
                             <h2 class="post-title">
-                                Zookeeper 原理
+                                yarn.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                ZooKeeper 简介 ZooKeeper 是什么 ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
-ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
-很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
-ZooKeeper 官方支持 Java 和 C 的 Client API。ZooKeeper 社区为大多数语言（.NET，python 等）提供非官方 API。
-ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取启动配置 更简单的部署 分布式集群管理 节点加入/离开 节点的实时状态 命名服务，如：DNS 分布式同步：如锁、栅栏、队列 分布式系统的选主 中心化和高可靠的数据注册 ZooKeeper 的特性 ZooKeeper 具有以下特性：
-顺序一致性 - 所有客户端看到的服务端数据模型都是一致的。从一个客户端发起的事务请求，最终都会严格按照其发起顺序被应用到 ZooKeeper 中。具体的实现可见：原子广播 原子性 - 所有事务请求的处理结果在整个集群中所有机器上的应用情况是一致的，即整个集群要么都成功应用了某个事务，要么都没有应用。 实现方式可见：事务 单一视图 - 无论客户端连接的是哪个 Zookeeper 服务器，其看到的服务端数据模型都是一致的。 高性能 - ZooKeeper 将数据全量存储在内存中，所以其性能很高。需要注意的是：由于 ZooKeeper 的所有更新和删除都是基于事务的，因此 ZooKeeper 在读多写少的应用场景中有性能表现较好，如果写操作频繁，性能会大大下滑。 高可用 - ZooKeeper 的高可用是基于副本机制实现的，此外 ZooKeeper 支持故障恢复，可见：选举 Leader ZooKeeper 的设计目标 简单的数据模型：ZooKeeper 的数据模型是一个树形结构的文件系统，树中的节点被称为 znode。 可以构建集群：ZooKeeper 支持集群模式，可以通过伸缩性，来控制集群的吞吐量。需要注意的是：由于 ZooKeeper 采用一主多从架构，所以其写性能是有上限的，比较适合于读多写少的场景。 顺序访问：对于来自客户端的每个更新请求，Zookeeper 都会分配一个全局唯一的递增 ID，这个 ID 反映了所有事务请求的先后顺序。 高性能、高可用：ZooKeeper 将数据存全量储在内存中以保持高性能，并通过服务集群来实现高可用，由于 Zookeeper 的所有更新和删除都是基于事务的，所以其在读多写少的应用场景中有着很高的性能表现。 ZooKeeper 核心概念 服务 Zookeeper 服务是一个基于主从复制的高可用集群，集群中每个节点都存储了一份数据副本（内存中）。
+                                Yarn 的用法 简介 Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。
+（1）安装速度较快。
+Yarn 采用平行安装模式，而 npm 采用的是线性模式，只有前一个模块安装完，才会安装下一个。
+（2）默认开启“版本锁定”功能
+Yarn 希望安装依赖时，所有依赖的版本在不同机器都保持相同。为了达到这个目的，第一次安装依赖时，它默认生成一个锁定文件yarn.lock，将这个文件放到代码库之中，下次安装时就能保证，总是安装相同版本的依赖。这与npm shrinkwrap命令生成的npm-shrinkwrap.json的作用相似，只不过 Yarn 默认就可以生成这个文件。
+全局参数 global 如果要全局执行一个命令，必须加上global参数。目前，add、bin、ls和remove四个命令，支持global参数。
+1 $ yarn global add create-react-app --prefix /usr/local yarn install yarn install命令用于安装一个模块。如果yarn.lock文件存在，会优先读取该文件，按照该文件指定的版本安装。
+使用--production参数或环境变量NODE_ENV等于production，将不会安装devDependencies字段指定的模块。
+1 $ yarn install --production 如果使用--no-lockfile参数，yarn install将不会读取或生成yarn.lock。
+1 $ yarn install --no-lockfile yarn add yarn add命令允许新增安装一个模块。它默认会将该模块加入package.json文件的dependencies字段。如果想加入devDependencies字段，要使用--dev参数。
+1 2 3 $ yarn add package-name $ yarn add package-name@1.2.3 $ yarn add package-name@tag yarn licenses yarn licenses命令有两个子命令。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -241,25 +246,27 @@ ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/distributed/overview/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/basic/">
                             <h2 class="post-title">
-                                分布式系统概述
+                                basic.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
-特点
-分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
-脑裂 对于这种情况，我们也可以看出来，原本应该是统一的一个集群对外提供服务的，现在变成了两个集群同时对外提供服务，如果过了一会，断了的网络突然联通了，那么此时就会出现问题了，两个集群刚刚都对外提供服务了，数据该怎么合并，数据冲突怎么解决等等问题。
-CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节点的多个副本是否具有完全相同的值 类型 强一致性: 数据更新完成后，同一时刻，不同的读操作都能获得最新的值 弱一致性: 数据更新完成后，同一时刻，不同的读操作不一定都能获得最新的值，也无法保证多长时间之后可以获得最新的值 A(Availability，可用性) 含义: 对于每一次请求，系统是否都能在有限(指定)的时间内做出响应 P(Partition Tolerance，分区容错性) 含义: 当发生网络分区时，系统仍能对外提供满足 一致性C 和 可用性A 的服务 CAP定理 分布式系统在同一时间片段内，不可能同时满足一致性C、可用性A和分区容错性P，最多只能满足其中的两项。
-满足意味着100%， 满足C -&gt; 满足强一致性 满足A -&gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 BASE定理 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC
+                                概述 npm有两种含义。
+首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为npmjs.org。
+其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
+安装 npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
+但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
+1 $ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
+1 2 3 $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
+1 2 3 4 5 6 7 8 # 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init npm init用来初始化生成一个新的package.
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -269,28 +276,25 @@ CAP定理 C(Consistency，一致性) 含义: 同一时刻，数据在不同节�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/install/">
                             <h2 class="post-title">
-                                A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI
+                                install.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Background IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
-事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法：OpenAPI（源自 Swagger）。
-Introduction 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
-AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
-在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
-AsyncAPI 最初的贡献就是上图中展示的方法。
-AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
-有了 AsyncAPI 元模型和作为符合模型的应用程序接口规范，就可以通过执行 M2T 转换（生成内部 DSL）来继续工作流程。目前，AsyncAPI Toolkit 支持 Java 语言，并生成一个库，通过提供流畅的 API 来协助开发人员创建、发布和接收格式良好的消息。
-值得注意的是，由于这些架构都是基于 message 的，因此数据建模起着至关重要的作用。因此，我们在上述工作流程中使用了另一种（图形化）具体语法，重点是对要交换的消息进行建模。这可用于引导 AsyncAPI JSON 定义，随后可对其进行手动完善。
+                                安装 npm install 基本用法 npm install命令用于安装模块。npm i是该命令的别名。
+1 $ npm install lodash 上面命令在当前目录中安装了lodash模块。
+默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
+1 2 3 4 5 6 7 8 9 10 11 # 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&#34;&gt;=4.15.0 &lt;4.18.0&#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
+默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
+1 2 3 4 5 6 7 # 将模块写入 package.json 的 dependencies 字段 $ npm install lodash --save $ npm install lodash -S # 将模块写入 package.
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -300,25 +304,26 @@ AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-exec/">
                             <h2 class="post-title">
-                                Openapi Code Generator
+                                npm-exec.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
-如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
-Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
-使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
-OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
-1 2 3 4 5 6 7 8 9 openapi: &#34;3.0.2&#34; info: title: API Customer version: &#34;1.0&#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。
+                                npm exec 命令 npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
+该命令与npx命令的作用类似，但是使用上有所不同。
+npx会将所有参数原样传入模块内部。
+1 2 3 $ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
+1 2 3 $ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
+1 2 3 $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。
+1 2 3 $ npm exec -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39; # 等同于 $ npx -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39; 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -328,20 +333,27 @@ OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/network/restful/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-init/">
                             <h2 class="post-title">
-                                Restful API Tutorial
+                                npm-init.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                REST 全称是 <strong>Re</strong>presentational <strong>S</strong>tate <strong>T</strong>ransfer（表现层状态转化），更具体的全称是 Resource Representational State Transfer（资源表现层状态转化），具体可以见 Roy Thomas Fielding 的博士论文
+                                npm init 命令 npm init命令的作用，是生成package.json文件。它的别名是create。
+新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
+1 $ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
+1 2 3 $ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
+1 2 3 $ npm set init-author-email &#34;example-user@example.com&#34; $ npm set init-author-name &#34;example_user&#34; $ npm set init-license &#34;MIT&#34; npm init也可以格式化创建项目。
+1 2 3 $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.json的bin属性）。
+举例来说，如果要执行create-react-app创建一个 React 项目，可以执行下面的命令。
+1 $ npm init react-app .
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -351,35 +363,29 @@ OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/algorithm/ai/cross-entropy/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-link/">
                             <h2 class="post-title">
-                                交叉熵
+                                npm-link.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
-第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
-每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
-第二个例子 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
-$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
-$$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
-第三个例子 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
-总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
-在这个问题中，问题个数的期望是
-$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
-这个式子就是熵的表达式 。简单来说，其意义就是在最优化策略下，猜到颜色所需要的问题的个数。熵代表的是随机变量或整个系统的不确定性，熵越大，随机变量或系统的不确定性就越大。
-现在已经了解了熵是什么，那么，下面解释交叉熵（cross entropy） 的含义.对于第二个例子，如果仍然使用第一个例子中的策略，如下图:
-$\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ 的概率是蓝色，仍然需要两个问题，也就是说，认为小球的分布为 $(\frac{1}{4},\frac{1}{4},\frac{1}{4},\frac{1}{4})$ ，这个分布就是非真实分布。平均来说，需要的问题数是 $\frac{1}{8}*2+\frac{1}{8}*2+\frac{1}{4}*2+\frac{1}{2}*2=2$ 。
-因此，在例子二中使用例子一的策略是一个比较差的策略。其中 $2$ 是这个方案中的交叉熵，而最优方案的交叉熵是 $1.75$。
-给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
-数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。
+                                npm link 命令 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
+一种方法是使用npm install的--save参数。
+1 $ npm install --no-save &lt;模块的本地路径h&gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
+另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
+它分成两步，第一步先在本地模块的目录里，执行npm link。
+1 $ npm link 第二步是到你的应用目录，执行npm link &lt;本地模块名&gt;，在node_modules目录里面产生本地模块的符号链接。
+1 $ npm link &lt;本地模块名&gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
+1 $ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
+1 $ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
+1 $ npm unlink 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -389,28 +395,27 @@ $\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ �
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/actor/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
                             <h2 class="post-title">
-                                Actor
+                                npm-tag.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Actor Model CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
-actor model actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
-actors actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
-这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
-主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
-一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
-mailbox 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。
-message 是异步发送给角色的，角色在处理另一条消息时需要将消息存储在某个地方。mailbox 就是存储这些 message 的地方。
-actor 之间通过发送异步消息进行通信。这些 message 会保存在其他 actor 的 mailbox 中，直到它们被处理。
+                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
+发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
+如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
+1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
+下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
+1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
+1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
+1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Friday, October 13, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -420,20 +425,26 @@ actor 之间通过发送异步消息进行通信。这些 message 会保存在�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/code-generation/ai-code-generators/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
                             <h2 class="post-title">
-                                AI Code Generators
+                                npm-token.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Resources Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators 
+                                npm token npm token命令用来管理认证令牌。
+npm token list命令列出所有激活的认证令牌。
+1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
+npm token create命令生成一个新的认证令牌。
+1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
+npm token revoke命令收回令牌。
+1 $ npm token revoke &lt;token|id&gt; 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Thursday, October 12, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -443,23 +454,24 @@ actor 之间通过发送异步消息进行通信。这些 message 会保存在�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/devoops/git/how-to-write-a-git-commit-message/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/timer/">
                             <h2 class="post-title">
-                                How to Write a Git Commit Message
+                                timer
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Resources git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
-Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。
-The seven rules of a great Git commit message
-Separate subject from body with a blank line Limit the subject line to 50 characters Capitalize the subject line Do not end the subject line with a period Use the imperative mood in the subject line Wrap the body at 72 characters Use the body to explain what and why vs.
+                                定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Thursday, October 12, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -469,33 +481,26 @@ Separate subject from body with a blank line Limit the subject line to 50 charac
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/os/linux-instructions/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/fs/">
                             <h2 class="post-title">
-                                45 个常用Linux 命令，让你轻松玩转Linux！
+                                fs
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。
-接下来，让我们一起来看看都有那些常用的 Linux 命令吧！
-一、文件目录操作 1.ls 命令 ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限（包括目录、文件夹、文件权限）查看目录信息等等。
-命令格式
-1 ls [选项][目录名] 常用参数
--l ：列出长数据串，包含文件的属性与权限数据等 -a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用） -d ：仅列出目录本身，而不是列出目录的文件数据 -h ：将文件容量以较易读的方式（GB，kB等）列出来 -R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来 使用实例
-1.列出 home 目录下的所有文件和目录的详细资料。
-1 2 ls -a -l /home ls -al /home 2.列出当前目录下所有以&quot;d&quot;开头的文件目录详情内容。
-1 ls -l d* 2.cd命令 最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。
-命令格式
-1 cd [目录名] 操作案例
-1.从当前目录进入系统根目录。
-1 cd / 2.跳转到 home/Code 目录。
-1 cd /home/Code 3.pwd 命令 查看&quot;当前工作目录&quot;的完整路径。
+                                fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;+chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Thursday, October 12, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         

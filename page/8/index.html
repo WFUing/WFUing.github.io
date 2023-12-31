@@ -213,20 +213,21 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/shell/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/os/">
                             <h2 class="post-title">
-                                Shell 简介
+                                os.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。
+                                os 模块 cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
+1 2 const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Thursday, October 19, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -236,26 +237,27 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/functional-programming/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/stdlib/process/">
                             <h2 class="post-title">
-                                Functional Programming
+                                process.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
-在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
-Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
-Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
-Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
-1 2 &gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 + 和 *。复合表达式可以嵌套，也可以跨一行以上：
-1 2 3 4 5 6 7 8 9 10 11 12 &gt; (+ (* 3 5) (- 10 6)) 19 &gt; (+ (* 3 (+ (* 2 4) (+ 3 5) ) ) (+ (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。
+                                process 对象 process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
+process.argv process.argv是一个数组，表示启动脚本时的命令行参数。
+它的前两项是固定的。
+第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
+1 $ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
+process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
+1 2 const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
+参考链接 Extracting command line arguments from Node.js using destructuring, Nicholas C. Zakas 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Wednesday, October 18, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -265,63 +267,23 @@ Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/read/%E4%BA%BA%E4%BB%B6/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-update/">
                             <h2 class="post-title">
-                                《人件》读书笔记
+                                npm-update.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                一、书名和作者 《人件》 作者： Tom DeMarco Timothy Lister 二、书籍概览 主要论点和结构：软件开发不仅仅是技术问题，更是管理问题。它强调了管理人力资源的关键性，特别是在软件领域，由于脑力劳动的特性，软件开发者与传统的体力劳动者有很大的不同。这本书提供了许多实际的管理方法，以促进团队协作，提高生产效率，同时提供了实例和案例来支持这些观点。 目标读者和应用场景：该书的主要目标读者是软件组织的管理者，项目经理，团队领导者以及任何对软件开发和团队管理感兴趣的人。它适用于各种软件开发项目，从小型创业公司到大型企业。这本书提供的原则和实践可以适用于各种团队管理场景，不仅限于软件开发。 三、核心观点与主题 1. 主题一: 管理人力资源 子观点1
-软件开发是一项知识密集型工作，与传统体力劳动有着明显的不同。因此，管理者应该鼓励开发人员参与关键决策，包括允许他们犯错。这种方式可以增强员工的责任感和参与度。
-子观点2
-尊重员工的个性和特征是至关重要的。每个人都有独特的特点，而好的管理应该能够适应并利用这些特点，从而提高团队的整体效能。
-实例或案例
-书中提到了在软件开发中采用&quot;风险谋而后动&quot;的方法，鼓励大规模头脑风暴以应对压力和风险的增加。这种方法反映了管理者如何应对团队中不同个性和需求的实际案例。
-在过去，曾经采取过一种措施，以防止某产品线或团队在非常规发布日期（不在周二或周四的发布日）进行紧急发布。有的公司前台放置了一个看板，上面贴着一张猪头图片，这个看板每个人都能看到。尽管这个措施看似是一种嬉笑怒骂的方式来阻止团队进行紧急发布，但它实际上起到了作用，紧急发布次数从每周数十次骤减至十几次。然而，这个措施也带来了一些负面影响：
-开发人员不再愿意修复一些小问题以优化用户体验，即使这些问题很容易修复，他们也会等到下一次正常发布日才会发布。例如，有一个SQL查询较慢，但不会严重影响性能，开发人员也会推迟修复，等待下一次发布日再处理。
-开发人员更加谨慎地对待新技术的引入，更倾向于使用已存在的代码，而不愿意自己编写新的代码，即使明知这些已存在的代码在质量和性能方面不够理想。例如，他们可能选择继续使用老员工编写的工具类，而不愿意自己编写新的反应式编程框架，尽管明白这些工具类的性能不如自行实现的框架。
-2. 主题二: 工作压力和质量 子观点1
-项目经理通常试图通过紧张的项目时间表来提高生产效率，但书中强调，压力并不一定导致更高质量或更快速的工作。
-子观点2
-过多的压力可能降低员工的工作满意度，导致低质量的工作和潜在的缺陷。
-实例或案例
-书中提到，项目经理常常抱怨开发人员的代码质量低下，但事实上，这种低质量可能是由于施加的过多压力造成的。
-举例来说，假设一个软件开发项目的截止日期紧迫，项目经理对开发团队施加了巨大的时间压力，要求在非常有限的时间内完成大量的工作。开发人员可能发现他们不得不加班工作，几乎每天都在高压下工作，以满足项目经理设定的紧急截止日期。
-在这种情况下，开发人员可能感到极大的焦虑和紧张。他们可能被迫忽略了代码的质量，因为他们没有足够的时间来执行详尽的测试和质量保证。他们可能会采用快速而不经思考的解决方案，以满足紧迫的交付需求，而不是投入时间来设计和实施更为健壮、可扩展的代码。
-结果，虽然项目可能会按时交付，但代码的质量可能会因为过度的时间压力而下降。这种低质量的代码可能导致后续的问题和缺陷，需要更多的时间和资源来修复，从而反而增加了整体的开发和维护成本。
-3. 主题三: 雇佣合适的人 子观点1
-雇佣合适的人比试图改变不合适的人更为有效。如果一个人一开始就不适合特定职位，那么即使经过培训和努力，他们可能永远也不会胜任。
-子观点2
-强调个性特征比知识因素更为重要。在招聘中，不应只寻找与现有员工相似的候选人，而应更加注重个体特点。
-实例或案例
-书中提到，强制性规则和流程会降低员工的活力和创新性。相反，应鼓励员工尝试新事物，以激发团队的创造力。
-一个具体的例子是，某个开发人员可能决定尝试一个全新的编程语言，因为他认为它可以更好地满足项目的需求。在严格的团队中，这种尝试可能会受到限制，但在开放的团队中，他们鼓励这种尝试，因为他们相信员工的创新可能会带来更好的结果。
-4. 主题四: 提高团队生产力 子观点1
-团队通常效率低于个体，但具有团结性的团队有更高的成就感。共同的目标和低流动率是团结团队的标志。
-子观点2
-优秀的项目经理在人际关系处理方面表现出色，鼓励团队成员与产品相关联。
-实例或案例
-书中提到自由协作活动，如晚餐或聚会，可以提高员工参与度，让他们感到自己未受管理。自由协作活动使员工感到不受管理，激发了他们的自发创新和合作精神。这种自由的环境可以改善员工的参与度，让他们更有归属感，同时也促进了创造力和团队协作。通过这样的自由交流，公司最终受益于更积极的员工和更多的创新点子。
-四、亮点与启发 最有影响的观点或实例:
-本书中最有影响的观点之一是管理人力资源的关键性。管理人员在软件开发过程中的作用常常被低估，但这本书强调了管理在成功的项目完成中所起的关键作用。以下是关于这个观点的详细阐述：这本书深刻地强调了软件开发是一项高度知识密集的工作，与传统的体力劳动有着显著的不同。在这个背景下，管理人员需要理解软件开发人员的需求和心理特点，以有效地领导他们。本书提出了一种管理方法，即尊重员工的个性和特征，这不仅提高了员工的工作满意度，还促进了更高的生产力。更进一步，书中认为，管理者应该鼓励开发人员参与关键决策，包括允许他们犯错误。这种方法增强了员工的责任感和参与感，使他们更有动力投入工作。管理者应理解，软件开发者大多是对自己的工作充满热情的人，因此需要以一种充满尊重和理解的方式来管理他们。
-另一个强调的观点是关于强制加班无意义。尽管许多项目经理试图通过延长员工的工作时间来提高生产力，但本书提醒我们，加班不一定会导致更好的结果。强制加班可能会导致员工疲劳、降低工作质量，甚至加速员工的离职。这一观点在当前强调工作与生活平衡的时代尤为重要。
-对个人或专业发展的启示:
-软件开发领域不仅仅关乎技术，更关乎管理。管理者应该以员工的需求和个性为重，鼓励创新和自主决策，以提高团队的效能。这本书提醒我们，软件开发是一项协作的工作，管理者的作用是创造一个积极的工作环境，促进团队的成功。这一观点不仅适用于软件开发，还可以应用于各种其他领域的团队管理。
-五、批评与局限性 任何有争议、模糊或过时的信息:
-尽管《人件》中提到了强制加班对于软件开发团队的负面影响，仍然有一些管理者可能会认为强制加班是提高生产力的有效方法。这涉及到一个争议点，即是否迫使员工加班在某些情况下可以提高项目的速度和完成时间。一些管理者可能会坚持认为，紧迫的项目时程要求在特殊情况下需要额外的工作时间，因此强制加班可能是必要的。
-然而，这一观点通常忽略了员工的工作生活平衡和健康问题。长期强制加班可能会导致员工疲惫、焦虑和生活质量下降，这不仅会降低他们的工作效率，还可能导致员工流失。因此，强制加班通常被视为不可持续的管理方法，特别是在现代强调员工福祉和工作与生活平衡的环境中。
-可能的不足或缺陷:
-《人件》中提出的方法在所有情况下是否都适用可能是一个问题。一些团队可能会发现某些原则在其特定情境下不适用。例如，某些项目可能因其特殊性质而需要更紧张的时间表，这可能会涉及到一定程度的加班。因此，管理者需要灵活运用《人件》中的原则，以适应其项目的特定需求。
-另一个潜在的不足是，一些管理者可能发现难以完全接受本书中提出的管理理念。改变传统的管理方法需要时间和努力，而一些组织可能对采用这些新方法感到抵触。管理者需要克服这种抵触情感，才能真正实施《人件》中的管理原则。
-此外，书中的一些建议和案例也可能在不同文化和国家之间产生不同的效果。因为文化、法规和员工期望因地区而异，所以需要谨慎考虑如何将这些原则应用到不同的全球背景中。
-六、实际应用和拓展 在实际工作/学习中如何应用这些概念:
+                                npm update 更新所有依赖项。
+1 $ npm update 更新单个依赖。
+1 $ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
+1 $ npm update --save 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Wednesday, October 18, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -331,22 +293,28 @@ Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/serverless/serverless-dev/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-version/">
                             <h2 class="post-title">
-                                Serverless Dev
+                                npm-version.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Serverless Devs 是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者不仅可以一键体验多云 Serverless 产品，极速部署 Serverless 项目，还可以在 Serverless 应用全生命周期进行项目的管理，并且非常简单快速的将 Serverless Devs 与其他工具/平台进行结合，进一步提升研发、运维效能。
-平台/产品支持 目前 Serverless Devs 项目已经支持的 FaaS 平台/产品：
-Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百度智能云函数计算（CFC）: 项目仓库 华为云函数工作流（FG）: 项目仓库 腾讯云云函数（SCF）: 项目仓库 Installable OpenFunction（ofn）: 项目仓库 Laf: 开发中&hellip; 项目期望 Serverless Devs 希望可以为 Serverless 开发者们提供一款可以无厂商锁定的，可以在 Serverless 应用全生命周期发挥作用的 Serverless 开发者工具； Serverless Registry 希望可以为 Serverless 生态提供一套完整的包管理规范，与 Python 中的 pypi， Nodejs 中的 npm 等类似，将以此来开放和分享 Serverless Package，建设 Serverless 生态； Serverless Developer Meetup 希望可以打造最符合 Serverless 开发者的社区活动，通过这个活动，希望更多人可以一起交流、学习 Serverless 相关的产品； 快速上手 本快速上手案例以 阿里云函数计算 为例的快速上手 Serverless Devs
+                                npm version npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
+它的命令行用法如下。
+1 2 3 4 5 npm version [ &lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
+（1）&lt;newversion&gt;：自己指定版本号。
+（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
+major：规则如下。
+（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
+1 2 # 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
+1 2 3 4 5 # 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.0.0-0 变为 5.0.0 $ npm version major （3）如果有预发布号，且次版本号和补丁号都不为0，则增加主版本号，将次版本号和补丁号都置为0，并去掉预发布号。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Tuesday, October 17, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -356,32 +324,21 @@ Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/serverless/serverless-concept-models/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-view/">
                             <h2 class="post-title">
-                                Serverless Concept Models
+                                npm-view.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。
-Serverless 的特点
-按需分配 无服务器计算基于事件驱动和按需调用，只在需要时才会进行计算资源的分配和管理 弹性伸缩 无服务器计算平台会自动根据负载量的变化进行资源的动态分配和优化，无需手动干预 简化开发与部署 开发者专注于编写核心业务逻辑代码，简化应用开发以及部署流程 Concept Models Serverless 核心资源 Service
-阿里云提供服务这一抽象 服务是函数计算资源管理的单位，同一服务下的所有函数共享一些设置，如服务授权和日志配置 一个应用可拆分为多个服务，一个服务可由多个函数组成 Function
-云函数，云函数由代码和运行环境描述组成 云函数可能依赖于其他云函数，或者外部服务，如对象存储，API 网关，消息队列 Trigger
-触发器，用于在满足某些条件时，触发 Function 的执行 基于事件驱动 常见的触发器类型 定时触发器 Cron Trigger API 网关触发器 HTTP Trigger 消息队列触发器 MQ Trigger External Service
-云函数在运行过程中，可能调用外部的服务完成任务，如调用 Redis 或 RDBMS 存储状态 Function 表示 Serverless 函数
-Function 基本信息
-包括函数的代码 URI，运行时，处理函数名称等
-Function 资源需求
-指定函数运行时所需的计算资源，如内存，CPU 等
-Function 触发器
-1 2 3 4 5 6 7 8 9 export interface Function { runtime: string; codeDir: string; // source code directory to bundle resource: { memory: string; cpu: string; }; triggers: {}[]; } Trigger 函数触发器，基于事件驱动机制触发函数执行
+                                npm view 命令 查看某个模块发布过的所有版本。
+1 $ npm view [PackageName] versions 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Tuesday, October 17, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -391,24 +348,21 @@ Function 触发器
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/metaprogramming/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-whoami/">
                             <h2 class="post-title">
-                                meta-programming
+                                npm-whoami.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
-Macros and Code Generation macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
-使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
-1 #define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：
-1 2 3 4 5 6 7 8 9 int main() { int x = 3; int y = 4; SWAP(x, y); cout &lt;&lt; x &lt;&lt; &#34; &#34; &lt;&lt; y &lt;&lt; endl; } // output 4 3 通过向 g++ 传递 -E 标志，可以获得宏扩展的结果：
+                                npm whoami npm whoami命令返回当前登录的 npm 用户名。
+1 $ npm whoami 
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 16, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -418,20 +372,28 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/iot/state-machine/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npx/">
                             <h2 class="post-title">
-                                State Machine
+                                npx.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                有限状态机 (finite-state machine, FSM) 是一种抽象机器，在任何给定时间内都可以处于有限个状态中的一个状态。FSM 可以根据某些外部输入从一种状态转换到另一种状态，从一种状态转换到另一种状态称为转换。
+                                npx 使用教程 npm 从5.2版开始，增加了 npx 命令，它有很多用处。
+Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
+1 $ npm install -g npx 调用项目安装的模块 npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
+1 $ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的scripts字段里面， 如果想在命令行下调用，必须像下面这样。
+1 2 # 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
+1 $ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。
+1 2 # 等同于 ls $ npx ls 注意，Bash 内置的命令不在$PATH里面，所以不能用。比如，cd是 Bash 命令，因此就不能用npx cd。
+避免全局安装模块 除了调用项目内部模块，npx 还能避免全局安装的模块。比如，create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Monday, October 16, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -441,20 +403,27 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/code-generation/antlr-code-generation/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/package.json/">
                             <h2 class="post-title">
-                                Antlr Code Generation
+                                package.json.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                ANTLR 是 <strong>AN</strong>other <strong>T</strong>ool for <strong>L</strong>anguage <strong>R</strong>ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。
+                                package.json files 字段 files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
+1 2 3 4 5 6 7 8 9 10 { &#34;name&#34;: &#34;@adam_baldwin/wombats&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;files&#34;: [ &#34;index.js&#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
+项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
+以下文件，发布的时候总是会包含。
+package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
+以下文件，发布的时候总是会被排除。
+.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .npmrc node_modules config.gypi *.orig package-lock.json 基本上，npm 会发布files字段指定的文件和目录，以及那些总是会包含在内的文件（比如package.json），然后再除去那些被其他规则排除的文件和目录。
+npm-packlist 模块会列出所有将要打包发布的文件和模块。npm pack命令则会将那些将要发布的内容打成一个tgz压缩包，放在项目的根目录下。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Sunday, October 15, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -464,74 +433,30 @@ Macros and Code Generation macro 是将输入序列转换为某种替换输出�
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/programming-language-pool/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/publish/">
                             <h2 class="post-title">
-                                Programming Language List
+                                publish.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
-让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
-编程语言流行度排名 编译语言 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
-C
-C ++
-C＃
-ALGOL
-Cobol
-Fortran
-Java
-Visual Basic
-Smalltalk
-解释语言 解释语言是一种编程语言，在其中，无需将程序编译为机器语言的指令，我们就可以直接自由地执行指令。解释器逐行执行程序。语言解释为编译后的实现（如平台独立性，动态范围，动态类型等）提供了更多的灵活性。
-Python
-Ruby
-Perl
-Pascal
-Lisp
-BASIC
-APL
-脚本语言 脚本语言是控制应用程序的编程语言。可以在任何其他应用程序上独立执行的脚本。它们被广泛应用于它们所控制的应用中，并被用于自动化领域。
-PHP
-VBScript
-Windows PowerShell
-F-Script
-BeanShell
-AutoIt
-R
-Game Maker Language
-标记语言 标记语言是一种人工语言，用于对文档进行注释，以便在语法上与文本（可定义文本显示方式的文本）区分开。
-HTML
-XML
-XHTML
-SGML
-Curl
-程序语言 程序（命令式）编程意味着指定程序达到预期状态应采取的步骤。过程不过是一组可以通过过程调用引用的指令。这有助于代码的重用。这种类型的编程使程序结构化并易于跟踪程序流。
-HyperTalk
-Go
-PL/C
-PL/I
-MATLAB
-Curl
-Mathematica
-MATLAB
-函数式语言 函数式编程语言将每次计算都定义为数学评估。他们专注于函数的应用。一些函数式编程语言是纯函数式语言，但是许多所谓的函数式语言是不纯净的，包含命令式功能，它们不是纯函数式语言。
-Pure Functional
-Agda
-SAC
-SASL
-Cuneiform
-Curry
-Futhark
-Haskell
-不纯功能语言 APL
-C++ (since C++11)
+                                发布 发布标签 npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
+新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
+这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
+1 $ npm install &lt;package&gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
+解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
+1 $ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
+安装时，必须指定这个标签，才能安装到3.2.14。
+1 2 3 $ npm install &lt;package&gt;@previous # 或者 $ npm install &lt;package&gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
+1 2 3 $ npm install &lt;package&gt; # 等同于 $ npm install &lt;package&gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
+1 2 3 4 5 # 发布 $ npm publish --tag=next # 安装 $ npm publish &lt;package&gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。
+等到新版本足够可靠以后，再把latest标签指定到新版本。
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Saturday, October 14, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
@@ -541,20 +466,27 @@ C++ (since C++11)
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-code/">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/scripts/">
                             <h2 class="post-title">
-                                Zookeeper Code
+                                scripts.md
                             </h2>
                         
                             <div class="post-content-preview">
                         
-                                Resources 官方 ZooKeeper 官网 ZooKeeper 官方文档 ZooKeeper Github 博客 ZooKeeper源码阅读心得分享+源码基本结构+源码环境搭建 手摸手教你阅读和调试大型开源项目 ZooKeeper 
+                                脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
+1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
+npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
+npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
+npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
+npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
+举例来说，你执行ESLint的安装命令。
+1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.
                         
                             </div>
                         </a>
                         <p class="post-meta">
                         
-                            Posted by WFUing on Saturday, October 14, 2023
+                            Posted by WFUing on Monday, October 23, 2023
                             
                             
                         
