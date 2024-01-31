@@ -18,10 +18,10 @@
     
     <item>
       <title>设计模式-目录</title>
-      <link>https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Sun, 31 Dec 2023 13:50:15 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</guid>
       <description>一、前言 设计模式是解决问题的方案，学习现有的设计模式可以做到经验复用。拥有设计模式词汇，在沟通时就能用更少的词汇来讨论，并且不需要了解底层细节。
 二、创建型 单例 简单工厂 工厂方法 抽象工厂 生成器 原型模式 三、行为型 责任链 命令 解释器 迭代器 中介者 备忘录 观察者 状态 策略 模板方法 访问者 空对象 四、结构型 适配器 桥接 组合 装饰 外观 享元 代理 参考资料 弗里曼. Head First 设计模式 [M]. 中国电力出版社, 2007. Gamma E. 设计模式: 可复用面向对象软件的基础 [M]. 机械工业出版社, 2007. Bloch J. Effective java[M]. Addison-Wesley Professional, 2017. Design Patterns Design patterns implemented in Java The breakdown of design patterns in JDK </description>
     </item>
@@ -36,7 +36,7 @@
     </item>
     
     <item>
-      <title>设计模式 - 策略.md</title>
+      <title>设计模式 - 策略</title>
       <link>https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
@@ -409,19 +409,19 @@
     
     <item>
       <title>使用 Kubevela 部署 mall-swarm 项目</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/k8s/kubevela-mall-swarm/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela-mall-swarm/</link>
       <pubDate>Tue, 05 Dec 2023 10:27:02 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/k8s/kubevela-mall-swarm/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela-mall-swarm/</guid>
       <description>本项目用kubevela部署mall-swarm，mall-swarm是一套微服务商城系统，采用了 Spring Cloud 2021 &amp;amp; Alibaba、Spring Boot 2.7、Oauth2、MyBatis、Elasticsearch、Docker、Kubernetes等核心技术。</description>
     </item>
     
     <item>
       <title>Ceph集群部署</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/ceph/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/ceph/</link>
       <pubDate>Tue, 05 Dec 2023 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/ceph/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/ceph/</guid>
       <description>Ceph是一种开源分布式存储系统，为大规模数据提供可扩展性和高性能。它使用分布式对象存储、块存储和文件系统，通过智能数据复制和动态数据分布，确保高可用性和容错性。Ceph的设计使其适用于云计算和大数据环境，提供灵活、可靠的存储解决方案，同时支持自动负载平衡和故障恢复。</description>
     </item>
     
@@ -451,10 +451,10 @@ DevOps文化的强调和实践。DevOps不仅仅是一种方法论，更是一�
     
     <item>
       <title>Kubevela</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/k8s/kubevela/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela/</link>
       <pubDate>Mon, 27 Nov 2023 16:11:01 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/k8s/kubevela/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela/</guid>
       <description>KubeVela 是一个开箱即用的现代化应用交付与管理平台，它使得应用在面向混合云环境中的交付更简单、快捷。使用 KubeVela 的软件开发团队，可以按需使用云原生能力构建应用，随着团队规模的发展、业务场景的变化扩展其功能，一次构建应用，随处运行。</description>
     </item>
     
@@ -1473,19 +1473,19 @@ C++ (since C++11)</description>
     
     <item>
       <title>Zookeeper Code</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-code/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-code/</link>
       <pubDate>Sat, 14 Oct 2023 12:00:54 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-code/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-code/</guid>
       <description>Resources 官方 ZooKeeper 官网 ZooKeeper 官方文档 ZooKeeper Github 博客 ZooKeeper源码阅读心得分享+源码基本结构+源码环境搭建 手摸手教你阅读和调试大型开源项目 ZooKeeper </description>
     </item>
     
     <item>
       <title>Zookeeper 原理</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-theory/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/</link>
       <pubDate>Fri, 13 Oct 2023 20:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/zookeeper/zookeeper-theory/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/</guid>
       <description>ZooKeeper 简介 ZooKeeper 是什么 ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
 ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
 很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
@@ -1496,10 +1496,10 @@ ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取�
     
     <item>
       <title>分布式系统概述</title>
-      <link>https://WFUing.github.io/post/tech/architecture/distributed/overview/</link>
+      <link>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/overview/</link>
       <pubDate>Fri, 13 Oct 2023 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/distributed/overview/</guid>
+      <guid>https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/overview/</guid>
       <description>什么是分布式系统 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
 特点
 分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。

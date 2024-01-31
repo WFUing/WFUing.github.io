@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>高级软件设计 | Waiting For You</title>
+<title>ZooKeeper | Waiting For You</title>
 <meta name="keywords" content="">
-<meta name="description" content="高级软件设计 - Waiting For You">
+<meta name="description" content="ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。">
 <meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/">
+<link rel="canonical" href="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://WFUing.github.io/img/logo.gif">
 <link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -80,13 +80,13 @@ window.MathJax = {
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
-<meta property="og:title" content="高级软件设计" />
+<meta property="og:title" content="ZooKeeper" />
 <meta property="og:description" content="这是一个纯粹的博客......" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/" />
+<meta property="og:url" content="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="高级软件设计"/>
+<meta name="twitter:title" content="ZooKeeper"/>
 <meta name="twitter:description" content="这是一个纯粹的博客......"/>
 
 
@@ -109,9 +109,15 @@ window.MathJax = {
     }, 
     {
       "@type": "ListItem",
-      "position":  4 ,
-      "name": "高级软件设计",
-      "item": "https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/"
+      "position":  3 ,
+      "name": "Architecture",
+      "item": "https://WFUing.github.io/post/tech/architecture/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  5 ,
+      "name": "ZooKeeper",
+      "item": "https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/"
     }
   ]
 }
@@ -187,20 +193,24 @@ window.MathJax = {
 
 
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a></div>
+<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/">Posts</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/">Technology</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/post/tech/architecture/">Architecture</a></div>
   <h1>
-    高级软件设计
+    ZooKeeper
   </h1>
 </header>
+<div class="post-content"><p>ZooKeeper 是 Apache 的顶级项目。<strong>ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议</strong>。</p>
+
+
+</div>
 
 <article class="post-entry">
   <div class="post-info"> 
     <header class="entry-header">
-      <h2>高级软件设计复习
+      <h2>Zookeeper Code
       </h2>
     </header>
     <div class="entry-content">
-      <p>南京大学软件学院高级软件设计简答题部分复习</p>
+      <p>Resources 官方 ZooKeeper 官网 ZooKeeper 官方文档 ZooKeeper Github 博客 ZooKeeper源码阅读心得分享&#43;源码基本结构&#43;源码环境搭建 手摸手教你阅读和调试大型开源项目 ZooKeeper </p>
     </div>
     <footer class="entry-footer">
 
@@ -221,7 +231,7 @@ window.MathJax = {
 <span class="parent-post-meta">
     <span id="post_meta_style_1">
         <span class="fa fa-calendar-check-o"></span>
-        <span>2023-12-31
+        <span>2023-10-14
             &nbsp;&nbsp;
         </span>
     </span>
@@ -234,13 +244,13 @@ window.MathJax = {
     
     <span id="post_meta_style_3">
         <span class="fa fa-file-word-o"></span>
-        <span>1043字
+        <span>12字
             &nbsp;&nbsp;
         </span>
     </span>
     <span id="post_meta_style_4">
         <span class="fa fa-clock-o"></span>
-        <span>5分钟
+        <span>1分钟
             &nbsp;&nbsp;
         </span>
     </span>
@@ -253,15 +263,92 @@ window.MathJax = {
     <span id="post_meta_style_6">
         <span class="fa fa-tags" style="opacity: 0.8"></span>
         <span>
-            <span class="post-tags-meta">
-            </span>
         </span>
     </span>
 </span></footer>
   </div> 
 
    
-  <a class="entry-link" aria-label="post link to 高级软件设计复习" href="https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E5%8D%97%E8%BD%AF%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/"></a>
+  <a class="entry-link" aria-label="post link to Zookeeper Code" href="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-code/"></a>
+</article>
+
+<article class="post-entry">
+  <div class="post-info"> 
+    <header class="entry-header">
+      <h2>Zookeeper 原理
+      </h2>
+    </header>
+    <div class="entry-content">
+      <p>ZooKeeper 简介 ZooKeeper 是什么 ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
+ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
+很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
+ZooKeeper 官方支持 Java 和 C 的 Client API。ZooKeeper 社区为大多数语言（.NET，python 等）提供非官方 API。
+ZooKeeper 的应用场景 配置管理 集群节点可以通过中心源获取启动配置 更简单的部署 分布式集群管理 节点加入/离开 节点的实时状态 命名服务，如：DNS 分布式同步：如锁、栅栏、队列 分布式系统的选主 中心化和高可靠的数据注册 ZooKeeper 的特性 ZooKeeper 具有以下特性：
+顺序一致性 - 所有客户端看到的服务端数据模型都是一致的。从一个客户端发起的事务请求，最终都会严格按照其发起顺序被应用到 ZooKeeper 中。具体的实现可见：原子广播 原子性 - 所有事务请求的处理结果在整个集群中所有机器上的应用情况是一致的，即整个集群要么都成功应用了某个事务，要么都没有应用。 实现方式可见：事务 单一视图 - 无论客户端连接的是哪个 Zookeeper 服务器，其看到的服务端数据模型都是一致的。 高性能 - ZooKeeper 将数据全量存储在内存中，所以其性能很高。需要注意的是：由于 ZooKeeper 的所有更新和删除都是基于事务的，因此 ZooKeeper 在读多写少的应用场景中有性能表现较好，如果写操作频繁，性能会大大下滑。 高可用 - ZooKeeper 的高可用是基于副本机制实现的，此外 ZooKeeper 支持故障恢复，可见：选举 Leader ZooKeeper 的设计目标 简单的数据模型：ZooKeeper 的数据模型是一个树形结构的文件系统，树中的节点被称为 znode。 可以构建集群：ZooKeeper 支持集群模式，可以通过伸缩性，来控制集群的吞吐量。需要注意的是：由于 ZooKeeper 采用一主多从架构，所以其写性能是有上限的，比较适合于读多写少的场景。 顺序访问：对于来自客户端的每个更新请求，Zookeeper 都会分配一个全局唯一的递增 ID，这个 ID 反映了所有事务请求的先后顺序。 高性能、高可用：ZooKeeper 将数据存全量储在内存中以保持高性能，并通过服务集群来实现高可用，由于 Zookeeper 的所有更新和删除都是基于事务的，所以其在读多写少的应用场景中有着很高的性能表现。 ZooKeeper 核心概念 服务 Zookeeper 服务是一个基于主从复制的高可用集群，集群中每个节点都存储了一份数据副本（内存中）。...</p>
+    </div>
+    <footer class="entry-footer">
+
+<style>
+    i[id*="post_meta_style"] {
+        display: flex;
+        align-items: center;
+        margin: 0 0 10px 0;
+    }
+
+    .parent-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 0.8;
+    }
+</style>
+
+<span class="parent-post-meta">
+    <span id="post_meta_style_1">
+        <span class="fa fa-calendar-check-o"></span>
+        <span>2023-10-13
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    
+    
+    
+    
+    
+    
+    
+    <span id="post_meta_style_3">
+        <span class="fa fa-file-word-o"></span>
+        <span>1151字
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_4">
+        <span class="fa fa-clock-o"></span>
+        <span>6分钟
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_5">
+        <span class="fa fa-user-o"></span>
+        <span>WFUing
+            &nbsp;&nbsp;
+        </span>
+    </span>
+    <span id="post_meta_style_6">
+        <span class="fa fa-tags" style="opacity: 0.8"></span>
+        <span>
+        </span>
+    </span>
+</span></footer>
+  </div> 
+
+   
+<figure class="entry-cover1">
+        <img loading="lazy" srcset="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors_hu86d7ff9a1d5d426ca93d6e20b46dbb7b_308271_360x0_resize_box_3.png 360w ,https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors_hu86d7ff9a1d5d426ca93d6e20b46dbb7b_308271_480x0_resize_box_3.png 480w ,https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors_hu86d7ff9a1d5d426ca93d6e20b46dbb7b_308271_720x0_resize_box_3.png 720w ,https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors_hu86d7ff9a1d5d426ca93d6e20b46dbb7b_308271_1080x0_resize_box_3.png 1080w ,https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors.png 1216w" 
+            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/actors.png" alt="" 
+            width="1216" height="380">
+</figure>
+  <a class="entry-link" aria-label="post link to Zookeeper 原理" href="https://WFUing.github.io/post/tech/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/"></a>
 </article>
     </main>
     

@@ -16,15 +16,5 @@
       <description>南京大学软件学院高级软件设计简答题部分复习</description>
     </item>
     
-    <item>
-      <title>设计模式-目录</title>
-      <link>https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</link>
-      <pubDate>Sun, 31 Dec 2023 13:50:15 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/</guid>
-      <description>一、前言 设计模式是解决问题的方案，学习现有的设计模式可以做到经验复用。拥有设计模式词汇，在沟通时就能用更少的词汇来讨论，并且不需要了解底层细节。
-二、创建型 单例 简单工厂 工厂方法 抽象工厂 生成器 原型模式 三、行为型 责任链 命令 解释器 迭代器 中介者 备忘录 观察者 状态 策略 模板方法 访问者 空对象 四、结构型 适配器 桥接 组合 装饰 外观 享元 代理 参考资料 弗里曼. Head First 设计模式 [M]. 中国电力出版社, 2007. Gamma E. 设计模式: 可复用面向对象软件的基础 [M]. 机械工业出版社, 2007. Bloch J. Effective java[M]. Addison-Wesley Professional, 2017. Design Patterns Design patterns implemented in Java The breakdown of design patterns in JDK </description>
-    </item>
-    
   </channel>
 </rss>
