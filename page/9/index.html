@@ -213,6 +213,99 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/package.json/">
+                            <h2 class="post-title">
+                                package.json.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                package.json files 字段 files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
+1 2 3 4 5 6 7 8 9 10 { &#34;name&#34;: &#34;@adam_baldwin/wombats&#34;, &#34;version&#34;: &#34;1.0.0&#34;, &#34;description&#34;: &#34;&#34;, &#34;main&#34;: &#34;index.js&#34;, &#34;files&#34;: [ &#34;index.js&#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
+项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
+以下文件，发布的时候总是会包含。
+package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
+以下文件，发布的时候总是会被排除。
+.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .npmrc node_modules config.gypi *.orig package-lock.json 基本上，npm 会发布files字段指定的文件和目录，以及那些总是会包含在内的文件（比如package.json），然后再除去那些被其他规则排除的文件和目录。
+npm-packlist 模块会列出所有将要打包发布的文件和模块。npm pack命令则会将那些将要发布的内容打成一个tgz压缩包，放在项目的根目录下。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/publish/">
+                            <h2 class="post-title">
+                                publish.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                发布 发布标签 npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
+新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
+这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
+1 $ npm install &lt;package&gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
+解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
+1 $ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
+安装时，必须指定这个标签，才能安装到3.2.14。
+1 2 3 $ npm install &lt;package&gt;@previous # 或者 $ npm install &lt;package&gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
+1 2 3 $ npm install &lt;package&gt; # 等同于 $ npm install &lt;package&gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
+1 2 3 4 5 # 发布 $ npm publish --tag=next # 安装 $ npm publish &lt;package&gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。
+等到新版本足够可靠以后，再把latest标签指定到新版本。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/scripts/">
+                            <h2 class="post-title">
+                                scripts.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                脚本功能 npm run npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
+1 2 3 4 5 6 7 8 9 10 11 12 { &#34;name&#34;: &#34;myproject&#34;, &#34;devDependencies&#34;: { &#34;jshint&#34;: &#34;latest&#34;, &#34;browserify&#34;: &#34;latest&#34;, &#34;mocha&#34;: &#34;latest&#34; }, &#34;scripts&#34;: { &#34;lint&#34;: &#34;jshint **.js&#34;, &#34;test&#34;: &#34;mocha test/&#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
+npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
+npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
+npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。
+npm run会创建一个Shell，执行指定的命令，并临时将node_modules/.bin加入PATH变量，这意味着本地模块可以直接运行。
+举例来说，你执行ESLint的安装命令。
+1 $ npm i eslint --save-dev 运行上面的命令以后，会产生两个结果。首先，ESLint被安装到当前目录的node_modules子目录；其次，node_modules/.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/yarn/">
                             <h2 class="post-title">
                                 yarn.md
@@ -410,91 +503,6 @@ npx会将所有参数原样传入模块内部。
 1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
 1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
 1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
-                            <h2 class="post-title">
-                                npm-token.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm token npm token命令用来管理认证令牌。
-npm token list命令列出所有激活的认证令牌。
-1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
-npm token create命令生成一个新的认证令牌。
-1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
-npm token revoke命令收回令牌。
-1 $ npm token revoke &lt;token|id&gt; 
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/timer/">
-                            <h2 class="post-title">
-                                timer
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                定时器 process.nextTick()会立即执行回调函数。 微任务队列。
-setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
-setImmediate()会在下一轮执行回调函数。
-定时器在 IO 操作的回调函数之前执行。
-Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/fs/">
-                            <h2 class="post-title">
-                                fs
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
-1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
-配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
-配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
-stream 以事件的形式获取。
-1 2 3 4 5 6 readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;+chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
-1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.
                         
                             </div>
                         </a>

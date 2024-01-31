@@ -213,6 +213,91 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
+                            <h2 class="post-title">
+                                npm-token.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm token npm token命令用来管理认证令牌。
+npm token list命令列出所有激活的认证令牌。
+1 $ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
+npm token create命令生成一个新的认证令牌。
+1 $ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&lt;cidr-ranges&gt;参数用来指定令牌生效的 IP 地址范围。
+npm token revoke命令收回令牌。
+1 $ npm token revoke &lt;token|id&gt; 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/timer/">
+                            <h2 class="post-title">
+                                timer
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                定时器 process.nextTick()会立即执行回调函数。 微任务队列。
+setImmediate()， clearImmediate() setImmediate(). It can be passed to clearImmediate()
+setImmediate()会在下一轮执行回调函数。
+定时器在 IO 操作的回调函数之前执行。
+Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/fs/">
+                            <h2 class="post-title">
+                                fs
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                fs 模块 fs.createReadStream() fs.createReadStream方法读取一个文件，以 stream 的形式返回。
+1 2 3 4 const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
+配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
+配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
+stream 以事件的形式获取。
+1 2 3 4 5 6 readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;+chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
+1 2 3 4 5 6 7 8 9 async function main(inputFilePath) { const readStream = fs.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/promise/">
                             <h2 class="post-title">
                                 promise
@@ -391,124 +476,6 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
                         <p class="post-meta">
                         
                             Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/shell/">
-                            <h2 class="post-title">
-                                Shell 简介
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/functional-programming/">
-                            <h2 class="post-title">
-                                Functional Programming
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
-在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
-Introduction to Scheme R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
-Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
-Expressions Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：
-1 2 &gt; (quotient 10 2) 5 Scheme 只使用前缀符号。操作符通常是符号，如 + 和 *。复合表达式可以嵌套，也可以跨一行以上：
-1 2 3 4 5 6 7 8 9 10 11 12 &gt; (+ (* 3 5) (- 10 6)) 19 &gt; (+ (* 3 (+ (* 2 4) (+ 3 5) ) ) (+ (- 10 7) 6 ) ) 57 对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Wednesday, October 18, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/read/%E4%BA%BA%E4%BB%B6/">
-                            <h2 class="post-title">
-                                《人件》读书笔记
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                一、书名和作者 《人件》 作者： Tom DeMarco Timothy Lister 二、书籍概览 主要论点和结构：软件开发不仅仅是技术问题，更是管理问题。它强调了管理人力资源的关键性，特别是在软件领域，由于脑力劳动的特性，软件开发者与传统的体力劳动者有很大的不同。这本书提供了许多实际的管理方法，以促进团队协作，提高生产效率，同时提供了实例和案例来支持这些观点。 目标读者和应用场景：该书的主要目标读者是软件组织的管理者，项目经理，团队领导者以及任何对软件开发和团队管理感兴趣的人。它适用于各种软件开发项目，从小型创业公司到大型企业。这本书提供的原则和实践可以适用于各种团队管理场景，不仅限于软件开发。 三、核心观点与主题 1. 主题一: 管理人力资源 子观点1
-软件开发是一项知识密集型工作，与传统体力劳动有着明显的不同。因此，管理者应该鼓励开发人员参与关键决策，包括允许他们犯错。这种方式可以增强员工的责任感和参与度。
-子观点2
-尊重员工的个性和特征是至关重要的。每个人都有独特的特点，而好的管理应该能够适应并利用这些特点，从而提高团队的整体效能。
-实例或案例
-书中提到了在软件开发中采用&quot;风险谋而后动&quot;的方法，鼓励大规模头脑风暴以应对压力和风险的增加。这种方法反映了管理者如何应对团队中不同个性和需求的实际案例。
-在过去，曾经采取过一种措施，以防止某产品线或团队在非常规发布日期（不在周二或周四的发布日）进行紧急发布。有的公司前台放置了一个看板，上面贴着一张猪头图片，这个看板每个人都能看到。尽管这个措施看似是一种嬉笑怒骂的方式来阻止团队进行紧急发布，但它实际上起到了作用，紧急发布次数从每周数十次骤减至十几次。然而，这个措施也带来了一些负面影响：
-开发人员不再愿意修复一些小问题以优化用户体验，即使这些问题很容易修复，他们也会等到下一次正常发布日才会发布。例如，有一个SQL查询较慢，但不会严重影响性能，开发人员也会推迟修复，等待下一次发布日再处理。
-开发人员更加谨慎地对待新技术的引入，更倾向于使用已存在的代码，而不愿意自己编写新的代码，即使明知这些已存在的代码在质量和性能方面不够理想。例如，他们可能选择继续使用老员工编写的工具类，而不愿意自己编写新的反应式编程框架，尽管明白这些工具类的性能不如自行实现的框架。
-2. 主题二: 工作压力和质量 子观点1
-项目经理通常试图通过紧张的项目时间表来提高生产效率，但书中强调，压力并不一定导致更高质量或更快速的工作。
-子观点2
-过多的压力可能降低员工的工作满意度，导致低质量的工作和潜在的缺陷。
-实例或案例
-书中提到，项目经理常常抱怨开发人员的代码质量低下，但事实上，这种低质量可能是由于施加的过多压力造成的。
-举例来说，假设一个软件开发项目的截止日期紧迫，项目经理对开发团队施加了巨大的时间压力，要求在非常有限的时间内完成大量的工作。开发人员可能发现他们不得不加班工作，几乎每天都在高压下工作，以满足项目经理设定的紧急截止日期。
-在这种情况下，开发人员可能感到极大的焦虑和紧张。他们可能被迫忽略了代码的质量，因为他们没有足够的时间来执行详尽的测试和质量保证。他们可能会采用快速而不经思考的解决方案，以满足紧迫的交付需求，而不是投入时间来设计和实施更为健壮、可扩展的代码。
-结果，虽然项目可能会按时交付，但代码的质量可能会因为过度的时间压力而下降。这种低质量的代码可能导致后续的问题和缺陷，需要更多的时间和资源来修复，从而反而增加了整体的开发和维护成本。
-3. 主题三: 雇佣合适的人 子观点1
-雇佣合适的人比试图改变不合适的人更为有效。如果一个人一开始就不适合特定职位，那么即使经过培训和努力，他们可能永远也不会胜任。
-子观点2
-强调个性特征比知识因素更为重要。在招聘中，不应只寻找与现有员工相似的候选人，而应更加注重个体特点。
-实例或案例
-书中提到，强制性规则和流程会降低员工的活力和创新性。相反，应鼓励员工尝试新事物，以激发团队的创造力。
-一个具体的例子是，某个开发人员可能决定尝试一个全新的编程语言，因为他认为它可以更好地满足项目的需求。在严格的团队中，这种尝试可能会受到限制，但在开放的团队中，他们鼓励这种尝试，因为他们相信员工的创新可能会带来更好的结果。
-4. 主题四: 提高团队生产力 子观点1
-团队通常效率低于个体，但具有团结性的团队有更高的成就感。共同的目标和低流动率是团结团队的标志。
-子观点2
-优秀的项目经理在人际关系处理方面表现出色，鼓励团队成员与产品相关联。
-实例或案例
-书中提到自由协作活动，如晚餐或聚会，可以提高员工参与度，让他们感到自己未受管理。自由协作活动使员工感到不受管理，激发了他们的自发创新和合作精神。这种自由的环境可以改善员工的参与度，让他们更有归属感，同时也促进了创造力和团队协作。通过这样的自由交流，公司最终受益于更积极的员工和更多的创新点子。
-四、亮点与启发 最有影响的观点或实例:
-本书中最有影响的观点之一是管理人力资源的关键性。管理人员在软件开发过程中的作用常常被低估，但这本书强调了管理在成功的项目完成中所起的关键作用。以下是关于这个观点的详细阐述：这本书深刻地强调了软件开发是一项高度知识密集的工作，与传统的体力劳动有着显著的不同。在这个背景下，管理人员需要理解软件开发人员的需求和心理特点，以有效地领导他们。本书提出了一种管理方法，即尊重员工的个性和特征，这不仅提高了员工的工作满意度，还促进了更高的生产力。更进一步，书中认为，管理者应该鼓励开发人员参与关键决策，包括允许他们犯错误。这种方法增强了员工的责任感和参与感，使他们更有动力投入工作。管理者应理解，软件开发者大多是对自己的工作充满热情的人，因此需要以一种充满尊重和理解的方式来管理他们。
-另一个强调的观点是关于强制加班无意义。尽管许多项目经理试图通过延长员工的工作时间来提高生产力，但本书提醒我们，加班不一定会导致更好的结果。强制加班可能会导致员工疲劳、降低工作质量，甚至加速员工的离职。这一观点在当前强调工作与生活平衡的时代尤为重要。
-对个人或专业发展的启示:
-软件开发领域不仅仅关乎技术，更关乎管理。管理者应该以员工的需求和个性为重，鼓励创新和自主决策，以提高团队的效能。这本书提醒我们，软件开发是一项协作的工作，管理者的作用是创造一个积极的工作环境，促进团队的成功。这一观点不仅适用于软件开发，还可以应用于各种其他领域的团队管理。
-五、批评与局限性 任何有争议、模糊或过时的信息:
-尽管《人件》中提到了强制加班对于软件开发团队的负面影响，仍然有一些管理者可能会认为强制加班是提高生产力的有效方法。这涉及到一个争议点，即是否迫使员工加班在某些情况下可以提高项目的速度和完成时间。一些管理者可能会坚持认为，紧迫的项目时程要求在特殊情况下需要额外的工作时间，因此强制加班可能是必要的。
-然而，这一观点通常忽略了员工的工作生活平衡和健康问题。长期强制加班可能会导致员工疲惫、焦虑和生活质量下降，这不仅会降低他们的工作效率，还可能导致员工流失。因此，强制加班通常被视为不可持续的管理方法，特别是在现代强调员工福祉和工作与生活平衡的环境中。
-可能的不足或缺陷:
-《人件》中提出的方法在所有情况下是否都适用可能是一个问题。一些团队可能会发现某些原则在其特定情境下不适用。例如，某些项目可能因其特殊性质而需要更紧张的时间表，这可能会涉及到一定程度的加班。因此，管理者需要灵活运用《人件》中的原则，以适应其项目的特定需求。
-另一个潜在的不足是，一些管理者可能发现难以完全接受本书中提出的管理理念。改变传统的管理方法需要时间和努力，而一些组织可能对采用这些新方法感到抵触。管理者需要克服这种抵触情感，才能真正实施《人件》中的管理原则。
-此外，书中的一些建议和案例也可能在不同文化和国家之间产生不同的效果。因为文化、法规和员工期望因地区而异，所以需要谨慎考虑如何将这些原则应用到不同的全球背景中。
-六、实际应用和拓展 在实际工作/学习中如何应用这些概念:
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Wednesday, October 18, 2023
                             
                             
                         
