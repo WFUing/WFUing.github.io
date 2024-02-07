@@ -213,6 +213,61 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-whoami/">
+                            <h2 class="post-title">
+                                npm-whoami.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm whoami npm whoami命令返回当前登录的 npm 用户名。
+1 $ npm whoami 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npx/">
+                            <h2 class="post-title">
+                                npx.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npx 使用教程 npm 从5.2版开始，增加了 npx 命令，它有很多用处。
+Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
+1 $ npm install -g npx 调用项目安装的模块 npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
+1 $ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的scripts字段里面， 如果想在命令行下调用，必须像下面这样。
+1 2 # 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
+1 $ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。
+1 2 # 等同于 ls $ npx ls 注意，Bash 内置的命令不在$PATH里面，所以不能用。比如，cd是 Bash 命令，因此就不能用npx cd。
+避免全局安装模块 除了调用项目内部模块，npx 还能避免全局安装的模块。比如，create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/package.json/">
                             <h2 class="post-title">
                                 package.json.md
@@ -455,68 +510,6 @@ npx会将所有参数原样传入模块内部。
                     </div>
                     <hr>
                     
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-link/">
-                            <h2 class="post-title">
-                                npm-link.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm link 命令 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
-一种方法是使用npm install的--save参数。
-1 $ npm install --no-save &lt;模块的本地路径h&gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
-另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
-它分成两步，第一步先在本地模块的目录里，执行npm link。
-1 $ npm link 第二步是到你的应用目录，执行npm link &lt;本地模块名&gt;，在node_modules目录里面产生本地模块的符号链接。
-1 $ npm link &lt;本地模块名&gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
-1 $ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
-1 $ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
-1 $ npm unlink 
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
-                            <h2 class="post-title">
-                                npm-tag.md
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
-发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
-如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
-1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
-下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
-1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
-1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
-1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Monday, October 23, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
                     </div>
 
                     
@@ -633,6 +626,8 @@ npx会将所有参数原样传入模块内部。
                         <hr class="hidden-sm hidden-xs">
                         <h5>FEATURED TAGS</h5>
                         <div class="tags">
+                            
+                            
                             
                             
                             
@@ -775,6 +770,8 @@ npx会将所有参数原样传入模块内部。
                                     <a href="/tags/serverless" title="serverless">
                                         serverless
                                     </a>
+                            
+                            
                             
                             
                             

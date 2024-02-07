@@ -213,6 +213,68 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-link/">
+                            <h2 class="post-title">
+                                npm-link.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm link 命令 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
+一种方法是使用npm install的--save参数。
+1 $ npm install --no-save &lt;模块的本地路径h&gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
+另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
+它分成两步，第一步先在本地模块的目录里，执行npm link。
+1 $ npm link 第二步是到你的应用目录，执行npm link &lt;本地模块名&gt;，在node_modules目录里面产生本地模块的符号链接。
+1 $ npm link &lt;本地模块名&gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
+1 $ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
+1 $ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
+1 $ npm unlink 
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-tag/">
+                            <h2 class="post-title">
+                                npm-tag.md
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                npm tag npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
+发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
+如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
+1 $ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
+下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
+1 2 3 4 5 # 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
+1 2 3 $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
+1 2 3 $ npm dist-tag ls # 或者 $ npm view [模块名] dist-tags 删除已经发布的标签。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Monday, October 23, 2023
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/language/nodejs/npm/npm-token/">
                             <h2 class="post-title">
                                 npm-token.md
@@ -432,58 +494,6 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
                     </div>
                     <hr>
                     
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/devoops/git/git-principle/">
-                            <h2 class="post-title">
-                                Git Principle
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Git 和其它版本控制系统（包括 Subversion 和近似工具）的主要差别在于 Git 对待数据的方式。 从概念上来说，其它大部分系统以文件变更列表的方式存储信息，而 Git 是把数据看作是对小型文件系统的一系列快照。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/devoops/git/git-tutorial/">
-                            <h2 class="post-title">
-                                Git Tutorial
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                Git 帮助手册 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
-本节选择性介绍 git 中比较常用的命令行场景。
-安装 （1）Debian/Ubuntu 环境安装
-如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
-1 2 3 4 5 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
-如果你使用的系统是 Centos/RedHat ，安装命令为：
-1 2 3 4 5 $ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Thursday, October 19, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
                     </div>
 
                     
@@ -600,6 +610,8 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
                         <hr class="hidden-sm hidden-xs">
                         <h5>FEATURED TAGS</h5>
                         <div class="tags">
+                            
+                            
                             
                             
                             
@@ -742,6 +754,8 @@ node命令的-e参数，实际上就是在 REPL 环境运行代码。
                                     <a href="/tags/serverless" title="serverless">
                                         serverless
                                     </a>
+                            
+                            
                             
                             
                             

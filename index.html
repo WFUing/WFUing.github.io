@@ -213,6 +213,66 @@ window.MathJax = {
                     <div data-pagefind-ignore="all">
                     
                     <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/">
+                            <h2 class="post-title">
+                                java元注解@interface
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                jdk1.5 jdk1.5起开始提供了4个元注解，用来定义自定义注解的注解，它们分别是：
+@Target 指定注解使用的目标范围（类、方法、字段等），其参考值见类的定义：java.lang.annotation.ElementType
+@Documented 指定被标注的注解会包含在javadoc中。
+@Retention 指定注解的生命周期（源码、class文件、运行时），其参考值见类的定义：java.lang.annotation.RetentionPolicy
+@Inherited 指定子类可以继承父类的注解，只能是类上的注解，方法和字段的注解不能继承。即如果父类上的注解是 @Inherited 修饰的就能被子类继承。
+jdk1.8 jdk1.8又提供了以下两个元注解
+@Native 指定字段是一个常量，其值引用native code。
+@Repeatable 注解上可以使用重复注解，即可以在一个地方可以重复使用同一个注解，像 spring 中的包扫描注解就使用了这个。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 @Retention (RetentionPolicy.RUNTIME) @Target (ElementType.TYPE) @Documented @Repeatable(ComponentScans.class) public @interface ComponentScan { } @Retention (RetentionPolicy.RUNTIME) @Target (ElementType.TYPE) @Documented public @interface ComponentScans { } 所有元注解定义在 java.lang.annotation 包下面
+其中 Annotation 是注解的基本接口，所有的注解都继承这个接口。
+看下 @Autowired 注解的实现
+其实就是继承了Annotation接口。
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Wednesday, February 7, 2024
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
+                        <a href="https://WFUing.github.io/post/tech/language/java/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/">
+                            <h2 class="post-title">
+                                Spring Boot 的核心注解
+                            </h2>
+                        
+                            <div class="post-content-preview">
+                        
+                                @SpringBootApplication 1、@SpringBootApplication 这是 Spring Boot 最最最核心的注解，用在 Spring Boot 主类上，标识这是一个 Spring Boot 应用，用来开启 Spring Boot 的各项能力。
+其实这个注解就是 @SpringBootConfiguration、@EnableAutoConfiguration、@ComponentScan 这三个注解的组合，也可以用这三个注解来代替 @SpringBootApplication 注解。看下 @SpringBootApplication 注解的源码，一切明了！
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 @Target(ElementType.TYPE) @Retention(RetentionPolicy.RUNTIME) @Documented @Inherited @SpringBootConfiguration @EnableAutoConfiguration @ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class), @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) }) public @interface SpringBootApplication { ... } 示例代码
+1 2 3 4 5 6 7 8 9 10 package com.
+                        
+                            </div>
+                        </a>
+                        <p class="post-meta">
+                        
+                            Posted by WFUing on Wednesday, February 7, 2024
+                            
+                            
+                        
+                        </p>
+
+                    </div>
+                    <hr>
+                    
+                    <div class="post-preview">
                         <a href="https://WFUing.github.io/post/tech/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/%E5%8D%97%E8%BD%AF%E9%AB%98%E7%BA%A7%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/">
                             <h2 class="post-title">
                                 高级软件设计复习
@@ -236,7 +296,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%9B%AE%E5%BD%95/">
                             <h2 class="post-title">
                                 设计模式-目录
                             </h2>
@@ -260,7 +320,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%87%E5%BF%98%E5%BD%95/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%87%E5%BF%98%E5%BD%95/">
                             <h2 class="post-title">
                                 设计模式 - 备忘录
                             </h2>
@@ -283,7 +343,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/">
                             <h2 class="post-title">
                                 设计模式 - 策略
                             </h2>
@@ -306,7 +366,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/">
                             <h2 class="post-title">
                                 设计模式 - 抽象工厂
                             </h2>
@@ -329,7 +389,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8/">
                             <h2 class="post-title">
                                 设计模式 - 迭代器
                             </h2>
@@ -352,7 +412,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85/">
                             <h2 class="post-title">
                                 设计模式 - 访问者
                             </h2>
@@ -375,7 +435,7 @@ window.MathJax = {
                     <hr>
                     
                     <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/">
+                        <a href="https://WFUing.github.io/post/tech/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/">
                             <h2 class="post-title">
                                 设计模式 - 工厂方法
                             </h2>
@@ -383,52 +443,6 @@ window.MathJax = {
                             <div class="post-content-preview">
                         
                                 定义了一个创建对象的接口，但由子类决定要实例化哪个类。工厂方法把实例化操作推迟到子类。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Sunday, December 31, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85/">
-                            <h2 class="post-title">
-                                设计模式 - 观察者
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                定义对象之间的一对多依赖，当一个对象状态改变时，它的所有依赖都会收到通知并且自动更新状态。
-                        
-                            </div>
-                        </a>
-                        <p class="post-meta">
-                        
-                            Posted by WFUing on Sunday, December 31, 2023
-                            
-                            
-                        
-                        </p>
-
-                    </div>
-                    <hr>
-                    
-                    <div class="post-preview">
-                        <a href="https://WFUing.github.io/post/tech/architecture/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/">
-                            <h2 class="post-title">
-                                设计模式 - 简单工厂
-                            </h2>
-                        
-                            <div class="post-content-preview">
-                        
-                                在创建一个对象时不向客户暴露内部细节，并提供一个创建对象的通用接口。
                         
                             </div>
                         </a>
@@ -555,6 +569,8 @@ window.MathJax = {
                         <hr class="hidden-sm hidden-xs">
                         <h5>FEATURED TAGS</h5>
                         <div class="tags">
+                            
+                            
                             
                             
                             
@@ -697,6 +713,8 @@ window.MathJax = {
                                     <a href="/tags/serverless" title="serverless">
                                         serverless
                                     </a>
+                            
+                            
                             
                             
                             
