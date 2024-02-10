@@ -957,7 +957,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/algorithm/leetcode/</loc>
+    <loc>https://WFUing.github.io/leetcode/</loc>
     <lastmod>2023-10-12T17:05:17+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -983,6 +983,12 @@
   <url>
     <loc>https://WFUing.github.io/posts/language/code-generation/a-guide-to-code-generation/</loc>
     <lastmod>2023-10-12T11:40:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/todo/</loc>
+    <lastmod>2023-10-01T08:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
