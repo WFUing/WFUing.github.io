@@ -1,90 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>dsl on Waiting For You</title>
+    <title>dsl on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/dsl/</link>
-    <description>Recent content in dsl on Waiting For You</description>
+    <description>Recent content in dsl on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Sun, 17 Dec 2023 22:23:15 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/dsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cuelang 简介</title>
-      <link>https://WFUing.github.io/post/tech/language/dsl/cuelang/</link>
+      <link>https://WFUing.github.io/posts/language/dsl/cuelang/</link>
       <pubDate>Sun, 17 Dec 2023 22:23:15 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/dsl/cuelang/</guid>
+      <guid>https://WFUing.github.io/posts/language/dsl/cuelang/</guid>
       <description>CUE 是一种开源数据验证语言和推理引擎，源于逻辑编程。虽然该语言不是通用编程语言，但它有许多应用，如数据验证、数据模板、配置、查询、代码生成甚至脚本编写。推理引擎可用于验证代码中的数据，或将其作为代码生成管道的一部分。</description>
+      
     </item>
     
     <item>
       <title>iot 相关 dsl</title>
-      <link>https://WFUing.github.io/post/tech/language/dsl/iot-dsl/</link>
+      <link>https://WFUing.github.io/posts/language/dsl/iot-dsl/</link>
       <pubDate>Thu, 16 Nov 2023 21:46:20 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/dsl/iot-dsl/</guid>
-      <description>vorto 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 InformationModel: &amp;#39;vortolang&amp;#39; 1.0 &amp;#39;namespace&amp;#39; qualifiedName &amp;#39;version&amp;#39; version (&amp;#39;displayname&amp;#39; string)? (&amp;#39;description&amp;#39; string)? (&amp;#39;category&amp;#39; ID(&amp;#39;/&amp;#39; ID)*)? (modelReference)* &amp;#39;infomodel&amp;#39; ID &amp;#39;{&amp;#39; &amp;#39;functionblocks&amp;#39; &amp;#39;{&amp;#39; (functionblockProperty)* &amp;#39;}&amp;#39; ; functionblockProperty: (&amp;#39;mandatory&amp;#39; | &amp;#39;optional&amp;#39;)? (&amp;#39;multiple&amp;#39;)? ID &amp;#39;as&amp;#39; [FunctionBlock::ID | qualifiedName] (description)? qualifiedName: ID (&amp;#39;.&amp;#39; ID)*; version : int(&amp;#39;.</description>
+      <guid>https://WFUing.github.io/posts/language/dsl/iot-dsl/</guid>
+      <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.0 &amp;#39;namespace&amp;#39; qualifiedName &amp;#39;version&amp;#39; version (&amp;#39;displayname&amp;#39; string)? (&amp;#39;description&amp;#39; string)? (&amp;#39;category&amp;#39; ID(&amp;#39;/&amp;#39; ID)*)? (modelReference)* &amp;#39;infomodel&amp;#39; ID &amp;#39;{&amp;#39; &amp;#39;functionblocks&amp;#39; &amp;#39;{&amp;#39; (functionblockProperty)* &amp;#39;}&amp;#39; ; functionblockProperty: (&amp;#39;mandatory&amp;#39; | &amp;#39;optional&amp;#39;)? (&amp;#39;multiple&amp;#39;)? ID &amp;#39;as&amp;#39; [FunctionBlock::ID | qualifiedName] (description)? qualifiedName: ID (&amp;#39;.&amp;#39; ID)*; version : int(&amp;#39;.&amp;#39; int)*(&amp;#39;-&amp;#39;ID)?; ID: &amp;#39;^&amp;#39;?(&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;) (&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;|&amp;#39;0&amp;#39;..&amp;#39;9&amp;#39;)* ; description: STRING modelReference: &amp;#39;using&amp;#39; qualifiedName &amp;#39;;&amp;#39; version; vortolang 1.</description>
+      
     </item>
     
     <item>
       <title>langium简介</title>
-      <link>https://WFUing.github.io/post/tech/language/dsl/langium/</link>
+      <link>https://WFUing.github.io/posts/language/dsl/langium/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/dsl/langium/</guid>
-      <description>Usage 1 Langium download https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2. 目录结构</description>
+      <guid>https://WFUing.github.io/posts/language/dsl/langium/</guid>
+      <description>Usage # 1 Langium download # https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts # 1. The Grammar Language
+document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2.</description>
+      
     </item>
     
     <item>
       <title>xtext简介</title>
-      <link>https://WFUing.github.io/post/tech/language/dsl/xtext/</link>
+      <link>https://WFUing.github.io/posts/language/dsl/xtext/</link>
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/dsl/xtext/</guid>
-      <description>Usage 项目创建 XText 开发一个新的语言
+      <guid>https://WFUing.github.io/posts/language/dsl/xtext/</guid>
+      <description>Usage # 项目创建 # XText 开发一个新的语言
 定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构
-xxx.dsl 定义 DSL 的核心处理类，包括 Format，Scope，Validation，Code Generation xxx.</description>
+使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构</description>
+      
     </item>
     
     <item>
       <title>Antlr Code Generation</title>
-      <link>https://WFUing.github.io/post/tech/language/code-generation/antlr-code-generation/</link>
+      <link>https://WFUing.github.io/posts/language/code-generation/antlr-code-generation/</link>
       <pubDate>Sun, 15 Oct 2023 09:52:03 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/code-generation/antlr-code-generation/</guid>
+      <guid>https://WFUing.github.io/posts/language/code-generation/antlr-code-generation/</guid>
       <description>ANTLR 是 &lt;strong&gt;AN&lt;/strong&gt;other &lt;strong&gt;T&lt;/strong&gt;ool for &lt;strong&gt;L&lt;/strong&gt;anguage &lt;strong&gt;R&lt;/strong&gt;ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。</description>
+      
     </item>
     
     <item>
       <title>A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI</title>
-      <link>https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/</link>
+      <link>https://WFUing.github.io/posts/language/code-generation/asyncapi-code-generator/</link>
       <pubDate>Fri, 13 Oct 2023 17:27:37 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/</guid>
-      <description>Background IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
-事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法：OpenAPI（源自 Swagger）。
-Introduction 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
+      <guid>https://WFUing.github.io/posts/language/code-generation/asyncapi-code-generator/</guid>
+      <description>Background # IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
+事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法： OpenAPI（源自 Swagger）。
+Introduction # 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
 AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
 在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
 AsyncAPI 最初的贡献就是上图中展示的方法。
-AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
-有了 AsyncAPI 元模型和作为符合模型的应用程序接口规范，就可以通过执行 M2T 转换（生成内部 DSL）来继续工作流程。目前，AsyncAPI Toolkit 支持 Java 语言，并生成一个库，通过提供流畅的 API 来协助开发人员创建、发布和接收格式良好的消息。
-值得注意的是，由于这些架构都是基于 message 的，因此数据建模起着至关重要的作用。因此，我们在上述工作流程中使用了另一种（图形化）具体语法，重点是对要交换的消息进行建模。这可用于引导 AsyncAPI JSON 定义，随后可对其进行手动完善。</description>
+AsyncAPI Toolkit # 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。</description>
+      
     </item>
     
     <item>
       <title>Openapi Code Generator</title>
-      <link>https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/</link>
+      <link>https://WFUing.github.io/posts/language/code-generation/openapi-code-generator/</link>
       <pubDate>Fri, 13 Oct 2023 16:46:21 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/</guid>
+      <guid>https://WFUing.github.io/posts/language/code-generation/openapi-code-generator/</guid>
       <description>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
-如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
-Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
+如何使用 OpenAPI # 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
+Create OpenAPI spec # 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
 使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
 OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
-1 2 3 4 5 6 7 8 9 openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.0&amp;#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。</description>
+openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.</description>
+      
     </item>
     
   </channel>

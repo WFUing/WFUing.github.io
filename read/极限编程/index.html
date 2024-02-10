@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>《极限编程》读书笔记 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="《极限编程》读书笔记 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="主要介绍了极限编程（Extreme Programming，XP）的理念和实践方法。作者Kent Beck以问题为出发点，提出了解决软件开发中困扰人们的风险和成本问题的方法。书中分为两部分，第一部分探讨了问题，第二部分提出了解决方案。适合软件开发领域的从业者，尤其是团队领导者和项目经理。适用于那些希望改善软件开发流程、提高质量和降低成本的团队。" />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="《极限编程》读书笔记" />
+<meta property="og:description" content="主要介绍了极限编程（Extreme Programming，XP）的理念和实践方法。作者Kent Beck以问题为出发点，提出了解决软件开发中困扰人们的风险和成本问题的方法。书中分为两部分，第一部分探讨了问题，第二部分提出了解决方案。适合软件开发领域的从业者，尤其是团队领导者和项目经理。适用于那些希望改善软件开发流程、提高质量和降低成本的团队。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/" /><meta property="og:image" content="https://WFUing.github.io/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/featured.png" /><meta property="article:section" content="read" />
+<meta property="article:published_time" content="2023-12-05T13:16:22+08:00" />
+<meta property="article:modified_time" content="2023-12-05T13:16:22+08:00" />
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/featured.png" /><meta name="twitter:title" content="《极限编程》读书笔记"/>
+<meta name="twitter:description" content="主要介绍了极限编程（Extreme Programming，XP）的理念和实践方法。作者Kent Beck以问题为出发点，提出了解决软件开发中困扰人们的风险和成本问题的方法。书中分为两部分，第一部分探讨了问题，第二部分提出了解决方案。适合软件开发领域的从业者，尤其是团队领导者和项目经理。适用于那些希望改善软件开发流程、提高质量和降低成本的团队。"/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "阅读",
+    "name": "《极限编程》读书笔记",
+    "headline": "《极限编程》读书笔记",
+    
+    "abstract": "主要介绍了极限编程（Extreme Programming，XP）的理念和实践方法。作者Kent Beck以问题为出发点，提出了解决软件开发中困扰人们的风险和成本问题的方法。书中分为两部分，第一部分探讨了问题，第二部分提出了解决方案。适合软件开发领域的从业者，尤其是团队领导者和项目经理。适用于那些希望改善软件开发流程、提高质量和降低成本的团队。",
+    "inLanguage": "zh-cn",
+    "url" : "https:\/\/WFUing.github.io\/read\/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-12-05T13:16:22\u002b08:00",
+    "datePublished": "2023-12-05T13:16:22\u002b08:00",
+    
+    "dateModified": "2023-12-05T13:16:22\u002b08:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "95"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      《极限编程》读书笔记
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-12-05 13:16:22 &#43;0800 &#43;0800">5 December 2023</time><span class="px-2 text-primary-500">&middot;</span><span>95 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_read/极限编程/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一书名和作者">一、书名和作者</a></li>
+    <li><a href="#二书籍概览">二、书籍概览</a></li>
+    <li><a href="#三核心观点与主题">三、核心观点与主题</a>
+      <ul>
+        <li><a href="#1-主题一-风险解决之道">1. 主题一: 风险解决之道</a></li>
+        <li><a href="#2-主题二-xp的核心价值观和基本原则">2. 主题二: XP的核心价值观和基本原则</a></li>
+        <li><a href="#3-主题三-xp的解决方案和管理策略">3. 主题三: XP的解决方案和管理策略</a></li>
+        <li><a href="#4-主题四-xp的全生命周期和角色分工">4. 主题四: XP的全生命周期和角色分工</a></li>
+      </ul>
+    </li>
+    <li><a href="#四亮点与启发">四、亮点与启发</a></li>
+    <li><a href="#五批评与局限性">五、批评与局限性</a></li>
+    <li><a href="#六实际应用和拓展">六、实际应用和拓展</a></li>
+    <li><a href="#七总结与评价">七、总结与评价</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一书名和作者">一、书名和作者</a></li>
+    <li><a href="#二书籍概览">二、书籍概览</a></li>
+    <li><a href="#三核心观点与主题">三、核心观点与主题</a>
+      <ul>
+        <li><a href="#1-主题一-风险解决之道">1. 主题一: 风险解决之道</a></li>
+        <li><a href="#2-主题二-xp的核心价值观和基本原则">2. 主题二: XP的核心价值观和基本原则</a></li>
+        <li><a href="#3-主题三-xp的解决方案和管理策略">3. 主题三: XP的解决方案和管理策略</a></li>
+        <li><a href="#4-主题四-xp的全生命周期和角色分工">4. 主题四: XP的全生命周期和角色分工</a></li>
+      </ul>
+    </li>
+    <li><a href="#四亮点与启发">四、亮点与启发</a></li>
+    <li><a href="#五批评与局限性">五、批评与局限性</a></li>
+    <li><a href="#六实际应用和拓展">六、实际应用和拓展</a></li>
+    <li><a href="#七总结与评价">七、总结与评价</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <h2 class="relative group">一、书名和作者 
+    <div id="一书名和作者" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%80%e4%b9%a6%e5%90%8d%e5%92%8c%e4%bd%9c%e8%80%85" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>《Extreme Programming Explained》</li>
+<li>作者：Kent Beck</li>
+</ul>
+<h2 class="relative group">二、书籍概览 
+    <div id="二书籍概览" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%ba%8c%e4%b9%a6%e7%b1%8d%e6%a6%82%e8%a7%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>主要论点和结构：该书主要介绍了极限编程（Extreme Programming，XP）的理念和实践方法。作者Kent Beck以问题为出发点，提出了解决软件开发中困扰人们的风险和成本问题的方法。书中分为两部分，第一部分探讨了问题，第二部分提出了解决方案。</li>
+<li>目标读者和应用场景：适合软件开发领域的从业者，尤其是团队领导者和项目经理。适用于那些希望改善软件开发流程、提高质量和降低成本的团队。</li>
+</ul>
+<h2 class="relative group">三、核心观点与主题 
+    <div id="三核心观点与主题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%89%e6%a0%b8%e5%bf%83%e8%a7%82%e7%82%b9%e4%b8%8e%e4%b8%bb%e9%a2%98" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">1. 主题一: 风险解决之道 
+    <div id="1-主题一-风险解决之道" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1-%e4%b8%bb%e9%a2%98%e4%b8%80-%e9%a3%8e%e9%99%a9%e8%a7%a3%e5%86%b3%e4%b9%8b%e9%81%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>子观点1</strong>XP对软件开发中基本问题的视角</p>
+<p>在软件开发中，作者将风险视为基本问题，强调了它对项目成功的影响。通过极限编程（XP）的价值观和原则，作者提供了一种解决风险的方法。XP鼓励团队通过沟通、简单性、反馈和勇气来处理风险，这些价值观有助于构建强大的团队文化，提高项目的成功概率。</p>
+<p><strong>子观点2</strong>四个变量的相互关系</p>
+<p>四个变量——范围、时间、资源和质量，构成了软件开发的基本元素。作者在书中强调这些变量之间的相互作用和关联，指出它们在项目中的调整可能影响其他变量。例如，更改项目的范围可能会影响时间和资源的分配。通过理解和平衡这些变量，团队可以更好地规划和执行项目，降低风险。</p>
+<p><strong>实例或案例</strong>变化需求的应对策略</p>
+<p>举例来说，假设一个软件项目的客户提出了新的功能需求，这可能影响项目的范围。在传统的开发方法中，这可能导致重新规划整个项目，增加时间和资源的需求。然而，XP提倡的灵活性使团队能够迅速适应这种变化。通过及时的沟通和简单的设计，团队可以快速调整项目范围，最小化对时间和资源的影响，从而降低变更的成本。</p>
+<h3 class="relative group">2. 主题二: XP的核心价值观和基本原则 
+    <div id="2-主题二-xp的核心价值观和基本原则" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2-%e4%b8%bb%e9%a2%98%e4%ba%8c-xp%e7%9a%84%e6%a0%b8%e5%bf%83%e4%bb%b7%e5%80%bc%e8%a7%82%e5%92%8c%e5%9f%ba%e6%9c%ac%e5%8e%9f%e5%88%99" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>子观点1</strong>XP的核心价值观</p>
+<p>极限编程（XP）的核心价值观包括沟通、简单性、反馈和勇气。这些价值观不仅仅是口号，而是在实践中体现出来的团队行为。沟通鼓励成员分享信息，简单性促使团队设计出最简洁的解决方案，反馈则确保持续改进，而勇气则使成员愿意面对困难。</p>
+<p><strong>子观点2</strong>基本原则的重要性</p>
+<p>基本原则是XP的指导方针，强调了回归基础、编码、测试、倾听和设计的重要性。这些原则提供了团队在整个开发周期中的指导，确保项目的可维护性和高质量。通过回归基础，团队保持一致性；编码和测试确保可靠性；倾听和设计促进创新和可维护性。</p>
+<p><strong>实例或案例</strong>实践中的XP价值观</p>
+<p>以沟通为例，团队成员可以使用日常站会来分享他们的进展和遇到的问题。这种开放的沟通方式有助于及时解决问题，保持团队的整体进度。在设计方面，持续的反馈循环确保了代码的不断改进。通过编写测试，团队能够更加自信地进行重构，改进系统设计而不担心引入错误。这些实践有助于构建高效、创新和可维护的软件。</p>
+<h3 class="relative group">3. 主题三: XP的解决方案和管理策略 
+    <div id="3-主题三-xp的解决方案和管理策略" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-%e4%b8%bb%e9%a2%98%e4%b8%89-xp%e7%9a%84%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88%e5%92%8c%e7%ae%a1%e7%90%86%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>子观点1</strong>XP的解决方案实践</p>
+<p>极限编程（XP）的解决方案涵盖了规划游戏、小版本发布、简单设计、测试、重构等核心实践。这些实践构成了XP的开发周期，强调了迭代和持续改进的重要性。规划游戏和小版本发布使团队能够更好地应对变化，简单设计和测试确保了高质量的代码，而重构则保持了代码的可维护性。</p>
+<p><strong>子观点2</strong>管理策略的重要性</p>
+<p>在管理策略方面，强调了分离业务和技术责任，同时提供了指标、辅导、跟踪和干预等工具。这种分离有助于团队专注于各自的专业领域，提高效率。同时，指标和辅导等工具提供了管理层更好地监控和指导团队的手段。</p>
+<p><strong>实例或案例</strong>小版本发布的灵活性</p>
+<p>以小版本发布为例，团队在每次发布中只引入少量新功能，这降低了风险，并使问题的定位更加容易。在一个迭代中，团队可能会遇到一些未预料的问题。通过及时的干预和辅导，团队能够快速调整，确保项目的成功。这种灵活性和实时的管理支持使XP在实践中更具可行性。</p>
+<h3 class="relative group">4. 主题四: XP的全生命周期和角色分工 
+    <div id="4-主题四-xp的全生命周期和角色分工" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%e4%b8%bb%e9%a2%98%e5%9b%9b-xp%e7%9a%84%e5%85%a8%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e5%92%8c%e8%a7%92%e8%89%b2%e5%88%86%e5%b7%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>子观点1</strong>XP在不同生命周期阶段的应用</p>
+<p>探讨了XP在不同阶段的生命周期中的应用，从探索、规划到维护和结束。这种全生命周期的考虑有助于团队更好地规划和管理项目，并确保项目的长期成功。</p>
+<p><strong>子观点2</strong>XP中不同角色的协作</p>
+<p>引入了XP中不同角色的概念，如程序员、客户、测试人员等，以及他们在项目中的作用。这种分工和协作方式有助于充分利用每个团队成员的专业技能，提高整体效能。</p>
+<p><strong>实例或案例</strong>团队协作与系统稳定性</p>
+<p>在探索阶段，团队可能会面临技术上的不确定性，通过迅速的原型和实验，可以更好地了解项目的可行性。在维护阶段，通过不断的重构和持续集成，团队能够确保系统的稳定性和可维护性。不同角色的协作，如程序员与测试人员的紧密配合，有助于在项目中实现高质量的代码。</p>
+<p>这些案例展示了XP的实际应用，如何解决具体问题，并提供了在不同阶段的生命周期中的灵活性和可行性。</p>
+<h2 class="relative group">四、亮点与启发 
+    <div id="四亮点与启发" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9b%9b%e4%ba%ae%e7%82%b9%e4%b8%8e%e5%90%af%e5%8f%91" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>最有影响的观点或实例</strong>:</p>
+<p>《Extreme Programming Explained》中的亮点主要集中在强调的价值观、原则以及核心实践，这些对提升软件开发团队效能具有深远的影响。</p>
+<p>首先，书中强调的四个核心价值观——沟通、简单性、反馈和勇气，构成了XP的基石。通过强调沟通，团队成员能够更好地分享信息、解决问题，促进协作。简单性原则鼓励团队设计最简单的解决方案，从而提高代码可读性和可维护性。反馈机制确保了持续的改进，而勇气则激发团队成员面对挑战。这些价值观的贯彻，使得XP团队更有活力、适应性更强。</p>
+<p>其次，核心实践如规划游戏、小版本发布等方法也是书中的亮点。规划游戏通过迭代式规划，使团队更灵活地应对变化，提高项目的适应性。小版本发布策略降低了项目的风险，使得团队能够更频繁地发布功能，及时获取用户反馈。这些实践不仅提高了开发的效率，也确保了项目的质量和用户满意度。</p>
+<p><strong>对个人或专业发展的启示</strong>:</p>
+<p>通过采用XP方法，不仅可以优化软件开发过程，还能够对个人和团队的成长产生积极影响。</p>
+<p>首先，XP的灵活性使得团队更好地适应变化。在当今快速变化的技术和市场环境中，拥有适应性是团队的核心竞争力。XP通过强调灵活性和迭代式开发，帮助团队更快速地调整项目方向，迎接变化。</p>
+<p>其次，沟通效率的提升是XP方法给个人带来的重要收益。通过强调沟通价值观，团队成员更倾向于分享信息、解决问题，构建更融洽的工作氛围。这有助于个人在团队中更好地理解项目需求，提高工作效率。</p>
+<p>最后，对于个人而言，XP方法追求卓越的理念激励着个人不断学习和改进。在XP的框架下，每个团队成员都被鼓励为卓越而努力。这种追求卓越的精神激发了个人的专业成长动力，使其在软件开发领域更上一层楼。</p>
+<h2 class="relative group">五、批评与局限性 
+    <div id="五批评与局限性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%ba%94%e6%89%b9%e8%af%84%e4%b8%8e%e5%b1%80%e9%99%90%e6%80%a7" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>任何有争议、模糊或过时的信息</strong>:</p>
+<p>尽管《Extreme Programming Explained》提出了许多有益的实践，但其中也存在一些有争议、模糊或过时的信息。首先，XP的一些实践可能在某些项目或组织中引起争议。例如，对于大型、复杂项目，XP的一些简化设计和快速迭代的方法可能显得过于激进，难以适应项目的特定需求。</p>
+<p>其次，书中对于沟通和团队合作的强调可能在某些文化和组织环境中存在模糊性。不同文化对于沟通方式的理解和接受程度各异，有时可能需要根据实际情况进行调整。此外，某些组织可能对于强调团队平等和开放式沟通的理念持保留态度，这可能导致XP的实践难以在这些环境中顺利推行。</p>
+<p><strong>可能的不足或缺陷</strong>:</p>
+<p>尽管XP提供了许多有益的理念和方法，但书中的案例有时可能过于理想化，实际应用中可能会面临挑战。首先，XP的实践可能并非适用于所有项目。在某些行业或特殊领域，项目的特性可能使得XP的某些实践不够灵活或难以实施。例如，一些对安全性要求极高的项目可能需要更加严格的开发流程，XP的一些快速迭代可能无法满足这种需求。</p>
+<p>其次，XP并非适用于所有组织。一些传统、保守的组织可能对于XP的激进和开放式的管理风格产生抵触，导致XP的实施难以融入组织文化。此外，XP强调团队的自我管理和自组织，这对于一些组织而言可能难以接受，尤其是在需要更严格层级控制的环境中。</p>
+<p>在实践中，XP可能需要在团队和组织层面做出一些定制化的调整，以适应具体项目和环境的需求。因此，在采用XP之前，团队和组织需要仔细评估其适用性，并在实践中灵活调整，以确保最佳的实施效果。</p>
+<h2 class="relative group">六、实际应用和拓展 
+    <div id="六实际应用和拓展" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%ad%e5%ae%9e%e9%99%85%e5%ba%94%e7%94%a8%e5%92%8c%e6%8b%93%e5%b1%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>在实际工作/学习中如何应用这些概念</strong>:</p>
+<p>将XP的核心概念融入实际工作中是一个逐步的过程。首先，团队可以逐渐采用XP的核心实践，如规划游戏、小版本发布等。通过规划游戏，团队能够更灵活地应对需求变化，而小版本发布则提供了频繁发布新功能的机制。这些实践的逐步采纳可以在不破坏原有流程的情况下改善软件开发过程，提高团队的效率和适应性。</p>
+<p>此外，团队还可以重视XP所强调的价值观和原则，如沟通、简单性、反馈和勇气。通过加强团队成员之间的沟通，建立更紧密的合作关系，可以提高项目的整体协作效果。简单设计原则则鼓励团队设计出更易维护的代码，反馈机制确保团队在不断学习中不断改进。</p>
+<p><strong>对未来研究或实践的建议</strong>:</p>
+<p>未来的研究和实践可以关注XP方法的定制化和灵活性。鼓励团队根据自身情况和项目需求进行调整和改进，以确保XP的实践更贴近实际应用。此外，随着科技的不断发展，团队还应该关注新兴的软件开发方法和工具，保持学习和改进的动力。对于未来的研究而言，可以深入探讨XP方法在不同领域和行业的适用性，以及如何在不同文化背景下实现最佳效果。</p>
+<h2 class="relative group">七、总结与评价 
+    <div id="七总结与评价" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%83%e6%80%bb%e7%bb%93%e4%b8%8e%e8%af%84%e4%bb%b7" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>对书籍的整体评价</strong>:</p>
+<p>《Extreme Programming Explained》深入阐述了软件开发中的核心问题，并提供了实用的解决方案，对软件开发者和管理者都有价值。书籍通过对XP的详细介绍，使读者能够深刻理解XP的核心概念和实践方法，为团队提升软件开发效能提供了有力的指导。</p>
+<p><strong>书籍的长处和短处</strong>:</p>
+<p>优点在于提供了具体实践方法，使读者能够从理论到实践的过程中逐步学习。书籍详细介绍了XP的核心概念，包括价值观、原则和实践，为读者提供了深入的理解。然而，书中可能过于理想化，实际应用中需根据具体情况调整。在实践中，可能会面临一些挑战，需要灵活应对，而书中的案例可能没有全面考虑这些实际问题。</p>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_read\/极限编程\/index.md"
+        var oid_likes = "likes_read\/极限编程\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/read/%E5%87%A4%E5%87%B0%E9%A1%B9%E7%9B%AE/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >《凤凰项目》读书笔记</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Artificial Intelligence &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Artificial Intelligence &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="I&#39;m waiting for you." />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/ai/" />
+  
+  <link rel="alternate" type="application/rss+xml" href="/posts/algorithm/ai/index.xml" title="WFUing's Blog" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Artificial Intelligence" />
+<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/ai/" />
+
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Artificial Intelligence"/>
+<meta name="twitter:description" content="I&#39;m waiting for you."/>
+
+  
+  
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+ <header>
+  
+  <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Artificial Intelligence</h1>
+  <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <span>
+    
+    <span id="views_posts/algorithm/ai/_index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="likes_posts/algorithm/ai/_index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="likes">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  </span>
+
+</span>
+</span><span class="px-2 text-primary-500">&middot;</span><span>
+    <button id="button_likes"
+        class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400"
+        onclick="process_article()">
+        <span id="button_likes_heart" style="display:none" class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  </span>
+
+ </span>
+        <span id="button_likes_emtpty_heart" class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<path fill="currentColor" d="M244 84L255.1 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 0 232.4 0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84C243.1 84 244 84.01 244 84L244 84zM255.1 163.9L210.1 117.1C188.4 96.28 157.6 86.4 127.3 91.44C81.55 99.07 48 138.7 48 185.1V190.9C48 219.1 59.71 246.1 80.34 265.3L256 429.3L431.7 265.3C452.3 246.1 464 219.1 464 190.9V185.1C464 138.7 430.4 99.07 384.7 91.44C354.4 86.4 323.6 96.28 301.9 117.1L255.1 163.9z"/></svg>
+  </span>
+
+</span>
+        <span id="button_likes_text">&nbsp;Like</span>
+    </button>
+</span>
+  
+</div>
+
+
+  </div>
+  
+  <script>
+    var oid = "views_posts\/algorithm\/ai\/_index.md"
+    var oid_likes = "likes_posts\/algorithm\/ai\/_index.md"
+  </script>
+  
+  
+  
+  <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  </header>
+  <section class="mt-0 prose flex max-w-full flex-col dark:prose-invert lg:flex-row">
+    
+    <div class="min-w-0 min-h-0 max-w-prose">
+      <p>人工智能（缩写为AI）亦称机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。</p>
+
+    </div>
+   
+
+
+
+  </section>
+  
+
+    
+    
+    
+
+    
+
+    <section class="space-y-10 w-full">
+      
+      
+      <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+        2023
+      </h2>
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">四、分类模型.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>632 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/四、分类模型.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        四、分类模型 # [toc]
+4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行
+假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） # 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 # 贝叶斯公式 # $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 # $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/">六、Tips for Training DNN.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>339 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/六、Tips for Training DNN.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        Tips for Training DNN # [toc]
+6.1 神经网络训练问题与解决方案 # 明确问题类型及其对应方法 # 在深度学习中，一般有两种问题：
+在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
+处理神经网络在训练集上性能不好的情况和方法 # 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 # Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 # 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
+Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
+warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">五、深度学习.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>319 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/五、深度学习.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        五、深度学习 # [toc]
+5.1引言 # 深度学习的历史 # 1958年：心理学家Rosenblatt提出感知机（Perceptron） 它是一个线性模型。 1969年：有人说感知机是线性模型，具有局限性。 1980年代：多层感知机（Multi-layer Perceptron） 和当今的神经网络是没有本质差别的。 1986年：Hinton提出反向传播算法（Backpropagation） 但是超过3个隐藏层的神经网络，还是训练不出好的结果。 1989年：有人提出一个隐藏层就可以得到任何函数，为什么要多层？ 多层感知机慢慢淡出大家的视野。 2006年：受限玻尔兹曼机初始化（RBM Initialization） Hinton提出用受限玻尔兹曼机做初始化，很多人觉得这是个大突破，但实际上用处并不大。 至少让多层感知机回到大家的视野。 2009年：GPU 2011年：神经网络用于语音识别 2012年：神经网络技术赢得ILSVRC（ImageNet Large Scale Visual Recognition Challenge） 深度学习的三个步骤 # 和机器学习一样：
+确定模型（Model）/函数集（Function Set），在深度学习中就是定义一个神经网络。 不同的连接会构成多样的网络结构。 确定如何评价函数的好坏 如果是多分类，那和Classification一章中一样，计算每个样本预测结果与Ground Truth的交叉熵，然后求和，即为Loss。 确定如何找到最好的函数 还是Gradient Descent。 神经网络模型对应的函数比较复杂，而反向传播算法（Backpropagation）是一个很有效的计算神经网络梯度的方法。 神经网络的结构 # 输入层（Input Layer）：实际上就是输入，并不是真正的“层”。 隐藏层（Hidden Layers）：输入层和输出层之间的层，Deep指有很多隐藏层，多少层才算Deep并没有统一标准。可以看成特征提取器（Feature Extractor），作用是代替特征工程（Feature Engineering）。 输出层（Output Layer）：最后一层，可以看成分类器 全连接前反馈神经网络 # 即Fully Connected Feedforward Neural Network，FFN。
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/">二、回归模型.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>207 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/二、回归模型.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        二、回归模型 # [toc]
+2.1 线性回归模型 # 回归模型应用案例 # 股票市场预测（Stock Market Forecast）：预测某个公司明天的股票情况 自动驾驶车（Self-Driving Car）：预测方向盘的转动角度 推荐系统（Recommendation）：预测某用户购买某商品的可能性 线性回归模型（Linear Regression Model） # 形式如下： $y= f(x) = w \cdot x + b $
+y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b是偏置（bias） x是输入（input），也可叫做特征（feature）。数据集中一般包含多个object，每个object一般包含多个component。此时，上标是object的索引，下标是component的索引 损失函数（Loss Function）如果不考虑模型的好坏，衡量一个函数的好坏，其实是衡量模型参数的好坏。以线性模型为例，就是衡量参数和的好坏。如 $ L(f) = L(w,b) = \sum_{n=1} ^{10}{ \widehat{y} - (b + w \cdot x_n)} $ ，把所有的样本误差的平方和作为损失函数 输入：一个函数 输出：多么地不好（how bad it is）。损失函数值越大，则这个函数越差、与数据集中内容月不相符 梯度下降（Gradient Descent） # 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上模拟效果最好）的模型参数。 现在假设模型$f$中只有一个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">三、梯度下降.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>99 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/三、梯度下降.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        三、梯度下降 # [toc]
+梯度下降伪代码 # 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上拟合效果最好）的模型参数。现在假设模型 $f$ 中只有一个参数 $w$ ，则损失函数为 $L(f) = L(w)$ ，梯度下降算法如下（若模型有多个参数，按相同方法更新各方法）
+初始化参数：随机选取一个 $w_0$ （$w_0$ 并不一定是随机选取） 计算梯度 $\frac{dL(f)}{dw}$ ，如果小于0，此时 $w$ 增大则 $L(f)$ 会减小；如果大于0，此时 $w$ 增大则 $L(w)$ 会减小。如果模型有多个参数，则计算损失函数在各个参数方向上的偏导数。 更新模型参数 $w_1=w_0-lr\frac{dL(f)}{dw}$ ，$w$ 的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则 $w$ 变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步。经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 自适应学习率（Adaptive Learning Rate） # 梯度下降的过程中，固定学习率并不合理。学习率太大，可能导致loss不减小反而增大；学习率太小，loss会减小得很慢。基本原则是随着参数迭代更新，学习率应该越来越小，比如 $\eta_t = \frac{\eta}{\sqrt{t+1}}$ 。更好的办法是每个参数都有各自的学习率，比如Adagrad。
+Adagrad # Adaptive Gradient Descent，自适应梯度下降。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ ，其中 $t$ 是迭代次数，$w$ 是参数，$g$ 是梯度，$\eta$ 是初始学习率。随着参数迭代，$t$ 越来越大，$\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 也越来越大，因此学习率的变化趋势是越来越小。
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/">七、Convolutional Neural Network.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>74 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/七、Convolutional Neural Network.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        七、Convolutional Neural Network # [toc]
+7.1 CNN入门详解 # 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？
+FNN用于图片处理的缺点 # 使用一般的全连接前馈神经网络（FNN）处理图片时的缺点：
+需要很多的参数： 假设有一张尺寸100×100的图片（尺寸已经算很小了），那输入层就有100×100×3=30K个像素，假设第一个隐藏层有1K个神经元（一个神经元包含30K个参数），这就已经需要30M个参数了…… 该架构中每个神经元就是一个分类器，这是没必要的： 第一个隐藏层作为最基础的pattern分类器（比如判断有无绿色、边缘等），第二个隐藏层基于第一个隐藏层继续做pattern分类（比如木头、肉类），以此类推…… 按照人类的直观理解，我们不是像全连接神经网络一样去处理图片的。具体来看，有哪些方面呢？
+图片的一些性质 # 结合全连接前馈神经网络的缺点和人类对图片的直观理解，可以得到下述图片的3个性质。
+性质1：Some patterns are much smaller than the whole image. # 在识别某个模式（pattern）时，一个神经元并不需要图片的所有像素点。对于一张人类全身照的图片，我们只需要看到头部而非整张图片就可以判断它是一个人脸。所以我们应该是可以用少量参数去识别这些pattern的。
+性质2：The same patterns appear in different regions. # 比如说人脸可以在图片的中间区域，也可以在图片的某个角落区域。所以识别不同区域中的相同pattern的多个分类器（或detector）应该用同一组参数或者共享参数。
+性质3：Subsampling the pixels will not change the object # CNN架构说明 # 2014年在ECCV上提出，针对上述的图片的3个性质，确定了CNN的架构如下。
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/">一、机器学习概论.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>68 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/一、机器学习概论.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        李宏毅机器学习笔记 # [toc]
+一、机器学习概论 # 机器学习是什么 # 机器学习就是让机器能自动找到一个函数function
+语音识别（Speech Recognition）：输入是音频，输出是音频对应的文字 图像分类：输入是图片，输出是类别（比如猫、狗） AlphaGo下围棋：输入是当前棋盘的状态，输出是下一步落棋的位置 对话/问答系统 机器能够找到哪些函数 # 为解决不同的问题、完成不同的任务，需要找到不同的函数，那机器学习能找到哪些函数呢？
+回归（Regression）：输出是一个连续的数值、标量，比如PM2.5预测 分类（Classification）：输出是一个离散的值。 二分类（Binary Classification）的输出就是0或1、Yes或No、&hellip;，比如文本情感分析的输出可以是正面和负面 多分类（Multi-Category Classification）的输出就是[1,2,3,&hellip;,N]，比如图像分类里判断一张图片是猫还是狗还是杯子 生成（Generation）：很多教科书吧机器学习划分为回归问题和分类问题，但其实不止这两种问题，比如生成（Generation）。生成是指让机器学习如何创造/生成，比如生成文本、图片等。 如何告诉机器我们希望找到什么函数 # 我们该如何为机器提供学习资料？
+有监督学习（Supervised Learning）：可以把有监督学习种的“监督”理解为标签（Label），即数据集种不仅包括特征还包括标签。有了标签，我们就可以评价一个函数的好坏，进而优化这个函数。使用Loss判断函数的好坏，Loss越小，函数越好。 强化学习（Reinforcement Learning）：原始的AlphaGo是先通过有监督学习优化到一定程度，然后用强化学习继续优化。新版本的AlphaGo是完全通过强化学习实现的，优于原始的AlphaGo。 无监督学习（Unsupervised Learning）：只给机器提供数据特征，但不提供数据标签。那机器能学到什么呢？ 下面以让机器学习下围棋为例：有监督学习VS强化学习
+有监督学习：函数的输入（数据特征）就是期盼状态，函数的输出（数据标签）就是下一步落棋的位置。此时，我们需要为机器提供的数据就类似棋谱（如果现在棋局是这样，那下一步怎么落棋最好），但其实人类不一定知道怎么落棋最好。 强化学习：让机器跟自己、别人下棋，把结果（赢或输）作为Reward，引导机器学习如何下棋。如果它赢了，那它就知道这一盘里有几步棋下得好，但不知道是哪几步；如果它输了，它就知道这一盘里有几步棋下得不好，但不知道是哪几步。 机器如何找出我们想找到的函数 # 我们要给定函数形式/范围（模型），比如假定函数是线性模型、神经网络等等。模型就是一个函数集，模型的参数确定以后，才得到一个函数。 找到更好的函数： 使用梯度下降（Gradient Descent），找到更好的函数。 前沿研究 # AI的可解释性（Explainable AI）：比如，机器为什么认为这张图片里有一只猫？ 对抗攻击（Adversarial Attack）：对输入故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出。 模型压缩（Network Compression）： 把模型压缩以减少模型对计算资源消耗。 异常检测（Anomaly Detection）：使机器知道它遇到了自己不知道的东西。 迁移学习（Transfer Learning/Domain Adversarial Learning）： 一个模型已经学到了一些知识，将这些知识应用到另一个任务中。 元学习（Meta Learning）： 让机器学习如何学习。机器学习是我们教机器学习某种知识，元学习是我们教机器如何学习。 终身学习（Life-Long Learning）：让机器终身学习，学习完任务1、再继续学任务2、…… 机器学习的三个步骤 # 确定模型（Model）/函数集（Function Set） 确定如何评价函数的好坏 确定如何找到最好的函数 
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/">Markdown公式语法.md</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>4567 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">22 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/li-hongyis-notes/Markdown公式语法.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        一、公式使用参考 # 1．如何插入公式 # $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。
+行中公式可以用如下方法表示： $ 数学公式 $
+独立公式可以用如下方法表示： $$ 数学公式 $$
+自动编号的公式可以用如下方法表示： 若需要手动编号，参见“ 大括号和行标的使用”。 \begin{equation} 数学公式 \label{eq:当前公式名} \end{equation}
+自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。
+例子： $ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $ 显示：$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/cross-entropy/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/cross-entropy/">交叉熵</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-13 09:25:45 &#43;0800 &#43;0800">13 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>133 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/cross-entropy/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        案例驱动 # 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
+第一个例子 # 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
+每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
+第二个例子 # 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
+$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
+$$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
+第三个例子 # 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
+总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
+在这个问题中，问题个数的期望是
+$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/algorithm/ai/chatgpt-guide/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/ai/chatgpt-guide/">chatGPT 使用指南</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 19:43:45 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>111 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/algorithm/ai/chatgpt-guide/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        Six strategies for getting better results # Write clear instructions # GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
+在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text # GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
+指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks # 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
+使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; # 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
+      </div>
+      
+    </div>
+  </a>
+      
+      
+    </section>
+
+    
+
+  
+
+    
+
+  
+      
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

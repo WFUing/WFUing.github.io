@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>openapi on Waiting For You</title>
+    <title>openapi on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/openapi/</link>
-    <description>Recent content in openapi on Waiting For You</description>
+    <description>Recent content in openapi on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 13 Oct 2023 16:46:21 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/openapi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Openapi Code Generator</title>
-      <link>https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/</link>
+      <link>https://WFUing.github.io/posts/language/code-generation/openapi-code-generator/</link>
       <pubDate>Fri, 13 Oct 2023 16:46:21 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/</guid>
+      <guid>https://WFUing.github.io/posts/language/code-generation/openapi-code-generator/</guid>
       <description>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
-如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
-Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
+如何使用 OpenAPI # 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
+Create OpenAPI spec # 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
 使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
 OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
-1 2 3 4 5 6 7 8 9 openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.0&amp;#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。</description>
+openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.</description>
+      
     </item>
     
   </channel>

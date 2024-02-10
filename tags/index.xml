@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Waiting For You</title>
+    <title>Tags on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/</link>
-    <description>Recent content in Tags on Waiting For You</description>
+    <description>Recent content in Tags on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Wed, 07 Feb 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>java</title>
@@ -14,6 +15,7 @@
       
       <guid>https://WFUing.github.io/tags/java/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -23,6 +25,17 @@
       
       <guid>https://WFUing.github.io/tags/@interface/</guid>
       <description></description>
+      
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://WFUing.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 31 Dec 2023 13:50:15 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description></description>
+      
     </item>
     
     <item>
@@ -32,6 +45,7 @@
       
       <guid>https://WFUing.github.io/tags/dsl/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -41,6 +55,7 @@
       
       <guid>https://WFUing.github.io/tags/data/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -50,6 +65,7 @@
       
       <guid>https://WFUing.github.io/tags/flawfinder/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -59,6 +75,7 @@
       
       <guid>https://WFUing.github.io/tags/kythe/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -68,6 +85,7 @@
       
       <guid>https://WFUing.github.io/tags/lsp/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -77,6 +95,7 @@
       
       <guid>https://WFUing.github.io/tags/kubevela/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -86,6 +105,7 @@
       
       <guid>https://WFUing.github.io/tags/ceph/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -95,6 +115,7 @@
       
       <guid>https://WFUing.github.io/tags/oam/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -104,6 +125,7 @@
       
       <guid>https://WFUing.github.io/tags/iot/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -113,6 +135,7 @@
       
       <guid>https://WFUing.github.io/tags/baas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -122,6 +145,7 @@
       
       <guid>https://WFUing.github.io/tags/caas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -131,6 +155,7 @@
       
       <guid>https://WFUing.github.io/tags/daas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -140,6 +165,7 @@
       
       <guid>https://WFUing.github.io/tags/faas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -149,6 +175,7 @@
       
       <guid>https://WFUing.github.io/tags/iaas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -158,6 +185,7 @@
       
       <guid>https://WFUing.github.io/tags/maas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -167,6 +195,7 @@
       
       <guid>https://WFUing.github.io/tags/paas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -176,6 +205,7 @@
       
       <guid>https://WFUing.github.io/tags/saas/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -185,6 +215,7 @@
       
       <guid>https://WFUing.github.io/tags/iac/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -194,6 +225,7 @@
       
       <guid>https://WFUing.github.io/tags/interview/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -203,6 +235,7 @@
       
       <guid>https://WFUing.github.io/tags/junit/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -212,6 +245,7 @@
       
       <guid>https://WFUing.github.io/tags/netty/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -221,6 +255,7 @@
       
       <guid>https://WFUing.github.io/tags/https/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -230,6 +265,7 @@
       
       <guid>https://WFUing.github.io/tags/http/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -239,6 +275,7 @@
       
       <guid>https://WFUing.github.io/tags/websocket/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -248,6 +285,7 @@
       
       <guid>https://WFUing.github.io/tags/langium/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -257,6 +295,7 @@
       
       <guid>https://WFUing.github.io/tags/vscode/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -266,6 +305,7 @@
       
       <guid>https://WFUing.github.io/tags/xtext/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -275,6 +315,7 @@
       
       <guid>https://WFUing.github.io/tags/akka/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -284,6 +325,7 @@
       
       <guid>https://WFUing.github.io/tags/serverless/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -293,6 +335,7 @@
       
       <guid>https://WFUing.github.io/tags/tencentyun/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -302,6 +345,7 @@
       
       <guid>https://WFUing.github.io/tags/alicloud/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -311,6 +355,7 @@
       
       <guid>https://WFUing.github.io/tags/git/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -320,6 +365,7 @@
       
       <guid>https://WFUing.github.io/tags/shell/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -329,6 +375,7 @@
       
       <guid>https://WFUing.github.io/tags/functional-programming/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -338,6 +385,7 @@
       
       <guid>https://WFUing.github.io/tags/language/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -347,6 +395,7 @@
       
       <guid>https://WFUing.github.io/tags/metaprogramming/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -356,6 +405,7 @@
       
       <guid>https://WFUing.github.io/tags/antlr/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -365,6 +415,7 @@
       
       <guid>https://WFUing.github.io/tags/code-generation/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -374,6 +425,7 @@
       
       <guid>https://WFUing.github.io/tags/asyncapi/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -383,6 +435,7 @@
       
       <guid>https://WFUing.github.io/tags/openapi/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -392,6 +445,7 @@
       
       <guid>https://WFUing.github.io/tags/spring/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -401,6 +455,7 @@
       
       <guid>https://WFUing.github.io/tags/restful/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -410,6 +465,7 @@
       
       <guid>https://WFUing.github.io/tags/cross-entropy/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -419,6 +475,7 @@
       
       <guid>https://WFUing.github.io/tags/ai/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -428,6 +485,7 @@
       
       <guid>https://WFUing.github.io/tags/chatgpt/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -437,6 +495,7 @@
       
       <guid>https://WFUing.github.io/tags/linux/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -446,6 +505,7 @@
       
       <guid>https://WFUing.github.io/tags/nat-traversal/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -455,6 +515,7 @@
       
       <guid>https://WFUing.github.io/tags/telosys/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -464,6 +525,7 @@
       
       <guid>https://WFUing.github.io/tags/leetcode/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -473,6 +535,7 @@
       
       <guid>https://WFUing.github.io/tags/template-engine/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -482,6 +545,7 @@
       
       <guid>https://WFUing.github.io/tags/blog/</guid>
       <description></description>
+      
     </item>
     
     <item>
@@ -491,6 +555,7 @@
       
       <guid>https://WFUing.github.io/tags/hugo/</guid>
       <description></description>
+      
     </item>
     
   </channel>

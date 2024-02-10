@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Git Tutorial &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Git Tutorial &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="I&#39;m waiting for you." />
+  <meta name="keywords" content="git, " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/devoops/git/git-tutorial/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Git Tutorial" />
+<meta property="og:description" content="Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
+本节选择性介绍 git 中比较常用的命令行场景。
+安装 # （1）Debian/Ubuntu 环境安装
+如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
+$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
+如果你使用的系统是 Centos/RedHat ，安装命令为：
+$ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/posts/devoops/git/git-tutorial/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-19T20:40:43+08:00" />
+<meta property="article:modified_time" content="2023-10-19T20:40:43+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Git Tutorial"/>
+<meta name="twitter:description" content="Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
+本节选择性介绍 git 中比较常用的命令行场景。
+安装 # （1）Debian/Ubuntu 环境安装
+如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
+$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
+如果你使用的系统是 Centos/RedHat ，安装命令为：
+$ yum install curl-devel expat-devel gettext-devel \ &gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1."/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "Git Tutorial",
+    "headline": "Git Tutorial",
+    
+    "abstract": "Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。\n本节选择性介绍 git 中比较常用的命令行场景。\n安装 # （1）Debian\/Ubuntu 环境安装\n如果你使用的系统是 Debian\/Ubuntu ， 安装命令为：\n$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \\ \u0026gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos\/RedHat 环境安装\n如果你使用的系统是 Centos\/RedHat ，安装命令为：\n$ yum install curl-devel expat-devel gettext-devel \\ \u0026gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.",
+    "inLanguage": "zh-cn",
+    "url" : "https:\/\/WFUing.github.io\/posts\/devoops\/git\/git-tutorial\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-10-19T20:40:43\u002b08:00",
+    "datePublished": "2023-10-19T20:40:43\u002b08:00",
+    
+    "dateModified": "2023-10-19T20:40:43\u002b08:00",
+    
+    "keywords": ["git"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2702"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Git Tutorial
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-19 20:40:43 &#43;0800 &#43;0800">19 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2702 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">13 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/devoops/git/git-tutorial/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#配置">配置</a>
+      <ul>
+        <li><a href="#配置用户信息">配置用户信息</a></li>
+        <li><a href="#给-git-命令添加别名">给 Git 命令添加别名</a></li>
+        <li><a href="#缓存一个仓库的用户名和密码">缓存一个仓库的用户名和密码</a></li>
+      </ul>
+    </li>
+    <li><a href="#仓库">仓库</a>
+      <ul>
+        <li><a href="#初始化仓库">初始化仓库</a></li>
+        <li><a href="#克隆仓库">克隆仓库</a></li>
+      </ul>
+    </li>
+    <li><a href="#储藏">储藏</a></li>
+    <li><a href="#暂存">暂存</a>
+      <ul>
+        <li><a href="#暂存指定文件">暂存指定文件</a></li>
+        <li><a href="#暂存当前目录下所有修改">暂存当前目录下所有修改</a></li>
+        <li><a href="#暂存所有修改">暂存所有修改</a></li>
+        <li><a href="#暂存文件部分内容">暂存文件部分内容</a></li>
+        <li><a href="#把暂存的内容变成未暂存把未暂存的内容暂存起来">把暂存的内容变成未暂存，把未暂存的内容暂存起来</a></li>
+      </ul>
+    </li>
+    <li><a href="#提交">提交</a>
+      <ul>
+        <li><a href="#查看最近一次提交">查看最近一次提交</a></li>
+        <li><a href="#提交本地的所有修改">提交本地的所有修改</a></li>
+        <li><a href="#提交暂存的修改">提交暂存的修改</a></li>
+        <li><a href="#把暂存的内容添加到上一次的提交">把暂存的内容添加到上一次的提交</a></li>
+        <li><a href="#附加消息提交">附加消息提交</a></li>
+        <li><a href="#修改提交信息">修改提交信息</a></li>
+        <li><a href="#修改提交信息中的用户名和邮箱">修改提交信息中的用户名和邮箱</a></li>
+        <li><a href="#从提交中移除一个文件">从提交中移除一个文件</a></li>
+        <li><a href="#删除最后一次提交">删除最后一次提交</a></li>
+        <li><a href="#删除任意提交">删除任意提交</a></li>
+        <li><a href="#我尝试推一个修正后的提交amended-commit到远程但是报错">我尝试推一个修正后的提交(amended commit)到远程，但是报错</a></li>
+        <li><a href="#不小心强制重置想找回内容">不小心强制重置，想找回内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#重置">重置</a></li>
+    <li><a href="#更新">更新</a></li>
+    <li><a href="#推送">推送</a>
+      <ul>
+        <li><a href="#推送提交到远程仓库">推送提交到远程仓库</a></li>
+        <li><a href="#发布标签">发布标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#未暂存">未暂存</a>
+      <ul>
+        <li><a href="#把未暂存的内容移动到一个新分支">把未暂存的内容移动到一个新分支</a></li>
+        <li><a href="#我想把未暂存的内容移动到另一个已存在的分支">我想把未暂存的内容移动到另一个已存在的分支</a></li>
+        <li><a href="#丢弃本地未提交的变化">丢弃本地未提交的变化</a></li>
+        <li><a href="#我想丢弃某些未暂存的内容">我想丢弃某些未暂存的内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#分支">分支</a>
+      <ul>
+        <li><a href="#列出所有的分支">列出所有的分支</a></li>
+        <li><a href="#列出所有的远端分支">列出所有的远端分支</a></li>
+        <li><a href="#基于当前分支创建新分支">基于当前分支创建新分支</a></li>
+        <li><a href="#基于远程分支创建新分支">基于远程分支创建新分支</a></li>
+        <li><a href="#删除本地分支">删除本地分支</a></li>
+        <li><a href="#强制删除本地分支">强制删除本地分支</a></li>
+        <li><a href="#删除远程分支">删除远程分支</a></li>
+        <li><a href="#切换分支">切换分支</a></li>
+        <li><a href="#创建并切换到新分支">创建并切换到新分支</a></li>
+        <li><a href="#我从错误的分支拉取了内容或把内容拉取到了错误的分支">我从错误的分支拉取了内容，或把内容拉取到了错误的分支</a></li>
+        <li><a href="#我想扔掉本地的提交commit以便我的分支与远程的保持一致">我想扔掉本地的提交(commit)，以便我的分支与远程的保持一致</a></li>
+        <li><a href="#我需要提交到一个新分支但错误的提交到了-master">我需要提交到一个新分支，但错误的提交到了 master</a></li>
+        <li><a href="#我想保留来自另外一个-ref-ish-的整个文件">我想保留来自另外一个 ref-ish 的整个文件</a></li>
+        <li><a href="#我把几个提交commit提交到了同一个分支而这些提交应该分布在不同的分支里">我把几个提交(commit)提交到了同一个分支，而这些提交应该分布在不同的分支里</a></li>
+        <li><a href="#我想删除上游upstream分支被删除了的本地分支">我想删除上游(upstream)分支被删除了的本地分支</a></li>
+        <li><a href="#我不小心删除了我的分支">我不小心删除了我的分支</a></li>
+        <li><a href="#我想删除一个分支">我想删除一个分支</a></li>
+        <li><a href="#我想从别人正在工作的远程分支签出checkout一个分支">我想从别人正在工作的远程分支签出(checkout)一个分支</a></li>
+      </ul>
+    </li>
+    <li><a href="#标签">标签</a>
+      <ul>
+        <li><a href="#添加标签">添加标签</a></li>
+        <li><a href="#添加标签并附加消息">添加标签并附加消息</a></li>
+        <li><a href="#删除标签">删除标签</a></li>
+        <li><a href="#恢复已删除标签">恢复已删除标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#rebase-和-merge">Rebase 和 Merge</a>
+      <ul>
+        <li><a href="#将分支合并到当前-head-中">将分支合并到当前 HEAD 中</a></li>
+        <li><a href="#将当前-head-版本重置到分支中">将当前 HEAD 版本重置到分支中</a></li>
+        <li><a href="#撤销-rebasemerge">撤销 rebase/merge</a></li>
+        <li><a href="#我已经-rebase-过-但是我不想强推force-push">我已经 rebase 过, 但是我不想强推(force push)</a></li>
+        <li><a href="#我需要组合combine几个提交commit">我需要组合(combine)几个提交(commit)</a>
+          <ul>
+            <li><a href="#安全合并merging策略">安全合并(merging)策略</a></li>
+            <li><a href="#我需要将一个分支合并成一个提交commit">我需要将一个分支合并成一个提交(commit)</a></li>
+            <li><a href="#我只想组合combine未推的提交unpushed-commit">我只想组合(combine)未推的提交(unpushed commit)</a></li>
+          </ul>
+        </li>
+        <li><a href="#检查是否分支上的所有提交commit都合并merge过了">检查是否分支上的所有提交(commit)都合并(merge)过了</a></li>
+        <li><a href="#交互式-rebaseinteractive-rebase可能出现的问题">交互式 rebase(interactive rebase)可能出现的问题</a>
+          <ul>
+            <li><a href="#这个-rebase-编辑屏幕出现noop">这个 rebase 编辑屏幕出现&rsquo;noop'</a></li>
+            <li><a href="#有冲突的情况">有冲突的情况</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#查看信息">查看信息</a></li>
+    <li><a href="#其他">其他</a>
+      <ul>
+        <li><a href="#克隆所有子模块">克隆所有子模块</a></li>
+        <li><a href="#已删除补丁patch">已删除补丁(patch)</a></li>
+      </ul>
+    </li>
+    <li><a href="#跟踪文件tracking-files">跟踪文件(Tracking Files)</a>
+      <ul>
+        <li><a href="#我只想改变一个文件名字的大小写而不修改内容">我只想改变一个文件名字的大小写，而不修改内容</a></li>
+        <li><a href="#我想从-git-删除一个文件但保留该文件">我想从 Git 删除一个文件，但保留该文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#fork-项目">Fork 项目</a></li>
+    <li><a href="#我不知道我做错了些什么">我不知道我做错了些什么</a></li>
+    <li><a href="#-资料">📚 资料</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#配置">配置</a>
+      <ul>
+        <li><a href="#配置用户信息">配置用户信息</a></li>
+        <li><a href="#给-git-命令添加别名">给 Git 命令添加别名</a></li>
+        <li><a href="#缓存一个仓库的用户名和密码">缓存一个仓库的用户名和密码</a></li>
+      </ul>
+    </li>
+    <li><a href="#仓库">仓库</a>
+      <ul>
+        <li><a href="#初始化仓库">初始化仓库</a></li>
+        <li><a href="#克隆仓库">克隆仓库</a></li>
+      </ul>
+    </li>
+    <li><a href="#储藏">储藏</a></li>
+    <li><a href="#暂存">暂存</a>
+      <ul>
+        <li><a href="#暂存指定文件">暂存指定文件</a></li>
+        <li><a href="#暂存当前目录下所有修改">暂存当前目录下所有修改</a></li>
+        <li><a href="#暂存所有修改">暂存所有修改</a></li>
+        <li><a href="#暂存文件部分内容">暂存文件部分内容</a></li>
+        <li><a href="#把暂存的内容变成未暂存把未暂存的内容暂存起来">把暂存的内容变成未暂存，把未暂存的内容暂存起来</a></li>
+      </ul>
+    </li>
+    <li><a href="#提交">提交</a>
+      <ul>
+        <li><a href="#查看最近一次提交">查看最近一次提交</a></li>
+        <li><a href="#提交本地的所有修改">提交本地的所有修改</a></li>
+        <li><a href="#提交暂存的修改">提交暂存的修改</a></li>
+        <li><a href="#把暂存的内容添加到上一次的提交">把暂存的内容添加到上一次的提交</a></li>
+        <li><a href="#附加消息提交">附加消息提交</a></li>
+        <li><a href="#修改提交信息">修改提交信息</a></li>
+        <li><a href="#修改提交信息中的用户名和邮箱">修改提交信息中的用户名和邮箱</a></li>
+        <li><a href="#从提交中移除一个文件">从提交中移除一个文件</a></li>
+        <li><a href="#删除最后一次提交">删除最后一次提交</a></li>
+        <li><a href="#删除任意提交">删除任意提交</a></li>
+        <li><a href="#我尝试推一个修正后的提交amended-commit到远程但是报错">我尝试推一个修正后的提交(amended commit)到远程，但是报错</a></li>
+        <li><a href="#不小心强制重置想找回内容">不小心强制重置，想找回内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#重置">重置</a></li>
+    <li><a href="#更新">更新</a></li>
+    <li><a href="#推送">推送</a>
+      <ul>
+        <li><a href="#推送提交到远程仓库">推送提交到远程仓库</a></li>
+        <li><a href="#发布标签">发布标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#未暂存">未暂存</a>
+      <ul>
+        <li><a href="#把未暂存的内容移动到一个新分支">把未暂存的内容移动到一个新分支</a></li>
+        <li><a href="#我想把未暂存的内容移动到另一个已存在的分支">我想把未暂存的内容移动到另一个已存在的分支</a></li>
+        <li><a href="#丢弃本地未提交的变化">丢弃本地未提交的变化</a></li>
+        <li><a href="#我想丢弃某些未暂存的内容">我想丢弃某些未暂存的内容</a></li>
+      </ul>
+    </li>
+    <li><a href="#分支">分支</a>
+      <ul>
+        <li><a href="#列出所有的分支">列出所有的分支</a></li>
+        <li><a href="#列出所有的远端分支">列出所有的远端分支</a></li>
+        <li><a href="#基于当前分支创建新分支">基于当前分支创建新分支</a></li>
+        <li><a href="#基于远程分支创建新分支">基于远程分支创建新分支</a></li>
+        <li><a href="#删除本地分支">删除本地分支</a></li>
+        <li><a href="#强制删除本地分支">强制删除本地分支</a></li>
+        <li><a href="#删除远程分支">删除远程分支</a></li>
+        <li><a href="#切换分支">切换分支</a></li>
+        <li><a href="#创建并切换到新分支">创建并切换到新分支</a></li>
+        <li><a href="#我从错误的分支拉取了内容或把内容拉取到了错误的分支">我从错误的分支拉取了内容，或把内容拉取到了错误的分支</a></li>
+        <li><a href="#我想扔掉本地的提交commit以便我的分支与远程的保持一致">我想扔掉本地的提交(commit)，以便我的分支与远程的保持一致</a></li>
+        <li><a href="#我需要提交到一个新分支但错误的提交到了-master">我需要提交到一个新分支，但错误的提交到了 master</a></li>
+        <li><a href="#我想保留来自另外一个-ref-ish-的整个文件">我想保留来自另外一个 ref-ish 的整个文件</a></li>
+        <li><a href="#我把几个提交commit提交到了同一个分支而这些提交应该分布在不同的分支里">我把几个提交(commit)提交到了同一个分支，而这些提交应该分布在不同的分支里</a></li>
+        <li><a href="#我想删除上游upstream分支被删除了的本地分支">我想删除上游(upstream)分支被删除了的本地分支</a></li>
+        <li><a href="#我不小心删除了我的分支">我不小心删除了我的分支</a></li>
+        <li><a href="#我想删除一个分支">我想删除一个分支</a></li>
+        <li><a href="#我想从别人正在工作的远程分支签出checkout一个分支">我想从别人正在工作的远程分支签出(checkout)一个分支</a></li>
+      </ul>
+    </li>
+    <li><a href="#标签">标签</a>
+      <ul>
+        <li><a href="#添加标签">添加标签</a></li>
+        <li><a href="#添加标签并附加消息">添加标签并附加消息</a></li>
+        <li><a href="#删除标签">删除标签</a></li>
+        <li><a href="#恢复已删除标签">恢复已删除标签</a></li>
+      </ul>
+    </li>
+    <li><a href="#rebase-和-merge">Rebase 和 Merge</a>
+      <ul>
+        <li><a href="#将分支合并到当前-head-中">将分支合并到当前 HEAD 中</a></li>
+        <li><a href="#将当前-head-版本重置到分支中">将当前 HEAD 版本重置到分支中</a></li>
+        <li><a href="#撤销-rebasemerge">撤销 rebase/merge</a></li>
+        <li><a href="#我已经-rebase-过-但是我不想强推force-push">我已经 rebase 过, 但是我不想强推(force push)</a></li>
+        <li><a href="#我需要组合combine几个提交commit">我需要组合(combine)几个提交(commit)</a>
+          <ul>
+            <li><a href="#安全合并merging策略">安全合并(merging)策略</a></li>
+            <li><a href="#我需要将一个分支合并成一个提交commit">我需要将一个分支合并成一个提交(commit)</a></li>
+            <li><a href="#我只想组合combine未推的提交unpushed-commit">我只想组合(combine)未推的提交(unpushed commit)</a></li>
+          </ul>
+        </li>
+        <li><a href="#检查是否分支上的所有提交commit都合并merge过了">检查是否分支上的所有提交(commit)都合并(merge)过了</a></li>
+        <li><a href="#交互式-rebaseinteractive-rebase可能出现的问题">交互式 rebase(interactive rebase)可能出现的问题</a>
+          <ul>
+            <li><a href="#这个-rebase-编辑屏幕出现noop">这个 rebase 编辑屏幕出现&rsquo;noop'</a></li>
+            <li><a href="#有冲突的情况">有冲突的情况</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#查看信息">查看信息</a></li>
+    <li><a href="#其他">其他</a>
+      <ul>
+        <li><a href="#克隆所有子模块">克隆所有子模块</a></li>
+        <li><a href="#已删除补丁patch">已删除补丁(patch)</a></li>
+      </ul>
+    </li>
+    <li><a href="#跟踪文件tracking-files">跟踪文件(Tracking Files)</a>
+      <ul>
+        <li><a href="#我只想改变一个文件名字的大小写而不修改内容">我只想改变一个文件名字的大小写，而不修改内容</a></li>
+        <li><a href="#我想从-git-删除一个文件但保留该文件">我想从 Git 删除一个文件，但保留该文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#fork-项目">Fork 项目</a></li>
+    <li><a href="#我不知道我做错了些什么">我不知道我做错了些什么</a></li>
+    <li><a href="#-资料">📚 资料</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <h1 class="relative group">Git 帮助手册 
+    <div id="git-帮助手册" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#git-%e5%b8%ae%e5%8a%a9%e6%89%8b%e5%86%8c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+<p>国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。</p>
+<p>本节选择性介绍 git 中比较常用的命令行场景。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./git-cheat-sheet.png" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h2 class="relative group">安装 
+    <div id="安装" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%89%e8%a3%85" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>（1）Debian/Ubuntu 环境安装</strong></p>
+<p>如果你使用的系统是 Debian/Ubuntu ， 安装命令为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>&gt; libz-dev libssl-dev
+</span></span><span class="line"><span class="cl">$ apt-get install git-core
+</span></span><span class="line"><span class="cl">$ git --version
+</span></span><span class="line"><span class="cl">git version 1.8.1.2
+</span></span></code></pre></div><p><strong>（2）Centos/RedHat 环境安装</strong></p>
+<p>如果你使用的系统是 Centos/RedHat ，安装命令为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ yum install curl-devel expat-devel gettext-devel <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>&gt; openssl-devel zlib-devel
+</span></span><span class="line"><span class="cl">$ yum -y install git-core
+</span></span><span class="line"><span class="cl">$ git --version
+</span></span><span class="line"><span class="cl">git version 1.7.1
+</span></span></code></pre></div><p><strong>（3）Windows 环境安装</strong></p>
+<p>在<a href="https://git-scm.com/downloads"   target="_blank">
+    Git 官方下载地址</a>下载 exe 安装包。按照安装向导安装即可。</p>
+<p>建议安装 Git Bash 这个 git 的命令行工具。</p>
+<p><strong>（4）Mac 环境安装</strong></p>
+<p>在<a href="https://git-scm.com/downloads"   target="_blank">
+    Git 官方下载地址</a>下载 mac 安装包。按照安装向导安装即可。</p>
+<h2 class="relative group">配置 
+    <div id="配置" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e9%85%8d%e7%bd%ae" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Git 自带一个 <code>git config</code> 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：</p>
+<ul>
+<li><code>/etc/gitconfig</code> 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 <code>--system</code> 选项的 <code>git config</code> 时，它会从此文件读写配置变量。</li>
+<li><code>~/.gitconfig</code> 或 <code>~/.config/git/config</code> 文件：只针对当前用户。 可以传递 <code>--global</code> 选项让 Git 读写此文件。</li>
+<li>当前使用仓库的 Git 目录中的 <code>config</code> 文件（就是 <code>.git/config</code>）：针对该仓库。</li>
+</ul>
+<p>每一个级别覆盖上一级别的配置，所以 <code>.git/config</code> 的配置变量会覆盖 <code>/etc/gitconfig</code> 中的配置变量。</p>
+<p>在 Windows 系统中，Git 会查找 <code>$HOME</code> 目录下（一般情况下是 <code>C:\Users\$USER</code>）的 <code>.gitconfig</code> 文件。 Git 同样也会寻找 <code>/etc/gitconfig</code> 文件，但只限于 MSys 的根目录下，即安装 Git 时所选的目标位置。</p>
+<h3 class="relative group">配置用户信息 
+    <div id="配置用户信息" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e9%85%8d%e7%bd%ae%e7%94%a8%e6%88%b7%e4%bf%a1%e6%81%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git config --global user.name <span class="s2">&#34;John Doe&#34;</span>
+</span></span><span class="line"><span class="cl">git config --global user.email johndoe@example.com
+</span></span></code></pre></div><p>再次强调，如果使用了 <code>--global</code> 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用那些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行没有 <code>--global</code> 选项的命令来配置。</p>
+<p>很多 GUI 工具都会在第一次运行时帮助你配置这些信息。</p>
+<h3 class="relative group">给 Git 命令添加别名 
+    <div id="给-git-命令添加别名" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%bb%99-git-%e5%91%bd%e4%bb%a4%e6%b7%bb%e5%8a%a0%e5%88%ab%e5%90%8d" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在 OS X 和 Linux 下, 你的 Git 的配置文件储存在 <code>~/.gitconfig</code>。我在<code>[alias]</code> 部分添加了一些快捷别名(和一些我容易拼写错误的)，如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl">[<span class="nx">alias</span>]
+</span></span><span class="line"><span class="cl">    <span class="nx">a</span> <span class="p">=</span> <span class="nx">add</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">amend</span> <span class="p">=</span> <span class="nx">commit</span> <span class="p">--</span><span class="nx">amend</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">c</span> <span class="p">=</span> <span class="nx">commit</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ca</span> <span class="p">=</span> <span class="nx">commit</span> <span class="p">--</span><span class="nx">amend</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ci</span> <span class="p">=</span> <span class="nx">commit</span> <span class="p">-</span><span class="nx">a</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">co</span> <span class="p">=</span> <span class="nx">checkout</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">d</span> <span class="p">=</span> <span class="nx">diff</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dc</span> <span class="p">=</span> <span class="nx">diff</span> <span class="p">--</span><span class="nx">changed</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ds</span> <span class="p">=</span> <span class="nx">diff</span> <span class="p">--</span><span class="nx">staged</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">f</span> <span class="p">=</span> <span class="nx">fetch</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">loll</span> <span class="p">=</span> <span class="nx">log</span> <span class="p">--</span><span class="nx">graph</span> <span class="p">--</span><span class="nx">decorate</span> <span class="p">--</span><span class="nx">pretty</span><span class="p">=</span><span class="nx">oneline</span> <span class="p">--</span><span class="nx">abbrev</span><span class="p">-</span><span class="nx">commit</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">m</span> <span class="p">=</span> <span class="nx">merge</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">one</span> <span class="p">=</span> <span class="nx">log</span> <span class="p">--</span><span class="nx">pretty</span><span class="p">=</span><span class="nx">oneline</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">outstanding</span> <span class="p">=</span> <span class="nx">rebase</span> <span class="p">-</span><span class="nx">i</span> @{<span class="nx">u</span>}
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="p">=</span> <span class="nx">status</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">unpushed</span> <span class="p">=</span> <span class="nx">log</span> @{<span class="nx">u</span>}
+</span></span><span class="line"><span class="cl">    <span class="nx">wc</span> <span class="p">=</span> <span class="nx">whatchanged</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">wip</span> <span class="p">=</span> <span class="nx">rebase</span> <span class="p">-</span><span class="nx">i</span> @{<span class="nx">u</span>}
+</span></span><span class="line"><span class="cl">    <span class="nx">zap</span> <span class="p">=</span> <span class="nx">fetch</span> <span class="p">-</span><span class="nx">p</span>
+</span></span></code></pre></div><h3 class="relative group">缓存一个仓库的用户名和密码 
+    <div id="缓存一个仓库的用户名和密码" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%bc%93%e5%ad%98%e4%b8%80%e4%b8%aa%e4%bb%93%e5%ba%93%e7%9a%84%e7%94%a8%e6%88%b7%e5%90%8d%e5%92%8c%e5%af%86%e7%a0%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>你可能有一个仓库需要授权，这时你可以缓存用户名和密码，而不用每次推/拉(push/pull)的时候都输入，Credential helper 能帮你。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git config --global credential.helper cache
+</span></span><span class="line"><span class="cl"><span class="c1">## Set git to use the credential memory cache</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git config --global credential.helper <span class="s1">&#39;cache --timeout=3600&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Set the cache to timeout after 1 hour (setting is in seconds)</span>
+</span></span></code></pre></div><h2 class="relative group">仓库 
+    <div id="仓库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%93%e5%ba%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">初始化仓库 
+    <div id="初始化仓库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%9d%e5%a7%8b%e5%8c%96%e4%bb%93%e5%ba%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git init
+</span></span></code></pre></div><h3 class="relative group">克隆仓库 
+    <div id="克隆仓库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%8b%e9%9a%86%e4%bb%93%e5%ba%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 通过 SSH</span>
+</span></span><span class="line"><span class="cl">$ git clone ssh://user@domain.com/repo.git
+</span></span><span class="line"><span class="cl"><span class="c1"># 通过 HTTP</span>
+</span></span><span class="line"><span class="cl">$ git clone http://domain.com/user/repo.git
+</span></span></code></pre></div><h2 class="relative group">储藏 
+    <div id="储藏" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%82%a8%e8%97%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>有时，我们需要在同一个项目的不同分支上工作。当需要切换分支时，偏偏本地的工作还没有完成，此时，提交修改显得不严谨，但是不提交代码又无法切换分支。这时，你可以使用 <code>git stash</code> 将本地的修改内容作为草稿储藏起来。</p>
+<p>官方称之为储藏，但我个人更喜欢称之为存草稿。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 1. 将修改作为当前分支的草稿保存</span>
+</span></span><span class="line"><span class="cl">$ git stash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 查看草稿列表</span>
+</span></span><span class="line"><span class="cl">$ git stash list
+</span></span><span class="line"><span class="cl">stash@<span class="o">{</span>0<span class="o">}</span>: WIP on master: 6fae349 📝 Writing docs.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3.1 删除草稿</span>
+</span></span><span class="line"><span class="cl">$ git stash drop stash@<span class="o">{</span>0<span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3.2 读取草稿</span>
+</span></span><span class="line"><span class="cl">$ git stash apply stash@<span class="o">{</span>0<span class="o">}</span>
+</span></span></code></pre></div><h2 class="relative group">暂存 
+    <div id="暂存" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9a%82%e5%ad%98" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><code>git add</code> 命令用于将修改添加到暂存区。</p>
+<h3 class="relative group">暂存指定文件 
+    <div id="暂存指定文件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9a%82%e5%ad%98%e6%8c%87%e5%ae%9a%e6%96%87%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git add xxx
+</span></span></code></pre></div><h3 class="relative group">暂存当前目录下所有修改 
+    <div id="暂存当前目录下所有修改" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9a%82%e5%ad%98%e5%bd%93%e5%89%8d%e7%9b%ae%e5%bd%95%e4%b8%8b%e6%89%80%e6%9c%89%e4%bf%ae%e6%94%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git add .
+</span></span></code></pre></div><h3 class="relative group">暂存所有修改 
+    <div id="暂存所有修改" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9a%82%e5%ad%98%e6%89%80%e6%9c%89%e4%bf%ae%e6%94%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<pre tabindex="0"><code>git add -A
+</code></pre><h3 class="relative group">暂存文件部分内容 
+    <div id="暂存文件部分内容" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9a%82%e5%ad%98%e6%96%87%e4%bb%b6%e9%83%a8%e5%88%86%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>暂存文件部分内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git add --patch filename.x
+</span></span></code></pre></div><p><code>-p</code> 简写。这会打开交互模式， 你将能够用 <code>s</code> 选项来分隔提交(commit)；</p>
+<p>然而, 如果这个文件是新的, 会没有这个选择， 添加一个新文件时，这样做:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git add -N filename.x
+</span></span></code></pre></div><p>然后, 你需要用 <code>e</code> 选项来手动选择需要添加的行，执行 <code>git diff --cached</code> 将会显示哪些行暂存了哪些行只是保存在本地了。</p>
+<h3 class="relative group">把暂存的内容变成未暂存，把未暂存的内容暂存起来 
+    <div id="把暂存的内容变成未暂存把未暂存的内容暂存起来" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8a%8a%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9%e5%8f%98%e6%88%90%e6%9c%aa%e6%9a%82%e5%ad%98%e6%8a%8a%e6%9c%aa%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9%e6%9a%82%e5%ad%98%e8%b5%b7%e6%9d%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>这个有点困难， 我能想到的最好的方法是先 stash 未暂存的内容， 然后重置(reset)，再 pop 第一步 stashed 的内容, 最后再 add 它们。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git stash -k
+</span></span><span class="line"><span class="cl">git reset --hard
+</span></span><span class="line"><span class="cl">git stash pop
+</span></span><span class="line"><span class="cl">git add -A
+</span></span></code></pre></div><h2 class="relative group">提交 
+    <div id="提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><code>git commit</code> 命令用于将修改保存到到本地仓库。</p>
+<h3 class="relative group">查看最近一次提交 
+    <div id="查看最近一次提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9f%a5%e7%9c%8b%e6%9c%80%e8%bf%91%e4%b8%80%e6%ac%a1%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git show
+</span></span></code></pre></div><p>或者</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git log -n1 -p
+</span></span></code></pre></div><h3 class="relative group">提交本地的所有修改 
+    <div id="提交本地的所有修改" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8f%90%e4%ba%a4%e6%9c%ac%e5%9c%b0%e7%9a%84%e6%89%80%e6%9c%89%e4%bf%ae%e6%94%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit -a
+</span></span></code></pre></div><h3 class="relative group">提交暂存的修改 
+    <div id="提交暂存的修改" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8f%90%e4%ba%a4%e6%9a%82%e5%ad%98%e7%9a%84%e4%bf%ae%e6%94%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit
+</span></span></code></pre></div><h3 class="relative group">把暂存的内容添加到上一次的提交 
+    <div id="把暂存的内容添加到上一次的提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8a%8a%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9%e6%b7%bb%e5%8a%a0%e5%88%b0%e4%b8%8a%e4%b8%80%e6%ac%a1%e7%9a%84%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit --amend
+</span></span></code></pre></div><h3 class="relative group">附加消息提交 
+    <div id="附加消息提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e9%99%84%e5%8a%a0%e6%b6%88%e6%81%af%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit -m <span class="s1">&#39;commit message&#39;</span>
+</span></span></code></pre></div><h3 class="relative group">修改提交信息 
+    <div id="修改提交信息" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bf%ae%e6%94%b9%e6%8f%90%e4%ba%a4%e4%bf%a1%e6%81%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你的提交信息写错了且这次提交（commit）还没有推送（push），可以使用以下命令修改：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit --amend
+</span></span></code></pre></div><p>或者</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit --amend -m <span class="s1">&#39;xxxxxxx&#39;</span>
+</span></span></code></pre></div><h3 class="relative group">修改提交信息中的用户名和邮箱 
+    <div id="修改提交信息中的用户名和邮箱" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bf%ae%e6%94%b9%e6%8f%90%e4%ba%a4%e4%bf%a1%e6%81%af%e4%b8%ad%e7%9a%84%e7%94%a8%e6%88%b7%e5%90%8d%e5%92%8c%e9%82%ae%e7%ae%b1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git commit --amend --author <span class="s2">&#34;New Authorname &lt;authoremail@mydomain.com&gt;&#34;</span>
+</span></span></code></pre></div><h3 class="relative group">从提交中移除一个文件 
+    <div id="从提交中移除一个文件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%8e%e6%8f%90%e4%ba%a4%e4%b8%ad%e7%a7%bb%e9%99%a4%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git checkout HEAD^ myfile
+</span></span><span class="line"><span class="cl">git add -A
+</span></span><span class="line"><span class="cl">git commit --amend
+</span></span></code></pre></div><h3 class="relative group">删除最后一次提交 
+    <div id="删除最后一次提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%a0%e9%99%a4%e6%9c%80%e5%90%8e%e4%b8%80%e6%ac%a1%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你需要删除推了的提交(pushed commits)，你可以使用下面的方法。可是，这会不可逆的改变你的历史，也会搞乱那些已经从该仓库拉取(pulled)了的人的历史。简而言之，如果你不是很确定，千万不要这么做。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git reset HEAD^ --hard
+</span></span><span class="line"><span class="cl">git push -f <span class="o">[</span>remote<span class="o">]</span> <span class="o">[</span>branch<span class="o">]</span>
+</span></span></code></pre></div><p>如果你还没有推到远程, 把 Git 重置(reset)到你最后一次提交前的状态就可以了(同时保存暂存的变化):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch*<span class="o">)</span>$ git reset --soft HEAD@<span class="o">{</span>1<span class="o">}</span>
+</span></span></code></pre></div><p>这只能在没有推送之前有用. 如果你已经推了, 唯一安全能做的是 <code>git revert SHAofBadCommit</code>， 那会创建一个新的提交(commit)用于撤消前一个提交的所有变化(changes)； 或者, 如果你推的这个分支是 rebase-safe 的 (例如： 其它开发者不会从这个分支拉), 只需要使用 <code>git push -f</code>； 更多, 请参考 <a href="#deleteremove-last-pushed-commit"  >
+    the above section</a>。</p>
+<h3 class="relative group">删除任意提交 
+    <div id="删除任意提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%a0%e9%99%a4%e4%bb%bb%e6%84%8f%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>同样的警告：不到万不得已的时候不要这么做.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git rebase --onto SHA1_OF_BAD_COMMIT^ SHA1_OF_BAD_COMMIT
+</span></span><span class="line"><span class="cl">git push -f <span class="o">[</span>remote<span class="o">]</span> <span class="o">[</span>branch<span class="o">]</span>
+</span></span></code></pre></div><p>或者做一个 <a href="#interactive-rebase"  >
+    交互式 rebase</a> 删除那些你想要删除的提交(commit)里所对应的行。</p>
+<h3 class="relative group">我尝试推一个修正后的提交(amended commit)到远程，但是报错 
+    <div id="我尝试推一个修正后的提交amended-commit到远程但是报错" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e5%b0%9d%e8%af%95%e6%8e%a8%e4%b8%80%e4%b8%aa%e4%bf%ae%e6%ad%a3%e5%90%8e%e7%9a%84%e6%8f%90%e4%ba%a4amended-commit%e5%88%b0%e8%bf%9c%e7%a8%8b%e4%bd%86%e6%98%af%e6%8a%a5%e9%94%99" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">To https://github.com/yourusername/repo.git
+</span></span><span class="line"><span class="cl">! <span class="o">[</span>rejected<span class="o">]</span>        mybranch -&gt; mybranch <span class="o">(</span>non-fast-forward<span class="o">)</span>
+</span></span><span class="line"><span class="cl">error: failed to push some refs to <span class="s1">&#39;https://github.com/tanay1337/webmaker.org.git&#39;</span>
+</span></span><span class="line"><span class="cl">hint: Updates were rejected because the tip of your current branch is behind
+</span></span><span class="line"><span class="cl">hint: its remote counterpart. Integrate the remote changes <span class="o">(</span>e.g.
+</span></span><span class="line"><span class="cl">hint: <span class="s1">&#39;git pull ...&#39;</span><span class="o">)</span> before pushing again.
+</span></span><span class="line"><span class="cl">hint: See the <span class="s1">&#39;Note about fast-forwards&#39;</span> in <span class="s1">&#39;git push --help&#39;</span> <span class="k">for</span> details.
+</span></span></code></pre></div><p>注意, rebasing(见下面)和修正(amending)会用一个<strong>新的提交(commit)代替旧的</strong>, 所以如果之前你已经往远程仓库上推过一次修正前的提交(commit)，那你现在就必须强推(force push) (<code>-f</code>)。 注意 – <em>总是</em> 确保你指明一个分支!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git push origin mybranch -f
+</span></span></code></pre></div><p>一般来说, <strong>要避免强推</strong>. 最好是创建和推(push)一个新的提交(commit)，而不是强推一个修正后的提交。后者会使那些与该分支或该分支的子分支工作的开发者，在源历史中产生冲突。</p>
+<h3 class="relative group">不小心强制重置，想找回内容 
+    <div id="不小心强制重置想找回内容" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%8d%e5%b0%8f%e5%bf%83%e5%bc%ba%e5%88%b6%e9%87%8d%e7%bd%ae%e6%83%b3%e6%89%be%e5%9b%9e%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你意外的做了 <code>git reset --hard</code>, 你通常能找回你的提交(commit), 因为 Git 对每件事都会有日志，且都会保存几天。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reflog
+</span></span></code></pre></div><p>你将会看到一个你过去提交(commit)的列表, 和一个重置的提交。 选择你想要回到的提交(commit)的 SHA，再重置一次:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reset --hard SHA1234
+</span></span></code></pre></div><p>这样就完成了。</p>
+<h2 class="relative group">重置 
+    <div id="重置" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e9%87%8d%e7%bd%ae" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>撤销本地修改：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 移除缓存区的所有文件（i.e. 撤销上次git add）</span>
+</span></span><span class="line"><span class="cl">$ git reset HEAD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将HEAD重置到上一次提交的版本，并将之后的修改标记为未添加到缓存区的修改</span>
+</span></span><span class="line"><span class="cl">$ git reset &lt;commit&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将HEAD重置到上一次提交的版本，并保留未提交的本地修改</span>
+</span></span><span class="line"><span class="cl">$ git reset --keep &lt;commit&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 放弃工作目录下的所有修改</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard HEAD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将HEAD重置到指定的版本，并抛弃该版本之后的所有修改</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard &lt;commit-hash&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 用远端分支强制覆盖本地分支</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard &lt;remote/branch&gt; e.g., upstream/master, origin/my-feature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 放弃某个文件的所有本地修改</span>
+</span></span><span class="line"><span class="cl">$ git checkout HEAD &lt;file&gt;
+</span></span></code></pre></div><p>删除添加<code>.gitignore</code>文件前错误提交的文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 提交一条 git 记录，提交信息为 remove xyz file</span>
+</span></span><span class="line"><span class="cl">$ git rm -r --cached .
+</span></span><span class="line"><span class="cl">$ git add .
+</span></span><span class="line"><span class="cl">$ git commit -m <span class="s2">&#34;remove xyz file&#34;</span>
+</span></span></code></pre></div><p>撤销远程修改（创建一个新的提交，并回滚到指定版本）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># revert 哈希号为 commit-hash 的记录</span>
+</span></span><span class="line"><span class="cl">$ git revert &lt;commit-hash&gt;
+</span></span></code></pre></div><p>彻底删除指定版本：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 执行下面命令后，commit-hash 提交后的记录都会被彻底删除，使用需谨慎</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard &lt;commit-hash&gt;
+</span></span><span class="line"><span class="cl">$ git push -f
+</span></span></code></pre></div><h2 class="relative group">更新 
+    <div id="更新" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9b%b4%e6%96%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 下载远程端版本，但不合并到HEAD中</span>
+</span></span><span class="line"><span class="cl">$ git fetch &lt;remote&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 将远程端版本合并到本地版本中</span>
+</span></span><span class="line"><span class="cl">$ git pull origin master
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 以rebase方式将远端分支与本地合并</span>
+</span></span><span class="line"><span class="cl">$ git pull --rebase &lt;remote&gt; &lt;branch&gt;
+</span></span></code></pre></div><h2 class="relative group">推送 
+    <div id="推送" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8e%a8%e9%80%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">推送提交到远程仓库 
+    <div id="推送提交到远程仓库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8e%a8%e9%80%81%e6%8f%90%e4%ba%a4%e5%88%b0%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git push remote &lt;remote&gt; &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">发布标签 
+    <div id="发布标签" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%8f%91%e5%b8%83%e6%a0%87%e7%ad%be" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git push --tags
+</span></span></code></pre></div><h2 class="relative group">未暂存 
+    <div id="未暂存" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9c%aa%e6%9a%82%e5%ad%98" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<blockquote>
+<p>未暂存(Unstaged)的内容</p>
+</blockquote>
+<h3 class="relative group">把未暂存的内容移动到一个新分支 
+    <div id="把未暂存的内容移动到一个新分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8a%8a%e6%9c%aa%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9%e7%a7%bb%e5%8a%a8%e5%88%b0%e4%b8%80%e4%b8%aa%e6%96%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><code>git checkout -b my-branch</code></li>
+</ul>
+<h3 class="relative group">我想把未暂存的内容移动到另一个已存在的分支 
+    <div id="我想把未暂存的内容移动到另一个已存在的分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e6%8a%8a%e6%9c%aa%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9%e7%a7%bb%e5%8a%a8%e5%88%b0%e5%8f%a6%e4%b8%80%e4%b8%aa%e5%b7%b2%e5%ad%98%e5%9c%a8%e7%9a%84%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git stash
+</span></span><span class="line"><span class="cl">git checkout my-branch
+</span></span><span class="line"><span class="cl">git stash pop
+</span></span></code></pre></div><h3 class="relative group">丢弃本地未提交的变化 
+    <div id="丢弃本地未提交的变化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%a2%e5%bc%83%e6%9c%ac%e5%9c%b0%e6%9c%aa%e6%8f%90%e4%ba%a4%e7%9a%84%e5%8f%98%e5%8c%96" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你只是想重置源(origin)和你本地(local)之间的一些提交(commit)，你可以：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">## one commit</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard HEAD^
+</span></span><span class="line"><span class="cl"><span class="c1">## two commits</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard HEAD^^
+</span></span><span class="line"><span class="cl"><span class="c1">## four commits</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard HEAD~4
+</span></span><span class="line"><span class="cl"><span class="c1">## or</span>
+</span></span><span class="line"><span class="cl">$ git checkout -f
+</span></span></code></pre></div><p>重置某个特殊的文件, 你可以用文件名做为参数:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git reset filename
+</span></span></code></pre></div><h3 class="relative group">我想丢弃某些未暂存的内容 
+    <div id="我想丢弃某些未暂存的内容" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e4%b8%a2%e5%bc%83%e6%9f%90%e4%ba%9b%e6%9c%aa%e6%9a%82%e5%ad%98%e7%9a%84%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你想丢弃工作拷贝中的一部分内容，而不是全部。</p>
+<p>签出(checkout)不需要的内容，保留需要的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git checkout -p
+</span></span><span class="line"><span class="cl"><span class="c1">## Answer y to all of the snippets you want to drop</span>
+</span></span></code></pre></div><p>另外一个方法是使用 <code>stash</code>， Stash 所有要保留下的内容, 重置工作拷贝, 重新应用保留的部分。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git stash -p
+</span></span><span class="line"><span class="cl"><span class="c1">## Select all of the snippets you want to save</span>
+</span></span><span class="line"><span class="cl">$ git reset --hard
+</span></span><span class="line"><span class="cl">$ git stash pop
+</span></span></code></pre></div><p>或者, stash 你不需要的部分, 然后 stash drop。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git stash -p
+</span></span><span class="line"><span class="cl"><span class="c1">## Select all of the snippets you don&#39;t want to save</span>
+</span></span><span class="line"><span class="cl">$ git stash drop
+</span></span></code></pre></div><h2 class="relative group">分支 
+    <div id="分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<blockquote>
+<p>分支(Branches)</p>
+</blockquote>
+<h3 class="relative group">列出所有的分支 
+    <div id="列出所有的分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%97%e5%87%ba%e6%89%80%e6%9c%89%e7%9a%84%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch
+</span></span></code></pre></div><h3 class="relative group">列出所有的远端分支 
+    <div id="列出所有的远端分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%97%e5%87%ba%e6%89%80%e6%9c%89%e7%9a%84%e8%bf%9c%e7%ab%af%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -r
+</span></span></code></pre></div><h3 class="relative group">基于当前分支创建新分支 
+    <div id="基于当前分支创建新分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e4%ba%8e%e5%bd%93%e5%89%8d%e5%88%86%e6%94%af%e5%88%9b%e5%bb%ba%e6%96%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch &lt;new-branch&gt;
+</span></span></code></pre></div><h3 class="relative group">基于远程分支创建新分支 
+    <div id="基于远程分支创建新分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e4%ba%8e%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af%e5%88%9b%e5%bb%ba%e6%96%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch --track &lt;new-branch&gt; &lt;remote-branch&gt;
+</span></span></code></pre></div><h3 class="relative group">删除本地分支 
+    <div id="删除本地分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%a0%e9%99%a4%e6%9c%ac%e5%9c%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -d &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">强制删除本地分支 
+    <div id="强制删除本地分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%bc%ba%e5%88%b6%e5%88%a0%e9%99%a4%e6%9c%ac%e5%9c%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<blockquote>
+<p>注意：强制删除本地分支，将会丢失未合并的修改</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git branch -D &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">删除远程分支 
+    <div id="删除远程分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%a0%e9%99%a4%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git push &lt;remote&gt; :&lt;branch&gt; <span class="o">(</span>since Git v1.5.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">git push &lt;remote&gt; --delete &lt;branch&gt; <span class="o">(</span>since Git v1.7.0<span class="o">)</span>
+</span></span></code></pre></div><h3 class="relative group">切换分支 
+    <div id="切换分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%87%e6%8d%a2%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">创建并切换到新分支 
+    <div id="创建并切换到新分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%9b%e5%bb%ba%e5%b9%b6%e5%88%87%e6%8d%a2%e5%88%b0%e6%96%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout -b &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">我从错误的分支拉取了内容，或把内容拉取到了错误的分支 
+    <div id="我从错误的分支拉取了内容或把内容拉取到了错误的分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e4%bb%8e%e9%94%99%e8%af%af%e7%9a%84%e5%88%86%e6%94%af%e6%8b%89%e5%8f%96%e4%ba%86%e5%86%85%e5%ae%b9%e6%88%96%e6%8a%8a%e5%86%85%e5%ae%b9%e6%8b%89%e5%8f%96%e5%88%b0%e4%ba%86%e9%94%99%e8%af%af%e7%9a%84%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>这是另外一种使用 <code>git reflog</code> 情况，找到在这次错误拉(pull) 之前 HEAD 的指向。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reflog
+</span></span><span class="line"><span class="cl">ab7555f HEAD@<span class="o">{</span>0<span class="o">}</span>: pull origin wrong-branch: Fast-forward
+</span></span><span class="line"><span class="cl">c5bc55a HEAD@<span class="o">{</span>1<span class="o">}</span>: checkout: checkout message goes here
+</span></span></code></pre></div><p>重置分支到你所需的提交(desired commit):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git reset --hard c5bc55a
+</span></span></code></pre></div><p>完成。</p>
+<h3 class="relative group">我想扔掉本地的提交(commit)，以便我的分支与远程的保持一致 
+    <div id="我想扔掉本地的提交commit以便我的分支与远程的保持一致" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e6%89%94%e6%8e%89%e6%9c%ac%e5%9c%b0%e7%9a%84%e6%8f%90%e4%ba%a4commit%e4%bb%a5%e4%be%bf%e6%88%91%e7%9a%84%e5%88%86%e6%94%af%e4%b8%8e%e8%bf%9c%e7%a8%8b%e7%9a%84%e4%bf%9d%e6%8c%81%e4%b8%80%e8%87%b4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>先确认你没有推(push)你的内容到远程。</p>
+<p><code>git status</code> 会显示你领先(ahead)源(origin)多少个提交:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git status
+</span></span><span class="line"><span class="cl"><span class="c1">## On branch my-branch</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Your branch is ahead of &#39;origin/my-branch&#39; by 2 commits.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##   (use &#34;git push&#34; to publish your local commits)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span></code></pre></div><p>一种方法是:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reset --hard origin/my-branch
+</span></span></code></pre></div><h3 class="relative group">我需要提交到一个新分支，但错误的提交到了 master 
+    <div id="我需要提交到一个新分支但错误的提交到了-master" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e9%9c%80%e8%a6%81%e6%8f%90%e4%ba%a4%e5%88%b0%e4%b8%80%e4%b8%aa%e6%96%b0%e5%88%86%e6%94%af%e4%bd%86%e9%94%99%e8%af%af%e7%9a%84%e6%8f%90%e4%ba%a4%e5%88%b0%e4%ba%86-master" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在 master 下创建一个新分支，不切换到新分支,仍在 master 下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git branch my-branch
+</span></span></code></pre></div><p>把 master 分支重置到前一个提交:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reset --hard HEAD^
+</span></span></code></pre></div><p><code>HEAD^</code> 是 <code>HEAD^1</code> 的简写，你可以通过指定要设置的<code>HEAD</code>来进一步重置。</p>
+<p>或者, 如果你不想使用 <code>HEAD^</code>, 找到你想重置到的提交(commit)的 hash(<code>git log</code> 能够完成)， 然后重置到这个 hash。 使用<code>git push</code> 同步内容到远程。</p>
+<p>例如, master 分支想重置到的提交的 hash 为<code>a13b85e</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reset --hard a13b85e
+</span></span><span class="line"><span class="cl">HEAD is now at a13b85e
+</span></span></code></pre></div><p>签出(checkout)刚才新建的分支继续工作:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout my-branch
+</span></span></code></pre></div><h3 class="relative group">我想保留来自另外一个 ref-ish 的整个文件 
+    <div id="我想保留来自另外一个-ref-ish-的整个文件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e4%bf%9d%e7%95%99%e6%9d%a5%e8%87%aa%e5%8f%a6%e5%a4%96%e4%b8%80%e4%b8%aa-ref-ish-%e7%9a%84%e6%95%b4%e4%b8%aa%e6%96%87%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>假设你正在做一个原型方案(原文为 working spike (see note)), 有成百的内容，每个都工作得很好。现在, 你提交到了一个分支，保存工作内容:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>solution<span class="o">)</span>$ git add -A <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Adding all changes from this spike into one big commit.&#34;</span>
+</span></span></code></pre></div><p>当你想要把它放到一个分支里 (可能是<code>feature</code>, 或者 <code>develop</code>), 你关心是保持整个文件的完整，你想要一个大的提交分隔成比较小。</p>
+<p>假设你有:</p>
+<ul>
+<li>分支 <code>solution</code>, 拥有原型方案， 领先 <code>develop</code> 分支。</li>
+<li>分支 <code>develop</code>, 在这里你应用原型方案的一些内容。</li>
+</ul>
+<p>我去可以通过把内容拿到你的分支里，来解决这个问题:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>develop<span class="o">)</span>$ git checkout solution -- file1.txt
+</span></span></code></pre></div><p>这会把这个文件内容从分支 <code>solution</code> 拿到分支 <code>develop</code> 里来:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">## On branch develop</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Your branch is up-to-date with &#39;origin/develop&#39;.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Changes to be committed:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##  (use &#34;git reset HEAD &lt;file&gt;...&#34; to unstage)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##        modified:   file1.txt</span>
+</span></span></code></pre></div><p>然后, 正常提交。</p>
+<p>Note: Spike solutions are made to analyze or solve the problem. These solutions are used for estimation and discarded once everyone gets clear visualization of the problem. ~ <a href="https://en.wikipedia.org/wiki/Extreme_programming_practices"   target="_blank">
+    Wikipedia</a>.</p>
+<h3 class="relative group">我把几个提交(commit)提交到了同一个分支，而这些提交应该分布在不同的分支里 
+    <div id="我把几个提交commit提交到了同一个分支而这些提交应该分布在不同的分支里" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%8a%8a%e5%87%a0%e4%b8%aa%e6%8f%90%e4%ba%a4commit%e6%8f%90%e4%ba%a4%e5%88%b0%e4%ba%86%e5%90%8c%e4%b8%80%e4%b8%aa%e5%88%86%e6%94%af%e8%80%8c%e8%bf%99%e4%ba%9b%e6%8f%90%e4%ba%a4%e5%ba%94%e8%af%a5%e5%88%86%e5%b8%83%e5%9c%a8%e4%b8%8d%e5%90%8c%e7%9a%84%e5%88%86%e6%94%af%e9%87%8c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>假设你有一个<code>master</code>分支， 执行<code>git log</code>, 你看到你做过两次提交:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit e3851e817c451cc36f2e6f3049db528415e3c114
+</span></span><span class="line"><span class="cl">Author: Alex Lee &lt;alexlee@example.com&gt;
+</span></span><span class="line"><span class="cl">Date:   Tue Jul <span class="m">22</span> 15:39:27 <span class="m">2014</span> -0400
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Bug <span class="c1">#21 - Added CSRF protection</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit 5ea51731d150f7ddc4a365437931cd8be3bf3131
+</span></span><span class="line"><span class="cl">Author: Alex Lee &lt;alexlee@example.com&gt;
+</span></span><span class="line"><span class="cl">Date:   Tue Jul <span class="m">22</span> 15:39:12 <span class="m">2014</span> -0400
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Bug <span class="c1">#14 - Fixed spacing on title</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit a13b85e984171c6e2a1729bb061994525f626d14
+</span></span><span class="line"><span class="cl">Author: Aki Rose &lt;akirose@example.com&gt;
+</span></span><span class="line"><span class="cl">Date:   Tue Jul <span class="m">21</span> 01:12:48 <span class="m">2014</span> -0400
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    First commit
+</span></span></code></pre></div><p>让我们用提交 hash(commit hash)标记 bug (<code>e3851e8</code> for #21, <code>5ea5173</code> for #14).</p>
+<p>首先, 我们把<code>master</code>分支重置到正确的提交(<code>a13b85e</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reset --hard a13b85e
+</span></span><span class="line"><span class="cl">HEAD is now at a13b85e
+</span></span></code></pre></div><p>现在, 我们对 bug #21 创建一个新的分支:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout -b <span class="m">21</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>21<span class="o">)</span>$
+</span></span></code></pre></div><p>接着, 我们用 <em>cherry-pick</em> 把对 bug #21 的提交放入当前分支。 这意味着我们将应用(apply)这个提交(commit)，仅仅这一个提交(commit)，直接在 HEAD 上面。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>21<span class="o">)</span>$ git cherry-pick e3851e8
+</span></span></code></pre></div><p>这时候, 这里可能会产生冲突， 参见<a href="#interactive-rebase"  >
+    交互式 rebasing 章</a> <a href="#merge-conflict"  >
+    <strong>冲突节</strong></a> 解决冲突.</p>
+<p>再者， 我们为 bug #14 创建一个新的分支, 也基于<code>master</code>分支</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>21<span class="o">)</span>$ git checkout master
+</span></span><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout -b <span class="m">14</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>14<span class="o">)</span>$
+</span></span></code></pre></div><p>最后, 为 bug #14 执行 <code>cherry-pick</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>14<span class="o">)</span>$ git cherry-pick 5ea5173
+</span></span></code></pre></div><h3 class="relative group">我想删除上游(upstream)分支被删除了的本地分支 
+    <div id="我想删除上游upstream分支被删除了的本地分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e5%88%a0%e9%99%a4%e4%b8%8a%e6%b8%b8upstream%e5%88%86%e6%94%af%e8%a2%ab%e5%88%a0%e9%99%a4%e4%ba%86%e7%9a%84%e6%9c%ac%e5%9c%b0%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>一旦你在 github 上面合并(merge)了一个 pull request, 你就可以删除你 fork 里被合并的分支。 如果你不准备继续在这个分支里工作, 删除这个分支的本地拷贝会更干净，使你不会陷入工作分支和一堆陈旧分支的混乱之中。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git fetch -p
+</span></span></code></pre></div><h3 class="relative group">我不小心删除了我的分支 
+    <div id="我不小心删除了我的分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e4%b8%8d%e5%b0%8f%e5%bf%83%e5%88%a0%e9%99%a4%e4%ba%86%e6%88%91%e7%9a%84%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你定期推送到远程, 多数情况下应该是安全的，但有些时候还是可能删除了还没有推到远程的分支。 让我们先创建一个分支和一个新的文件:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout -b my-branch
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git branch
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ touch foo.txt
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ ls
+</span></span><span class="line"><span class="cl">README.md foo.txt
+</span></span></code></pre></div><p>添加文件并做一次提交</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git add .
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git commit -m <span class="s1">&#39;foo.txt added&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ foo.txt added
+</span></span><span class="line"><span class="cl"> <span class="m">1</span> files changed, <span class="m">1</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> create mode <span class="m">100644</span> foo.txt
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit 4e3cd85a670ced7cc17a2b5d8d3d809ac88d5012
+</span></span><span class="line"><span class="cl">Author: siemiatj &lt;siemiatj@example.com&gt;
+</span></span><span class="line"><span class="cl">Date:   Wed Jul <span class="m">30</span> 00:34:10 <span class="m">2014</span> +0200
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    foo.txt added
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">commit 69204cdf0acbab201619d95ad8295928e7f411d5
+</span></span><span class="line"><span class="cl">Author: Kate Hudson &lt;katehudson@example.com&gt;
+</span></span><span class="line"><span class="cl">Date:   Tue Jul <span class="m">29</span> 13:14:46 <span class="m">2014</span> -0400
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    Fixes <span class="c1">#6: Force pushing after amending commits</span>
+</span></span></code></pre></div><p>现在我们切回到主(master)分支，‘不小心的’删除<code>my-branch</code>分支</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git checkout master
+</span></span><span class="line"><span class="cl">Switched to branch <span class="s1">&#39;master&#39;</span>
+</span></span><span class="line"><span class="cl">Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git branch -D my-branch
+</span></span><span class="line"><span class="cl">Deleted branch my-branch <span class="o">(</span>was 4e3cd85<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ <span class="nb">echo</span> oh noes, deleted my branch!
+</span></span><span class="line"><span class="cl">oh noes, deleted my branch!
+</span></span></code></pre></div><p>在这时候你应该想起了<code>reflog</code>, 一个升级版的日志，它存储了仓库(repo)里面所有动作的历史。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reflog
+</span></span><span class="line"><span class="cl">69204cd HEAD@<span class="o">{</span>0<span class="o">}</span>: checkout: moving from my-branch to master
+</span></span><span class="line"><span class="cl">4e3cd85 HEAD@<span class="o">{</span>1<span class="o">}</span>: commit: foo.txt added
+</span></span><span class="line"><span class="cl">69204cd HEAD@<span class="o">{</span>2<span class="o">}</span>: checkout: moving from master to my-branch
+</span></span></code></pre></div><p>正如你所见，我们有一个来自删除分支的提交 hash(commit hash)，接下来看看是否能恢复删除了的分支。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout -b my-branch-help
+</span></span><span class="line"><span class="cl">Switched to a new branch <span class="s1">&#39;my-branch-help&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch-help<span class="o">)</span>$ git reset --hard 4e3cd85
+</span></span><span class="line"><span class="cl">HEAD is now at 4e3cd85 foo.txt added
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch-help<span class="o">)</span>$ ls
+</span></span><span class="line"><span class="cl">README.md foo.txt
+</span></span></code></pre></div><p>看! 我们把删除的文件找回来了。 Git 的 <code>reflog</code> 在 rebasing 出错的时候也是同样有用的。</p>
+<h3 class="relative group">我想删除一个分支 
+    <div id="我想删除一个分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e5%88%a0%e9%99%a4%e4%b8%80%e4%b8%aa%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>删除一个远程分支:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git push origin --delete my-branch
+</span></span></code></pre></div><p>你也可以:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git push origin :my-branch
+</span></span></code></pre></div><p>删除一个本地分支:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git branch -D my-branch
+</span></span></code></pre></div><h3 class="relative group">我想从别人正在工作的远程分支签出(checkout)一个分支 
+    <div id="我想从别人正在工作的远程分支签出checkout一个分支" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e4%bb%8e%e5%88%ab%e4%ba%ba%e6%ad%a3%e5%9c%a8%e5%b7%a5%e4%bd%9c%e7%9a%84%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af%e7%ad%be%e5%87%bacheckout%e4%b8%80%e4%b8%aa%e5%88%86%e6%94%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>首先, 从远程拉取(fetch) 所有分支:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git fetch --all
+</span></span></code></pre></div><p>假设你想要从远程的<code>daves</code>分支签出到本地的<code>daves</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout --track origin/daves
+</span></span><span class="line"><span class="cl">Branch daves <span class="nb">set</span> up to track remote branch daves from origin.
+</span></span><span class="line"><span class="cl">Switched to a new branch <span class="s1">&#39;daves&#39;</span>
+</span></span></code></pre></div><p>(<code>--track</code> 是 <code>git checkout -b [branch] [remotename]/[branch]</code> 的简写)</p>
+<p>这样就得到了一个<code>daves</code>分支的本地拷贝, 任何推过(pushed)的更新，远程都能看到.</p>
+<h2 class="relative group">标签 
+    <div id="标签" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a0%87%e7%ad%be" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">添加标签 
+    <div id="添加标签" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%b7%bb%e5%8a%a0%e6%a0%87%e7%ad%be" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git tag &lt;tag-name&gt;
+</span></span></code></pre></div><h3 class="relative group">添加标签并附加消息 
+    <div id="添加标签并附加消息" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%b7%bb%e5%8a%a0%e6%a0%87%e7%ad%be%e5%b9%b6%e9%99%84%e5%8a%a0%e6%b6%88%e6%81%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git tag -a &lt;tag-name&gt;
+</span></span></code></pre></div><h3 class="relative group">删除标签 
+    <div id="删除标签" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%a0%e9%99%a4%e6%a0%87%e7%ad%be" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git tag -d &lt;tag_name&gt;
+</span></span><span class="line"><span class="cl">git push &lt;remote&gt; :refs/tags/&lt;tag_name&gt;
+</span></span></code></pre></div><h3 class="relative group">恢复已删除标签 
+    <div id="恢复已删除标签" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%81%a2%e5%a4%8d%e5%b7%b2%e5%88%a0%e9%99%a4%e6%a0%87%e7%ad%be" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果你想恢复一个已删除标签(tag), 可以按照下面的步骤: 首先, 需要找到无法访问的标签(unreachable tag):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git fsck --unreachable <span class="p">|</span> grep tag
+</span></span></code></pre></div><p>记下这个标签(tag)的 hash，然后用 Git 的 <a href="http://git-scm.com/docs/git-update-ref"   target="_blank">
+    update-ref</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git update-ref refs/tags/&lt;tag_name&gt; &lt;hash&gt;
+</span></span></code></pre></div><p>这时你的标签(tag)应该已经恢复了。</p>
+<h2 class="relative group">Rebase 和 Merge 
+    <div id="rebase-和-merge" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#rebase-%e5%92%8c-merge" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<blockquote>
+<p>merge 与 rebase 虽然是 git 常用功能，但是强烈建议不要使用 git 命令来完成这项工作。</p>
+<p>因为如果出现代码冲突，在没有代码比对工具的情况下，实在太艰难了。</p>
+<p>你可以考虑使用各种 Git GUI 工具。</p>
+</blockquote>
+<h3 class="relative group">将分支合并到当前 HEAD 中 
+    <div id="将分支合并到当前-head-中" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%b0%86%e5%88%86%e6%94%af%e5%90%88%e5%b9%b6%e5%88%b0%e5%bd%93%e5%89%8d-head-%e4%b8%ad" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git merge &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">将当前 HEAD 版本重置到分支中 
+    <div id="将当前-head-版本重置到分支中" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%b0%86%e5%bd%93%e5%89%8d-head-%e7%89%88%e6%9c%ac%e9%87%8d%e7%bd%ae%e5%88%b0%e5%88%86%e6%94%af%e4%b8%ad" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git rebase &lt;branch&gt;
+</span></span></code></pre></div><h3 class="relative group">撤销 rebase/merge 
+    <div id="撤销-rebasemerge" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%92%a4%e9%94%80-rebasemerge" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>你可以合并(merge)或 rebase 了一个错误的分支, 或者完成不了一个进行中的 rebase/merge。 Git 在进行危险操作的时候会把原始的 HEAD 保存在一个叫 ORIG_HEAD 的变量里, 所以要把分支恢复到 rebase/merge 前的状态是很容易的。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git reset --hard ORIG_HEAD
+</span></span></code></pre></div><h3 class="relative group">我已经 rebase 过, 但是我不想强推(force push) 
+    <div id="我已经-rebase-过-但是我不想强推force-push" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e5%b7%b2%e7%bb%8f-rebase-%e8%bf%87-%e4%bd%86%e6%98%af%e6%88%91%e4%b8%8d%e6%83%b3%e5%bc%ba%e6%8e%a8force-push" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>不幸的是，如果你想把这些变化(changes)反应到远程分支上，你就必须得强推(force push)。 是因你快进(Fast forward)了提交，改变了 Git 历史, 远程分支不会接受变化(changes)，除非强推(force push)。这就是许多人使用 merge 工作流, 而不是 rebasing 工作流的主要原因之一， 开发者的强推(force push)会使大的团队陷入麻烦。使用时需要注意，一种安全使用 rebase 的方法是，不要把你的变化(changes)反映到远程分支上, 而是按下面的做:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git checkout my-branch
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git rebase -i master
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git checkout master
+</span></span><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git merge --ff-only my-branch
+</span></span></code></pre></div><p>更多, 参见 <a href="http://stackoverflow.com/questions/11058312/how-can-i-use-git-rebase-without-requiring-a-forced-push"   target="_blank">
+    this SO thread</a>.</p>
+<h3 class="relative group">我需要组合(combine)几个提交(commit) 
+    <div id="我需要组合combine几个提交commit" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e9%9c%80%e8%a6%81%e7%bb%84%e5%90%88combine%e5%87%a0%e4%b8%aa%e6%8f%90%e4%ba%a4commit" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>假设你的工作分支将会做对于 <code>master</code> 的 pull-request。 一般情况下你不关心提交(commit)的时间戳，只想组合 <em>所有</em> 提交(commit) 到一个单独的里面, 然后重置(reset)重提交(recommit)。 确保主(master)分支是最新的和你的变化都已经提交了, 然后:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git reset --soft master
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git commit -am <span class="s2">&#34;New awesome feature&#34;</span>
+</span></span></code></pre></div><p>如果你想要更多的控制, 想要保留时间戳, 你需要做交互式 rebase (interactive rebase):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git rebase -i master
+</span></span></code></pre></div><p>如果没有相对的其它分支， 你将不得不相对自己的<code>HEAD</code> 进行 rebase。 例如：你想组合最近的两次提交(commit), 你将相对于<code>HEAD\~2</code> 进行 rebase， 组合最近 3 次提交(commit), 相对于<code>HEAD\~3</code>, 等等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git rebase -i HEAD~2
+</span></span></code></pre></div><p>在你执行了交互式 rebase 的命令(interactive rebase command)后, 你将在你的编辑器里看到类似下面的内容:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">pick</span> <span class="nx">a9c8a1d</span> <span class="nx">Some</span> <span class="nx">refactoring</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pick</span> <span class="m">01</span>b<span class="m">2</span>fd<span class="m">8</span> <span class="nx">New</span> <span class="nx">awesome</span> <span class="nx">feature</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pick</span> <span class="nx">b729ad5</span> <span class="nx">fixup</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pick</span> <span class="nx">e3851e8</span> <span class="nx">another</span> <span class="nx">fix</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## <span class="nx">Rebase</span> <span class="m">8074</span>d<span class="m">12</span>..<span class="nx">b729ad5</span> <span class="nx">onto</span> <span class="m">8074</span>d<span class="m">12</span>
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">Commands</span>:
+</span></span><span class="line"><span class="cl">##  <span class="nx">p</span><span class="p">,</span> <span class="nx">pick</span> <span class="p">=</span> <span class="nx">use</span> <span class="nx">commit</span>
+</span></span><span class="line"><span class="cl">##  <span class="nx">r</span><span class="p">,</span> <span class="nx">reword</span> <span class="p">=</span> <span class="nx">use</span> <span class="nx">commit</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">edit</span> <span class="nx">the</span> <span class="nx">commit</span> <span class="nx">message</span>
+</span></span><span class="line"><span class="cl">##  <span class="nx">e</span><span class="p">,</span> <span class="nx">edit</span> <span class="p">=</span> <span class="nx">use</span> <span class="nx">commit</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">stop</span> <span class="nx">for</span> <span class="nx">amending</span>
+</span></span><span class="line"><span class="cl">##  <span class="nx">s</span><span class="p">,</span> <span class="nx">squash</span> <span class="p">=</span> <span class="nx">use</span> <span class="nx">commit</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">meld</span> <span class="nx">into</span> <span class="nx">previous</span> <span class="nx">commit</span>
+</span></span><span class="line"><span class="cl">##  <span class="nx">f</span><span class="p">,</span> <span class="nx">fixup</span> <span class="p">=</span> <span class="nx">like</span> <span class="s2">&#34;squash&#34;</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">discard</span> <span class="nx">this</span> <span class="nx">commit</span>&#39;<span class="nx">s</span> <span class="nx">log</span> <span class="nx">message</span>
+</span></span><span class="line"><span class="cl">##  <span class="nx">x</span><span class="p">,</span> <span class="nx">exec</span> <span class="p">=</span> <span class="nx">run</span> <span class="nx">command</span> <span class="p">(</span><span class="nx">the</span> <span class="nx">rest</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">line</span><span class="p">)</span> <span class="nx">using</span> <span class="nx">shell</span>
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">These</span> <span class="nx">lines</span> <span class="nx">can</span> <span class="nx">be</span> <span class="nx">re</span><span class="p">-</span><span class="nx">ordered</span>; <span class="nx">they</span> <span class="nx">are</span> <span class="nx">executed</span> <span class="nx">from</span> <span class="nx">top</span> <span class="nx">to</span> <span class="nx">bottom</span>.
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">If</span> <span class="nx">you</span> <span class="nx">remove</span> <span class="nx">a</span> <span class="nx">line</span> <span class="nx">here</span> <span class="nx">THAT</span> <span class="nx">COMMIT</span> <span class="nx">WILL</span> <span class="nx">BE</span> <span class="nx">LOST</span>.
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">However</span><span class="p">,</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">remove</span> <span class="nx">everything</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">rebase</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">aborted</span>.
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">Note</span> <span class="nx">that</span> <span class="nx">empty</span> <span class="nx">commits</span> <span class="nx">are</span> <span class="nx">commented</span> <span class="nx">out</span>
+</span></span></code></pre></div><p>所有以 <code>#</code> 开头的行都是注释, 不会影响 rebase.</p>
+<p>然后，你可以用任何上面命令列表的命令替换 <code>pick</code>, 你也可以通过删除对应的行来删除一个提交(commit)。</p>
+<p>例如, 如果你想 <strong>单独保留最旧(first)的提交(commit),组合所有剩下的到第二个里面</strong>, 你就应该编辑第二个提交(commit)后面的每个提交(commit) 前的单词为 <code>f</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">pick</span> <span class="nx">a9c8a1d</span> <span class="nx">Some</span> <span class="nx">refactoring</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pick</span> <span class="m">01</span>b<span class="m">2</span>fd<span class="m">8</span> <span class="nx">New</span> <span class="nx">awesome</span> <span class="nx">feature</span>
+</span></span><span class="line"><span class="cl"><span class="nx">f</span> <span class="nx">b729ad5</span> <span class="nx">fixup</span>
+</span></span><span class="line"><span class="cl"><span class="nx">f</span> <span class="nx">e3851e8</span> <span class="nx">another</span> <span class="nx">fix</span>
+</span></span></code></pre></div><p>如果你想组合这些提交(commit) <strong>并重命名这个提交(commit)</strong>, 你应该在第二个提交(commit)旁边添加一个<code>r</code>，或者更简单的用<code>s</code> 替代 <code>f</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">pick</span> <span class="nx">a9c8a1d</span> <span class="nx">Some</span> <span class="nx">refactoring</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pick</span> <span class="m">01</span>b<span class="m">2</span>fd<span class="m">8</span> <span class="nx">New</span> <span class="nx">awesome</span> <span class="nx">feature</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s</span> <span class="nx">b729ad5</span> <span class="nx">fixup</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s</span> <span class="nx">e3851e8</span> <span class="nx">another</span> <span class="nx">fix</span>
+</span></span></code></pre></div><p>你可以在接下来弹出的文本提示框里重命名提交(commit)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="nx">Newer</span><span class="p">,</span> <span class="nx">awesomer</span> <span class="nx">features</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## <span class="nx">Please</span> <span class="nx">enter</span> <span class="nx">the</span> <span class="nx">commit</span> <span class="nx">message</span> <span class="nx">for</span> <span class="nx">your</span> <span class="nx">changes</span>. <span class="nx">Lines</span> <span class="nx">starting</span>
+</span></span><span class="line"><span class="cl">## <span class="nx">with</span> <span class="s1">&#39;#&#39;</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">ignored</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">an</span> <span class="nx">empty</span> <span class="nx">message</span> <span class="nx">aborts</span> <span class="nx">the</span> <span class="nx">commit</span>.
+</span></span><span class="line"><span class="cl">## <span class="nx">rebase</span> <span class="nx">in</span> <span class="nx">progress</span>; <span class="nx">onto</span> <span class="m">8074</span>d<span class="m">12</span>
+</span></span><span class="line"><span class="cl">## <span class="nx">You</span> <span class="nx">are</span> <span class="nx">currently</span> <span class="nx">editing</span> <span class="nx">a</span> <span class="nx">commit</span> <span class="nx">while</span> <span class="nx">rebasing</span> <span class="nx">branch</span> <span class="s1">&#39;master&#39;</span> <span class="nx">on</span> <span class="s1">&#39;8074d12&#39;</span>.
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">## <span class="nx">Changes</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">committed</span>:
+</span></span><span class="line"><span class="cl"># <span class="nx">modified</span>:   <span class="nx">README</span>.<span class="nx">md</span>
+</span></span><span class="line"><span class="cl">#
+</span></span></code></pre></div><p>如果成功了, 你应该看到类似下面的内容:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ Successfully rebased and updated refs/heads/master.
+</span></span></code></pre></div><h4 class="relative group">安全合并(merging)策略 
+    <div id="安全合并merging策略" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%89%e5%85%a8%e5%90%88%e5%b9%b6merging%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p><code>--no-commit</code> 执行合并(merge)但不自动提交, 给用户在做提交前检查和修改的机会。 <code>no-ff</code> 会为特性分支(feature branch)的存在过留下证据, 保持项目历史一致。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git merge --no-ff --no-commit my-branch
+</span></span></code></pre></div><h4 class="relative group">我需要将一个分支合并成一个提交(commit) 
+    <div id="我需要将一个分支合并成一个提交commit" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e9%9c%80%e8%a6%81%e5%b0%86%e4%b8%80%e4%b8%aa%e5%88%86%e6%94%af%e5%90%88%e5%b9%b6%e6%88%90%e4%b8%80%e4%b8%aa%e6%8f%90%e4%ba%a4commit" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git merge --squash my-branch
+</span></span></code></pre></div><h4 class="relative group">我只想组合(combine)未推的提交(unpushed commit) 
+    <div id="我只想组合combine未推的提交unpushed-commit" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e5%8f%aa%e6%83%b3%e7%bb%84%e5%90%88combine%e6%9c%aa%e6%8e%a8%e7%9a%84%e6%8f%90%e4%ba%a4unpushed-commit" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>有时候，在将数据推向上游之前，你有几个正在进行的工作提交(commit)。这时候不希望把已经推(push)过的组合进来，因为其他人可能已经有提交(commit)引用它们了。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git rebase -i @<span class="o">{</span>u<span class="o">}</span>
+</span></span></code></pre></div><p>这会产生一次交互式的 rebase(interactive rebase), 只会列出没有推(push)的提交(commit)， 在这个列表时进行 reorder/fix/squash 都是安全的。</p>
+<h3 class="relative group">检查是否分支上的所有提交(commit)都合并(merge)过了 
+    <div id="检查是否分支上的所有提交commit都合并merge过了" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a3%80%e6%9f%a5%e6%98%af%e5%90%a6%e5%88%86%e6%94%af%e4%b8%8a%e7%9a%84%e6%89%80%e6%9c%89%e6%8f%90%e4%ba%a4commit%e9%83%bd%e5%90%88%e5%b9%b6merge%e8%bf%87%e4%ba%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>检查一个分支上的所有提交(commit)是否都已经合并(merge)到了其它分支, 你应该在这些分支的 head(或任何 commits)之间做一次 diff:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git log --graph --left-right --cherry-pick --oneline HEAD...feature/120-on-scroll
+</span></span></code></pre></div><p>这会告诉你在一个分支里有而另一个分支没有的所有提交(commit), 和分支之间不共享的提交(commit)的列表。 另一个做法可以是:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git log master ^feature/120-on-scroll --no-merges
+</span></span></code></pre></div><h3 class="relative group">交互式 rebase(interactive rebase)可能出现的问题 
+    <div id="交互式-rebaseinteractive-rebase可能出现的问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%ba%a4%e4%ba%92%e5%bc%8f-rebaseinteractive-rebase%e5%8f%af%e8%83%bd%e5%87%ba%e7%8e%b0%e7%9a%84%e9%97%ae%e9%a2%98" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<h4 class="relative group">这个 rebase 编辑屏幕出现&rsquo;noop' 
+    <div id="这个-rebase-编辑屏幕出现noop" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%bf%99%e4%b8%aa-rebase-%e7%bc%96%e8%be%91%e5%b1%8f%e5%b9%95%e5%87%ba%e7%8e%b0noop" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>如果你看到的是这样:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">noop
+</span></span></code></pre></div><p>这意味着你 rebase 的分支和当前分支在同一个提交(commit)上, 或者 <em>领先(ahead)</em> 当前分支。 你可以尝试:</p>
+<ul>
+<li>检查确保主(master)分支没有问题</li>
+<li>rebase <code>HEAD\~2</code> 或者更早</li>
+</ul>
+<h4 class="relative group">有冲突的情况 
+    <div id="有冲突的情况" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9c%89%e5%86%b2%e7%aa%81%e7%9a%84%e6%83%85%e5%86%b5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>如果你不能成功的完成 rebase, 你可能必须要解决冲突。</p>
+<p>首先执行 <code>git status</code> 找出哪些文件有冲突:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git status
+</span></span><span class="line"><span class="cl">On branch my-branch
+</span></span><span class="line"><span class="cl">Changes not staged <span class="k">for</span> commit:
+</span></span><span class="line"><span class="cl">  <span class="o">(</span>use <span class="s2">&#34;git add &lt;file&gt;...&#34;</span> to update what will be committed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">(</span>use <span class="s2">&#34;git checkout -- &lt;file&gt;...&#34;</span> to discard changes in working directory<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  modified:   README.md
+</span></span></code></pre></div><p>在这个例子里面, <code>README.md</code> 有冲突。 打开这个文件找到类似下面的内容:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl">   <span class="p">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nx">HEAD</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">some</span> <span class="nx">code</span>
+</span></span><span class="line"><span class="cl">   <span class="p">=========</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">some</span> <span class="nx">code</span>
+</span></span><span class="line"><span class="cl">   <span class="p">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="nx">new</span><span class="p">-</span><span class="nx">commit</span>
+</span></span></code></pre></div><p>你需要解决新提交的代码(示例里, 从中间<code>==</code>线到<code>new-commit</code>的地方)与<code>HEAD</code> 之间不一样的地方.</p>
+<p>有时候这些合并非常复杂，你应该使用可视化的差异编辑器(visual diff editor):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master*<span class="o">)</span>$ git mergetool -t opendiff
+</span></span></code></pre></div><p>在你解决完所有冲突和测试过后, <code>git add</code> 变化了的(changed)文件, 然后用<code>git rebase --continue</code> 继续 rebase。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git add README.md
+</span></span><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git rebase --continue
+</span></span></code></pre></div><p>如果在解决完所有的冲突过后，得到了与提交前一样的结果, 可以执行<code>git rebase --skip</code>。</p>
+<p>任何时候你想结束整个 rebase 过程，回来 rebase 前的分支状态, 你可以做:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>my-branch<span class="o">)</span>$ git rebase --abort
+</span></span></code></pre></div><h2 class="relative group">查看信息 
+    <div id="查看信息" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9f%a5%e7%9c%8b%e4%bf%a1%e6%81%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>显示工作路径下已修改的文件：<code>git status</code></p>
+<p>显示与上次提交版本文件的不同：<code>git diff</code></p>
+<p>显示提交历史：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 从最新提交开始，显示所有的提交记录（显示hash， 作者信息，提交的标题和时间）</span>
+</span></span><span class="line"><span class="cl">$ git log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 显示某个用户的所有提交</span>
+</span></span><span class="line"><span class="cl">$ git log --author<span class="o">=</span><span class="s2">&#34;username&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 显示某个文件的所有修改</span>
+</span></span><span class="line"><span class="cl">$ git log -p &lt;file&gt;
+</span></span></code></pre></div><p>显示搜索内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 从当前目录的所有文件中查找文本内容</span>
+</span></span><span class="line"><span class="cl">$ git grep <span class="s2">&#34;Hello&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在某一版本中搜索文本</span>
+</span></span><span class="line"><span class="cl">$ git grep <span class="s2">&#34;Hello&#34;</span> v2.5
+</span></span></code></pre></div><h2 class="relative group">其他 
+    <div id="其他" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%b6%e4%bb%96" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">克隆所有子模块 
+    <div id="克隆所有子模块" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%8b%e9%9a%86%e6%89%80%e6%9c%89%e5%ad%90%e6%a8%a1%e5%9d%97" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone --recursive git://github.com/foo/bar.git
+</span></span></code></pre></div><p>如果已经克隆了:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git submodule update --init --recursive
+</span></span></code></pre></div><h3 class="relative group">已删除补丁(patch) 
+    <div id="已删除补丁patch" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%b7%b2%e5%88%a0%e9%99%a4%e8%a1%a5%e4%b8%81patch" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如果某人在 GitHub 上给你发了一个 pull request, 但是然后他删除了他自己的原始 fork, 你将没法克隆他们的提交(commit)或使用 <code>git am</code>。在这种情况下, 最好手动的查看他们的提交(commit)，并把它们拷贝到一个本地新分支，然后做提交。</p>
+<p>做完提交后, 再修改作者，参见<a href="#commit-wrong-author"  >
+    变更作者</a>。 然后, 应用变化, 再发起一个新的 pull request。</p>
+<h2 class="relative group">跟踪文件(Tracking Files) 
+    <div id="跟踪文件tracking-files" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%b7%9f%e8%b8%aa%e6%96%87%e4%bb%b6tracking-files" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">我只想改变一个文件名字的大小写，而不修改内容 
+    <div id="我只想改变一个文件名字的大小写而不修改内容" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e5%8f%aa%e6%83%b3%e6%94%b9%e5%8f%98%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e5%90%8d%e5%ad%97%e7%9a%84%e5%a4%a7%e5%b0%8f%e5%86%99%e8%80%8c%e4%b8%8d%e4%bf%ae%e6%94%b9%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git mv --force myfile MyFile
+</span></span></code></pre></div><h3 class="relative group">我想从 Git 删除一个文件，但保留该文件 
+    <div id="我想从-git-删除一个文件但保留该文件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e6%83%b3%e4%bb%8e-git-%e5%88%a0%e9%99%a4%e4%b8%80%e4%b8%aa%e6%96%87%e4%bb%b6%e4%bd%86%e4%bf%9d%e7%95%99%e8%af%a5%e6%96%87%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git rm --cached log.txt
+</span></span></code></pre></div><h2 class="relative group">Fork 项目 
+    <div id="fork-项目" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#fork-%e9%a1%b9%e7%9b%ae" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>GitHub 中 Fork 是 服务端的代码仓库克隆（即 新克隆出来的代码仓库在远程服务端），包含了原来的仓库（即 upstream repository，上游仓库）所有内容，如分支、Tag、提交。代码托管服务（如 Github、BitBucket）提供了方便的完成 Fork 操作的功能（在仓库页面点一下 Fork 按钮）。这样有了一个你自己的可以自由提交的远程仓库，然后可以通过的 Pull Request 把你的提交贡献回 原仓库。而对于原仓库 Owner 来说，鼓励别人 Fork 自己的仓库，通过 Pull Request 给自己的仓库做贡献，也能提高了自己仓库的知名度。</p>
+<blockquote>
+<p>参考：<a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo"   target="_blank">
+    Fork a repo</a></p>
+</blockquote>
+<p>（1）执行 <code>git remote -v</code>，您将看到当前为 fork 配置的远程存储库。</p>
+<p>（2）添加上游项目的仓库地址</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git remote add upstream &lt;github仓库地址&gt;
+</span></span></code></pre></div><p>（3）确认是否添加成功，再次键入 <code>git remote -v</code>。</p>
+<p>（4）获取上游项目更新，可以执行 <code>git fetch upstream</code></p>
+<p>（5）同步上游项目的代码到新仓库</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># merge</span>
+</span></span><span class="line"><span class="cl">git merge upstream/master
+</span></span><span class="line"><span class="cl"><span class="c1"># rebase</span>
+</span></span><span class="line"><span class="cl">git rebase upstream/master origin/master
+</span></span></code></pre></div><h2 class="relative group">我不知道我做错了些什么 
+    <div id="我不知道我做错了些什么" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%88%91%e4%b8%8d%e7%9f%a5%e9%81%93%e6%88%91%e5%81%9a%e9%94%99%e4%ba%86%e4%ba%9b%e4%bb%80%e4%b9%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>你把事情搞砸了：你 <code>重置(reset)</code> 了一些东西, 或者你合并了错误的分支, 亦或你强推了后找不到你自己的提交(commit)了。有些时候, 你一直都做得很好, 但你想回到以前的某个状态。</p>
+<p>这就是 <code>git reflog</code> 的目的， <code>reflog</code> 记录对分支顶端(the tip of a branch)的任何改变, 即使那个顶端没有被任何分支或标签引用。基本上, 每次 HEAD 的改变, 一条新的记录就会增加到<code>reflog</code>。遗憾的是，这只对本地分支起作用，且它只跟踪动作 (例如，不会跟踪一个没有被记录的文件的任何改变)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>master<span class="o">)</span>$ git reflog
+</span></span><span class="line"><span class="cl">0a2e358 HEAD@<span class="o">{</span>0<span class="o">}</span>: reset: moving to HEAD<span class="se">\~</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">0254ea7 HEAD@<span class="o">{</span>1<span class="o">}</span>: checkout: moving from 2.2 to master
+</span></span><span class="line"><span class="cl">c10f740 HEAD@<span class="o">{</span>2<span class="o">}</span>: checkout: moving from master to 2.2
+</span></span></code></pre></div><p>上面的 reflog 展示了从 master 分支签出(checkout)到 2.2 分支，然后再签回。 那里，还有一个硬重置(hard reset)到一个较旧的提交。最新的动作出现在最上面以 <code>HEAD@{0}</code>标识.</p>
+<p>如果事实证明你不小心回移(move back)了提交(commit), reflog 会包含你不小心回移前 master 上指向的提交(0254ea7)。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git reset --hard 0254ea7
+</span></span></code></pre></div><p>然后使用 git reset 就可以把 master 改回到之前的 commit，这提供了一个在历史被意外更改情况下的安全网。</p>
+<h2 class="relative group">📚 资料 
+    <div id="-资料" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-%e8%b5%84%e6%96%99" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><strong>官方资源</strong>
+<ul>
+<li><a href="https://git-scm.com/"   target="_blank">
+    Git 官网</a></li>
+<li><a href="https://github.com/git/git"   target="_blank">
+    Git Github</a></li>
+<li><a href="https://guides.github.com/"   target="_blank">
+    Github 官方教程</a></li>
+</ul>
+</li>
+<li><strong>模板</strong>
+<ul>
+<li><a href="https://github.com/github/gitignore"   target="_blank">
+    gitignore 模板</a> - .gitignore 文件模板</li>
+<li><a href="https://github.com/alexkaratarakis/gitattributes"   target="_blank">
+    gitattributes 模板</a> - .gitattributes 文件模板</li>
+<li><a href="https://github.com/tiimgreen/github-cheat-sheet"   target="_blank">
+    github-cheat-sheet</a> - git 命令简略图表</li>
+</ul>
+</li>
+<li><strong>Git 教程</strong>
+<ul>
+<li><a href="https://learngitbranching.js.org/"   target="_blank">
+    Learn Git branching</a> - 交互式教程</li>
+<li><a href="https://git-scm.com/book/zh/v2"   target="_blank">
+    Git 官方推荐教程</a> - Scott Chacon 的 Git 书。
+<ul>
+<li><a href="https://github.com/k88hudson/git-flight-rules"   target="_blank">
+    git-flight-rules</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/521xueweihan/git-tips"   target="_blank">
+    git-tips</a></li>
+<li><a href="https://github.com/geeeeeeeeek/git-recipes"   target="_blank">
+    Git 中文教程</a></li>
+<li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000"   target="_blank">
+    廖雪峰的 Git 教程</a></li>
+<li><a href="https://github.com/xirong/my-git"   target="_blank">
+    有关 git 的学习资源</a></li>
+</ul>
+</li>
+<li><strong>文章</strong>
+<ul>
+<li><a href="https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md"   target="_blank">
+    Git Cookbook</a></li>
+<li><a href="https://github.com/521xueweihan/git-tips"   target="_blank">
+    Git 奇技淫巧</a></li>
+<li><a href="https://github.com/aseaday/git-style-guide"   target="_blank">
+    Git 风格指南</a></li>
+<li><a href="http://www.cnblogs.com/cnblogsfans/p/5075073.html"   target="_blank">
+    Git 在团队中的最佳实践&ndash;如何正确使用 Git Flow</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html"   target="_blank">
+    Commit message 和 Change log 编写指南</a></li>
+</ul>
+</li>
+<li><strong>Git 工具</strong>
+<ul>
+<li><a href="https://git-scm.com/downloads/guis"   target="_blank">
+    guis</a> - Git 官网展示的客户端工具列表。</li>
+<li><a href="https://github.com/gogits/gogs"   target="_blank">
+    gogs</a> - 极易搭建的自助 Git 服务。</li>
+<li><a href="https://github.com/nvie/gitflow"   target="_blank">
+    gitflow</a> - 应用 <a href="http://nvie.com/posts/a-successful-git-branching-model/"   target="_blank">
+    fit-flow</a> 模型的工具。</li>
+<li><a href="http://firstaidgit.io/"   target="_blank">
+    firstaidgit.io</a> 一个可搜索的最常被问到的 Git 的问题</li>
+<li><a href="https://github.com/unixorn/git-extra-commands"   target="_blank">
+    git-extra-commands</a> - 一堆有用的额外的 Git 脚本</li>
+<li><a href="https://github.com/tj/git-extras"   target="_blank">
+    git-extras</a> - GIT 工具集 &ndash; repo summary, repl, changelog population, author commit percentages and more</li>
+<li><a href="https://github.com/qw3rtman/git-fire"   target="_blank">
+    git-fire</a> - git-fire 是一个 Git 插件，用于帮助在紧急情况下添加所有当前文件, 做提交(committing), 和推(push)到一个新分支(阻止合并冲突)。</li>
+<li><a href="https://github.com/git-tips/tips"   target="_blank">
+    git-tips</a> - Git 小提示</li>
+<li><a href="https://github.com/Originate/git-town"   target="_blank">
+    git-town</a> - 通用，高级 Git 工作流支持！</li>
+</ul>
+</li>
+<li><strong>GUI 客户端</strong>
+<ul>
+<li><a href="https://www.gitkraken.com/"   target="_blank">
+    GitKraken</a> - 豪华的 Git 客户端 Windows, Mac &amp; Linux</li>
+<li><a href="https://git-cola.github.io/"   target="_blank">
+    git-cola</a> - 另外一个 Git 客户端 Windows &amp; OS X</li>
+<li><a href="https://github.com/git-up/GitUp"   target="_blank">
+    GitUp</a> - 一个新的 Git 客户端，在处理 Git 的复杂性上有自己的特点</li>
+<li><a href="https://rowanj.github.io/gitx/"   target="_blank">
+    gitx-dev</a> - 图形化的 Git 客户端 OS X</li>
+<li><a href="https://www.sourcetreeapp.com/"   target="_blank">
+    Source Tree</a> - 免费的图形化 Git 客户端 Windows &amp; OS X</li>
+<li><a href="http://www.git-tower.com/"   target="_blank">
+    Tower</a> - 图形化 Git 客户端 OS X(付费)</li>
+</ul>
+</li>
+<li><strong>git cheat sheet</strong>
+<ul>
+<li><a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf"   target="_blank">
+    github-git-cheat-sheet</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/devoops\/git\/git-tutorial\/index.md"
+        var oid_likes = "likes_posts\/devoops\/git\/git-tutorial\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/devoops/git/git-principle/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Git Principle</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-19 20:58:09 &#43;0800 &#43;0800">19 October 2023</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/devoops/git/how-to-write-a-git-commit-message/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >How to Write a Git Commit Message</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-12 19:47:45 &#43;0800 &#43;0800">12 October 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

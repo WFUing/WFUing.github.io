@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>alicloud on Waiting For You</title>
+    <title>alicloud on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/alicloud/</link>
-    <description>Recent content in alicloud on Waiting For You</description>
+    <description>Recent content in alicloud on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 20 Oct 2023 12:47:12 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/alicloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Alicloud Function Compute API</title>
-      <link>https://WFUing.github.io/post/tech/architecture/serverless/alicloud-fc-api/</link>
+      <link>https://WFUing.github.io/posts/architecture/serverless/alicloud-fc-api/</link>
       <pubDate>Fri, 20 Oct 2023 12:47:12 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/serverless/alicloud-fc-api/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/serverless/alicloud-fc-api/</guid>
       <description>函数计算（Function Compute）是一个事件驱动的全托管 Serverless 计算服务，您无需管理服务器等基础设施，只需编写代码并上传，函数计算会为您准备好计算资源，并以弹性、可靠的方式运行您的代码。</description>
+      
     </item>
     
   </channel>

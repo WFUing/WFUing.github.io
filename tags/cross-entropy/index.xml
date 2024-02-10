@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cross entropy on Waiting For You</title>
+    <title>cross entropy on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/cross-entropy/</link>
-    <description>Recent content in cross entropy on Waiting For You</description>
+    <description>Recent content in cross entropy on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 13 Oct 2023 09:25:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/cross-entropy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>交叉熵</title>
-      <link>https://WFUing.github.io/post/tech/algorithm/ai/cross-entropy/</link>
+      <link>https://WFUing.github.io/posts/algorithm/ai/cross-entropy/</link>
       <pubDate>Fri, 13 Oct 2023 09:25:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/algorithm/ai/cross-entropy/</guid>
-      <description>案例驱动 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
-第一个例子 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
+      <guid>https://WFUing.github.io/posts/algorithm/ai/cross-entropy/</guid>
+      <description>案例驱动 # 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
+第一个例子 # 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
 每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
-第二个例子 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
+第二个例子 # 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
 $\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
 $$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
-第三个例子 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
+第三个例子 # 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
 总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
 在这个问题中，问题个数的期望是
-$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
-这个式子就是熵的表达式 。简单来说，其意义就是在最优化策略下，猜到颜色所需要的问题的个数。熵代表的是随机变量或整个系统的不确定性，熵越大，随机变量或系统的不确定性就越大。
-现在已经了解了熵是什么，那么，下面解释交叉熵（cross entropy） 的含义.对于第二个例子，如果仍然使用第一个例子中的策略，如下图:
-$\frac{1}{8}$ 的概率，硬币是橘色，需要两个问题，$\frac{1}{2}$ 的概率是蓝色，仍然需要两个问题，也就是说，认为小球的分布为 $(\frac{1}{4},\frac{1}{4},\frac{1}{4},\frac{1}{4})$ ，这个分布就是非真实分布。平均来说，需要的问题数是 $\frac{1}{8}*2+\frac{1}{8}*2+\frac{1}{4}*2+\frac{1}{2}*2=2$ 。
-因此，在例子二中使用例子一的策略是一个比较差的策略。其中 $2$ 是这个方案中的交叉熵，而最优方案的交叉熵是 $1.75$。
-给定一个策略，交叉熵就是在该策略下猜中颜色所需要的问题的期望值。更普遍的说，交叉熵用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出成本的大小。交叉的字面意思在于：真实分布与非真实分布的交叉。给定一个方案，越优的策略，最终的交叉熵越低。具有最低的交叉熵的策略就是最优化策略，也就是上面定义的熵。因此，在机器学习中，我们需要最小化交叉熵。
-数学上来讲 其中，$p$ 是真正的概率，例如例子二中，橘色和绿色是 $\frac{1}{8}$，红色是 $\frac{1}{4}$，蓝色是 $\frac{1}{2}$。$\hat p$ 是错误地假设了的概率，例如，在例子二中我们错误地假设了所有的颜色的概率都是 $\frac{1}{4}$。$p$ 和 $\hat p$ 可能有点容易混淆。记住一点，$log$ 是用来计算在你的策略下猜中所需要的问题数，因此，$log$ 中需要的是你的预测概率 $\hat p$ 。在决策树中，如果建立的树不是最优的，结果就是对于输出的概率分布的假设是错误地，导致的直接结果就是交叉熵很高。交叉熵不仅仅应用在决策树中，在其他的分类问题中也有应用。</description>
+$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$</description>
+      
     </item>
     
   </channel>

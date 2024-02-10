@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>meta-programming &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="meta-programming &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="I&#39;m waiting for you." />
+  <meta name="keywords" content="metaprogramming, language, " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/metaprogramming/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="meta-programming" />
+<meta property="og:description" content="元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
+Macros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
+使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C&#43;&#43; 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
+#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/metaprogramming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-16T15:29:44+08:00" />
+<meta property="article:modified_time" content="2023-10-16T15:29:44+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="meta-programming"/>
+<meta name="twitter:description" content="元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
+Macros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
+使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C&#43;&#43; 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
+#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏："/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "meta-programming",
+    "headline": "meta-programming",
+    
+    "abstract": "元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。\nMacros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。\n使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C\u002b\u002b 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：\n#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：",
+    "inLanguage": "zh-cn",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/metaprogramming\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-10-16T15:29:44\u002b08:00",
+    "datePublished": "2023-10-16T15:29:44\u002b08:00",
+    
+    "dateModified": "2023-10-16T15:29:44\u002b08:00",
+    
+    "keywords": ["metaprogramming","language"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2019"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      meta-programming
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-16 15:29:44 &#43;0800 &#43;0800">16 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2019 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">10 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/metaprogramming/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#macros-and-code-generation">Macros and Code Generation</a>
+      <ul>
+        <li><a href="#scheme-macros">Scheme Macros</a></li>
+        <li><a href="#cpp-macros">CPP Macros</a>
+          <ul>
+            <li><a href="#stringification-and-concatenation">Stringification and Concatenation</a></li>
+            <li><a href="#the-macro-namespace">The Macro Namespace</a></li>
+          </ul>
+        </li>
+        <li><a href="#code-generation">Code Generation</a></li>
+      </ul>
+    </li>
+    <li><a href="#template-metaprogramming">Template Metaprogramming</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#pairs">Pairs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#resources">RESOURCES</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#macros-and-code-generation">Macros and Code Generation</a>
+      <ul>
+        <li><a href="#scheme-macros">Scheme Macros</a></li>
+        <li><a href="#cpp-macros">CPP Macros</a>
+          <ul>
+            <li><a href="#stringification-and-concatenation">Stringification and Concatenation</a></li>
+            <li><a href="#the-macro-namespace">The Macro Namespace</a></li>
+          </ul>
+        </li>
+        <li><a href="#code-generation">Code Generation</a></li>
+      </ul>
+    </li>
+    <li><a href="#template-metaprogramming">Template Metaprogramming</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#pairs">Pairs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#resources">RESOURCES</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <p>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。</p>
+<h2 class="relative group">Macros and Code Generation 
+    <div id="macros-and-code-generation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#macros-and-code-generation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。</p>
+<p>使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 <code>#include</code>、<code>#define</code>、<code>#if</code> 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：</p>
+<pre tabindex="0"><code>#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; }
+</code></pre><p>然后，我们可以如下使用宏：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">SWAP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// output
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">4</span> <span class="mi">3</span>
+</span></span></code></pre></div><p>通过向 <code>g++</code> 传递 <code>-E</code> 标志，可以获得宏扩展的结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ g++ -E &lt;source&gt;
+</span></span></code></pre></div><p>不过，如果使用 <code>#includes</code> 指令，结果可能会非常混乱，因为该指令会从给定文件中调入代码。</p>
+<p>CPP macros perform text 替换，因此上述代码等同于：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> <span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>使用 SWAP 宏后的分号仍然保留，表示空语句。不过，在需要使用单一语句的情况下，例如一个没有被 block 括住的条件分支，这就会造成问题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">SWAP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;no swap&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></div><p>避免这一问题的常用方法是将 macro 的扩展代码放在 do/while 中：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define SWAP(a, b) do {                         \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    auto tmp = b;                               \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    b = a;                                      \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    a = tmp;                                    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  } while (false)
+</span></span></span></code></pre></div><p>在这里，我们在一行的末尾添加了一个 <code>\</code>，表示下一行应被视为上一行的继续。do/while 循环在语法上以分号结束，因此 <code>SWAP(x, y);</code> 中的分号在语法上是 do/while 循环的一部分。因此，扩展代码的语法是正确的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">do</span> <span class="p">{</span> <span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;no swap&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></div><p>虽然 textual replacement 很有用，但它也有缺点，因为虽然宏在语法上类似函数，但它们的行为却不像函数。具体来说，它们不把参数作为自己的实体，也不引入独立的作用域。请看下面的例子：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">SWAP</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// output
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">3</span>
+</span></span></code></pre></div><p>使用 <code>g++ -E</code>，我们可以看到预处理后的代码。只看 <code>main()</code> 的输出，我们会发现</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在这里，我们手动添加了换行符和空格，以使输出更易读；而预处理器本身会将宏输出放在一行中。罪魁祸首是最后生成的语句：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span></code></pre></div><p>在 C++ 中，条件运算符 <code>? :</code> 和赋值运算符 <code>=</code> 具有相同的优先级，并且从右向左关联，因此这等同于</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">);</span>
+</span></span></code></pre></div><p>由于 <code>x &lt; y，</code>这里没有赋值。因此，<code>x</code> 的值保持不变。</p>
+<p>我们可以在每次使用 macro argument 时加上括号来解决这个问题：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define SWAP(a, b) do {                         \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    auto tmp = (b);                             \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    (b) = (a);                                  \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    (a) = tmp;                                  \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  } while (false)
+</span></span></span></code></pre></div><center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./c&#43;&#43;associativity.png" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>现在会产生预期的结果，因为括号明确地将这些操作联系起来：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">z</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="o">?</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">z</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>然而，第二个问题并不那么容易解决。考虑一下当我们将 SWAP 宏应用于名为 tmp 的变量时会发生什么：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">SWAP</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// output
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">3</span> <span class="mi">4</span>
+</span></span></code></pre></div><p>没有发生交换！再次使用 <code>g++ -E</code> 检查输出，我们可以看到（模数间隔）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="n">tmp</span><span class="p">)</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>由于 SWAP 使用的临时变量与参数同名，因此临时变量会捕获生成代码中出现的参数。这是因为宏只是执行文本替换，并不能确保名称被解析到适当的作用域。因此，宏实际上并不使用按名称调用，而按名称调用可确保参数中的名称解析到适当的作用域。对文本替换的依赖使 CPP 成为一个不卫生的宏系统。其他系统（如 Scheme 的系统）是卫生的，它们为宏引入的名称创建了单独的作用域，并确保参数不会被捕获。</p>
+<h3 class="relative group">Scheme Macros 
+    <div id="scheme-macros" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scheme-macros" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>作为 R5RS Scheme 规范的一部分，宏系统是卫生的。宏由 define-syntax、let-syntax 或 letrec-syntax 中的一种形式引入，并将给定的名称与宏绑定。例如，下面是 let 作为宏的定义：</p>
+<pre tabindex="0"><code>(define-syntax let
+  (syntax-rules ()
+    ((let ((name val) ...)
+       body1 body2 ...
+     )
+     ((lambda (name ...)
+        body1 body2 ...
+      )
+      val ...
+     )
+    )
+  )
+)
+</code></pre><p>syntax-rules 指定了宏转换的规则。第一个参数是规则模式与输入之间必须匹配的字面形式列表。例如，cond 形式中的 else 标识符。但在这种情况下，没有字面意义。syntax-rules 的其余参数指定了转换。转换的第一项是输入模式，第二项是输出模式。<code>...</code>的作用类似于克莱因星，将前一项与输入中出现的零次或多次相匹配。输入模式中出现但不在字面量列表中的名称，除了作为宏名称的第一项，都是与输入元素相匹配的卫生变量。这些变量可以在输出模式中引用，以指定如何构造输出。</p>
+<p>在全局环境中评估上述表达式时，会将 let 名称与一个转换为 lambda 的宏绑定。</p>
+<p>宏主体引入的标识符保证避免与其他标识符冲突，解释器通常会重命名标识符以避免冲突。下面是 swap 宏的定义：</p>
+<pre tabindex="0"><code>(define-syntax swap
+  (syntax-rules ()
+    ((swap a b)
+     (let ((tmp b))
+       (set! b a)
+       (set! a tmp)
+     )
+    )
+  )
+)
+</code></pre><p>这就将 swap 的使用转化为一个表达式，通过临时变量 tmp 交换两个参数。因此</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt; <span class="o">(</span>define x 3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="o">(</span>define y 4<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="o">(</span>swap x y<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; x
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span><span class="line"><span class="cl">&gt; y
+</span></span><span class="line"><span class="cl"><span class="m">3</span>
+</span></span></code></pre></div><p>不过，与 CPP 宏不同的是，swap 宏引入的 tmp 与其他任何 tmp 都是不同的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt; <span class="o">(</span>define tmp 5<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="o">(</span>swap x tmp<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt; x
+</span></span><span class="line"><span class="cl"><span class="m">5</span>
+</span></span><span class="line"><span class="cl">&gt; tmp
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span></code></pre></div><p>因为宏在 Scheme 中是卫生的，所以我们会得到预期的行为。</p>
+<p>为了支持宏，Scheme 解释器的评估过程会像往常一样评估列表中的第一个项目。如果评估结果是一个宏，那么解释器将对列表的其余部分执行宏扩展，而不会首先评估参数。扩展引入的任何名称都与其他名称置于不同的作用域。扩展后，解释器会对扩展结果重复求值过程，因此，如果最终结果是一个 <code>let</code> 表达式 (如上文 <code>swap</code> 中的表达式)，就会对该表达式进行求值。</p>
+<p>一个宏定义可以指定多个模式规则。再加上扩展的结果会被求值，这使得宏定义可以递归，如下面的 <code>let*</code> 定义：</p>
+<pre tabindex="0"><code>(define-syntax let*
+  (syntax-rules ()
+    ((let* ()
+       body1 body2 ...
+     )
+     (let ()
+       body1 body2 ...
+     )
+    )
+    ((let* ((name1 val1) (name2 val2) ...)
+       body1 body2 ...
+     )
+     (let ((name1 val1))
+       (let* ((name2 val2) ...)
+         body1 body2 ...
+       )
+     )
+    )
+  )
+)
+</code></pre><p>当 <code>let*</code> 没有绑定时，有一种基本模式，在这种情况下，它直接转化为一个 <code>let</code>。当至少有一个绑定时，也有一个递归模式，在这种情况下，<code>let*</code> 会转化为一个嵌套在 <code>let</code> 中的更简单的 <code>let*</code>。宏定义中的省略号 (<code>...</code>) 类似于正则表达式中的 Kleene 星号 (<code>*</code>)，表示前一项可以匹配零次或多次。因此，具有单一绑定的 <code>let*</code> 与上述第二条模式规则相匹配，其中 (<code>name2 val2</code>) 匹配次数为零。</p>
+<h3 class="relative group">CPP Macros 
+    <div id="cpp-macros" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cpp-macros" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>我们再来看看 CPP 宏。尽管宏不卫生，但在涉及元编程的任务中却非常有用。</p>
+<p>CPP 允许我们使用 <code>#define</code> 来定义两种类型的 macro，即 <code>object-like macro</code> 和 <code>function-like macro</code>。<code>object-like macro</code> 是一种简单的文本替换，用一个文本序列替换另一个文本序列。在历史上，定义常量是一种常用的方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define PI 3.1415926535
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;pi = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">PI</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;tau = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">PI</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在 C++ 中，更好的做法是使用 const 或 constexpr 定义常量。</p>
+<p><code>function-like macro</code> 接受参数 (如上文的 <code>SWAP</code>)，并能将参数文本替换到替换文本中的特定位置。</p>
+<p>使用 <code>function-like macro</code> 的一个更复杂的例子是对遵循相同模式的多段代码进行抽象定义。请看表示复数的类型定义：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">Complex</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">double</span> <span class="n">real</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">double</span> <span class="n">imag</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span> <span class="o">&amp;</span><span class="n">os</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;(&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;+&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;i)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>假设除了上述重载的流插入操作符之外，我们还希望支持算术运算 <code>+</code>、<code>-</code> 和 <code>*</code>。这些运算的基本形式相同：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">&lt;</span><span class="n">op</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">Complex</span><span class="p">{</span> <span class="o">&lt;</span><span class="n">expression</span> <span class="k">for</span> <span class="n">real</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">expression</span> <span class="k">for</span> <span class="n">imag</span><span class="o">&gt;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在这里，我们使用了 <code>uniform initialization syntax</code> 来初始化一个含有其成员值的 <code>Complex</code>。然后，我们可以编写一个 <code>function-like macro</code> 来抽象这个结构：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define COMPLEX_OP(op, real_part, imag_part)    \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  Complex operator op(Complex a, Complex b) {   \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    return Complex{ real_part, imag_part };     \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  }
+</span></span></span></code></pre></div><p>该 <code>macro</code> 的参数包括运算符、计算实部的表达式和计算虚部的表达式。我们可以使用下面的宏来定义运算：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">COMPLEX_OP</span><span class="p">(</span><span class="o">+</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">COMPLEX_OP</span><span class="p">(</span><span class="o">-</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">COMPLEX_OP</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">);</span>
+</span></span></code></pre></div><p>与我们最初的 <code>SWAP</code> 实现一样，尾部的分号是多余的，但却提高了可读性以及与语法高亮程序的交互性。使用 <code>g++ -E</code> 在预处理器中运行代码，我们可以得到（修改间距）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">+</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">-</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">-</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">*</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">real</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">a</span><span class="p">.</span><span class="n">imag</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">a</span><span class="p">.</span><span class="n">real</span><span class="o">*</span><span class="n">b</span><span class="p">.</span><span class="n">imag</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>接下来，我们可以定义 <code>Complex</code> 和 <code>double</code> 之间的运算。我们再次发现，这种操作具有特定的模式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">&lt;</span><span class="n">op</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">type1</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">type2</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="o">&lt;</span><span class="n">expr1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">op</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">expr2</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>这里，<code>&lt;exprN&gt;</code> 是转换为 <code>Complex</code> 表示的相应参数。我们可以使用宏对其进行抽象：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define REAL_OP(op, typeA, typeB, argA, argB)   \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  Complex operator op(typeA a, typeB b) {       \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    return argA op argB;                        \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  }
+</span></span></span></code></pre></div><p>我们还可以定义一个宏，将 <code>double</code> 转换为 <code>Complex</code>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define CONVERT(a)                              \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  (Complex{ a, 0 })
+</span></span></span></code></pre></div><p>这样，我们就可以对操作进行如下定义：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">+</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">+</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">-</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">-</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">REAL_OP</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="kt">double</span><span class="p">,</span> <span class="n">Complex</span><span class="p">,</span> <span class="nf">CONVERT</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">b</span><span class="p">);</span>
+</span></span></code></pre></div><p>通过预处理器运行，我们可以得到</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">+</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span> <span class="p">});</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">+</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span> <span class="p">})</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">-</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span> <span class="p">});</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">-</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span> <span class="p">})</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">*</span><span class="p">(</span><span class="n">Complex</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span> <span class="p">});</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">operator</span> <span class="o">*</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">Complex</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">Complex</span><span class="p">{</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span> <span class="p">})</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span> <span class="p">};</span>
+</span></span></code></pre></div><p>现在我们可以如下使用复数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Complex</span> <span class="n">c1</span><span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Complex</span> <span class="n">c2</span><span class="p">{</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">c2</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">-</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">d</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">+</span> <span class="n">c1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">-</span> <span class="n">c1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">d</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span>2+6i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>4+2i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>-11+2i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>3.5+4i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>2.5+4i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>1.5+2i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>3.5+4i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>-2.5+-4i<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>1.5+2i<span class="o">)</span>
+</span></span></code></pre></div><h4 class="relative group">Stringification and Concatenation 
+    <div id="stringification-and-concatenation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#stringification-and-concatenation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>在使用宏时，将宏参数转换为字符串或将其与其他标记连接起来可能很有用。例如，假设我们要编写一个交互式应用程序，读取用户的输入并执行相应的操作。对于复数，目标函数可能如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="nf">Complex_conjugate</span><span class="p">(</span><span class="n">Complex</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">Complex</span><span class="p">{</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">string</span> <span class="nf">Complex_polar</span><span class="p">(</span><span class="n">Complex</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="s">&#34;(&#34;</span> <span class="o">+</span> <span class="nf">to_string</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nf">pow</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;,&#34;</span> <span class="o">+</span> <span class="nf">to_string</span><span class="p">(</span><span class="nf">atan</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">imag</span> <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">real</span><span class="p">))</span> <span class="o">+</span> <span class="s">&#34;)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>应用程序会将用户输入与代表操作的字符串进行比较，调用相应的函数，并打印出结果。这就是常见的模式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">input</span><span class="o">&gt;</span> <span class="o">==</span> <span class="s">&#34;&lt;action&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">Complex_</span><span class="o">&lt;</span><span class="n">action</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></div><p>在这里，我们既需要动作的字符串表示法，也需要将 <code>Complex_</code> 标记与动作标记本身连接起来的能力。我们可以为这种模式定义如下宏：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define ACTION(str, name, arg)                  \
+</span></span></span><span class="line"><span class="cl"><span class="cp">  if (str == #name)                             \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    cout &lt;&lt; Complex_ ## name(arg) &lt;&lt; endl
+</span></span></span></code></pre></div><p>标记前的 <code>##</code> 是字符串化运算符，将标记转换为字符串。<code>Complex_</code> 和 <code>name</code> 之间的 <code>##</code> 是标记粘贴操作符，用于连接两边的标记。</p>
+<p>这样，我们就可以编写如下应用代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ACTION</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">conjugate</span><span class="p">,</span> <span class="n">c1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ACTION</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">polar</span><span class="p">,</span> <span class="n">c1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>通过预处理器运行这个程序，我们就能得到想要的结果：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Complex</span> <span class="n">c1</span> <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="s">&#34;conjugate&#34;</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="nf">Complex_conjugate</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="s">&#34;polar&#34;</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="nf">Complex_polar</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 class="relative group">The Macro Namespace 
+    <div id="the-macro-namespace" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-macro-namespace" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用 CPP 宏的一个缺陷是，它们不包含在任何特定的命名空间中。事实上，只要定义了宏，它就能替换任何符合条件的标识符，无论该标识符位于何处。因此，定义一个宏就相当于让一个特定的标识符充当保留关键字，程序员无法使用。这也是为什么常量通常最好定义为变量，限定为 const 或 constexpr，而不是类似对象的宏的原因之一。</p>
+<p>为避免污染全局命名空间，使用了几种约定。</p>
+<ul>
+<li>第一种是在所有宏的前缀加上定义宏的库所特有的字符，以避免与其他库发生冲突。例如，我们的复数宏可以用 COMPLEX_ 作为前缀，以避免与其他宏或标识符冲突。</li>
+<li>第二种策略是在不再需要宏时，使用 <code>#undef</code> 预处理器指令取消对宏的定义。例如，在库代码的末尾，我们可能有如下代码：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#undef COMPLEX_OP
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef REAL_OP
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef CONVERT
+</span></span></span><span class="line"><span class="cl"><span class="cp">#undef ACTION
+</span></span></span></code></pre></div><p>这样，标识符就可以在以后的代码中用于其他目的。</p>
+<h3 class="relative group">Code Generation 
+    <div id="code-generation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#code-generation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>虽然 macros 允许我们使用一种语言提供的宏设施生成代码，但在某些情况下，这种设施无法使用或不足以满足我们的目的。在这种情况下，在外部程序中用同一种语言或另一种语言编写代码生成器可能会比较方便。这种技术也称为 <strong>automatic programming</strong>。</p>
+<p>例如，R5RS Scheme 规范要求实现提供 car 和 cdr 的组合，最深可达四层。例如，<code>(caar x)</code> 应等同于 <code>(car (car x))</code>，<code>(caddar x)</code> 应等同于 <code>(car (cdr (cdr (car x))))</code>。除了 <code>car</code> 和 <code>cdr</code> 本身外，还需要提供 28 种组合，手工编写既繁琐又容易出错。相反，我们可以定义下面的 Python 脚本来生成一个 Scheme 库文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">itertools</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s1">&#39;(c</span><span class="si">{0}</span><span class="s1">r </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;x&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">defun</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s1">&#39;(define (c</span><span class="si">{0}</span><span class="s1">r x) </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">cadrify</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="n">i</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">defun</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
+</span></span></code></pre></div><p><code>cadrify()</code> 函数是一个递归函数，它接收一个序列，如 <code>('a','d','a')</code>，并使用第一个项目和序列其余部分的递归结果构造一个调用。在本例中，后者是 <code>(cdr (car x))</code>，因此结果是 <code>(car (cdr (car x)))</code>。基本情况是序列为空，只产生 <code>x</code>。</p>
+<p><code>defun()</code> 函数接收一个序列，并用它为相应的组合构建定义。它调用 <code>cadrify()</code> 构建正文。对于序列 <code>('a','d','a')</code>，结果是</p>
+<pre tabindex="0"><code>(define (cadar x) (car (cdr (car x))))
+</code></pre><p>最后，循环结束时会产生每个长度的 <code>a</code> 和 <code>d</code> 的所有组合。它使用函数库中的 <code>itertools.product()</code> 函数来获得一个序列，该序列是元组 <code>('a','d')</code> 的第 <code>i</code> 次幂。对于每个组合，它都会调用 <code>defun()</code> 生成该组合的函数。</p>
+<pre tabindex="0"><code>(define (caar x) (car (car x)))
+(define (cadr x) (car (cdr x)))
+(define (cdar x) (cdr (car x)))
+(define (cddr x) (cdr (cdr x)))
+(define (caaar x) (car (car (car x))))
+(define (caadr x) (car (car (cdr x))))
+...
+(define (cdddar x) (cdr (cdr (cdr (car x)))))
+(define (cddddr x) (cdr (cdr (cdr (cdr x)))))
+</code></pre><p>我们可以将生成的代码放入标准库中，由 Scheme 解释器加载。</p>
+<h2 class="relative group">Template Metaprogramming 
+    <div id="template-metaprogramming" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#template-metaprogramming" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Template metaprogramming 是一种在编译时使用模板生成源代码的技术，然后将源代码与程序的其他代码一起编译。它通常是指利用语言的模板实例化规则进行编译时执行的一种形式。Template metaprogramming 在 C++ 中最为常见，但也有少数其他语言可以使用。</p>
+<p>C++ 中模板元编程的关键是 template specialization，它允许编写专门的定义来实例化带有特定参数的模板。例如，考虑一个包含静态值域的类模板，如果模板参数为 int，该值域为 true，否则为 false。我们可以如下编写通用模板：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">template</span> <span class="o">&lt;</span><span class="n">class</span> <span class="n">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">is_int</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>现在我们可以定义当参数为 int 时该模板的特殊化：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">template</span> <span class="o">&lt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>特化中的模板参数列表包含非特化参数。在上面的例子中，没有任何参数，所以是空的。然后，在模板名称之后，我们提供了实例化的全部参数集，在本例中只有 <code>int</code>。然后，我们提供实例化的其余定义。</p>
+<p>现在，当我们使用模板时，如果模板参数与特化兼容，编译器就会使用特化，否则就会使用通用模板：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">is_int</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// output
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">0</span> <span class="mi">1</span>
+</span></span></code></pre></div><p>模板特化使我们能够编写以模板参数为条件的代码。与递归实例化相结合，这使得模板实例化具有图灵完备性。模板不对可变变量进行编码，因此模板元编程实际上是函数式编程的一种形式。</p>
+<h4 class="relative group">Pairs 
+    <div id="pairs" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#pairs" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>举个更复杂的例子，让我们定义可在编译时操作的 pairs 和 lists。这些结构中存储的元素将是任意类型。</p>
+<p>在开始定义 pairs 之前，我们先构建一个报告机制，以便在编译时检查结果。我们将在编译器生成的错误信息中包含相关信息：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">I</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">report</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static_assert</span><span class="p">(</span><span class="n">I</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#34;report&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>为了简单起见，我们使用了一个 integer 模板参数，当然也可以使用类型对数字进行编码。在实例化 <code>report</code> 模板时，如果模板参数 I 为非负，<code>static_assert</code> 会引发错误。请看下面的内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">report</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">foo</span><span class="p">;</span>
+</span></span></code></pre></div><p>编译器会报错，指出是哪个实例导致 <code>static_assert</code> 失败。在 Clang 中，我们会得到类似下面的错误：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pair.cpp:64:3: error: static_assert failed <span class="s2">&#34;report&#34;</span>
+</span></span><span class="line"><span class="cl">  static_assert<span class="o">(</span>I &lt; 0, <span class="s2">&#34;report&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  ^             ~~~~~
+</span></span><span class="line"><span class="cl">pair.cpp:67:16: note: in instantiation of template class <span class="s1">&#39;report&lt;int, 5&gt;&#39;</span>
+</span></span><span class="line"><span class="cl">      requested here
+</span></span><span class="line"><span class="cl">report&lt;int, 5&gt; foo<span class="p">;</span>
+</span></span></code></pre></div><p>使用 GCC，错误如下：</p>
+<pre tabindex="0"><code>pair.cpp: In instantiation of &#39;struct report&lt;int, 5&gt;&#39;:
+pair.cpp:67:16:   required from here
+main.cpp:64:3: error: static assertion failed: report
+   static_assert(I &lt; 0, &#34;report&#34;);
+   ^
+</code></pre><p>两个编译器都报告了相关信息，即报告模板的参数是 int 和 5。</p>
+<p>这样，我们就可以定义 <code>pair</code> 模板如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">First</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Second</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">pair</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="n">car</span> <span class="o">=</span> <span class="n">First</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="n">cdr</span> <span class="o">=</span> <span class="n">Second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>在 template 中，我们定义了类型别名 <code>car</code> 和 <code>cdr</code>，用于指代配对的第一项和第二项。因此，<code>pair&lt;int, double&gt;::car</code> 是 <code>int</code> 的别名，而 <code>pair&lt;int, double&gt;::cdr</code> 是 <code>double</code> 的别名。</p>
+<p>我们还可以定义类型别名，以便从数据对中提取第一项和第二项：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Pair</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">car_t</span> <span class="o">=</span> <span class="k">typename</span> <span class="n">Pair</span><span class="o">::</span><span class="n">car</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Pair</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">cdr_t</span> <span class="o">=</span> <span class="k">typename</span> <span class="n">Pair</span><span class="o">::</span><span class="n">cdr</span><span class="p">;</span>
+</span></span></code></pre></div><p>在 <code>Pair::car</code> 和 <code>Pair::cdr</code> 之前需要使用 <code>typename</code> 关键字，因为我们使用的是嵌套类型，其外层类型依赖于模板参数。在这种情况下，C++ 无法确定我们命名的是一个类型而不是一个值，因此 <code>typename</code> 关键字明确表示这是一个类型。使用上述别名，<code>car_t&lt;pair&lt;int, double&gt;&gt;</code> 是 <code>int</code> 的别名，而 <code>cdr_t&lt;pair&lt;int, double&gt;&gt;</code> 是 <code>double</code> 的别名。</p>
+<p>为了表示递归列表，我们需要一个空列表的表示方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>现在我们可以定义一个模板来判断一个列表是否为空，这个列表可以用空列表 <code>nil</code> 或以 <code>nil</code> 结尾的对序列来表示。我们定义了一个通用模板，然后针对以 nil 作为参数的情况定义了一个特殊化模板：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">is_empty</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">is_empty</span><span class="o">&lt;</span><span class="n">nil</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>为了在编译时使用 <code>value</code>，它必须是一个 <code>compile-time constant</code>，我们可以将其设置为 <code>static</code> 和 <code>const</code>，并使用编译时常量对其进行初始化。在 C++14 中，我们还可以定义全局变量模板（global variable templates）来编码 list 的长度：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">bool</span> <span class="n">is_empty_v</span> <span class="o">=</span> <span class="n">is_empty</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+</span></span></code></pre></div><p><code>is_empty_v&lt;nil&gt;</code> 的值为 true，而 <code>is_empty&lt;pair&lt;int, nil&gt;&gt;</code> 的值为 false。这样，我们就可以在编译时确定列表是否为空：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">using</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">char</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="n">nil</span><span class="o">&gt;&gt;&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">,</span> <span class="n">nil</span><span class="o">&gt;&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">z</span> <span class="o">=</span> <span class="n">nil</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">report</span><span class="o">&lt;</span><span class="n">x</span><span class="p">,</span> <span class="n">is_empty_v</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">report</span><span class="o">&lt;</span><span class="n">y</span><span class="p">,</span> <span class="n">is_empty_v</span><span class="o">&lt;</span><span class="n">y</span><span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">report</span><span class="o">&lt;</span><span class="n">z</span><span class="p">,</span> <span class="n">is_empty_v</span><span class="o">&lt;</span><span class="n">z</span><span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+</span></span></code></pre></div><p>在这里，我们为列表引入了类型别名，作为编译时不可变的变量。然后，我们用类型和是否为空实例化报告。这样，GCC 会给出以下错误信息：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="line"><span class="cl">pair.cpp: In instantiation of <span class="s1">&#39;struct report&lt;pair&lt;char, pair&lt;int,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  pair&lt;double, nil&gt; &gt; &gt;, 0&gt;&#39;</span>:
+</span></span><span class="line"><span class="cl">pair.cpp:82:28:   required from here
+</span></span><span class="line"><span class="cl">pair.cpp:73:3: error: static assertion failed: report
+</span></span><span class="line"><span class="cl">   static_assert<span class="o">(</span>I &lt; 0, <span class="s2">&#34;report&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   ^~~~~~~~~~~~~
+</span></span><span class="line"><span class="cl">pair.cpp: In instantiation of <span class="s1">&#39;struct report&lt;pair&lt;float, pair&lt;bool,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  nil&gt; &gt;, 0&gt;&#39;</span>:
+</span></span><span class="line"><span class="cl">pair.cpp:83:28:   required from here
+</span></span><span class="line"><span class="cl">pair.cpp:73:3: error: static assertion failed: report
+</span></span><span class="line"><span class="cl">pair.cpp: In instantiation of <span class="s1">&#39;struct report&lt;nil, 1&gt;&#39;</span>:
+</span></span><span class="line"><span class="cl">pair.cpp:84:28:   required from here
+</span></span><span class="line"><span class="cl">pair.cpp:73:3: error: static assertion failed: report
+</span></span></code></pre></div><p>检查报告的整数参数，我们会发现列表 <code>pair&lt;char、pair&lt;int、pair&lt;double、nil&gt;&gt;</code> 和 <code>pair&lt;float、pair&lt;bool、nil&gt;&gt;</code> 不是空的，但列表 <code>nil</code> 是空的。</p>
+<p>我们可以使用递归计算列表的长度：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">length</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">cdr_t</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&gt;&gt;::</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">length</span><span class="o">&lt;</span><span class="n">nil</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">length_v</span> <span class="o">=</span> <span class="n">length</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+</span></span></code></pre></div><p>在这里，我们使用的是 <code>length</code> 结构递归实例化的值。由于 <code>value</code> 是通过由编译时常量之间的运算组成的表达式初始化的，因此它也是一个编译时常量。与 <code>is_empty_v</code> 一样，我们定义了一个变量模板 <code>length_v</code> 来对结果进行编码。我们可以计算并报告 <code>x</code> 类型别名的长度：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">report</span><span class="o">&lt;</span><span class="n">x</span><span class="p">,</span> <span class="n">length_v</span><span class="o">&lt;</span><span class="n">x</span><span class="o">&gt;&gt;</span> <span class="n">d</span><span class="p">;</span>
+</span></span></code></pre></div><p>报告的第一个参数是任意的，因为我们只关心第二个参数，所以我们只传递 x 本身。我们得到：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="line"><span class="cl">pair.cpp: In instantiation of <span class="s1">&#39;struct report&lt;pair&lt;char, pair&lt;int,
+</span></span></span><span class="line"><span class="cl"><span class="s1">  pair&lt;double, nil&gt; &gt; &gt;, 3&gt;&#39;</span>:
+</span></span><span class="line"><span class="cl">pair.cpp:85:26:   required from here
+</span></span><span class="line"><span class="cl">pair.cpp:73:3: error: static assertion failed: report
+</span></span></code></pre></div><p>相关信息是长度为 3。</p>
+<p>我们还可以定义更复杂的列表操作。例如，我们可以将列表倒转如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="p">,</span> <span class="k">class</span> <span class="nc">SoFar</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">reverse_helper</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="n">type</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">typename</span> <span class="n">reverse_helper</span><span class="o">&lt;</span><span class="n">cdr_t</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&gt;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">pair</span><span class="o">&lt;</span><span class="n">car_t</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">SoFar</span><span class="o">&gt;&gt;::</span><span class="n">type</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">SoFar</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">reverse_helper</span><span class="o">&lt;</span><span class="n">nil</span><span class="p">,</span> <span class="n">SoFar</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="n">type</span> <span class="o">=</span> <span class="n">SoFar</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">List</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="n">reverse_t</span> <span class="o">=</span> <span class="k">typename</span> <span class="n">reverse_helper</span><span class="o">&lt;</span><span class="n">List</span><span class="p">,</span> <span class="n">nil</span><span class="o">&gt;::</span><span class="n">type</span><span class="p">;</span>
+</span></span></code></pre></div><p>在这里，我们使用一个辅助模板来执行反转，其中第一个模板参数是剩余列表，第二个模板参数是到目前为止的反转列表。在每一步中，我们以 <code>pair&lt;car_t&lt;List&gt;, SoFar&gt;</code> 的形式计算新的部分结果，将剩余列表中的第一个项目添加到前一个部分结果的前面。然后 <code>cdr_t&lt;List&gt;</code> 是除去第一个项目的剩余列表。</p>
+<p>递归的基本情况是剩余列表为 <code>nil</code>，在这种情况下，最终结果与部分结果相同。我们使用部分类模板特化来实现这一点，它允许我们只特化类模板的部分参数。在 <code>reverse_helper</code> 中，我们对第一个参数进行了特殊化，这样，任何第一个参数为 <code>nil</code> 的 <code>reverse_helper</code> 实例都将使用特殊化。特化保留了一个模板参数，该参数包含在参数列表中。完整的参数列表会出现在模板名称之后，包括特化和未特化的参数。</p>
+<h2 class="relative group">RESOURCES 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://eecs390.github.io/notes/metaprogramming.html"   target="_blank">
+    https://eecs390.github.io/notes/metaprogramming.html</a></li>
+<li><a href="http://philo.top/2021/03/14/metaprogramming/"   target="_blank">
+    http://philo.top/2021/03/14/metaprogramming/</a></li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/language\/metaprogramming\/index.md"
+        var oid_likes = "likes_posts\/language\/metaprogramming\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/language/functional-programming/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Functional Programming</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-18 20:14:26 &#43;0800 &#43;0800">18 October 2023</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/programming-language-pool/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Programming Language List</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-14 19:29:44 &#43;0800 &#43;0800">14 October 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>tencentyun on Waiting For You</title>
+    <title>tencentyun on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/tencentyun/</link>
-    <description>Recent content in tencentyun on Waiting For You</description>
+    <description>Recent content in tencentyun on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 20 Oct 2023 13:12:03 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/tencentyun/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tencentyun Serverless Api</title>
-      <link>https://WFUing.github.io/post/tech/architecture/serverless/tencentyun-serverless-api/</link>
+      <link>https://WFUing.github.io/posts/architecture/serverless/tencentyun-serverless-api/</link>
       <pubDate>Fri, 20 Oct 2023 13:12:03 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/architecture/serverless/tencentyun-serverless-api/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/serverless/tencentyun-serverless-api/</guid>
       <description>腾讯云官方推荐并提供了使用控制台和使用Serverless 组件（Tencent Serverless Cloud Framework）两种方式用于管理云函数，分别在浏览器中和本地CLI中进行开发</description>
+      
     </item>
     
   </channel>

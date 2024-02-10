@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ai on Waiting For You</title>
+    <title>ai on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/tags/ai/</link>
-    <description>Recent content in ai on Waiting For You</description>
+    <description>Recent content in ai on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
+    <language>zh-cn</language>
+    <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Thu, 12 Oct 2023 20:13:50 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI Code Generators</title>
-      <link>https://WFUing.github.io/post/tech/language/code-generation/ai-code-generators/</link>
+      <link>https://WFUing.github.io/posts/language/code-generation/ai-code-generators/</link>
       <pubDate>Thu, 12 Oct 2023 20:13:50 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/post/tech/language/code-generation/ai-code-generators/</guid>
-      <description>Resources Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators </description>
+      <guid>https://WFUing.github.io/posts/language/code-generation/ai-code-generators/</guid>
+      <description>Resources # Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators </description>
+      
     </item>
     
   </channel>

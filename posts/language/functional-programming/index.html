@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Functional Programming &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Functional Programming &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="I&#39;m waiting for you." />
+  <meta name="keywords" content="functional programming, language, " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/functional-programming/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Functional Programming" />
+<meta property="og:description" content="我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme # R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/functional-programming/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-18T20:14:26+08:00" />
+<meta property="article:modified_time" content="2023-10-18T20:14:26+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Functional Programming"/>
+<meta name="twitter:description" content="我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
+在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
+Introduction to Scheme # R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
+Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
+Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中："/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "Functional Programming",
+    "headline": "Functional Programming",
+    
+    "abstract": "我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。\n在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。\nIntroduction to Scheme # R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。\nScheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。\nExpressions # Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：",
+    "inLanguage": "zh-cn",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/functional-programming\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-10-18T20:14:26\u002b08:00",
+    "datePublished": "2023-10-18T20:14:26\u002b08:00",
+    
+    "dateModified": "2023-10-18T20:14:26\u002b08:00",
+    
+    "keywords": ["functional programming","language"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2710"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Functional Programming
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-18 20:14:26 &#43;0800 &#43;0800">18 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2710 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">13 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/functional-programming/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-to-scheme">Introduction to Scheme</a>
+      <ul>
+        <li><a href="#expressions">Expressions</a></li>
+        <li><a href="#definitions">Definitions</a></li>
+        <li><a href="#compound-values">Compound Values</a></li>
+        <li><a href="#symbolic-data">Symbolic Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li><a href="#keyword-arguments">Keyword Arguments</a></li>
+        <li><a href="#default-arguments">Default Arguments</a></li>
+        <li><a href="#variadic-functions">Variadic Functions</a></li>
+        <li><a href="#parameter-passing">Parameter Passing</a>
+          <ul>
+            <li><a href="#l-value-and-r-value">l-value and r-value</a></li>
+          </ul>
+        </li>
+        <li><a href="#evaluation-of-function-calls">Evaluation of Function Calls</a></li>
+      </ul>
+    </li>
+    <li><a href="#recursion">Recursion</a>
+      <ul>
+        <li><a href="#activation-records">Activation Records</a></li>
+        <li><a href="#tail-recursion">Tail Recursion</a></li>
+      </ul>
+    </li>
+    <li><a href="#higher-order-functions">Higher-Order Functions</a>
+      <ul>
+        <li><a href="#function-objects">Function Objects</a></li>
+        <li><a href="#functions-as-parameters">Functions as Parameters</a>
+          <ul>
+            <li><a href="#function-pointers">Function Pointers</a></li>
+            <li><a href="#binding-policy">Binding Policy</a></li>
+            <li><a href="#nested-functions">Nested Functions</a></li>
+            <li><a href="#decorators">Decorators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#lambda-functions">Lambda Functions</a>
+      <ul>
+        <li><a href="#scheme">Scheme</a></li>
+        <li><a href="#python">Python</a></li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction-to-scheme">Introduction to Scheme</a>
+      <ul>
+        <li><a href="#expressions">Expressions</a></li>
+        <li><a href="#definitions">Definitions</a></li>
+        <li><a href="#compound-values">Compound Values</a></li>
+        <li><a href="#symbolic-data">Symbolic Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#functions">Functions</a>
+      <ul>
+        <li><a href="#keyword-arguments">Keyword Arguments</a></li>
+        <li><a href="#default-arguments">Default Arguments</a></li>
+        <li><a href="#variadic-functions">Variadic Functions</a></li>
+        <li><a href="#parameter-passing">Parameter Passing</a>
+          <ul>
+            <li><a href="#l-value-and-r-value">l-value and r-value</a></li>
+          </ul>
+        </li>
+        <li><a href="#evaluation-of-function-calls">Evaluation of Function Calls</a></li>
+      </ul>
+    </li>
+    <li><a href="#recursion">Recursion</a>
+      <ul>
+        <li><a href="#activation-records">Activation Records</a></li>
+        <li><a href="#tail-recursion">Tail Recursion</a></li>
+      </ul>
+    </li>
+    <li><a href="#higher-order-functions">Higher-Order Functions</a>
+      <ul>
+        <li><a href="#function-objects">Function Objects</a></li>
+        <li><a href="#functions-as-parameters">Functions as Parameters</a>
+          <ul>
+            <li><a href="#function-pointers">Function Pointers</a></li>
+            <li><a href="#binding-policy">Binding Policy</a></li>
+            <li><a href="#nested-functions">Nested Functions</a></li>
+            <li><a href="#decorators">Decorators</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#lambda-functions">Lambda Functions</a>
+      <ul>
+        <li><a href="#scheme">Scheme</a></li>
+        <li><a href="#python">Python</a></li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <p>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。</p>
+<p>在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。</p>
+<h2 class="relative group">Introduction to Scheme 
+    <div id="introduction-to-scheme" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#introduction-to-scheme" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。</p>
+<p>Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。</p>
+<h3 class="relative group">Expressions 
+    <div id="expressions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#expressions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：</p>
+<pre tabindex="0"><code>&gt; (quotient 10 2)
+5
+</code></pre><p>Scheme 只使用前缀符号。操作符通常是符号，如 <code>+</code> 和 <code>*</code>。复合表达式可以嵌套，也可以跨一行以上：</p>
+<pre tabindex="0"><code>&gt; (+ (* 3 5) (- 10 6))
+19
+&gt; (+ (* 3
+        (+ (* 2 4)
+           (+ 3 5)
+        )
+     )
+     (+ (- 10 7)
+        6
+     )
+  )
+57
+</code></pre><p>对组合进行求值时，首先需要检查运算符是否代表 special form，因为 special form 有自己的求值程序。如果运算符不是 special form，那么运算符和操作数表达式将按照任意顺序进行求值。然后，作为运算符值的函数将应用于作为操作数值的参数。</p>
+<p>在 Scheme 中，<code>if</code> 表达式是特殊形式的一个例子。虽然它在语法上看起来与调用表达式相似，但它的评估过程却与调用表达式不同。<code>if</code> 表达式的一般形式是</p>
+<pre tabindex="0"><code>(if &lt;predicate&gt; &lt;consequent&gt; &lt;alternative&gt;)
+</code></pre><p>要对 <code>if</code> 表达式进行求值，解释器首先会对表达式的 <code>&lt;predicate&gt;</code> 部分进行求值。如果 <code>&lt;predicate&gt;</code> 求值为 true，解释器将求值 <code>&lt;consequent&gt;</code> 并返回其值。否则，解释器将求值 <code>&lt;alternative&gt;</code>，并返回其值，<code>&lt;alternative&gt;</code>可省略。</p>
+<p>Numerical values 可以使用熟悉的比较运算符进行比较，但在这种情况下也使用 prefix notation：</p>
+<pre tabindex="0"><code>&gt; (&gt;= 2 1)
+#t
+</code></pre><p>在 Scheme 中，真值 (包括布尔值 <code>#t</code> 表示真， <code>#f</code> 表示假) 可以与布尔特殊形式相结合，它们的求值过程如下：</p>
+<ul>
+<li><code>(and &lt;e1&gt; ... &lt;en&gt;)</code> 解释器按从左到右的顺序逐次求值表达式 <code>&lt;e&gt;</code>。如果任何 <code>&lt;e&gt;</code> 的值为 false，则 <code>and</code> 表达式的值就是该 false，其余 <code>&lt;e&gt;</code> 的值不予求值。如果所有 <code>&lt;e&gt;</code> 的值都为 true，那么 <code>and</code> 表达式的值就是最后一个 <code>&lt;e&gt;</code> 的值。</li>
+<li><code>(or &lt;e1&gt; ... &lt;en&gt;)</code> 解释器按从左到右的顺序，一次评估一个 <code>&lt;e&gt;</code> 表达式。如果任何 <code>&lt;e&gt;</code> 的值为 true，该值将作为 <code>or</code> 表达式的值返回，其余的 <code>&lt;e&gt;</code> 将不被求值。如果所有 <code>&lt;e&gt;</code> 的值都为 false，则 or 表达式的值就是最后一个 <code>&lt;e&gt;</code> 的值。</li>
+</ul>
+<p>true 也可以用 not 程序来处理：</p>
+<ul>
+<li><code>(not &lt;e&gt;)</code> 当表达式 <code>&lt;e&gt;</code> 的值为假值时，not 表达式的值为 <code>#t</code>，否则为 <code>#f</code>。</li>
+</ul>
+<h3 class="relative group">Definitions 
+    <div id="definitions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#definitions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>可以使用 <code>define</code> 特殊形式对值进行命名：</p>
+<pre tabindex="0"><code>&gt; (define pi 3.14)
+&gt; (* pi 2)
+6.28
+</code></pre><p>新函数（在 Scheme 中通常称为 procedures）可以使用 <code>define</code> 特殊形式的第二个版本来定义。例如，要定义平方，我们可以写下</p>
+<pre tabindex="0"><code>(define (square x) (* x x))
+</code></pre><p>程序定义的一般形式是</p>
+<pre tabindex="0"><code>(define (&lt;name&gt; &lt;formal parameters&gt;) &lt;body&gt;)
+</code></pre><ul>
+<li><code>&lt;name&gt;</code> 是与环境中存储过程定义相关联的符号。</li>
+<li><code>&lt;formal parameters&gt;</code> 是存储过程正文中使用的名称，用于指代存储过程的相应参数。</li>
+<li><code>&lt;body&gt;</code> 是一个表达式，当形式参数被存储过程的实际参数替换时，它将产生存储过程应用的值。</li>
+<li><code>&lt;name&gt;</code> 和 <code>&lt;formal parameters&gt;</code> 放在括号中，就像在实际调用存储过程时一样。</li>
+</ul>
+<p>定义了 square 之后，我们就可以在调用表达式中使用它了:</p>
+<pre tabindex="0"><code>&gt; (square 21)
+441
+
+&gt; (square (+ 2 5))
+49
+
+&gt; (square (square 3))
+81
+</code></pre><p>用户自定义函数可以接受多个参数，并在函数体中包含特殊形式：</p>
+<pre tabindex="0"><code>&gt; (define (average x y)
+    (/ (+ x y) 2))
+&gt; (average 1 3)
+2
+&gt; (define (abs x)
+    (if (&lt; x 0)
+        (- x)
+        x
+    )
+  )
+&gt; (abs -3)
+3
+</code></pre><p>Scheme 支持具有 static scope 的局部函数定义。我们将推迟到讨论<a href=""  >
+    高阶函数</a>时再讨论这个问题。</p>
+<p>匿名函数也称为 lambda 函数，是使用 lambda 特殊形式创建的。使用 lambda 创建存储过程的方法与定义相同，只是不指定存储过程的名称：</p>
+<pre tabindex="0"><code>(lambda (&lt;formal-parameters&gt;) &lt;body&gt;)
+</code></pre><p>由此产生的存储过程与使用 <code>define</code> 创建的存储过程一样。唯一不同的是，它没有与环境中的任何名称相关联。事实上，下面的表达式是等价的：</p>
+<pre tabindex="0"><code>&gt; (define (plus4 x) (+ x 4))
+&gt; (define plus4 (lambda (x) (+ x 4)))
+</code></pre><p>与任何以 procedure 为值的表达式一样，lambda 表达式也可以用作 call expression 中的操作符：</p>
+<pre tabindex="0"><code>&gt; ((lambda (x y z) (+ x y (square z))) 1 2 3)
+12
+</code></pre><h3 class="relative group">Compound Values 
+    <div id="compound-values" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#compound-values" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Pairs 是内置于 Scheme 语言中的。由于历史原因，Pairs 使用 <code>cons</code> 内置函数创建，因此，Pairs 也被称为 <code>cons</code> 单元，Pairs 中的元素使用 <code>car</code> 和 <code>cdr</code> 访问：</p>
+<pre tabindex="0"><code>&gt; (define x (cons 1 2))
+&gt; x
+(1 . 2)
+&gt; (car x)
+1
+&gt; (cdr x)
+2
+</code></pre><center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./scheme_pair.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>该语言还使用成对的方式建立 Recursive lists 。用 <code>'()</code> 表示的特殊值代表 empty list。递归列表值的呈现方式是将其元素放在括号内，中间用空格隔开：</p>
+<pre tabindex="0"><code>&gt; (cons 1
+        (cons 2
+              (cons 3
+                    (cons 4 &#39;())
+              )
+         )
+  )
+(1 2 3 4)
+&gt; (list 1 2 3 4)
+(1 2 3 4)
+&gt; (define one-through-four (list 1 2 3 4))
+&gt; (car one-through-four)
+1
+&gt; (cdr one-through-four)
+(2 3 4)
+&gt; (car (cdr one-through-four))
+2
+&gt; (cons 10 one-through-four)
+(10 1 2 3 4)
+&gt; (cons 5 one-through-four)
+(5 1 2 3 4)
+</code></pre><p>下图为文本表示为 <code>(1 2 3 4)</code> 的列表对应的结构由一连串的对组成，以空列表在图中表示为包含符号 $\emptyset$：</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./scheme_list.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>以空列表以外的其他元素结束的数对序列称为 improper list。如上面的 <code>(cons 1 2)</code> 的结果就是一个例子，它只包含序列中的 <code>pair</code>。下面演示的是一个更复杂的序列：</p>
+<pre tabindex="0"><code>&gt; (cons 1
+        (cons 2
+              (cons 3 4)
+        )
+  )
+(1 2 3 . 4)
+</code></pre><center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./scheme_improper_list.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>证明了 pairs 和其他 compound objects 具有引用语义 &ndash; 配对的 cdr 部分存储了对序列中下一对配对的引用。下面的代码通过变量进一步演示了这些引用语义：</p>
+<pre tabindex="0"><code>&gt; (define x (cons 1 2))
+&gt; (define y x)
+&gt; (eqv? x y)
+#t
+&gt; (set-car! y 7)
+&gt; x
+(7 . 2)
+</code></pre><p>在这里，定义 <code>(define y x)</code> 的结果是 <code>x</code> 和 <code>y</code> 指向同一个数据 pair object。只有当两个参数指向同一个对象对时，存储过程 <code>eqv?</code> 才会返回 <code>true</code>（而 <code>equal?</code> 则从结构上对对象对进行比较）。此外，当我们使用 <code>set-car!</code> 变量修改 <code>y</code> 所引用的配对的第一个项目时，我们可以看到 <code>x</code> 引用了同一个配对，因为它也显示了修改。</p>
+<p>一个对象是否为空列表，可以使用原始的 <code>null?</code> 。利用它，我们可以定义用于计算适当列表长度和选择元素的标准序列操作：</p>
+<pre tabindex="0"><code>&gt; (define (list-length items)
+    (if (null? items)
+        0
+        (+ 1 (list-length (cdr items)))
+    )
+  )
+&gt; (define (getitem items n)
+    (if (= n 0)
+        (car items)
+        (getitem (cdr items) (- n 1))
+    )
+  )
+&gt; (define squares (list 1 4 9 16 25))
+&gt; (length squares)
+5
+&gt; (getitem squares 3)
+16
+</code></pre><p>内置的 <code>length</code> 和 <code>list-ref</code> 程序提供了与这里的 <code>list-length</code> 和 <code>getitem</code> 相同的功能。</p>
+<h3 class="relative group">Symbolic Data 
+    <div id="symbolic-data" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#symbolic-data" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>我们迄今为止使用过的所有复合数据对象最终都是由数字构建的。使用任意符号作为数据是 Scheme 的优势之一。</p>
+<p>为了操作符号，我们需要在语言中加入一个新元素：引用数据对象的能力。假设我们要构造列表 <code>(a b)</code>。我们不能用 <code>(list a b)</code> 来实现这个目的，因为这个表达式构造的是一个包含 <code>a</code> 和 <code>b</code> 值的列表，而不是符号本身。在 Scheme 中，我们会在符号 <code>a</code> 和 <code>b</code> 之前加上单引号，来指代它们，而不是它们的值：</p>
+<pre tabindex="0"><code>&gt; (define a 1)
+&gt; (define b 2)
+&gt; (list a b)
+(1 2)
+&gt; (list &#39;a &#39;b)
+(a b)
+&gt; (list &#39;a b)
+(a 2)
+</code></pre><p>在 Scheme 中，任何未被求值的表达式都被称为 quoted。引号的概念源于一个经典的哲学，即一个事物，如到处乱跑并吠叫的狗与 &ldquo;狗&rdquo; 这个词之间的区别，&ldquo;狗&rdquo; 这个词是用于指定此类事物的语言结构。当我们使用带引号的 &ldquo;狗&rdquo; 时，我们指的并不是某只狗，而是一个词。在语言中，引号允许我们谈论语言本身，在 Scheme 中也是如此：</p>
+<pre tabindex="0"><code>&gt; (list &#39;define &#39;list)
+(define list)
+</code></pre><p>引号还允许我们使用传统的列表打印表示法键入复合对象。我们已经看到，<code>'()</code> 表示空列表。下面是其他例子：</p>
+<pre tabindex="0"><code>&gt; (car &#39;(a b c))
+a
+
+&gt; (cdr &#39;(a b c))
+(b c)
+</code></pre><p>Scheme 中的引号与字符串不同，后者表示字符格式的原始、非结构化数据，而前者表示结构化数据。</p>
+<pre tabindex="0"><code>&gt; &#34;(- 3)&#34;  ; a string containing the characters #\( #\- #\space #\3 #\)
+&#34;(- 3)&#34;
+&gt; &#39;(- 3)   ; produces a list containing the symbol - and number 3
+(- 3)
+&gt; (car &#39;(- 3))
+-
+&gt; (cdr &#39;(- 3))
+(3)
+&gt; (- 3)    ; calls the - procedure on the number 3
+-3
+</code></pre><p>在上面的示例中，字符串字面形式 <code>&quot;(- 3)&quot;</code> 的值为其本身，带引号的表达式 <code>'(- 3)</code> 求值为一个列表，列表的第一个元素是符号 <code>-</code>，第二个元素是数字 <code>3</code>。最后一个示例对符号 <code>-</code> 进行求值以获得相应的存储过程，将数字 <code>3</code> 求值为自身，然后在数字 <code>3</code> 上调用存储过程 <code>-</code>，得到 <code>-3</code>。换句话说，字符串字面量中的数据仍然是字符数据，既不会被求值，也不会被解析。带引号表达式会被解析，但不会被求值，而是产生数据的结构化表示。未加引号的表达式会被解释器解析和求值。</p>
+<p>完整的 Scheme 语言还包含其他功能，如 mutation operations、vectors 和 maps。不过，我们迄今为止介绍的子集提供了一种丰富的函数式编程语言，能够实现我们迄今为止讨论过的许多想法。</p>
+<h2 class="relative group">Functions 
+    <div id="functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#functions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>我们首先要考虑的是以参数形式向函数传递数据的各种方案。我们将出现在函数定义中的参数，也称为 formal parameters，与调用函数时传递给函数的实际值区分开来，后者通常被称为 actual parameter。</p>
+<ul>
+<li>本文将使用 argument 一词来指代 actual parameter，</li>
+<li>用 parameter 一词指代 formal parameters。</li>
+</ul>
+<h3 class="relative group">Keyword Arguments 
+    <div id="keyword-arguments" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#keyword-arguments" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>有些语言允许甚至要求在调用函数时提供参数名，这种策略称为 named parameters  或 keyword arguments。</p>
+<p>关键字参数通常允许以不同于函数参数列表的顺序提供参数。例如，在 Python 中，keyword argument 可以用于任何参数。请看下面的代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span></code></pre></div><p>调用不带关键字参数的 foo() 时，第一个参数会作为第一个参数传递，第二个参数会作为第二个参数传递：</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; foo(1, 2)
+1 2
+</code></pre><p>不过，参数可以使用参数名重新排序：</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; foo(y = 1, x = 2)
+2 1
+</code></pre><p>Python 还提供了将参数定义为 <a href="https://peps.python.org/pep-0570/"   target="_blank">
+    positional-only</a> 或 <a href="https://peps.python.org/pep-3102/"   target="_blank">
+    keyword-only</a> 的机制，但我们不会在这里讨论这些机制。</p>
+<p>有少数语言要求默认为所有或大部分参数提供名称，并要求以与参数相同的顺序提供参数。下面是 Swift 3 中的一个示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-swift" data-lang="swift"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">withGreeting</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="bp">print</span><span class="p">(</span><span class="n">withGreeting</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">greet</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="s">&#34;world&#34;</span><span class="p">,</span> <span class="n">withGreeting</span><span class="p">:</span> <span class="s">&#34;hello&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>以相反的参数顺序调用 <code>greet()</code> 是错误的。</p>
+<p>Swift 允许为一个参数指定不同的参数名和参数名，这一点也很罕见。这意味着调用函数时为参数提供的名称可能与函数主体中使用的参数内部名称不同。</p>
+<h3 class="relative group">Default Arguments 
+    <div id="default-arguments" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#default-arguments" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在某些语言中，函数声明或定义可能会提供一个 default argument，允许在没有该参数的情况下调用函数。这可以替代重载，即编写单独的函数定义来处理存在或缺少参数的情况。</p>
+<p>下面是一个 Python 示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">base</span> <span class="o">**</span> <span class="n">exponent</span>
+</span></span></code></pre></div><p><code>power()</code> 函数可以调用一个参数，在这种情况下，默认参数 2 用于计算数字的平方。也可以使用两个参数来计算任意幂：</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; power(3)
+9
+&gt;&gt;&gt; power(3, 4)
+81
+</code></pre><p>有 default arguments 一般必须出现在参数列表的末尾。对于何时以及在哪种环境下评估默认参数，不同语言的做法各不相同。最常见的策略是每次调用函数时都评估缺省参数，但在定义 environment (static scope) 中进行。Python 的罕见之处在于，它只在函数定义语句执行时评估一次缺省参数。这意味着，如果在函数中修改了参数值，那么对同一函数的后续调用可能会对同一参数使用不同的缺省值。例如</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[]):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">//</span> <span class="n">output</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span></span></code></pre></div><p>C 和 C++ 有许多关于缺省参数的规则，这是因为一个实体可以声明多次。默认参数既可以在独立声明中提供，也可以在定义中提供。但是，同一实体的多个可见声明为同一参数提供默认参数是非法的，即使提供的值是相同的。缺省参数集是同一作用域内所有可见声明的集合，只有在前面和当前声明已为所有后续参数提供缺省参数的情况下，声明才能为参数引入缺省参数。缺省参数中使用的名称在声明时进行解析，但参数表达式在调用函数时进行求值。</p>
+<p>下面是 C++ 中多重声明的一个合法示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>除函数参数外，C++ 还允许模板参数使用默认参数，其有效性规则与此类似。</p>
+<h3 class="relative group">Variadic Functions 
+    <div id="variadic-functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#variadic-functions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>一种语言可能会提供一种机制，让函数在调用时可以使用数量可变的参数。这种特性通常被称为 varargs，使用这种特性的函数被称为变量函数 (variadic)。这种机制可能提供类型安全，也可能允许不安全的使用，从而导致错误或未定义的行为。可变参数一般必须出现在参数列表的末尾，它匹配的是非可变参数匹配后剩余的参数。通常只允许使用一个变量参数。</p>
+<p>在提供安全变量函数的语言中，一种常见的机制是自动将变量参数打包到一个 container 中，例如 array 或 tuple。例如，下面的 Python 函数计算其参数的乘积：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">product</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">*=</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span></code></pre></div><p>参数名前面的 <code>*</code> 表示变量参数，变量参数以绑定到参数名的元组形式传递。上述函数遍历元组中的元素，更新总乘积。要调用 <code>product()</code>，必须提供 0 个或更多参数：</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; product()
+1
+&gt;&gt;&gt; product(1, 2, 3)
+6
+</code></pre><p>Python 还提供了可变关键字参数，这些参数被打包成一个字典。在参数前面加上 <code>**</code> 表示它是一个可变关键字参数，并且这样的参数必须是最后一个。例如，下面的函数同时包含一个非关键字可变参数和一个可变关键字参数，打印出前者对应的元组和后者对应的字典：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">print_args</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; print_args(3, 4, x = 5, y = 6)
+(3, 4)
+{&#39;x&#39;: 5, &#39;y&#39;: 6}
+</code></pre><p>最后，Python 允许使用 <code>*</code> 或 <code>**</code> 操作符对序列或字典进行 &ldquo;解包&rdquo;，从而将解包后的值用于需要值列表的地方。例如，下面的代码将一个列表解包，以调用 <code>product()</code>：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="mi">6</span>
+</span></span></code></pre></div><p>此外，Scheme 还支持可变参数。一个存储过程可以使用一个不恰当的列表作为参数列表，并以一个符号而不是空列表结束，这样就可以定义一个存储过程来接受可变参数。可变参数与任意数量的参数绑定，并打包成一个列表：</p>
+<pre tabindex="0"><code>&gt; (define (func . args)
+    args
+  )
+&gt; (func)
+()
+&gt; (func 1 2 3)
+(1 2 3)
+</code></pre><p>存储过程 <code>func</code> 可以接收任意数量的参数，并返回包含这些参数的 list。因此，它的行为与内置的 list 存储过程相同。我们还可以定义一个存储过程，同时接收必参数和可变参数，例如下面的 <code>average</code> 定义：</p>
+<pre tabindex="0"><code>&gt; (define (average x . nums)
+    (/ (apply + x nums)
+       (+ 1 (length nums))
+    )
+  )
+&gt; (average 1)
+1
+&gt; (average 1 3)
+2
+&gt; (average 1 3 5 7)
+4
+</code></pre><p>procedure 接收一个或多个参数，其中第一个参数与参数 <code>x</code> 绑定，其余参数封装在一个与变量 <code>nums</code> 参数绑定的列表中。我们可以使用 <code>apply</code> 来转发变量参数，它接收一个存储过程、任意数量的常规参数，最后是一个包含其余参数的列表。例如，<code>(apply + 1 2 '(3 4))</code> 相当于调用 <code>(+ 1 2 3 4)</code>。在上面第一个使用 average 的示例中，nums 在调用 <code>(average 1)</code> 时绑定为一个空列表，而 <code>(apply + x nums)</code> 相当于 <code>(apply + 1 '())</code> ，后者本身相当于 <code>(+ 1)</code>。在第三个例子中，<code>nums</code> 绑定到一个列表 <code>(3 5 7)</code>，因此 <code>(apply + x nums)</code> 等价于 <code>(apply + 1 '(3 5 7))</code>，而 <code>(apply + 1 '(3 5 7))</code> 又等价于 <code>(+ 1 3 5 7)</code>。</p>
+<p>在 Python 和 Scheme 中，可变参数可以匹配任何类型的参数，因为这两种语言都是动态类型的。然而，在静态类型语言中，可变参数通常被限制为单一类型，尽管该类型可能是多态的。例如，下面是 Java 中的一个变量方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print_all</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p><code>print_all()</code> 的参数必须是字符串，并将它们打包成一个字符串数组。Java 也允许将单个字符串数组作为参数传递：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">print_all</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">print_all</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&#34;good&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;bye&#34;</span><span class="w"> </span><span class="p">});</span><span class="w">
+</span></span></span></code></pre></div><p>C 和 C++ 也有一种可变参数机制，但它存在严重的安全问题。尤其是，它无法向被调用的函数提供关于参数个数及其类型的信息。下面是一个返回参数之和的函数示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdarg.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">,</span> <span class="p">...)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">va_list</span> <span class="n">args</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">total</span> <span class="o">+=</span> <span class="nf">va_arg</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在该函数中，第一个参数被假定为其余参数的个数，而后一个参数被假定为 int 类型。如果违反其中任何一个条件，都会产生未定义的行为。另一种策略是使用格式字符串来确定参数的数量和类型，如 printf() 和类似函数中使用的方法。可变参数缺乏安全性，会导致<a href="https://en.wikipedia.org/wiki/Uncontrolled_format_string"   target="_blank">
+    格式字符串攻击</a>等漏洞。</p>
+<p>C++11 提供了类型安全的 variadic templates。</p>
+<h3 class="relative group">Parameter Passing 
+    <div id="parameter-passing" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#parameter-passing" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>语言的另一个不同之处在于函数与其调用者之间传递参数的 semantics 和 mechanism。函数参数可以是单向的，仅用于向函数传递输入或仅用于从函数向调用者传递输出，也可以是双向的。这些情况被称为 input、output 和 input/output 参数。一种语言不必支持所有三种参数类别。</p>
+<p>各种语言使用不同的参数传递技术或调用模式。这些技术会影响参数和参数的语义以及支持的参数类别。以下是不同语言使用的具体调用模式：</p>
+<p><strong>Call by value</strong>，参数代表函数调用框架中的一个新变量。参数值被复制到与新变量相关的存储空间中。按值调用参数只为函数提供输入，如下面的 C++ 示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">foo</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>              <span class="c1">// prints 4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>   <span class="c1">// prints 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>即使 <code>foo()</code> 修改了输入值，修改后的值也不会传回 caller。</p>
+<p><strong>Call by reference</strong>，参数必须传递一个 l-value，因为参数 aliases 了传递进来的对象。对参数的任何修改都会反映在参数对象中。因此，引用调用参数同时提供输入和输出。在 C++ 中，引用参数提供了引用调用，并且可以通过声明 <code>const</code> 将其限制为仅提供输入。下面的 C++ 示例使用引用调用交换了两个对象的值：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>   <span class="c1">// prints 4 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>引用调用有时用来指使用指针间接传递对象。下面的 C/C++ 函数使用指针交换对象值：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">swap</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="o">*</span><span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>   <span class="c1">// prints 4 3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>但从技术上讲，参数和参量是独立的指针对象，通过值传递。尽管如此，这种效果模拟了引用调用，使输入和输出都能通过一个参数来实现。</p>
+<p><strong>Call by result</strong>，在这种模式下，参数代表一个新变量，调用者不对其进行初始化。相反，调用者会为参数指定一个 l-value，当函数调用结束时，参数的最终值会被复制到 l-value 中。因此，按结果调用只提供输出参数。下面是一个使用类似 C 的语法、按结果调用的示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="n">result</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span><span class="o">++</span><span class="p">;</span>      <span class="c1">// x is now 4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">foo</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>     <span class="c1">// y is now 4
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">print</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>   <span class="c1">// prints 4
+</span></span></span></code></pre></div><p><strong>Call by value-result</strong>，这是 Call by value 和 Call by result 的组合。参数值被复制到与参数相对应的新变量中，然后从函数返回时，参数值又被复制到调用者提供的 l-value 值中。这与引用调用的不同之处在于，在进入和退出函数时都会进行复制。可以通过将相同的 l-value 传递给多个参数来说明这一点，例如在下面的示例中使用了类似于 C 语言的语法，即按 Call by value-result：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">foo</span><span class="p">(</span><span class="n">value</span><span class="o">-</span><span class="n">result</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">value</span><span class="o">-</span><span class="n">result</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">foo</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">));</span>   <span class="c1">// prints 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">print</span><span class="p">(</span><span class="n">z</span><span class="p">);</span>           <span class="c1">// prints 3 or 4, depending on the semantics
+</span></span></span></code></pre></div><p>在这段代码中，<code>x</code> 和 <code>y</code> 是新变量，它们被初始化为 <code>z</code> 的值，即 3。<code>x</code> 的增量不会影响 <code>y</code>，因为它们是独立的变量，所以调用 <code>foo()</code> 返回 1。因此，1 会被打印出来。<code>z</code> 的最终值取决于从 <code>x</code> 还是从 <code>y</code> 复制的语言语义。如果使用引用调用，那么 <code>x</code> 和 <code>y</code> 将 alias 为同一个对象，调用 <code>foo()</code> 将返回 0。</p>
+<p><strong>Call by name</strong>，在这种模式下，可以提供一个完整的表达式作为参数，但在调用函数时不会对其进行求值。相反，在函数中出现参数名的地方，参数名会被表达式替换，而表达式会在主体中遇到时进行求值。这是一种 lazy evaluation，即在需要时才计算值。下面是一个使用 C-like syntax、按名称调用的示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="n">name</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">name</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>   <span class="c1">// becomes print(++y)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nf">print</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>   <span class="c1">// becomes print(++y)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">foo</span><span class="p">(</span><span class="o">++</span><span class="n">x</span><span class="p">,</span> <span class="o">++</span><span class="n">y</span><span class="p">);</span>   <span class="c1">// prints 4, then 4 or 5 depending on the exact
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                 <span class="c1">// language semantics; y is now 4 or 5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">print</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>        <span class="c1">// prints -1 -- x is unchanged
+</span></span></span></code></pre></div><p>在本例中，参数表达式 <code>++x</code> 从未被求值，因为相应的逐名调用参数 <code>a</code> 从未被使用。另一方面，表达式 <code>++y</code> 被计算，因为相应的参数 <code>b</code> 确实被使用了。根据语言语义的不同，表达式可能只被求值一次，其值被缓存以备后续使用，也可能在每次使用参数时都被求值。</p>
+<p>按名称调用会产生一个微妙的问题。请看下面这段代码，它使用了 C-like syntax 和按名称调用：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">bar</span><span class="p">(</span><span class="n">name</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">bar</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span></code></pre></div><p>如果我们用参数表达式替换 <code>bar()</code> 中出现的参数 <code>x</code>，就会得到 <code>y + 1 + y</code> 作为 <code>print()</code> 的参数。如果在 <code>bar()</code> 的环境中求值，结果将是 7。这是不可取的，因为这意味着局部声明 <code>y</code> 的实现细节改变了函数的行为。</p>
+<p>相反，参数表达式应在调用者的环境中进行评估。这就要求在函数调用时同时传递参数及其环境。使用名称调用的语言通常使用编译器生成的局部函数，称为 thunk ，来封装参数表达式及其环境。然后将 thunk 传递给被调用的函数，当遇到参数时，就会调用 thunk。</p>
+<p>在某些语言中，与 call-by-name parameter 相对应的表达式仅在首次引用该参数时进行评估，并缓存评估结果。缓存的结果将用于随后每次出现的参数。</p>
+<p>call by value 是大多数现代语言使用的调用模式，包括 C、C++（用于非引用参数）、Java、Scheme 和 Python。程序员经常误以为后三种语言使用 call by reference，但实际上，它们将 call by value 与 call by reference 语义结合在一起。这种组合有时被称为 object reference 。下面的示例说明 Python 使用的是 call by value：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tmp</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="n">tmp</span>
+</span></span></code></pre></div><pre tabindex="0"><code>&gt;&gt;&gt; x, y = 1, 2
+&gt;&gt;&gt; swap(x, y)
+&gt;&gt;&gt; x, y
+(1, 2)
+</code></pre><p>错误的 <code>swap()</code> 函数只是改变了局部变量的值，从而改变了它们所引用的对象，而没有影响作为参数的变量。这表明全局 x 和 y 的存储空间与参数的存储空间是不同的，因此 Python 没有使用引用调用。事实上，Python 甚至不能像 C 和 C++ 指针那样模拟引用调用。</p>
+<h4 class="relative group">l-value and r-value 
+    <div id="l-value-and-r-value" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#l-value-and-r-value" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>l-value 和 r-value 是 C++ 表达式的基础。简单地说，l-value 是对象引用，r-value 是值。l-value 和 r-value 之间的区别在表达式的编写和理解中起着重要作用。</p>
+<ul>
+<li>l-value 是产生对象引用的表达式，例如变量名、数组下标引用、取消引用指针或返回引用的函数调用。l-value 总是有一个定义的存储区域，因此可以获取其地址。</li>
+<li>r-value 是指不是 l-value 的表达式。r-value 的例子包括字面量、大多数运算符的结果以及返回非引用的函数调用。r-value 不一定与任何存储空间相关联。</li>
+</ul>
+<p>严格来说，函数是一个 l-value，但它的唯一用途是用于调用函数或确定函数的地址。大多数情况下，l-value 指的是对象 l-value。</p>
+<h3 class="relative group">Evaluation of Function Calls 
+    <div id="evaluation-of-function-calls" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#evaluation-of-function-calls" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>下面我们总结一下函数调用的实现过程：</p>
+<p>第一步是确定嵌套函数调用的非本地环境。在使用嵌套函数和静态作用域的语言中，当执行嵌套函数定义本身时，非本地环境的引用会存储在关联的函数对象中。在具有深绑定的动态作用域下，非本地环境是在函数名称被引用时确定的。最后，在浅绑定的动态作用域中，非本地环境是函数被调用时处于活动状态的环境。</p>
+<p>下一步是使用新创建的函数调用激活记录将参数传递给函数。参数在现有环境中进行评估，并按如下方式传递给被调用者：</p>
+<ol>
+<li><strong>Call by value and call by value-result</strong> : 对参数进行评估以获得其 r-value。r-value 将被复制到新激活记录中相应参数的存储空间。</li>
+<li><strong>Call by reference</strong> : 参数的 l-value。相应的参数会绑定到与 l-value 相关的对象上。</li>
+<li><strong>Call by result</strong> : 参数进行评估，以获得其 l-value 。在新的激活记录中，存储空间会被分配，但不会被初始化。</li>
+<li><strong>Call by name</strong> : 参数表达式会被打包到一个包含当前环境的 thunk 中。参数绑定到 thunk 的引用上。</li>
+</ol>
+<p>一旦参数被传递，调用者的执行就会暂停，而被调用者的主体将在一个由新创建的激活记录和被调用者的非本地环境组成的环境中执行。对于 call by name，根据语言的语义，call by name 参数的出现会在参数第一次被指名或每次被指名时调用相应的 thunk。</p>
+<p>当被调用的函数返回时，其返回值（如果有的话）会被放置在指定的存储位置，通常是在调用者的激活记录中。对于 call-by-result 或 call-by-value-result 参数，参数的当前 r-value 会被复制到与相应函数调用参数的 l-value 相关联的对象中。然后，被调用者的激活记录将被销毁，调用者将在函数调用后恢复执行。函数调用本身的评估结果就是函数的返回值。</p>
+<h2 class="relative group">Recursion 
+    <div id="recursion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#recursion" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Recursion 是一种利用函数和函数应用进行重复的机制。它涉及函数直接或间接地调用自身，通常使用在某种意义上比前一个参数 &ldquo;小 &ldquo;的参数。递归计算在达到基数时终止，基数是指无需进行任何递归调用即可直接计算出结果的输入。</p>
+<p>一种语言要想达到图灵完备性，只需提供 recursion 和 conditionals 即可。</p>
+<h3 class="relative group">Activation Records 
+    <div id="activation-records" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#activation-records" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在机器上，递归之所以起作用，是因为函数的每次调用都有自己的激活记录，将局部变量映射为值。请看下面的阶乘递归定义：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>调用 factorial(4) 会导致五次调用 factorial()，参数从 4 到 0，每次都有自己的激活记录和参数 n 的绑定：</p>
+<pre tabindex="0"><code>factorial(4):   n --&gt; 4
+factorial(3):   n --&gt; 3
+factorial(2):   n --&gt; 2
+factorial(1):   n --&gt; 1
+factorial(0):   n --&gt; 0
+</code></pre><center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./factorial.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>在执行 <code>factorial()</code> 主体时查找 n，每次调用都会获得自己的 n 值，而不会受到其他激活记录的影响。</p>
+<p>要使函数调用生效，激活记录需要的不仅仅是参数和局部变量的存储空间。临时值也需要存储在某个地方，由于每个调用都需要自己的临时值存储空间，因此这些临时值通常也要放在激活记录中。调用还需要知道在哪里存储其返回值，通常是在调用者框架中的临时存储区。最后，函数需要知道如何将执行返回给调用者。具体细节不在本文讨论范围之内，但这些信息包括调用者函数调用后的指令地址和调用者激活记录的地址。</p>
+<p>临时对象集可以通过静态方式保守地确定，因此激活记录的大小以及对象在其中的位置都可以在编译时确定。对于上面的 <code>factor()</code>，需要临时存储 <code>n - 1</code> 以及递归调用 <code>factorial()</code> 的结果。递归调用会使用后者在调用程序中的位置来存储其返回值。根据不同的实现，调用 <code>factorial(0)</code> 的激活记录中可能仍然有这些临时对象的空间，即使它们不会被使用。</p>
+<h3 class="relative group">Tail Recursion 
+    <div id="tail-recursion" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tail-recursion" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>递归计算对函数的每次调用都使用单独的激活记录。存储这些记录所需的空间与激活函数调用的次数成正比。在上面的 <code>factorial(n)</code> 中，当计算达到 <code>factorial(0)</code> 时，所有 <code>n + 1</code> 次调用都同时激活，需要的空间为 <code>O(n)</code>。与之相比，下面的迭代实现使用的空间是恒定的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">factorial_iter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">*=</span> <span class="n">n</span>
+</span></span><span class="line"><span class="cl">        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span>
+</span></span></code></pre></div><p>然而，递归版本的 <code>factorial()</code> 所需的空间并不是使用递归的内在原因，而是函数编写方式的结果。事实上，由于在递归调用之后还需要完成调用的工作，因此在递归调用期间必须保留其激活记录，这就导致了线性空间需求。</p>
+<p>考虑另一种阶乘递推计算方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">factorial_tail</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">partial_result</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">factorial_tail</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">partial_result</span><span class="p">)</span>
+</span></span></code></pre></div><p>请注意，在完成递归调用后，<code>factorial_tail()</code> 函数不做任何工作。这意味着在进行递归调用时，它不再需要存储参数、局部变量或临时对象。此外，由于 <code>factorial(n, k)</code> 直接返回递归调用 <code>factorial(n - 1, n * k)</code> 的结果，因此后者可以将其返回值存储在 <code>factorial(n, k)</code> 的调用者中用于存放 <code>factorial(n, k)</code> 返回值的位置，并直接将执行返回给该调用者。因此，优化后的实现可以为 <code>factorial_tail(n - 1, n * k)</code> 重用 <code>factorial_tail(n, k)</code> 的激活记录空间，因为前者不再需要激活记录。</p>
+<p>这个过程可以推广到任何函数调用，而不仅仅是递归调用。如果函数的调用者直接返回调用值，而不执行任何额外的计算，那么该函数调用就是尾调用。如果一个函数的所有递归调用都是尾调用，那么这个函数就是尾递归函数。因此，<code>factorial_tail()</code> 是尾部递归函数。</p>
+<p>尾递归计算只使用固定数量的激活记录，因此其空间使用量与等效的迭代计算相当。事实上，许多函数式语言并不提供迭代的构造，因为它们可以等效地使用尾递归来表达。这些语言通常要求实现执行尾调用优化，尽可能重复使用激活记录的空间。</p>
+<p>由于尾调用要求在返回后不执行任何计算，因此在语法上看似尾调用的调用可能不是尾调用，因为隐式计算可能发生在函数的末尾。这方面的一个具体例子是基于作用域的资源管理，如下例所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">values</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">int</span> <span class="n">partial_result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="nf">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nf">sum</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">partial_result</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>虽然这段代码在递归调用后似乎没有进行计算，但本地 <code>vector&lt;int&gt;</code> 对象有一个析构函数，必须在递归调用完成后运行。因此，对 <code>sum()</code> 的递归调用不是尾部调用，该计算也不是尾部递归计算。</p>
+<p>另一种阻碍尾调用优化的情况是，在使用静态作用域并支持高阶函数全部功能的语言中，函数内部包含一个函数定义。嵌套函数需要访问其定义环境，因此如果嵌套函数可以在其外层函数调用完成后或在尾调用中使用，则必须保留该环境。</p>
+<h2 class="relative group">Higher-Order Functions 
+    <div id="higher-order-functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#higher-order-functions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>first-class entity 是一种支持对语言中的其他 entities 进行操作的 entity，包括<strong>作为参数传递</strong>、<strong>从函数返回</strong>和<strong>动态创建</strong>。</p>
+<ul>
+<li>在 functions 是 first-class entity 的语言中，可以编写 higher-order functions，将另一个 function 作为参数传递或返回一个 function。</li>
+<li>其他语言也可能支持 higher-order functions，但是在这些语言中 function 不是可以在运行时动态创建的 entity 。</li>
+</ul>
+<h3 class="relative group">Function Objects 
+    <div id="function-objects" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#function-objects" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在某些语言中，可以定义本身不是函数但提供与函数相同接口的对象。这些对象被称为函数对象或函数器。一般来说，语言通过允许重载函数调用操作符来编写函数器。请看下面的 C++ 示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Counter</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="nl">Counter</span> <span class="p">:</span> <span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="nf">operator</span><span class="p">()()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></div><p>Counter 类实现了一个函数，可以返回它被调用的次数。可以同时存在多个 Counter 对象，每个对象都有自己的计数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">Counter</span> <span class="n">counter1</span><span class="p">,</span> <span class="n">counter2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter1</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter1</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter1</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter2</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter2</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">counter1</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// prints 3
+</span></span></span></code></pre></div><p>函数允许 function-like object 存在多个实例，每个实例都有自己的状态，并在函数的生命周期内持续存在。这与 function 截然不同，function 中的自动对象不会在单次调用后持续存在，而静态对象则会在整个程序执行过程中持续存在。</p>
+<p>Python 还允许通过定义特殊的 <code>__call__</code> 方法来编写函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Counter</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span>
+</span></span></code></pre></div><p>一般来说，在重载函数调用操作符时，可以指定额外的参数，以模拟可以接收这些参数的函数。</p>
+<p>有些语言不允许重载函数调用操作符本身，但规定了允许定义和使用类函数对象的约定。例如，下面是 <code>Counter</code> 在 Java 中使用 <code>Supplier&lt;T&gt;</code> 接口的实现，该接口指定了一个产生 <code>T</code> 的零参数方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Counter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>然后通过明确调用 <code>get()</code> 方法来调用这个类函数对象：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Counter</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">counter2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Counter</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter1</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter1</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter1</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter2</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter2</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">counter1</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// prints 3</span><span class="w">
+</span></span></span></code></pre></div><p>再比如，Java 中的 <code>Predicate</code> 接口是通过 functor-like objects 实现的，这些对象接收一个参数并返回一个布尔值：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">interface</span> <span class="nc">Predicate</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">GreaterThan</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">GreaterThan</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">threshold</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>使用这些 functor-like objects 的代码会调用 <code>test()</code> 方法，而不是直接调用对象：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">GreaterThan</span><span class="w"> </span><span class="n">gt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GreaterThan</span><span class="p">(</span><span class="n">3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">gt3</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="n">2</span><span class="p">));</span><span class="w">    </span><span class="c1">// prints out false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">gt3</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="n">20</span><span class="p">));</span><span class="w">   </span><span class="c1">// prints out true</span><span class="w">
+</span></span></span></code></pre></div><p><code>java.util.function</code> 函数库包中为常见模式提供了单独的接口。</p>
+<h3 class="relative group">Functions as Parameters 
+    <div id="functions-as-parameters" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#functions-as-parameters" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>higher-order function 可以将另一个函数作为参数。我们首先研究那些只有 top-level functions 并允许将函数指针或引用作为参数传递的语言。然后，我们将研究将函数作为参数传递会如何影响函数代码的执行环境。</p>
+<h4 class="relative group">Function Pointers 
+    <div id="function-pointers" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#function-pointers" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>在某些语言中，函数可以作为参数或返回值传递，但不能在另一个函数的上下文中创建。在这些语言中，所有函数都是在顶层定义的，只有指向函数的指针或引用才能作为值使用。下面是 C 语言中的一个例子，C 语言提供了函数指针：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">apply</span><span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="n">array</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">int</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(;</span> <span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">size</span><span class="p">,</span> <span class="o">++</span><span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">array</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">add_one</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">A</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">apply</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">add_one</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d, %d, %d, %d, %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><code>apply()</code> 函数接收数组、数组大小和一个指向接收 int 并返回 int 的 function pointer。它将函数应用于数组中的每个元素，并用结果替换原值。<code>add_one()</code> 函数作为参数传递给 <code>apply()</code>，C 语言会自动将函数转换为函数指针，其结果是 A 中的每个元素都被递增。</p>
+<h4 class="relative group">Binding Policy 
+    <div id="binding-policy" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#binding-policy" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>在上面的代码中，有三个环境与 <code>add_one()</code> 函数相关联：定义环境、在 <code>main()</code> 中引用环境和在 <code>apply()</code> 中调用环境。根据语言的语义，这三个环境中的任何一个都可能是 <code>add_one()</code> 主体执行环境的组成部分。</p>
+<p>在静态作用域中，函数中的代码可以访问其定义环境中的名称，而在动态作用域中，它可以访问其使用环境中的名称。考虑到动态作用域，函数的非本地环境是函数被引用的环境还是函数被调用的环境？下面是一个与这种区别有关的示例：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">bar</span><span class="p">)())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nf">bar</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">baz</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="nf">foo</span><span class="p">(</span><span class="n">baz</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>在动态作用域中，函数可以访问其使用环境。然而，在上面的示例中，根据 <code>baz()</code> 的使用环境是函数被引用的地方还是被调用的地方，结果是不同的。</p>
+<ul>
+<li>函数被引用的地方的情况下，<code>baz()</code> 的非本地环境是 <code>main()</code> 的环境，<code>baz()</code> 主体中的 <code>x</code> 将引用 <code>main()</code> 中定义的 <code>x</code>。这就是所谓的深度绑定。</li>
+<li>函数被调用的地方的情况下，<code>baz()</code> 的非本地环境是 <code>foo()</code> 的环境，<code>baz()</code> 中的 <code>x</code> 将引用 <code>foo()</code> 中定义的 <code>x</code>。这就是所谓的浅绑定。这两种方法都是有效的，语言的绑定策略决定了使用哪种方法。</li>
+</ul>
+<p>使用静态作用域时，绑定策略也会对递归函数内部本地定义的函数产生影响。然而，在使用静态作用域的语言中，深度绑定被普遍使用，因此函数定义时所建立的环境就是函数所能访问的环境。</p>
+<h4 class="relative group">Nested Functions 
+    <div id="nested-functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#nested-functions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>函数式编程的一个主要特点是可以在另一个函数中定义一个函数，从而动态创建一个函数。在具有静态作用域的语言中，这种嵌套函数可以访问其定义环境，函数与其定义环境的组合称为 closure。嵌套函数中使用但在外层环境中定义的变量被称为 closure 所捕获。如果嵌套函数从外层函数中返回或泄漏，外层函数的环境通常必须在函数返回后继续存在，因为嵌套函数可能会访问其中的绑定。</p>
+<p>举例来说，请看下面这个返回嵌套函数的 Python higher-order function：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_greater_than</span><span class="p">(</span><span class="n">threshold</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">greater_than</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">greater_than</span>
+</span></span></code></pre></div><p><code>make_greater_than()</code> 函数接收一个阈值，并构造一个嵌套函数来判断其输入是否大于阈值。<code>threshold</code> 变量位于 <code>make_greater_than()</code> 的激活记录中，但被 <code>greater_than()</code> 捕获。由于后者会返回阈值，因此激活记录必须持续存在，这样 <code>greater_than()</code> 的调用才能访问 <code>threshold</code> 的绑定。</p>
+<p>请注意，每次调用 <code>make_greater_than()</code>，都会创建一个不同的 <code>greater_than()</code> 实例，并拥有自己的外层环境。因此，不同的 <code>make_greater_than()</code> 调用会产生不同的函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">gt3</span> <span class="o">=</span> make_greater_than<span class="o">(</span>3<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; <span class="nv">gt30</span> <span class="o">=</span> make_greater_than<span class="o">(</span>30<span class="o">)</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; gt3<span class="o">(</span>2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">False
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; gt3<span class="o">(</span>20<span class="o">)</span>
+</span></span><span class="line"><span class="cl">True
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; gt30<span class="o">(</span>20<span class="o">)</span>
+</span></span><span class="line"><span class="cl">False
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt; gt30<span class="o">(</span>200<span class="o">)</span>
+</span></span><span class="line"><span class="cl">True
+</span></span></code></pre></div><center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./greater_than.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>调用的父框架是 <code>threshold</code> 绑定为 3 的框架，因此 <code>x &gt; threshold</code> 的值为 false。</p>
+<p>非纯函数式语言可能允许修改捕获的变量。例如，下面使用嵌套函数定义了一个银行账户的数据抽象：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">make_account</span><span class="p">(</span><span class="n">balance</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">nonlocal</span> <span class="n">balance</span>
+</span></span><span class="line"><span class="cl">        <span class="n">balance</span> <span class="o">+=</span> <span class="n">amount</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">balance</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">nonlocal</span> <span class="n">balance</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">amount</span> <span class="o">&lt;=</span> <span class="n">balance</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">balance</span> <span class="o">-=</span> <span class="n">amount</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">amount</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">deposit</span><span class="p">,</span> <span class="n">withdraw</span>
+</span></span></code></pre></div><p>Python 需要 <code>nonlocal</code> ，因为它默认赋值给本地变量。然后，我们可以如下使用创建的函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">deposit</span><span class="p">,</span> <span class="n">withdraw</span> <span class="o">=</span> <span class="n">make_account</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">withdraw</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">deposit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">90</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">withdraw</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">deposit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">70</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">deposit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">80</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">withdraw</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">deposit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">80</span>
+</span></span></code></pre></div><h4 class="relative group">Decorators 
+    <div id="decorators" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#decorators" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>Python 中的一种常见模式是通过应用高阶函数来转换函数或类。这样的高阶函数被称为 decorator，Python 有专门的语法来装饰函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">@&lt;</span><span class="n">decorator</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">parameters</span><span class="o">&gt;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>这在很大程度上相当于</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">parameters</span><span class="o">&gt;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">decorator</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+</span></span></code></pre></div><p>被装饰函数的定义被正常执行，然后在函数上调用装饰器。调用的结果与函数名称绑定。</p>
+<p>举个例子，假设我们想通过打印函数名称及其参数来跟踪函数被调用的时间。我们可以定义一个高阶函数，接收一个函数并返回一个新的嵌套函数，该函数首先打印出原始函数的名称及其参数，然后调用该函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">tracer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">args_string</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">(</span><span class="si">{</span><span class="n">args_string</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">tracer</span>
+</span></span></code></pre></div><p>在这里，我们使用变量参数为原始函数传递任意数量的参数。为了简单起见，我们忽略了关键字参数。然后，我们可以使用装饰器语法将其应用到函数中：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@trace</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">n</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></div><p>现在，只要调用 <code>factorial()</code>，我们就能得到参数的打印输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">factorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="mi">120</span>
+</span></span></code></pre></div><p>请注意，递归调用也会调用转换后的函数。这是因为在 <code>factorial()</code> 的外层环境中，<code>factorial</code> 这个名称现在与嵌套的跟踪函数绑定在一起，因此查找这个名称时，会调用跟踪函数，而不是原来的函数。这样做的一个副作用是产生了相互递归，即一组函数通过彼此间接地进行递归调用。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./trace.svg" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h2 class="relative group">Lambda Functions 
+    <div id="lambda-functions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#lambda-functions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>嵌套函数定义允许在运行时构造函数，从而满足了函数成为 first-class entity 的要求之一。不过，到目前为止，我们只看到了嵌套函数定义的命名，即在定义环境中引入了绑定。这与其他一流实体，如数据值，形成了鲜明对比，后者可以在不绑定名称的情况下创建。就像构造不带名称的值很有用一样，比如将其作为参数传递或返回时，构造不带名称的函数也很有用。这些函数被称为匿名函数或 lambda 函数。</p>
+<p>lambda 函数在函数式语言中无处不在，但许多常用的命令式语言也提供某种形式的 lambda 函数。不同语言的语法和功能各不相同，我们将研究几个具有代表性的示例。</p>
+<h3 class="relative group">Scheme 
+    <div id="scheme" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#scheme" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在以函数式为主的 Lisp 系列语言中，lambda 是一种常见的构造，Scheme 也不例外。lambda 特殊形式构造了一个匿名函数：</p>
+<pre tabindex="0"><code>(lambda (&lt;parameters&gt;) &lt;body&gt;)
+</code></pre><p>使用 define 形式的函数定义可视为变量定义和 lambda 的简写：</p>
+<pre tabindex="0"><code>(define (&lt;name&gt; &lt;parameters&gt;) &lt;body&gt;)
+  --&gt;
+(define &lt;name&gt; (lambda (&lt;parameters&gt;) &lt;body&gt;))
+</code></pre><p>例如，下面的函数创建并返回一个匿名函数，该函数将给定的数字添加到参数中：</p>
+<pre tabindex="0"><code>(define (make-adder n)
+  (lambda (x)
+    (+ x n)
+  )
+)
+</code></pre><p>这比只使用 define 的等价定义更简单、更恰当：</p>
+<pre tabindex="0"><code>(define (make-adder n)
+  (define (adder x)
+    (+ x n)
+  )
+  adder
+)
+</code></pre><p>然后，我们就可以在各个参数上调用 make-adder 的结果：</p>
+<pre tabindex="0"><code>&gt; (define add3 (make-adder 3))
+&gt; (add3 4)
+7
+&gt; (add3 5)
+8
+&gt; ((make-adder 4) 5)
+9
+</code></pre><p>Scheme 中的嵌套函数使用静态作用域，因此匿名函数可以访问其定义环境中的变量 n。然后，它将自己的参数 x 与 n 相加，返回总和。</p>
+<p>Scheme 并非纯函数式，它允许变量和复合数据的变异。嵌套函数，无论是否匿名，都可以修改其非本地环境中的变量。下面的函数创建了一个计数器函数，返回它被调用的次数：</p>
+<pre tabindex="0"><code>(define (make-counter)
+  (let ((count 0))
+    (lambda ()
+      (set! count (+ count 1))
+      (- count 1)
+    )
+  )
+)
+</code></pre><p><code>set!</code> 将变量变为给定值。这样，我们就可以使用 <code>make-counter</code> 函数了：</p>
+<pre tabindex="0"><code>&gt; (define counter (make-counter))
+&gt; (counter)
+0
+&gt; (counter)
+1
+&gt; (counter)
+2
+</code></pre><h3 class="relative group">Python 
+    <div id="python" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#python" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Python 支持使用 lambda 表达式的匿名函数。其形式如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">lambda</span> <span class="o">&lt;</span><span class="n">parameters</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">body</span> <span class="n">expression</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>Python 中 lambda 表达式的语法对匿名函数产生了命名嵌套函数所没有的限制：主体必须是一个表达式，该表达式的值自动成为函数的返回值。在实践中，这个限制通常不是问题，因为 lambda 通常用于语句和副作用可能不合适的函数式上下文中。</p>
+<h2 class="relative group">Resources 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://eecs390.github.io/notes/functional.html"   target="_blank">
+    https://eecs390.github.io/notes/functional.html</a></li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/language\/functional-programming\/index.md"
+        var oid_likes = "likes_posts\/language\/functional-programming\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/metaprogramming/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >meta-programming</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-16 15:29:44 &#43;0800 &#43;0800">16 October 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

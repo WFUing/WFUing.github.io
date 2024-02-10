@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Antlr Code Generation &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Antlr Code Generation &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="ANTLR 是 **AN**other **T**ool for **L**anguage **R**ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。" />
+  <meta name="keywords" content="code generation, dsl, antlr, " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/code-generation/antlr-code-generation/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Antlr Code Generation" />
+<meta property="og:description" content="ANTLR 是 ANother Tool for Language Recognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/code-generation/antlr-code-generation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-15T09:52:03+08:00" />
+<meta property="article:modified_time" content="2023-10-15T09:52:03+08:00" />
+
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Antlr Code Generation"/>
+<meta name="twitter:description" content="ANTLR 是 ANother Tool for Language Recognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。"/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "Antlr Code Generation",
+    "headline": "Antlr Code Generation",
+    
+    "abstract": "ANTLR 是 \u003cstrong\u003eAN\u003c\/strong\u003eother \u003cstrong\u003eT\u003c\/strong\u003eool for \u003cstrong\u003eL\u003c\/strong\u003eanguage \u003cstrong\u003eR\u003c\/strong\u003eecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。",
+    "inLanguage": "zh-cn",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/code-generation\/antlr-code-generation\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2023",
+    "dateCreated": "2023-10-15T09:52:03\u002b08:00",
+    "datePublished": "2023-10-15T09:52:03\u002b08:00",
+    
+    "dateModified": "2023-10-15T09:52:03\u002b08:00",
+    
+    "keywords": ["code generation","dsl","antlr"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1573"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Antlr Code Generation
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-15 09:52:03 &#43;0800 &#43;0800">15 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1573 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/antlr-code-generation/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#the-basics">The Basics</a>
+      <ul>
+        <li><a href="#tldr-概念">TLDR 概念</a></li>
+        <li><a href="#example1">Example1</a></li>
+      </ul>
+    </li>
+    <li><a href="#setting-up-an-antlr-project">Setting up an ANTLR Project</a>
+      <ul>
+        <li><a href="#antlr-plugin-for-vscode">ANTLR plugin for VSCode</a></li>
+        <li><a href="#grammar">Grammar</a></li>
+        <li><a href="#embedding-actions">Embedding Actions</a></li>
+        <li><a href="#basic-building-blocks">Basic Building Blocks</a></li>
+        <li><a href="#maven-configuration">Maven Configuration</a></li>
+        <li><a href="#traversal-patterns">Traversal Patterns</a></li>
+        <li><a href="#generate-code">Generate Code</a>
+          <ul>
+            <li><a href="#stringtemplate">StringTemplate</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#the-basics">The Basics</a>
+      <ul>
+        <li><a href="#tldr-概念">TLDR 概念</a></li>
+        <li><a href="#example1">Example1</a></li>
+      </ul>
+    </li>
+    <li><a href="#setting-up-an-antlr-project">Setting up an ANTLR Project</a>
+      <ul>
+        <li><a href="#antlr-plugin-for-vscode">ANTLR plugin for VSCode</a></li>
+        <li><a href="#grammar">Grammar</a></li>
+        <li><a href="#embedding-actions">Embedding Actions</a></li>
+        <li><a href="#basic-building-blocks">Basic Building Blocks</a></li>
+        <li><a href="#maven-configuration">Maven Configuration</a></li>
+        <li><a href="#traversal-patterns">Traversal Patterns</a></li>
+        <li><a href="#generate-code">Generate Code</a>
+          <ul>
+            <li><a href="#stringtemplate">StringTemplate</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <h2 class="relative group">简介 
+    <div id="简介" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%ae%80%e4%bb%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>ANTLR 是 <strong>AN</strong>other <strong>T</strong>ool for <strong>L</strong>anguage <strong>R</strong>ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。</p>
+<p>使用编译器设计的概念来定义每种现代编程语言的写作风格。这是一套典型的步骤，首先是 Lexical, Syntactical 和 Semantic Analysis，确定语言的基本编写方式，以便识别。接下来是一系列非常有趣的步骤：中间代码生成、优化和目标代码生成。</p>
+<p>目前的版本为 4.7，它提供了一种方便的、对开发人员友好的方式来定义自己的规则集（又称语法），它由一系列标记和操作组成，这些标记和操作定义了语句在源语言中的书写方式，从而可以正确识别和解析语句。更有趣的是，它还能让用户对代码进行操作，并将其生成目标代码，所有这一切都可以用您选择的语言来实现。</p>
+<p>那么，谁在使用 ANTLR 呢？</p>
+<ul>
+<li>编程语言：Boo、Groovy、Mantra、Nemerle、XRuby 等。</li>
+<li>其他工具、框架：Apache Spark、Hibernate、Intellij IDEA、Jazillian、JBoss Rules、Keynote(Apple)、WebLogic（Oracle）等。</li>
+</ul>
+<h2 class="relative group">The Basics 
+    <div id="the-basics" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#the-basics" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span></span></code></pre></div><p>考虑到上面 Python 的例子，这些编译器设计步骤从识别 Python 中编写的每条语句（源代码）的基本单元开始，并将其分解为 a stream of tokens，每个标记都被识别或映射为特定类型，也就是 Lexical Analysis。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./lexical-analysis.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>然后，根据这些标记出现的顺序来确定书面语句的上下文，并通过语义分析构建一棵树（或 <strong>A</strong>bstract <strong>S</strong>yntax <strong>T</strong>ree）来检查其正确性，同时提供使用现有树遍历方法之一进行遍历的能力。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./syntax-tree.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h3 class="relative group">TLDR 概念 
+    <div id="tldr-概念" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tldr-%e6%a6%82%e5%bf%b5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>Lexer</strong> : converts a stream of characters to a stream of tokens.</li>
+<li><strong>Parser</strong> : processes of tokens, possibly creating AST.</li>
+<li><strong>Abstract Syntax Tree(AST)</strong>: an intermediate tree representation of the parsed input that is simpler to process than the stream of tokens.</li>
+<li><strong>Tree Parser</strong>: It processes an AST.</li>
+<li><strong>String Template</strong>: a library that supports using templates with placeholders for outputting text (something very specific to ANTLR).</li>
+</ul>
+<p>ANTLR 是一种 <strong>LL parser</strong>（Left-to-right, Leftmost derivation），是一种自顶向下的剖析器，适用于无上下文语言的子集。它从左到右解析输入，对句子进行 Leftmost derivation。它简化了许多步骤，使创建语言识别器和解析器变得更容易、更方便。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./paser-process.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h3 class="relative group">Example1 
+    <div id="example1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#example1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>下面是我为解析 python 函数而编写的解析器的一个快速示例。</p>
+<pre tabindex="0"><code>grammar PythonParserExample;
+tokens { INDENT, DEDENT, LINE_BREAK }
+
+statement
+    : (single_input)? EOF
+    ;
+
+
+single_input
+    : LINE_BREAK
+    | simple_stmt
+    | complex_stmt (LINE_BREAK)? EOF
+    ;
+
+complex_stmt: funcdef;
+
+simple_stmt
+    : small_stmt (SEMI_COLON small_stmt)* SEMI_COLON? (LINE_BREAK)? EOF
+    ;
+
+stmt
+    : simple_stmt
+    | complex_stmt
+    ;
+
+funcdef
+    : ASYNC? DEF name OPEN_PAREN typedargslist? CLOSE_PAREN (ARROW name)? COLON &#39;\n&#39;? funcbody
+    ;
+
+typedargslist
+    : (def_parameters COMMA)? (args (COMMA def_parameters)? ) COMMA?
+    | def_parameters COMMA?
+    ;
+
+funcbody
+    : simple_stmt
+    | LINE_BREAK INDENT stmt+ DEDENT
+    ;
+
+
+args
+     : STAR name
+     ;
+
+def_parameters
+    : def_parameter (COMMA def_parameter)*
+    ;
+
+small_stmt
+    : RETURN expression                                                                #return_stmt
+    ;
+
+def_parameter
+    : name
+    | STAR
+    ;
+
+expression: 
+    name op=OPERATOR name
+    ;
+
+name: NAME;
+
+
+DEF : D E F;
+SEMI_COLON : &#39;;&#39;;
+STAR : &#39;*&#39;;
+OPERATOR : STAR|&#39;+&#39;|&#39;/&#39;|&#39;**&#39;|&#39;-&#39;;
+RETURN : R E T U R N;
+ASYNC : A S Y N C;
+COMMA : &#39;,&#39;;
+OPEN_PAREN : &#39;(&#39;;
+CLOSE_PAREN : &#39;)&#39;;
+ARROW : &#39;-&gt;&#39;;
+COLON : &#39;:&#39;;
+NAME               : ID_START ID_CONTINUE*;
+WS                 : [ \t]+            {HandleSpaces();}   -&gt; channel(HIDDEN);
+</code></pre><p>它的一个主要优点是，用户可以使用相同的 syntax 进行 lexing 和 parsing。然而，在语法层面上，这里的区别在于命名约定:</p>
+<ul>
+<li>以大写字母开头的规则是 lexer rules</li>
+<li>其他的都是 parse rules</li>
+</ul>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./intellij-idea-plugin.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>一旦定义完毕，<a href="https://www.antlr.org/download/antlr-4.8-complete.jar"   target="_blank">
+    complete ANLTR jar</a> 文件就会提供一个选项，将其生成一组文件，并使用您喜欢的编程语言代码，也就是一个 parser。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -Xmx500M -cp &lt;path to ANTLR <span class="nb">complete</span> JAR&gt; org.antlr.v4.Tool -Dlanguage<span class="o">=</span>&lt;target_language&gt; PythonParserExample.g4
+</span></span></code></pre></div><p>由于我使用 Python3 作为生成解析器的目标，ANTLR 的配置会生成 3 个 python 文件，这些文件可以作为代码翻译过程的一部分，用于将一种语言的源代码转换为另一种语言。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./output-files.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h2 class="relative group">Setting up an ANTLR Project 
+    <div id="setting-up-an-antlr-project" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#setting-up-an-antlr-project" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">ANTLR plugin for VSCode 
+    <div id="antlr-plugin-for-vscode" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#antlr-plugin-for-vscode" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>这里使用的设置将是在 VSCode 上创建的 Java-Maven 项目。</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mike-lischke.vscode-antlr4"   target="_blank">
+    ANTLR plugin for VSCode</a> 提供了各种选项（甚至比 Intellij 还多）来调试语法文件，并创建了美观的 parse trees，以便轻松调试用户输入语句的特定配置。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./vscode-plugin.gif" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>要生成这些可视化效果，需要使用 vscode 的 ANTLR 启动配置在调试模式下运行语法文件，并为语法指定输入文件。下面是 VS Code 上 ANTLR 的 launch.json 配置文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Debug ANTLR4 grammar&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;antlr-debug&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="s2">&#34;launch&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;input&#34;</span><span class="p">:</span> <span class="s2">&#34;input.txt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;grammar&#34;</span><span class="p">:</span> <span class="s2">&#34;BooleanExprParser.g4&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;startRule&#34;</span><span class="p">:</span> <span class="s2">&#34;parse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;printParseTree&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&#34;visualParseTree&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 class="relative group">Grammar 
+    <div id="grammar" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#grammar" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>让我们先为解析器创建一个基本语法或 BooleanExpr.g4 文件。</p>
+<pre tabindex="0"><code>grammar BooleanExpr;
+@header {
+package antlrsource;
+}
+</code></pre><p>请注意 parser file 是如何以 <code>grammar BooleanExpr;</code> 开始的。这可以通过将 Lexer tokens (大写字母表示) 和 parser tokens (所有其他标记) 保存在两个不同的文件中来分解：</p>
+<pre tabindex="0"><code>lexer grammar BooleanExprLexer;
+@header {
+package antlrsource;
+}
+</code></pre><pre tabindex="0"><code>parser grammar BooleanExprParser;
+@header {
+package antlrsource;
+}
+</code></pre><p>一个用于 parser，另一个用于 lexer，这样更便于维护。接下来，我们先定义一个头文件和软件包名称，放在生成的解析器类的开头。这将允许我们指定一个包，以便在 Java 代码中导入。</p>
+<p>从 Lexer 开始，我们将 IDENTIFIER 定义为 lexer rule，并提供与之匹配的描述：</p>
+<pre tabindex="0"><code>IDENTIFIER
+   :   [a-zA-Z_] [a-zA-Z_0-9]*
+   ;
+</code></pre><p>Lexer rules 总是以大写字母开头。这些规则是 parser 的基本构件，重点是构建 parser rules 的基础。对正则表达式稍有接触的人来说，这应该有点熟悉。</p>
+<p>这里，<code>A-Z</code> 表示 <code>A</code> 和 <code>Z</code> 之间的字母，而 <code>a-z</code> 表示 <code>a</code> 和 <code>z</code> 之间的字母。同样，<code>0-9</code> 表示数字 <code>0</code> 和 <code>9</code> 之间的数字。由于规则可能包含也可能不包含这些字母的多次出现，因此可以用 (<code>*</code>/<code>+</code>) 运算符作为后缀，表示这些字母出现的频率。这里，<code>*</code> 表示可能完全不出现（0 次或更多次）。这意味着，我们的 <code>IDENTIFIER</code> 规则将匹配大写字母、小写字母（总是以大写/小写字母开头）和整数字符的任意组合，但不匹配空字符。</p>
+<p>一般来说，所有空白都会被词法识别器标记化。因此，您必须在解析器规则中定义空格以及所有可能使用空格的地方。不过，由于我们的源布尔表达式在某些地方不需要对空格敏感，因此我们可以编写一条词法规则来处理这个问题。</p>
+<pre tabindex="0"><code>WS: [ \r\t\u000C\n]+ -&gt; skip;
+</code></pre><p>请注意留白标记的定义是如何编写的，以识别一个或多个空格、制表符和换行符，并让 ANTLR 跳过它们。箭头（-&gt;）运算符定义了遇到标记时要执行的操作（本例中为跳过操作）。接下来是为布尔表达式定义标记，其中包括多个运算符和操作数。这包括以下标记：</p>
+<pre tabindex="0"><code>AND: A N D;
+OR: O R;
+NOT: N O T;
+TRUE: &#39;True&#39;;
+FALSE: &#39;False&#39;;
+GT: G T {setText(&#34; &gt; &#34;);};
+GE: G E {setText(&#34; &gt;= &#34;);};
+LT: L T {setText(&#34; &lt; &#34;);};
+LE: L E {setText(&#34; &lt;= &#34;);};
+EQ: E Q {setText(&#34; == &#34;);};
+LPARENTHESIS: &#39;(&#39;;
+RPARENTHESIS: &#39;)&#39;;
+DECIMAL_NUMBER: &#39;-&#39;? [0-9]+ ( &#39;.&#39; [0-9]+)?;
+</code></pre><h3 class="relative group">Embedding Actions 
+    <div id="embedding-actions" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#embedding-actions" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>规则 GT、GE、LT、LE 和 EQ 包含代码块，允许它们在遇到各自的标记时执行某些动作。这样就可以在语法文件中定义某些动作，但需要注意的是，只能定义简单的小动作，而不能定义复杂的代码块。</p>
+<blockquote>
+<p>如果我们不希望产生构建解析树的开销，我们可以在解析过程中即时计算值或打印内容。另一方面，这意味着要在表达式语法中嵌入任意代码，这就比较困难；我们必须了解这些操作对解析器的影响，以及这些操作的位置。
+<a href="https://media.pragprog.com/titles/tpantlr2/listener.pdf"   target="_blank">
+    The Definitive ANTLR 4 Reference</a></p>
+</blockquote>
+<p>请注意，每条规则都由用空格隔开的字母组成。这些被称为 fragments。它们的主要目的是减少每个标记的杂乱定义，这基本上需要处理对大小写敏感的用例。这样，用户就不必为识别同一个 token 而写下所有可能的文本组合。其定义如下</p>
+<pre tabindex="0"><code>fragment A : [aA]; // match either an &#39;a&#39; or &#39;A&#39;
+fragment B : [bB];
+...
+fragment Z : [zZ];
+</code></pre><p>虽然大多数字母数字令牌都可以通过使用片段来创建，但其他令牌则可以通过自定义正则表达式定义或使用引号括起来的纯字符串（如 LPARENTHESIS 和 DECIMAL_NUMBER）来创建。</p>
+<p>而 parser rules（所有其他规则）则以小写字母开头。这些规则的主要目的是在 DSL 中定义布尔表达式的上下文，并帮助从生成的词法标记中构建解析树或抽象语法树。</p>
+<h3 class="relative group">Basic Building Blocks 
+    <div id="basic-building-blocks" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#basic-building-blocks" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>让我们开始定义规则。首先，我们定义根节点（或通常所说的解析节点），它本身只能指向一条规则（此处为 basicBooleanExpression）。首先是一个返回语句，其中包含它应该返回的变量（可选，但在我们的例子中是必需的）及其返回类型。</p>
+<p>这条规则指向另一条名为 basicBooleanExpression 的规则，该规则后跟有 EOF（或文件结束）字符。不包含该字符实质上意味着您正试图解析整个输入内容，而只解析部分输入内容是可以接受的，这将避免任何语法错误。</p>
+<pre tabindex="0"><code>parse
+returns[String str]
+@init {$str=&#34;&#34;;}: 
+basicBooleanExpression {$str=$basicBooleanExpression.str;} EOF;
+</code></pre><p>使用 <code>EOF</code> character 的原因是，如果在解析 basicbooleanExpression 规则时出现语法错误，那么解析规则将尝试恢复语法错误并报告收集到的语法错误，然后继续解析，因为 <code>EOF</code> 是完成规则所必需的，而且解析器尚未到达 <code>EOF</code>。</p>
+<p>由于我们已经定义了语法并将其分成了两个独立的文件，因此我们可以选择在解析器文件中将词法作为定义规则的词汇:</p>
+<pre tabindex="0"><code>options {
+tokenVocab = BooleanExprLexer;
+}
+</code></pre><p>回到我们的解析器，</p>
+<ul>
+<li>第一条规则或 basicBooleanExpresion 规则定义了三个选项，在我们的 python 目标代码评估中应始终返回一个布尔值。第一种是后两种规则的组合，即两个布尔表达式与一个逻辑和/或运算符的组合；</li>
+<li>第二种是另一种三元表达式，即使用比较器（如、小于或 LT）比较两个基本表达式彼此返回的某个值；</li>
+<li>最后，第三种是单元表达式（只有一个布尔值，如 True 或 False）。</li>
+</ul>
+<p>这些规则由运算符 <code>|</code> 分隔。这意味着，basicBooleanExpression 在识别输入字符串时，可以根据从左到右的文本识别，递归地引用其子规则中的任一规则。</p>
+<pre tabindex="0"><code>basicBooleanExpression
+returns[String str]:
+left = basicBooleanExpression op = logicalOperator right = basicBooleanExpression   {$str=$left.str +&#34; &#34;+$op.text+&#34; &#34;+$right.str;} # logicalExpression
+| left = expression op = comparator right = expression {$str=&#34;(&#34;+$left.text +&#34; &#34;+$op.text+&#34; &#34;+$right.text+&#34;)&#34;;} # comparisonExpression
+| bool            {$str=$bool.str;}       # booleanExpression;
+</code></pre><p>basicBooleanExpression 中的每条规则都分配给一个变量名，如 left、right（表达式中的左右操作数）和 op（操作数的缩写），或者是一条单标记规则。$str 变量用于分配当前表达式解析的结果，并使用规则开头的 [String str] 返回值返回。</p>
+<p><code>#</code> 用于标记每条规则，使其在目标语言解析器（在我们的例子中是 Java 解析器类）中有专门的监听器方法。</p>
+<pre tabindex="0"><code>lexer grammar BooleanExprLexer;
+@header {
+package antlrsource;
+}
+AND: A N D;
+OR: O R;
+NOT: N O T;
+TRUE: &#39;True&#39;;
+FALSE: &#39;False&#39;;
+GT: G T {setText(&#34; &gt; &#34;);};
+GE: G E {setText(&#34; &gt;= &#34;);};
+LT: L T {setText(&#34; &lt; &#34;);};
+LE: L E {setText(&#34; &lt;= &#34;);};
+EQ: E Q {setText(&#34; == &#34;);};
+LPARENTHESIS: &#39;(&#39;;
+RPARENTHESIS: &#39;)&#39;;
+DECIMAL_NUMBER: &#39;-&#39;? [0-9]+ ( &#39;.&#39; [0-9]+)?;
+IDENTIFIER: [a-zA-Z_] [a-zA-Z_0-9]*;
+WS: [ \r\t\u000C\n]+ -&gt; skip;
+
+fragment A : [aA]; // match either an &#39;a&#39; or &#39;A&#39;
+fragment B : [bB];
+fragment C : [cC];
+fragment D : [dD];
+fragment E : [eE];
+fragment F : [fF];
+fragment G : [gG];
+fragment H : [hH];
+fragment I : [iI];
+fragment J : [jJ];
+fragment K : [kK];
+fragment L : [lL];
+fragment M : [mM];
+fragment N : [nN];
+fragment O : [oO];
+fragment P : [pP];
+fragment Q : [qQ];
+fragment R : [rR];
+fragment S : [sS];
+fragment T : [tT];
+fragment U : [uU];
+fragment V : [vV];
+fragment W : [wW];
+fragment X : [xX];
+fragment Y : [yY];
+fragment Z : [zZ];
+</code></pre><p>BooleanExprLexer.g4</p>
+<pre tabindex="0"><code>parser grammar BooleanExprParser;
+@header {
+package antlrsource;
+}
+options {
+	tokenVocab = BooleanExprLexer;
+}
+
+parse
+	returns[String str]
+	@init {$str=&#34;&#34;;}: basicBooleanExpression {$str=$basicBooleanExpression.str;} EOF;
+
+basicBooleanExpression
+	returns[String str]:
+	left = basicBooleanExpression op = logicalOperator right = basicBooleanExpression	{$str=$left.str +&#34; &#34;+$op.text+&#34; &#34;+$right.str;} # logicalExpression
+	| left = expression op = comparator right = expression {$str=&#34;(&#34;+$left.text +&#34; &#34;+$op.text+&#34; &#34;+$right.text+&#34;)&#34;;}	# comparisonExpression
+	| bool											{$str=$bool.str;}		# booleanExpression;
+
+expression
+	returns[String str]:
+	LPARENTHESIS expression RPARENTHESIS				# parenthesisExpression
+	| NOT expression									# notExpression
+	| bool												# unaryboolExpression
+	| IDENTIFIER										# identifierExpression
+	| DECIMAL_NUMBER									# decimalExpression
+	;
+
+comparator
+	returns[String str]: GT | GE | LT | LE | EQ;
+
+logicalOperator
+	returns[String str]: AND | OR;
+
+bool
+	returns[String str]: TRUE | FALSE;
+</code></pre><p>BooleanExprParser.g4</p>
+<pre tabindex="0"><code>a gt b and c gt d
+a eq b
+</code></pre><p>input demo</p>
+<h3 class="relative group">Maven Configuration 
+    <div id="maven-configuration" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#maven-configuration" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>现在，让我们继续生成解析器文件。这次，我将使用 maven 配置和 VS Code 的 ANTLR 插件来生成这些文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;groupId&gt;</span>org.antlr<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;artifactId&gt;</span>antlr4-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;version&gt;</span>4.8-1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;executions&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;execution&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span>antlr<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;libDirectory&gt;</span>${basedir}/src/main/antlr<span class="nt">&lt;/libDirectory&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;sourceDirectory&gt;</span>${basedir}/src/main/antlr<span class="nt">&lt;/sourceDirectory&gt;&lt;outputDirectory&gt;</span>${basedir}/src/main/java/antlrsource<span class="nt">&lt;/outputDirectory&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;visitor&gt;</span>false<span class="nt">&lt;/visitor&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;listener&gt;</span>true<span class="nt">&lt;/listener&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;goals&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;goal&gt;</span>antlr4<span class="nt">&lt;/goal&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;/goals&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/execution&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/executions&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/plugin&gt;</span>
+</span></span></code></pre></div><p>每个标签都定义了 ANTLR 在生成解析器类时应使用的目录或需要或不需要生成的文件。例如，监听器和访问者标签的定义都是为了根据它们的布尔值生成相应的 java classes/interfaces。</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./target-language-file.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<h3 class="relative group">Traversal Patterns 
+    <div id="traversal-patterns" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#traversal-patterns" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>让我们深入了解 Listener vs Visitor traversal patterns ，并探索 BooleanExprParserBaseListener class 的功能。</p>
+<p>ANTLR4 提供了两种遍历语法树的方法：</p>
+<ul>
+<li>Listener(default)：listener pattern 是一种事件驱动方法，用于遍历每个解析器规则类型的语法树。为每个解析器规则提供一个包含进入和退出事件方法的接口。</li>
+<li>Visitor：这使得用户也可以控制解析树的遍历。解析树中的节点（解析器规则）将使用提供的访问方法明确遍历或访问。</li>
+</ul>
+<p>根据使用环境的不同，<code>Listener</code> 和 <code>Visitor</code> 模式各有利弊。</p>
+<p><strong>相同点</strong></p>
+<ul>
+<li>两种实现方式的规则语法规则完全相同。</li>
+<li>两种实现方式的解析器输出也完全相同。</li>
+</ul>
+<p><strong>不同点</strong></p>
+<ul>
+<li>由于 Listener pattern 依赖于用户来定义其遍历序列，因此它使用调用堆栈来管理这些遍历，这意味着大量输入可能会导致溢出，而在已分配堆上使用堆栈的监听器则不会出现这种问题。</li>
+</ul>
+<p>Listener pattern 和 Visitor pattern 的最大区别在于，监听器方法是由 ANTLR 提供的行走器对象独立调用的，而访问者方法必须通过显式访问调用来行走其子节点。如果忘记在节点的子节点上调用访问者方法，就意味着这些子树不会被访问。</p>
+<p>跳回到我们生成的 Listener</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./listener-implementation.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./listener-interface.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>接口类的实现只针对某些语言，一般来说，implementing class/module 是在目标语言中定义的。请注意，interface 和 implementation 中都定义了根（或解析）节点监听器方法。所有方法都有相应的上下文对象，该对象由生成的解析器类提供。这样就可以在遍历解析树时对该规则的上下文进行操作。</p>
+<p>让我们创建与解析器的第一次 interaction ，并生成一个简单表达式的输出：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//  Creates a lexer for the input string to generate the tokens </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BooleanExprLexer</span><span class="w"> </span><span class="n">lexer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprLexer</span><span class="p">(</span><span class="n">CharStreams</span><span class="p">.</span><span class="na">fromString</span><span class="p">(</span><span class="s">&#34;a eq b&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//  Stores the tokens generated by the lexer for the input string</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">CommonTokenStream</span><span class="w"> </span><span class="n">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CommonTokenStream</span><span class="p">(</span><span class="n">lexer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/** 
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Creates a parser for generation of an Abstract Syntax tree from
+</span></span></span><span class="line"><span class="cl"><span class="cm">    the stream of tokens to identify context 
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">BooleanExprParser</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprParser</span><span class="p">(</span><span class="n">tokens</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/** 
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Creates a parse tree for generating the output string and
+</span></span></span><span class="line"><span class="cl"><span class="cm">    manipulation of the parser and lexer tokens in the parse tree.
+</span></span></span><span class="line"><span class="cl"><span class="cm">    The tree is create considering the parse rule in the grammar
+</span></span></span><span class="line"><span class="cl"><span class="cm">    as the root node. This tree will be used later for listener.
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ParseTree</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parser</span><span class="p">.</span><span class="na">parse</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/** 
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Convert the root node&#39;s output to it&#39;s rule context and use
+</span></span></span><span class="line"><span class="cl"><span class="cm">    its attribute for printing the parser&#39;s output string.
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ParseContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ParseContext</span><span class="p">)</span><span class="w"> </span><span class="n">tree</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">str</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>由于我们已经在语法文件中添加了将基本运算符转换为 python 对应运算符的操作，因此解析器的输出表达式已经是解析形式。例如，一个简单的比较表达式，如 <code>a eq b</code>，将转换为 python 表达式 <code>a == b</code> 。</p>
+<p>现在，我们已经转换了表达式，可以使用监听器文件中的某些更改将其转换为函数，并使用 template 将该表达式替换为 placeholder function text，用于多个类似表达式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="o">&lt;</span><span class="n">function_name</span><span class="o">&gt;</span><span class="p">(</span><span class="o">&lt;</span><span class="n">list_of_parameters</span><span class="o">&gt;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+</span></span></code></pre></div><p>parsed expression 可以很容易地替换成上面的表达式。不用担心替换部分，我们稍后会讲到。现在，为了从每个表达式中提取参数列表，我们将添加一个列表，以便在每次触发标识符类型（解析器规则）的输入事件监听器方法时捕获每个标识符名称。</p>
+<p>让我们定义一个字符串列表作为实例变量，在无参数构造函数中对其进行初始化，定义其 getter 方法，并添加一个方法来清除该列表，以便每次表达式解析和替换完成后都能清除该列表。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BooleanExprParserBaseListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">BooleanExprParserListener</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">identifiersList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">BooleanExprParserBaseListener</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">identifiersList</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">...</span><span class="w">
+</span></span></span></code></pre></div><p>让我们把上下文 getText 方法中的标识符名称添加到我们为 identifierExpression 每次触发输入事件时创建的列表中：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">clearIdentifiers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">identifiersList</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getIdentifiersList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">identifiersList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enterIdentifierExpression</span><span class="p">(</span><span class="n">BooleanExprParser</span><span class="p">.</span><span class="na">IdentifierExpressionContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">identifiersList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="na">getText</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>最后，我们需要在树上遍历，以触发这些事件，从而收集表达式的所有参数。ANTLR 为此提供了 ParseTreeWalker 类。顾名思义，该类允许在走过解析树时同时使用监听器和访问者实现类。让我们使用监听器来遍历上面定义的解析树：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">BooleanExprParserBaseListener</span><span class="w"> </span><span class="n">booleanExprBaseListener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprParserBaseListener</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ParseTreeWalker</span><span class="w"> </span><span class="n">walker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ParseTreeWalker</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">walker</span><span class="p">.</span><span class="na">walk</span><span class="p">(</span><span class="n">booleanExprBaseListener</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">identifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">booleanExprBaseListener</span><span class="p">.</span><span class="na">getIdentifiersList</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">booleanExprBaseListener</span><span class="p">.</span><span class="na">clearIdentifiers</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></div><p>请注意，这里的 walk 方法使用 listener 来监听在解析树上行走时触发的事件。接下来，我们使用 getter 方法获取解析表达式时获取的所有标识符名称列表。</p>
+<h3 class="relative group">Generate Code 
+    <div id="generate-code" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#generate-code" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./process.webp" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>将使用上一部分 generated expression 或 the output of intermediate code generation，并将其替换为模板组文件(templating engine 使用的东西)，这样我们就可以将渲染的函数串写入 python 文件。</p>
+<p>templating engine 将以我们的目标语言（即 Python）生成实际可用的代码，从而实现代码生成的目标。</p>
+<p>提到 templating engine ，你首先想到的就是 web frameworks。几乎所有的现代 web frameworks 都有一个共同的目标，那就是使用模板引擎生成动态的、业务就绪的网页。每个模板引擎的最终目标都是将获取的输出结果替换为模板文件，以便即时显示给最终用户。</p>
+<p><a href="https://airtable.com/appKhTrTnhdxy4nsI/shrSXv4w4Lk8Qz20B/tblTb3BvfsOdcqC0M"   target="_blank">
+    templating engines compared side-by-side</a></p>
+<h4 class="relative group">StringTemplate 
+    <div id="stringtemplate" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#stringtemplate" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>我将使用一个名为 <a href="https://www.stringtemplate.org/"   target="_blank">
+    StringTemplate</a> 的类似模板引擎。它被广泛用于网页模板化，但也支持用于创建目标语言代码文件的基本模板操作。</p>
+<ul>
+<li><code>&lt;attribute&gt;</code> 如果存在，则求值为属性的字符串值，否则为空字符串。
+<ul>
+<li>例如，在使用 Java 中的 StringTemplate 对象时，<code>&lt;expression&gt;</code> 将以 key expression 表示。因此，如果用户在 expression 键上输入任何值，它就会在模板中被称为 expression 属性。</li>
+</ul>
+</li>
+<li>对于模板内的自定义或用户定义对象，请使用 <code>&lt;attribute.property&gt;</code> ，将属性作为属性查找，然后使用 <code>getProperty()</code> 或 <code>isProperty()</code> 或 <code>hasProperty()</code> 等访问器方法。</li>
+<li><code>&lt;attribute:t1(argument-list)：... :tN(argument-list)&gt;</code> 迭代同一个模板替换的对象列表。从左到右依次应用多个模板。在多值属性上应用模板的结果是另一个多值属性。整个表达式的求值结果是所有模板元素的连接结果</li>
+<li><code>&lt;! comment !&gt;</code> StringTemplate 会忽略已定义的注释。</li>
+<li>模板定义看起来就像带有未键入参数的函数定义：
+<ul>
+<li><code>templateName(arg1, arg2, ..., argN) ::= &quot;single-line template&quot;</code></li>
+<li><code>templateName(arg1, arg2, ..., argN) ::= &lt;&lt;multi-line template&gt;&gt;</code></li>
+<li><code>templateName(arg1, arg2, ..., argN) ::= &lt;%multi-line template that ignores indentation and newlines%&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>下面我们来看看 Python <code>StringTemplateExample.stg</code> 文件的示例：</p>
+<pre tabindex="0"><code class="language-stg" data-lang="stg">&lt;! StringTemplateExample.stg !&gt;
+templateExample(functions) ::= &lt;&lt;
+&lt;functions :{function |
+def &lt;function.function_name&gt;(&lt;function.params_list&gt;)
+return &lt;function.expression&gt;
+}&gt;
+&gt;&gt;
+</code></pre><p>请注意，为了保持缩进和两行间隙，我使用了上面基础示例中的第二种模板类型，因为这需要遵循 Python PEP8 的规则，即在 Python 方法之间有两行间隙。下面我们来看看该模板在 Java 中的用法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="na">lines</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">functionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;generated_function_%1$s&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Map</span><span class="o">&gt;</span><span class="w"> </span><span class="n">functions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">Map</span><span class="w"> </span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">function</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">lines</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">BooleanExprLexer</span><span class="w"> </span><span class="n">lexer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprLexer</span><span class="p">(</span><span class="n">CharStreams</span><span class="p">.</span><span class="na">fromString</span><span class="p">(</span><span class="n">lines</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">)));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">CommonTokenStream</span><span class="w"> </span><span class="n">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CommonTokenStream</span><span class="p">(</span><span class="n">lexer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">BooleanExprParser</span><span class="w"> </span><span class="n">parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprParser</span><span class="p">(</span><span class="n">tokens</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">ParseTree</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parser</span><span class="p">.</span><span class="na">parse</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">ParseContext</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ParseContext</span><span class="p">)</span><span class="w"> </span><span class="n">tree</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="na">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">BooleanExprParserBaseListener</span><span class="w"> </span><span class="n">booleanExprBaseListener</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BooleanExprParserBaseListener</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">ParseTreeWalker</span><span class="w"> </span><span class="n">walker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ParseTreeWalker</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">walker</span><span class="p">.</span><span class="na">walk</span><span class="p">(</span><span class="n">booleanExprBaseListener</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">identifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">booleanExprBaseListener</span><span class="p">.</span><span class="na">getIdentifiersList</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">function</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">function</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;function_name&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">functionName</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">function</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;expression&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">function</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;params_list&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">identifiers</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">joining</span><span class="p">(</span><span class="s">&#34;, &#34;</span><span class="p">)));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">functions</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">function</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">booleanExprBaseListener</span><span class="p">.</span><span class="na">clearIdentifiers</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stringTemplateExample</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&#34;functions&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">functions</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stringTemplateExample</span><span class="p">.</span><span class="na">render</span><span class="p">());</span><span class="w">
+</span></span></span></code></pre></div><p><strong>INPUT</strong></p>
+<pre tabindex="0"><code>a gt b and c gt d
+a eq b
+</code></pre><p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generated_function_0</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">a</span>  <span class="o">&gt;</span>  <span class="n">b</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">c</span>  <span class="o">&gt;</span>  <span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generated_function_1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">a</span>  <span class="o">==</span>  <span class="n">b</span><span class="p">)</span>
+</span></span></code></pre></div><h2 class="relative group">Resources 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>repo : <a href="https://github.com/WFUing/BooleanParser"   target="_blank">
+    https://github.com/WFUing/BooleanParser</a></li>
+<li><a href="https://medium.com/analytics-vidhya/antlr-and-code-generation-a71ead442005"   target="_blank">
+    https://medium.com/analytics-vidhya/antlr-and-code-generation-a71ead442005</a></li>
+<li><a href="https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-1-3d7696c3a01c"   target="_blank">
+    https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-1-3d7696c3a01c</a></li>
+<li><a href="https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-2-5436ef00bcf"   target="_blank">
+    https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-2-5436ef00bcf</a></li>
+<li><a href="https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-3-7ac541a1d08c"   target="_blank">
+    https://medium.com/analytics-vidhya/python-from-expressions-the-antlr-series-part-3-7ac541a1d08c</a></li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/language\/code-generation\/antlr-code-generation\/index.md"
+        var oid_likes = "likes_posts\/language\/code-generation\/antlr-code-generation\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/code-generation/asyncapi-code-generator/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-13 17:27:37 &#43;0800 &#43;0800">13 October 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

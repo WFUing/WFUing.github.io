@@ -1,870 +1,1686 @@
 <!DOCTYPE html>
-<html lang="zh" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>code generation | Waiting For You</title>
-<meta name="keywords" content="">
-<meta name="description" content="这是一个纯粹的博客......">
-<meta name="author" content="WFUing">
-<link rel="canonical" href="https://WFUing.github.io/tags/code-generation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.078343916625d121842bb25d5797d26510dec739246c5291e7aa1c8bdfed3a34.css" integrity="sha256-B4NDkWYl0SGEK7JdV5fSZRDexzkkbFKR56oci9/tOjQ=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="16x16" href="https://WFUing.github.io/img/logo.gif">
-<link rel="icon" type="image/png" sizes="32x32" href="https://WFUing.github.io/img/logo.gif">
-<link rel="apple-touch-icon" href="https://WFUing.github.io/logo.gif">
-<link rel="mask-icon" href="https://WFUing.github.io/logo.gif">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://WFUing.github.io/tags/code-generation/index.xml">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-window.MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    autoload: {
-      color: [],
-      colorv2: ['color']
-    },
-    packages: {'[+]': ['noerrors']}
-  },
-  options: {
-    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    ignoreHtmlClass: 'tex2jax_ignore',
-    processHtmlClass: 'tex2jax_process'
-  },
-  loader: {
-    load: ['[tex]/noerrors']
-  }
-};
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
-<meta property="og:title" content="code generation" />
-<meta property="og:description" content="这是一个纯粹的博客......" />
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="zh-cn" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>code generation &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="code generation &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="I&#39;m waiting for you." />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/tags/code-generation/" />
+  
+  <link rel="alternate" type="application/rss+xml" href="/tags/code-generation/index.xml" title="WFUing's Blog" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="code generation" />
+<meta property="og:description" content="I&#39;m waiting for you." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/tags/code-generation/" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="code generation"/>
-<meta name="twitter:description" content="这是一个纯粹的博客......"/>
 
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="code generation"/>
+<meta name="twitter:description" content="I&#39;m waiting for you."/>
+
+  
+  
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
 </head>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
 
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
 
-</script>
-<header class="header"><nav class="nav">
-    <div class="logo">
-        <a style="color: rgb(218, 218, 219);" href="https://WFUing.github.io/" accesskey="h" title="Waiting For You (Alt + H)">Waiting For You</a>
-        <div class="logo-switches">
-            <button id="theme-toggle" accesskey="t" title="(Alt + T)" style="color: rgb(218, 218, 219);">
-                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+            
+  <a href="/posts/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+        Blog
+    </p>
+</a>
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Parent
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+          </p>
+        </a>
+        
+        <a href="/posts/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
             </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
         </div>
     </div>
-    <ul id="menu">
-        <li>
-            <a href="https://WFUing.github.io/search" title="SEARCH (Alt &#43; /)" accesskey=/>
-                <span style="color: rgb(218, 218, 219);">SEARCH</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://WFUing.github.io/" title="HOME">
-                <span style="color: rgb(218, 218, 219);">HOME</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://WFUing.github.io/post" title="BLOGS">
-                <span style="color: rgb(218, 218, 219);">BLOGS</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://WFUing.github.io/archives" title="ARCHIVE">
-                <span style="color: rgb(218, 218, 219);">ARCHIVE</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://WFUing.github.io/tags" title="TAGS">
-                <span style="color: rgb(218, 218, 219);">TAGS</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-</header>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
 
 
-<main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://WFUing.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://WFUing.github.io/tags/">Tags</a></div>
-  <h1>
-    code generation
-  </h1>
-</header>
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Antlr Code Generation
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>ANTLR 是 ANother Tool for Language Recognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。</p>
-    </div>
-    <footer class="entry-footer">
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
+  </span>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-15
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>1959字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>10分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
+</span>
+                    </li>
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+            Blog
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Parent
+        </p>
         <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/antlr/" style="color: var(--secondary)!important;">antlr</a>
-            </span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
         </span>
-    </span>
-</span></footer>
-  </div> 
+    </a>
+</li>
 
-   
-<figure class="entry-cover1">
-        <img loading="lazy" src="https://WFUing.github.io/post/tech/language/code-generation/antlr-code-generation/anltr-logo.webp" alt="">
-</figure>
-  <a class="entry-link" aria-label="post link to Antlr Code Generation" href="https://WFUing.github.io/post/tech/language/code-generation/antlr-code-generation/"></a>
-</article>
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 1
+        </p>
+    </a>
+</li>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Background IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
-事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法：OpenAPI（源自 Swagger）。
-Introduction 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
+<li class="mt-1">
+    <a href="/posts/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="博客">
+            example sub-menu 2
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                <hr>
+                <ul
+                    class="flex mt-4 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                An interesting topic
+                            </p>
+                        </a>
+                    </li>
+                    
+                    <li class="mb-1">
+                        <a href=""  class="flex items-center">
+                            
+                            <span  class="mr-3" >
+                                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+                            </span>
+                            
+                            <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+                                My Awesome Category
+                            </p>
+                        </a>
+                    </li>
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+<div class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3"  style="margin-top:-15px" >
+    <div class="hidden md:flex items-center space-x-5">
+        
+        <a href=""  class="flex items-center">
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                An interesting topic
+            </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+            
+            <span  class="mr-1" >
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+
+            </span>
+            
+            <p class="text-xs font-light text-gray-500 hover:text-gray-900" title="">
+                My Awesome Category
+            </p>
+        </a>
+        
+    </div>
+</div>
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+ <header>
+  
+  <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">code generation</h1>
+  <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+</div>
+
+
+  </div>
+  </header>
+
+  <section class="flex flex-col max-w-full mt-0 mb-5 prose dark:prose-invert lg:flex-row">
+    
+    <script>
+      var oid = "views_term_code generation"
+      var oid_likes = "likes_term_code generation"
+    </script>
+    
+    
+    <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  </section>
+
+
+  
+
+  
+  
+  
+
+  
+
+  <section class="space-y-10 w-full">
+    
+    
+    <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+      2023
+    </h2>
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/antlr-code-generation/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/antlr-code-generation/">Antlr Code Generation</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-15 09:52:03 &#43;0800 &#43;0800">15 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1573 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/antlr-code-generation/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        ANTLR 是 <strong>AN</strong>other <strong>T</strong>ool for <strong>L</strong>anguage <strong>R</strong>ecognition 的缩写，是一个功能强大的解析器生成器框架，用于从语法文件中构建语言识别器、编译器和翻译器，语法文件中包含从源语言到目标语言的每个语句所要执行的操作。
+      </div>
+      
+    </div>
+  </a>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/asyncapi-code-generator/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/asyncapi-code-generator/">A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-13 17:27:37 &#43;0800 &#43;0800">13 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2130 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">10 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/asyncapi-code-generator/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        Background # IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
+事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法： OpenAPI（源自 Swagger）。
+Introduction # 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
 AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
 在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
 AsyncAPI 最初的贡献就是上图中展示的方法。
-AsyncAPI Toolkit 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
-有了 AsyncAPI 元模型和作为符合模型的应用程序接口规范，就可以通过执行 M2T 转换（生成内部 DSL）来继续工作流程。目前，AsyncAPI Toolkit 支持 Java 语言，并生成一个库，通过提供流畅的 API 来协助开发人员创建、发布和接收格式良好的消息。
-值得注意的是，由于这些架构都是基于 message 的，因此数据建模起着至关重要的作用。因此，我们在上述工作流程中使用了另一种（图形化）具体语法，重点是对要交换的消息进行建模。这可用于引导 AsyncAPI JSON 定义，随后可对其进行手动完善。...</p>
+AsyncAPI Toolkit # 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
+      </div>
+      
     </div>
-    <footer class="entry-footer">
+  </a>
+    
+    
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-13
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>2761字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>13分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/asyncapi/" style="color: var(--secondary)!important;">asyncapi</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/xtext/" style="color: var(--secondary)!important;">xtext</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-<figure class="entry-cover1">
-        <img loading="lazy" srcset="https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/asyncapi-logo.png 48w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/asyncapi-logo.png" alt="" 
-            width="48" height="48">
-</figure>
-  <a class="entry-link" aria-label="post link to A Modeling Editor and Code Generator for message-driven architectures with AsyncAPI" href="https://WFUing.github.io/post/tech/language/code-generation/asyncapi-code-generator/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Openapi Code Generator
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
-如何使用 OpenAPI 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
-Create OpenAPI spec 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/openapi-code-generator/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/openapi-code-generator/">Openapi Code Generator</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-13 16:46:21 &#43;0800 &#43;0800">13 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>929 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/openapi-code-generator/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
+如何使用 OpenAPI # 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
+Create OpenAPI spec # 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
 使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
 OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
-1 2 3 4 5 6 7 8 9 openapi: &#34;3.0.2&#34; info: title: API Customer version: &#34;1.0&#34; servers: - url: https://localhost:8080 tags: - name: Customer description: Customer specific data. paths 部分包含资源规范。您定义的第一个资源是创建 Customer 的资源，将通过包含 JSON 主体的 POST 方式创建。生成器将使用 operationId 为该资源创建方法名称。为简单起见，只考虑成功响应。模式指的是 JSON 主体，将在本节后面介绍。...</p>
+openapi: &#34;3.0.2&#34; info: title: API Customer version: &#34;1.
+      </div>
+      
     </div>
-    <footer class="entry-footer">
+  </a>
+    
+    
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-13
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>1200字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>6分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/dsl/" style="color: var(--secondary)!important;">dsl</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/openapi/" style="color: var(--secondary)!important;">openapi</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/spring/" style="color: var(--secondary)!important;">spring</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-<figure class="entry-cover1">
-        <img loading="lazy" srcset="https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/openapi-logo.png 200w" 
-            sizes="(min-width: 768px) 720px, 100vw" src="https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/openapi-logo.png" alt="" 
-            width="200" height="200">
-</figure>
-  <a class="entry-link" aria-label="post link to Openapi Code Generator" href="https://WFUing.github.io/post/tech/language/code-generation/openapi-code-generator/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>AI Code Generators
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Resources Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/ai-code-generators/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/ai-code-generators/">AI Code Generators</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 20:13:50 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>11 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/ai-code-generators.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        Resources # Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators 
+      </div>
+      
     </div>
-    <footer class="entry-footer">
+  </a>
+    
+    
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>10字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/ai/" style="color: var(--secondary)!important;">ai</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-  <a class="entry-link" aria-label="post link to AI Code Generators" href="https://WFUing.github.io/post/tech/language/code-generation/ai-code-generators/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Telosys: a Code Generation Tool by Laurent Guerin
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>Resources url: https://www.telosys.org/ tutorial: https://tomassetti.me/telosys-code-generation-tool/ </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/telosys-code-generation-tool/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/telosys-code-generation-tool/">Telosys: a Code Generation Tool by Laurent Guerin</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 19:29:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>6 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/telosys-code-generation-tool.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        Resources # url: https://www.telosys.org/ tutorial: https://tomassetti.me/telosys-code-generation-tool/ 
+      </div>
+      
     </div>
-    <footer class="entry-footer">
+  </a>
+    
+    
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>5字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>1分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/telosys/" style="color: var(--secondary)!important;">telosys</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-  <a class="entry-link" aria-label="post link to Telosys: a Code Generation Tool by Laurent Guerin" href="https://WFUing.github.io/post/tech/language/code-generation/telosys-code-generation-tool/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Code generation for Langium-based DSLs
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
-Resources blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
-代码生成器的输入示例如下：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit &#43; laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold &#43; generalExpensesAndSales) / expectedNoOfSales &#43; desiredProfitPerUnit; DEF vat: 0....</p>
-    </div>
-    <footer class="entry-footer">
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>1332字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>7分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/langium/" style="color: var(--secondary)!important;">langium</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-  <a class="entry-link" aria-label="post link to Code generation for Langium-based DSLs" href="https://WFUing.github.io/post/tech/language/code-generation/code-generation-for-langium-based-dsls/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>Template Engine
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>模板引擎 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
-模板引擎如何工作 上图说明了模板引擎的所有基本元素和处理流程。
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/template-engine/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/template-engine/">Template Engine</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 14:43:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>207 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/template-engine/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        模板引擎 # 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
+模板引擎如何工作 # 上图说明了模板引擎的所有基本元素和处理流程。
 使用模板引擎构建服务器端应用程序时，模板引擎会将模板文件中的变量替换为实际值，并将此值显示给客户端。这样，我们就能更轻松地快速构建应用程序。
-使用 expressJS 和 ejs 模板引擎的示例 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。
+使用 expressJS 和 ejs 模板引擎的示例 # 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。
 以下步骤演示了模板引擎如何使用 expressJs 和 ejs 模板引擎工作。下面的示例在网页上渲染用户数据。
 步骤 1：安装 express 和 ejs 模板引擎
 安装 ejs 模板引擎和 express 框架，
-1 npm install express ejs 步骤 2：设置视图引擎
-1 2 3 4 5 6 7 8 const express = require(&#34;express&#34;) const app = express(); // Set the View Engine or Template Engine app.set(&#39;view engine&#39;, &#39;ejs&#39;); app.listen(3000) 在上面的代码中，我们创建了 express 应用程序。该应用程序通过 3000 端口监听。...</p>
+npm install express ejs 步骤 2：设置视图引擎
+const express = require(&#34;express&#34;) const app = express(); // Set the View Engine or Template Engine app.
+      </div>
+      
     </div>
-    <footer class="entry-footer">
+  </a>
+    
+    
 
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
 
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
 
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    
-    
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>255字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>2分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-                &nbsp;<a href="https://WFUing.github.io/tags/template-engine/" style="color: var(--secondary)!important;">template engine</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
 
-   
-  <a class="entry-link" aria-label="post link to Template Engine" href="https://WFUing.github.io/post/tech/language/code-generation/template-engine/"></a>
-</article>
 
-<article class="post-entry tag-entry">
-  <div class="post-info"> 
-    <header class="entry-header">
-      <h2>A Guide to Code Generation
-      </h2>
-    </header>
-    <div class="entry-content">
-      <p>为什么要用代码生成 productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C&#43;&#43; 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成? 根据具体情况，代码生成既可以提高工作效率，也可以成为开发过程中的重要组成部分。许多现代集成开发环境就是一个有用的例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。你完全可以自己编写这样的代码，只不过会浪费一些时间来完成琐碎的任务。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/code-generation-for-langium-based-dsls/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/code-generation-for-langium-based-dsls/">Code generation for Langium-based DSLs</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 14:43:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1152 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/code-generation-for-langium-based-dsls/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
+Resources # blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 # 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
+代码生成器的输入示例如下：
+MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit + laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold + generalExpensesAndSales) / expectedNoOfSales + desiredProfitPerUnit; DEF vat: 0.
+      </div>
+      
+    </div>
+  </a>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/language/code-generation/a-guide-to-code-generation/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/background.jpg);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/language/code-generation/a-guide-to-code-generation/">A Guide to Code Generation</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2023-10-12 11:40:20 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>814 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span><span class="px-2 text-primary-500">&middot;</span><span>
+    
+    <span id="views_posts/language/code-generation/a-guide-to-code-generation/index.md" 
+    
+        class="animate-pulse inline-block text-transparent max-h-3 rounded-full mt-[-2px] align-middle bg-neutral-300 dark:bg-neutral-400" title="views">loading</span> 
+    <span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+<path fill="currentColor" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
+  </span>
+
+</span>
+</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        为什么要用代码生成 # productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C++ 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 # Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成? # 根据具体情况，代码生成既可以提高工作效率，也可以成为开发过程中的重要组成部分。许多现代集成开发环境就是一个有用的例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。你完全可以自己编写这样的代码，只不过会浪费一些时间来完成琐碎的任务。
 设计代码生成流水线的方法有很多种。基本上，我们需要定义两个要素：
 Input：用于生成代码的信息来自何处。 Output：如何获得生成的代码。 您也可以在输入和输出之间设置转换步骤。这些步骤可以简化输出层，并使输入和输出更加独立。
 Possible Inputs
 A DSL：例如，我们可以使用 ANTLR 来描述一种语言的语法。由此，我们可以生成一个解析器。 code in other formats：数据库模式。根据数据库模式，我们可以生成 DAO。 wizards：它们允许向用户询问信息。 reverse engineering：可通过处理复杂的代码工件获得信息。 data sources：比如一个DB，一个csv文件或者一个电子表格。 Possible Outputs
-template engine：大多数网络程序员都知道模板引擎，它用于在 HTML UI 中填充数据。 code building APIs：例如，Javaparser 可用于以编程方式创建 Java 文件。 Some Pipelines...</p>
+      </div>
+      
     </div>
-    <footer class="entry-footer">
-
-<style>
-    i[id*="post_meta_style"] {
-        display: flex;
-        align-items: center;
-        margin: 0 0 10px 0;
-    }
-
-    .parent-post-meta {
-        display: flex;
-        flex-wrap: wrap;
-        opacity: 0.8;
-    }
-</style>
-
-<span class="parent-post-meta">
-    <span id="post_meta_style_1">
-        <span class="fa fa-calendar-check-o"></span>
-        <span>2023-10-12
-            &nbsp;&nbsp;
-        </span>
-    </span>
+  </a>
     
     
-    
-    
-    
-    
-    
-    <span id="post_meta_style_3">
-        <span class="fa fa-file-word-o"></span>
-        <span>937字
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_4">
-        <span class="fa fa-clock-o"></span>
-        <span>5分钟
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_5">
-        <span class="fa fa-user-o"></span>
-        <span>WFUing
-            &nbsp;&nbsp;
-        </span>
-    </span>
-    <span id="post_meta_style_6">
-        <span class="fa fa-tags" style="opacity: 0.8"></span>
-        <span>
-            <span class="post-tags-meta">
-                <a href="https://WFUing.github.io/tags/code-generation/" style="color: var(--secondary)!important;">code generation</a>
-            </span>
-        </span>
-    </span>
-</span></footer>
-  </div> 
+  </section>
 
-   
-  <a class="entry-link" aria-label="post link to A Guide to Code Generation" href="https://WFUing.github.io/post/tech/language/code-generation/a-guide-to-code-generation/"></a>
-</article>
-    </main>
+  
+
+  
+
+  
+
+  
+      
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
     
-<footer class="footer">
-    <span>&copy; 2024 <a href="https://WFUing.github.io/">Waiting For You</a></span>
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="Tags">
+            
+            Tags
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/categories/"
+            title="Categories">
+            
+            Categories
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
 
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
     })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
 
-</script>
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
 </body>
 
 </html>
