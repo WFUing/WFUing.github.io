@@ -14,9 +14,7 @@
       <pubDate>Wed, 07 Feb 2024 16:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</guid>
-      <description>Spring Boot 的常用注解 # 1、@SpringBootApplication # 这是 Spring Boot 最最最核心的注解，用在 Spring Boot 主类上，标识这是一个 Spring Boot 应用，用来开启 Spring Boot 的各项能力。
-其实这个注解就是 @SpringBootConfiguration、@EnableAutoConfiguration、@ComponentScan 这三个注解的组合，也可以用这三个注解来代替 @SpringBootApplication 注解。看下 @SpringBootApplication 注解的源码，一切明了！
-@Target(ElementType.TYPE) @Retention(RetentionPolicy.RUNTIME) @Documented @Inherited @SpringBootConfiguration @EnableAutoConfiguration @ComponentScan(excludeFilters = { @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class), @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) }) public @interface SpringBootApplication { .</description>
+      <description>Spring Boot 是一种快速开发应用程序的框架，提供了一系列的注解来简化开发过程。其中，最重要的就是核心注解，它能帮助开发者快速配置应用程序。本文将深入探讨 Spring Boot 的核心注解，介绍它的作用以及常见的组成注解。</description>
       
     </item>
     
