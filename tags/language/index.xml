@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/tags/language/</link>
     <description>Recent content in language on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Wed, 18 Oct 2023 20:14:26 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/language/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,11 +14,7 @@
       <pubDate>Wed, 18 Oct 2023 20:14:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/functional-programming/</guid>
-      <description>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
-在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
-Introduction to Scheme # R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
-Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
-Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：</description>
+      <description>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。</description>
       
     </item>
     
@@ -28,10 +24,7 @@ Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单�
       <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/metaprogramming/</guid>
-      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
-Macros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
-使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
-#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：</description>
+      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。</description>
       
     </item>
     
@@ -41,42 +34,7 @@ Macros and Code Generation # macro 是将输入序列转换为某种替换输出
       <pubDate>Sat, 14 Oct 2023 19:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/programming-language-pool/</guid>
-      <description>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
-让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
-编程语言流行度排名 编译语言 # 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
-C
-C ++
-C＃
-ALGOL
-Cobol
-Fortran
-Java
-Visual Basic
-Smalltalk
-解释语言 # 解释语言是一种编程语言，在其中，无需将程序编译为机器语言的指令，我们就可以直接自由地执行指令。解释器逐行执行程序。语言解释为编译后的实现（如平台独立性，动态范围，动态类型等）提供了更多的灵活性。
-Python
-Ruby
-Perl
-Pascal
-Lisp
-BASIC
-APL
-脚本语言 # 脚本语言是控制应用程序的编程语言。可以在任何其他应用程序上独立执行的脚本。它们被广泛应用于它们所控制的应用中，并被用于自动化领域。
-PHP
-VBScript
-Windows PowerShell
-F-Script
-BeanShell
-AutoIt
-R
-Game Maker Language
-标记语言 # 标记语言是一种人工语言，用于对文档进行注释，以便在语法上与文本（可定义文本显示方式的文本）区分开。
-HTML
-XML
-XHTML
-SGML
-Curl
-程序语言 # 程序（命令式）编程意味着指定程序达到预期状态应采取的步骤。过程不过是一组可以通过过程调用引用的指令。这有助于代码的重用。这种类型的编程使程序结构化并易于跟踪程序流。</description>
+      <description>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。</description>
       
     </item>
     

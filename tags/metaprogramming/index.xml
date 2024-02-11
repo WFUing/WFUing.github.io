@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/tags/metaprogramming/</link>
     <description>Recent content in metaprogramming on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Mon, 16 Oct 2023 15:29:44 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/metaprogramming/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,10 +14,7 @@
       <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/metaprogramming/</guid>
-      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
-Macros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
-使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
-#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：</description>
+      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。</description>
       
     </item>
     

@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>nodejs/stdlib &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="nodejs/stdlib &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="nodejs/stdlib" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/nodejs/stdlib/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nodejs/stdlib"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -716,13 +720,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         process 对象 # process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
-process.argv # process.argv是一个数组，表示启动脚本时的命令行参数。
-它的前两项是固定的。
-第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
-$ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
-process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
-const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
-参考链接 # Extracting command line arguments from Node.js using destructuring, Nicholas C.
       </div>
       
     </div>
@@ -822,7 +819,6 @@ const [ , , ...args ] = process.argv; console.log(args[0]); // &#34;--watch&#34;
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         os 模块 # cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
-const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; 
       </div>
       
     </div>
@@ -922,11 +918,6 @@ const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length;
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         http 模块 # http模块用于 HTTP 通信。
-http.Server # http.Server属性指向一个类，表示 Web 服务器实例。
-这个类继承了net.Server，而net.Server继承了 EventEmitter 接口，因此可以使用server.on()方法监听事情。最重要的一个事件是request，表示收到 HTTP 请求。
-server.on(&#39;request&#39;, (request, response) =&gt; { response.end(&#39;Hello, world!&#39;); }); server.listen()方法用于启动 Web 服务。这个方法需要指定监听的端口，以及一个回调函数（启动后要做什么）。
-server.listen(PORT, () =&gt; { console.log(`starting server at port ${PORT}`); }); http.createServer() # http.createServer()方法用于创建一个 Web 服务器，它的返回值就是一个http.Server实例。
-const { createServer } = require(&#39;http&#39;); // 指定端口 const PORT = process.
       </div>
       
     </div>
@@ -1026,13 +1017,6 @@ const { createServer } = require(&#39;http&#39;); // 指定端口 const PORT = p
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         events 模块 # Node 通过 events 模块提供事件，形成模块之间的通信机制，消除模块与模块的强耦合。
-概述 # events模块提供一个构造函数，可以用来生成事件发生器的实例。
-const EventEmitter = require(&#39;events&#39;); const emitter = new EventEmitter(); 上面代码中，emitter就是事件发生器的实例。
-emit()方法用于触发事件。
-emitter.emit(&#39;user-registered&#39;, user); 上面代码触发了user-registered事件，第二个参数user是事件传递的数据。
-on()方法用于监听事件。
-emitter.on(&#39;user-registered&#39;, (user) =&gt; { console.log(&#39;event has occured&#39;); }); 注意，emit()方法和on()方法都是同步的，请看下面的例子。
-emitter.on(&#39;someEvent&#39;, function () { console.log(&#39;event has occured&#39;); }); function f() { console.log(&#39;start&#39;); emitter.emit(&#39;someEvent&#39;); console.log(&#39;end&#39;); } f() // start // event has occured // end 上面代码中，emit()方法执行以后，on()方法会立刻执行。只有等到on()方法执行结束以后，emit()后面的方法才会继续执行。
       </div>
       
     </div>
@@ -1131,10 +1115,7 @@ emitter.on(&#39;someEvent&#39;, function () { console.log(&#39;event has occured
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        cluster 模块 # cluster模块用于组建 Node.js 应用的集群。
-cluster.isMaster属性表示当前进程是否为主进程。
-const cluster = require(&#39;cluster&#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
-const cluster = require(&#39;cluster&#39;); const { cpus } = require(&#39;os&#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&#39;master process&#39;); const workers = []; for(let i = 0; i &lt; numWorkers; i++) { workers.
+        cluster 模块 # cluster模块用于组建 Node.
       </div>
       
     </div>

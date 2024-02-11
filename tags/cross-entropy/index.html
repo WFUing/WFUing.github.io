@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>cross entropy &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="cross entropy &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="cross entropy" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/tags/cross-entropy/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="cross entropy"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -654,15 +658,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         案例驱动 # 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
-第一个例子 # 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
-每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
-第二个例子 # 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
-$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
-$$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
-第三个例子 # 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
-总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
-在这个问题中，问题个数的期望是
-$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$
       </div>
       
     </div>

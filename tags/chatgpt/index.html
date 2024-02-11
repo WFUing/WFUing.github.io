@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>chatgpt &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="chatgpt &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="chatgpt" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/tags/chatgpt/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="chatgpt"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -654,9 +658,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Six strategies for getting better results # Write clear instructions # GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
-在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &ldquo;少量 &ldquo;提示。这就是所谓的 &ldquo;少量 &ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text # GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
-指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks # 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
-使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &ldquo;think&rdquo; # 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。
       </div>
       
     </div>

@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>nodejs/npm &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="nodejs/npm &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="nodejs/npm" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/nodejs/npm/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nodejs/npm"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -716,12 +720,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
-发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
-如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
-$ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
-下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
-# 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
-$ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&gt; 下面的命令查看所有 tag 和对应的版本。
       </div>
       
     </div>
@@ -821,15 +819,6 @@ $ npm install &lt;package&gt;@&lt;tag&gt; # 或者 $ npm install --tag &lt;tag&g
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
-一种方法是使用npm install的--save参数。
-$ npm install --no-save &lt;模块的本地路径h&gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
-另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
-它分成两步，第一步先在本地模块的目录里，执行npm link。
-$ npm link 第二步是到你的应用目录，执行npm link &lt;本地模块名&gt;，在node_modules目录里面产生本地模块的符号链接。
-$ npm link &lt;本地模块名&gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
-$ npm link &lt;本地模块的路径&gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
-$ npm unlink --no-save &lt;本地模块名&gt; 再到本地模块的目录里面，执行npm unlink。
-$ npm unlink 
       </div>
       
     </div>
@@ -928,12 +917,7 @@ $ npm unlink
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        npm init 命令 # npm init命令的作用，是生成package.json文件。它的别名是create。
-新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
-$ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
-$ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
-$ npm set init-author-email &#34;example-user@example.com&#34; $ npm set init-author-name &#34;example_user&#34; $ npm set init-license &#34;MIT&#34; npm init也可以格式化创建项目。
-$ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.
+        npm init 命令 # npm init命令的作用，是生成package.
       </div>
       
     </div>
@@ -1033,11 +1017,6 @@ $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命�
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
-该命令与npx命令的作用类似，但是使用上有所不同。
-npx会将所有参数原样传入模块内部。
-$ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
-$ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
-$ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。
       </div>
       
     </div>
@@ -1137,11 +1116,6 @@ $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo b
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。
-$ npm install lodash 上面命令在当前目录中安装了lodash模块。
-默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
-# 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&#34;&gt;=4.15.0 &lt;4.18.0&#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
-默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
-# 将模块写入 package.
       </div>
       
     </div>
@@ -1241,13 +1215,6 @@ $ npm install lodash 上面命令在当前目录中安装了lodash模块。
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         概述 # npm有两种含义。
-首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为 npmjs.org。
-其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
-安装 # npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
-但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
-$ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
-$ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
-# 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init # npm init用来初始化生成一个新的package.
       </div>
       
     </div>

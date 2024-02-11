@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>xtext &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="xtext &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="xtext" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/tags/xtext/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="xtext"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -654,8 +658,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Usage # 项目创建 # XText 开发一个新的语言
-定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构
       </div>
       
     </div>
@@ -755,12 +757,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Background # IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
-事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法： OpenAPI（源自 Swagger）。
-Introduction # 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
-AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
-在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
-AsyncAPI 最初的贡献就是上图中展示的方法。
-AsyncAPI Toolkit # 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。
       </div>
       
     </div>

@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>nodejs/module &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="nodejs/module &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="nodejs/module" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/nodejs/module/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nodejs/module"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -716,12 +720,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         this 变量 # Node 应用的顶层变量是global，对应浏览器的window变量。
-顶层的 this # 在 REPL 环境，顶层的this就指向global。
-&gt; global === this true 顶层变量是global和this的属性。
-&gt; var foo = &#34;bar&#34;; &gt; this.foo bar &gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
-在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
-// 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
-// 模块环境 var foo = &#34;bar&#34;; console.log(this.foo); // undefined console.
       </div>
       
     </div>

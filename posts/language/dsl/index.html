@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="Domain Specific Language" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/dsl/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Domain Specific Language"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -815,7 +819,7 @@
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        vorto # InformationModel: &#39;vortolang&#39; 1.0 &#39;namespace&#39; qualifiedName &#39;version&#39; version (&#39;displayname&#39; string)? (&#39;description&#39; string)? (&#39;category&#39; ID(&#39;/&#39; ID)*)? (modelReference)* &#39;infomodel&#39; ID &#39;{&#39; &#39;functionblocks&#39; &#39;{&#39; (functionblockProperty)* &#39;}&#39; ; functionblockProperty: (&#39;mandatory&#39; | &#39;optional&#39;)? (&#39;multiple&#39;)? ID &#39;as&#39; [FunctionBlock::ID | qualifiedName] (description)? qualifiedName: ID (&#39;.&#39; ID)*; version : int(&#39;.&#39; int)*(&#39;-&#39;ID)?; ID: &#39;^&#39;?(&#39;a&#39;..&#39;z&#39;|&#39;A&#39;..&#39;Z&#39;|&#39;_&#39;) (&#39;a&#39;..&#39;z&#39;|&#39;A&#39;..&#39;Z&#39;|&#39;_&#39;|&#39;0&#39;..&#39;9&#39;)* ; description: STRING modelReference: &#39;using&#39; qualifiedName &#39;;&#39; version; vortolang 1.
+        vorto # InformationModel: &#39;vortolang&#39; 1.
       </div>
       
     </div>
@@ -915,8 +919,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Usage # 项目创建 # XText 开发一个新的语言
-定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构
       </div>
       
     </div>
@@ -1015,7 +1017,7 @@
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        Resource # Protocol specification https://microsoft.github.io/language-server-protocol/ Syntax highlight guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Language Server Tools https://langserver.org/ Language Server Protocol https://microsoft.github.io/language-server-protocol/ VSCode Syntax Highlight Guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Scope Lists https://macromates.com/manual/en/language_grammars https://www.apeth.com/nonblog/stories/textmatebundle.html 
+        Resource # Protocol specification https://microsoft.
       </div>
       
     </div>
@@ -1114,8 +1116,7 @@
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        Usage # 1 Langium download # https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install 'code' command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts # 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2.
+        Usage # 1 Langium download # https://www.
       </div>
       
     </div>

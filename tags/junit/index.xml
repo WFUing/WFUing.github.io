@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/tags/junit/</link>
     <description>Recent content in junit on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Sun, 05 Nov 2023 18:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/junit/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,11 +14,7 @@
       <pubDate>Sun, 05 Nov 2023 18:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/junit/</guid>
-      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
-在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &amp;mdash; Martin Fowler
-从一个简单的例子开始认识 Junit # 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
-junit4
-import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&amp;#34;.....this is before test......&amp;#34;); } @After public void after(){ System.out.println(&amp;#34;.....this is after test......&amp;#34;); } @BeforeClass public static void beforeClass(){ System.</description>
+      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。</description>
       
     </item>
     

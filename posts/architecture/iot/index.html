@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="Internet of Things" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/architecture/iot/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Internet of Things"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -1211,12 +1215,6 @@
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Actor Model # CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
-actor model # actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
-actors # actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
-这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
-主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
-一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
-mailbox # 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。
       </div>
       
     </div>

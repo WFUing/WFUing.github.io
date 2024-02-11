@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/tags/iot/</link>
     <description>Recent content in iot on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Thu, 16 Nov 2023 21:46:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/iot/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <pubDate>Thu, 16 Nov 2023 21:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/iot-dsl/</guid>
-      <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.0 &amp;#39;namespace&amp;#39; qualifiedName &amp;#39;version&amp;#39; version (&amp;#39;displayname&amp;#39; string)? (&amp;#39;description&amp;#39; string)? (&amp;#39;category&amp;#39; ID(&amp;#39;/&amp;#39; ID)*)? (modelReference)* &amp;#39;infomodel&amp;#39; ID &amp;#39;{&amp;#39; &amp;#39;functionblocks&amp;#39; &amp;#39;{&amp;#39; (functionblockProperty)* &amp;#39;}&amp;#39; ; functionblockProperty: (&amp;#39;mandatory&amp;#39; | &amp;#39;optional&amp;#39;)? (&amp;#39;multiple&amp;#39;)? ID &amp;#39;as&amp;#39; [FunctionBlock::ID | qualifiedName] (description)? qualifiedName: ID (&amp;#39;.&amp;#39; ID)*; version : int(&amp;#39;.&amp;#39; int)*(&amp;#39;-&amp;#39;ID)?; ID: &amp;#39;^&amp;#39;?(&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;) (&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;|&amp;#39;0&amp;#39;..&amp;#39;9&amp;#39;)* ; description: STRING modelReference: &amp;#39;using&amp;#39; qualifiedName &amp;#39;;&amp;#39; version; vortolang 1.</description>
+      <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.</description>
       
     </item>
     

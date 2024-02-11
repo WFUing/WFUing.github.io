@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/posts/language/nodejs/npm/</link>
     <description>Recent content in nodejs/npm on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Mon, 23 Oct 2023 16:19:22 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/language/nodejs/npm/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,10 +14,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-update/</guid>
-      <description>npm update # 更新所有依赖项。
-$ npm update 更新单个依赖。
-$ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
-$ npm update --save </description>
+      <description>npm update # 更新所有依赖项。</description>
       
     </item>
     
@@ -27,15 +24,7 @@ $ npm update --save </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-version/</guid>
-      <description>npm version # npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
-它的命令行用法如下。
-npm version [ &amp;lt;newversion&amp;gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
-（1）&amp;lt;newversion&amp;gt;：自己指定版本号。
-（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
-major：规则如下。
-（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
-# 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
-# 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.</description>
+      <description>npm version # npm version用来指定模块的版本，然后会将新的版本号写入package.</description>
       
     </item>
     
@@ -45,8 +34,7 @@ major：规则如下。
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-view/</guid>
-      <description>npm view 命令 # 查看某个模块发布过的所有版本。
-$ npm view [PackageName] versions </description>
+      <description>npm view 命令 # 查看某个模块发布过的所有版本。</description>
       
     </item>
     
@@ -56,8 +44,7 @@ $ npm view [PackageName] versions </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-whoami/</guid>
-      <description>npm whoami # npm whoami命令返回当前登录的 npm 用户名。
-$ npm whoami </description>
+      <description>npm whoami # npm whoami命令返回当前登录的 npm 用户名。</description>
       
     </item>
     
@@ -67,13 +54,7 @@ $ npm whoami </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npx/</guid>
-      <description>npx 使用教程 # npm 从5.2版开始，增加了 npx 命令，它有很多用处。
-Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
-$ npm install -g npx 调用项目安装的模块 # npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
-$ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的 scripts字段里面， 如果想在命令行下调用，必须像下面这样。
-# 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
-$ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
-由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。</description>
+      <description>npx 使用教程 # npm 从5.</description>
       
     </item>
     
@@ -83,13 +64,7 @@ $ npx mocha --version npx 的原理很简单，就是运行的时候，会到nod
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/package.json/</guid>
-      <description>package.json # files 字段 # files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
-{ &amp;#34;name&amp;#34;: &amp;#34;@adam_baldwin/wombats&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;files&amp;#34;: [ &amp;#34;index.js&amp;#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
-项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
-以下文件，发布的时候总是会包含。
-package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
-以下文件，发布的时候总是会被排除。
-.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .</description>
+      <description>package.json # files 字段 # files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。</description>
       
     </item>
     
@@ -99,16 +74,7 @@ package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main�
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/publish/</guid>
-      <description>发布 # 发布标签 # npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
-新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
-这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
-$ npm install &amp;lt;package&amp;gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
-解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
-$ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
-安装时，必须指定这个标签，才能安装到3.2.14。
-$ npm install &amp;lt;package&amp;gt;@previous # 或者 $ npm install &amp;lt;package&amp;gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
-$ npm install &amp;lt;package&amp;gt; # 等同于 $ npm install &amp;lt;package&amp;gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
-# 发布 $ npm publish --tag=next # 安装 $ npm publish &amp;lt;package&amp;gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。</description>
+      <description>发布 # 发布标签 # npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。</description>
       
     </item>
     
@@ -118,11 +84,7 @@ $ npm install &amp;lt;package&amp;gt; # 等同于 $ npm install &amp;lt;package&
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/scripts/</guid>
-      <description>脚本功能 # npm run # npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
-{ &amp;#34;name&amp;#34;: &amp;#34;myproject&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;jshint&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;browserify&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;mocha&amp;#34;: &amp;#34;latest&amp;#34; }, &amp;#34;scripts&amp;#34;: { &amp;#34;lint&amp;#34;: &amp;#34;jshint **.js&amp;#34;, &amp;#34;test&amp;#34;: &amp;#34;mocha test/&amp;#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
-npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
-npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
-npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。</description>
+      <description>脚本功能 # npm run # npm不仅可以用于模块管理，还可以用于执行脚本。package.</description>
       
     </item>
     
@@ -132,16 +94,7 @@ npm内置了两个命令简写，npm test等同于执行npm run test，npm start
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/yarn/</guid>
-      <description>Yarn 的用法 # 简介 # Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。
-（1）安装速度较快。
-Yarn 采用平行安装模式，而 npm 采用的是线性模式，只有前一个模块安装完，才会安装下一个。
-（2）默认开启“版本锁定”功能
-Yarn 希望安装依赖时，所有依赖的版本在不同机器都保持相同。为了达到这个目的，第一次安装依赖时，它默认生成一个锁定文件yarn.lock，将这个文件放到代码库之中，下次安装时就能保证，总是安装相同版本的依赖。这与npm shrinkwrap命令生成的npm-shrinkwrap.json的作用相似，只不过 Yarn 默认就可以生成这个文件。
-全局参数 global # 如果要全局执行一个命令，必须加上global参数。目前，add、bin、ls和remove四个命令，支持global参数。
-$ yarn global add create-react-app --prefix /usr/local yarn install # yarn install命令用于安装一个模块。如果yarn.lock文件存在，会优先读取该文件，按照该文件指定的版本安装。
-使用--production参数或环境变量NODE_ENV等于production，将不会安装devDependencies字段指定的模块。
-$ yarn install --production 如果使用--no-lockfile参数，yarn install将不会读取或生成yarn.lock。
-$ yarn install --no-lockfile yarn add # yarn add命令允许新增安装一个模块。它默认会将该模块加入package.</description>
+      <description>Yarn 的用法 # 简介 # Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。</description>
       
     </item>
     
@@ -151,14 +104,7 @@ $ yarn install --no-lockfile yarn add # yarn add命令允许新增安装一个�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/basic/</guid>
-      <description>概述 # npm有两种含义。
-首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为 npmjs.org。
-其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
-安装 # npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
-但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
-$ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
-$ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
-# 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init # npm init用来初始化生成一个新的package.</description>
+      <description>概述 # npm有两种含义。</description>
       
     </item>
     
@@ -168,12 +114,7 @@ $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/install/</guid>
-      <description>安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。
-$ npm install lodash 上面命令在当前目录中安装了lodash模块。
-默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
-# 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&amp;#34;&amp;gt;=4.15.0 &amp;lt;4.18.0&amp;#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
-默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
-# 将模块写入 package.</description>
+      <description>安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。</description>
       
     </item>
     
@@ -183,12 +124,7 @@ $ npm install lodash 上面命令在当前目录中安装了lodash模块。
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-exec/</guid>
-      <description>npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
-该命令与npx命令的作用类似，但是使用上有所不同。
-npx会将所有参数原样传入模块内部。
-$ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
-$ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
-$ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。</description>
+      <description>npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。</description>
       
     </item>
     
@@ -198,12 +134,7 @@ $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo b
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-init/</guid>
-      <description>npm init 命令 # npm init命令的作用，是生成package.json文件。它的别名是create。
-新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
-$ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
-$ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
-$ npm set init-author-email &amp;#34;example-user@example.com&amp;#34; $ npm set init-author-name &amp;#34;example_user&amp;#34; $ npm set init-license &amp;#34;MIT&amp;#34; npm init也可以格式化创建项目。
-$ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.</description>
+      <description>npm init 命令 # npm init命令的作用，是生成package.</description>
       
     </item>
     
@@ -213,16 +144,7 @@ $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-link/</guid>
-      <description>npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
-一种方法是使用npm install的--save参数。
-$ npm install --no-save &amp;lt;模块的本地路径h&amp;gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
-另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
-它分成两步，第一步先在本地模块的目录里，执行npm link。
-$ npm link 第二步是到你的应用目录，执行npm link &amp;lt;本地模块名&amp;gt;，在node_modules目录里面产生本地模块的符号链接。
-$ npm link &amp;lt;本地模块名&amp;gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
-$ npm link &amp;lt;本地模块的路径&amp;gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
-$ npm unlink --no-save &amp;lt;本地模块名&amp;gt; 再到本地模块的目录里面，执行npm unlink。
-$ npm unlink </description>
+      <description>npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？</description>
       
     </item>
     
@@ -232,13 +154,7 @@ $ npm unlink </description>
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-tag/</guid>
-      <description>npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
-发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
-如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
-$ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
-下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
-# 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
-$ npm install &amp;lt;package&amp;gt;@&amp;lt;tag&amp;gt; # 或者 $ npm install --tag &amp;lt;tag&amp;gt; 下面的命令查看所有 tag 和对应的版本。</description>
+      <description>npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。</description>
       
     </item>
     
@@ -248,13 +164,7 @@ $ npm install &amp;lt;package&amp;gt;@&amp;lt;tag&amp;gt; # 或者 $ npm install
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-token/</guid>
-      <description>npm token # npm token命令用来管理认证令牌。
-npm token list命令列出所有激活的认证令牌。
-$ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
-npm token create命令生成一个新的认证令牌。
-$ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&amp;lt;cidr-ranges&amp;gt;参数用来指定令牌生效的 IP 地址范围。
-npm token revoke命令收回令牌。
-$ npm token revoke &amp;lt;token|id&amp;gt; </description>
+      <description>npm token # npm token命令用来管理认证令牌。</description>
       
     </item>
     

@@ -5,7 +5,7 @@
     <link>https://WFUing.github.io/</link>
     <description>Recent content in WFUing on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en</language>
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -384,7 +384,7 @@
       <pubDate>Tue, 12 Dec 2023 11:22:18 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/skills/meta/</guid>
-      <description>Resources # How To Use Option As Meta Key In MacOS Terminal? </description>
+      <description>Resources # How To Use Option As Meta Key In MacOS Terminal?</description>
       
     </item>
     
@@ -404,7 +404,7 @@
       <pubDate>Sun, 10 Dec 2023 12:54:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/lsp/monaco-editor/</guid>
-      <description>Resources # 官网： https://microsoft.github.io/monaco-editor/ https://github.com/microsoft/monaco-editor 非官方博客 Building a code editor with Monaco </description>
+      <description>Resources # 官网： https://microsoft.</description>
       
     </item>
     
@@ -484,7 +484,7 @@
       <pubDate>Thu, 16 Nov 2023 21:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/iot-dsl/</guid>
-      <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.0 &amp;#39;namespace&amp;#39; qualifiedName &amp;#39;version&amp;#39; version (&amp;#39;displayname&amp;#39; string)? (&amp;#39;description&amp;#39; string)? (&amp;#39;category&amp;#39; ID(&amp;#39;/&amp;#39; ID)*)? (modelReference)* &amp;#39;infomodel&amp;#39; ID &amp;#39;{&amp;#39; &amp;#39;functionblocks&amp;#39; &amp;#39;{&amp;#39; (functionblockProperty)* &amp;#39;}&amp;#39; ; functionblockProperty: (&amp;#39;mandatory&amp;#39; | &amp;#39;optional&amp;#39;)? (&amp;#39;multiple&amp;#39;)? ID &amp;#39;as&amp;#39; [FunctionBlock::ID | qualifiedName] (description)? qualifiedName: ID (&amp;#39;.&amp;#39; ID)*; version : int(&amp;#39;.&amp;#39; int)*(&amp;#39;-&amp;#39;ID)?; ID: &amp;#39;^&amp;#39;?(&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;) (&amp;#39;a&amp;#39;..&amp;#39;z&amp;#39;|&amp;#39;A&amp;#39;..&amp;#39;Z&amp;#39;|&amp;#39;_&amp;#39;|&amp;#39;0&amp;#39;..&amp;#39;9&amp;#39;)* ; description: STRING modelReference: &amp;#39;using&amp;#39; qualifiedName &amp;#39;;&amp;#39; version; vortolang 1.</description>
+      <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.</description>
       
     </item>
     
@@ -494,15 +494,7 @@
       <pubDate>Thu, 16 Nov 2023 16:47:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/aas/</guid>
-      <description>&amp;ldquo;Aas&amp;rdquo; 是一种缩写，代表了一系列与计算机和信息技术相关的服务模型。以下是一些常见的 &amp;ldquo;as a Service&amp;rdquo;（Aas）模型：
-IaaS（Infrastructure as a Service）基础设施即服务：提供计算基础设施，如虚拟机、存储和网络。用户可以通过云平台按需使用这些资源，而不必购买和维护物理硬件。
-PaaS（Platform as a Service）平台即服务：提供了一个开发和运行应用程序的平台，包括开发工具、运行时环境和相关服务。用户无需担心底层的基础设施，只需关注应用程序的开发和部署。
-SaaS（Software as a Service）软件即服务：提供基于云的软件应用，用户可以通过互联网访问。这种模型下，软件通常由第三方提供和维护，用户只需使用而无需担心软件的安装和更新。
-DaaS（Desktop as a Service）桌面即服务：提供了虚拟桌面环境，允许用户通过云访问其个人桌面。这对于远程办公和移动设备的用户尤其有用。
-CaaS（Communication as a Service）通信即服务：提供通信服务，如语音通话、视频会议和实时消息。这样的服务可以帮助企业构建和扩展其通信基础设施。
-FaaS（Function as a Service）函数即服务：以事件驱动的方式执行单一功能的小块代码（函数）。这种模型对于处理特定任务或事件响应非常有效，用户只需支付其代码运行的实际时间。
-MaaS（Monitoring as a Service）监控即服务：提供基于云的监控和分析服务，帮助用户监视其应用程序和基础设施的性能、可用性和安全性。
-BaaS（Backend as a Service）后端即服务：提供应用程序开发所需的后端功能，如数据库、用户管理和文件存储。这简化了应用程序开发过程，使开发者可以专注于前端和业务逻辑。</description>
+      <description>&amp;ldquo;Aas&amp;rdquo; 是一种缩写，代表了一系列与计算机和信息技术相关的服务模型。以下是一些常见的 &amp;ldquo;as a Service&amp;rdquo;（Aas）模型：</description>
       
     </item>
     
@@ -512,12 +504,7 @@ BaaS（Backend as a Service）后端即服务：提供应用程序开发所需�
       <pubDate>Thu, 16 Nov 2023 10:47:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/iac/concept/</guid>
-      <description>基础架构即代码（IaC）是通过机器可读的定义文件而不是物理硬件配置或交互式配置工具来管理和配置计算机数据中心资源的过程。定义可以在版本控制系统中。定义文件中的代码可以使用脚本或声明式定义，而不是通过人工流程来维护代码，但 IaC 更经常使用声明式方法。
-起源 # IaC 是为了应对公用事业计算和第二代网络框架带来的困难而发展起来的。2006 年，亚马逊网络服务公司（Amazon Web Services）推出了弹性计算云（Elastic Compute Cloud），而就在几个月前，Ruby on Rails 推出了 1.0 版本，这在企业中造成了广泛的扩展问题，而以前只有大型跨国公司才会遇到这种问题。用代码对基础架构进行建模，然后利用已知的软件最佳实践来设计、实施和部署应用基础架构的想法吸引了软件开发人员和 IT 基础架构管理员。将基础架构视为代码，并使用与其他软件项目相同的工具，可以让开发人员快速部署应用程序。
-优势 # IaC 的价值可细分为三个可衡量的类别：成本、速度和风险。
-降低成本的目的不仅是在财务上帮助企业，而且在人力和精力方面也是如此，这意味着通过消除人工部分，人们能够将精力重新集中到其他企业任务上。 基础设施自动化通过在配置基础设施时更快地执行来提高速度，并旨在提供可视性，以帮助整个企业的其他团队更快、更高效地工作。 自动化消除了与人为错误相关的风险，如手动错误配置；消除这种风险可以减少停机时间并提高可靠性。这些成果和属性有助于企业实施 DevOps 文化，即开发和运营的结合工作。 方法类型 # IaC 通常有两种方法：声明式（功能性）与命令式（程序性）。声明式方法与命令式方法的区别主要在于 &amp;ldquo;是什么&amp;rdquo; 与 &amp;ldquo;如何做&amp;rdquo;。
-声明式方法关注的是最终目标配置应该是什么； 命令式方法关注的是如何改变基础架构来实现这一目标。命令式方法定义了需要按适当顺序执行的特定命令，以实现预期的结论。 Methods # IaC 有两种方法：push 和 pull。主要区别在于告诉服务器如何配置的方式。
-在 pull 中，待配置的服务器将从控制服务器拉动其配置。 在 push 中，控制服务器将配置推送到目标系统。 持续配置自动化 # 所有持续配置自动化（CCA）工具都可视为传统 IaC 框架的延伸。它们利用 IaC 来更改、配置和自动化基础架构，还能提供基础架构管理方式的可视性、效率和灵活性。</description>
+      <description>基础架构即代码（IaC）是通过机器可读的定义文件而不是物理硬件配置或交互式配置工具来管理和配置计算机数据中心资源的过程。定义可以在版本控制系统中。定义文件中的代码可以使用脚本或声明式定义，而不是通过人工流程来维护代码，但 IaC 更经常使用声明式方法。</description>
       
     </item>
     
@@ -537,16 +524,7 @@ BaaS（Backend as a Service）后端即服务：提供应用程序开发所需�
       <pubDate>Tue, 07 Nov 2023 23:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/class-loader/</guid>
-      <description>https://cloud.tencent.com/developer/article/1948324 类加载机制简介 # 类加载整体流程如下图所示，这也是类的生命周期：
-字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象
-需要注意的是，图中红框所代表的加载，验证，准备，初始化，卸载这五个阶段的顺序是确定的，类加载必须严格按照这五个阶段的顺序来开始，但解析阶段则未必，有可能在初始化之后才开始，主要是为了支持 Java 的动态绑定特性，那么各个阶段主要做了哪些事呢？
-加载 # 在加载阶段，虚拟机需要完成以下三件事
-通过一个类的全限定名来获取此类的二进制字节流 将这个字节流所代表的静态存储结构转化为方法区的运行时结构 在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口 如上图所示，加载后生成的类对象与对象间的关系如上图所示，什么是类对象呢，比如实例的 getClass() 或 Foo.Class 即为类对象
-每个类只有一个对象实例（类对象），多个对象共享类对象，这里有个需要注意的点是类对象是在堆中而不是在方法区（这里针对的是 Java 7 及以后的版本），所有的对象都是分配在堆中的，类对象也是对象，所以也是分配在堆中，这点网上挺多人混淆了，需要注意一下
-有人可能会奇怪，只看上面这张图，对象和类对象貌似联系不起来，实际上在虚拟机底层，比如 Java Hotspot 虚拟机，对象和类是以一种被称为 oop-klass 的模型来表示的，每个对象或类都有对应的 C++ 类表示方式，它的底层其实是如下这样来表示的，通过下图可以看到，通过这种方式实例对象和 Class 对象就能联系起来了。
-有人可能会困惑，为啥需要做这些校验工作呢，字节码文件难道不安全？字节码文件一般来说是通过正常的 Java 编译器编译而成的，但字节码文件也是可以编辑修改的，也是有可能被篡改注入恶意的字节码的，就会对程序造成不可预知的风险，所以加载阶段的验证是非常有必要的。
-我们可以在执行 java 程序的时候加上 -verbose:class 或 -XX:+TraceClassLoading 这两个 JVM 参数来观察一下类的加载情况，比如我们写了如下测试类：
-public class Test { public static void main(String[] args) { } } 编译后执行 java -XX:+TraceClassLoading Test</description>
+      <description>https://cloud.</description>
       
     </item>
     
@@ -556,11 +534,7 @@ public class Test { public static void main(String[] args) { } } 编译后执行
       <pubDate>Sun, 05 Nov 2023 18:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/junit/</guid>
-      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。
-在软件开发领域中，从来没有这样的事情：少数几行代码对大量代码起着如此重要的作用 &amp;mdash; Martin Fowler
-从一个简单的例子开始认识 Junit # 本文注重点在于研究 Junit 运行的基本原理和执行单元测试的流程，所以对于一些额外的信息和数据不单独准备，本文所使用的测试 case 如下：
-junit4
-import org.junit.*; public class JunitSamplesTest { @Before public void before(){ System.out.println(&amp;#34;.....this is before test......&amp;#34;); } @After public void after(){ System.out.println(&amp;#34;.....this is after test......&amp;#34;); } @BeforeClass public static void beforeClass(){ System.</description>
+      <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。</description>
       
     </item>
     
@@ -590,19 +564,7 @@ import org.junit.*; public class JunitSamplesTest { @Before public void before()
       <pubDate>Tue, 31 Oct 2023 14:43:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/network/http123-https/</guid>
-      <description>HTTP # HTTP 基本概念 # HTTP 是什么？ # HTTP 是超文本传输协议，也就是HyperText Transfer Protocol。
-能否详细解释「超文本传输协议」？
-HTTP 的名字「超文本协议传输」，它可以拆成三个部分：
-超文本 传输 协议 1. 「协议」
-在生活中，我们也能随处可见「协议」，例如：
-刚毕业时会签一个「三方协议」； 找房子时会签一个「租房协议」； 生活中的协议，本质上与计算机中的协议是相同的，协议的特点：
-「协」字，代表的意思是必须有两个以上的参与者。例如三方协议里的参与者有三个：你、公司、学校三个；租房协议里的参与者有两个：你和房东。 「议」字，代表的意思是对参与者的一种行为约定和规范。例如三方协议里规定试用期期限、毁约金等；租房协议里规定租期期限、每月租金金额、违约如何处理等。 针对 HTTP 协议，我们可以这么理解。
-HTTP 是一个用在计算机世界里的协议。它使用计算机能够理解的语言确立了一种计算机之间交流通信的规范（两个以上的参与者），以及相关的各种控制和错误处理方式（行为约定和规范）。
-2. 「传输」
-所谓的「传输」，很好理解，就是把一堆东西从 A 点搬到 B 点，或者从 B 点 搬到 A 点。
-别轻视了这个简单的动作，它至少包含两项重要的信息。
-HTTP 协议是一个双向协议。
-我们在上网冲浪时，浏览器是请求方 A，百度网站就是应答方 B。双方约定用 HTTP 协议来通信，于是浏览器把请求数据发送给网站，网站再把一些数据返回给浏览器，最后由浏览器渲染在屏幕，就可以看到图片、视频了。</description>
+      <description>HTTP # HTTP 基本概念 # HTTP 是什么？ # HTTP 是超文本传输协议，也就是HyperText Transfer Protocol。</description>
       
     </item>
     
@@ -612,8 +574,7 @@ HTTP 协议是一个双向协议。
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/langium/</guid>
-      <description>Usage # 1 Langium download # https://www.npmjs.com/package/langium demo: https://langium.org/docs/getting-started/ note1：第一次按以上流程创建 DSL，HELLO-WORLD 项目在/Users/{用户名}/目录下 note2: VScode 下安装 code 指令。 Shift+Command+P调起命令窗口，输入shell Command，下方出现 Install &#39;code&#39; command in PATH 选项，点击以安装 vscode extension: langium 2 Langium Concepts # 1. The Grammar Language
-document: https://langium.org/docs/grammar-language/ Language Declaration: Langium 语法文件以声明语言名称的标题开头 Terminal Rules: Langium 解析器内置流基于Javascript Regular Expressions的 lexer，也允许使用EBNF表达式。但是建议使用 javascript 正则表达式，因为在 langium 内部将 EBNF 转换成了正则表达式 Parser Rules: Parser Rules 向 parser 指示哪些令牌序列是有效的 The Entry Rule: 解析步骤起点的 Parser Rules，从关键字 entry 开始，并匹配其他 Parser Rules 2.</description>
+      <description>Usage # 1 Langium download # https://www.</description>
       
     </item>
     
@@ -623,7 +584,7 @@ document: https://langium.org/docs/grammar-language/ Language Declaration: Langi
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/vscode-language-server/</guid>
-      <description>Resource # Protocol specification https://microsoft.github.io/language-server-protocol/ Syntax highlight guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Language Server Tools https://langserver.org/ Language Server Protocol https://microsoft.github.io/language-server-protocol/ VSCode Syntax Highlight Guide https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide Scope Lists https://macromates.com/manual/en/language_grammars https://www.apeth.com/nonblog/stories/textmatebundle.html </description>
+      <description>Resource # Protocol specification https://microsoft.</description>
       
     </item>
     
@@ -633,9 +594,7 @@ document: https://langium.org/docs/grammar-language/ Language Declaration: Langi
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/xtext/</guid>
-      <description>Usage # 项目创建 # XText 开发一个新的语言
-定义 xtext 文件 dsl.xtext 包括语法定义，语义（Cross-Reference）定义 生成模型代码 XText 根据 dsl.xtext 在 src-gen 目录下，生成 AST 节点模型类 parser，semantic analysis 等阶段需要的 类，如 GrammarAccess，Scope 等 定义 GenerateDsl.mwe2 定义生成流程 generateXtendStub = false 禁用 xtend 模板文件生成 编写 Language Implementation 编写 IDE Features 项目初始化
-使用 Eclipse 开发 Xtext 应用能够得到最大化的支持，包括 xtext，xtext 语言支持，Editor 支持，自动生成 Artifact 等 由于 Eclipse 一些使用上的原因，建议将 Xtext 当做一个纯 Java 框架进行使用，通过 Gradle 自动根据 xtext 生成源代码，这样能够使用 IDEA 进行开发。 目录结构</description>
+      <description>Usage # 项目创建 # XText 开发一个新的语言</description>
       
     </item>
     
@@ -645,21 +604,7 @@ document: https://langium.org/docs/grammar-language/ Language Declaration: Langi
       <pubDate>Mon, 30 Oct 2023 19:43:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/network/http-process/</guid>
-      <description>Resources # 小林coding 3.1 HTTP 常见面试题 一次完整的HTTP请求过程 # 当我们在web浏览器的地址栏中输入：www.baidu.com，具体发生了什么？
-对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址 根据这个IP，找到对应的服务器，发起TCP的三次握手 建立TCP连接后发起HTTP请求 服务器响应HTTP请求，浏览器得到html代码 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等）（先得到html代码，才能去找这些资源） 浏览器对页面进行渲染呈现给用户 服务器关闭关闭TCP连接 1.DNS怎么找到域名的？
-DNS域名解析采用的是递归查询的方式，过程是，先去找DNS缓存-&amp;gt;缓存找不到就去找根域名服务器-&amp;gt;根域名又会去找下一级，这样递归查找之后，找到了，给我们的web浏览器
-2.为什么HTTP协议要基于TCP来实现？
-TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输的各种问题（当发生错误时，会重传）
-3.最后一步浏览器是如何对页面进行渲染的？
-a）解析html文件构成 DOM树 b）解析CSS文件构成渲染树 c）边解析，边渲染 d）JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载
-DNS解析（域名解析服务器） # 首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）
-如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存
-如果还没有找到，那么尝试从 hosts文件 里面去找
-在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下
-DNS优化两个方面：DNS缓存、DNS负载均衡
-TCP连接建立（三次握手） # 拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024&amp;lt;端口&amp;lt;65535）向服务器的WEB程序（常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过 TCP/IP 4层模型的层层封包）到达服务器端后（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了 TCP/IP 的连接。
-TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而建立连接是通过三次握手来进行的。三次握手的过程如下图：
-发起HTTP请求(建立连接后) # HTTP请求报文由四部分组成：请求行、请求头、空格、请求正文</description>
+      <description>Resources # 小林coding 3.</description>
       
     </item>
     
@@ -709,12 +654,7 @@ TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而�
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</guid>
-      <description>一、公式使用参考 # 1．如何插入公式 # $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。
-行中公式可以用如下方法表示： $ 数学公式 $
-独立公式可以用如下方法表示： $$ 数学公式 $$
-自动编号的公式可以用如下方法表示： 若需要手动编号，参见“ 大括号和行标的使用”。 \begin{equation} 数学公式 \label{eq:当前公式名} \end{equation}
-自动编号后的公式可在全文任意处使用 \eqref{eq:公式名} 语句引用。
-例子： $ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $ 显示：$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m!</description>
+      <description>一、公式使用参考 # 1．如何插入公式 # $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。</description>
       
     </item>
     
@@ -724,12 +664,7 @@ TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而�
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/</guid>
-      <description>李宏毅机器学习笔记 # [toc]
-一、机器学习概论 # 机器学习是什么 # 机器学习就是让机器能自动找到一个函数function
-语音识别（Speech Recognition）：输入是音频，输出是音频对应的文字 图像分类：输入是图片，输出是类别（比如猫、狗） AlphaGo下围棋：输入是当前棋盘的状态，输出是下一步落棋的位置 对话/问答系统 机器能够找到哪些函数 # 为解决不同的问题、完成不同的任务，需要找到不同的函数，那机器学习能找到哪些函数呢？
-回归（Regression）：输出是一个连续的数值、标量，比如PM2.5预测 分类（Classification）：输出是一个离散的值。 二分类（Binary Classification）的输出就是0或1、Yes或No、&amp;hellip;，比如文本情感分析的输出可以是正面和负面 多分类（Multi-Category Classification）的输出就是[1,2,3,&amp;hellip;,N]，比如图像分类里判断一张图片是猫还是狗还是杯子 生成（Generation）：很多教科书吧机器学习划分为回归问题和分类问题，但其实不止这两种问题，比如生成（Generation）。生成是指让机器学习如何创造/生成，比如生成文本、图片等。 如何告诉机器我们希望找到什么函数 # 我们该如何为机器提供学习资料？
-有监督学习（Supervised Learning）：可以把有监督学习种的“监督”理解为标签（Label），即数据集种不仅包括特征还包括标签。有了标签，我们就可以评价一个函数的好坏，进而优化这个函数。使用Loss判断函数的好坏，Loss越小，函数越好。 强化学习（Reinforcement Learning）：原始的AlphaGo是先通过有监督学习优化到一定程度，然后用强化学习继续优化。新版本的AlphaGo是完全通过强化学习实现的，优于原始的AlphaGo。 无监督学习（Unsupervised Learning）：只给机器提供数据特征，但不提供数据标签。那机器能学到什么呢？ 下面以让机器学习下围棋为例：有监督学习VS强化学习
-有监督学习：函数的输入（数据特征）就是期盼状态，函数的输出（数据标签）就是下一步落棋的位置。此时，我们需要为机器提供的数据就类似棋谱（如果现在棋局是这样，那下一步怎么落棋最好），但其实人类不一定知道怎么落棋最好。 强化学习：让机器跟自己、别人下棋，把结果（赢或输）作为Reward，引导机器学习如何下棋。如果它赢了，那它就知道这一盘里有几步棋下得好，但不知道是哪几步；如果它输了，它就知道这一盘里有几步棋下得不好，但不知道是哪几步。 机器如何找出我们想找到的函数 # 我们要给定函数形式/范围（模型），比如假定函数是线性模型、神经网络等等。模型就是一个函数集，模型的参数确定以后，才得到一个函数。 找到更好的函数： 使用梯度下降（Gradient Descent），找到更好的函数。 前沿研究 # AI的可解释性（Explainable AI）：比如，机器为什么认为这张图片里有一只猫？ 对抗攻击（Adversarial Attack）：对输入故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出。 模型压缩（Network Compression）： 把模型压缩以减少模型对计算资源消耗。 异常检测（Anomaly Detection）：使机器知道它遇到了自己不知道的东西。 迁移学习（Transfer Learning/Domain Adversarial Learning）： 一个模型已经学到了一些知识，将这些知识应用到另一个任务中。 元学习（Meta Learning）： 让机器学习如何学习。机器学习是我们教机器学习某种知识，元学习是我们教机器如何学习。 终身学习（Life-Long Learning）：让机器终身学习，学习完任务1、再继续学任务2、…… 机器学习的三个步骤 # 确定模型（Model）/函数集（Function Set） 确定如何评价函数的好坏 确定如何找到最好的函数 </description>
+      <description>李宏毅机器学习笔记 # [toc]</description>
       
     </item>
     
@@ -739,14 +674,7 @@ TCP 是面向连接的协议，所以使用 TCP 前必须先建立连接，而�
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/</guid>
-      <description>七、Convolutional Neural Network # [toc]
-7.1 CNN入门详解 # 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？
-FNN用于图片处理的缺点 # 使用一般的全连接前馈神经网络（FNN）处理图片时的缺点：
-需要很多的参数： 假设有一张尺寸100×100的图片（尺寸已经算很小了），那输入层就有100×100×3=30K个像素，假设第一个隐藏层有1K个神经元（一个神经元包含30K个参数），这就已经需要30M个参数了…… 该架构中每个神经元就是一个分类器，这是没必要的： 第一个隐藏层作为最基础的pattern分类器（比如判断有无绿色、边缘等），第二个隐藏层基于第一个隐藏层继续做pattern分类（比如木头、肉类），以此类推…… 按照人类的直观理解，我们不是像全连接神经网络一样去处理图片的。具体来看，有哪些方面呢？
-图片的一些性质 # 结合全连接前馈神经网络的缺点和人类对图片的直观理解，可以得到下述图片的3个性质。
-性质1：Some patterns are much smaller than the whole image. # 在识别某个模式（pattern）时，一个神经元并不需要图片的所有像素点。对于一张人类全身照的图片，我们只需要看到头部而非整张图片就可以判断它是一个人脸。所以我们应该是可以用少量参数去识别这些pattern的。
-性质2：The same patterns appear in different regions. # 比如说人脸可以在图片的中间区域，也可以在图片的某个角落区域。所以识别不同区域中的相同pattern的多个分类器（或detector）应该用同一组参数或者共享参数。
-性质3：Subsampling the pixels will not change the object # CNN架构说明 # 2014年在ECCV上提出，针对上述的图片的3个性质，确定了CNN的架构如下。</description>
+      <description>七、Convolutional Neural Network # [toc]</description>
       
     </item>
     
@@ -756,10 +684,7 @@ FNN用于图片处理的缺点 # 使用一般的全连接前馈神经网络（FN
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E4%B8%89%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</guid>
-      <description>三、梯度下降 # [toc]
-梯度下降伪代码 # 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上拟合效果最好）的模型参数。现在假设模型 $f$ 中只有一个参数 $w$ ，则损失函数为 $L(f) = L(w)$ ，梯度下降算法如下（若模型有多个参数，按相同方法更新各方法）
-初始化参数：随机选取一个 $w_0$ （$w_0$ 并不一定是随机选取） 计算梯度 $\frac{dL(f)}{dw}$ ，如果小于0，此时 $w$ 增大则 $L(f)$ 会减小；如果大于0，此时 $w$ 增大则 $L(w)$ 会减小。如果模型有多个参数，则计算损失函数在各个参数方向上的偏导数。 更新模型参数 $w_1=w_0-lr\frac{dL(f)}{dw}$ ，$w$ 的变化量取决于梯度和学习率（Learning Rate）的大小：梯度绝对值或学习率越大，则 $w$ 变化量越大。如果模型有多个参数，则用上一步计算出的偏导数对应更新各参数。 重复第2步和第3步。经过多次参数更新/迭代（iteration），可以使损失函数的值达到局部最小（即局部最优，Local Optimal），但不一定是全局最优。 自适应学习率（Adaptive Learning Rate） # 梯度下降的过程中，固定学习率并不合理。学习率太大，可能导致loss不减小反而增大；学习率太小，loss会减小得很慢。基本原则是随着参数迭代更新，学习率应该越来越小，比如 $\eta_t = \frac{\eta}{\sqrt{t+1}}$ 。更好的办法是每个参数都有各自的学习率，比如Adagrad。
-Adagrad # Adaptive Gradient Descent，自适应梯度下降。2011年提出，核心是每个参数（parameter）有不同的学习率。每次迭代中，学习率要除以它对应参数的之前梯度的均方根（RMS），即 $w_{t+1} = w_t-\frac{\eta}{\sqrt{\sum_{i=0}^{t}{(g_t)^2}}}g_t$ ，其中 $t$ 是迭代次数，$w$ 是参数，$g$ 是梯度，$\eta$ 是初始学习率。随着参数迭代，$t$ 越来越大，$\sqrt{\sum_{i=0}^{t}{(g_t)^2}}$ 也越来越大，因此学习率的变化趋势是越来越小。</description>
+      <description>三、梯度下降 # [toc]</description>
       
     </item>
     
@@ -769,9 +694,7 @@ Adagrad # Adaptive Gradient Descent，自适应梯度下降。2011年提出，�
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E4%BA%8C%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/</guid>
-      <description>二、回归模型 # [toc]
-2.1 线性回归模型 # 回归模型应用案例 # 股票市场预测（Stock Market Forecast）：预测某个公司明天的股票情况 自动驾驶车（Self-Driving Car）：预测方向盘的转动角度 推荐系统（Recommendation）：预测某用户购买某商品的可能性 线性回归模型（Linear Regression Model） # 形式如下： $y= f(x) = w \cdot x + b $
-y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b是偏置（bias） x是输入（input），也可叫做特征（feature）。数据集中一般包含多个object，每个object一般包含多个component。此时，上标是object的索引，下标是component的索引 损失函数（Loss Function）如果不考虑模型的好坏，衡量一个函数的好坏，其实是衡量模型参数的好坏。以线性模型为例，就是衡量参数和的好坏。如 $ L(f) = L(w,b) = \sum_{n=1} ^{10}{ \widehat{y} - (b + w \cdot x_n)} $ ，把所有的样本误差的平方和作为损失函数 输入：一个函数 输出：多么地不好（how bad it is）。损失函数值越大，则这个函数越差、与数据集中内容月不相符 梯度下降（Gradient Descent） # 梯度下降可以优化损失函数的值，使其尽量小，即可找到最好（在数据集上模拟效果最好）的模型参数。 现在假设模型$f$中只有一个参数 $w$，则损失函数为$L(f) = L(w)$ ，梯度下降算法如下</description>
+      <description>二、回归模型 # [toc]</description>
       
     </item>
     
@@ -781,9 +704,7 @@ y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E4%BA%94%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
-      <description>五、深度学习 # [toc]
-5.1引言 # 深度学习的历史 # 1958年：心理学家Rosenblatt提出感知机（Perceptron） 它是一个线性模型。 1969年：有人说感知机是线性模型，具有局限性。 1980年代：多层感知机（Multi-layer Perceptron） 和当今的神经网络是没有本质差别的。 1986年：Hinton提出反向传播算法（Backpropagation） 但是超过3个隐藏层的神经网络，还是训练不出好的结果。 1989年：有人提出一个隐藏层就可以得到任何函数，为什么要多层？ 多层感知机慢慢淡出大家的视野。 2006年：受限玻尔兹曼机初始化（RBM Initialization） Hinton提出用受限玻尔兹曼机做初始化，很多人觉得这是个大突破，但实际上用处并不大。 至少让多层感知机回到大家的视野。 2009年：GPU 2011年：神经网络用于语音识别 2012年：神经网络技术赢得ILSVRC（ImageNet Large Scale Visual Recognition Challenge） 深度学习的三个步骤 # 和机器学习一样：
-确定模型（Model）/函数集（Function Set），在深度学习中就是定义一个神经网络。 不同的连接会构成多样的网络结构。 确定如何评价函数的好坏 如果是多分类，那和Classification一章中一样，计算每个样本预测结果与Ground Truth的交叉熵，然后求和，即为Loss。 确定如何找到最好的函数 还是Gradient Descent。 神经网络模型对应的函数比较复杂，而反向传播算法（Backpropagation）是一个很有效的计算神经网络梯度的方法。 神经网络的结构 # 输入层（Input Layer）：实际上就是输入，并不是真正的“层”。 隐藏层（Hidden Layers）：输入层和输出层之间的层，Deep指有很多隐藏层，多少层才算Deep并没有统一标准。可以看成特征提取器（Feature Extractor），作用是代替特征工程（Feature Engineering）。 输出层（Output Layer）：最后一层，可以看成分类器 全连接前反馈神经网络 # 即Fully Connected Feedforward Neural Network，FFN。</description>
+      <description>五、深度学习 # [toc]</description>
       
     </item>
     
@@ -793,12 +714,7 @@ y是输出，$\widehat{y}$ 是真实值/标签（label) w是权重（weight） b
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E5%85%ADtips-for-training-dnn/</guid>
-      <description>Tips for Training DNN # [toc]
-6.1 神经网络训练问题与解决方案 # 明确问题类型及其对应方法 # 在深度学习中，一般有两种问题：
-在训练集上性能不好 在测试集上性能不好。 当一个方法被提出时，它往往是针对这两个问题其中之一的，比如dropout方法是用来处理在测试集上性能不好的情况。
-处理神经网络在训练集上性能不好的情况和方法 # 修改神经网络架构，比如换成更好的激活函数： sigmoid函数会导致梯度消失，可以换成ReLU、Leaky ReLU、Parametric ReLU、Maxout 调整学习率： 比如RMSProp、Momentum、Adam 处理神经网络在测试集上性能不好的情况和方法 # Early Stopping、Regularization，这两个是比较传统的方法，不只适用于深度学习 Dropout，比较有深度学习的特色 一些性能优化方法的简介 # 下面3点都是在增加模型的随机性，鼓励模型做更多的exploration。
-Shuffling： 输入数据的顺序不要固定，mini-batch每次要重新生成 Dropout： 鼓励每个神经元都学到东西，也可以广义地理解为增加随机性 Gradient noise： 2015年提出，计算完梯度后，加上Gaussian noise。 随着迭代次数增加，noise应该逐渐变小。 下面3点是关于学习率调整的技巧
-warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum learning： 2009年提出，先使用简单的数据训练模型（一方面此时模型比较弱，另一方面在clean data中更容易提取到核心特征），然后再用难的数据训练模型。 这样可以提高模型的鲁棒性。 Fine-tuning 下面3点是关于数据预处理的技巧，避免模型学习到太极端的参数</description>
+      <description>Tips for Training DNN # [toc]</description>
       
     </item>
     
@@ -808,9 +724,7 @@ warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum 
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/</guid>
-      <description>四、分类模型 # [toc]
-4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行
-假设有两个类别，其中类别1的标签为1，类别2的标签为-1，那0就是分界线，大于0就是类别1，小于0就是类别2。但是回归模型会惩罚哪些太正确的样本，如果结果远远大于1，它的分类应该是类别1还是类别2？这时为了降低整体误差，需要调整已经找到的回归函数，就会导致结果的不准确。 假设有多个类别，类别1的标签是1，类别2的标签是2，类别3的标签是3。这样的话，标签间具有2和3相近、3大于2这种本来不存在的数字关系。 理想替代方案（Ideal Alternatives） # 模型：模型可以根据特征判断类型，输入是特征，输出是类别 损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。 如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM） 4.2 分类模型指概率生成模型 # 贝叶斯公式 # $P(A \cap B) = P(A)P(B|A) = P(B)P(A|B)$ $P(A|B) = \frac{P(A)P(B|A)}{P(B)}$ 全概率公式 # $P(B)=\sum_{i=1}^{n}{P(A_i)P(B|A_i)}$</description>
+      <description>四、分类模型 # [toc]</description>
       
     </item>
     
@@ -820,10 +734,7 @@ warm up： 开始时学习率较小，等稳定之后学习率变大 Curriculum 
       <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/stdlib/cluster/</guid>
-      <description>cluster 模块 # cluster模块用于组建 Node.js 应用的集群。
-cluster.isMaster属性表示当前进程是否为主进程。
-const cluster = require(&amp;#39;cluster&amp;#39;); const isMaster = cluster.isMaster; cluster.fork()方法复制当前进程。
-const cluster = require(&amp;#39;cluster&amp;#39;); const { cpus } = require(&amp;#39;os&amp;#39;); const numWorkers = cpus().length; const isMaster = cluster.isMaster; if (isMaster) { process.stdout.write(&amp;#39;master process&amp;#39;); const workers = []; for(let i = 0; i &amp;lt; numWorkers; i++) { workers.</description>
+      <description>cluster 模块 # cluster模块用于组建 Node.</description>
       
     </item>
     
@@ -833,14 +744,7 @@ const cluster = require(&amp;#39;cluster&amp;#39;); const { cpus } = require(&am
       <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/stdlib/events/</guid>
-      <description>events 模块 # Node 通过 events 模块提供事件，形成模块之间的通信机制，消除模块与模块的强耦合。
-概述 # events模块提供一个构造函数，可以用来生成事件发生器的实例。
-const EventEmitter = require(&amp;#39;events&amp;#39;); const emitter = new EventEmitter(); 上面代码中，emitter就是事件发生器的实例。
-emit()方法用于触发事件。
-emitter.emit(&amp;#39;user-registered&amp;#39;, user); 上面代码触发了user-registered事件，第二个参数user是事件传递的数据。
-on()方法用于监听事件。
-emitter.on(&amp;#39;user-registered&amp;#39;, (user) =&amp;gt; { console.log(&amp;#39;event has occured&amp;#39;); }); 注意，emit()方法和on()方法都是同步的，请看下面的例子。
-emitter.on(&amp;#39;someEvent&amp;#39;, function () { console.log(&amp;#39;event has occured&amp;#39;); }); function f() { console.log(&amp;#39;start&amp;#39;); emitter.emit(&amp;#39;someEvent&amp;#39;); console.log(&amp;#39;end&amp;#39;); } f() // start // event has occured // end 上面代码中，emit()方法执行以后，on()方法会立刻执行。只有等到on()方法执行结束以后，emit()后面的方法才会继续执行。</description>
+      <description>events 模块 # Node 通过 events 模块提供事件，形成模块之间的通信机制，消除模块与模块的强耦合。</description>
       
     </item>
     
@@ -850,12 +754,7 @@ emitter.on(&amp;#39;someEvent&amp;#39;, function () { console.log(&amp;#39;event
       <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/stdlib/http/</guid>
-      <description>http 模块 # http模块用于 HTTP 通信。
-http.Server # http.Server属性指向一个类，表示 Web 服务器实例。
-这个类继承了net.Server，而net.Server继承了 EventEmitter 接口，因此可以使用server.on()方法监听事情。最重要的一个事件是request，表示收到 HTTP 请求。
-server.on(&amp;#39;request&amp;#39;, (request, response) =&amp;gt; { response.end(&amp;#39;Hello, world!&amp;#39;); }); server.listen()方法用于启动 Web 服务。这个方法需要指定监听的端口，以及一个回调函数（启动后要做什么）。
-server.listen(PORT, () =&amp;gt; { console.log(`starting server at port ${PORT}`); }); http.createServer() # http.createServer()方法用于创建一个 Web 服务器，它的返回值就是一个http.Server实例。
-const { createServer } = require(&amp;#39;http&amp;#39;); // 指定端口 const PORT = process.</description>
+      <description>http 模块 # http模块用于 HTTP 通信。</description>
       
     </item>
     
@@ -865,8 +764,7 @@ const { createServer } = require(&amp;#39;http&amp;#39;); // 指定端口 const 
       <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/stdlib/os/</guid>
-      <description>os 模块 # cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。
-const { cpus } = require(&amp;#39;os&amp;#39;); const numWorkers = cpus().length; </description>
+      <description>os 模块 # cpus属性返回一个数组，每个成员对应一个 CPU 内核。下面代码可以获取本机的 CPU 内核数目。</description>
       
     </item>
     
@@ -876,14 +774,7 @@ const { cpus } = require(&amp;#39;os&amp;#39;); const numWorkers = cpus().length
       <pubDate>Mon, 23 Oct 2023 16:19:36 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/stdlib/process/</guid>
-      <description>process 对象 # process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。
-process.argv # process.argv是一个数组，表示启动脚本时的命令行参数。
-它的前两项是固定的。
-第一项是 Node 可执行文件的路径 第二项是 JavaScript 脚本的路径 后面的数组成员都是命令行参数。
-$ node index.js --watch 上面这个命令执行后，在index.js脚本里面，process.argv数组共有三项。
-process.argv[0]：/path/to/node process.argv[1]：/path/to/index.js process.argv[2]：&amp;ndash;watch 如果只需要命令行参数，可以用解构赋值获取。
-const [ , , ...args ] = process.argv; console.log(args[0]); // &amp;#34;--watch&amp;#34; 上面代码，args数组就是通过解构赋值，拿到的所有命令行参数。
-参考链接 # Extracting command line arguments from Node.js using destructuring, Nicholas C.</description>
+      <description>process 对象 # process对象是 Node 原生提供的对象，表示当前运行的 Node 进程。它不用引入模块，可以直接使用。</description>
       
     </item>
     
@@ -893,10 +784,7 @@ const [ , , ...args ] = process.argv; console.log(args[0]); // &amp;#34;--watch&
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-update/</guid>
-      <description>npm update # 更新所有依赖项。
-$ npm update 更新单个依赖。
-$ npm update xml2js 同时更新 package.json 里面每个依赖的版本号。
-$ npm update --save </description>
+      <description>npm update # 更新所有依赖项。</description>
       
     </item>
     
@@ -906,15 +794,7 @@ $ npm update --save </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-version/</guid>
-      <description>npm version # npm version用来指定模块的版本，然后会将新的版本号写入package.json和package-lock.json。
-它的命令行用法如下。
-npm version [ &amp;lt;newversion&amp;gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git ] 上面可以归纳为三种用法。
-（1）&amp;lt;newversion&amp;gt;：自己指定版本号。
-（2）七个版本关键字：patch，minor，major，prepatch，preminor，premajor，prerelease。这时原有版本号，会在相应的位置增加1。
-major：规则如下。
-（1）如果没有预发布号，则增加主版本号，并将次版本号和预发布号设为0。
-# 版本号从 3.1.0 变为 4.0.0 $ npm version major （2）如果有预发布号，且次版本号和补丁号都为0，则不升级主版本号，只去掉预发布号。
-# 版本号从 4.0.0 变为 5.0.0-0 $ npm version premajor # 版本号从 5.</description>
+      <description>npm version # npm version用来指定模块的版本，然后会将新的版本号写入package.</description>
       
     </item>
     
@@ -924,8 +804,7 @@ major：规则如下。
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-view/</guid>
-      <description>npm view 命令 # 查看某个模块发布过的所有版本。
-$ npm view [PackageName] versions </description>
+      <description>npm view 命令 # 查看某个模块发布过的所有版本。</description>
       
     </item>
     
@@ -935,8 +814,7 @@ $ npm view [PackageName] versions </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-whoami/</guid>
-      <description>npm whoami # npm whoami命令返回当前登录的 npm 用户名。
-$ npm whoami </description>
+      <description>npm whoami # npm whoami命令返回当前登录的 npm 用户名。</description>
       
     </item>
     
@@ -946,13 +824,7 @@ $ npm whoami </description>
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npx/</guid>
-      <description>npx 使用教程 # npm 从5.2版开始，增加了 npx 命令，它有很多用处。
-Node 自带 npm 模块，所以可以直接使用 npx 命令。万一不能用，就要手动安装一下。
-$ npm install -g npx 调用项目安装的模块 # npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha。
-$ npm install -D mocha 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的 scripts字段里面， 如果想在命令行下调用，必须像下面这样。
-# 项目的根目录下执行 $ node-modules/.bin/mocha --version npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
-$ npx mocha --version npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
-由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。</description>
+      <description>npx 使用教程 # npm 从5.</description>
       
     </item>
     
@@ -962,13 +834,7 @@ $ npx mocha --version npx 的原理很简单，就是运行的时候，会到nod
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/package.json/</guid>
-      <description>package.json # files 字段 # files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。
-{ &amp;#34;name&amp;#34;: &amp;#34;@adam_baldwin/wombats&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;main&amp;#34;: &amp;#34;index.js&amp;#34;, &amp;#34;files&amp;#34;: [ &amp;#34;index.js&amp;#34; ], ... } npm不会发布.gitignore里面列出的文件和目录。项目的根目录或子目录里面，还可以放置一个.npmignore文件，该文件会覆盖.gitignore，里面指定的文件和目录不会被发布。
-项目的根目录下，files字段优先级最高；子目录下，.npmignore优先。files字段指定的文件，不会被.npmignore或.gitignore排除。
-以下文件，发布的时候总是会包含。
-package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main字段里面的文件 README、CHANGES、LICENSE和NOTICE这四个文件名，可以采取任意的大小写组合。
-以下文件，发布的时候总是会被排除。
-.git CVS .svn .hg .lock-wscript .wafpickle-N .*.swp .DS_Store ._* npm-debug.log .</description>
+      <description>package.json # files 字段 # files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。</description>
       
     </item>
     
@@ -978,16 +844,7 @@ package.json README CHANGES / CHANGELOG / HISTORY LICENSE / LICENCE NOTICE main�
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/publish/</guid>
-      <description>发布 # 发布标签 # npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。
-新发布的版本，如果不希望用户默认安装，就需要自己指定标签。举例来说，某个模块的最新版本是4.6.12，但是有些用户还在使用老版本3.2.13。现在，你修正了一些老版本的 bug，发了一个新版本3.2.14。如果不指定发布标签，3.2.14的发布标签就是latest，因为它是最新发布的。
-这导致的后果就是，用户执行下面的命令，进行默认安装时，会出现非预期的结果。
-$ npm install &amp;lt;package&amp;gt; 执行上面命令时，用户会默认安装3.2.14，而不是4.6.12。因为latest标签指向3.2.14。
-解决方法就是，发布3.2.14的时候，为它打上一个发布标签。这样，3.2.14就不会占用latest标签。
-$ npm publish --tag=previous 执行上面的命令后，3.2.14的发布标签就是previous。
-安装时，必须指定这个标签，才能安装到3.2.14。
-$ npm install &amp;lt;package&amp;gt;@previous # 或者 $ npm install &amp;lt;package&amp;gt; --tag previous 上面的命令的两种语法都可以指定标签名。由于latest是默认标签，所以可以省略。
-$ npm install &amp;lt;package&amp;gt; # 等同于 $ npm install &amp;lt;package&amp;gt;@latest 一种常见的做法是，发布下一个大版本时，指定它的发布标签为next。
-# 发布 $ npm publish --tag=next # 安装 $ npm publish &amp;lt;package&amp;gt;@next 这样的话，用户默认安装的还是主流版本，但是愿意尝鲜的用户，可以使用新版本。</description>
+      <description>发布 # 发布标签 # npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。</description>
       
     </item>
     
@@ -997,11 +854,7 @@ $ npm install &amp;lt;package&amp;gt; # 等同于 $ npm install &amp;lt;package&
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/scripts/</guid>
-      <description>脚本功能 # npm run # npm不仅可以用于模块管理，还可以用于执行脚本。package.json文件有一个scripts字段，可以用于指定脚本命令，供npm直接调用。
-{ &amp;#34;name&amp;#34;: &amp;#34;myproject&amp;#34;, &amp;#34;devDependencies&amp;#34;: { &amp;#34;jshint&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;browserify&amp;#34;: &amp;#34;latest&amp;#34;, &amp;#34;mocha&amp;#34;: &amp;#34;latest&amp;#34; }, &amp;#34;scripts&amp;#34;: { &amp;#34;lint&amp;#34;: &amp;#34;jshint **.js&amp;#34;, &amp;#34;test&amp;#34;: &amp;#34;mocha test/&amp;#34; } } 上面代码中，scripts字段指定了两项命令lint和test。命令行输入npm run-script lint或者npm run lint，就会执行jshint **.js，输入npm run-script test或者npm run test，就会执行mocha test/。npm run是npm run-script的缩写，一般都使用前者，但是后者可以更好地反应这个命令的本质。
-npm run命令会自动在环境变量$PATH添加node_modules/.bin目录，所以scripts字段里面调用命令时不用加上路径，这就避免了全局安装NPM模块。
-npm run如果不加任何参数，直接运行，会列出package.json里面所有可以执行的脚本命令。
-npm内置了两个命令简写，npm test等同于执行npm run test，npm start等同于执行npm run start。</description>
+      <description>脚本功能 # npm run # npm不仅可以用于模块管理，还可以用于执行脚本。package.</description>
       
     </item>
     
@@ -1011,16 +864,7 @@ npm内置了两个命令简写，npm test等同于执行npm run test，npm start
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/yarn/</guid>
-      <description>Yarn 的用法 # 简介 # Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。
-（1）安装速度较快。
-Yarn 采用平行安装模式，而 npm 采用的是线性模式，只有前一个模块安装完，才会安装下一个。
-（2）默认开启“版本锁定”功能
-Yarn 希望安装依赖时，所有依赖的版本在不同机器都保持相同。为了达到这个目的，第一次安装依赖时，它默认生成一个锁定文件yarn.lock，将这个文件放到代码库之中，下次安装时就能保证，总是安装相同版本的依赖。这与npm shrinkwrap命令生成的npm-shrinkwrap.json的作用相似，只不过 Yarn 默认就可以生成这个文件。
-全局参数 global # 如果要全局执行一个命令，必须加上global参数。目前，add、bin、ls和remove四个命令，支持global参数。
-$ yarn global add create-react-app --prefix /usr/local yarn install # yarn install命令用于安装一个模块。如果yarn.lock文件存在，会优先读取该文件，按照该文件指定的版本安装。
-使用--production参数或环境变量NODE_ENV等于production，将不会安装devDependencies字段指定的模块。
-$ yarn install --production 如果使用--no-lockfile参数，yarn install将不会读取或生成yarn.lock。
-$ yarn install --no-lockfile yarn add # yarn add命令允许新增安装一个模块。它默认会将该模块加入package.</description>
+      <description>Yarn 的用法 # 简介 # Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。</description>
       
     </item>
     
@@ -1030,14 +874,7 @@ $ yarn install --no-lockfile yarn add # yarn add命令允许新增安装一个�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/basic/</guid>
-      <description>概述 # npm有两种含义。
-首先，npm 是一个网站，用来登记和管理 Node 的模块，网址为 npmjs.org。
-其次，npm 是一个命令行软件，用来在用户的电脑上安装和管理 Node 模块。
-安装 # npm不需要单独安装。安装 Node 的时候，会默认一起安装npm。
-但是，默认安装的npm可能不是最新版本。在 Node 安装成功后，最好用下面的命令，更新到最新版本。
-$ npm install npm@latest -g 然后，运行下面的命令，查看一下 npm 的版本。
-$ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取帮助。
-# 查看 npm 命令列表 $ npm help # 查看各个命令的简单用法 $ npm -l # 查看 npm 的配置 $ npm config list -l npm init # npm init用来初始化生成一个新的package.</description>
+      <description>概述 # npm有两种含义。</description>
       
     </item>
     
@@ -1047,12 +884,7 @@ $ npm --version # 等同于 $ npm -v 下面三个命令，也可以用来获取�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/install/</guid>
-      <description>安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。
-$ npm install lodash 上面命令在当前目录中安装了lodash模块。
-默认安装的是最新版本（即latest标签指向的版本），但是你可以 semver 表达式指定安装的版本。
-# 等同于 npm install lodash $ npm install lodash@latest # 指定确定的版本 $ npm install lodash@4.17.4 # 指定版本范围 $ npm install sax@&amp;#34;&amp;gt;=4.15.0 &amp;lt;4.18.0&amp;#34; # 指定大版本 $ npm install lodash@^4.0.0 上面最后一行命令，指定安装最新的4.x版。
-默认情况下，npm install不会修改package.json。--save或-S参数，将模块写入package.json的dependencies字段，--save-dev或-D，将模块加入package.json的devDependencies字段。
-# 将模块写入 package.</description>
+      <description>安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。</description>
       
     </item>
     
@@ -1062,12 +894,7 @@ $ npm install lodash 上面命令在当前目录中安装了lodash模块。
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-exec/</guid>
-      <description>npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。
-该命令与npx命令的作用类似，但是使用上有所不同。
-npx会将所有参数原样传入模块内部。
-$ npx foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec则需要使用--分隔符，指定所要执行的命令和它的参数。
-$ npm exec -- foo@latest bar --param=@npmcli/foo # 等同于 $ foo bar --param=@npmcli/foo npm exec也可以用--package参数指定模块。
-$ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo bar --bar-argument --call或-c参数用来指定执行的整个命令。</description>
+      <description>npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。</description>
       
     </item>
     
@@ -1077,12 +904,7 @@ $ npm exec --package=foo -- bar --bar-argument # 等同于 $ npx --package=foo b
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-init/</guid>
-      <description>npm init 命令 # npm init命令的作用，是生成package.json文件。它的别名是create。
-新建一个目录，作为模块的开发目录。进入该目录，执行npm init，屏幕上会依次出现一些问题，要求用户回答。用户回答以后，就会生成package.json文件。
-$ npm init 如果觉得回答问题太麻烦，想使用package.json的默认值，那就使用--yes或-y参数。
-$ npm init --yes # 或者 $ npm init -y 如果想设置package.json的一些默认值（作者、Email、许可证），需要提前用npm set命令设置。
-$ npm set init-author-email &amp;#34;example-user@example.com&amp;#34; $ npm set init-author-name &amp;#34;example_user&amp;#34; $ npm set init-license &amp;#34;MIT&amp;#34; npm init也可以格式化创建项目。
-$ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命令，会去执行create-foo这个模块（package.</description>
+      <description>npm init 命令 # npm init命令的作用，是生成package.</description>
       
     </item>
     
@@ -1092,16 +914,7 @@ $ npm init foo # 等同于 $ npm exec create-foo 上面的npm init foo这条命�
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-link/</guid>
-      <description>npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？
-一种方法是使用npm install的--save参数。
-$ npm install --no-save &amp;lt;模块的本地路径h&amp;gt; 上面的命令会从本地目录安装指定模块，但是不写入package.json。这样就可以让应用加载本地模块。
-另一种则是使用npm link命令，在node_modules目录里面建立一个符号链接，链接到本地模块。
-它分成两步，第一步先在本地模块的目录里，执行npm link。
-$ npm link 第二步是到你的应用目录，执行npm link &amp;lt;本地模块名&amp;gt;，在node_modules目录里面产生本地模块的符号链接。
-$ npm link &amp;lt;本地模块名&amp;gt; 也可以将上面两步合二为一，在应用目录里面，直接链接本地模块的路径。
-$ npm link &amp;lt;本地模块的路径&amp;gt; 等到测试完毕，再用npm unlink命令，先在应用目录删除符号链接。
-$ npm unlink --no-save &amp;lt;本地模块名&amp;gt; 再到本地模块的目录里面，执行npm unlink。
-$ npm unlink </description>
+      <description>npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？</description>
       
     </item>
     
@@ -1111,13 +924,7 @@ $ npm unlink </description>
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-tag/</guid>
-      <description>npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。
-发布模块时，如果不指定 tag，默认使用latest。安装时也是如此，不指定版本时，npm 默认安装latest标签对应的最新版本。
-如果指定 tag，发布时会将该 tag 指向最新发布的版本。用户如果想安装该版本，需要在安装时指定 tag。
-$ npm publish --tag beta 上面示例中，新发布版本的标签是beta。
-下面的命令为已发布的版本指定标签。注意，这一步之前不需要先移除已经存在的标签。
-# 语法 $ npm dist-tag add [PackageName]@[Version] [Tag] # 例子 $ npm dist-tag add foo-package@0.0.0 latest 安装时指定标签。
-$ npm install &amp;lt;package&amp;gt;@&amp;lt;tag&amp;gt; # 或者 $ npm install --tag &amp;lt;tag&amp;gt; 下面的命令查看所有 tag 和对应的版本。</description>
+      <description>npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。</description>
       
     </item>
     
@@ -1127,13 +934,7 @@ $ npm install &amp;lt;package&amp;gt;@&amp;lt;tag&amp;gt; # 或者 $ npm install
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-token/</guid>
-      <description>npm token # npm token命令用来管理认证令牌。
-npm token list命令列出所有激活的认证令牌。
-$ npm token list 上面命令的返回结果，以表格形式显示。如果加上--json参数，则返回 JSON 格式；加上--parseable参数，返回 Tab 键分隔的数据。
-npm token create命令生成一个新的认证令牌。
-$ npm token create --read-only参数用来生成只读令牌，默认是读写令牌。--cidr=&amp;lt;cidr-ranges&amp;gt;参数用来指定令牌生效的 IP 地址范围。
-npm token revoke命令收回令牌。
-$ npm token revoke &amp;lt;token|id&amp;gt; </description>
+      <description>npm token # npm token命令用来管理认证令牌。</description>
       
     </item>
     
@@ -1143,11 +944,7 @@ $ npm token revoke &amp;lt;token|id&amp;gt; </description>
       <pubDate>Mon, 23 Oct 2023 16:17:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/timer/</guid>
-      <description>定时器 # process.nextTick()会立即执行回调函数。 微任务队列。
-setImmediate()， clearImmediate() # setImmediate(). It can be passed to clearImmediate()
-setImmediate()会在下一轮执行回调函数。
-定时器在 IO 操作的回调函数之前执行。
-Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 </description>
+      <description>定时器 # process.</description>
       
     </item>
     
@@ -1157,13 +954,7 @@ Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTim
       <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/fs/</guid>
-      <description>fs 模块 # fs.createReadStream() # fs.createReadStream方法读取一个文件，以 stream 的形式返回。
-const readStream = fs.createReadStream( inputFilePath, { encoding: &amp;#39;utf8&amp;#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
-配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
-配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
-stream 以事件的形式获取。
-readStream.on(&amp;#39;data&amp;#39;, (chunk) =&amp;gt; { console.log(&amp;#39;&amp;gt;&amp;gt;&amp;gt; &amp;#39;+chunk); }); readStream.on(&amp;#39;end&amp;#39;, () =&amp;gt; { console.log(&amp;#39;### DONE ###&amp;#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
-async function main(inputFilePath) { const readStream = fs.</description>
+      <description>fs 模块 # fs.</description>
       
     </item>
     
@@ -1173,11 +964,7 @@ async function main(inputFilePath) { const readStream = fs.</description>
       <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/promise/</guid>
-      <description>Promise # UnhandledPromiseRejectionWarning # 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
-new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
-new Promise(function (resolve, reject) { throw new Error(&amp;#39;message&amp;#39;); console.log(&amp;#39;hello&amp;#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
-消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
-new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); console.</description>
+      <description>Promise # UnhandledPromiseRejectionWarning # 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。</description>
       
     </item>
     
@@ -1187,13 +974,7 @@ new Promise(function (resolve, reject) { reject(&amp;#39;message&amp;#39;); cons
       <pubDate>Mon, 23 Oct 2023 16:17:19 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/repl/</guid>
-      <description>Node 的 REPL 环境 # 简介 # REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
-命令行下输入node，就可以进入 Node 的 REPL 环境。
-$ node &amp;gt; REPL 环境的提示符是一个大于号（&amp;gt;）。
-退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
-REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
-REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
-$ node &amp;gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.</description>
+      <description>Node 的 REPL 环境 # 简介 # REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。</description>
       
     </item>
     
@@ -1203,13 +984,7 @@ $ node &amp;gt; fs.read [Function] 上面代码中，REPL 环境可以直接使�
       <pubDate>Mon, 23 Oct 2023 16:16:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/module/this/</guid>
-      <description>this 变量 # Node 应用的顶层变量是global，对应浏览器的window变量。
-顶层的 this # 在 REPL 环境，顶层的this就指向global。
-&amp;gt; global === this true 顶层变量是global和this的属性。
-&amp;gt; var foo = &amp;#34;bar&amp;#34;; &amp;gt; this.foo bar &amp;gt; global.foo bar 上面代码中，foo是一个顶层变量，自动生成了this.foo和global.foo两个属性。
-在模块环境，顶层的this指向当前模块，即module.exports，默认是一个空对象，与global不是同一个对象。
-// 模块环境 console.log(this) // {} console.log(this === global) // false 模块内部的顶层变量，不会自动成为global和this的属性。
-// 模块环境 var foo = &amp;#34;bar&amp;#34;; console.log(this.foo); // undefined console.</description>
+      <description>this 变量 # Node 应用的顶层变量是global，对应浏览器的window变量。</description>
       
     </item>
     
@@ -1249,13 +1024,7 @@ $ node &amp;gt; fs.read [Function] 上面代码中，REPL 环境可以直接使�
       <pubDate>Thu, 19 Oct 2023 20:40:43 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/devoops/git/git-tutorial/</guid>
-      <description>Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。
-本节选择性介绍 git 中比较常用的命令行场景。
-安装 # （1）Debian/Ubuntu 环境安装
-如果你使用的系统是 Debian/Ubuntu ， 安装命令为：
-$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \ &amp;gt; libz-dev libssl-dev $ apt-get install git-core $ git --version git version 1.8.1.2 （2）Centos/RedHat 环境安装
-如果你使用的系统是 Centos/RedHat ，安装命令为：
-$ yum install curl-devel expat-devel gettext-devel \ &amp;gt; openssl-devel zlib-devel $ yum -y install git-core $ git --version git version 1.</description>
+      <description>Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。</description>
       
     </item>
     
@@ -1275,11 +1044,7 @@ $ yum install curl-devel expat-devel gettext-devel \ &amp;gt; openssl-devel zlib
       <pubDate>Wed, 18 Oct 2023 20:14:26 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/functional-programming/</guid>
-      <description>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。
-在本单元中，我们首先介绍 Lisp 家族中的函数式语言 Scheme。然后，我们将讨论与所有 procedural languages 相关的函数方面的问题，然后再仔细研究 functional programming，这是一种以数学函数为计算模型的编程范式。
-Introduction to Scheme # R5RS Scheme 语言采用了与 Python 非常相似的计算模型，但只使用 expressions (不使用statements)，擅长 symbolic computation。
-Scheme 是 Lisp 的一种方言，Lisp 是当今仍在广泛使用的第二古老的编程语言（仅次于 Fortran）。几十年来，Lisp 程序员社区一直在蓬勃发展，而新的 Lisp 方言（如 Clojure）也是所有现代编程语言中开发者社区发展最快的。要跟上本文的示例，可以下载 Scheme 解释器或使用在线解释器。
-Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单表达式，也可以是列表形式的组合。简单表达式由一个文字或符号组成。组合表达式是一种 compound expression，由一个运算符表达式和零个或多个操作数子表达式组成。运算符和操作数都包含在括号中：</description>
+      <description>我们将注意力转向过程抽象，这是一种将复杂程序分解成 functions (也称为 procedures 或 subroutines 。这些术语在不同语境中的用法有细微差别，但就我们的目的而言，我们将把它们视为同义词) 形式的较小代码片段的策略。函数将某些计算封装在一个接口之后，与任何抽象概念一样，函数的用户只需知道函数做了什么，而不需要知道函数是如何完成计算的。函数还通过接收影响其计算的参数来概括计算。计算的结果就是函数的返回值。</description>
       
     </item>
     
@@ -1299,9 +1064,7 @@ Expressions # Scheme 程序由 expressions 组成，expressions 可以是简单�
       <pubDate>Tue, 17 Oct 2023 11:47:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/serverless/serverless-dev/</guid>
-      <description>Serverless Devs 是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者不仅可以一键体验多云 Serverless 产品，极速部署 Serverless 项目，还可以在 Serverless 应用全生命周期进行项目的管理，并且非常简单快速的将 Serverless Devs 与其他工具/平台进行结合，进一步提升研发、运维效能。
-平台/产品支持 # 目前 Serverless Devs 项目已经支持的 FaaS 平台/产品：
-Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百度智能云函数计算（CFC）: 项目仓库 华为云函数工作流（FG）: 项目仓库 腾讯云云函数（SCF）: 项目仓库 Installable OpenFunction（ofn）: 项目仓库 Laf: 开发中&amp;hellip; 项目期望 # Serverless Devs 希望可以为 Serverless 开发者们提供一款可以无厂商锁定的，可以在 Serverless 应用全生命周期发挥作用的 Serverless 开发者工具； Serverless Registry 希望可以为 Serverless 生态提供一套完整的包管理规范，与 Python 中的 pypi， Nodejs 中的 npm 等类似，将以此来开放和分享 Serverless Package，建设 Serverless 生态； Serverless Developer Meetup 希望可以打造最符合 Serverless 开发者的社区活动，通过这个活动，希望更多人可以一起交流、学习 Serverless 相关的产品； 快速上手 # 本快速上手案例以 阿里云函数计算 为例的快速上手 Serverless Devs</description>
+      <description>Serverless Devs 是一个开源开放的 Serverless 开发者平台，致力于为开发者提供强大的工具链体系。通过该平台，开发者不仅可以一键体验多云 Serverless 产品，极速部署 Serverless 项目，还可以在 Serverless 应用全生命周期进行项目的管理，并且非常简单快速的将 Serverless Devs 与其他工具/平台进行结合，进一步提升研发、运维效能。</description>
       
     </item>
     
@@ -1311,13 +1074,7 @@ Hosted 阿里云函数计算（FC）: 项目仓库 AWS Lambda: 项目仓库 百�
       <pubDate>Tue, 17 Oct 2023 10:47:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/serverless/serverless-concept-models/</guid>
-      <description>Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。
-Serverless 的特点
-按需分配 无服务器计算基于事件驱动和按需调用，只在需要时才会进行计算资源的分配和管理 弹性伸缩 无服务器计算平台会自动根据负载量的变化进行资源的动态分配和优化，无需手动干预 简化开发与部署 开发者专注于编写核心业务逻辑代码，简化应用开发以及部署流程 Concept Models # Serverless 核心资源 # Service
-阿里云提供服务这一抽象 服务是函数计算资源管理的单位，同一服务下的所有函数共享一些设置，如服务授权和日志配置 一个应用可拆分为多个服务，一个服务可由多个函数组成 Function
-云函数，云函数由代码和运行环境描述组成 云函数可能依赖于其他云函数，或者外部服务，如对象存储，API 网关，消息队列 Trigger
-触发器，用于在满足某些条件时，触发 Function 的执行 基于事件驱动 常见的触发器类型 定时触发器 Cron Trigger API 网关触发器 HTTP Trigger 消息队列触发器 MQ Trigger External Service
-云函数在运行过程中，可能调用外部的服务完成任务，如调用 Redis 或 RDBMS 存储状态 Function # 表示 Serverless 函数</description>
+      <description>Serverless 是一种计算模型，它使得开发者能够在无需管理服务器和基础架构的情况下运行代码（或称函数）。使用无服务器计算，开发者可以将代码上传到云平台，平台会在需要时根据流量自动进行资源分配和处理。</description>
       
     </item>
     
@@ -1327,10 +1084,7 @@ Serverless 的特点
       <pubDate>Mon, 16 Oct 2023 15:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/metaprogramming/</guid>
-      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。
-Macros and Code Generation # macro 是将输入序列转换为某种替换输出序列的规则。这个翻译过程称为 macro expansion，一些语言提供宏作为其规范的一部分。宏设施可以被实现为 preprocessing step，其中宏扩展发生在 lexical and syntactic analysis 之前，或者它可以被合并为 syntax analysis 或 a later translation step。
-使用最广泛的 macro systems 之一是 C 预处理器（CPP），它作为处理程序的第一步被包含在 C 和 C++ 中。预处理器指令以散列符号开头，包括 #include、#define、#if 等。例如，下面定义了一个类似函数的 macro 来交换两个项目：
-#define SWAP(a, b) { auto tmp = b; b = a; a = tmp; } 然后，我们可以如下使用宏：</description>
+      <description>元编程是编写可在其他程序上运行的计算机程序的技术。诸如编译器和程序分析器之类的系统可以被视为元程序，因为它们将其他程序作为输入。我们将在这里讨论的元编程形式特别关注生成要作为程序一部分包含的代码。从某种意义上说，它们可以被认为是初级编译器。</description>
       
     </item>
     
@@ -1360,42 +1114,7 @@ Macros and Code Generation # macro 是将输入序列转换为某种替换输出
       <pubDate>Sat, 14 Oct 2023 19:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/programming-language-pool/</guid>
-      <description>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。
-让我们一一理解这些编程语言。由于列表很大，因此不可能详细讨论所有这些内容。在这里，我正在用所有这些各种编程语言的示例编写简短的介绍。
-编程语言流行度排名 编译语言 # 编译语言是一种编程语言，其中我们使用编译器来编译和执行代码。编译器通常是从我们的书面源代码生成机器级代码的翻译器。
-C
-C ++
-C＃
-ALGOL
-Cobol
-Fortran
-Java
-Visual Basic
-Smalltalk
-解释语言 # 解释语言是一种编程语言，在其中，无需将程序编译为机器语言的指令，我们就可以直接自由地执行指令。解释器逐行执行程序。语言解释为编译后的实现（如平台独立性，动态范围，动态类型等）提供了更多的灵活性。
-Python
-Ruby
-Perl
-Pascal
-Lisp
-BASIC
-APL
-脚本语言 # 脚本语言是控制应用程序的编程语言。可以在任何其他应用程序上独立执行的脚本。它们被广泛应用于它们所控制的应用中，并被用于自动化领域。
-PHP
-VBScript
-Windows PowerShell
-F-Script
-BeanShell
-AutoIt
-R
-Game Maker Language
-标记语言 # 标记语言是一种人工语言，用于对文档进行注释，以便在语法上与文本（可定义文本显示方式的文本）区分开。
-HTML
-XML
-XHTML
-SGML
-Curl
-程序语言 # 程序（命令式）编程意味着指定程序达到预期状态应采取的步骤。过程不过是一组可以通过过程调用引用的指令。这有助于代码的重用。这种类型的编程使程序结构化并易于跟踪程序流。</description>
+      <description>下面列出了所有类型的编程语言的完整分类列表。编程语言没有严格的分类方案。因此，我们可以将一种语言视为不止一种编程语言的示例。</description>
       
     </item>
     
@@ -1415,11 +1134,7 @@ Curl
       <pubDate>Fri, 13 Oct 2023 20:07:16 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/</guid>
-      <description>ZooKeeper 简介 # ZooKeeper 是什么 # ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。
-ZooKeeper 主要用来解决分布式集群中应用系统的一致性问题，它能提供基于类似于文件系统的目录节点树方式的数据存储。但是 ZooKeeper 并不是用来专门存储数据的，它的作用主要是用来维护和监控存储数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。
-很多大名鼎鼎的框架都基于 ZooKeeper 来实现分布式高可用，如：Dubbo、Kafka 等。
-ZooKeeper 官方支持 Java 和 C 的 Client API。ZooKeeper 社区为大多数语言（.NET，python 等）提供非官方 API。
-ZooKeeper 的应用场景 # 配置管理 集群节点可以通过中心源获取启动配置 更简单的部署 分布式集群管理 节点加入/离开 节点的实时状态 命名服务，如：DNS 分布式同步：如锁、栅栏、队列 分布式系统的选主 中心化和高可靠的数据注册 ZooKeeper 的特性 # ZooKeeper 具有以下特性：</description>
+      <description>ZooKeeper 简介 # ZooKeeper 是什么 # ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。</description>
       
     </item>
     
@@ -1429,12 +1144,7 @@ ZooKeeper 的应用场景 # 配置管理 集群节点可以通过中心源获取
       <pubDate>Fri, 13 Oct 2023 19:07:16 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/overview/</guid>
-      <description>什么是分布式系统 # 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。
-特点
-分布性 对等性 平等: 无主从之分 独立: 拥有自己的CPU和内存，独立处理数据 并发性 外部: 承载多个客户端的并发访问 内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上 故障独立性 部分节点出现故障不影响整个系统的正常使用 split-brain 问题 # 对于一个集群，想要提高这个集群的可用性，通常会采用多机房部署，比如现在有一个由6台zkServer所组成的一个集群，部署在了两个机房。正常情况下，此集群只会有一个Leader，那么如果机房之间的网络断了之后，两个机房内的zkServer还是可以相互通信的，但机房之间无法通信。如果不考虑过半机制，那么就会出现每个机房内部都将选出一个Leader。这就相当于原本一个集群，被分成了两个集群，出现了两个大脑，这就是脑裂。
-对于这种情况，我们也可以看出来，原本应该是统一的一个集群对外提供服务的，现在变成了两个集群同时对外提供服务，如果过了一会，断了的网络突然联通了，那么此时就会出现问题了，两个集群刚刚都对外提供服务了，数据该怎么合并，数据冲突怎么解决等等问题。
-CAP定理 # C(Consistency，一致性) 含义: 同一时刻，数据在不同节点的多个副本是否具有完全相同的值 类型 强一致性: 数据更新完成后，同一时刻，不同的读操作都能获得最新的值 弱一致性: 数据更新完成后，同一时刻，不同的读操作不一定都能获得最新的值，也无法保证多长时间之后可以获得最新的值 A(Availability，可用性) 含义: 对于每一次请求，系统是否都能在有限(指定)的时间内做出响应 P(Partition Tolerance，分区容错性) 含义: 当发生网络分区时，系统仍能对外提供满足 一致性C 和 可用性A 的服务 分布式系统在同一时间片段内，不可能同时满足一致性C、可用性A和分区容错性P，最多只能满足其中的两项。
-满足意味着100%， 满足C -&amp;gt; 满足强一致性 满足A -&amp;gt; 满足绝对可用性 对分布式系统而言，网络分区无法避免，满足P是前提条件，所以不可能选择CA架构，只能选择CP或AP架构 例如: 发生网络分区时，某个节点正在进行写操作 如果为了保证C，必须禁止其他节点的读写操作，那就与A冲突了 如果为了保证A，其他节点正常读写，那就与C冲突了 选择CP或AP架构，关键在业务场景 例如: 对于必须确保强一致性的银行业务，只能选择CP BASE理论 # BA(Basically Availability，基本可用性) 当系统发生故障时，在确保核心功能和指标有效的提前下，允许损失部分可用性，包括响应时间上的损失、非核心功能上的损失等 S(Soft State，软状态) 允许数据存在中间状态(暂时未更新)，且该状态不会影响整体可用性 允许不同节点上的数据副本的同步过程存在一定延时 EC(Eventually Consistency，最终一致性) 分布在不同节点上的数据副本，在经过一定时间的同步后，最终达到一致状态 例如: Zookeeper、HDFS QJM写事务的过半策略 弱一致性的升级版 分布式系统在满足分区容错性P的同时，允许数据软状态S的存在，并实现基本可用性BA和最终一致性EC</description>
+      <description>什么是分布式系统 # 将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。</description>
       
     </item>
     
@@ -1444,13 +1154,7 @@ CAP定理 # C(Consistency，一致性) 含义: 同一时刻，数据在不同节
       <pubDate>Fri, 13 Oct 2023 17:27:37 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/asyncapi-code-generator/</guid>
-      <description>Background # IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。
-事实上，这也是 REST 应用程序接口面临的一个问题，直到业界联合起来，提出了一种定义同步应用程序接口结构和模式的标准方法： OpenAPI（源自 Swagger）。
-Introduction # 对于异步架构，受 OpenAPI 的启发，AsyncAPI 的出现解决了这一问题：
-AsyncAPI 提供了一种规范，允许您以机器可读的格式定义消息驱动的 API。它与协议无关，因此可以用于通过 Kafka、MQTT、AMQP、WebSockets、STOMP 等工作的 API。该规范与 OpenAPI/Swagger 非常相似，所以如果你熟悉它，AsyncAPI 对你来说应该很容易。
-在 AsyncAPI 中，API 的规格可以用 YAML 或 JSON 定义，例如可以指定消息代理、感兴趣的主题或与每个主题相关的不同消息格式等。不过，AsyncAPI 还处于开发的早期阶段，AsyncAPI 工具市场还不发达，主要局限于生成供人类使用的文档。
-AsyncAPI 最初的贡献就是上图中展示的方法。
-AsyncAPI Toolkit # 如上图所示，AsyncAPI 团队扩展了这一初始框架。基于 AsyncAPI 规范在 Xtext 中开发 AsyncAPI JSON 语法的，该语法可验证符合 AsyncAPI 规范的消息驱动 API 定义。同样，根据该语法，Xtext 会自动生成相应的 AsyncAPI 元模型和所有工具（带内容辅助功能的编辑器、解析器等），以便轻松创建 AsyncAPI JSON 定义并将其转换为符合 AsyncAPI 元模型的 AsyncAPI 模型。</description>
+      <description>Background # IIoT（工业物联网）架构通常是分布式和异步的，通信由事件驱动，如消息的发布（和相应的订阅）。这些异步架构提高了可扩展性和对变化的耐受性，但也引发了互操作性问题，因为架构各元素之间对消息内部结构及其分类（主题）的明确知识被稀释了。</description>
       
     </item>
     
@@ -1460,12 +1164,7 @@ AsyncAPI Toolkit # 如上图所示，AsyncAPI 团队扩展了这一初始框架�
       <pubDate>Fri, 13 Oct 2023 16:46:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/openapi-code-generator/</guid>
-      <description>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。
-如何使用 OpenAPI # 本节介绍如何创建一个基本的 OpenAPI yaml 规范，并用它为 Spring Boot 应用程序生成服务器端代码。
-Create OpenAPI spec # 首先要做的是为您的应用程序设计 OpenAPI 规范。您将设计一个客户 API。该 API 允许您创建一个客户，并根据其 ID 检索该客户。现实生活中的应用程序接口会更加复杂，但我们还是保持简单。
-使用 Swagger 编辑器 是设计 API 的简便方法。它会立即反馈您的规范是否有错误，并即时生成 Swagger 文档。
-OpenAPI 规范的 header 包含一些有关 API 的元数据，如标题、版本、API 运行的服务器等。标签可用于对资源进行分组，从而为您提供更多概览。
-openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.</description>
+      <description>OpenAPI Generator 可根据 OpenAPI yaml 规范生成代码，并支持多种语言。</description>
       
     </item>
     
@@ -1485,16 +1184,7 @@ openapi: &amp;#34;3.0.2&amp;#34; info: title: API Customer version: &amp;#34;1.<
       <pubDate>Fri, 13 Oct 2023 09:25:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/cross-entropy/</guid>
-      <description>案例驱动 # 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。
-第一个例子 # 假设随机从一个口袋里取硬币，口袋里有一个蓝色的，一个红色的，一个绿色的，一个橘色的。取出一个硬币之后，每次问一个问题，然后做出判断，目标是，问最少的问题，得到正确答案。其中一个最好的设计问题的策略如下：
-每一个硬币有 $\frac{1}{4}$ 的概率被选中，$\frac{1}{4}机率 * 2道题目 * 4颗球 = 2$，平均需要问两道题目才能找出不同颜色的球，也就是说期望值为 $2$，就是熵（entropy）。
-第二个例子 # 例子变了，变成了袋子中 $\frac{1}{8}$ 的硬币是绿色的，$\frac{1}{8}$ 的是橘色的，$\frac{1}{4}$ 是红色的，$\frac{1}{2}$ 是蓝色的，这时最优的问题的策略如下:
-$\frac{1}{2}$ 的概率是蓝色，只需要 $1$ 个问题就可以知道是或者不是，$\frac{1}{4}$ 的概率是红色，需要2个问题，按照这个逻辑，猜中硬币需要的问题的期望是
-$$ \frac{1}{2}*1+\frac{1}{4}*2+\frac{1}{8}*3+\frac{1}{8}*3=1.75 $$
-第三个例子 # 假设袋子中全部是蓝色的硬币，那么这时候需要 $0$ 个问题就可以猜到硬币，即 $\log_{2}{1}=0$。 需要注意的是，只有当知道袋子中全部是蓝色的硬币的时候需要的问题是 $0$ 个。
-总结上面的例子，假设一种硬币出现的概率是 $p$，那么猜中该硬币的所需要的问题数是 $\log_2{\frac1{P_i}}$。例如 $p=\frac{1}{4}，\log_{2}{4}$ 。
-在这个问题中，问题个数的期望是
-$$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$</description>
+      <description>案例驱动 # 通过几个简单的例子来解释和总结什么是交叉熵（Cross Entropy）以及机器学习分类问题中为什么使用交叉熵。</description>
       
     </item>
     
@@ -1504,13 +1194,7 @@ $$ \sum_i{p_i}*log_2{\frac{1}{p_i}} $$</description>
       <pubDate>Fri, 13 Oct 2023 09:16:13 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/iot/actor/</guid>
-      <description>Actor Model # CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。
-actor model # actor model 是一种处理并发计算的概念模型。它为系统组件的行为和交互方式定义了一些通用规则。
-actors # actor 是计算的原始单元。它接收 message，并根据 message进行某种计算。
-这种想法与面向对象语言（object-oriented languages）中的想法非常相似：对象接收 message（方法调用），并根据接收到的 message（我们调用的方法）进行操作。
-主要区别在于，actors 之间是完全隔离的，它们永远不会共享内存。值得注意的是，一个 actor 可以保持一个私有状态，其他 actor 永远无法直接改变该状态。
-一个 actor 不是 actor。它们是以系统的形式出现的。在 actor model 中，一切都是 actor，它们需要有地址，这样一个行为者才能向另一个 actor 发送 message。
-mailbox # 虽然多个 actor 可以同时运行，但一个 actor 会按顺序处理给定的 message。这意味着，如果你向同一个 actor 发送 3 条 message，它只会一次执行一条。要同时执行这 3 条 message，你需要创建 3 个 actor，每个 actor 发送一条 message。</description>
+      <description>Actor Model # CPU 上有多个内核。如果我们想充分利用现有的这些硬件，就需要一种并发运行代码的方法。数十年来无法追踪的错误和开发人员的沮丧都表明，线程并不是解决问题的办法。不过不用担心，我们还有其他很好的选择，今天我要向你展示的就是其中之一：actor model。</description>
       
     </item>
     
@@ -1520,7 +1204,7 @@ mailbox # 虽然多个 actor 可以同时运行，但一个 actor 会按顺序�
       <pubDate>Thu, 12 Oct 2023 20:13:50 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/ai-code-generators/</guid>
-      <description>Resources # Demos https://github.com/gofireflyio/aiac https://github.com/JustAIGithub/AI-Code-Convert Blogs 25 Best AI Code Generators </description>
+      <description>Resources # Demos https://github.</description>
       
     </item>
     
@@ -1530,8 +1214,7 @@ mailbox # 虽然多个 actor 可以同时运行，但一个 actor 会按顺序�
       <pubDate>Thu, 12 Oct 2023 19:47:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/devoops/git/how-to-write-a-git-commit-message/</guid>
-      <description>Resources # git tutorial: https://wyag.thb.lt/ 动图展示10大Git命令: https://zhuanlan.zhihu.com/p/132573100 git intro: https://missing.csail.mit.edu/2020/version-control/ book: https://git-scm.com/book/en/v2 commit convention 规范: https://www.conventionalcommits.org/en/v1.0.0/#summary Write yourself a Git：https://wyag.thb.lt/ 如何编写Git Commit Message? # 为了创建一个有用的 revision history ，团队应该首先就 commit message convention 达成一致，至少要定义以下三点：
-Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大小写capitalization, 标点符号punctuation。把这些东西写出来，去掉猜测，让一切尽可能简单。 Content：提交消息的正文应该包含什么样的信息？不应该包含什么？ Metadata：如何引用 issue tracking IDs、pull request numbers 等？ 幸运的是，Git提交信息的规范已经有了很好的约定。事实上，很多 Git 命令的功能中就包含了这些约定。您不需要重新发明什么。只要遵循下面的七条规则，您就能像专家一样 commit message 了。</description>
+      <description>Resources # git tutorial: https://wyag.</description>
       
     </item>
     
@@ -1541,15 +1224,7 @@ Style：标记语法Markup syntax, 流式布局wrap margins, 语法grammar, 大�
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/os/linux-instructions/</guid>
-      <description>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。
-接下来，让我们一起来看看都有那些常用的 Linux 命令吧！
-一、文件目录操作 # 1.ls 命令 # ls 命令不仅可以查看 linux 文件夹包含的文件而且可以查看文件权限（包括目录、文件夹、文件权限）查看目录信息等等。
-命令格式
-ls [选项][目录名] 常用参数
--l ：列出长数据串，包含文件的属性与权限数据等 -a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用） -d ：仅列出目录本身，而不是列出目录的文件数据 -h ：将文件容量以较易读的方式（GB，kB等）列出来 -R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来 使用实例
-1.列出 home 目录下的所有文件和目录的详细资料。
-ls -a -l /home ls -al /home 2.列出当前目录下所有以&amp;quot;d&amp;quot;开头的文件目录详情内容。
-ls -l d* 2.cd命令 # 最基本的命令语句，其他的命令语句要进行操作，都是建立在使用 cd 命令上的。用于切换当前目录至dirName。</description>
+      <description>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。</description>
       
     </item>
     
@@ -1559,10 +1234,7 @@ ls -l d* 2.cd命令 # 最基本的命令语句，其他的命令语句要进行�
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/ai/chatgpt-guide/</guid>
-      <description>Six strategies for getting better results # Write clear instructions # GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。
-在您的询问中包含详细信息，以获得更多相关答案：为了得到高度相关的回复，请确保请求提供了任何重要的细节或上下文。否则，您就只能让模型来猜测您的意思了。 要求模特采用一个角色：系统信息可用于指定模型在回复中使用的角色。 使用分隔符清楚标明输入内容的不同部分：三引号、XML 标记、章节标题等分隔符可以帮助划分需要区别对待的文本部分。 指定完成任务所需的步骤：有些任务最好以一连串的步骤来指定。明确写出这些步骤可以让模型更容易地遵循它们。 举例说明：提供适用于所有示例的一般说明通常比通过示例演示任务的所有排列组合更有效，但在某些情况下，提供示例可能更容易。例如，如果您打算让模型复制一种难以明确描述的回应用户询问的特定风格，这就是所谓的 &amp;ldquo;少量 &amp;ldquo;提示。这就是所谓的 &amp;ldquo;少量 &amp;ldquo;提示。 指定所需的输出长度：您可以要求模型生成具有给定目标长度的输出。可以用字数、句数、段落数、要点数等来指定目标输出长度。但请注意，指示模型生成特定字数的精确度并不高。模型可以更可靠地生成具有特定段落数或要点数的输出结果。 Provide reference text # GPT 可以自信地编造虚假答案，尤其是在被问及深奥的话题或引用和 URL 时。就像一张笔记能帮助学生在考试中取得更好的成绩一样，为 GPT 提供参考文本也能帮助他们在作答时减少无中生有的情况。
-指导模型使用参考文本作答：如果我们能为模型提供与当前查询相关的可信信息，那么我们就可以指示模型使用所提供的信息来撰写答案。 指导范例引用参考文献回答问题：如果输入内容中已经补充了相关知识，那么就可以直接要求模型通过引用所提供文档中的段落来为其答案添加引文。请注意，输出中的引用可以通过所提供文档中的字符串匹配进行编程验证。 Split complex tasks into simpler subtasks # 在软件工程中，将一个复杂的系统分解成一系列模块化组件是一种很好的做法，提交给 GPT 的任务也是如此。复杂任务的错误率往往高于简单任务。此外，复杂任务通常可以重新定义为较简单任务的工作流程，其中前期任务的输出被用于构建后期任务的输入。
-使用意图分类来确定与用户查询最相关的指令：对于需要大量独立指令集来处理不同情况的任务，首先对查询类型进行分类，并利用该分类来确定需要哪些指令，可能会有所帮助。这可以通过定义固定类别和硬编码与处理特定类别任务相关的指令来实现。这一过程也可以递归应用，将任务分解为一系列阶段。这种方法的优势在于，每次查询只包含执行任务下一阶段所需的指令，与使用单次查询执行整个任务相比，错误率更低。这还可以降低成本，因为运行较大的提示需要花费更多的成本。 对于需要冗长对话的对话应用程序，总结或过滤之前的对话：由于 GPT 的上下文长度是固定的，因此用户和助手之间的对话（整个对话都包含在上下文窗口中）不可能无限期地进行下去。解决这个问题有多种变通方法，其中之一就是总结对话中的前几轮对话。一旦输入的大小达到预定的阈值长度，就会触发一个对部分对话进行总结的查询，而之前对话的总结可以作为系统消息的一部分。或者，也可以在整个对话过程中在后台异步总结之前的对话。 对长文档进行分块摘要，并递归构建完整摘要：由于 GPT 有固定的上下文长度，因此在单次查询中，GPT 无法用于摘要长度超过上下文长度减去生成摘要长度的文本。 Give GPTs time to &amp;ldquo;think&amp;rdquo; # 如果要求你用 17 乘以 28，你可能不会马上知道，但花点时间还是能算出来的。同样，GPT 学生在试图立即回答而不是花时间推理出答案时，会犯更多的推理错误。在回答问题之前，要求学生进行一连串的推理，可以帮助 GPT 学生更可靠地推理出正确答案。</description>
+      <description>Six strategies for getting better results # Write clear instructions # GPT 无法读懂你的心思。如果产出太长，请要求简短回复。如果结果太简单，要求专家级的写作。如果您不喜欢格式，请演示您希望看到的格式。GPT 越少需要猜测你想要什么，你就越有可能得到它。</description>
       
     </item>
     
@@ -1572,13 +1244,7 @@ ls -l d* 2.cd命令 # 最基本的命令语句，其他的命令语句要进行�
       <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/network/frp-nat-traversal/</guid>
-      <description>Resources # github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。
-使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。
-常见问题：https://www.derrors.cn/index.php/it-tech/frp.html Questions # 大部分都是网络端口上的问题，下面先给出一张frp的原理图。
-ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
-使用ssh连接时，连接超时 原因：服务器防火墙未开放frp配置中对应的remote_port端口； 解决：在服务器的防火墙中开放相应端口。 ssh: connect to host xx.xx.xx.xx port xx: Connection refused
-连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
-#开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 # 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。</description>
+      <description>Resources # github：https://github.</description>
       
     </item>
     
@@ -1588,7 +1254,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
       <pubDate>Thu, 12 Oct 2023 19:29:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/telosys-code-generation-tool/</guid>
-      <description>Resources # url: https://www.telosys.org/ tutorial: https://tomassetti.me/telosys-code-generation-tool/ </description>
+      <description>Resources # url: https://www.</description>
       
     </item>
     
@@ -1628,10 +1294,7 @@ ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
       <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/code-generation-for-langium-based-dsls/</guid>
-      <description>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
-Resources # blogs https://www.typefox.io/blog/code-generation-for-langium-based-dsls/ https://www.typefox.io/blog/code-generation-for-langium-based-dsls-2 https://www.typefox.io/blog/code-generation-for-langium-based-dsls-3/ github repo: https://github.com/TypeFox/langium-in-browser-codegen-example/tree/main https://github.com/eclipse-langium/langium/blob/main/examples/arithmetics 运行示例 # 本帖中的运行示例使用 Langium 的 Arithmetics 示例实现。Arithmetics 的 grammar 见 arithmetics.langium
-代码生成器的输入示例如下：
-MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF costPerUnit: materialPerUnit + laborPerUnit; DEF expectedNoOfSales: 200; DEF costOfGoodsSold: expectedNoOfSales * costPerUnit; DEF generalExpensesAndSales: 10000; DEF desiredProfitPerUnit: 50; DEF netPrice: (costOfGoodsSold + generalExpensesAndSales) / expectedNoOfSales + desiredProfitPerUnit; DEF vat: 0.</description>
+      <description>DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。</description>
       
     </item>
     
@@ -1641,15 +1304,7 @@ MODULE priceCalculator DEF materialPerUnit: 100; DEF laborPerUnit: 200; DEF cost
       <pubDate>Thu, 12 Oct 2023 14:43:44 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/template-engine/</guid>
-      <description>模板引擎 # 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
-模板引擎如何工作 # 上图说明了模板引擎的所有基本元素和处理流程。
-使用模板引擎构建服务器端应用程序时，模板引擎会将模板文件中的变量替换为实际值，并将此值显示给客户端。这样，我们就能更轻松地快速构建应用程序。
-使用 expressJS 和 ejs 模板引擎的示例 # 对于使用 NodeJS 运行时编写的服务器端应用程序，可以使用模板引擎。
-以下步骤演示了模板引擎如何使用 expressJs 和 ejs 模板引擎工作。下面的示例在网页上渲染用户数据。
-步骤 1：安装 express 和 ejs 模板引擎
-安装 ejs 模板引擎和 express 框架，
-npm install express ejs 步骤 2：设置视图引擎
-const express = require(&amp;#34;express&amp;#34;) const app = express(); // Set the View Engine or Template Engine app.</description>
+      <description>模板引擎 # 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。</description>
       
     </item>
     
@@ -1659,8 +1314,7 @@ const express = require(&amp;#34;express&amp;#34;) const app = express(); // Set
       <pubDate>Thu, 12 Oct 2023 14:39:05 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/devoops/git/how-to-build-github-blog-with-hugo/</guid>
-      <description>今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog
-Resources # 系列文章，用hugo的PaperMod Theme 建站: https://www.sulvblog.cn/posts/blog/ Hugo + GitHub Action，搭建你的博客自动发布系统: https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/ PaperMod主题优化： https://kdjlyy.cn/posts/site/hugo-papermod-optimization https://dvel.me/posts/hugo-papermod-config/ 在博客中加入数学公式 MathJax 3全新版本配置指南 官方提供的从mathjax2to3的转换工具 MathJax常见问题 </description>
+      <description>今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog</description>
       
     </item>
     
@@ -1670,11 +1324,7 @@ Resources # 系列文章，用hugo的PaperMod Theme 建站: https://www.sulvblog
       <pubDate>Thu, 12 Oct 2023 11:40:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/code-generation/a-guide-to-code-generation/</guid>
-      <description>为什么要用代码生成 # productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C++ 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 # Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成? # 根据具体情况，代码生成既可以提高工作效率，也可以成为开发过程中的重要组成部分。许多现代集成开发环境就是一个有用的例子：只需点击一个按钮，就能创建一个骨架类来实现接口或类似功能。你完全可以自己编写这样的代码，只不过会浪费一些时间来完成琐碎的任务。
-设计代码生成流水线的方法有很多种。基本上，我们需要定义两个要素：
-Input：用于生成代码的信息来自何处。 Output：如何获得生成的代码。 您也可以在输入和输出之间设置转换步骤。这些步骤可以简化输出层，并使输入和输出更加独立。
-Possible Inputs
-A DSL：例如，我们可以使用 ANTLR 来描述一种语言的语法。由此，我们可以生成一个解析器。 code in other formats：数据库模式。根据数据库模式，我们可以生成 DAO。 wizards：它们允许向用户询问信息。 reverse engineering：可通过处理复杂的代码工件获得信息。 data sources：比如一个DB，一个csv文件或者一个电子表格。 Possible Outputs</description>
+      <description>为什么要用代码生成 # productivity：使用代码生成，只需编写一次 generator ，就可以根据需要多次重复使用。向 generator 提供特定输入并调用它比手动编写代码要快得多，因此代码生成可以节省时间。 Simplification：通过代码生成，你可以从一些抽象的描述中生成代码。需要维护的部分变成了 generator 的输入部分，该部分通常是代码的描述，而不是代码本身，与整个生成的代码相比，该描述通常更容易分析和检查。 Portability：一旦你有了为某种语言或框架生成代码的程序，你就可以简单地更改 generator ，并以不同的语言或框架为目标。您还可以同时针对多个平台。 例如，使用解析器生成器，您可以获得 C#、Java 和 C++ 的 parser。 另一个例子：您可能会编写一个 UML 图表，然后使用代码生成器用 C# 创建一个骨架类，并用 SQL 代码为 MySQL 创建一个数据库。因此，相同的抽象描述可用于生成不同类型的工件。 Consistency：有了代码生成，你总能得到你所期望的代码。生成的代码是根据相同的原则设计的，命名规则等也是一致的。当然，除了生成器中的 bug 之外，代码总是能按照你所期望的方式运行，代码质量始终如一。如果用手工编写代码，不同的开发人员可能会使用不同的风格，即使是最重复的代码也会偶尔出现错误。 为什么不要用代码生成 # Maintenance：当您使用代码生成工具时，您的代码就会依赖于它。代码生成工具必须得到维护。如果你创建了它，你就必须不断更新它；如果你只是使用现有的工具，你就必须希望有人继续维护它，或者你必须自己接手。因此，代码生成的优势并不是免费的。如果你没有或找不到合适的能力来维护代码生成器，风险就会更大。 Complexity：自动生成的代码往往比手工编写的代码更复杂。有时，这与将不同部分连接在一起所需的胶水代码有关，或者与生成器支持的用例多于您所需的用例有关。在第二种情况下，生成的代码可以做比你想要的更多的事情，但这并不一定是一种优势。生成代码的优化程度肯定也不如手工编写的代码。有时这种差异很小，并不明显，但如果您的应用程序需要尽可能地提高性能，那么生成的代码对您来说可能并不是最佳选择。 如何使用代码生成?</description>
       
     </item>
     

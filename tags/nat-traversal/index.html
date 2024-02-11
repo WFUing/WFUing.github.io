@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>nat traversal &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="nat traversal &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="nat traversal" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/tags/nat-traversal/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nat traversal"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -653,13 +657,7 @@
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        Resources # github：https://github.com/fatedier/frp document：https://gofrp.org/docs/ finalshell：https://sourceforge.net/projects/finalshell/ vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh 下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。
-使用frp进行内网穿透：https://sspai.com/post/52523 基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/ CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/ 这一篇blog的05节写了遇到的常见问题，这也是本文关心的。
-常见问题：https://www.derrors.cn/index.php/it-tech/frp.html Questions # 大部分都是网络端口上的问题，下面先给出一张frp的原理图。
-ssh: connect to host xx.xx.xx.xx port xx: Operation timed out
-使用ssh连接时，连接超时 原因：服务器防火墙未开放frp配置中对应的remote_port端口； 解决：在服务器的防火墙中开放相应端口。 ssh: connect to host xx.xx.xx.xx port xx: Connection refused
-连接被拒绝 原因：服务器防火墙未开放frp配置中对应的server_port端口； 解决：在服务器的防火墙中开放相应端口。 当然云服务器端，也会有安全组或者防火墙，需要把相应的都开起来
-#开放端口 firewall-cmd --zone=public --add-port=7000/tcp --permanent firewall-cmd --zone=public --add-port=6000/tcp --permanent #查看开放端口列表 firewall-cmd --permanent --zone=public --list-ports #防火墙reload firewall-cmd --reload firewalld 拓展 # 这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。
+        Resources # github：https://github.
       </div>
       
     </div>

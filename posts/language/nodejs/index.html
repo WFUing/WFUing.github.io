@@ -3,7 +3,7 @@
   data-auto-appearance="true"><head>
   <meta charset="utf-8" />
   
-  <meta http-equiv="content-language" content="zh-cn" />
+  <meta http-equiv="content-language" content="en" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -11,7 +11,7 @@
   <title>nodejs &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="nodejs &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="I&#39;m waiting for you." />
+  
   
   
   
@@ -67,13 +67,13 @@
   
   
   <meta property="og:title" content="nodejs" />
-<meta property="og:description" content="I&#39;m waiting for you." />
+<meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/nodejs/" />
 
 
   <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="nodejs"/>
-<meta name="twitter:description" content="I&#39;m waiting for you."/>
+<meta name="twitter:description" content=""/>
 
   
   
@@ -84,10 +84,16 @@
   
   
   
-  <link href="522023320072@smail.nju.edu.cn" rel="me" />
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
   
   
   <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="944427534" rel="me" />
+  
+  
+  <link href="stu_jyj3621" rel="me" />
   
   
   
@@ -136,8 +142,6 @@
   <div class="relative max-w-[64rem] ml-auto mr-auto">
     <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
-    
-    
     
     <div class="flex flex-1 items-center justify-between">
         <nav class="flex space-x-3">
@@ -905,11 +909,7 @@
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        定时器 # process.nextTick()会立即执行回调函数。 微任务队列。
-setImmediate()， clearImmediate() # setImmediate(). It can be passed to clearImmediate()
-setImmediate()会在下一轮执行回调函数。
-定时器在 IO 操作的回调函数之前执行。
-Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTimeout、setInterval、setImmediate的回调函数。 Check: 处理setImmediate()指定的回调函数。 nextTickQueue: 处理process.nextTick()的回调函数，不是 event loop 的一部分。 
+        定时器 # process.
       </div>
       
     </div>
@@ -1009,12 +1009,6 @@ Timer: setTimeout和setInterval回调函数。 I/O callbacks: 处理除了setTim
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Node 的 REPL 环境 # 简介 # REPL 是 read-eval-print-loop 的缩写，表示命令行下的 Node 引擎的一个互动式对话环境。用户在其中输入命令，就可以立刻看到结果。read 表示读取用户的输入，eval 表示执行，print 表示输出运行的结果，loop 表示重复执行这个过程。
-命令行下输入node，就可以进入 Node 的 REPL 环境。
-$ node &gt; REPL 环境的提示符是一个大于号（&gt;）。
-退出 REPL，可以在行首按下 Ctrl + d，或者连续两次按下 Ctrl + c。
-REPL 环境与 Node 脚本的执行环境基本相似，只有一些很小的差异。比如，REPL 环境不是通过脚本触发的，所以没有__dirname和__filename这两个内置变量。
-REPL 会自动加载 Node 的核心模块，比如 fs、http、os、path等，不必require就可以直接使用。
-$ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs.
       </div>
       
     </div>
@@ -1114,10 +1108,6 @@ $ node &gt; fs.read [Function] 上面代码中，REPL 环境可以直接使用fs
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
         Promise # UnhandledPromiseRejectionWarning # 如果 Promise 运行过程中抛出错误，或者状态变为rejected，但是没有相应的处理代码，那么 Node 会抛出一个警告UnhandledPromiseRejectionWarning。
-new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.log(&#39;hello&#39;); }) // hello // UnhandledPromiseRejectionWarning: message 上面代码中，Promise 变为rejected状态，但是没有处理的代码，导致抛出警告UnhandledPromiseRejectionWarning。由于抛出的是警告，而不是错误，所以不影响hello的输出。请跟下面的代码比较一下。
-new Promise(function (resolve, reject) { throw new Error(&#39;message&#39;); console.log(&#39;hello&#39;); }) // UnhandledPromiseRejectionWarning: Error: message 上面代码中，Promise 内部抛出错误，没有得到处理，所以会有警告UnhandledPromiseRejectionWarning。Promise 内部的错误阻止 Promise 内部的代码继续向下运行，所以不会输出hello。
-消除这个警告的方法很简单，就是为 Promise 加上错误处理代码，即catch代码块。
-new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.
       </div>
       
     </div>
@@ -1216,13 +1206,7 @@ new Promise(function (resolve, reject) { reject(&#39;message&#39;); console.
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        fs 模块 # fs.createReadStream() # fs.createReadStream方法读取一个文件，以 stream 的形式返回。
-const readStream = fs.createReadStream( inputFilePath, { encoding: &#39;utf8&#39;, highWaterMark: 1024 } ); 该方法的第一个参数是文件的路径，第二个参数是一个配置对象。
-配置对象的encoding属性，决定了fs.createReadStream方法的返回值。如果该属性为null，返回的是二进制的 buffer；如果为字符串（比如utf8），返回的是这种编码的字符串。
-配置对象的highWaterMark属性指定了每次返回的 buffer 或字符串的最大体积（单位字节）。
-stream 以事件的形式获取。
-readStream.on(&#39;data&#39;, (chunk) =&gt; { console.log(&#39;&gt;&gt;&gt; &#39;+chunk); }); readStream.on(&#39;end&#39;, () =&gt; { console.log(&#39;### DONE ###&#39;); }); Node v10 开始，Stream 有异步遍历器（asynchronous iteration）接口（即具有Symbol.asyncIterator属性），因此可以使用for-await-of读取。
-async function main(inputFilePath) { const readStream = fs.
+        fs 模块 # fs.
       </div>
       
     </div>
