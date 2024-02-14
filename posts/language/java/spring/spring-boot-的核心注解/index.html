@@ -764,65 +764,71 @@
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1springbootapplication">1、<code>@SpringBootApplication</code></a></li>
-    <li><a href="#2enableautoconfiguration">2、<code>@EnableAutoConfiguration</code></a></li>
-    <li><a href="#3configuration">3、<code>@Configuration</code></a></li>
-    <li><a href="#4springbootconfiguration">4、<code>@SpringBootConfiguration</code></a></li>
-    <li><a href="#5componentscan">5、<code>@ComponentScan</code></a></li>
-    <li><a href="#6conditional">6、<code>@Conditional</code></a></li>
-    <li><a href="#7conditionalonbean">7、<code>@ConditionalOnBean</code></a></li>
-    <li><a href="#8conditionalonmissingbean">8、<code>@ConditionalOnMissingBean</code></a></li>
-    <li><a href="#9conditionalonclass">9、<code>@ConditionalOnClass</code></a></li>
-    <li><a href="#10conditionalonmissingclass">10、<code>@ConditionalOnMissingClass</code></a></li>
-    <li><a href="#11conditionalonwebapplication">11、<code>@ConditionalOnWebApplication</code></a></li>
-    <li><a href="#12conditionalonnotwebapplication">12、<code>@ConditionalOnNotWebApplication</code></a></li>
-    <li><a href="#13conditionalonproperty">13、<code>@ConditionalOnProperty</code></a></li>
-    <li><a href="#14conditionalonexpression">14、<code>@ConditionalOnExpression</code></a></li>
-    <li><a href="#15conditionalonjava">15、<code>@ConditionalOnJava</code></a></li>
-    <li><a href="#16conditionalonresource">16、<code>@ConditionalOnResource</code></a></li>
-    <li><a href="#17conditionalonjndi">17、<code>@ConditionalOnJndi</code></a></li>
-    <li><a href="#18conditionaloncloudplatform">18、<code>@ConditionalOnCloudPlatform</code></a></li>
-    <li><a href="#19conditionalonsinglecandidate">19、<code>@ConditionalOnSingleCandidate</code></a></li>
-    <li><a href="#20configurationproperties">20、<code>@ConfigurationProperties</code></a></li>
-    <li><a href="#21enableconfigurationproperties">21、<code>@EnableConfigurationProperties</code></a></li>
-    <li><a href="#22autoconfigureafter">22、<code>@AutoConfigureAfter</code></a></li>
-    <li><a href="#23autoconfigurebefore">23、<code>@AutoConfigureBefore</code></a></li>
-    <li><a href="#24import">24、<code>@Import</code></a></li>
-    <li><a href="#25importresource">25、<code>@ImportResource</code></a></li>
-    <li><a href="#26service">26、<code>@Service</code></a></li>
-    <li><a href="#27repository">27、<code>@Repository</code></a></li>
-    <li><a href="#28bean">28、<code>@Bean</code></a></li>
-    <li><a href="#29value">29、<code>@Value</code></a></li>
-    <li><a href="#30inject">30、<code>@Inject</code></a></li>
-    <li><a href="#31autowired">31、<code>@AutoWired</code></a></li>
-    <li><a href="#32qualifier">32、<code>@Qualifier</code></a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1controller">1、<code>@Controller</code></a></li>
-    <li><a href="#2requestmapping">2、<code>@RequestMapping</code></a></li>
-    <li><a href="#3requestparam">3、<code>@RequestParam</code></a></li>
-    <li><a href="#4requestbody">4、<code>@RequestBody</code></a></li>
-    <li><a href="#5responsebody">5、<code>@ResponseBody</code></a></li>
-    <li><a href="#6restcontroller">6、<code>@RestController</code></a></li>
-    <li><a href="#7pathvariable">7、<code>@PathVariable</code></a></li>
-    <li><a href="#8requestheader">8、<code>@RequestHeader</code></a></li>
-    <li><a href="#9cookievalue">9、<code>@CookieValue</code></a></li>
-    <li><a href="#10getmapping-postmapping-putmapping-">10、<code>GetMapping PostMapping PutMapping.. </code></a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1entity">1、<code>@Entity</code></a></li>
-    <li><a href="#2mappedsuperclass">2、<code>@MappedSuperClass</code></a></li>
-    <li><a href="#3norepositorybean">3、<code>@NoRepositoryBean</code></a></li>
-    <li><a href="#4column">4、<code>@Column</code></a></li>
-    <li><a href="#5id">5、<code>@Id</code></a></li>
-    <li><a href="#6generatedvalue">6、<code>@GeneratedValue</code></a></li>
-    <li><a href="#7sequencegeneretor">7、<code>@SequenceGeneretor</code></a></li>
-    <li><a href="#8transient">8、<code>@Transient</code></a></li>
-    <li><a href="#9jsonignore">9、<code>@JsonIgnore</code></a></li>
-    <li><a href="#10joincolumn">10、<code>@JoinColumn</code></a></li>
-    <li><a href="#11onetooneonetomanymanytoone">11、<code>@OneToOne、@OneToMany、@ManyToOne</code></a></li>
+    <li><a href="#spring-boot-的常用注解">Spring Boot 的常用注解</a>
+      <ul>
+        <li><a href="#1springbootapplication">1、<code>@SpringBootApplication</code></a></li>
+        <li><a href="#2enableautoconfiguration">2、<code>@EnableAutoConfiguration</code></a></li>
+        <li><a href="#3configuration">3、<code>@Configuration</code></a></li>
+        <li><a href="#4springbootconfiguration">4、<code>@SpringBootConfiguration</code></a></li>
+        <li><a href="#5componentscan">5、<code>@ComponentScan</code></a></li>
+        <li><a href="#6conditional">6、<code>@Conditional</code></a></li>
+        <li><a href="#7conditionalonbean">7、<code>@ConditionalOnBean</code></a></li>
+        <li><a href="#8conditionalonmissingbean">8、<code>@ConditionalOnMissingBean</code></a></li>
+        <li><a href="#9conditionalonclass">9、<code>@ConditionalOnClass</code></a></li>
+        <li><a href="#10conditionalonmissingclass">10、<code>@ConditionalOnMissingClass</code></a></li>
+        <li><a href="#11conditionalonwebapplication">11、<code>@ConditionalOnWebApplication</code></a></li>
+        <li><a href="#12conditionalonnotwebapplication">12、<code>@ConditionalOnNotWebApplication</code></a></li>
+        <li><a href="#13conditionalonproperty">13、<code>@ConditionalOnProperty</code></a></li>
+        <li><a href="#14conditionalonexpression">14、<code>@ConditionalOnExpression</code></a></li>
+        <li><a href="#15conditionalonjava">15、<code>@ConditionalOnJava</code></a></li>
+        <li><a href="#16conditionalonresource">16、<code>@ConditionalOnResource</code></a></li>
+        <li><a href="#17conditionalonjndi">17、<code>@ConditionalOnJndi</code></a></li>
+        <li><a href="#18conditionaloncloudplatform">18、<code>@ConditionalOnCloudPlatform</code></a></li>
+        <li><a href="#19conditionalonsinglecandidate">19、<code>@ConditionalOnSingleCandidate</code></a></li>
+        <li><a href="#20configurationproperties">20、<code>@ConfigurationProperties</code></a></li>
+        <li><a href="#21enableconfigurationproperties">21、<code>@EnableConfigurationProperties</code></a></li>
+        <li><a href="#22autoconfigureafter">22、<code>@AutoConfigureAfter</code></a></li>
+        <li><a href="#23autoconfigurebefore">23、<code>@AutoConfigureBefore</code></a></li>
+        <li><a href="#24import">24、<code>@Import</code></a></li>
+        <li><a href="#25importresource">25、<code>@ImportResource</code></a></li>
+        <li><a href="#26service">26、<code>@Service</code></a></li>
+        <li><a href="#27repository">27、<code>@Repository</code></a></li>
+        <li><a href="#28bean">28、<code>@Bean</code></a></li>
+        <li><a href="#29value">29、<code>@Value</code></a></li>
+        <li><a href="#30inject">30、<code>@Inject</code></a></li>
+        <li><a href="#31autowired">31、<code>@AutoWired</code></a></li>
+        <li><a href="#32qualifier">32、<code>@Qualifier</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-mvc常用注解">Spring MVC常用注解</a>
+      <ul>
+        <li><a href="#1controller">1、<code>@Controller</code></a></li>
+        <li><a href="#2requestmapping">2、<code>@RequestMapping</code></a></li>
+        <li><a href="#3requestparam">3、<code>@RequestParam</code></a></li>
+        <li><a href="#4requestbody">4、<code>@RequestBody</code></a></li>
+        <li><a href="#5responsebody">5、<code>@ResponseBody</code></a></li>
+        <li><a href="#6restcontroller">6、<code>@RestController</code></a></li>
+        <li><a href="#7pathvariable">7、<code>@PathVariable</code></a></li>
+        <li><a href="#8requestheader">8、<code>@RequestHeader</code></a></li>
+        <li><a href="#9cookievalue">9、<code>@CookieValue</code></a></li>
+        <li><a href="#10getmapping-postmapping-putmapping-">10、<code>GetMapping PostMapping PutMapping.. </code></a></li>
+      </ul>
+    </li>
+    <li><a href="#jpa注解">JPA注解</a>
+      <ul>
+        <li><a href="#1entity">1、<code>@Entity</code></a></li>
+        <li><a href="#2mappedsuperclass">2、<code>@MappedSuperClass</code></a></li>
+        <li><a href="#3norepositorybean">3、<code>@NoRepositoryBean</code></a></li>
+        <li><a href="#4column">4、<code>@Column</code></a></li>
+        <li><a href="#5id">5、<code>@Id</code></a></li>
+        <li><a href="#6generatedvalue">6、<code>@GeneratedValue</code></a></li>
+        <li><a href="#7sequencegeneretor">7、<code>@SequenceGeneretor</code></a></li>
+        <li><a href="#8transient">8、<code>@Transient</code></a></li>
+        <li><a href="#9jsonignore">9、<code>@JsonIgnore</code></a></li>
+        <li><a href="#10joincolumn">10、<code>@JoinColumn</code></a></li>
+        <li><a href="#11onetooneonetomanymanytoone">11、<code>@OneToOne、@OneToMany、@ManyToOne</code></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -836,65 +842,71 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1springbootapplication">1、<code>@SpringBootApplication</code></a></li>
-    <li><a href="#2enableautoconfiguration">2、<code>@EnableAutoConfiguration</code></a></li>
-    <li><a href="#3configuration">3、<code>@Configuration</code></a></li>
-    <li><a href="#4springbootconfiguration">4、<code>@SpringBootConfiguration</code></a></li>
-    <li><a href="#5componentscan">5、<code>@ComponentScan</code></a></li>
-    <li><a href="#6conditional">6、<code>@Conditional</code></a></li>
-    <li><a href="#7conditionalonbean">7、<code>@ConditionalOnBean</code></a></li>
-    <li><a href="#8conditionalonmissingbean">8、<code>@ConditionalOnMissingBean</code></a></li>
-    <li><a href="#9conditionalonclass">9、<code>@ConditionalOnClass</code></a></li>
-    <li><a href="#10conditionalonmissingclass">10、<code>@ConditionalOnMissingClass</code></a></li>
-    <li><a href="#11conditionalonwebapplication">11、<code>@ConditionalOnWebApplication</code></a></li>
-    <li><a href="#12conditionalonnotwebapplication">12、<code>@ConditionalOnNotWebApplication</code></a></li>
-    <li><a href="#13conditionalonproperty">13、<code>@ConditionalOnProperty</code></a></li>
-    <li><a href="#14conditionalonexpression">14、<code>@ConditionalOnExpression</code></a></li>
-    <li><a href="#15conditionalonjava">15、<code>@ConditionalOnJava</code></a></li>
-    <li><a href="#16conditionalonresource">16、<code>@ConditionalOnResource</code></a></li>
-    <li><a href="#17conditionalonjndi">17、<code>@ConditionalOnJndi</code></a></li>
-    <li><a href="#18conditionaloncloudplatform">18、<code>@ConditionalOnCloudPlatform</code></a></li>
-    <li><a href="#19conditionalonsinglecandidate">19、<code>@ConditionalOnSingleCandidate</code></a></li>
-    <li><a href="#20configurationproperties">20、<code>@ConfigurationProperties</code></a></li>
-    <li><a href="#21enableconfigurationproperties">21、<code>@EnableConfigurationProperties</code></a></li>
-    <li><a href="#22autoconfigureafter">22、<code>@AutoConfigureAfter</code></a></li>
-    <li><a href="#23autoconfigurebefore">23、<code>@AutoConfigureBefore</code></a></li>
-    <li><a href="#24import">24、<code>@Import</code></a></li>
-    <li><a href="#25importresource">25、<code>@ImportResource</code></a></li>
-    <li><a href="#26service">26、<code>@Service</code></a></li>
-    <li><a href="#27repository">27、<code>@Repository</code></a></li>
-    <li><a href="#28bean">28、<code>@Bean</code></a></li>
-    <li><a href="#29value">29、<code>@Value</code></a></li>
-    <li><a href="#30inject">30、<code>@Inject</code></a></li>
-    <li><a href="#31autowired">31、<code>@AutoWired</code></a></li>
-    <li><a href="#32qualifier">32、<code>@Qualifier</code></a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1controller">1、<code>@Controller</code></a></li>
-    <li><a href="#2requestmapping">2、<code>@RequestMapping</code></a></li>
-    <li><a href="#3requestparam">3、<code>@RequestParam</code></a></li>
-    <li><a href="#4requestbody">4、<code>@RequestBody</code></a></li>
-    <li><a href="#5responsebody">5、<code>@ResponseBody</code></a></li>
-    <li><a href="#6restcontroller">6、<code>@RestController</code></a></li>
-    <li><a href="#7pathvariable">7、<code>@PathVariable</code></a></li>
-    <li><a href="#8requestheader">8、<code>@RequestHeader</code></a></li>
-    <li><a href="#9cookievalue">9、<code>@CookieValue</code></a></li>
-    <li><a href="#10getmapping-postmapping-putmapping-">10、<code>GetMapping PostMapping PutMapping.. </code></a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#1entity">1、<code>@Entity</code></a></li>
-    <li><a href="#2mappedsuperclass">2、<code>@MappedSuperClass</code></a></li>
-    <li><a href="#3norepositorybean">3、<code>@NoRepositoryBean</code></a></li>
-    <li><a href="#4column">4、<code>@Column</code></a></li>
-    <li><a href="#5id">5、<code>@Id</code></a></li>
-    <li><a href="#6generatedvalue">6、<code>@GeneratedValue</code></a></li>
-    <li><a href="#7sequencegeneretor">7、<code>@SequenceGeneretor</code></a></li>
-    <li><a href="#8transient">8、<code>@Transient</code></a></li>
-    <li><a href="#9jsonignore">9、<code>@JsonIgnore</code></a></li>
-    <li><a href="#10joincolumn">10、<code>@JoinColumn</code></a></li>
-    <li><a href="#11onetooneonetomanymanytoone">11、<code>@OneToOne、@OneToMany、@ManyToOne</code></a></li>
+    <li><a href="#spring-boot-的常用注解">Spring Boot 的常用注解</a>
+      <ul>
+        <li><a href="#1springbootapplication">1、<code>@SpringBootApplication</code></a></li>
+        <li><a href="#2enableautoconfiguration">2、<code>@EnableAutoConfiguration</code></a></li>
+        <li><a href="#3configuration">3、<code>@Configuration</code></a></li>
+        <li><a href="#4springbootconfiguration">4、<code>@SpringBootConfiguration</code></a></li>
+        <li><a href="#5componentscan">5、<code>@ComponentScan</code></a></li>
+        <li><a href="#6conditional">6、<code>@Conditional</code></a></li>
+        <li><a href="#7conditionalonbean">7、<code>@ConditionalOnBean</code></a></li>
+        <li><a href="#8conditionalonmissingbean">8、<code>@ConditionalOnMissingBean</code></a></li>
+        <li><a href="#9conditionalonclass">9、<code>@ConditionalOnClass</code></a></li>
+        <li><a href="#10conditionalonmissingclass">10、<code>@ConditionalOnMissingClass</code></a></li>
+        <li><a href="#11conditionalonwebapplication">11、<code>@ConditionalOnWebApplication</code></a></li>
+        <li><a href="#12conditionalonnotwebapplication">12、<code>@ConditionalOnNotWebApplication</code></a></li>
+        <li><a href="#13conditionalonproperty">13、<code>@ConditionalOnProperty</code></a></li>
+        <li><a href="#14conditionalonexpression">14、<code>@ConditionalOnExpression</code></a></li>
+        <li><a href="#15conditionalonjava">15、<code>@ConditionalOnJava</code></a></li>
+        <li><a href="#16conditionalonresource">16、<code>@ConditionalOnResource</code></a></li>
+        <li><a href="#17conditionalonjndi">17、<code>@ConditionalOnJndi</code></a></li>
+        <li><a href="#18conditionaloncloudplatform">18、<code>@ConditionalOnCloudPlatform</code></a></li>
+        <li><a href="#19conditionalonsinglecandidate">19、<code>@ConditionalOnSingleCandidate</code></a></li>
+        <li><a href="#20configurationproperties">20、<code>@ConfigurationProperties</code></a></li>
+        <li><a href="#21enableconfigurationproperties">21、<code>@EnableConfigurationProperties</code></a></li>
+        <li><a href="#22autoconfigureafter">22、<code>@AutoConfigureAfter</code></a></li>
+        <li><a href="#23autoconfigurebefore">23、<code>@AutoConfigureBefore</code></a></li>
+        <li><a href="#24import">24、<code>@Import</code></a></li>
+        <li><a href="#25importresource">25、<code>@ImportResource</code></a></li>
+        <li><a href="#26service">26、<code>@Service</code></a></li>
+        <li><a href="#27repository">27、<code>@Repository</code></a></li>
+        <li><a href="#28bean">28、<code>@Bean</code></a></li>
+        <li><a href="#29value">29、<code>@Value</code></a></li>
+        <li><a href="#30inject">30、<code>@Inject</code></a></li>
+        <li><a href="#31autowired">31、<code>@AutoWired</code></a></li>
+        <li><a href="#32qualifier">32、<code>@Qualifier</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-mvc常用注解">Spring MVC常用注解</a>
+      <ul>
+        <li><a href="#1controller">1、<code>@Controller</code></a></li>
+        <li><a href="#2requestmapping">2、<code>@RequestMapping</code></a></li>
+        <li><a href="#3requestparam">3、<code>@RequestParam</code></a></li>
+        <li><a href="#4requestbody">4、<code>@RequestBody</code></a></li>
+        <li><a href="#5responsebody">5、<code>@ResponseBody</code></a></li>
+        <li><a href="#6restcontroller">6、<code>@RestController</code></a></li>
+        <li><a href="#7pathvariable">7、<code>@PathVariable</code></a></li>
+        <li><a href="#8requestheader">8、<code>@RequestHeader</code></a></li>
+        <li><a href="#9cookievalue">9、<code>@CookieValue</code></a></li>
+        <li><a href="#10getmapping-postmapping-putmapping-">10、<code>GetMapping PostMapping PutMapping.. </code></a></li>
+      </ul>
+    </li>
+    <li><a href="#jpa注解">JPA注解</a>
+      <ul>
+        <li><a href="#1entity">1、<code>@Entity</code></a></li>
+        <li><a href="#2mappedsuperclass">2、<code>@MappedSuperClass</code></a></li>
+        <li><a href="#3norepositorybean">3、<code>@NoRepositoryBean</code></a></li>
+        <li><a href="#4column">4、<code>@Column</code></a></li>
+        <li><a href="#5id">5、<code>@Id</code></a></li>
+        <li><a href="#6generatedvalue">6、<code>@GeneratedValue</code></a></li>
+        <li><a href="#7sequencegeneretor">7、<code>@SequenceGeneretor</code></a></li>
+        <li><a href="#8transient">8、<code>@Transient</code></a></li>
+        <li><a href="#9jsonignore">9、<code>@JsonIgnore</code></a></li>
+        <li><a href="#10joincolumn">10、<code>@JoinColumn</code></a></li>
+        <li><a href="#11onetooneonetomanymanytoone">11、<code>@OneToOne、@OneToMany、@ManyToOne</code></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -951,7 +963,7 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <h1 class="relative group">Spring Boot 的常用注解 
+          <h2 class="relative group">Spring Boot 的常用注解 
     <div id="spring-boot-的常用注解" class="anchor"></div>
     
     <span
@@ -960,8 +972,8 @@
             style="text-decoration-line: none !important;" href="#spring-boot-%e7%9a%84%e5%b8%b8%e7%94%a8%e6%b3%a8%e8%a7%a3" aria-label="Anchor">#</a>
     </span>        
     
-</h1>
-<h2 class="relative group">1、<code>@SpringBootApplication</code> 
+</h2>
+<h3 class="relative group">1、<code>@SpringBootApplication</code> 
     <div id="1springbootapplication" class="anchor"></div>
     
     <span
@@ -970,7 +982,7 @@
             style="text-decoration-line: none !important;" href="#1springbootapplication" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring Boot 最最最核心的注解，用在 Spring Boot 主类上，标识这是一个 Spring Boot 应用，用来开启 Spring Boot 的各项能力。</p>
 <p>其实这个注解就是 <code>@SpringBootConfiguration</code>、<code>@EnableAutoConfiguration</code>、<code>@ComponentScan</code> 这三个注解的组合，也可以用这三个注解来代替 <code>@SpringBootApplication</code> 注解。看下 <code>@SpringBootApplication</code> 注解的源码，一切明了！</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
@@ -998,7 +1010,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">2、<code>@EnableAutoConfiguration</code> 
+</span></span></span></code></pre></div><h3 class="relative group">2、<code>@EnableAutoConfiguration</code> 
     <div id="2enableautoconfiguration" class="anchor"></div>
     
     <span
@@ -1007,11 +1019,11 @@
             style="text-decoration-line: none !important;" href="#2enableautoconfiguration" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>允许 Spring Boot 自动配置注解，开启这个注解之后，Spring Boot 就能根据当前类路径下的包或者类来配置 Spring Bean，即尝试根据你添加的jar依赖自动配置你的Spring应用。</p>
 <p>例如：当前类路径下有 Mybatis 这个 JAR 包，<code>MybatisAutoConfiguration</code> 注解就能根据相关参数来配置 Mybatis 的各个 Spring Bean；如果你的classpath下存在HSQLDB，并且你没有手动配置任何数据库连接beans，那么我们将自动配置一个内存型（in-memory）数据库。</p>
 <p>你可以将 <code>@EnableAutoConfiguration</code> 或者 <code>@SpringBootApplication</code> 注解添加到一个 <code>@Configuration</code> 类上来选择自动配置。如果发现应用了你不想要的特定自动配置类，你可以使用 <code>@EnableAutoConfiguration</code> 注解的排除属性来禁用它们。</p>
-<h2 class="relative group">3、<code>@Configuration</code> 
+<h3 class="relative group">3、<code>@Configuration</code> 
     <div id="3configuration" class="anchor"></div>
     
     <span
@@ -1020,13 +1032,13 @@
             style="text-decoration-line: none !important;" href="#3configuration" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring 3.0 添加的一个注解，用来代替 applicationContext.xml 配置文件，所有这个配置文件里面能做到的事情都可以通过这个注解所在类来进行注册。</p>
 <ul>
 <li>如果有些第三方库需要用到xml文件，建议仍然通过 <code>@Configuration</code> 类作为项目的配置主类，对于第三方库可以使用 <code>@ImportResource</code> 注解加载xml配置文件。</li>
 <li>可以用 <code>@Import</code> 注解用来引入额外的一个或者多个 <code>@Configuration</code> 修饰的配置文件类。</li>
 </ul>
-<h2 class="relative group">4、<code>@SpringBootConfiguration</code> 
+<h3 class="relative group">4、<code>@SpringBootConfiguration</code> 
     <div id="4springbootconfiguration" class="anchor"></div>
     
     <span
@@ -1035,7 +1047,7 @@
             style="text-decoration-line: none !important;" href="#4springbootconfiguration" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这个注解就是 @Configuration 注解的变体，只是用来修饰是 Spring Boot 配置而已，或者可利于 Spring Boot 后续的扩展。源码如下。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
@@ -1044,7 +1056,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">SpringBootConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">5、<code>@ComponentScan</code> 
+</span></span></span></code></pre></div><h3 class="relative group">5、<code>@ComponentScan</code> 
     <div id="5componentscan" class="anchor"></div>
     
     <span
@@ -1053,7 +1065,7 @@
             style="text-decoration-line: none !important;" href="#5componentscan" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring 3.1 添加的一个注解，用来代替配置文件中的 component-scan 配置，开启组件扫描，即自动扫描包路径下的 <code>@Component</code> 注解进行注册 bean 实例到 context 中。</p>
 <p>另外，<code>@ComponentScans</code> 是可重复注解，即可以配置多个，用来配置注册不同的子包。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Retention</span><span class="w"> </span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
@@ -1071,7 +1083,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">ComponentScans</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">6、<code>@Conditional</code> 
+</span></span></span></code></pre></div><h3 class="relative group">6、<code>@Conditional</code> 
     <div id="6conditional" class="anchor"></div>
     
     <span
@@ -1080,9 +1092,9 @@
             style="text-decoration-line: none !important;" href="#6conditional" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring 4.0 添加的新注解，用来标识一个 Spring Bean 或者  Configuration 配置文件，当满足指定的条件才开启配置。</p>
-<h2 class="relative group">7、<code>@ConditionalOnBean</code> 
+<h3 class="relative group">7、<code>@ConditionalOnBean</code> 
     <div id="7conditionalonbean" class="anchor"></div>
     
     <span
@@ -1091,9 +1103,9 @@
             style="text-decoration-line: none !important;" href="#7conditionalonbean" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当容器中有指定的 Bean 才开启配置。</p>
-<h2 class="relative group">8、<code>@ConditionalOnMissingBean</code> 
+<h3 class="relative group">8、<code>@ConditionalOnMissingBean</code> 
     <div id="8conditionalonmissingbean" class="anchor"></div>
     
     <span
@@ -1102,9 +1114,9 @@
             style="text-decoration-line: none !important;" href="#8conditionalonmissingbean" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnBean</code> 注解相反，当容器中没有指定的 Bean 才开启配置。</p>
-<h2 class="relative group">9、<code>@ConditionalOnClass</code> 
+<h3 class="relative group">9、<code>@ConditionalOnClass</code> 
     <div id="9conditionalonclass" class="anchor"></div>
     
     <span
@@ -1113,9 +1125,9 @@
             style="text-decoration-line: none !important;" href="#9conditionalonclass" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当容器中有指定的 Class 才开启配置。</p>
-<h2 class="relative group">10、<code>@ConditionalOnMissingClass</code> 
+<h3 class="relative group">10、<code>@ConditionalOnMissingClass</code> 
     <div id="10conditionalonmissingclass" class="anchor"></div>
     
     <span
@@ -1124,9 +1136,9 @@
             style="text-decoration-line: none !important;" href="#10conditionalonmissingclass" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnMissingClass</code> 注解相反，当容器中没有指定的 Class 才开启配置。</p>
-<h2 class="relative group">11、<code>@ConditionalOnWebApplication</code> 
+<h3 class="relative group">11、<code>@ConditionalOnWebApplication</code> 
     <div id="11conditionalonwebapplication" class="anchor"></div>
     
     <span
@@ -1135,7 +1147,7 @@
             style="text-decoration-line: none !important;" href="#11conditionalonwebapplication" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当前项目类型是 WEB 项目才开启配置。</p>
 <p>当前项目有以下 3 种类型。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">enum</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1156,7 +1168,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">REACTIVE</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">12、<code>@ConditionalOnNotWebApplication</code> 
+</span></span></span></code></pre></div><h3 class="relative group">12、<code>@ConditionalOnNotWebApplication</code> 
     <div id="12conditionalonnotwebapplication" class="anchor"></div>
     
     <span
@@ -1165,9 +1177,9 @@
             style="text-decoration-line: none !important;" href="#12conditionalonnotwebapplication" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，和 <code>@ConditionalOnWebApplication</code> 注解相反，当前项目类型不是 WEB 项目才开启配置。</p>
-<h2 class="relative group">13、<code>@ConditionalOnProperty</code> 
+<h3 class="relative group">13、<code>@ConditionalOnProperty</code> 
     <div id="13conditionalonproperty" class="anchor"></div>
     
     <span
@@ -1176,9 +1188,9 @@
             style="text-decoration-line: none !important;" href="#13conditionalonproperty" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当指定的属性有指定的值时才开启配置。</p>
-<h2 class="relative group">14、<code>@ConditionalOnExpression</code> 
+<h3 class="relative group">14、<code>@ConditionalOnExpression</code> 
     <div id="14conditionalonexpression" class="anchor"></div>
     
     <span
@@ -1187,9 +1199,9 @@
             style="text-decoration-line: none !important;" href="#14conditionalonexpression" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当 SpEL 表达式为 true 时才开启配置。</p>
-<h2 class="relative group">15、<code>@ConditionalOnJava</code> 
+<h3 class="relative group">15、<code>@ConditionalOnJava</code> 
     <div id="15conditionalonjava" class="anchor"></div>
     
     <span
@@ -1198,9 +1210,9 @@
             style="text-decoration-line: none !important;" href="#15conditionalonjava" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当运行的 Java JVM 在指定的版本范围时才开启配置。</p>
-<h2 class="relative group">16、<code>@ConditionalOnResource</code> 
+<h3 class="relative group">16、<code>@ConditionalOnResource</code> 
     <div id="16conditionalonresource" class="anchor"></div>
     
     <span
@@ -1209,9 +1221,9 @@
             style="text-decoration-line: none !important;" href="#16conditionalonresource" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当类路径下有指定的资源才开启配置。</p>
-<h2 class="relative group">17、<code>@ConditionalOnJndi</code> 
+<h3 class="relative group">17、<code>@ConditionalOnJndi</code> 
     <div id="17conditionalonjndi" class="anchor"></div>
     
     <span
@@ -1220,9 +1232,9 @@
             style="text-decoration-line: none !important;" href="#17conditionalonjndi" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当指定的 JNDI 存在时才开启配置。</p>
-<h2 class="relative group">18、<code>@ConditionalOnCloudPlatform</code> 
+<h3 class="relative group">18、<code>@ConditionalOnCloudPlatform</code> 
     <div id="18conditionaloncloudplatform" class="anchor"></div>
     
     <span
@@ -1231,9 +1243,9 @@
             style="text-decoration-line: none !important;" href="#18conditionaloncloudplatform" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当指定的云平台激活时才开启配置。</p>
-<h2 class="relative group">19、<code>@ConditionalOnSingleCandidate</code> 
+<h3 class="relative group">19、<code>@ConditionalOnSingleCandidate</code> 
     <div id="19conditionalonsinglecandidate" class="anchor"></div>
     
     <span
@@ -1242,9 +1254,9 @@
             style="text-decoration-line: none !important;" href="#19conditionalonsinglecandidate" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>组合 <code>@Conditional</code> 注解，当指定的 class 在容器中只有一个 Bean，或者同时有多个但为首选时才开启配置。</p>
-<h2 class="relative group">20、<code>@ConfigurationProperties</code> 
+<h3 class="relative group">20、<code>@ConfigurationProperties</code> 
     <div id="20configurationproperties" class="anchor"></div>
     
     <span
@@ -1253,9 +1265,9 @@
             style="text-decoration-line: none !important;" href="#20configurationproperties" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>用来加载额外的配置（如 .properties 文件），可用在 <code>@Configuration</code> 注解类，或者 <code>@Bean</code> 注解方法上面。</p>
-<h2 class="relative group">21、<code>@EnableConfigurationProperties</code> 
+<h3 class="relative group">21、<code>@EnableConfigurationProperties</code> 
     <div id="21enableconfigurationproperties" class="anchor"></div>
     
     <span
@@ -1264,9 +1276,9 @@
             style="text-decoration-line: none !important;" href="#21enableconfigurationproperties" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>一般要配合 <code>@ConfigurationProperties</code> 注解使用，用来开启对 <code>@ConfigurationProperties</code> 注解配置 Bean 的支持。</p>
-<h2 class="relative group">22、<code>@AutoConfigureAfter</code> 
+<h3 class="relative group">22、<code>@AutoConfigureAfter</code> 
     <div id="22autoconfigureafter" class="anchor"></div>
     
     <span
@@ -1275,13 +1287,13 @@
             style="text-decoration-line: none !important;" href="#22autoconfigureafter" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>用在自动配置类上面，表示该自动配置类需要在另外指定的自动配置类配置完之后。</p>
 <p>如 Mybatis 的自动配置类，需要在数据源自动配置类之后。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@AutoConfigureAfter</span><span class="p">(</span><span class="n">DataSourceAutoConfiguration</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MybatisAutoConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">23、<code>@AutoConfigureBefore</code> 
+</span></span></span></code></pre></div><h3 class="relative group">23、<code>@AutoConfigureBefore</code> 
     <div id="23autoconfigurebefore" class="anchor"></div>
     
     <span
@@ -1290,9 +1302,9 @@
             style="text-decoration-line: none !important;" href="#23autoconfigurebefore" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这个和 <code>@AutoConfigureAfter</code> 注解使用相反，表示该自动配置类需要在另外指定的自动配置类配置之前。</p>
-<h2 class="relative group">24、<code>@Import</code> 
+<h3 class="relative group">24、<code>@Import</code> 
     <div id="24import" class="anchor"></div>
     
     <span
@@ -1301,9 +1313,9 @@
             style="text-decoration-line: none !important;" href="#24import" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring 3.0 添加的新注解，用来导入一个或者多个 <code>@Configuration</code> 注解修饰的类，这在 Spring Boot 里面应用很多。</p>
-<h2 class="relative group">25、<code>@ImportResource</code> 
+<h3 class="relative group">25、<code>@ImportResource</code> 
     <div id="25importresource" class="anchor"></div>
     
     <span
@@ -1312,9 +1324,9 @@
             style="text-decoration-line: none !important;" href="#25importresource" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>这是 Spring 3.0 添加的新注解，用来导入一个或者多个 Spring 配置文件，这对 Spring Boot 兼容老项目非常有用，因为有些配置无法通过 Java Config 的形式来配置就只能用这个注解来导入。</p>
-<h2 class="relative group">26、<code>@Service</code> 
+<h3 class="relative group">26、<code>@Service</code> 
     <div id="26service" class="anchor"></div>
     
     <span
@@ -1323,9 +1335,9 @@
             style="text-decoration-line: none !important;" href="#26service" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>一般用于修饰service层的组件</p>
-<h2 class="relative group">27、<code>@Repository</code> 
+<h3 class="relative group">27、<code>@Repository</code> 
     <div id="27repository" class="anchor"></div>
     
     <span
@@ -1334,9 +1346,9 @@
             style="text-decoration-line: none !important;" href="#27repository" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>使用 <code>@Repository</code> 注解可以确保DAO或者repositories提供异常转译，这个注解修饰的 DAO 或者 repositories 类会被 ComponetScan 发现并配置，同时也不需要为它们提供XML配置项。</p>
-<h2 class="relative group">28、<code>@Bean</code> 
+<h3 class="relative group">28、<code>@Bean</code> 
     <div id="28bean" class="anchor"></div>
     
     <span
@@ -1345,9 +1357,9 @@
             style="text-decoration-line: none !important;" href="#28bean" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>用@Bean标注方法等价于XML中配置的bean。相当于XML中的，放在方法的上面，而不是类，意思是产生一个bean，并交给spring管理。</p>
-<h2 class="relative group">29、<code>@Value</code> 
+<h3 class="relative group">29、<code>@Value</code> 
     <div id="29value" class="anchor"></div>
     
     <span
@@ -1356,11 +1368,11 @@
             style="text-decoration-line: none !important;" href="#29value" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>注入Spring boot application.properties 配置的属性的值。示例代码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Value</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;#{message}&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">30、<code>@Inject</code> 
+</span></span></span></code></pre></div><h3 class="relative group">30、<code>@Inject</code> 
     <div id="30inject" class="anchor"></div>
     
     <span
@@ -1369,9 +1381,9 @@
             style="text-decoration-line: none !important;" href="#30inject" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>等价于默认的 <code>@Autowired</code> ，只是没有required属性</p>
-<h2 class="relative group">31、<code>@AutoWired</code> 
+<h3 class="relative group">31、<code>@AutoWired</code> 
     <div id="31autowired" class="anchor"></div>
     
     <span
@@ -1380,9 +1392,9 @@
             style="text-decoration-line: none !important;" href="#31autowired" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>自动导入依赖的bean。byType方式。把配置好的Bean拿来用，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。当加上（required=false）时，就算找不到bean也不报错。</p>
-<h2 class="relative group">32、<code>@Qualifier</code> 
+<h3 class="relative group">32、<code>@Qualifier</code> 
     <div id="32qualifier" class="anchor"></div>
     
     <span
@@ -1391,14 +1403,14 @@
             style="text-decoration-line: none !important;" href="#32qualifier" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>当有多个同一类型的Bean时，可以用 <code>@Qualifier(&quot;name&quot;)</code> 来指定。</p>
 <p>与 <code>@Autowired</code> 配合使用。</p>
 <p><code>@Qualifier</code> 限定描述符除了能根据名字进行注入，但能进行更细粒度的控制如何选择候选者，具体使用方式如下：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Autowired</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Qualifier</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;demoInfoService&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">DemoInfoService</span><span class="w"> </span><span class="n">demoInfoService</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><h1 class="relative group">Spring MVC常用注解 
+</span></span></span></code></pre></div><h2 class="relative group">Spring MVC常用注解 
     <div id="spring-mvc常用注解" class="anchor"></div>
     
     <span
@@ -1407,8 +1419,8 @@
             style="text-decoration-line: none !important;" href="#spring-mvc%e5%b8%b8%e7%94%a8%e6%b3%a8%e8%a7%a3" aria-label="Anchor">#</a>
     </span>        
     
-</h1>
-<h2 class="relative group">1、<code>@Controller</code> 
+</h2>
+<h3 class="relative group">1、<code>@Controller</code> 
     <div id="1controller" class="anchor"></div>
     
     <span
@@ -1417,7 +1429,7 @@
             style="text-decoration-line: none !important;" href="#1controller" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>用于定义控制器类，在spring 项目中由控制器负责将用户发来的URL请求转发到对应的服务接口（service层），一般这个注解在类中，通常方法需要配合注解<code>@RequestMapping</code>。示例代码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Controller</span><span class="w"> 
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/demoInfo&#34;</span><span class="p">)</span><span class="w">
@@ -1433,7 +1445,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="s">&#34;/hello&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">2、<code>@RequestMapping</code> 
+</span></span></span></code></pre></div><h3 class="relative group">2、<code>@RequestMapping</code> 
     <div id="2requestmapping" class="anchor"></div>
     
     <span
@@ -1442,7 +1454,7 @@
             style="text-decoration-line: none !important;" href="#2requestmapping" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@RequestMapping(&quot;/path&quot;)</code> 表示该控制器处理所有 &ldquo;/path&rdquo; 的 URL请求。RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。</p>
 <p>用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。该注解有六个属性：</p>
 <ul>
@@ -1453,7 +1465,7 @@
 <li>consumes：指定处理请求的提交内容类型（Content-Type），如application/json,text/html;</li>
 <li>produces：指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回</li>
 </ul>
-<h2 class="relative group">3、<code>@RequestParam</code> 
+<h3 class="relative group">3、<code>@RequestParam</code> 
     <div id="3requestparam" class="anchor"></div>
     
     <span
@@ -1462,7 +1474,7 @@
             style="text-decoration-line: none !important;" href="#3requestparam" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>放在参数前，表示只能接收参数a=b格式的数据，即 <code>Content-Type</code> 为 <code>application/x-www-form-urlencoded</code> 类型的内容。</p>
 <p>name的别名是value，value的别名是name。二者皆可，并且开发中两个都能获得参数，获得一样的结果。源码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">RequestParam</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1510,7 +1522,7 @@
   
 
 </p>
-<h2 class="relative group">4、<code>@RequestBody</code> 
+<h3 class="relative group">4、<code>@RequestBody</code> 
     <div id="4requestbody" class="anchor"></div>
     
     <span
@@ -1519,9 +1531,9 @@
             style="text-decoration-line: none !important;" href="#4requestbody" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>放在参数前，表示参数从 request body 中获取，而不是从地址栏获取，所以这肯定是接收一个POST请求的非a=b格式的数据，即 Content-Type 不为 <code>application/x-www-form-urlencoded</code> 类型的内容。</p>
-<h2 class="relative group">5、<code>@ResponseBody</code> 
+<h3 class="relative group">5、<code>@ResponseBody</code> 
     <div id="5responsebody" class="anchor"></div>
     
     <span
@@ -1530,7 +1542,7 @@
             style="text-decoration-line: none !important;" href="#5responsebody" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>表示该方法的返回结果直接写入HTTP response body中，一般在异步获取数据时使用，用于构建RESTful的api。在使用 <code>@RequestMapping</code> 后，返回值通常解析为跳转路径，加上 <code>@Responsebody</code> 后返回结果不会被解析为跳转路径，而是直接写入 HTTP response body 中。</p>
 <p>比如异步获取json数据，加上@responsebody后，会直接返回json数据。该注解一般会配合@RequestMapping一起使用。示例代码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/test&#34;</span><span class="p">)</span><span class="w">
@@ -1538,7 +1550,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">test</span><span class="p">(){</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="s">&#34;ok&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">6、<code>@RestController</code> 
+</span></span></span></code></pre></div><h3 class="relative group">6、<code>@RestController</code> 
     <div id="6restcontroller" class="anchor"></div>
     
     <span
@@ -1547,7 +1559,7 @@
             style="text-decoration-line: none !important;" href="#6restcontroller" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>用于标注控制层组件(如struts中的action)，<code>@ResponseBody</code> 和 <code>@Controller</code> 的合集，表示@Controller标识的类里面的所有返回参数都放在response body里面。</p>
 <p>示例代码：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.kfit.demo.web</span><span class="p">;</span><span class="w">
@@ -1565,7 +1577,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="s">&#34;ok&#34;</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">7、<code>@PathVariable</code> 
+</span></span></span></code></pre></div><h3 class="relative group">7、<code>@PathVariable</code> 
     <div id="7pathvariable" class="anchor"></div>
     
     <span
@@ -1574,13 +1586,13 @@
             style="text-decoration-line: none !important;" href="#7pathvariable" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>路径绑定变量，用于绑定restful路径上的变量。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">RequestMapping</span><span class="p">(</span><span class="s">&#34;user/get/mac/{macAddress}&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getByMacAddress</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">macAddress</span><span class="p">){</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c1">//do something;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">8、<code>@RequestHeader</code> 
+</span></span></span></code></pre></div><h3 class="relative group">8、<code>@RequestHeader</code> 
     <div id="8requestheader" class="anchor"></div>
     
     <span
@@ -1589,9 +1601,9 @@
             style="text-decoration-line: none !important;" href="#8requestheader" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>放在方法参数前，用来获取request header中的参数值。</p>
-<h2 class="relative group">9、<code>@CookieValue</code> 
+<h3 class="relative group">9、<code>@CookieValue</code> 
     <div id="9cookievalue" class="anchor"></div>
     
     <span
@@ -1600,9 +1612,9 @@
             style="text-decoration-line: none !important;" href="#9cookievalue" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>放在方法参数前，用来获取request header cookie中的参数值。</p>
-<h2 class="relative group">10、<code>GetMapping PostMapping PutMapping.. </code> 
+<h3 class="relative group">10、<code>GetMapping PostMapping PutMapping.. </code> 
     <div id="10getmapping-postmapping-putmapping-" class="anchor"></div>
     
     <span
@@ -1611,7 +1623,7 @@
             style="text-decoration-line: none !important;" href="#10getmapping-postmapping-putmapping-" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>*Mapping</code> 的是 Spring4.3 加入的新注解，表示特定的请求类型路径映射，而不需要写 RequestMethod 来指定请求类型。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.dom4j.util.UserDataElement</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Controller</span><span class="p">;</span><span class="w">
@@ -1637,7 +1649,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h1 class="relative group">JPA注解 
+</span></span></span></code></pre></div><h2 class="relative group">JPA注解 
     <div id="jpa注解" class="anchor"></div>
     
     <span
@@ -1646,8 +1658,8 @@
             style="text-decoration-line: none !important;" href="#jpa%e6%b3%a8%e8%a7%a3" aria-label="Anchor">#</a>
     </span>        
     
-</h1>
-<h2 class="relative group">1、<code>@Entity</code> 
+</h2>
+<h3 class="relative group">1、<code>@Entity</code> 
     <div id="1entity" class="anchor"></div>
     
     <span
@@ -1656,12 +1668,12 @@
             style="text-decoration-line: none !important;" href="#1entity" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//表明这是一个实体类。</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Entity</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Table</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span><span class="w">
 </span></span></span></code></pre></div><p>一般用于jpa这两个注解一般一块使用，但是如果表名和实体类名相同的话，<code>@Table</code> 可以省略。</p>
-<h2 class="relative group">2、<code>@MappedSuperClass</code> 
+<h3 class="relative group">2、<code>@MappedSuperClass</code> 
     <div id="2mappedsuperclass" class="anchor"></div>
     
     <span
@@ -1670,9 +1682,9 @@
             style="text-decoration-line: none !important;" href="#2mappedsuperclass" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@MappedSuperClass</code>：用在确定是父类的entity上。父类的属性子类可以继承。</p>
-<h2 class="relative group">3、<code>@NoRepositoryBean</code> 
+<h3 class="relative group">3、<code>@NoRepositoryBean</code> 
     <div id="3norepositorybean" class="anchor"></div>
     
     <span
@@ -1681,9 +1693,9 @@
             style="text-decoration-line: none !important;" href="#3norepositorybean" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@NoRepositoryBean</code>：一般用作父类的repository，有这个注解，spring不会去实例化该repository。</p>
-<h2 class="relative group">4、<code>@Column</code> 
+<h3 class="relative group">4、<code>@Column</code> 
     <div id="4column" class="anchor"></div>
     
     <span
@@ -1692,9 +1704,9 @@
             style="text-decoration-line: none !important;" href="#4column" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@Column</code>：如果字段名与列名相同，则可以省略。</p>
-<h2 class="relative group">5、<code>@Id</code> 
+<h3 class="relative group">5、<code>@Id</code> 
     <div id="5id" class="anchor"></div>
     
     <span
@@ -1703,9 +1715,9 @@
             style="text-decoration-line: none !important;" href="#5id" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@Id</code>：表示该属性为主键。</p>
-<h2 class="relative group">6、<code>@GeneratedValue</code> 
+<h3 class="relative group">6、<code>@GeneratedValue</code> 
     <div id="6generatedvalue" class="anchor"></div>
     
     <span
@@ -1714,7 +1726,7 @@
             style="text-decoration-line: none !important;" href="#6generatedvalue" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">SEQUENCE</span><span class="p">,</span><span class="w"> </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;repair_seq&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@GeneratedValue</span><span class="p">(</span><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GenerationType</span><span class="p">.</span><span class="na">AUTO</span><span class="p">,</span><span class="w"> </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;uuid-string&#34;</span><span class="p">)</span><span class="w">
@@ -1727,7 +1739,7 @@
 <li>AUTO：主键由程序控制。</li>
 </ul>
 <p>表示主键生成策略是sequence（可以为Auto、IDENTITY、native等，Auto表示可在多个数据库间切换），指定sequence的名字是repair_seq。</p>
-<h2 class="relative group">7、<code>@SequenceGeneretor</code> 
+<h3 class="relative group">7、<code>@SequenceGeneretor</code> 
     <div id="7sequencegeneretor" class="anchor"></div>
     
     <span
@@ -1736,9 +1748,9 @@
             style="text-decoration-line: none !important;" href="#7sequencegeneretor" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@SequenceGeneretor(name = &quot;repair_seq&quot;, sequenceName = &quot;seq_repair&quot;, allocationSize = 1)</code>：name为sequence的名称，以便使用，sequenceName为数据库的sequence名称，两个名称可以一致。</p>
-<h2 class="relative group">8、<code>@Transient</code> 
+<h3 class="relative group">8、<code>@Transient</code> 
     <div id="8transient" class="anchor"></div>
     
     <span
@@ -1747,9 +1759,9 @@
             style="text-decoration-line: none !important;" href="#8transient" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@Transient</code>：表示该属性并非一个到数据库表的字段的映射，ORM框架将忽略该属性。如果一个属性并非数据库表的字段映射，就务必将其标示为 <code>@Transient</code>，否则，ORM框架默认其注解为<code>@Basic</code>。<code>@Basic(fetch=FetchType.LAZY)</code>：标记可以指定实体属性的加载方式。</p>
-<h2 class="relative group">9、<code>@JsonIgnore</code> 
+<h3 class="relative group">9、<code>@JsonIgnore</code> 
     <div id="9jsonignore" class="anchor"></div>
     
     <span
@@ -1758,9 +1770,9 @@
             style="text-decoration-line: none !important;" href="#9jsonignore" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@JsonIgnore</code>：作用是json序列化时将Java bean中的一些属性忽略掉,序列化和反序列化都受影响。</p>
-<h2 class="relative group">10、<code>@JoinColumn</code> 
+<h3 class="relative group">10、<code>@JoinColumn</code> 
     <div id="10joincolumn" class="anchor"></div>
     
     <span
@@ -1769,9 +1781,9 @@
             style="text-decoration-line: none !important;" href="#10joincolumn" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p><code>@JoinColumn(name=&quot;loginId&quot;)</code>：一对一：本表中指向另一个表的外键。一对多：另一个表指向本表的外键。</p>
-<h2 class="relative group">11、<code>@OneToOne、@OneToMany、@ManyToOne</code> 
+<h3 class="relative group">11、<code>@OneToOne、@OneToMany、@ManyToOne</code> 
     <div id="11onetooneonetomanymanytoone" class="anchor"></div>
     
     <span
@@ -1780,7 +1792,7 @@
             style="text-decoration-line: none !important;" href="#11onetooneonetomanymanytoone" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
+</h3>
 <p>@OneToOne、@OneToMany、@ManyToOne：对应hibernate配置文件中的一对一，一对多，多对一。</p>
 
         </div>
