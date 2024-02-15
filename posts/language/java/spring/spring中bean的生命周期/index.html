@@ -101,7 +101,7 @@
     "keywords": ["java","spring"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "575"
+    "wordCount": "573"
   }]
   </script>
 
@@ -614,7 +614,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-15 16:15:08 &#43;0800 &#43;0800">15 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>575 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-02-15 16:15:08 &#43;0800 &#43;0800">15 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>573 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1299,10 +1299,8 @@ before先执行、after后执行）</p>
 <p><strong>候选者</strong>：首先从第三级缓存说起（就是key是<code>BeanName</code>，Value为<code>ObjectFactory</code>）。我们的对象是单例的，有可能A对象依赖的B对象是有AOP的（B对象需要代理）。假设没有第三级缓存，只有第二级缓存（Value存对象，而不是工厂对象）。那如果有AOP的情况下，岂不是在存入第二级缓存之前都需要先去做AOP代理 ？这不合适嘛。</p>
 <p><strong>候选者</strong>：这里肯定是需要考虑代理的情况的，比如A对象是一个被AOP增量的对象，B依赖A时，得到的A肯定是代理对象的。所以，三级缓存的Value是ObjectFactory，可以从里边拿到代理对象。而二级缓存存在的必要就是为了性能，从三级缓存的工厂里创建出对象，再扔到二级缓存（这样就不用每次都要从工厂里拿）。应该很好懂吧？</p>
 <center><img src="./999.png" alt="img" style="zoom:80%;" /></center>
-<p>面试官：确实。</p>
-<p>首先是Spring Bean的生命周期过程，Spring使用BeanDefinition来装载着我们给Bean定义
-的元数据。实例化Bean的时候实际上就是遍历BeanDefinitionMap，Spring的Bean实例化和
-属性赋值是分开两步来做的，在Spring Bean的生命周期，Spring预留了很多的hook给我们去扩展：</p>
+<p><strong>面试官</strong>：确实。</p>
+<p><strong>总结</strong>：首先是Spring Bean的生命周期过程，Spring使用BeanDefinition来装载着我们给Bean定义的元数据。实例化Bean的时候实际上就是遍历BeanDefinitionMap，Spring的Bean实例化和属性赋值是分开两步来做的，在Spring Bean的生命周期，Spring预留了很多的hook给我们去扩展：</p>
 <ol>
 <li>Bean实例化之前有BeanFactoryPostProcessor</li>
 <li>Bean实例化之后，初始化时，有相关的Aware接口供我们去拿到Context相关信息</li>
