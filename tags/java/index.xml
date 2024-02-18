@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 15 Feb 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Feb 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VO、DTO、BO、PO、DO区别</title>
+      <link>https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sat, 17 Feb 2024 16:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/</guid>
+      <description>VO：（View Object）视图对象，一般位于Controller层，用于展示视图。 DTO：（Data Transfer Object）数据传输对象， 即RPC 接口请求或传输出去的对象，用于展示层与服务层之间的数据传输对象。 BO：（Business Object）业务层对象，一般位于Service层，它与 DO 会有一定的属性差别。 PO：（Persistent Object）持久化对象，对象属性与数据库字段形成映射关系。 DO：（Domain Object）领域对象，就是从现实世界中抽象出来的有形或无形的业务实体，可以当成BO；（Data Object）数据层对象，对象属性与数据库字段形成映射关系，可以当成PO VO与DTO # VO：展示层需要展示的数据。 DTO：业务逻辑层需要接收的数据和返回的数据。 VO与DTO的属性值基本相同，但是VO是DTO的最终解释，可以对DTO的字段进行适当删减。 举个例子：</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png" />
+    </item>
+    
     <item>
       <title>Spring中Bean的生命周期</title>
       <link>https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>

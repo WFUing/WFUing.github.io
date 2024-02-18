@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>java元注解@interface &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="java元注解@interface &middot; WFUing&#39;s Blog" />
-  
-  <meta name="description" content="注解（Annontion）是Java5开始引入的新特征。它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。元注解的作用就是负责注解其他注解。" />
-  <meta name="keywords" content="java, @interface, " />
+  <title>VO、DTO、BO、PO、DO区别 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="VO、DTO、BO、PO、DO区别 &middot; WFUing&#39;s Blog" />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/" />
+  <meta name="keywords" content="java, " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/" />
   
   
   
@@ -64,17 +64,17 @@
   
   
   
-  <meta property="og:title" content="java元注解@interface" />
-<meta property="og:description" content="注解（Annontion）是Java5开始引入的新特征。它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。元注解的作用就是负责注解其他注解。" />
+  <meta property="og:title" content="VO、DTO、BO、PO、DO区别" />
+<meta property="og:description" content="VO：（View Object）视图对象，一般位于Controller层，用于展示视图。 DTO：（Data Transfer Object）数据传输对象， 即RPC 接口请求或传输出去的对象，用于展示层与服务层之间的数据传输对象。 BO：（Business Object）业务层对象，一般位于Service层，它与 DO 会有一定的属性差别。 PO：（Persistent Object）持久化对象，对象属性与数据库字段形成映射关系。 DO：（Domain Object）领域对象，就是从现实世界中抽象出来的有形或无形的业务实体，可以当成BO；（Data Object）数据层对象，对象属性与数据库字段形成映射关系，可以当成PO VO与DTO # VO：展示层需要展示的数据。 DTO：业务逻辑层需要接收的数据和返回的数据。 VO与DTO的属性值基本相同，但是VO是DTO的最终解释，可以对DTO的字段进行适当删减。 举个例子：" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-07T15:15:08+08:00" />
-<meta property="article:modified_time" content="2024-02-07T15:15:08+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-17T16:15:08+08:00" />
+<meta property="article:modified_time" content="2024-02-17T16:15:08+08:00" />
 
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/featured.png" /><meta name="twitter:title" content="java元注解@interface"/>
-<meta name="twitter:description" content="注解（Annontion）是Java5开始引入的新特征。它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。元注解的作用就是负责注解其他注解。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png" /><meta name="twitter:title" content="VO、DTO、BO、PO、DO区别"/>
+<meta name="twitter:description" content="VO：（View Object）视图对象，一般位于Controller层，用于展示视图。 DTO：（Data Transfer Object）数据传输对象， 即RPC 接口请求或传输出去的对象，用于展示层与服务层之间的数据传输对象。 BO：（Business Object）业务层对象，一般位于Service层，它与 DO 会有一定的属性差别。 PO：（Persistent Object）持久化对象，对象属性与数据库字段形成映射关系。 DO：（Domain Object）领域对象，就是从现实世界中抽象出来的有形或无形的业务实体，可以当成BO；（Data Object）数据层对象，对象属性与数据库字段形成映射关系，可以当成PO VO与DTO # VO：展示层需要展示的数据。 DTO：业务逻辑层需要接收的数据和返回的数据。 VO与DTO的属性值基本相同，但是VO是DTO的最终解释，可以对DTO的字段进行适当删减。 举个例子："/>
 
   
   <script type="application/ld+json">
@@ -82,26 +82,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "java元注解@interface",
-    "headline": "java元注解@interface",
+    "name": "VO、DTO、BO、PO、DO区别",
+    "headline": "VO、DTO、BO、PO、DO区别",
     
-    "abstract": "注解（Annontion）是Java5开始引入的新特征。它提供了一种安全的类似注释的机制，用来将任何的信息或元数据（metadata）与程序元素（类、方法、成员变量等）进行关联。元注解的作用就是负责注解其他注解。",
+    "abstract": "VO：（View Object）视图对象，一般位于Controller层，用于展示视图。 DTO：（Data Transfer Object）数据传输对象， 即RPC 接口请求或传输出去的对象，用于展示层与服务层之间的数据传输对象。 BO：（Business Object）业务层对象，一般位于Service层，它与 DO 会有一定的属性差别。 PO：（Persistent Object）持久化对象，对象属性与数据库字段形成映射关系。 DO：（Domain Object）领域对象，就是从现实世界中抽象出来的有形或无形的业务实体，可以当成BO；（Data Object）数据层对象，对象属性与数据库字段形成映射关系，可以当成PO VO与DTO # VO：展示层需要展示的数据。 DTO：业务逻辑层需要接收的数据和返回的数据。 VO与DTO的属性值基本相同，但是VO是DTO的最终解释，可以对DTO的字段进行适当删减。 举个例子：",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/vodtobopodo%E5%8C%BA%E5%88%AB\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-02-07T15:15:08\u002b08:00",
-    "datePublished": "2024-02-07T15:15:08\u002b08:00",
+    "dateCreated": "2024-02-17T16:15:08\u002b08:00",
+    "datePublished": "2024-02-17T16:15:08\u002b08:00",
     
-    "dateModified": "2024-02-07T15:15:08\u002b08:00",
+    "dateModified": "2024-02-17T16:15:08\u002b08:00",
     
-    "keywords": ["java","@interface"],
+    "keywords": ["java"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "60"
+    "wordCount": "96"
   }]
   </script>
 
@@ -543,7 +543,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/featured.png);">
+    style="background-image:url(/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png);">
     
 
 
@@ -569,7 +569,7 @@
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      java元注解@interface
+      VO、DTO、BO、PO、DO区别
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -614,7 +614,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-07 15:15:08 &#43;0800 &#43;0800">7 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>60 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-17 16:15:08 &#43;0800 &#43;0800">17 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>96 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -764,20 +764,9 @@
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#jdk15">jdk1.5</a>
-      <ul>
-        <li><a href="#target"><code>@Target</code></a></li>
-        <li><a href="#documented"><code>@Documented</code></a></li>
-        <li><a href="#retention"><code>@Retention</code></a></li>
-        <li><a href="#inherited"><code>@Inherited</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#jdk18">jdk1.8</a>
-      <ul>
-        <li><a href="#native"><code>@Native</code></a></li>
-        <li><a href="#repeatable"><code>@Repeatable</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#vo与dto">VO与DTO</a></li>
+    <li><a href="#po与do">PO与DO</a></li>
+    <li><a href="#bo和po">BO和PO</a></li>
   </ul>
 </nav>
   </div>
@@ -791,20 +780,9 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#jdk15">jdk1.5</a>
-      <ul>
-        <li><a href="#target"><code>@Target</code></a></li>
-        <li><a href="#documented"><code>@Documented</code></a></li>
-        <li><a href="#retention"><code>@Retention</code></a></li>
-        <li><a href="#inherited"><code>@Inherited</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#jdk18">jdk1.8</a>
-      <ul>
-        <li><a href="#native"><code>@Native</code></a></li>
-        <li><a href="#repeatable"><code>@Repeatable</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#vo与dto">VO与DTO</a></li>
+    <li><a href="#po与do">PO与DO</a></li>
+    <li><a href="#bo和po">BO和PO</a></li>
   </ul>
 </nav>
   </div>
@@ -861,206 +839,124 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">jdk1.5 
-    <div id="jdk15" class="anchor"></div>
+          <ul>
+<li><strong>VO：</strong>（View Object）视图对象，一般位于Controller层，用于展示视图。</li>
+<li><strong>DTO：</strong>（Data Transfer Object）数据传输对象， 即RPC 接口请求或传输出去的对象，用于展示层与服务层之间的数据传输对象。</li>
+<li><strong>BO：</strong>（Business Object）业务层对象，一般位于Service层，它与 DO 会有一定的属性差别。</li>
+<li><strong>PO：</strong>（Persistent Object）持久化对象，对象属性与数据库字段形成映射关系。</li>
+<li><strong>DO</strong>：（Domain Object）领域对象，就是从现实世界中抽象出来的有形或无形的业务实体，可以当成BO；（Data Object）数据层对象，对象属性与数据库字段形成映射关系，可以当成PO</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">VO与DTO 
+    <div id="vo与dto" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#jdk15" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#vo%e4%b8%8edto" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>jdk1.5起开始提供了4个元注解，用来定义自定义注解的注解，它们分别是：</p>
-<h3 class="relative group"><code>@Target</code> 
-    <div id="target" class="anchor"></div>
+<ul>
+<li><strong>VO</strong>：展示层需要展示的数据。</li>
+<li><strong>DTO</strong>：业务逻辑层需要接收的数据和返回的数据。</li>
+</ul>
+<p>VO与DTO的属性值基本相同，但是VO是DTO的最终解释，可以对DTO的字段进行适当删减。 举个例子：</p>
+<p>例子1</p>
+<p>DTO中返回的字段为</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sex&#34;</span><span class="p">:</span> <span class="s2">&#34;女&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>对于大部分需求来说中返回的字段为中返回的字段就已经够用了，但是如果说业务的需求是展示具体的身份，那就需要在VO层进行进一步解释， VO中返回的字段为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sex&#34;</span><span class="p">:</span> <span class="s2">&#34;女演员&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>例子2</p>
+<p>DTO</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sex&#34;</span><span class="p">:</span> <span class="s2">&#34;男&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="s2">&#34;17&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>如果说展示层只需要展示是否成年， VO：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;age&#34;</span><span class="p">:</span> <span class="s2">&#34;未成年&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 class="relative group">PO与DO 
+    <div id="po与do" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#target" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>指定注解使用的目标范围（类、方法、字段等），其参考值见类的定义：<code>java.lang.annotation.ElementType</code></p>
-<h3 class="relative group"><code>@Documented</code> 
-    <div id="documented" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#documented" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>指定被标注的注解会包含在javadoc中。</p>
-<h3 class="relative group"><code>@Retention</code> 
-    <div id="retention" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#retention" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>指定注解的生命周期（源码、class文件、运行时），其参考值见类的定义：<code>java.lang.annotation.RetentionPolicy</code></p>
-<h3 class="relative group"><code>@Inherited</code> 
-    <div id="inherited" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#inherited" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>指定子类可以继承父类的注解，只能是类上的注解，方法和字段的注解不能继承。即如果父类上的注解是 <code>@Inherited</code> 修饰的就能被子类继承。</p>
-<h2 class="relative group">jdk1.8 
-    <div id="jdk18" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#jdk18" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#po%e4%b8%8edo" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>jdk1.8又提供了以下两个元注解</p>
-<h3 class="relative group"><code>@Native</code> 
-    <div id="native" class="anchor"></div>
+<ul>
+<li><strong>PO</strong>：通常来说是只有get/set方法的POJO，也就是常说的实体类。</li>
+<li><strong>DO</strong>：一般是PO的组合，也就是多表联查的映射。</li>
+</ul>
+<p>例子1</p>
+<p>PO1：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;999&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ahzoo&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>PO2：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;userId&#34;</span><span class="p">:</span> <span class="s2">&#34;999&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;管理员&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>DO：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;999&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ahzoo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;role&#34;</span><span class="p">:</span> <span class="s2">&#34;管理员&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 class="relative group">BO和PO 
+    <div id="bo和po" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#native" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#bo%e5%92%8cpo" aria-label="Anchor">#</a>
     </span>        
     
-</h3>
-<p>指定字段是一个常量，其值引用native code。</p>
-<h3 class="relative group"><code>@Repeatable</code> 
-    <div id="repeatable" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#repeatable" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>注解上可以使用重复注解，即可以在一个地方可以重复使用同一个注解，像 spring 中的包扫描注解就使用了这个。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Retention</span><span class="w"> </span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Target</span><span class="w"> </span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Documented</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Repeatable</span><span class="p">(</span><span class="n">ComponentScans</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">ComponentScan</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Retention</span><span class="w"> </span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Target</span><span class="w"> </span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Documented</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">ComponentScans</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>所有元注解定义在 <code>java.lang.annotation</code> 包下面</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/image.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>其中 Annotation 是注解的基本接口，所有的注解都继承这个接口。</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/image-1.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>看下 <code>@Autowired</code> 注解的实现</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/image-2.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>其实就是继承了Annotation接口。</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/image-3.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-
+</h2>
+<p><strong>BO</strong>：与PO的区别是，BO会删掉一些不宜在展示层展示的数据，只对外提供必要的字段属性。 比如用户需要查询用户的信息，通常来说这个返回给用户的用户信息是不应该包含密码之类的一些字段的，那么我们就可以在BO层做一下处理。</p>
+<p>举例， 如果用PO层的话返回的字段为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;999&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ahzoo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;password&#34;</span><span class="p">:</span><span class="s2">&#34;123456&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>BO层的放回字段：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;999&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ahzoo&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
         </div>
                 
         
@@ -1072,8 +968,8 @@
      
     
      <script>
-        var oid = "views_posts\/language\/java\/java元注解@interface\/index.md"
-        var oid_likes = "likes_posts\/language\/java\/java元注解@interface\/index.md"
+        var oid = "views_posts\/language\/java\/VO、DTO、BO、PO、DO区别\/index.md"
+        var oid_likes = "likes_posts\/language\/java\/VO、DTO、BO、PO、DO区别\/index.md"
       </script>
       
       
@@ -1096,40 +992,18 @@
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >VO、DTO、BO、PO、DO区别</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-02-17 16:15:08 &#43;0800 &#43;0800">17 February 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/language/java/class-loader/">
+            <a class="flex text-right group ml-3" href="/posts/language/java/java%E5%85%83%E6%B3%A8%E8%A7%A3@interface/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Java类加载机制</span
+                  >java元注解@interface</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-11-07 23:15:08 &#43;0800 &#43;0800">7 November 2023</time>
+                    <time datetime="2024-02-07 15:15:08 &#43;0800 &#43;0800">7 February 2024</time>
                   
                 </span>
               </span>
