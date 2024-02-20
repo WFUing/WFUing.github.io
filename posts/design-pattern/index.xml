@@ -20,252 +20,252 @@
     
     <item>
       <title>设计模式 - 中介者</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%AD%E4%BB%8B%E8%80%85/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%B8%AD%E4%BB%8B%E8%80%85/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%AD%E4%BB%8B%E8%80%85/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%B8%AD%E4%BB%8B%E8%80%85/</guid>
       <description>集中相关对象之间复杂的沟通和控制方式。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%AD%E4%BB%8B%E8%80%85/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%B8%AD%E4%BB%8B%E8%80%85/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 原型模式</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
       <description>使用原型实例指定要创建对象的类型，通过复制这个原型来创建新对象。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 备忘录</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%87%E5%BF%98%E5%BD%95/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%87%E5%BF%98%E5%BD%95/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%87%E5%BF%98%E5%BD%95/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%87%E5%BF%98%E5%BD%95/</guid>
       <description>在不违反封装的情况下获得对象的内部状态，从而在需要时可以将对象恢复到最初状态。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%87%E5%BF%98%E5%BD%95/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%87%E5%BF%98%E5%BD%95/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 工厂方法</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/</guid>
       <description>定义了一个创建对象的接口，但由子类决定要实例化哪个类。工厂方法把实例化操作推迟到子类。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 抽象工厂</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/</guid>
       <description>提供一个接口，用于创建相关的对象家族。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 模板方法</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid>
       <description>定义算法框架，并将一些步骤的实现延迟到子类。通过模板方法，子类可以重新定义算法的某些步骤，而不用改变算法的结构。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 生成器</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%94%9F%E6%88%90%E5%99%A8/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%94%9F%E6%88%90%E5%99%A8/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%94%9F%E6%88%90%E5%99%A8/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%94%9F%E6%88%90%E5%99%A8/</guid>
       <description>封装一个对象的构造过程，并允许按步骤构造。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%94%9F%E6%88%90%E5%99%A8/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%94%9F%E6%88%90%E5%99%A8/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 空对象</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%A9%BA%E5%AF%B9%E8%B1%A1/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%A9%BA%E5%AF%B9%E8%B1%A1/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%A9%BA%E5%AF%B9%E8%B1%A1/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%A9%BA%E5%AF%B9%E8%B1%A1/</guid>
       <description>使用什么都不做的空对象来代替 NULL。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%A9%BA%E5%AF%B9%E8%B1%A1/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%A9%BA%E5%AF%B9%E8%B1%A1/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 策略</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AD%96%E7%95%A5/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AD%96%E7%95%A5/</guid>
       <description>定义一系列算法，封装每个算法，并使它们可以互换。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AD%96%E7%95%A5/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 简单工厂</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/</guid>
       <description>在创建一个对象时不向客户暴露内部细节，并提供一个创建对象的通用接口。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 组合</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%BB%84%E5%90%88/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%BB%84%E5%90%88/</guid>
       <description>将对象组合成树形结构来表示“整体/部分”层次关系，允许用户以相同的方式处理单独对象和组合对象。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%84%E5%90%88/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%BB%84%E5%90%88/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 装饰</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A3%85%E9%A5%B0/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A3%85%E9%A5%B0/</guid>
       <description>为对象动态添加功能。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A3%85%E9%A5%B0/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 观察者</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%82%E5%AF%9F%E8%80%85/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%82%E5%AF%9F%E8%80%85/</guid>
       <description>定义对象之间的一对多依赖，当一个对象状态改变时，它的所有依赖都会收到通知并且自动更新状态。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%82%E5%AF%9F%E8%80%85/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 解释器</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%A3%E9%87%8A%E5%99%A8/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%A3%E9%87%8A%E5%99%A8/</guid>
       <description>为语言创建解释器，通常由语言的语法和语法分析来定义。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%A3%E9%87%8A%E5%99%A8/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%A7%A3%E9%87%8A%E5%99%A8/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 访问者</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%AE%BF%E9%97%AE%E8%80%85/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%AE%BF%E9%97%AE%E8%80%85/</guid>
       <description>为一个对象结构（比如组合结构）增加新能力。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BF%E9%97%AE%E8%80%85/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%AE%BF%E9%97%AE%E8%80%85/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 责任链</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%B4%A3%E4%BB%BB%E9%93%BE/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%B4%A3%E4%BB%BB%E9%93%BE/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%B4%A3%E4%BB%BB%E9%93%BE/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%B4%A3%E4%BB%BB%E9%93%BE/</guid>
       <description>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链发送该请求，直到有一个对象处理它为止。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%B4%A3%E4%BB%BB%E9%93%BE/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%B4%A3%E4%BB%BB%E9%93%BE/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 迭代器</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%BF%AD%E4%BB%A3%E5%99%A8/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%BF%AD%E4%BB%A3%E5%99%A8/</guid>
       <description>提供一种顺序访问聚合对象元素的方法，并且不暴露聚合对象的内部表示。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%BF%AD%E4%BB%A3%E5%99%A8/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E8%BF%AD%E4%BB%A3%E5%99%A8/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 适配器</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E9%80%82%E9%85%8D%E5%99%A8/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:59 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E9%80%82%E9%85%8D%E5%99%A8/</guid>
       <description>把一个类接口转换成另一个用户需要的接口。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E9%80%82%E9%85%8D%E5%99%A8/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 享元</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BA%AB%E5%85%83/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BA%AB%E5%85%83/</guid>
       <description>利用共享的方式来支持大量细粒度的对象，这些对象一部分内部状态是相同的。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BA%AB%E5%85%83/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 代理</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BB%A3%E7%90%86/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BB%A3%E7%90%86/</guid>
       <description>控制对其它对象的访问。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E4%BB%A3%E7%90%86/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 单例</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F----%E5%8D%95%E4%BE%8B/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F----%E5%8D%95%E4%BE%8B/</guid>
       <description>使用一个私有构造函数、一个私有静态变量以及一个公有静态函数来实现。私有构造函数保证了不能通过构造函数来创建对象实例，只能通过公有静态函数返回唯一的私有静态变量。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F----%E5%8D%95%E4%BE%8B/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 命令</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%91%BD%E4%BB%A4/</guid>
       <description>将命令封装成对象中</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%91%BD%E4%BB%A4/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 外观</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%96%E8%A7%82/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%96%E8%A7%82/</guid>
       <description>提供了一个统一的接口，用来访问子系统中的一群接口，从而让子系统更容易使用。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%A4%96%E8%A7%82/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E5%A4%96%E8%A7%82/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 桥接</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A1%A5%E6%8E%A5/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A1%A5%E6%8E%A5/</guid>
       <description>将抽象与实现分离开来，使它们可以独立变化。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A1%A5%E6%8E%A5/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E6%A1%A5%E6%8E%A5/featured.png" />
     </item>
     
     <item>
       <title>设计模式 - 状态</title>
-      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%8A%B6%E6%80%81/</link>
+      <link>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%8A%B6%E6%80%81/</link>
       <pubDate>Sun, 31 Dec 2023 12:51:58 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%8A%B6%E6%80%81/</guid>
+      <guid>https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%8A%B6%E6%80%81/</guid>
       <description>允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它所属的类。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%8A%B6%E6%80%81/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/design-pattern/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F---%E7%8A%B6%E6%80%81/featured.png" />
     </item>
     
   </channel>
