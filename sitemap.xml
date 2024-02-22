@@ -477,25 +477,25 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/language/java/netty/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/</loc>
     <lastmod>2023-11-01T18:53:17+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/network/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/netty/</loc>
+    <lastmod>2023-11-01T18:53:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/https-rsa/</loc>
     <lastmod>2023-11-01T09:43:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/network/https-rsa/</loc>
-    <lastmod>2023-11-01T09:43:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/network/http123-https/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/http123-https/</loc>
     <lastmod>2023-10-31T14:43:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -519,7 +519,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/network/http-process/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/http-process/</loc>
     <lastmod>2023-10-30T19:43:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -927,7 +927,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/network/restful/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/java-network/restful/</loc>
     <lastmod>2023-10-13T13:19:27+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -975,7 +975,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/network/frp-nat-traversal/</loc>
+    <loc>https://WFUing.github.io/posts/skills/frp-nat-traversal/</loc>
     <lastmod>2023-10-12T19:38:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

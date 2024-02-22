@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Frp Nat Traversal &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="Frp Nat Traversal &middot; WFUing&#39;s Blog" />
+  <title>HTTPS RSA 握手解析 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="HTTPS RSA 握手解析 &middot; WFUing&#39;s Blog" />
   
   
-  <meta name="keywords" content="nat traversal, " />
+  <meta name="keywords" content="https, interview, " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/network/frp-nat-traversal/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/java-network/https-rsa/" />
   
   
   
@@ -64,16 +64,16 @@
   
   
   
-  <meta property="og:title" content="Frp Nat Traversal" />
-<meta property="og:description" content="Resources # github：https://github." />
+  <meta property="og:title" content="HTTPS RSA 握手解析" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/network/frp-nat-traversal/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-10-12T19:38:48+08:00" />
-<meta property="article:modified_time" content="2023-10-12T19:38:48+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/java/java-network/https-rsa/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-01T09:43:45+08:00" />
+<meta property="article:modified_time" content="2023-11-01T09:43:45+08:00" />
 
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Frp Nat Traversal"/>
-<meta name="twitter:description" content="Resources # github：https://github."/>
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="HTTPS RSA 握手解析"/>
+<meta name="twitter:description" content=""/>
 
   
   <script type="application/ld+json">
@@ -81,26 +81,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "Frp Nat Traversal",
-    "headline": "Frp Nat Traversal",
+    "name": "HTTPS RSA 握手解析",
+    "headline": "HTTPS RSA 握手解析",
     
-    "abstract": "Resources # github：https:\/\/github.",
+    
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/network\/frp-nat-traversal\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/java-network\/https-rsa\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2023",
-    "dateCreated": "2023-10-12T19:38:48\u002b08:00",
-    "datePublished": "2023-10-12T19:38:48\u002b08:00",
+    "dateCreated": "2023-11-01T09:43:45\u002b08:00",
+    "datePublished": "2023-11-01T09:43:45\u002b08:00",
     
-    "dateModified": "2023-10-12T19:38:48\u002b08:00",
+    "dateModified": "2023-11-01T09:43:45\u002b08:00",
     
-    "keywords": ["nat traversal"],
+    "keywords": ["https","interview"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "277"
+    "wordCount": "0"
   }]
   </script>
 
@@ -568,7 +568,7 @@
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Frp Nat Traversal
+      HTTPS RSA 握手解析
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -592,11 +592,7 @@
 
 
 
-  
 
-
-
-  
 
 
 
@@ -613,7 +609,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-12 19:38:48 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>277 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2023-11-01 09:43:45 &#43;0800 &#43;0800">1 November 2023</time>
   
 
   
@@ -750,87 +746,7 @@
   
   <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     
-     <div
-      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
-      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
-
-         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
-  <summary
-    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#questions">Questions</a></li>
-    <li><a href="#firewalld-拓展">firewalld 拓展</a></li>
-  </ul>
-</nav>
-  </div>
-</details>
-<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
-  <summary
-    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#questions">Questions</a></li>
-    <li><a href="#firewalld-拓展">firewalld 拓展</a></li>
-  </ul>
-</nav>
-  </div>
-</details>
-
- 
-<script>
-  (function () {
-    var $toc = $('#TableOfContents');
-    if ($toc.length > 0) {
-      var $window = $(window);
-
-      function onScroll() {
-        var currentScroll = $window.scrollTop();
-        var h = $('.anchor');
-        var id = "";
-        h.each(function (i, e) {
-          e = $(e);
-          if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = e.attr('id');
-          }
-        });
-        var active = $toc.find('a.active');      
-        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-        active.each(function (i, e) {
-           
-            $(e).removeClass('active').siblings('ul').hide();
-          
-        });
-        $toc.find('a[href="#' + id + '"]').addClass('active')
-        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-          $(e).children('a').parents('ul').show();          
-        });
-      }
-
-      $window.on('scroll', onScroll);
-      $(document).ready(function () {
-         
-          $toc.find('a').parent('li').find('ul').hide();
-        
-        onScroll();
-      });
-    }
-  })();
-</script>
-   </div>
-      </div>
-      
+    
 
       <div class="min-w-0 min-h-0 max-w-fit">
         
@@ -838,164 +754,7 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">Resources 
-    <div id="resources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>github：https://github.com/fatedier/frp</li>
-<li>document：https://gofrp.org/docs/</li>
-<li>finalshell：https://sourceforge.net/projects/finalshell/</li>
-<li>vscode remote ssh：https://code.visualstudio.com/docs/remote/ssh</li>
-</ul>
-<p>下面给出一些blog，都详细写了如何使用frp搭建内网穿透，在本文中就不再赘述。</p>
-<ul>
-<li>使用frp进行内网穿透：https://sspai.com/post/52523</li>
-<li>基于frp docker 进行内网穿透：https://izhaong.com/pages/b387de/</li>
-<li>CentOS7下通过frp做内网穿透：https://blog.fengdis.com/2019/12/25/CentOS%E4%B8%8B%E9%80%9A%E8%BF%87frp%E5%81%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</li>
-</ul>
-<p>这一篇blog的<strong>05节</strong>写了遇到的常见问题，这也是本文关心的。</p>
-<ul>
-<li>常见问题：https://www.derrors.cn/index.php/it-tech/frp.html</li>
-</ul>
-<h2 class="relative group">Questions 
-    <div id="questions" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#questions" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>大部分都是网络端口上的问题，下面先给出一张frp的原理图。</p>
-<p>
-
-
-
-
-  
-  
-  
-    <figure>
-      <img class="my-0 rounded-md" src="./frp.png" alt="frp的原理" />
-      
-    </figure>
-  
-
-</p>
-<p><strong>ssh: connect to host xx.xx.xx.xx port xx: Operation timed out</strong></p>
-<ul>
-<li>使用ssh连接时，连接超时</li>
-<li>原因：服务器防火墙未开放frp配置中对应的<strong>remote_port</strong>端口；</li>
-<li>解决：在服务器的防火墙中开放相应端口。</li>
-</ul>
-<p><strong>ssh: connect to host xx.xx.xx.xx port xx:  Connection refused</strong></p>
-<ul>
-<li>连接被拒绝</li>
-<li>原因：服务器防火墙未开放frp配置中对应的<strong>server_port</strong>端口；</li>
-<li>解决：在服务器的防火墙中开放相应端口。</li>
-</ul>
-<p>当然云服务器端，也会有<strong>安全组</strong>或者<strong>防火墙</strong>，需要把相应的都开起来</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#开放端口</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>7000/tcp --permanent
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>6000/tcp --permanent
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#查看开放端口列表</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --list-ports
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#防火墙reload</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --reload
-</span></span></code></pre></div><h2 class="relative group">firewalld 拓展 
-    <div id="firewalld-拓展" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#firewalld-%e6%8b%93%e5%b1%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>这边很多的问题都跟防火墙有关系，这边给出 firewalld 的相关指令。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">source: 根据源地址过滤（优先级最高）
-</span></span><span class="line"><span class="cl">interface: 根据网卡过滤（优先级次高）
-</span></span><span class="line"><span class="cl">service: 根据服务名过滤
-</span></span><span class="line"><span class="cl">port: 根据端口过滤
-</span></span><span class="line"><span class="cl">icmp-block: icmp 报文过滤，按照 icmp 类型配置
-</span></span><span class="line"><span class="cl">masquerade: ip 地址伪装
-</span></span><span class="line"><span class="cl">forward-port: 端口转发
-</span></span><span class="line"><span class="cl">rule: 自定义规则
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看是否开启</span>
-</span></span><span class="line"><span class="cl">systemctl status firewalld.service
-</span></span><span class="line"><span class="cl"><span class="c1"># 打开防火墙</span>
-</span></span><span class="line"><span class="cl">systemctl start firewalld.service
-</span></span><span class="line"><span class="cl"><span class="c1"># 停用防火墙</span>
-</span></span><span class="line"><span class="cl">systemctl disable firewalld
-</span></span><span class="line"><span class="cl"><span class="c1"># 禁用防火墙</span>
-</span></span><span class="line"><span class="cl">systemctl stop firewalld.service
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 开机启动</span>
-</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> firewalld
-</span></span><span class="line"><span class="cl"><span class="c1"># 取消开机启动</span>
-</span></span><span class="line"><span class="cl">systemctl disable firewalld
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看运行状态</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --state
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看接口信息</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --list-all
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 更新防火墙规则方法1:无需断开连接，动态更改规则</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --reload
-</span></span><span class="line"><span class="cl"><span class="c1"># 更新防火墙规则方法2:断开连接，以重启的方式更改规则</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --complete-reload
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看帮助</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --help
-</span></span><span class="line"><span class="cl">--zone<span class="o">=</span>NAME <span class="c1"># 指定 Zone</span>
-</span></span><span class="line"><span class="cl">--permanent <span class="c1"># 为永久生效</span>
-</span></span><span class="line"><span class="cl">--timeout<span class="o">=</span>seconds <span class="c1"># 持续一段时间，到期后自动移除，经常用于调试，且不能与 --permanent 同时使用</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 追加一个8181端口，永久有效</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --add-port<span class="o">=</span>8181/tcp --permanent
-</span></span><span class="line"><span class="cl"><span class="c1"># 追加一段端口范围</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --add-port<span class="o">=</span>6000-6600/tcp
-</span></span><span class="line"><span class="cl"><span class="c1"># 开放 ftp 服务</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --add-service<span class="o">=</span>ftp
-</span></span><span class="line"><span class="cl"><span class="c1"># 添加eth0 接口至 public 信任等级，永久有效</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-interface<span class="o">=</span>eth0 --permanent
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 关闭防火墙</span>
-</span></span><span class="line"><span class="cl">sudo systemctl stop firewalld
-</span></span><span class="line"><span class="cl"><span class="c1"># 关闭端口</span>
-</span></span><span class="line"><span class="cl">sudo firewall-cmd --remove-port<span class="o">=</span>3000/tcp --permanent
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 配置 public zone 的端口转发</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-masquerade
-</span></span><span class="line"><span class="cl"><span class="c1"># 然后转发 tcp 22 端口至 9527</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span>22:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">9527</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 转发 22 端口数据至另一个 ip 的相同端口上</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span>22:proto<span class="o">=</span>tcp:toaddr<span class="o">=</span>192.168.1.123
-</span></span><span class="line"><span class="cl"><span class="c1"># 转发 22 端口数据至另一 ip 的 9527 端口上</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span>22:proto<span class="o">=</span>tcp:toport<span class="o">=</span>9527:toaddr<span class="o">=</span>192.168.1.100
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># IP 封禁</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --add-rich-rule<span class="o">=</span><span class="s2">&#34;rule family=&#39;ipv4&#39; source address=&#39;192.168.1.123&#39; reject&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 通过 ipset 来封禁 ip</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --new-ipset<span class="o">=</span>blacklist --type<span class="o">=</span>hash:ip
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --ipset<span class="o">=</span>blacklist --add-entry<span class="o">=</span>192.168.1.123
-</span></span><span class="line"><span class="cl"><span class="c1"># 封禁网段</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --new-ipset<span class="o">=</span>blacklist --type<span class="o">=</span>hash:net
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --ipset<span class="o">=</span>blacklist --add-entry<span class="o">=</span>192.168.1.0/24
-</span></span><span class="line"><span class="cl"><span class="c1"># 倒入 ipset 规则 blacklist，然后封禁 blacklist</span>
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --new-ipset-from-file<span class="o">=</span>/path/blacklist.xml
-</span></span><span class="line"><span class="cl">firewall-cmd --permanent --zone<span class="o">=</span>public --add-rich-rule<span class="o">=</span><span class="s1">&#39;rule source ipset=blacklist drop&#39;</span>
-</span></span></code></pre></div>
+          
         </div>
                 
         
@@ -1007,8 +766,8 @@
      
     
      <script>
-        var oid = "views_posts\/network\/frp-nat-traversal\/index.md"
-        var oid_likes = "likes_posts\/network\/frp-nat-traversal\/index.md"
+        var oid = "views_posts\/language\/java\/java-network\/https-rsa\/index.md"
+        var oid_likes = "likes_posts\/language\/java\/java-network\/https-rsa\/index.md"
       </script>
       
       
@@ -1031,7 +790,7 @@
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/network/restful/">
+            <a class="flex group mr-3" href="/posts/language/java/java-network/netty/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1043,11 +802,11 @@
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Restful API Tutorial</span
+                  >Netty</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-10-13 13:19:27 &#43;0800 &#43;0800">13 October 2023</time>
+                    <time datetime="2023-11-01 18:53:17 &#43;0800 &#43;0800">1 November 2023</time>
                   
                 </span>
               </span>
@@ -1055,6 +814,28 @@
           
         </span>
         <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/java/java-network/http123-https/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >HTTP-1 HTTPS HTTP-2 HTTP-3</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-10-31 14:43:45 &#43;0800 &#43;0800">31 October 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
           
         </span>
       </div>
@@ -1092,13 +873,7 @@
   </footer>
 </article>
 
-      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
-  <a href="#the-top"
-    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
-    aria-label="Scroll to top" title="Scroll to top">
-    &uarr;
-  </a>
-</div>
+      
     </main><footer id="site-footer" class="py-10 print:hidden">
   
   
