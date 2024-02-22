@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Wed, 21 Feb 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/language/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2024 10:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/language/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VO、DTO、BO、PO、DO区别</title>
       <link>https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/</link>
@@ -34,8 +34,8 @@
       <pubDate>Tue, 07 Nov 2023 23:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/class-loader/</guid>
-      <description>https://cloud.</description>
-      
+      <description>字节码文件需要经过加载，链接（包括验证、准备、解析），初始化才能转为类，然后才能根据类来创建对象</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/class-loader/featured.png" />
     </item>
     
     <item>
@@ -45,7 +45,17 @@
       
       <guid>https://WFUing.github.io/posts/language/java/junit/</guid>
       <description>Junit 是由 Kent Beck 和 Erich Gamma 于 1995 年底着手编写的框架，自此以后，Junit 框架日益普及，现在已经成为单元测试 Java 应用程序的事实上的标准。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/junit/featured.png" />
+    </item>
+    
+    <item>
+      <title>Netty</title>
+      <link>https://WFUing.github.io/posts/language/java/netty/</link>
+      <pubDate>Wed, 01 Nov 2023 18:53:17 +0800</pubDate>
       
+      <guid>https://WFUing.github.io/posts/language/java/netty/</guid>
+      <description>Netty 是 JBoss 开源项目，是异步的、基于事件驱动的网络应用框架，以高性能、高并发著称。Netty 是基于 Java NIO 构建出来的，主要用于开发基于 TCP 协议的网络 IO 程序。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/netty/featured.png" />
     </item>
     
   </channel>
