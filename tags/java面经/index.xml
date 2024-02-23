@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 22 Feb 2024 10:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2024 13:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java面经-MQ篇</title>
+      <link>https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/mq%E7%AF%87/</link>
+      <pubDate>Thu, 22 Feb 2024 13:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/mq%E7%AF%87/</guid>
+      <description>Java MQ（消息队列）是一种在分布式系统中用于实现异步通信的机制。它允许应用程序之间通过发送和接收消息进行通信，提供了解耦、异步、削峰填谷等特性，适用于解决分布式系统中的各种通信和协作问题。常见的 Java MQ 实现包括 RabbitMQ、ActiveMQ、Kafka 等，它们具有不同的特点和适用场景，可根据实际需求选择合适的实现。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/mq%E7%AF%87/featured.png" />
+    </item>
+    
+    <item>
+      <title>java面经-JVM篇</title>
+      <link>https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/</link>
+      <pubDate>Thu, 22 Feb 2024 10:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/</guid>
+      <description>Java虚拟机（JVM）是Java程序的运行环境，负责将Java字节码解释或编译为本地机器代码，并提供垃圾回收、内存管理等功能。JVM包括类加载器、执行引擎、内存区域、垃圾回收器等组件，可在不同平台上运行Java程序，实现“一次编写，到处运行”的跨平台特性。通过JVM，Java程序实现了与平台无关的特性，提高了开发效率和代码的可移植性。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/featured.png" />
+    </item>
+    
     <item>
       <title>java面经-网络篇</title>
       <link>https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/%E7%BD%91%E7%BB%9C%E7%AF%87/</link>

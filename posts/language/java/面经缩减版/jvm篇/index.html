@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Leetcode &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="Leetcode &middot; WFUing&#39;s Blog" />
+  <title>java面经-JVM篇 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="java面经-JVM篇 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="Java虚拟机（JVM）是Java程序的运行环境，负责将Java字节码解释或编译为本地机器代码，并提供垃圾回收、内存管理等功能。JVM包括类加载器、执行引擎、内存区域、垃圾回收器等组件，可在不同平台上运行Java程序，实现“一次编写，到处运行”的跨平台特性。通过JVM，Java程序实现了与平台无关的特性，提高了开发效率和代码的可移植性。" />
+  <meta name="keywords" content="java面经, " />
   
   
-  <meta name="keywords" content="leetcode, " />
-  
-  
-  <link rel="canonical" href="https://WFUing.github.io/leetcode/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/" />
   
   
   
@@ -64,43 +64,44 @@
   
   
   
-  <meta property="og:title" content="Leetcode" />
-<meta property="og:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08." />
+  <meta property="og:title" content="java面经-JVM篇" />
+<meta property="og:description" content="Java虚拟机（JVM）是Java程序的运行环境，负责将Java字节码解释或编译为本地机器代码，并提供垃圾回收、内存管理等功能。JVM包括类加载器、执行引擎、内存区域、垃圾回收器等组件，可在不同平台上运行Java程序，实现“一次编写，到处运行”的跨平台特性。通过JVM，Java程序实现了与平台无关的特性，提高了开发效率和代码的可移植性。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/leetcode/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2023-10-12T17:05:17+08:00" />
-<meta property="article:modified_time" content="2023-10-12T17:05:17+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-22T10:15:08+08:00" />
+<meta property="article:modified_time" content="2024-02-22T10:15:08+08:00" />
 
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Leetcode"/>
-<meta name="twitter:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08."/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/featured.png" /><meta name="twitter:title" content="java面经-JVM篇"/>
+<meta name="twitter:description" content="Java虚拟机（JVM）是Java程序的运行环境，负责将Java字节码解释或编译为本地机器代码，并提供垃圾回收、内存管理等功能。JVM包括类加载器、执行引擎、内存区域、垃圾回收器等组件，可在不同平台上运行Java程序，实现“一次编写，到处运行”的跨平台特性。通过JVM，Java程序实现了与平台无关的特性，提高了开发效率和代码的可移植性。"/>
 
   
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "Article",
-    "articleSection": "WFUing",
-    "name": "Leetcode",
-    "headline": "Leetcode",
+    "articleSection": "博客",
+    "name": "java面经-JVM篇",
+    "headline": "java面经-JVM篇",
     
-    "abstract": "动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08.",
+    "abstract": "Java虚拟机（JVM）是Java程序的运行环境，负责将Java字节码解释或编译为本地机器代码，并提供垃圾回收、内存管理等功能。JVM包括类加载器、执行引擎、内存区域、垃圾回收器等组件，可在不同平台上运行Java程序，实现“一次编写，到处运行”的跨平台特性。通过JVM，Java程序实现了与平台无关的特性，提高了开发效率和代码的可移植性。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/leetcode\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88\/jvm%E7%AF%87\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-10-12T17:05:17\u002b08:00",
-    "datePublished": "2023-10-12T17:05:17\u002b08:00",
+    "copyrightYear": "2024",
+    "dateCreated": "2024-02-22T10:15:08\u002b08:00",
+    "datePublished": "2024-02-22T10:15:08\u002b08:00",
     
-    "dateModified": "2023-10-12T17:05:17\u002b08:00",
+    "dateModified": "2024-02-22T10:15:08\u002b08:00",
     
-    "keywords": ["leetcode"],
+    "keywords": ["java面经"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "171"
+    "wordCount": "551"
   }]
   </script>
 
@@ -542,7 +543,7 @@
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/featured.png);">
     
 
 
@@ -568,7 +569,7 @@
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Leetcode
+      java面经-JVM篇
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -613,7 +614,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-12 17:05:17 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>171 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-22 10:15:08 &#43;0800 &#43;0800">22 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>551 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -763,12 +764,8 @@
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#1-说一说jvm的内存模型">1. 说一说JVM的内存模型</a></li>
+    <li><a href="#2-java类加载的过程是怎么样的什么是双亲委派机制有什么作用一个对象从加载到jvm再到gc清除都经历了什么">2. JAVA类加载的过程是怎么样的？什么是双亲委派机制？有什么作用？一个对象从加载到JVM，再到GC清除，都经历了什么？</a></li>
   </ul>
 </nav>
   </div>
@@ -782,12 +779,8 @@
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#1-说一说jvm的内存模型">1. 说一说JVM的内存模型</a></li>
+    <li><a href="#2-java类加载的过程是怎么样的什么是双亲委派机制有什么作用一个对象从加载到jvm再到gc清除都经历了什么">2. JAVA类加载的过程是怎么样的？什么是双亲委派机制？有什么作用？一个对象从加载到JVM，再到GC清除，都经历了什么？</a></li>
   </ul>
 </nav>
   </div>
@@ -844,156 +837,291 @@
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">动态规划 
-    <div id="动态规划" class="anchor"></div>
+          <h2 class="relative group">1. 说一说JVM的内存模型 
+    <div id="1-说一说jvm的内存模型" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#1-%e8%af%b4%e4%b8%80%e8%af%b4jvm%e7%9a%84%e5%86%85%e5%ad%98%e6%a8%a1%e5%9e%8b" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li><strong>【LeetCode 72】编辑距离</strong></li>
-<li><strong>【LeetCode 115】不同的子序列</strong></li>
-<li><strong>【LeetCode 124】二叉树中的最大路径和</strong></li>
-<li><strong>【LeetCode 174】地下城游戏</strong></li>
-<li><strong>【LeetCode 188】买卖股票的最佳时机IV</strong></li>
-<li>【LeetCode 198】打家劫舍</li>
-<li>【LeetCode 213】打家劫舍II</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 300】最长递增子序列</li>
-<li><strong>【LeetCode 309】最佳买卖股票时机含冷冻期</strong></li>
-<li><strong>【LeetCode 312】戳气球</strong></li>
-<li><strong>【LeetCode 337】打家劫舍III</strong></li>
-<li><strong>【LeetCode 354】俄罗斯套娃信封问题</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li><strong>【LeetCode 390】消除游戏</strong></li>
-<li><strong>【LeetCode 689】三个无重叠子数组的最大和</strong></li>
-<li>【LeetCode 714】买卖股票的最佳时机含手续费</li>
-<li><em>【LeetCode 907】子数组的最小值之和</em></li>
-<li><em>【LeetCode 943】最短超级串</em></li>
-<li>【LeetCode 1031】两个非重叠子数组的最大和</li>
-<li><strong>【LeetCode 1039】多边形三角剖分的最低得分</strong></li>
-<li><strong>【LeetCode 1186】删除一次得到子数组最大和</strong></li>
-<li>【LeetCode 系列】买卖股票的最佳时机</li>
-<li>【LeetCode 面试题 08.11】硬币</li>
-</ul>
-<h2 class="relative group">贪心算法 
-    <div id="贪心算法" class="anchor"></div>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/arthas-tool.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/JVMin.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">2. JAVA类加载的过程是怎么样的？什么是双亲委派机制？有什么作用？一个对象从加载到JVM，再到GC清除，都经历了什么？ 
+    <div id="2-java类加载的过程是怎么样的什么是双亲委派机制有什么作用一个对象从加载到jvm再到gc清除都经历了什么" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#2-java%e7%b1%bb%e5%8a%a0%e8%bd%bd%e7%9a%84%e8%bf%87%e7%a8%8b%e6%98%af%e6%80%8e%e4%b9%88%e6%a0%b7%e7%9a%84%e4%bb%80%e4%b9%88%e6%98%af%e5%8f%8c%e4%ba%b2%e5%a7%94%e6%b4%be%e6%9c%ba%e5%88%b6%e6%9c%89%e4%bb%80%e4%b9%88%e4%bd%9c%e7%94%a8%e4%b8%80%e4%b8%aa%e5%af%b9%e8%b1%a1%e4%bb%8e%e5%8a%a0%e8%bd%bd%e5%88%b0jvm%e5%86%8d%e5%88%b0gc%e6%b8%85%e9%99%a4%e9%83%bd%e7%bb%8f%e5%8e%86%e4%ba%86%e4%bb%80%e4%b9%88" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClassLoaderDemo</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">aaa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;aaaa&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 父子关系 AppClassLoader &lt;- ExtClassLoader &lt;- Bootstrap ClassLoader</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">cl1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ClassLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;cl1 &gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cl1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;parent of cl1 &gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cl1</span><span class="p">.</span><span class="na">getParent</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Bootstrap ClassLoader由C++开发，是JVM虚拟机的一部分，本身不是JAVA类。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;grand parent of cl1 &gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cl1</span><span class="p">.</span><span class="na">getParent</span><span class="p">().</span><span class="na">getParent</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// String, Int等基础类由Bootstrap ClassLoader加载。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">cl2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;cl2 &gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cl2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ClassLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">loadClass</span><span class="p">(</span><span class="s">&#34;java.util.List&#34;</span><span class="p">).</span><span class="na">getClassLoader</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// java指令可以通过增加-verbose:class -verbose:gc 参数在启动时打印出类加载情况</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Bootstrap ClassLoader，加载java基础类。这个属性不能在java指令中指定，推断不是由java语言处理。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Bootstrap ClassLoader: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&#34;sun.boot.class.path&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Extension ClassLoader 加载JAVA_HOME/ext 下的jar包。可通过-D java.ext.dirs另行指定目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Extension ClassLoader: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&#34;java.ext.dirs&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// AppClassLoader 加载CLASSPATH，应用下的Jar包。可通过-D java.class.path另行指定目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;AppClassLoader: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">&#34;java.class.path&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cl1 &gt; jdk.internal.loader.ClassLoaders<span class="nv">$AppClassLoader</span>@2437c6dc
+</span></span><span class="line"><span class="cl">parent of cl1 &gt; jdk.internal.loader.ClassLoaders<span class="nv">$PlatformClassLoader</span>@76ed5528
+</span></span><span class="line"><span class="cl">grand parent of cl1 &gt; null
+</span></span><span class="line"><span class="cl">cl2 &gt; null
+</span></span><span class="line"><span class="cl">jdk.internal.loader.BuiltinClassLoader@6d06d69c
+</span></span><span class="line"><span class="cl">Bootstrap ClassLoader: /opt/jdk-16.0.1/lib
+</span></span><span class="line"><span class="cl">Extension ClassLoader: /opt/jdk-16.0.1/lib/ext:/usr/java/packages/lib/ext
+</span></span><span class="line"><span class="cl">AppClassLoader: /home/user/example:/opt/jdk-16.0.1/lib
+</span></span></code></pre></div><p>JAVA 的类加载器：AppClassloader -&gt; ExtClassloader -&gt; Bootstrap ClassLoader</p>
+<p>在 Java 中，类加载器的层次结构是由 JVM 在启动时创建的，每个类加载器都有一个父类加载器（除了 Bootstrap ClassLoader）。当一个类加载器需要加载某个类时，它会先委托给其父类加载器进行加载，如果父类加载器无法加载，则会尝试自己加载。这种委托机制被称为<strong>双亲委派模型</strong>。</p>
+<p>在双亲委派模型中，AppClassLoader 是 Java 应用程序的类加载器，它的父类加载器是 ExtClassLoader，ExtClassLoader 的父类加载器是 Bootstrap ClassLoader。因此，当 AppClassLoader 需要加载某个类时，它会先委托给 ExtClassLoader，如果 ExtClassLoader 无法加载，则会继续委托给 Bootstrap ClassLoader，直到找到为止。这样可以保证类的加载顺序和加载的安全性，<strong>避免了类的重复加载和恶意代码的加载</strong>。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/shuangqing.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>每种类加载器都有自己的加载目录。</p>
 <ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li>【LeetCode 121】买卖股票的最佳时机</li>
-<li>【LeetCode 122】买卖股票的最佳时机II</li>
-<li>【LeetCode 123】买卖股票的最佳时机III</li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 135】分发糖果</strong></li>
-<li>【LeetCode 229】多数元素 II</li>
-<li><strong>【LeetCode 330】按要求补齐数组</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li>【LeetCode 495】提莫攻击</li>
-<li><strong>【LeetCode 556】下一个更大元素III</strong></li>
-<li>【LeetCode 861】反转矩阵后的得分</li>
-<li><strong>【LeetCode 926】将字符串翻转到单调递增</strong></li>
-<li><em><strong>【LeetCode 927】三等分</strong></em></li>
-<li><strong>【LeetCode 1053】交换一次的先前排列</strong></li>
-<li><strong>【LeetCode 1111】有效括号的嵌套深度</strong></li>
+<li>AppClassLoader（或称为 System ClassLoader）：负责加载应用程序的类，其加载路径通常包括 CLASSPATH 和用户自定义的类路径。</li>
+<li>ExtClassLoader（或称为 Extension ClassLoader）：负责加载 Java 扩展目录（JAVA_HOME/ext）下的类库。</li>
+<li>Bootstrap ClassLoader：是虚拟机的内置类加载器，负责加载 Java 核心类库（例如 java.lang 包中的类），其加载路径是 JVM 的启动路径。</li>
 </ul>
-<h2 class="relative group">数学技巧 
-    <div id="数学技巧" class="anchor"></div>
+<p>JAVA 中的类加载器的继承关系：</p>
+<p>
+
+
+
+
+  
+  
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%95%b0%e5%ad%a6%e6%8a%80%e5%b7%a7" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Loads the class with the specified &lt;a href=&#34;#binary-name&#34;&gt;binary name&lt;/a&gt;.  The
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * default implementation of this method searches for classes in the
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * following order:
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;ol&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   &lt;li&gt;&lt;p&gt; Invoke {@link #findLoadedClass(String)} to check if the class
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   has already been loaded.  &lt;/p&gt;&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   &lt;li&gt;&lt;p&gt; Invoke the {@link #loadClass(String) loadClass} method
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   on the parent class loader.  If the parent is {@code null} the class
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   loader built into the virtual machine is used, instead.  &lt;/p&gt;&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   &lt;li&gt;&lt;p&gt; Invoke the {@link #findClass(String)} method to find the
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   class.  &lt;/p&gt;&lt;/li&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;/ol&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;p&gt; If the class was found using the above steps, and the
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * {@code resolve} flag is true, this method will then invoke the {@link
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * #resolveClass(Class)} method on the resulting {@code Class} object.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;p&gt; Subclasses of {@code ClassLoader} are encouraged to override {@link
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * #findClass(String)}, rather than this method.  &lt;/p&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * &lt;p&gt; Unless overridden, this method synchronizes on the result of
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * {@link #getClassLoadingLock getClassLoadingLock} method
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * during the entire class loading process.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param   name
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *          The &lt;a href=&#34;#binary-name&#34;&gt;binary name&lt;/a&gt; of the class
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param   resolve
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *          If {@code true} then resolve the class
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @return  The resulting {@code Class} object
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @throws  ClassNotFoundException
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *          If the class could not be found
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">protected</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">loadClass</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">resolve</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">throws</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">getClassLoadingLock</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// First, check if the class has already been loaded</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 每个类加载器对他加载过的类，都是有一个缓存的。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findLoadedClass</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">long</span><span class="w"> </span><span class="n">t0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parent</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findBootstrapClassOrNull</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// ClassNotFoundException thrown if class not found</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// from the non-null parent class loader</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// If still not found, then invoke findClass in order</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// to find the class.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kt">long</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findClass</span><span class="p">(</span><span class="n">name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// this is the defining class loader; record the stats</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">PerfCounter</span><span class="p">.</span><span class="na">getParentDelegationTime</span><span class="p">().</span><span class="na">addTime</span><span class="p">(</span><span class="n">t1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">PerfCounter</span><span class="p">.</span><span class="na">getFindClassTime</span><span class="p">().</span><span class="na">addElapsedTimeFrom</span><span class="p">(</span><span class="n">t1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">PerfCounter</span><span class="p">.</span><span class="na">getFindClasses</span><span class="p">().</span><span class="na">increment</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">resolveClass</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>每个类加载器对他加载过的类，都是有一个缓存的。</li>
+<li>双亲委派：向上委托查找，向下委托加载。
 <ul>
-<li>【LeetCode 69】x的平方根</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 319】灯泡开关</li>
-<li><strong>【LeetCode 357】计算各个位数不同的数字个数</strong></li>
-<li>【LeetCode 470】用Rand7()实现Rand10()</li>
-<li>【LeetCode 523】连续的子数组和</li>
-<li><strong>【LeetCode 672】灯泡开关II</strong></li>
-<li><strong>【LeetCode 829】连续整数求和</strong></li>
-<li><strong>【LeetCode 1006】笨阶乘</strong></li>
-<li><strong>【LeetCode 1227】飞机座位分配概率</strong></li>
-<li><strong>【LeetCode 1250】检查「好数组」</strong></li>
-<li><strong>【LeetCode 1363】形成三的最大倍数</strong></li>
+<li>作用：保护JAVA核心的类不回被应用程序覆盖。</li>
 </ul>
-<h2 class="relative group">滑动窗口 
-    <div id="滑动窗口" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
+</li>
+<li>类加载过程：加载-&gt;连接-&gt;初始化
 <ul>
-<li>【LeetCode 3】无重复字符的最长子串</li>
-<li><strong>【LeetCode 16】最接近的三数之和</strong></li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 76】最小覆盖子串</strong></li>
-<li>【LeetCode 88】合并两个有序数组</li>
-<li>【LeetCode 287】寻找重复数</li>
-<li>【LeetCode 328】奇偶链表</li>
-<li>【LeetCode 438】找到字符串中所有字母异位词</li>
-<li>【LeetCode 567】字符串的排列</li>
-<li>【LeetCode 658】找到K个最接近的元素</li>
-<li>【LeetCode 881】救生艇</li>
-<li>【LeetCode 992】K个不同整数的子数组</li>
-<li>【LeetCode 1004】最大连续1的个数III</li>
-<li>【LeetCode 1248】统计优美子数组</li>
-</ul>
-<h2 class="relative group">哈希算法 
-    <div id="哈希算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%93%88%e5%b8%8c%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
+<li>加载：把Java的字节码数据加载到JVM内存当中，并映射成JVM认可的数据结构</li>
+<li>连接：分为三个小阶段。
 <ul>
-<li><strong>【LeetCode 41】缺失的第一个正数</strong></li>
-<li>【LeetCode 128】最长连续序列</li>
-<li><strong>【LeetCode 825】适龄的朋友</strong></li>
-<li><strong>【LeetCode 846】一手顺子</strong></li>
-<li><strong>【LeetCode 992】K个不同整数的子数组</strong></li>
-<li><strong>【LeetCode 1248】统计优美子数组</strong></li>
+<li>验证：检查加载到的字节信息是否符合JVM规范。</li>
+<li>准备：创建类或接口的静态变量，并赋初始值，属于半初始化状态。</li>
+<li>解析：把符号引用转为直接引用。</li>
 </ul>
-<h2 class="relative group">二叉树 
-    <div id="二叉树" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e4%ba%8c%e5%8f%89%e6%a0%91" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li><strong>【LeetCode 99】恢复二叉搜索树</strong></li>
-<li>【LeetCode 124】二叉树中的最大路径和</li>
-<li>【LeetCode 199】二叉树的右视图</li>
-<li>【LeetCode 337】打家劫舍III</li>
-<li>【LeetCode 面试题 04.06】后继者</li>
+</li>
+<li>初始化：</li>
 </ul>
+</li>
+</ul>
+<p><strong>一个对象从加载到JVM，再到GC清除，都经历了什么？</strong></p>
+<ol>
+<li>用户创建一个对象，JVM首先需要到方法区区找对象的类型信息。然后再创建对象。</li>
+<li>JVM要实例化一个对象，首先要在堆当中先创建一个对象。-&gt; 半初始化状态</li>
+<li>对象首先会分配在堆内存中新生代的Eden。然后经过一次Minor GCGC，如果对象存活，就会进入S区。在后续的每次GC中，如果对象一直存活，就会在S区来回拷贝，每移动一次，年龄加1。-&gt;多大年龄才会移入老年代？年龄最大15，超过一定年龄后，对象转入老年代。</li>
+<li>当方法执行结束后，栈中的指针会先移除掉。</li>
+<li>堆中的对象，经过Full GC，就会被标记为垃圾，然后被GC线程清理掉。</li>
+</ol>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/jvm%E7%AF%87/shengming.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 
         </div>
                 
@@ -1006,8 +1134,8 @@
      
     
      <script>
-        var oid = "views_Leetcode.md"
-        var oid_likes = "likes_Leetcode.md"
+        var oid = "views_posts\/language\/java\/面经缩减版\/JVM篇\/index.md"
+        var oid_likes = "likes_posts\/language\/java\/面经缩减版\/JVM篇\/index.md"
       </script>
       
       
@@ -1030,18 +1158,40 @@
       <div class="flex justify-between pt-3">
         <span>
           
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/todo/">
+            <a class="flex group mr-3" href="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/mq%E7%AF%87/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >TODO</span
+                  >java面经-MQ篇</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-10-01 08:00:00 &#43;0800 &#43;0800">1 October 2023</time>
+                    <time datetime="2024-02-22 13:15:08 &#43;0800 &#43;0800">22 February 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/java/%E9%9D%A2%E7%BB%8F%E7%BC%A9%E5%87%8F%E7%89%88/%E7%BD%91%E7%BB%9C%E7%AF%87/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >java面经-网络篇</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-02-22 10:15:08 &#43;0800 &#43;0800">22 February 2024</time>
                   
                 </span>
               </span>

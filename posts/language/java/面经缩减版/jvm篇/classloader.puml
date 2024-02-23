@@ -1,0 +1,38 @@
+@startuml
+class ClassLoader {
+    +ClassLoader()
+    +ClassLoader(ClassLoader parent)
+    +findClass(String name)
+    +loadClass(String name)
+    +getParent()
+    +getResource(String name)
+    +getSystemClassLoader()
+    +setClassAssertionStatus(String className, boolean enabled)
+    +setDefaultAssertionStatus(boolean enabled)
+    +setPackageAssertionStatus(String packageName, boolean enabled)
+}
+
+class SecureClassLoader {
+    +SecureClassLoader()
+}
+
+class URLClassLoader {
+    +URLClassLoader(URL[] urls)
+    +URLClassLoader(URL[] urls, ClassLoader parent)
+    +addURL(URL url)
+}
+
+class ExtClassLoader {
+    +ExtClassLoader()
+}
+
+class AppClassLoader {
+    +AppClassLoader(URL[] urls)
+    +AppClassLoader(URL[] urls, ClassLoader parent)
+}
+
+ClassLoader <|-- SecureClassLoader
+SecureClassLoader <|-- URLClassLoader
+URLClassLoader <|-- ExtClassLoader
+URLClassLoader <|-- AppClassLoader
+@enduml
