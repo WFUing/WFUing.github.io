@@ -111,7 +111,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
     <lastmod>2024-01-31T13:55:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -411,19 +411,19 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/</loc>
     <lastmod>2023-12-05T10:27:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela-mall-swarm/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela-mall-swarm/</loc>
     <lastmod>2023-12-05T10:27:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/ceph/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/ceph/</loc>
     <lastmod>2023-12-05T09:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -435,7 +435,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/k8s/kubevela/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela/</loc>
     <lastmod>2023-11-27T16:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -843,7 +843,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/shell/</loc>
+    <loc>https://WFUing.github.io/posts/skills/shell/</loc>
     <lastmod>2023-10-19T11:47:47+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -903,25 +903,25 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/zookeeper/</loc>
     <lastmod>2023-10-14T12:00:54+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-code/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-code/</loc>
     <lastmod>2023-10-14T12:00:54+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/zookeeper/zookeeper-theory/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-theory/</loc>
     <lastmod>2023-10-13T20:07:16+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/%E5%88%86%E5%B8%83%E5%BC%8F/overview/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/overview/</loc>
     <lastmod>2023-10-13T19:07:16+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1049,6 +1049,16 @@
   <url>
     <loc>https://WFUing.github.io/</loc>
     <lastmod>2023-09-01T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/language/java/zookeeper%E9%9D%A2%E8%AF%95/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/hadoop/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
