@@ -484,8 +484,8 @@
       <pubDate>Tue, 12 Dec 2023 11:22:18 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/skills/meta/</guid>
-      <description>Resources # How To Use Option As Meta Key In MacOS Terminal?</description>
-      
+      <description>在MacOS终端中，可以将“Option”键设置为“Meta”键。打开终端偏好设置，选择“Profiles” &amp;gt; “Keyboard” &amp;gt; “Use Option as Meta key”。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/meta/featured.jpeg" />
     </item>
     
     <item>
@@ -1135,7 +1135,7 @@
       
       <guid>https://WFUing.github.io/posts/skills/shell/</guid>
       <description>Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/shell/featured.png" />
     </item>
     
     <item>
@@ -1344,8 +1344,8 @@
       <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/skills/frp-nat-traversal/</guid>
-      <description>Resources # github：https://github.</description>
-      
+      <description>Frp是一款开源的内网穿透工具，可实现将内部网络服务暴露给外部网络访问。它通过服务器端和客户端配合工作，服务器端位于外网，客户端位于内网，通过建立反向代理通道实现数据传输。Frp支持TCP、UDP、HTTP等协议，具有简单易用、配置灵活、跨平台等特点，常用于搭建家庭服务器、内网访问、远程调试等场景。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/frp-nat-traversal/featured.png" />
     </item>
     
     <item>
