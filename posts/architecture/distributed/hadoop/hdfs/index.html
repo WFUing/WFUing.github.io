@@ -101,7 +101,7 @@
     "keywords": ["hadoop","hdfs"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "149"
+    "wordCount": "142"
   }]
   </script>
 
@@ -740,7 +740,7 @@
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-25 09:46:05 &#43;0800 &#43;0800">25 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>149 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-25 09:46:05 &#43;0800 &#43;0800">25 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>142 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -909,6 +909,7 @@
         <li><a href="#namenode概述">NameNode概述</a></li>
         <li><a href="#datanode概述">DataNode概述</a></li>
         <li><a href="#hdfs写数据流程简化为十步走">HDFS写数据流程（简化为十步走）</a></li>
+        <li><a href="#hdfs读数据流程简化为五步走">HDFS读数据流程（简化为五步走）</a></li>
       </ul>
     </li>
   </ul>
@@ -943,6 +944,7 @@
         <li><a href="#namenode概述">NameNode概述</a></li>
         <li><a href="#datanode概述">DataNode概述</a></li>
         <li><a href="#hdfs写数据流程简化为十步走">HDFS写数据流程（简化为十步走）</a></li>
+        <li><a href="#hdfs读数据流程简化为五步走">HDFS读数据流程（简化为五步走）</a></li>
       </ul>
     </li>
   </ul>
@@ -1487,11 +1489,39 @@
   
 
 </p>
-<p>详细步骤解析：
-1、 client发起文件上传请求，通过RPC与NameNode建立通讯，NameNode检查目标文件是否已存在，父目录是否存在，返回是否可以上传；
-2、 client请求第一个 block该传输到哪些DataNode服务器上；
-3、 NameNode根据配置文件中指定的备份数量及副本放置策略进行文件分配，返回可用的DataNode的地址，如：A,B,C；
-&lt;》注：默认存储策略由BlockPlacementPolicyDefault类支持。也就是日常生活中提到最经典的3副本策略。</p>
+<h3 class="relative group">HDFS读数据流程（简化为五步走） 
+    <div id="hdfs读数据流程简化为五步走" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hdfs%e8%af%bb%e6%95%b0%e6%8d%ae%e6%b5%81%e7%a8%8b%e7%ae%80%e5%8c%96%e4%b8%ba%e4%ba%94%e6%ad%a5%e8%b5%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/read.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 
         </div>
                 
