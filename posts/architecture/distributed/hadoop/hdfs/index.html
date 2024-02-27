@@ -101,7 +101,7 @@
     "keywords": ["hadoop","hdfs"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "142"
+    "wordCount": "845"
   }]
   </script>
 
@@ -765,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-25 09:46:05 &#43;0800 &#43;0800">25 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>142 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-25 09:46:05 &#43;0800 &#43;0800">25 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>845 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -929,12 +929,64 @@ window.MathJax = {
         <li><a href="#一次写入多次读出">一次写入，多次读出</a></li>
       </ul>
     </li>
+    <li><a href="#hdfs基本操作">HDFS基本操作</a>
+      <ul>
+        <li><a href="#shell命令行客户端">Shell命令行客户端</a></li>
+        <li><a href="#shell命令选项">Shell命令选项</a></li>
+        <li><a href="#shell常用命令介绍">Shell常用命令介绍</a>
+          <ul>
+            <li><a href="#-ls重点"><strong>-ls</strong>（重点）</a></li>
+            <li><a href="#-mkdir重点"><strong>-mkdir（重点）</strong></a></li>
+            <li><a href="#-put上传重点"><strong>-put：上传</strong>（重点）</a></li>
+            <li><a href="#-get下载重点"><strong>-get：下载（重点）</strong></a></li>
+            <li><a href="#-appendtofile"><strong>-appendToFile</strong></a></li>
+            <li><a href="#-cat重点"><strong>-cat</strong>（重点）</a></li>
+            <li><a href="#-tail重点"><strong>-tail</strong>（重点）</a></li>
+            <li><a href="#-chgrpgroup简写更改文件所属组"><strong>-chgrp：group简写，更改文件所属组</strong></a></li>
+            <li><a href="#-chmod更改权限重点"><strong>-chmod：更改权限</strong>（重点）</a></li>
+            <li><a href="#-chown更改文件拥有者"><strong>-chown：更改文件拥有者</strong></a></li>
+            <li><a href="#-cp重点"><strong>-cp</strong>（重点）</a></li>
+            <li><a href="#-mv重点"><strong>-mv</strong>（重点）</a></li>
+            <li><a href="#-getmerge"><strong>-getmerge</strong></a></li>
+            <li><a href="#-rm重点"><strong>-rm</strong>（重点）</a></li>
+            <li><a href="#-df重点"><strong>-df</strong>（重点）</a></li>
+            <li><a href="#-du重点"><strong>-du（重点）</strong></a></li>
+            <li><a href="#-setrep"><strong>-setrep</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#hdfs基本原理">HDFS基本原理</a>
       <ul>
         <li><a href="#namenode概述">NameNode概述</a></li>
         <li><a href="#datanode概述">DataNode概述</a></li>
         <li><a href="#hdfs写数据流程简化为十步走">HDFS写数据流程（简化为十步走）</a></li>
         <li><a href="#hdfs读数据流程简化为五步走">HDFS读数据流程（简化为五步走）</a></li>
+        <li><a href="#hdfs其他功能">HDFS其他功能</a>
+          <ul>
+            <li><a href="#1不同集群之间的数据复制">1、不同集群之间的数据复制</a></li>
+            <li><a href="#2集群内部文件拷贝scp">2、集群内部文件拷贝scp</a></li>
+            <li><a href="#3跨集群之间的数据拷贝distcp">3、跨集群之间的数据拷贝distcp</a></li>
+            <li><a href="#4archive档案的使用hadoop归档模式">4、Archive档案的使用(Hadoop归档模式)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hdfs元数据管理机制">HDFS元数据管理机制</a>
+      <ul>
+        <li><a href="#元数据管理概述">元数据管理概述</a></li>
+      </ul>
+    </li>
+    <li><a href="#secondary-namenode">secondary namenode</a>
+      <ul>
+        <li><a href="#checkpoint2nn合并元数据文件过程">Checkpoint（2NN合并元数据文件过程）</a></li>
+      </ul>
+    </li>
+    <li><a href="#hdfs安全模式">HDFS安全模式</a>
+      <ul>
+        <li><a href="#安全模式概述">安全模式概述</a></li>
+        <li><a href="#安全模式配置">安全模式配置</a></li>
+        <li><a href="#安全模式命令">安全模式命令</a></li>
       </ul>
     </li>
   </ul>
@@ -964,12 +1016,64 @@ window.MathJax = {
         <li><a href="#一次写入多次读出">一次写入，多次读出</a></li>
       </ul>
     </li>
+    <li><a href="#hdfs基本操作">HDFS基本操作</a>
+      <ul>
+        <li><a href="#shell命令行客户端">Shell命令行客户端</a></li>
+        <li><a href="#shell命令选项">Shell命令选项</a></li>
+        <li><a href="#shell常用命令介绍">Shell常用命令介绍</a>
+          <ul>
+            <li><a href="#-ls重点"><strong>-ls</strong>（重点）</a></li>
+            <li><a href="#-mkdir重点"><strong>-mkdir（重点）</strong></a></li>
+            <li><a href="#-put上传重点"><strong>-put：上传</strong>（重点）</a></li>
+            <li><a href="#-get下载重点"><strong>-get：下载（重点）</strong></a></li>
+            <li><a href="#-appendtofile"><strong>-appendToFile</strong></a></li>
+            <li><a href="#-cat重点"><strong>-cat</strong>（重点）</a></li>
+            <li><a href="#-tail重点"><strong>-tail</strong>（重点）</a></li>
+            <li><a href="#-chgrpgroup简写更改文件所属组"><strong>-chgrp：group简写，更改文件所属组</strong></a></li>
+            <li><a href="#-chmod更改权限重点"><strong>-chmod：更改权限</strong>（重点）</a></li>
+            <li><a href="#-chown更改文件拥有者"><strong>-chown：更改文件拥有者</strong></a></li>
+            <li><a href="#-cp重点"><strong>-cp</strong>（重点）</a></li>
+            <li><a href="#-mv重点"><strong>-mv</strong>（重点）</a></li>
+            <li><a href="#-getmerge"><strong>-getmerge</strong></a></li>
+            <li><a href="#-rm重点"><strong>-rm</strong>（重点）</a></li>
+            <li><a href="#-df重点"><strong>-df</strong>（重点）</a></li>
+            <li><a href="#-du重点"><strong>-du（重点）</strong></a></li>
+            <li><a href="#-setrep"><strong>-setrep</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#hdfs基本原理">HDFS基本原理</a>
       <ul>
         <li><a href="#namenode概述">NameNode概述</a></li>
         <li><a href="#datanode概述">DataNode概述</a></li>
         <li><a href="#hdfs写数据流程简化为十步走">HDFS写数据流程（简化为十步走）</a></li>
         <li><a href="#hdfs读数据流程简化为五步走">HDFS读数据流程（简化为五步走）</a></li>
+        <li><a href="#hdfs其他功能">HDFS其他功能</a>
+          <ul>
+            <li><a href="#1不同集群之间的数据复制">1、不同集群之间的数据复制</a></li>
+            <li><a href="#2集群内部文件拷贝scp">2、集群内部文件拷贝scp</a></li>
+            <li><a href="#3跨集群之间的数据拷贝distcp">3、跨集群之间的数据拷贝distcp</a></li>
+            <li><a href="#4archive档案的使用hadoop归档模式">4、Archive档案的使用(Hadoop归档模式)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hdfs元数据管理机制">HDFS元数据管理机制</a>
+      <ul>
+        <li><a href="#元数据管理概述">元数据管理概述</a></li>
+      </ul>
+    </li>
+    <li><a href="#secondary-namenode">secondary namenode</a>
+      <ul>
+        <li><a href="#checkpoint2nn合并元数据文件过程">Checkpoint（2NN合并元数据文件过程）</a></li>
+      </ul>
+    </li>
+    <li><a href="#hdfs安全模式">HDFS安全模式</a>
+      <ul>
+        <li><a href="#安全模式概述">安全模式概述</a></li>
+        <li><a href="#安全模式配置">安全模式配置</a></li>
+        <li><a href="#安全模式命令">安全模式命令</a></li>
       </ul>
     </li>
   </ul>
@@ -1373,6 +1477,455 @@ window.MathJax = {
 </h3>
 <p>HDFS是设计成适应一次写入，多次读出的场景，且不支持文件的修改。</p>
 <p>正因为如此，HDFS适合用来做大数据分析的底层存储服务，并不适合用来做网盘等应用，因为，修改不方便，延迟大，网络开销大，成本太高。</p>
+<h2 class="relative group">HDFS基本操作 
+    <div id="hdfs基本操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hdfs%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>官方文档：https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/FileSystemShell.html</p>
+<h3 class="relative group">Shell命令行客户端 
+    <div id="shell命令行客户端" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#shell%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%ae%a2%e6%88%b7%e7%ab%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Hadoop提供了文件系统的shell命令行客户端，使用方法如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="p">&lt;</span><span class="n">args</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>文件系统shell包括与Hadoop分布式文件系统（HDFS）以及Hadoop支持的其他文件系统（如本地FS，HFTP FS，S3 FS等）直接交互的各种类似shell的命令。所有FS shell命令都将路径URI作为参数。</p>
+<p>URI格式为scheme://authority/path。对于HDFS，该scheme是hdfs，对于本地FS，该scheme是file。scheme和authority是可选的。<strong>如果未指定，则使用配置中指定的默认方案。</strong></p>
+<p>对于HDFS，命令示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="n">-ls</span> <span class="n">hdfs</span><span class="err">:</span><span class="p">//</span><span class="n">namenode</span><span class="err">:</span><span class="n">host</span><span class="p">/</span><span class="n">parent</span><span class="p">/</span><span class="n">child</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="n">-ls</span> <span class="p">/</span><span class="n">parent</span><span class="p">/</span><span class="n">child</span>
+</span></span></code></pre></div><p>注：fs.defaultFS中有配置</p>
+<p>对于本地文件系统，命令示例如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="n">-ls</span> <span class="n">file</span><span class="err">:</span><span class="p">///</span><span class="n">root</span><span class="p">/</span> 
+</span></span></code></pre></div><p>如果使用的文件系统是HDFS，则使用hdfs dfs也是可以的，此时</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="p">&lt;</span><span class="n">args</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">hdfs</span> <span class="n">dfs</span> <span class="p">&lt;</span><span class="n">args</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>特别说明：关于HDFS的Shell操作，前缀写法有两种形式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span>  <span class="c"># 适用于所有的文件系统，hdfs://node1:8020/  file:///</span>
+</span></span><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">dfs</span>   <span class="c"># 更适用于HDFS分布式文件系统</span>
+</span></span></code></pre></div><h3 class="relative group">Shell命令选项 
+    <div id="shell命令选项" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#shell%e5%91%bd%e4%bb%a4%e9%80%89%e9%a1%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<table>
+<thead>
+<tr>
+<th>选项名称</th>
+<th>使用格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-ls</td>
+<td>-ls &lt;路径&gt;</td>
+<td>查看指定路径的当前目录结构</td>
+</tr>
+<tr>
+<td>-lsr</td>
+<td>-lsr &lt;路径&gt;</td>
+<td>递归查看指定路径的目录结构</td>
+</tr>
+<tr>
+<td>-du</td>
+<td>-du &lt;路径&gt;，统计文件夹需要添加-s</td>
+<td>统计目录下个文件大小</td>
+</tr>
+<tr>
+<td>-dus</td>
+<td>-dus &lt;路径&gt;</td>
+<td>汇总统计目录下文件(夹)大小</td>
+</tr>
+<tr>
+<td>-count</td>
+<td>-count [-q] &lt;路径&gt;</td>
+<td>统计文件(夹)数量</td>
+</tr>
+<tr>
+<td>-mv</td>
+<td>-mv &lt;源路径&gt; &lt;目的路径&gt;</td>
+<td>移动</td>
+</tr>
+<tr>
+<td>-cp</td>
+<td>-cp &lt;源路径&gt; &lt;目的路径&gt;</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>-rm</td>
+<td>-rm [-skipTrash] &lt;路径&gt;</td>
+<td>删除文件/空白文件夹</td>
+</tr>
+<tr>
+<td>-rmr</td>
+<td>-rmr [-skipTrash] &lt;路径&gt;</td>
+<td>递归删除</td>
+</tr>
+<tr>
+<td>-put</td>
+<td>-put &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+<td>上传文件</td>
+</tr>
+<tr>
+<td>-copyFromLocal</td>
+<td>-copyFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+<td>从本地复制</td>
+</tr>
+<tr>
+<td>-moveFromLocal</td>
+<td>-moveFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+<td>从本地移动</td>
+</tr>
+<tr>
+<td>-getmerge</td>
+<td>-getmerge &lt;源路径&gt; &lt;linux路径&gt;</td>
+<td>合并到本地</td>
+</tr>
+<tr>
+<td>-cat</td>
+<td>-cat &lt;hdfs路径&gt;</td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>-text</td>
+<td>-text &lt;hdfs路径&gt;</td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>-copyToLocal</td>
+<td>-copyToLocal [-ignoreCrc] [-crc] [hdfs源路径] [linux目的路径]</td>
+<td>从本地复制</td>
+</tr>
+<tr>
+<td>-moveToLocal</td>
+<td>-moveToLocal [-crc] &lt;hdfs源路径&gt; &lt;linux目的路径&gt;</td>
+<td>从本地移动</td>
+</tr>
+<tr>
+<td>-mkdir</td>
+<td>-mkdir &lt;hdfs路径&gt;</td>
+<td>创建空白文件夹</td>
+</tr>
+<tr>
+<td>-setrep</td>
+<td>-setrep [-R] [-w] &lt;副本数&gt; &lt;路径&gt;</td>
+<td>修改副本数量</td>
+</tr>
+<tr>
+<td>-touchz</td>
+<td>-touchz &lt;文件路径&gt;</td>
+<td>创建空白文件</td>
+</tr>
+<tr>
+<td>-stat</td>
+<td>-stat [format] &lt;路径&gt;</td>
+<td>显示文件统计信息</td>
+</tr>
+<tr>
+<td>-tail</td>
+<td>-tail [-f] &lt;文件&gt;</td>
+<td>查看文件尾部信息</td>
+</tr>
+<tr>
+<td>-chmod</td>
+<td>-chmod [-R] &lt;权限模式&gt; [路径]</td>
+<td>修改权限</td>
+</tr>
+<tr>
+<td>-chown</td>
+<td>-chown [-R] [属主][:[属组]] 路径</td>
+<td>修改属主</td>
+</tr>
+<tr>
+<td>-chgrp</td>
+<td>-chgrp [-R] 属组名称 路径</td>
+<td>修改属组</td>
+</tr>
+<tr>
+<td>-help</td>
+<td>-help [命令选项]</td>
+<td>帮助</td>
+</tr>
+</tbody>
+</table>
+<h3 class="relative group">Shell常用命令介绍 
+    <div id="shell常用命令介绍" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#shell%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e4%bb%8b%e7%bb%8d" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<h4 class="relative group"><strong>-ls</strong>（重点） 
+    <div id="-ls重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-ls%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -ls [-h] [-R] <args></p>
+<p>功能：显示文件、目录信息。</p>
+<p>示例：hadoop fs -ls /user/hadoop/file1</p>
+<h4 class="relative group"><strong>-mkdir（重点）</strong> 
+    <div id="-mkdir重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-mkdir%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -mkdir [-p] <paths></p>
+<p>功能：在hdfs上创建目录，-p表示会创建路径中的各级父目录。</p>
+<p>示例：hadoop fs -mkdir –p /user/hadoop/dir1</p>
+<h4 class="relative group"><strong>-put：上传</strong>（重点） 
+    <div id="-put上传重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-put%e4%b8%8a%e4%bc%a0%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -put [-f] [-p] [ -|<localsrc1> .. ]. <dst></p>
+<p>功能：将单个src或多个srcs从本地文件系统复制到目标文件系统。</p>
+<p>-p：保留访问和修改时间，所有权和权限。</p>
+<p>-f：覆盖目的地（如果已经存在）</p>
+<p>示例：hadoop fs -put -f localfile1 localfile2 /user/hadoop/hadoopdir</p>
+<h4 class="relative group"><strong>-get：下载（重点）</strong> 
+    <div id="-get下载重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-get%e4%b8%8b%e8%bd%bd%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -get [-ignorecrc] [-crc] [-p] [-f] <src> <localdst></p>
+<p>-ignorecrc：跳过对下载文件的CRC检查。</p>
+<p>-crc：为下载的文件写CRC校验和。</p>
+<p>功能：将文件复制到本地文件系统。</p>
+<p>示例：hadoop fs -get hdfs://host:port/user/hadoop/file localfile</p>
+<h4 class="relative group"><strong>-appendToFile</strong> 
+    <div id="-appendtofile" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-appendtofile" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -appendToFile <localsrc> &hellip; <dst></p>
+<p>功能：追加一个文件到已经存在的文件末尾（两个文件内容合并）</p>
+<p>示例：hadoop fs -appendToFile localfile  /hadoop/hadoopfile</p>
+<blockquote>
+<p>HDFS强调一次写入，多次读取。数据一旦写入成功，就不建议修改了！</p>
+</blockquote>
+<blockquote>
+<p>如果想对数据修改有没有办法？答：目前官方提供了一个唯一方案，不是修改方案，是追加文件</p>
+</blockquote>
+<h4 class="relative group"><strong>-cat</strong>（重点） 
+    <div id="-cat重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-cat%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -cat [-ignoreCrc] URI [URI &hellip;]</p>
+<p>功能：显示文件内容到stdout</p>
+<p>示例：hadoop fs -cat /hadoop/hadoopfile</p>
+<h4 class="relative group"><strong>-tail</strong>（重点） 
+    <div id="-tail重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-tail%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -tail [-f] URI</p>
+<p>功能：将文件的最后一千字节内容显示到stdout。</p>
+<p>-f选项将在文件增长时输出附加数据。</p>
+<p>示例：hadoop fs -tail /hadoop/hadoopfile</p>
+<h4 class="relative group"><strong>-chgrp：group简写，更改文件所属组</strong> 
+    <div id="-chgrpgroup简写更改文件所属组" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-chgrpgroup%e7%ae%80%e5%86%99%e6%9b%b4%e6%94%b9%e6%96%87%e4%bb%b6%e6%89%80%e5%b1%9e%e7%bb%84" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>使用方法：hadoop fs -chgrp [-R] GROUP URI [URI &hellip;]</p>
+<p>功能：更改文件组的关联。用户必须是文件的所有者，否则是超级用户。</p>
+<p>-R将使改变在目录结构下递归进行。</p>
+<p>示例：hadoop fs -chgrp othergroup /hadoop/hadoopfile</p>
+<h4 class="relative group"><strong>-chmod：更改权限</strong>（重点） 
+    <div id="-chmod更改权限重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-chmod%e6%9b%b4%e6%94%b9%e6%9d%83%e9%99%90%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：改变文件的权限。使用-R将使改变在目录结构下递归进行。</p>
+<p>示例：hadoop fs -chmod 666 /hadoop/hadoopfile</p>
+<h4 class="relative group"><strong>-chown：更改文件拥有者</strong> 
+    <div id="-chown更改文件拥有者" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-chown%e6%9b%b4%e6%94%b9%e6%96%87%e4%bb%b6%e6%8b%a5%e6%9c%89%e8%80%85" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：改变文件的拥有者。使用-R将使改变在目录结构下递归进行。</p>
+<p>示例：hadoop fs -chown someuser:somegrp  /hadoop/hadoopfile</p>
+<h4 class="relative group"><strong>-cp</strong>（重点） 
+    <div id="-cp重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-cp%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：从hdfs的一个路径拷贝hdfs的另一个路径</p>
+<p>示例： hadoop fs -cp /aaa/jdk.tar.gz /bbb/jdk.tar.gz.2</p>
+<h4 class="relative group"><strong>-mv</strong>（重点） 
+    <div id="-mv重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-mv%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：在hdfs目录中移动文件</p>
+<p>示例： hadoop fs -mv /aaa/jdk.tar.gz /</p>
+<h4 class="relative group"><strong>-getmerge</strong> 
+    <div id="-getmerge" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-getmerge" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：合并下载多个文件</p>
+<p>示例：比如hdfs的目录 /aaa/下有多个文件:log.1, log.2,log.3,&hellip;</p>
+<p>hadoop fs -getmerge /aaa/log.*  ./log.sum</p>
+<h4 class="relative group"><strong>-rm</strong>（重点） 
+    <div id="-rm重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-rm%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：删除指定的文件。只删除非空目录和文件。-r 递归删除。</p>
+<p>示例：hadoop fs -rm -r /aaa/bbb/</p>
+<h4 class="relative group"><strong>-df</strong>（重点） 
+    <div id="-df重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-df%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：统计文件系统的可用空间信息</p>
+<p>示例：hadoop fs -df -h /</p>
+<h4 class="relative group"><strong>-du（重点）</strong> 
+    <div id="-du重点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-du%e9%87%8d%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：显示目录中所有文件大小，当只指定一个文件时，显示此文件的大小。</p>
+<p>示例：hadoop fs -du /user/hadoop/dir1</p>
+<h4 class="relative group"><strong>-setrep</strong> 
+    <div id="-setrep" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#-setrep" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>功能：改变一个文件的副本系数。-R选项用于递归改变目录下所有文件的副本系数。</p>
+<p>示例：hadoop fs -setrep -w 3 -R /user/hadoop/dir1</p>
+<blockquote>
+<p>实际工作中，一般不会使用此命令，而是通过配置文件设置副本数</p>
+</blockquote>
+<p>特别说明：<strong>-touch</strong></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <h2 class="relative group">HDFS基本原理 
     <div id="hdfs基本原理" class="anchor"></div>
     
@@ -1547,7 +2100,842 @@ window.MathJax = {
   
 
 </p>
+<h3 class="relative group">HDFS其他功能 
+    <div id="hdfs其他功能" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hdfs%e5%85%b6%e4%bb%96%e5%8a%9f%e8%83%bd" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<h4 class="relative group">1、不同集群之间的数据复制 
+    <div id="1不同集群之间的数据复制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%e4%b8%8d%e5%90%8c%e9%9b%86%e7%be%a4%e4%b9%8b%e9%97%b4%e7%9a%84%e6%95%b0%e6%8d%ae%e5%a4%8d%e5%88%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>cluster1 =&gt; hadoop集群（测试环境）</p>
+<p>cluster2 =&gt; hadoop集群（生产环境）</p>
+<p>在我们实际工作当中，极有可能会遇到将测试集群的数据拷贝到生产环境集群，或者将生产环境集群的数据拷贝到测试集群，那么就需要我们在多个集群之间进行数据的远程拷贝，hadoop自带也有命令可以帮我们实现这个功能。</p>
+<h4 class="relative group">2、集群内部文件拷贝scp 
+    <div id="2集群内部文件拷贝scp" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2%e9%9b%86%e7%be%a4%e5%86%85%e9%83%a8%e6%96%87%e4%bb%b6%e6%8b%b7%e8%b4%9dscp" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">上传</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl"><span class="n">scp</span>  <span class="n">本地文件</span>  <span class="n">用户名</span><span class="nv">@主机名称</span><span class="err">:</span><span class="n">拷贝路径</span>
+</span></span><span class="line"><span class="cl"><span class="n">scp</span> <span class="n">-r</span> <span class="n">本地文件夹</span> <span class="n">用户名</span><span class="nv">@主机名称</span><span class="err">:</span><span class="n">拷贝路径</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">下载</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl"><span class="n">scp</span> <span class="n">用户名</span><span class="nv">@主机名称</span><span class="err">:</span><span class="n">远程文件路径</span> <span class="n">本地路径</span>
+</span></span><span class="line"><span class="cl"><span class="n">scp</span> <span class="n">-r</span> <span class="n">用户名</span><span class="nv">@主机名称</span><span class="err">:</span><span class="n">远程文件夹路径</span> <span class="n">本地路径</span>
+</span></span></code></pre></div><h4 class="relative group">3、跨集群之间的数据拷贝distcp 
+    <div id="3跨集群之间的数据拷贝distcp" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3%e8%b7%a8%e9%9b%86%e7%be%a4%e4%b9%8b%e9%97%b4%e7%9a%84%e6%95%b0%e6%8d%ae%e6%8b%b7%e8%b4%9ddistcp" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">[</span><span class="n">root</span><span class="nv">@cluster1</span> <span class="p">~]</span> <span class="c"># hadoop distcp hdfs://cluster1:8020/jdk-8u141-linux-x64.tar.gz  hdfs://cluster2:8020/</span>
+</span></span></code></pre></div><h4 class="relative group">4、Archive档案的使用(Hadoop归档模式) 
+    <div id="4archive档案的使用hadoop归档模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4archive%e6%a1%a3%e6%a1%88%e7%9a%84%e4%bd%bf%e7%94%a8hadoop%e5%bd%92%e6%a1%a3%e6%a8%a1%e5%bc%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>HDFS并不擅长存储小文件，因为每个文件最少一个block，每个block的元数据都会在NameNode占用内存，如果存在大量的小文件，它们会吃掉NameNode节点的大量内存。</p>
+<p>Hadoop Archives可以有效的处理以上问题，它可以把多个文件归档成为一个文件，归档成一个文件后还可以透明的访问每一个文件。</p>
+<p><strong>1 如何创建Archive</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">Usage</span><span class="err">:</span> <span class="n">hadoop</span> <span class="n">archive</span> <span class="n">-archiveName</span> <span class="n">name</span> <span class="n">-p</span> <span class="p">&lt;</span><span class="n">parent</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="n">src</span><span class="p">&gt;*</span> <span class="p">&lt;</span><span class="n">dest</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">-archiveName</span><span class="err">：</span><span class="n">归档后的文件名称</span>
+</span></span><span class="line"><span class="cl"><span class="n">-p</span><span class="err">：</span><span class="n">指定要归档父文件夹</span><span class="err">，</span><span class="n">所有需要归档的文件都在此目录</span>
+</span></span></code></pre></div><p>其中-archiveName是指要创建的存档的名称。比如test.har，<em><em>archive的名字的扩展名应该是</em>.har</em>*。 -p参数指定文件存档文件（src）的相对路径。</p>
+<p>举个例子：<strong>-p /foo/bar a/b/c e/f/g</strong></p>
+<p>这里的<code>/foo/bar</code>是<code>a/b/c</code>与<code>e/f/g</code>的父路径，</p>
+<p>所以完整路径为<code>/foo/bar/a/b/c</code>与<code>/foo/bar/e/f/g</code></p>
+<p>例如：如果你只想存档一个目录/input下的所有文件:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">archive</span> <span class="n">-archiveName</span> <span class="n">test</span><span class="p">.</span><span class="py">har</span> <span class="n">-p</span> <span class="p">/</span><span class="n">input</span> <span class="p">/</span><span class="n">outputdir</span>
+</span></span></code></pre></div><p>这样就会在/outputdir目录下创建一个名为test.har的存档文件。</p>
+<p>
 
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>2 如何查看Archive</strong></p>
+<p>首先我们来看下创建好的har文件。使用如下的命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">fs</span> <span class="n">-ls</span> <span class="p">/</span><span class="n">outputdir</span><span class="p">/</span><span class="n">test</span><span class="p">.</span><span class="py">har</span>
+</span></span></code></pre></div><p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这里可以看到har文件包括：两个索引文件，多个part文件（本例只有一个）以及一个标识成功与否的文件。part文件是多个原文件的集合，根据index文件去找到原文件。</p>
+<p>例如上述的三个小文件1.txt 2.txt 3.txt内容分别为1，2，3。进行archive操作之后，三个小文件就归档到test.har里的part-0一个文件里。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>archive作为文件系统层暴露给外界。所以所有的fs shell命令都能在archive上运行，但是要使用不同的URI。</p>
+<p>Hadoop Archives的URI是：</p>
+<p><code>har://scheme-hostname:port/archivepath/fileinarchive</code></p>
+<p>scheme-hostname格式为hdfs-域名:端口，如果没有提供scheme-hostname，它会使用默认的文件系统。这种情况下URI是这种形式：</p>
+<p><code>har:///archivepath/fileinarchive</code></p>
+<p>如果用har uri去访问的话，索引、标识等文件就会隐藏起来，只显示创建档案之前的原文件：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>案例：把/test目录下的1.txt、2.txt、3.txt进行归档操作</p>
+<p>数据集准备：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>归档：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>查看归档包内容：har://hdfs-集群名称</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>查看归档包中文件的内容：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-12.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>解压归档包</p>
+<p>① 删除1.txt/2.txt/3.txt</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-13.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>② 解压归档包</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-14.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>3 如何解压Archive</strong></p>
+<p>按顺序解压存档（串行）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">Hadoop</span> <span class="n">fs</span> <span class="n">-cp</span> <span class="n">har</span><span class="err">:</span><span class="p">///</span><span class="n">user</span><span class="p">/</span><span class="n">zoo</span><span class="p">/</span><span class="n">foo</span><span class="p">.</span><span class="n">har</span><span class="p">/</span><span class="n">dir1</span> <span class="n">hdfs</span><span class="err">:</span><span class="p">/</span><span class="n">user</span><span class="p">/</span><span class="n">zoo</span><span class="p">/</span><span class="n">newdir</span>
+</span></span></code></pre></div><p>要并行解压存档，请使用DistCp：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hadoop</span> <span class="n">distcp</span> <span class="n">har</span><span class="err">:</span><span class="p">///</span><span class="n">user</span><span class="p">/</span><span class="n">zoo</span><span class="p">/</span><span class="n">foo</span><span class="p">.</span><span class="n">har</span><span class="p">/</span><span class="n">dir1</span> <span class="n">hdfs</span><span class="err">:</span><span class="p">/</span><span class="n">user</span><span class="p">/</span><span class="n">zoo</span><span class="p">/</span><span class="n">newdir</span>
+</span></span></code></pre></div><p><strong>4 Archive注意事项</strong></p>
+<ol>
+<li>Hadoop archives是特殊的档案格式。一个Hadoop archive对应一个文件系统目录。Hadoop archive的扩展名是*.har；</li>
+<li>创建archives本质是<strong>运行一个Map/Reduce任务</strong>，所以应该在Hadoop集群上运行创建档案的命令；</li>
+<li>创建archive文件要消耗和原文件一样多的硬盘空间（<strong>归档并没有压缩</strong>）；</li>
+<li>archive文件不支持压缩，尽管archive文件看起来像已经被压缩过；</li>
+<li>archive文件一旦创建就无法改变，要修改的话，需要创建新的archive文件。事实上，一般不会再对存档后的文件进行修改，因为它们是<strong>定期存档的，比如每周或每日</strong>；</li>
+<li>当创建archive时，源文件不会被更改或删除；</li>
+</ol>
+<h2 class="relative group">HDFS元数据管理机制 
+    <div id="hdfs元数据管理机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hdfs%e5%85%83%e6%95%b0%e6%8d%ae%e7%ae%a1%e7%90%86%e6%9c%ba%e5%88%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>namenode：管理元数据</li>
+<li>datanode：管理实际数据</li>
+<li>secondarynamenode：辅助namenode管理元数据</li>
+</ul>
+<h3 class="relative group">元数据管理概述 
+    <div id="元数据管理概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%83%e6%95%b0%e6%8d%ae%e7%ae%a1%e7%90%86%e6%a6%82%e8%bf%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>HDFS元数据</strong>，按<em>类型</em>分，主要包括以下几个部分：</p>
+<ul>
+<li>
+<p>持久化存储（HDFS集群中的文件的元数据信息）：</p>
+<ol>
+<li>文件、目录自身的属性信息，例如文件名，目录名，修改信息等。</li>
+<li>文件记录的信息的存储相关的信息，例如存储块信息，分块情况，副本个数等。</li>
+</ol>
+</li>
+<li>
+<p>非持久化存储：</p>
+<ol start="3">
+<li>记录HDFS的Datanode的信息，用于DataNode的管理。</li>
+</ol>
+</li>
+</ul>
+<p>按<em>形式</em>分为<strong>内存元数据</strong>和<strong>元数据文件</strong>两种，分别存在内存和磁盘上。</p>
+<p>HDFS磁盘上元数据文件分为两类，用于持久化存储（① 文件自身属性 ② 文件存储相关信息）：</p>
+<ul>
+<li><strong>fsimage 镜像文件</strong>：是元数据的一个持久化的检查点，包含Hadoop文件系统中的所有目录和文件元数据信息，<strong>但不包含文件块位置的信息</strong>。文件块位置信息只存储在内存中，是在 datanode加入集群的时候，namenode询问datanode得到的，并且间断的更新。</li>
+</ul>
+<blockquote>
+<p>fsimage镜像文件：保存整个HDFS集群的元数据信息，不包含datanode节点信息。因为datanode数据都是放在内存元数据。</p>
+</blockquote>
+<ul>
+<li><strong>edits 编辑日志</strong>：存放的是Hadoop文件系统的所有更改操作（文件创建，删除或修改）的日志，文件系统客户端执行的更改操作首先会被记录到edits文件中。</li>
+</ul>
+<blockquote>
+<p>edits编辑日志：我们客户端向Hadoop的所有更改（增、删、改），都会被记录下来</p>
+</blockquote>
+<p>fsimage和edits文件都是经过序列化的，在NameNode启动的时候，它会将fsimage文件中的内容加载到内存中，之后再执行edits文件中的各项操作，使得内存中的元数据和实际的同步，存在<strong>内存中的元数据支持客户端的读操作，也是最完整的元数据</strong>。</p>
+<p>例子：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/namenode1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>上面两者内容合并得到下面的最新数据：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/next.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>当客户端对HDFS中的文件进行新增或者修改操作，操作记录首先被记入edits日志文件中，当客户端操作成功后，相应的元数据会更新到内存元数据中。因为fsimage文件一般都很大（GB级别的很常见），如果所有的更新操作都往fsimage文件中添加，这样会导致系统运行的十分缓慢。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/namenode.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>HDFS这种设计实现着手于：一是内存中数据更新、查询快，极大缩短了操作响应时间；二是内存中元数据丢失风险颇高（断电等），因此辅佐元数据镜像文件（fsimage）+编辑日志文件（edits）的备份机制进行确保元数据的安全。</p>
+<p><strong>NameNode维护整个文件系统元数据</strong>。因此，元数据的准确管理，影响着HDFS提供文件存储服务的能力。</p>
+<p>在Hadoop的HDFS首次部署好配置文件之后，并不能马上启动使用，而是先要对文件系统进行格式化。需要在NameNode（NN）节点上进行如下的操作：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$HADOOP_HOME</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">hdfs</span> <span class="n">namenode</span> <span class="n">-format</span>
+</span></span></code></pre></div><p>在这里要注意两个概念，一个是文件系统，此时的文件系统在物理上还不存在；二就是此处的格式化并不是指传统意义上的本地磁盘格式化，而是一些清除与准备工作。</p>
+<p>格式化完成之后，将会在<code>$dfs.namenode.name.dir/current</code>目录下创建如下的文件结构，这个目录也正是namenode元数据相关的文件目录：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-15.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>其中的<code>dfs.namenode.name.dir</code>是在hdfs-site.xml文件中配置的，默认值如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-16.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><code>namespaceID/clusterID/blockpoolID</code> 这些都是HDFS集群的唯一标识符。标识符被用来防止DataNodes意外注册到另一个集群中的namenode上。这些标识在联邦（federation）部署中特别重要。联邦模式下，会有多个NameNode独立工作。每个的NameNode提供唯一的命名空间（namespaceID），并管理一组唯一的文件块池（blockpoolID）。clusterID将整个集群结合在一起作为单个逻辑单元，在集群中的所有节点上都是一样的。</p>
+<p><code>storageType</code>说明这个文件存储的是什么进程的数据结构信息（如果是DataNode，storageType=DATA_NODE）；</p>
+<p><code>cTime</code> NameNode存储系统创建时间，首次格式化文件系统这个属性是0，当文件系统升级之后，该值会更新到升级之后的时间戳；</p>
+<p><code>layoutVersion</code>表示HDFS永久性数据结构的版本信息，是一个负整数。</p>
+<p>补充说明：</p>
+<p><em>格式化集群的时候，可以指定集群的cluster_id，但是不能与环境中其他集群有冲突。如果没有提供cluster_id，则会自动生成一个唯一的ClusterID。</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$HADOOP_HOME</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">hdfs</span> <span class="n">namenode</span> <span class="n">-format</span> <span class="n">-clusterId</span> <span class="p">&lt;</span><span class="n">cluster_id</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p><code>seen_txid</code></p>
+<p>$dfs.namenode.name.dir/current/seen_txid非常重要，是存放transactionId的文件，format之后是0，<code>它代表的是namenode里面的edits_*文件的尾数</code>，namenode重启的时候，会按照seen_txid的数字，循序从头跑edits_0000001~到seen_txid的数字。所以当你的hdfs发生异常重启的时候，一定要比对seen_txid内的数字是不是你edits最后的尾数。</p>
+<p><code>Fsimage &amp; edits</code></p>
+<p>$dfs.namenode.name.dir/current目录下在format的同时也会生成fsimage和edits文件，及其对应的md5校验文件。</p>
+<p><strong>面试题-fsimage是干什么的？里面保存的哪些数据？是否可以直接查看？</strong></p>
+<p><code>fsimage</code>文件其实是Hadoop文件系统元数据的一个永久性的检查点，其中包含Hadoop文件系统中的所有目录和文件idnode的序列化信息；</p>
+<p>fsimage包含Hadoop文件系统中的所有目录和文件idnode的序列化信息；对于文件来说，包含的信息有修改时间、访问时间、块大小和组成一个文件块信息等；而对于目录来说，包含的信息主要有修改时间、访问控制权限等信息。</p>
+<p><strong>面试题-edits是干什么的？里面保存的哪些数据？是否可以直接查看？</strong></p>
+<p><code>edits</code>文件存放的是Hadoop文件系统的所有更新操作的路径，文件系统客户端执行的所以写操作首先会被记录到edits文件中。</p>
+<p><strong>面试题-为什么要对两者之间进行合并操作呢？</strong></p>
+<p>答：为了得到最新的元数据</p>
+<p>NameNode起来之后，HDFS中的更新操作会重新写到edits文件中，因为fsimage文件一般都很大（GB级别的很常见），如果所有的更新操作都往fsimage文件中添加，这样会导致系统运行的十分缓慢，但是如果往edits文件里面写就不会这样，每次执行写操作之后，且在向客户端发送成功代码之前，edits文件都需要同步更新。如果一个文件比较大，使得写操作需要向多台机器进行操作，只有当所有的写操作都执行完成之后，写操作才会返回成功，这样的好处是任何的操作都不会因为机器的故障而导致元数据的不同步。</p>
+<p><strong>内容查看</strong></p>
+<blockquote>
+<p>元数据存储位置：/export/data/hadoop-3.3.0/dfs/name/current</p>
+</blockquote>
+<p>fsimage、edits两个文件中的内容使用普通文本编辑器是无法直接查看的，幸运的是hadoop为此准备了专门的工具用于查看文件的内容，这些工具分别为<code>oev</code>和<code>oiv</code>，可以使用hdfs调用执行。</p>
+<p><code>oev是offline edits viewer（离线edits查看器）的缩写</code>，该工具只操作文件因而并不需要hadoop集群处于运行状态。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">oev</span> <span class="n">-i</span> <span class="n">edits_0000000000000000081</span><span class="p">-</span><span class="mf">0000000000000000089</span> <span class="n">-o</span> <span class="n">edits</span><span class="p">.</span><span class="py">xml</span>
+</span></span><span class="line"><span class="cl"><span class="n">-i</span><span class="p">,-</span><span class="n">-inputFile</span> <span class="p">&lt;</span><span class="n">arg</span><span class="p">&gt;</span>   
+</span></span><span class="line"><span class="cl"><span class="n">-o</span><span class="p">,-</span><span class="n">-outputFile</span> <span class="p">&lt;</span><span class="n">arg</span><span class="p">&gt;</span>  <span class="n">Name</span> <span class="n">of</span> <span class="n">output</span> <span class="n">file</span>
+</span></span></code></pre></div><p>在输出文件中，每个RECORD记录了一次操作，示例如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-17.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><code>oiv是offline image viewer的缩写</code>，用于将fsimage文件的内容转储到指定文件中以便于阅读，该工具还提供了只读的WebHDFS API以允许离线分析和检查hadoop集群的命名空间。oiv在处理非常大的fsimage文件时是相当快的，如果该工具不能够处理fsimage，它会直接退出。该工具不具备向后兼容性，比如使用hadoop-2.4版本的oiv不能处理hadoop-2.3版本的fsimage，只能使用hadoop-2.3版本的oiv。同oev一样，就像它的名称所提示的（offline），oiv也不需要hadoop集群处于运行状态。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">oiv</span> <span class="n">-i</span> <span class="n">fsimage_0000000000000000115</span> <span class="n">-p</span> <span class="n">XML</span> <span class="n">-o</span> <span class="n">fsimage</span><span class="p">.</span><span class="py">xml</span>
+</span></span></code></pre></div><p>示例如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/imge19.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">secondary namenode 
+    <div id="secondary-namenode" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#secondary-namenode" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>NameNode职责是管理元数据信息，DataNode的职责是负责数据具体存储，那么SecondaryNameNode的作用是什么？对很多初学者来说是非常迷惑的。它为什么会出现在HDFS中。从它的名字上看，它给人的感觉就像是NameNode的备份。但它实际上却不是。</p>
+<p>大家猜想一下，当HDFS集群运行一段事件后，就会出现下面一些问题：</p>
+<ul>
+<li>edit logs文件会变的很大，怎么去管理这个文件是一个挑战。</li>
+<li>NameNode重启会花费很长时间，因为有很多改动要合并到fsimage文件上。</li>
+<li>如果NameNode挂掉了，那就丢失了一些改动。因为此时的fsimage文件非常旧。</li>
+</ul>
+<p>因此为了克服这个问题，我们需要一个易于管理的机制来帮助我们减小edit logs文件的大小和得到一个最新的fsimage文件，这样也会减小在NameNode上的压力。这跟Windows的恢复点是非常像的，Windows的恢复点机制允许我们对OS进行快照，这样当系统发生问题时，我们能够回滚到最新的一次恢复点上。</p>
+<p>SecondaryNameNode就是来帮助解决上述问题的，它的职责是<strong>合并NameNode的edit logs到fsimage文件中</strong>。</p>
+<h3 class="relative group">Checkpoint（2NN合并元数据文件过程） 
+    <div id="checkpoint2nn合并元数据文件过程" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#checkpoint2nn%e5%90%88%e5%b9%b6%e5%85%83%e6%95%b0%e6%8d%ae%e6%96%87%e4%bb%b6%e8%bf%87%e7%a8%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>每达到触发条件，会由secondary namenode将namenode上积累的所有edits和一个最新的fsimage下载到本地，并加载到内存进行merge（这个过程称为checkpoint），如下图所示：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/hadoop/hdfs/image-19.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>NameNode管理着元数据信息，其中有两类持久化元数据文件：edits操作日志文件和fsimage元数据镜像文件。新的操作日志不会立即与fsimage进行合并，也不会刷到NameNode的内存中，而是会先写到edits中(因为合并需要消耗大量的资源)，操作成功之后更新至内存。</li>
+<li>有dfs.namenode.checkpoint.period和dfs.namenode.checkpoint.txns 两个配置，只要达到这两个条件任何一个，secondarynamenode就会执行checkpoint的操作。</li>
+<li>当触发checkpoint操作时，NameNode会生成一个新的edits即上图中的edits.new文件，同时SecondaryNameNode会将edits文件和fsimage复制到本地（HTTP GET方式）。</li>
+<li>secondarynamenode将下载下来的fsimage载入到内存，然后一条一条地执行edits文件中的各项更新操作，使得内存中的fsimage保存最新，这个过程就是edits和fsimage文件合并，生成一个新的fsimage文件即上图中的Fsimage.ckpt文件。</li>
+<li>secondarynamenode将新生成的Fsimage.ckpt文件复制到NameNode节点。</li>
+<li>在NameNode节点的edits.new文件和Fsimage.ckpt文件会替换掉原来的edits文件和fsimage文件，至此刚好是一个轮回，即在NameNode中又是edits和fsimage文件。</li>
+<li>等待下一次checkpoint触发SecondaryNameNode进行工作，一直这样循环操作。</li>
+</ul>
+<p><strong>Checkpoint触发条件</strong></p>
+<p>Checkpoint操作受两个参数控制，可以通过core-site.xml进行配置：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">property</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   	<span class="p">&lt;</span><span class="n">name</span><span class="p">&gt;</span><span class="n">dfs</span><span class="p">.</span><span class="py">namenode</span><span class="p">.</span><span class="py">checkpoint</span><span class="p">.</span><span class="n">period</span><span class="p">&lt;/</span><span class="n">name</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   	<span class="p">&lt;</span><span class="n">value</span><span class="p">&gt;</span><span class="mf">3600</span><span class="p">&lt;/</span><span class="n">value</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="n">description</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">两次连续的checkpoint之间的时间间隔</span><span class="err">。</span><span class="n">默认1小时</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="n">description</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">property</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">property</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  	<span class="p">&lt;</span><span class="n">name</span><span class="p">&gt;</span><span class="n">dfs</span><span class="p">.</span><span class="py">namenode</span><span class="p">.</span><span class="py">checkpoint</span><span class="p">.</span><span class="n">txns</span><span class="p">&lt;/</span><span class="n">name</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  	<span class="p">&lt;</span><span class="n">value</span><span class="p">&gt;</span><span class="mf">1000000</span><span class="p">&lt;/</span><span class="n">value</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  	<span class="p">&lt;</span><span class="n">description</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">最大的没有执行checkpoint事务的数量</span><span class="err">，</span><span class="n">满足将强制执行紧急checkpoint</span><span class="err">，</span><span class="n">即使尚未达到检查点周期</span><span class="err">。</span><span class="n">默认设置为100万</span><span class="err">。</span>  
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;/</span><span class="n">description</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">property</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>从上面的描述我们可以看出，SecondaryNamenode根本就不是Namenode的一个热备，其只是将fsimage和edits合并。其拥有的fsimage不是最新的，因为在他从NameNode下载fsimage和edits文件时候，新的更新操作已经写到edit.new文件中去了。而这些更新在SecondaryNamenode是没有同步到的！当然，<strong>如果NameNode中的fsimage真的出问题了，还是可以用SecondaryNamenode中的fsimage替换一下NameNode上的fsimage，虽然已经不是最新的fsimage，但是我们可以将损失减小到最少！</strong></p>
+<h2 class="relative group">HDFS安全模式 
+    <div id="hdfs安全模式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#hdfs%e5%ae%89%e5%85%a8%e6%a8%a1%e5%bc%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">安全模式概述 
+    <div id="安全模式概述" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%89%e5%85%a8%e6%a8%a1%e5%bc%8f%e6%a6%82%e8%bf%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><code>安全模式</code>是HDFS所处的一种特殊状态，在这种状态下，<code>文件系统只接受读数据请求，而不接受删除、修改等变更请求</code>，是一种<code>保护机制</code>，用于保证集群中的数据块的安全性。</p>
+<p>1个Block块会产生3个副本 =&gt; 必须保证有充足datanode节点进行存储。</p>
+<p>在NameNode主节点启动时，HDFS首先进入安全模式，集群会开始检查数据块的完整性。DataNode在启动的时候会向Namenode汇报可用的block信息，当整个系统达到安全标准时，HDFS自动离开安全模式。</p>
+<p>假设我们设置的副本数（即参数dfs.replication）是5，那么在Datanode上就应该有5个副本存在，假设只存在3个副本，那么比例就是3/5=0.6。在<code>配置文件hdfs-default.xml中定义了一个最小的副本的副本率（即参数dfs.namenode.safemode.threshold-pct）0.999</code>。</p>
+<blockquote>
+<p>hdfs-default.xml官方默认配置，我们本地配置hdfs-site.xml</p>
+</blockquote>
+<p>我们的副本率0.6明显小于0.99，因此系统会自动的复制副本到其他的DataNode,使得副本率不小于0.999.如果系统中有8个副本，超过我们设定的5个副本，那么系统也会删除多余的3个副本。</p>
+<p>如果HDFS处于<code>安全模式下，不允许HDFS客户端进行任何修改文件的操作</code>,包括上传文件，删除文件，重命名，创建文件夹，修改副本数等操作。</p>
+<h3 class="relative group">安全模式配置 
+    <div id="安全模式配置" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%89%e5%85%a8%e6%a8%a1%e5%bc%8f%e9%85%8d%e7%bd%ae" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>与安全模式相关主要配置在hdfs-site.xml文件中，主要有下面几个属性:</p>
+<p>dfs.namenode.replication.min: 每个数据块最小副本数量，默认为1。在上传文件时，达到最小副本数，就认为上传是成功的。</p>
+<p>dfs.namenode.safemode.threshold-pct: 达到最小副本数的数据块的百分比。默认为0.999f。当小于这个比例，那就将系统切换成安全模式，对数据块进行复制；当大于该比例时，就离开安全模式，说明系统有足够的数据块副本数，可以对外提供服务。</p>
+<p>0.999f/1(1:1)，3个副本=3个datanode节点</p>
+<blockquote>
+<p>所以dfs.namenode.safemode.threshold-pct此参数必须是大于0且小于1，如果值&lt;=0，不进入安全模式；值=1，一直处于安全模式之间，临界值（特殊值），0代表不进入安全模式，=1代表直接进入安全模式！</p>
+</blockquote>
+<p>dfs.namenode.safemode.min.datanodes: 离开安全模式的最小可用datanode数量要求，默认为0。也就是即使所有datanode都不可用，仍然可以离开安全模式。</p>
+<p>dfs.namenode.safemode.extension: 当集群可用block比例，可用datanode都达到要求之后，如果在extension配置的时间段之后依然能满足要求，此时集群才离开安全模式。单位为毫秒，默认为30000.也就是当满足条件并且能够维持30秒之后，离开安全模式。 这个配置主要是对集群稳定程度做进一步的确认。避免达到要求后马上又不符合安全标准。</p>
+<p>总结一下，要离开安全模式，需要满足以下条件：</p>
+<p>1）达到副本数量要求的block比例满足要求；</p>
+<p>2）可用的datanode节点数满足配置的数量要求；</p>
+<p>3）1、2 两个条件满足后维持的时间达到配置的要求</p>
+<h3 class="relative group">安全模式命令 
+    <div id="安全模式命令" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%89%e5%85%a8%e6%a8%a1%e5%bc%8f%e5%91%bd%e4%bb%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>手动进入安全模式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">dfsadmin</span> <span class="n">-safemode</span> <span class="n">enter</span>  
+</span></span></code></pre></div><p>手动进入安全模式对于集群维护或者升级的时候非常有用，因为这时候HDFS上的数据是只读的。手动退出安全模式可以用下面命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">dfsadmin</span> <span class="n">-safemode</span> <span class="n">leave</span>
+</span></span></code></pre></div><p>如果你想获取到集群是否处于安全模式，可以用下面的命令获取：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hdfs</span> <span class="n">dfsadmin</span> <span class="n">-safemode</span> <span class="n">get</span>
+</span></span></code></pre></div>
         </div>
                 
         
