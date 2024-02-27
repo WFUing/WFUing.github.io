@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Leetcode &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="Leetcode &middot; WFUing&#39;s Blog" />
+  <title>【LeetCode 124】二叉树中的最大路径和 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="【LeetCode 124】二叉树中的最大路径和 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="【LeetCode 124】二叉树中的最大路径和题解。这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。" />
   
   
-  <meta name="keywords" content="leetcode, " />
   
-  
-  <link rel="canonical" href="https://WFUing.github.io/leetcode/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/" />
   
   
   
@@ -64,43 +64,44 @@
   
   
   
-  <meta property="og:title" content="Leetcode" />
-<meta property="og:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08." />
+  <meta property="og:title" content="【LeetCode 124】二叉树中的最大路径和" />
+<meta property="og:description" content="【LeetCode 124】二叉树中的最大路径和题解。这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/leetcode/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2023-10-12T17:05:17+08:00" />
-<meta property="article:modified_time" content="2023-10-12T17:05:17+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-26T19:16:02+08:00" />
+<meta property="article:modified_time" content="2024-02-26T19:16:02+08:00" />
 
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Leetcode"/>
-<meta name="twitter:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08."/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/featured.png" /><meta name="twitter:title" content="【LeetCode 124】二叉树中的最大路径和"/>
+<meta name="twitter:description" content="【LeetCode 124】二叉树中的最大路径和题解。这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。"/>
 
   
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "Article",
-    "articleSection": "WFUing",
-    "name": "Leetcode",
-    "headline": "Leetcode",
+    "articleSection": "博客",
+    "name": "【LeetCode 124】二叉树中的最大路径和",
+    "headline": "【LeetCode 124】二叉树中的最大路径和",
     
-    "abstract": "动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08.",
+    "abstract": "【LeetCode 124】二叉树中的最大路径和题解。这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左\/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/leetcode\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-10-12T17:05:17\u002b08:00",
-    "datePublished": "2023-10-12T17:05:17\u002b08:00",
+    "copyrightYear": "2024",
+    "dateCreated": "2024-02-26T19:16:02\u002b08:00",
+    "datePublished": "2024-02-26T19:16:02\u002b08:00",
     
-    "dateModified": "2023-10-12T17:05:17\u002b08:00",
+    "dateModified": "2024-02-26T19:16:02\u002b08:00",
     
-    "keywords": ["leetcode"],
+    
     
     "mainEntityOfPage": "true",
-    "wordCount": "171"
+    "wordCount": "150"
   }]
   </script>
 
@@ -693,7 +694,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/featured.png);">
     
 
 
@@ -719,7 +720,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Leetcode
+      【LeetCode 124】二叉树中的最大路径和
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -764,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-12 17:05:17 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>171 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-26 19:16:02 &#43;0800 &#43;0800">26 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>150 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -914,12 +915,8 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#难点">难点</a></li>
+    <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
   </div>
@@ -933,12 +930,8 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#难点">难点</a></li>
+    <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
   </div>
@@ -995,156 +988,115 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">动态规划 
-    <div id="动态规划" class="anchor"></div>
+          <p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/featured.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>链接：https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/</li>
+</ul>
+<h2 class="relative group">难点 
+    <div id="难点" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e9%9a%be%e7%82%b9" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li><em>【LeetCode 72】编辑距离</em></li>
-<li><strong>【LeetCode 115】不同的子序列</strong></li>
-<li>【LeetCode 124】二叉树中的最大路径和</li>
-<li><strong>【LeetCode 174】地下城游戏</strong></li>
-<li><strong>【LeetCode 188】买卖股票的最佳时机IV</strong></li>
-<li>【LeetCode 198】打家劫舍</li>
-<li>【LeetCode 213】打家劫舍II</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 300】最长递增子序列</li>
-<li><strong>【LeetCode 309】最佳买卖股票时机含冷冻期</strong></li>
-<li><strong>【LeetCode 312】戳气球</strong></li>
-<li><strong>【LeetCode 337】打家劫舍III</strong></li>
-<li><strong>【LeetCode 354】俄罗斯套娃信封问题</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li><strong>【LeetCode 390】消除游戏</strong></li>
-<li><strong>【LeetCode 689】三个无重叠子数组的最大和</strong></li>
-<li>【LeetCode 714】买卖股票的最佳时机含手续费</li>
-<li><em>【LeetCode 907】子数组的最小值之和</em></li>
-<li><em>【LeetCode 943】最短超级串</em></li>
-<li>【LeetCode 1031】两个非重叠子数组的最大和</li>
-<li><strong>【LeetCode 1039】多边形三角剖分的最低得分</strong></li>
-<li><strong>【LeetCode 1186】删除一次得到子数组最大和</strong></li>
-<li>【LeetCode 系列】买卖股票的最佳时机</li>
-<li>【LeetCode 面试题 08.11】硬币</li>
-</ul>
-<h2 class="relative group">贪心算法 
-    <div id="贪心算法" class="anchor"></div>
+<p>这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。</p>
+<p>此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。</p>
+<p>我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。</p>
+<h2 class="relative group">代码 
+    <div id="代码" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e4%bb%a3%e7%a0%81" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li>【LeetCode 121】买卖股票的最佳时机</li>
-<li>【LeetCode 122】买卖股票的最佳时机II</li>
-<li>【LeetCode 123】买卖股票的最佳时机III</li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 135】分发糖果</strong></li>
-<li>【LeetCode 229】多数元素 II</li>
-<li><strong>【LeetCode 330】按要求补齐数组</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li>【LeetCode 495】提莫攻击</li>
-<li><strong>【LeetCode 556】下一个更大元素III</strong></li>
-<li>【LeetCode 861】反转矩阵后的得分</li>
-<li><strong>【LeetCode 926】将字符串翻转到单调递增</strong></li>
-<li><em><strong>【LeetCode 927】三等分</strong></em></li>
-<li><strong>【LeetCode 1053】交换一次的先前排列</strong></li>
-<li><strong>【LeetCode 1111】有效括号的嵌套深度</strong></li>
-</ul>
-<h2 class="relative group">数学技巧 
-    <div id="数学技巧" class="anchor"></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Definition for a binary tree node.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * public class TreeNode {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     int val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode left;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode right;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode() {}
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode(int val) { this.val = val; }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode(int val, TreeNode left, TreeNode right) {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.val = val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.left = left;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.right = right;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="o">=-</span><span class="n">100000</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">maxPathSum</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dsm</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">dsm</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">dp</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">node</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">node</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dsm</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">left</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dsm</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">right</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">maxx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="p">,</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="o">+</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="o">+</span><span class="n">right</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dp</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">maxx</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">maxx</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">maxx</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+  
+  
     
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%95%b0%e5%ad%a6%e6%8a%80%e5%b7%a7" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>【LeetCode 69】x的平方根</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 319】灯泡开关</li>
-<li><strong>【LeetCode 357】计算各个位数不同的数字个数</strong></li>
-<li>【LeetCode 470】用Rand7()实现Rand10()</li>
-<li>【LeetCode 523】连续的子数组和</li>
-<li><strong>【LeetCode 672】灯泡开关II</strong></li>
-<li><strong>【LeetCode 829】连续整数求和</strong></li>
-<li><strong>【LeetCode 1006】笨阶乘</strong></li>
-<li><strong>【LeetCode 1227】飞机座位分配概率</strong></li>
-<li><strong>【LeetCode 1250】检查「好数组」</strong></li>
-<li><strong>【LeetCode 1363】形成三的最大倍数</strong></li>
-</ul>
-<h2 class="relative group">滑动窗口 
-    <div id="滑动窗口" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>【LeetCode 3】无重复字符的最长子串</li>
-<li><strong>【LeetCode 16】最接近的三数之和</strong></li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 76】最小覆盖子串</strong></li>
-<li>【LeetCode 88】合并两个有序数组</li>
-<li>【LeetCode 287】寻找重复数</li>
-<li>【LeetCode 328】奇偶链表</li>
-<li>【LeetCode 438】找到字符串中所有字母异位词</li>
-<li>【LeetCode 567】字符串的排列</li>
-<li>【LeetCode 658】找到K个最接近的元素</li>
-<li>【LeetCode 881】救生艇</li>
-<li>【LeetCode 992】K个不同整数的子数组</li>
-<li>【LeetCode 1004】最大连续1的个数III</li>
-<li>【LeetCode 1248】统计优美子数组</li>
-</ul>
-<h2 class="relative group">哈希算法 
-    <div id="哈希算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%93%88%e5%b8%8c%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li><strong>【LeetCode 41】缺失的第一个正数</strong></li>
-<li>【LeetCode 128】最长连续序列</li>
-<li><strong>【LeetCode 825】适龄的朋友</strong></li>
-<li><strong>【LeetCode 846】一手顺子</strong></li>
-<li><strong>【LeetCode 992】K个不同整数的子数组</strong></li>
-<li><strong>【LeetCode 1248】统计优美子数组</strong></li>
-</ul>
-<h2 class="relative group">二叉树 
-    <div id="二叉树" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e4%ba%8c%e5%8f%89%e6%a0%91" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li><strong>【LeetCode 99】恢复二叉搜索树</strong></li>
-<li>【LeetCode 124】二叉树中的最大路径和</li>
-<li>【LeetCode 199】二叉树的右视图</li>
-<li>【LeetCode 337】打家劫舍III</li>
-<li>【LeetCode 面试题 04.06】后继者</li>
-</ul>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/end.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 
         </div>
                 
@@ -1157,8 +1109,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_Leetcode.md"
-        var oid_likes = "likes_Leetcode.md"
+        var oid = "views_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 124】二叉树中的最大路径和\/index.md"
+        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 124】二叉树中的最大路径和\/index.md"
       </script>
       
       
@@ -1184,15 +1136,15 @@ window.MathJax = {
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/todo/">
+            <a class="flex text-right group ml-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-115%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >TODO</span
+                  >【LeetCode 115】不同的子序列</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-10-01 08:00:00 &#43;0800 &#43;0800">1 October 2023</time>
+                    <time datetime="2024-02-26 18:16:02 &#43;0800 &#43;0800">26 February 2024</time>
                   
                 </span>
               </span>

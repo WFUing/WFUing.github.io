@@ -7,14 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Mon, 26 Feb 2024 17:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Feb 2024 19:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【LeetCode 124】二叉树中的最大路径和</title>
+      <link>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/</link>
+      <pubDate>Mon, 26 Feb 2024 19:16:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/</guid>
+      <description>【LeetCode 124】二叉树中的最大路径和题解。这题是树状dp的典型，如何在遍历树的过程中记录一些信息，是比较难的一个点。此外，这题有两个要记录的内容，一个是树（包括子树）的 根节点 或者 根节点和一个左/右节点 中的最大值，这个要一路记录上去，用 dp 记录。还有一个就是 根节点、左节点和右节点 与之前 dp 中的最大值，这个是最后的答案，用 ans 记录。我在解题的时候，总会忘记把 ans 跟自己做比较，也是以后需要注意的一个点。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/featured.png" />
+    </item>
+    
+    <item>
+      <title>【LeetCode 115】不同的子序列</title>
+      <link>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-115%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/</link>
+      <pubDate>Mon, 26 Feb 2024 18:16:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-115%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/</guid>
+      <description>【LeetCode 115】不同的子序列题解。在我二刷这道题的时候，卡着没做出来，画了 $dp[][]$ 数组，但是没有&lt;strong&gt;初始化&lt;/strong&gt;，所以一直出错，直到看了题解。但是官方题解是从后往前遍历，我觉得并没有这个必要。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-115%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/featured.png" />
+    </item>
+    
     <item>
       <title>【LeetCode 72】编辑距离</title>
       <link>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-72%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/</link>
       <pubDate>Mon, 26 Feb 2024 17:16:02 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-72%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/</guid>
-      <description>【LeetCode 72】编辑距离题解</description>
+      <description>【LeetCode 72】编辑距离题解。在我二刷这道题的时候，还是卡了一会，主要有三个难点：1️⃣dp数组表示什么2️⃣如何初始化dp数组3️⃣如何针对题目告诉我们的三种操作，实现dp数组的更新。当然这也是动态规划数组的三个难点，需要重点培养这种感觉，形成正确的判断直觉。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-72%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/featured.png" />
     </item>
     
