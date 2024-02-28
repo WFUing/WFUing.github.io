@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>WFUing&#39;s Blog</title>
+    <title>动态规划 on WFUing&#39;s Blog</title>
     <link>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
-    <description>Recent content on WFUing&#39;s Blog</description>
+    <description>Recent content in 动态规划 on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
@@ -16,6 +16,16 @@
       <guid>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-188%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAiv/</guid>
       <description>【LeetCode 188】买卖股票的最佳时机IV题解。本题的难点有三个方面：1️⃣关于 $in$ 和 $out$ 数组中 $j$ 的关系，在这里，&lt;code&gt;买入卖出&lt;/code&gt;这一整套流程才算一次交易。那么，在卖出的那一刻，1次交易就完成了。那第一次买入，其实是第 0 次交易，第一次卖出，是第 1 次交易结束。2️⃣如何初始化，首先第一天只能买进，不能卖出，而且最多只能有一次交易，那么 $in[0][1&amp;hellip;k]$ 和 $out[0][1&amp;hellip;k]$ 如何初始化。3️⃣如何更新 $in$ 和 $out$ 数组。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-188%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAiv/featured.png" />
+    </item>
+    
+    <item>
+      <title>【LeetCode 337】打家劫舍III</title>
+      <link>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/</link>
+      <pubDate>Wed, 28 Feb 2024 17:16:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/</guid>
+      <description>【LeetCode 337】打家劫舍III题解。很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/featured.png" />
     </item>
     
     <item>

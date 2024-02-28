@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>【LeetCode 174】地下城游戏 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="【LeetCode 174】地下城游戏 &middot; WFUing&#39;s Blog" />
+  <title>【LeetCode 337】打家劫舍III &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="【LeetCode 337】打家劫舍III &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="【LeetCode 174】地下城游戏题解。本题的难点在于怎么处理血量增加的问题, 增加血量不能为之前的损失提供帮助，只会对后续有帮助。这意味着从王子救公主的思路想dp是困难的，但是公主救王子的思路dp很好做，从后往前推，当前如果可以治愈，那么当前的最小初始血量就是已经扣除的血量减去治疗量，注意不可以&lt;1。 这意味着过量治疗。" />
+  <meta name="description" content="【LeetCode 337】打家劫舍III题解。很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/" />
   
   
   
@@ -64,17 +64,17 @@
   
   
   
-  <meta property="og:title" content="【LeetCode 174】地下城游戏" />
-<meta property="og:description" content="【LeetCode 174】地下城游戏题解。本题的难点在于怎么处理血量增加的问题, 增加血量不能为之前的损失提供帮助，只会对后续有帮助。这意味着从王子救公主的思路想dp是困难的，但是公主救王子的思路dp很好做，从后往前推，当前如果可以治愈，那么当前的最小初始血量就是已经扣除的血量减去治疗量，注意不可以&lt;1。 这意味着过量治疗。" />
+  <meta property="og:title" content="【LeetCode 337】打家劫舍III" />
+<meta property="og:description" content="【LeetCode 337】打家劫舍III题解。很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-26T20:16:02+08:00" />
-<meta property="article:modified_time" content="2024-02-26T20:16:02+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-28T17:16:02+08:00" />
+<meta property="article:modified_time" content="2024-02-28T17:16:02+08:00" />
 
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/featured.png" /><meta name="twitter:title" content="【LeetCode 174】地下城游戏"/>
-<meta name="twitter:description" content="【LeetCode 174】地下城游戏题解。本题的难点在于怎么处理血量增加的问题, 增加血量不能为之前的损失提供帮助，只会对后续有帮助。这意味着从王子救公主的思路想dp是困难的，但是公主救王子的思路dp很好做，从后往前推，当前如果可以治愈，那么当前的最小初始血量就是已经扣除的血量减去治疗量，注意不可以&lt;1。 这意味着过量治疗。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/featured.png" /><meta name="twitter:title" content="【LeetCode 337】打家劫舍III"/>
+<meta name="twitter:description" content="【LeetCode 337】打家劫舍III题解。很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。"/>
 
   
   <script type="application/ld+json">
@@ -82,26 +82,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "【LeetCode 174】地下城游戏",
-    "headline": "【LeetCode 174】地下城游戏",
+    "name": "【LeetCode 337】打家劫舍III",
+    "headline": "【LeetCode 337】打家劫舍III",
     
-    "abstract": "【LeetCode 174】地下城游戏题解。本题的难点在于怎么处理血量增加的问题, 增加血量不能为之前的损失提供帮助，只会对后续有帮助。这意味着从王子救公主的思路想dp是困难的，但是公主救王子的思路dp很好做，从后往前推，当前如果可以治愈，那么当前的最小初始血量就是已经扣除的血量减去治疗量，注意不可以\u0026lt;1。 这意味着过量治疗。",
+    "abstract": "【LeetCode 337】打家劫舍III题解。很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-02-26T20:16:02\u002b08:00",
-    "datePublished": "2024-02-26T20:16:02\u002b08:00",
+    "dateCreated": "2024-02-28T17:16:02\u002b08:00",
+    "datePublished": "2024-02-28T17:16:02\u002b08:00",
     
-    "dateModified": "2024-02-26T20:16:02\u002b08:00",
+    "dateModified": "2024-02-28T17:16:02\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "51"
+    "wordCount": "213"
   }]
   </script>
 
@@ -694,7 +694,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/featured.png);">
+    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/featured.png);">
     
 
 
@@ -720,7 +720,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      【LeetCode 174】地下城游戏
+      【LeetCode 337】打家劫舍III
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -765,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-26 20:16:02 &#43;0800 &#43;0800">26 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>51 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-28 17:16:02 &#43;0800 &#43;0800">28 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>213 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -916,6 +916,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#难点">难点</a></li>
+    <li><a href="#解析">解析</a></li>
     <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
@@ -931,6 +932,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#难点">难点</a></li>
+    <li><a href="#解析">解析</a></li>
     <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
@@ -1002,7 +1004,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/featured.png"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/featured.png"
         alt=""
       />
       
@@ -1012,7 +1014,7 @@ window.MathJax = {
 
 </p>
 <ul>
-<li>链接：https://leetcode.cn/problems/dungeon-game/description/</li>
+<li>链接：https://leetcode.cn/problems/house-robber-iii/description/</li>
 </ul>
 <h2 class="relative group">难点 
     <div id="难点" class="anchor"></div>
@@ -1024,7 +1026,40 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p>本题的难点在于怎么处理血量增加的问题, <strong>增加血量不能为之前的损失提供帮助，只会对后续有帮助</strong>。这意味着从王子救公主的思路想dp是困难的，但是公主救王子的思路dp很好做，从后往前推，当前如果可以治愈，那么当前的最小初始血量就是已经扣除的血量减去治疗量，注意不可以&lt;1。 这意味着过量治疗。</p>
+<p>很自然地想到是树状dp，分成两种情况，一种包含当前节点，另一种不包含。难点在于不包含的情况，不仅仅有左右孩子包含的情况，还有不包含的情况。</p>
+<h2 class="relative group">解析 
+    <div id="解析" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%a7%a3%e6%9e%90" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <h2 class="relative group">代码 
     <div id="代码" class="anchor"></div>
     
@@ -1035,25 +1070,62 @@ window.MathJax = {
     </span>        
     
 </h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Definition for a binary tree node.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * public class TreeNode {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     int val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode left;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode right;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode() {}
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode(int val) { this.val = val; }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     TreeNode(int val, TreeNode left, TreeNode right) {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.val = val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.left = left;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         this.right = right;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">TreeNode</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">calculateMinimumHP</span><span class="p">(</span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">dungeon</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">l1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dungeon</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">l2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dungeon</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">l1</span><span class="o">+</span><span class="n">1</span><span class="o">][</span><span class="n">l2</span><span class="o">+</span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">l1</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Arrays</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dp</span><span class="o">[</span><span class="n">l1</span><span class="o">][</span><span class="n">l2</span><span class="o">-</span><span class="n">1</span><span class="o">]=</span><span class="n">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dp</span><span class="o">[</span><span class="n">l1</span><span class="o">-</span><span class="n">1</span><span class="o">][</span><span class="n">l2</span><span class="o">]=</span><span class="n">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">l1</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="n">i</span><span class="o">&gt;=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="n">l2</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="n">j</span><span class="o">&gt;=</span><span class="n">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">+</span><span class="n">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">dungeon</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">0</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">rob</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 递归，传递状态而不是记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">robTree</span><span class="p">(</span><span class="n">root</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">res</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 递归，记录状态</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// if(root == null) return 0;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// if(root.left == null &amp;&amp; root.right == null) return root.val;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// if(map.containsKey(root)) return map.get(root);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// // rob root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// int val1 = root.val;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// if(root.left != null) val1 += (rob(root.left.left) + rob(root.left.right));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// if(root.right != null) val1 += (rob(root.right.left) + rob(root.right.right));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// // not rob root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// int val2 = 0;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// val2 += (rob(root.left) + rob(root.right));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// map.put(root, Math.max(val1, val2));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// return Math.max(val1, val2);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="nf">robTree</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">vals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">2</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">vals</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">robTree</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">left</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">robTree</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">right</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 0 表示不偷 node</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">vals</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">l</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">r</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 1 表示偷 node</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">vals</span><span class="o">[</span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">l</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">vals</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>
 
@@ -1069,7 +1141,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/end.png"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/end.png"
         alt=""
       />
       
@@ -1090,8 +1162,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 174】地下城游戏\/index.md"
-        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 174】地下城游戏\/index.md"
+        var oid = "views_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 337】打家劫舍III\/index.md"
+        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 337】打家劫舍III\/index.md"
       </script>
       
       
@@ -1114,7 +1186,7 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-337%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8Diii/">
+            <a class="flex group mr-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-188%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAiv/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1126,7 +1198,7 @@ window.MathJax = {
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 337】打家劫舍III</span
+                  >【LeetCode 188】买卖股票的最佳时机IV</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1139,15 +1211,15 @@ window.MathJax = {
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-124%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%AF%E5%BE%84%E5%92%8C/">
+            <a class="flex text-right group ml-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-174%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 124】二叉树中的最大路径和</span
+                  >【LeetCode 174】地下城游戏</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-02-26 19:16:02 &#43;0800 &#43;0800">26 February 2024</time>
+                    <time datetime="2024-02-26 20:16:02 &#43;0800 &#43;0800">26 February 2024</time>
                   
                 </span>
               </span>
