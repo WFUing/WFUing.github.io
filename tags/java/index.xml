@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Wed, 21 Feb 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Feb 2024 11:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零实现redis(1)-实现固定缓存大小</title>
+      <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</link>
+      <pubDate>Wed, 28 Feb 2024 11:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</guid>
+      <description>redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png" />
+    </item>
+    
     <item>
       <title>Spring MVC常用注解</title>
       <link>https://WFUing.github.io/posts/language/java/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
@@ -85,7 +95,7 @@
       
       <guid>https://WFUing.github.io/posts/language/java/java-network/netty/</guid>
       <description>Netty 是 JBoss 开源项目，是异步的、基于事件驱动的网络应用框架，以高性能、高并发著称。Netty 是基于 Java NIO 构建出来的，主要用于开发基于 TCP 协议的网络 IO 程序。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/java-network/netty/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/java-network/netty/featured.jpeg" />
     </item>
     
   </channel>
