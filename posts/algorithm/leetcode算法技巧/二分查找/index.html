@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Leetcode &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="Leetcode &middot; WFUing&#39;s Blog" />
+  <title>二分查找技巧 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="二分查找技巧 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="二分查找是一种高效的搜索算法，适用于有序数组。它通过每次将搜索范围缩小一半来查找目标元素，直到找到或者确定不存在。时间复杂度为O(log n)，效率高于线性搜索。" />
   
   
-  <meta name="keywords" content="leetcode, " />
   
-  
-  <link rel="canonical" href="https://WFUing.github.io/leetcode/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" />
   
   
   
@@ -64,43 +64,44 @@
   
   
   
-  <meta property="og:title" content="Leetcode" />
-<meta property="og:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08." />
+  <meta property="og:title" content="二分查找技巧" />
+<meta property="og:description" content="二分查找是一种高效的搜索算法，适用于有序数组。它通过每次将搜索范围缩小一半来查找目标元素，直到找到或者确定不存在。时间复杂度为O(log n)，效率高于线性搜索。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/leetcode/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2023-10-12T17:05:17+08:00" />
-<meta property="article:modified_time" content="2023-10-12T17:05:17+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-13T12:51:58+08:00" />
+<meta property="article:modified_time" content="2024-02-13T12:51:58+08:00" />
 
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Leetcode"/>
-<meta name="twitter:description" content="动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08."/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/featured.png" /><meta name="twitter:title" content="二分查找技巧"/>
+<meta name="twitter:description" content="二分查找是一种高效的搜索算法，适用于有序数组。它通过每次将搜索范围缩小一半来查找目标元素，直到找到或者确定不存在。时间复杂度为O(log n)，效率高于线性搜索。"/>
 
   
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "Article",
-    "articleSection": "WFUing",
-    "name": "Leetcode",
-    "headline": "Leetcode",
+    "articleSection": "博客",
+    "name": "二分查找技巧",
+    "headline": "二分查找技巧",
     
-    "abstract": "动态规划 # 【LeetCode 55】跳跃游戏 【LeetCode 72】编辑距离 【LeetCode 115】不同的子序列 【LeetCode 124】二叉树中的最大路径和 【LeetCode 174】地下城游戏 【LeetCode 188】买卖股票的最佳时机IV 【LeetCode 198】打家劫舍 【LeetCode 213】打家劫舍II 【LeetCode 233】数字1的个数 【LeetCode 300】最长递增子序列 【LeetCode 309】最佳买卖股票时机含冷冻期 【LeetCode 312】戳气球 【LeetCode 337】打家劫舍III 【LeetCode 354】俄罗斯套娃信封问题 【LeetCode 376】摆动序列 【LeetCode 390】消除游戏 【LeetCode 689】三个无重叠子数组的最大和 【LeetCode 714】买卖股票的最佳时机含手续费 【LeetCode 907】子数组的最小值之和 【LeetCode 943】最短超级串 【LeetCode 1031】两个非重叠子数组的最大和 【LeetCode 1039】多边形三角剖分的最低得分 【LeetCode 1186】删除一次得到子数组最大和 【LeetCode 系列】买卖股票的最佳时机 【LeetCode 面试题 08.",
+    "abstract": "二分查找是一种高效的搜索算法，适用于有序数组。它通过每次将搜索范围缩小一半来查找目标元素，直到找到或者确定不存在。时间复杂度为O(log n)，效率高于线性搜索。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/leetcode\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-10-12T17:05:17\u002b08:00",
-    "datePublished": "2023-10-12T17:05:17\u002b08:00",
+    "copyrightYear": "2024",
+    "dateCreated": "2024-02-13T12:51:58\u002b08:00",
+    "datePublished": "2024-02-13T12:51:58\u002b08:00",
     
-    "dateModified": "2023-10-12T17:05:17\u002b08:00",
+    "dateModified": "2024-02-13T12:51:58\u002b08:00",
     
-    "keywords": ["leetcode"],
+    
     
     "mainEntityOfPage": "true",
-    "wordCount": "265"
+    "wordCount": "232"
   }]
   </script>
 
@@ -693,7 +694,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/featured.png);">
     
 
 
@@ -719,7 +720,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Leetcode
+      二分查找技巧
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -764,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-12 17:05:17 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>265 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-02-13 12:51:58 &#43;0800 &#43;0800">13 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>232 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -914,12 +915,21 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#1整数上的二分搜索">1、整数上的二分搜索</a></li>
+    <li><a href="#2实数上的二分搜索">2、实数上的二分搜索</a></li>
+    <li><a href="#3二分搜索详解">3、二分搜索详解</a>
+      <ul>
+        <li><a href="#31-算法步骤">3.1 算法步骤</a></li>
+        <li><a href="#32-算法实现">3.2 算法实现</a>
+          <ul>
+            <li><a href="#321-非递归算法">3.2.1 非递归算法</a></li>
+            <li><a href="#322-递归算法">3.2.2 递归算法</a></li>
+            <li><a href="#323-算法分析">3.2.3 算法分析</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4二分搜索需要注意的几个问题">4、二分搜索需要注意的几个问题</a></li>
   </ul>
 </nav>
   </div>
@@ -933,12 +943,21 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#动态规划">动态规划</a></li>
-    <li><a href="#贪心算法">贪心算法</a></li>
-    <li><a href="#数学技巧">数学技巧</a></li>
-    <li><a href="#滑动窗口">滑动窗口</a></li>
-    <li><a href="#哈希算法">哈希算法</a></li>
-    <li><a href="#二叉树">二叉树</a></li>
+    <li><a href="#1整数上的二分搜索">1、整数上的二分搜索</a></li>
+    <li><a href="#2实数上的二分搜索">2、实数上的二分搜索</a></li>
+    <li><a href="#3二分搜索详解">3、二分搜索详解</a>
+      <ul>
+        <li><a href="#31-算法步骤">3.1 算法步骤</a></li>
+        <li><a href="#32-算法实现">3.2 算法实现</a>
+          <ul>
+            <li><a href="#321-非递归算法">3.2.1 非递归算法</a></li>
+            <li><a href="#322-递归算法">3.2.2 递归算法</a></li>
+            <li><a href="#323-算法分析">3.2.3 算法分析</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4二分搜索需要注意的几个问题">4、二分搜索需要注意的几个问题</a></li>
   </ul>
 </nav>
   </div>
@@ -995,172 +1014,197 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">动态规划 
-    <div id="动态规划" class="anchor"></div>
+          <h2 class="relative group">1、整数上的二分搜索 
+    <div id="1整数上的二分搜索" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#1%e6%95%b4%e6%95%b0%e4%b8%8a%e7%9a%84%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li><em>【LeetCode 72】编辑距离</em></li>
-<li><strong>【LeetCode 115】不同的子序列</strong></li>
-<li>【LeetCode 124】二叉树中的最大路径和</li>
-<li><strong>【LeetCode 174】地下城游戏</strong></li>
-<li><strong>【LeetCode 188】买卖股票的最佳时机IV</strong></li>
-<li>【LeetCode 198】打家劫舍</li>
-<li>【LeetCode 213】打家劫舍II</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 300】最长递增子序列</li>
-<li>【LeetCode 309】最佳买卖股票时机含冷冻期</li>
-<li><strong>【LeetCode 312】戳气球</strong></li>
-<li><em>【LeetCode 337】打家劫舍III</em></li>
-<li><strong>【LeetCode 354】俄罗斯套娃信封问题</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li>【LeetCode 390】消除游戏</li>
-<li><strong>【LeetCode 689】三个无重叠子数组的最大和</strong></li>
-<li>【LeetCode 714】买卖股票的最佳时机含手续费</li>
-<li><em><strong>【LeetCode 907】子数组的最小值之和</strong></em></li>
-<li><em><strong>【LeetCode 943】最短超级串</strong></em></li>
-<li>【LeetCode 1031】两个非重叠子数组的最大和</li>
-<li><strong>【LeetCode 1039】多边形三角剖分的最低得分</strong></li>
-<li><strong>【LeetCode 1186】删除一次得到子数组最大和</strong></li>
-<li>【LeetCode 系列】买卖股票的最佳时机</li>
-<li>【LeetCode 面试题 08.11】硬币</li>
-</ul>
-<p>题目	题解	难度	推荐指数
-354. 俄罗斯套娃信封问题	LeetCode 题解链接	困难	🤩🤩🤩🤩🤩
-368. 最大整除子集	LeetCode 题解链接	中等	🤩🤩🤩🤩
-446. 等差数列划分 II - 子序列	LeetCode 题解链接	困难	🤩🤩🤩🤩🤩
-583. 两个字符串的删除操作	LeetCode 题解链接	中等	🤩🤩🤩🤩
-629. K个逆序对数组	LeetCode 题解链接	中等	🤩🤩🤩🤩🤩
-673. 最长递增子序列的个数	LeetCode 题解链接	中等	🤩🤩🤩🤩
-689. 三个无重叠子数组的最大和	LeetCode 题解链接	困难	🤩🤩🤩🤩
-740. 删除并获得点数	LeetCode 题解链接	中等	🤩🤩🤩🤩🤩
-978. 最长湍流子数组	LeetCode 题解链接	中等	🤩🤩🤩
-1035. 不相交的线	LeetCode 题解链接	中等	🤩🤩🤩🤩
-1143. 最长公共子序列	LeetCode 题解链接	中等	🤩🤩🤩🤩
-1218. 最长定差子序列	LeetCode 题解链接	中等	🤩🤩🤩🤩🤩
-1473. 粉刷房子 III	LeetCode 题解链接	困难	🤩🤩🤩🤩
-1713. 得到子序列的最少操作次数	LeetCode 题解链接	困难	🤩🤩🤩🤩🤩
-注：以上目录整理来自 wiki，任何形式的转载引用请保留出处。</p>
-<h2 class="relative group">贪心算法 
-    <div id="贪心算法" class="anchor"></div>
+<p>整数上的二分搜索，因为缩小搜索范围时，有可能 $r=mid-1$或 $l=mid+1$，因此可以用 $ans$ 记录可行解。是否需要减 1 或加 1 ，要根据具体问题分析。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">l</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span><span class="o">=</span><span class="n">b</span><span class="p">;</span> <span class="c1">//初始搜索范围
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="n">l</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ans</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span> <span class="c1">//记录可行解
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 class="relative group">2、实数上的二分搜索 
+    <div id="2实数上的二分搜索" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%b4%aa%e5%bf%83%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#2%e5%ae%9e%e6%95%b0%e4%b8%8a%e7%9a%84%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 55】跳跃游戏</li>
-<li>【LeetCode 121】买卖股票的最佳时机</li>
-<li>【LeetCode 122】买卖股票的最佳时机II</li>
-<li>【LeetCode 123】买卖股票的最佳时机III</li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 135】分发糖果</strong></li>
-<li>【LeetCode 229】多数元素 II</li>
-<li><strong>【LeetCode 330】按要求补齐数组</strong></li>
-<li>【LeetCode 376】摆动序列</li>
-<li>【LeetCode 495】提莫攻击</li>
-<li><strong>【LeetCode 556】下一个更大元素III</strong></li>
-<li>【LeetCode 861】反转矩阵后的得分</li>
-<li><strong>【LeetCode 926】将字符串翻转到单调递增</strong></li>
-<li><em><strong>【LeetCode 927】三等分</strong></em></li>
-<li><strong>【LeetCode 1053】交换一次的先前排列</strong></li>
-<li><strong>【LeetCode 1111】有效括号的嵌套深度</strong></li>
-</ul>
-<h2 class="relative group">数学技巧 
-    <div id="数学技巧" class="anchor"></div>
+<p>实数上的二分搜索不可以直接比较大小，可以采用 $r-l&gt;eps$ 作为循环条件，$eps$ 为一个较小的数，如 $1e-7$ 等。为避免丢失可能解，缩小范围时 $r=mid$ 或 $l=mid$ ，循环结束时返回最后一个可行解。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">l</span><span class="o">=</span><span class="n">a</span><span class="p">;</span> <span class="n">r</span><span class="o">=</span><span class="n">b</span><span class="p">;</span> <span class="c1">//初始搜索范围
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="n">l</span><span class="o">&gt;</span><span class="n">eps</span><span class="p">){</span><span class="c1">//判断差值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">double</span> <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span>  <span class="c1">//l记录了可行解，循环结束后返回答案l
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// l 是答案
+</span></span></span></code></pre></div><p>还可以运行固定的次数，如运行100次，可达 $10^{-30}$ 精度，一般情况都可以解决问题。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">l</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">r</span><span class="o">=</span><span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//运行100次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">double</span> <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">judge</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>
+</span></span><span class="line"><span class="cl">		<span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// l 是答案
+</span></span></span></code></pre></div><h2 class="relative group">3、二分搜索详解 
+    <div id="3二分搜索详解" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%95%b0%e5%ad%a6%e6%8a%80%e5%b7%a7" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#3%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2%e8%af%a6%e8%a7%a3" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>【LeetCode 69】x的平方根</li>
-<li>【LeetCode 233】数字1的个数</li>
-<li>【LeetCode 319】灯泡开关</li>
-<li><strong>【LeetCode 357】计算各个位数不同的数字个数</strong></li>
-<li>【LeetCode 470】用Rand7()实现Rand10()</li>
-<li>【LeetCode 523】连续的子数组和</li>
-<li><strong>【LeetCode 672】灯泡开关II</strong></li>
-<li><strong>【LeetCode 829】连续整数求和</strong></li>
-<li><strong>【LeetCode 1006】笨阶乘</strong></li>
-<li><strong>【LeetCode 1227】飞机座位分配概率</strong></li>
-<li><strong>【LeetCode 1250】检查「好数组」</strong></li>
-<li><strong>【LeetCode 1363】形成三的最大倍数</strong></li>
-</ul>
-<h2 class="relative group">滑动窗口 
-    <div id="滑动窗口" class="anchor"></div>
+<p>例如，给定n个元素序列，这些元素是有序的（假定为升序），从序列中查找元素x。</p>
+<p>用一维数组S[]存储该有序序列，设变量low和high表示查找范围的下界和上界，middle表示查找范围的中间位置，x为特定的查找元素。</p>
+<h3 class="relative group">3.1 算法步骤 
+    <div id="31-算法步骤" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%bb%91%e5%8a%a8%e7%aa%97%e5%8f%a3" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#31-%e7%ae%97%e6%b3%95%e6%ad%a5%e9%aa%a4" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
-<ul>
-<li>【LeetCode 3】无重复字符的最长子串</li>
-<li><strong>【LeetCode 16】最接近的三数之和</strong></li>
-<li><strong>【LeetCode 42】接雨水</strong></li>
-<li><strong>【LeetCode 76】最小覆盖子串</strong></li>
-<li>【LeetCode 88】合并两个有序数组</li>
-<li>【LeetCode 287】寻找重复数</li>
-<li>【LeetCode 328】奇偶链表</li>
-<li>【LeetCode 438】找到字符串中所有字母异位词</li>
-<li>【LeetCode 567】字符串的排列</li>
-<li>【LeetCode 658】找到K个最接近的元素</li>
-<li>【LeetCode 881】救生艇</li>
-<li>【LeetCode 992】K个不同整数的子数组</li>
-<li>【LeetCode 1004】最大连续1的个数III</li>
-<li>【LeetCode 1248】统计优美子数组</li>
-</ul>
-<h2 class="relative group">哈希算法 
-    <div id="哈希算法" class="anchor"></div>
+</h3>
+<p>（1）初始化。令low=0，即指向有序数组S[]的第一个元素；high=n−1，即指向有序数组S[]的最后一个元素。</p>
+<p>（2）判定low≤high是否成立，如果成立，转向第3步，否则，算法结束。</p>
+<p>（3）middle=(low+high)/2，即指向查找范围的中间元素。如果数量较大，为避免low+high溢出，可以采用middle=low+(high-low)/2。</p>
+<p>（4）判断x与S[middle]的关系。如果x=S[middle]，则搜索成功，算法结束；如果x&gt;S[middle]，则令low=middle+1；否则令high=middle−1，转向第2步。</p>
+<h3 class="relative group">3.2 算法实现 
+    <div id="32-算法实现" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%93%88%e5%b8%8c%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#32-%e7%ae%97%e6%b3%95%e5%ae%9e%e7%8e%b0" aria-label="Anchor">#</a>
     </span>        
     
-</h2>
-<ul>
-<li><strong>【LeetCode 41】缺失的第一个正数</strong></li>
-<li>【LeetCode 128】最长连续序列</li>
-<li><strong>【LeetCode 825】适龄的朋友</strong></li>
-<li><strong>【LeetCode 846】一手顺子</strong></li>
-<li><strong>【LeetCode 992】K个不同整数的子数组</strong></li>
-<li><strong>【LeetCode 1248】统计优美子数组</strong></li>
-</ul>
-<h2 class="relative group">二叉树 
-    <div id="二叉树" class="anchor"></div>
+</h3>
+<p>用 <code>BinarySearch(int n, int s[], int x)</code>函数实现折半查找算法，其中 $n$ 为元素个数，$s[]$ 为有序数组，$x$ 为待查找元素。$low$ 指向数组的第一个元素，$high$ 指向数组的最后一个元素。如果 $low≤high$，$middle=(low+high)/2$，即指向查找范围的中间元素。如果$x=S[middle]$ ，搜索成功，算法结束；如果 $x&gt;S[middle]$，则令 $low=middle+1$ ，去后半部分搜索；否则令 $high=middle−1$ ，去前半部分搜索。</p>
+<h4 class="relative group">3.2.1 非递归算法 
+    <div id="321-非递归算法" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e4%ba%8c%e5%8f%89%e6%a0%91" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#321-%e9%9d%9e%e9%80%92%e5%bd%92%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">BinarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">[],</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//二分查找非递归算法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kt">int</span> <span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">//low指向数组的第一个元素，high指向数组的最后一个元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="n">low</span><span class="o">&lt;=</span><span class="n">high</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="kt">int</span> <span class="n">middle</span><span class="o">=</span><span class="p">(</span><span class="n">low</span><span class="o">+</span><span class="n">high</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>  <span class="c1">//middle为查找范围的中间值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">s</span><span class="p">[</span><span class="n">middle</span><span class="p">])</span>  <span class="c1">//x等于查找范围的中间值，算法结束
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">return</span> <span class="n">middle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="n">s</span><span class="p">[</span><span class="n">middle</span><span class="p">])</span> <span class="c1">//x大于查找范围的中间元素，则从左半部分查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">low</span><span class="o">=</span><span class="n">middle</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span>            <span class="c1">//x小于查找范围的中间元素，则从右半部分查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">high</span><span class="o">=</span><span class="n">middle</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 class="relative group">3.2.2 递归算法 
+    <div id="322-递归算法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#322-%e9%80%92%e5%bd%92%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>递归有自调用问题，增加两个参数 low 和 high来标记搜索范围的开始和结束。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">recursionBS</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">[],</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">low</span><span class="p">,</span><span class="kt">int</span> <span class="n">high</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//二分查找递归算法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//low指向搜索区间的第一个元素，high指向搜索区间的最后一个元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">low</span><span class="o">&gt;</span><span class="n">high</span><span class="p">)</span>              <span class="c1">//递归结束条件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">middle</span><span class="o">=</span><span class="p">(</span><span class="n">low</span><span class="o">+</span><span class="n">high</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="c1">//计算middle值(查找范围的中间值)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">s</span><span class="p">[</span><span class="n">middle</span><span class="p">])</span>        <span class="c1">//x等于s[middle]，查找成功，算法结束
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="n">middle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="n">s</span><span class="p">[</span><span class="n">middle</span><span class="p">])</span> <span class="c1">//x小于s[middle]，则从前半部分查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="n">recursionBS</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="p">,</span><span class="n">middle</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span>            <span class="c1">//x大于s[middle]，则从后半部分查找
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">return</span> <span class="n">recursionBS</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">middle</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 class="relative group">3.2.3 算法分析 
+    <div id="323-算法分析" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#323-%e7%ae%97%e6%b3%95%e5%88%86%e6%9e%90" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<h5 class="relative group">3.2.3.1 时间复杂度 
+    <div id="3231-时间复杂度" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3231-%e6%97%b6%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h5>
+<p>二分查找算法，时间复杂度怎么计算呢？如果用T(n)来表示n个有序元素的二分查找算法的时间复杂度，那么：</p>
+<ul>
+<li>当n=1时，需要一次比较，T(n)=O(1)。</li>
+<li>当n&gt;1时，待查找元素和中间位置元素比较，需要O(1)时间，如果比较不成功，那么需要在前半部分或后半部分搜索，问题的规模缩小了一半，时间复杂度变为 $T(\frac{n}{2})$ 。</li>
+</ul>
+<p>二分查找的非递归算法和递归算法查找的方法是一样的，时间复杂度相同，均为 $O(logn)$。</p>
+<h5 class="relative group">3.2.3.2 空间复杂度 
+    <div id="3232-空间复杂度" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3232-%e7%a9%ba%e9%97%b4%e5%a4%8d%e6%9d%82%e5%ba%a6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h5>
+<p>二分查找的非递归算法中，变量占用了一些辅助空间，这些辅助空间都是常数阶的，因此空间复杂度为 $O(1)$。</p>
+<p>二分查找的递归算法，除了使用一些变量外，递归调用还需要使用栈来实现。在递归算法中，每一次递归调用都需要一个栈空间存储，那么我们只需要看看有多少次调用。假设原问题的规模为n，那么第一次递归就分为两个规模为 $\frac{n}{2}$ 的子问题，这两个子问题并不是每个都执行，只会执行其中之一。因为和中间值比较后，要么去前半部分查找，要么去后半部分查找；然后再把规模为 $\frac{n}{2}$ 的子问题继续划分为两个规模为 $\frac{n}{4}$ 的子问题，选择其一；继续分治下去，最坏的情况会分治到只剩下一个数值，那么算法执行的节点数就是从树根到叶子所经过的节点，每一层执行一个，直到最后一层，如图所示。</p>
+<p>递归调用最终的规模为1，即 $\frac{n}{2x}=1$，则 $x=logn$ 。假设阴影部分是搜索经过的路径，一共经过了 $logn$ 个节点，也就是说递归调用了 $logn$ 次。递归算法使用的栈空间为递归树的深度，因此二分查找递归算法的空间复杂度为 $O(logn)$ 。</p>
+<h2 class="relative group">4、二分搜索需要注意的几个问题 
+    <div id="4二分搜索需要注意的几个问题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4%e4%ba%8c%e5%88%86%e6%90%9c%e7%b4%a2%e9%9c%80%e8%a6%81%e6%b3%a8%e6%84%8f%e7%9a%84%e5%87%a0%e4%b8%aa%e9%97%ae%e9%a2%98" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li><strong>【LeetCode 99】恢复二叉搜索树</strong></li>
-<li>【LeetCode 124】二叉树中的最大路径和</li>
-<li>【LeetCode 199】二叉树的右视图</li>
-<li>【LeetCode 337】打家劫舍III</li>
-<li>【LeetCode 面试题 04.06】后继者</li>
-</ul>
+<ol>
+<li>必须满足有序性。</li>
+<li>搜索范围。初始时，需要指定搜索范围，如果不知道具体范围，正数可以采用范围 $[0,inf]$ ，有可能为负数可以采用范围[-inf,inf]，inf为无穷大，通常设定为 $0x3f3f3f3f$。</li>
+<li>二分搜索。一般情况下，$mid=(l+r)/2$ 或 $mid=(l+r)&raquo;1$ 。如果l和r特别大，为避免 $l+r$ 溢出，可以采用 $mid=l+(r-l)/2$ 。判断二分搜索结束的条件，以及当判断 $mid$ 可行时到前半部分搜索，还是到后半部分搜索，需要具体问题具体分析。</li>
+<li>答案是什么。特别小心搜索范围减少时，是否丢失在mid点上的答案。</li>
+</ol>
 
         </div>
                 
@@ -1173,8 +1217,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_Leetcode.md"
-        var oid_likes = "likes_Leetcode.md"
+        var oid = "views_posts\/algorithm\/leetcode算法技巧\/二分查找\/index.md"
+        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/二分查找\/index.md"
       </script>
       
       
@@ -1197,30 +1241,30 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/todo/">
+            <a class="flex group mr-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%AE%97%E6%B3%95/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >TODO</span
+                  >滑动窗口技巧</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-10-01 08:00:00 &#43;0800 &#43;0800">1 October 2023</time>
+                    <time datetime="2024-02-14 12:51:58 &#43;0800 &#43;0800">14 February 2024</time>
                   
                 </span>
               </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
             </a>
+          
+        </span>
+        <span>
           
         </span>
       </div>
