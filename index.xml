@@ -49,6 +49,16 @@
     </item>
     
     <item>
+      <title>从零实现redis(3)- 拦截器（Interceptor）</title>
+      <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
+      <pubDate>Wed, 28 Feb 2024 12:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
+      <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
+    </item>
+    
+    <item>
       <title>从零实现redis(1)-实现固定缓存大小</title>
       <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</link>
       <pubDate>Wed, 28 Feb 2024 11:15:08 +0800</pubDate>
@@ -1556,6 +1566,406 @@
       <guid>https://WFUing.github.io/todo/</guid>
       <description></description>
       
+    </item>
+    
+    <item>
+      <title>1005SpellItRight</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1005spellitright/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1005spellitright/</guid>
+      <description>1005 Spell It Right # 0、题目 # Given a non-negative integer $N$, your task is to compute the sum of all the digits of $N$, and output every digit of the sum in English.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1005spellitright/featured.png" />
+    </item>
+    
+    <item>
+      <title>1006SignInandSignOut模拟排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1006signinandsignout%E6%A8%A1%E6%8B%9F%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1006signinandsignout%E6%A8%A1%E6%8B%9F%E6%8E%92%E5%BA%8F/</guid>
+      <description>1006 Sign In and Sign Out # 0、题目 # At the beginning of every day, the first person who signs in the computer room will unlock the door, and the last one who signs out will lock the door.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1006signinandsignout%E6%A8%A1%E6%8B%9F%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1007MaximumSubsequenceSum动态规划</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1007maximumsubsequencesum%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1007maximumsubsequencesum%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description>1007 Maximum Subsequence Sum # 0、题目 # Given a sequence of $K$ integers ${ N_1, N_2, &amp;hellip;, N_K }$.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1007maximumsubsequencesum%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/featured.png" />
+    </item>
+    
+    <item>
+      <title>1008Elevator</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1008elevator/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1008elevator/</guid>
+      <description>1008 Elevator # 0、题目 # The highest building in our city has only one elevator.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1008elevator/featured.png" />
+    </item>
+    
+    <item>
+      <title>1009ProductofPolynomials模拟</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1009productofpolynomials%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1009productofpolynomials%E6%A8%A1%E6%8B%9F/</guid>
+      <description>1009 Product of Polynomials # 0、题目 # This time, you are supposed to find $A×B$ where $A$ and $B$ are two polynomials.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1009productofpolynomials%E6%A8%A1%E6%8B%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1010Radix二分</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1010radix%E4%BA%8C%E5%88%86/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1010radix%E4%BA%8C%E5%88%86/</guid>
+      <description>1010 Radix # Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true?</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1010radix%E4%BA%8C%E5%88%86/featured.png" />
+    </item>
+    
+    <item>
+      <title>1011WorldCupBetting</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1011worldcupbetting/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1011worldcupbetting/</guid>
+      <description>1011 World Cup Betting # 0、题目 # With the 2010 FIFA World Cup running, football fans the world over were becoming increasingly excited as the best players from the best teams doing battles for the World Cup trophy in South Africa.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1011worldcupbetting/featured.png" />
+    </item>
+    
+    <item>
+      <title>1012TheBestRank排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1012thebestrank%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1012thebestrank%E6%8E%92%E5%BA%8F/</guid>
+      <description>1012 The Best Rank # 0、题目 # To evaluate the performance of our first year CS majored students, we consider their grades of three courses only: C - C Programming Language, M - Mathematics (Calculus or Linear Algrbra), and E - English.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1012thebestrank%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1013BattleOverCities图并查集求连通子集</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1013battleovercities%E5%9B%BE%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%B1%82%E8%BF%9E%E9%80%9A%E5%AD%90%E9%9B%86/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1013battleovercities%E5%9B%BE%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%B1%82%E8%BF%9E%E9%80%9A%E5%AD%90%E9%9B%86/</guid>
+      <description>1013 Battle Over Cities # 0、题目 # It is vitally important to have all the cities connected by highways in a war.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1013battleovercities%E5%9B%BE%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%B1%82%E8%BF%9E%E9%80%9A%E5%AD%90%E9%9B%86/featured.png" />
+    </item>
+    
+    <item>
+      <title>1014WaitinginLine模拟</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1014waitinginline%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1014waitinginline%E6%A8%A1%E6%8B%9F/</guid>
+      <description>1014 Waiting in Line # 0、题目 # Suppose a bank has N windows open for service.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1014waitinginline%E6%A8%A1%E6%8B%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1015ReversiblePrimes质数</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1015reversibleprimes%E8%B4%A8%E6%95%B0/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1015reversibleprimes%E8%B4%A8%E6%95%B0/</guid>
+      <description>1015 Reversible Primes # 0、题目 # A reversible prime in any number system is a prime whose “reverse” in that number system is also a prime.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1015reversibleprimes%E8%B4%A8%E6%95%B0/featured.png" />
+    </item>
+    
+    <item>
+      <title>1016PhoneBills模拟</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1016phonebills%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1016phonebills%E6%A8%A1%E6%8B%9F/</guid>
+      <description>1016 Phone Bills # 0、题目 # A long-distance telephone company charges its customers by the following rules:</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1016phonebills%E6%A8%A1%E6%8B%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1017QueueingatBank模拟</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1017queueingatbank%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1017queueingatbank%E6%A8%A1%E6%8B%9F/</guid>
+      <description>1017 Queueing at Bank # 0、题目 # Suppose a bank has K windows open for service.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1017queueingatbank%E6%A8%A1%E6%8B%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1018PublicBikeManagementDijkstraDFS</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1018publicbikemanagementdijkstradfs/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1018publicbikemanagementdijkstradfs/</guid>
+      <description>1018 Public Bike Management # 0、题目 # There is a public bike service in Hangzhou City which provides great convenience to the tourists from all over the world.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1018publicbikemanagementdijkstradfs/featured.png" />
+    </item>
+    
+    <item>
+      <title>1019GeneralPalindromicNumber进制转化回文数</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1019generalpalindromicnumber%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96%E5%9B%9E%E6%96%87%E6%95%B0/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1019generalpalindromicnumber%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96%E5%9B%9E%E6%96%87%E6%95%B0/</guid>
+      <description>1019 General Palindromic Number # 0、题目 # A number that will be the same when it is written forwards or backwards is known as a Palindromic Number.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1019generalpalindromicnumber%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96%E5%9B%9E%E6%96%87%E6%95%B0/featured.png" />
+    </item>
+    
+    <item>
+      <title>1020TreeTraversals二叉树DLRLDR求层次排列</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1020treetraversals%E4%BA%8C%E5%8F%89%E6%A0%91dlrldr%E6%B1%82%E5%B1%82%E6%AC%A1%E6%8E%92%E5%88%97/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1020treetraversals%E4%BA%8C%E5%8F%89%E6%A0%91dlrldr%E6%B1%82%E5%B1%82%E6%AC%A1%E6%8E%92%E5%88%97/</guid>
+      <description>1020 Tree Traversals # 0、题目 # Suppose that all the keys in a binary tree are distinct positive integers.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1020treetraversals%E4%BA%8C%E5%8F%89%E6%A0%91dlrldr%E6%B1%82%E5%B1%82%E6%AC%A1%E6%8E%92%E5%88%97/featured.png" />
+    </item>
+    
+    <item>
+      <title>1021DeepestRootdfs图的联通子集个数树的深度</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1021deepestrootdfs%E5%9B%BE%E7%9A%84%E8%81%94%E9%80%9A%E5%AD%90%E9%9B%86%E4%B8%AA%E6%95%B0%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1021deepestrootdfs%E5%9B%BE%E7%9A%84%E8%81%94%E9%80%9A%E5%AD%90%E9%9B%86%E4%B8%AA%E6%95%B0%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</guid>
+      <description>1021 Deepest Root # 0、题目 # graph which is connected and acyclic can be considered a tree.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1021deepestrootdfs%E5%9B%BE%E7%9A%84%E8%81%94%E9%80%9A%E5%AD%90%E9%9B%86%E4%B8%AA%E6%95%B0%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/featured.png" />
+    </item>
+    
+    <item>
+      <title>1022DigitalLibrary搜索map和set</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1022digitallibrary%E6%90%9C%E7%B4%A2map%E5%92%8Cset/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1022digitallibrary%E6%90%9C%E7%B4%A2map%E5%92%8Cset/</guid>
+      <description>1022 Digital Library # 0、题目 # A Digital Library contains millions of books, stored according to their titles, authors, key words of their abstracts, publishers, and published years.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1022digitallibrary%E6%90%9C%E7%B4%A2map%E5%92%8Cset/featured.png" />
+    </item>
+    
+    <item>
+      <title>1023HaveFunwithNumbers</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1023havefunwithnumbers/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1023havefunwithnumbers/</guid>
+      <description>1023 Have Fun with Numbers # 0、题目 # Notice that the number 123456789 is a 9-digit number consisting exactly the numbers from 1 to 9, with no duplication.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1023havefunwithnumbers/featured.png" />
+    </item>
+    
+    <item>
+      <title>1024PalindromicNumber回文数</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1024palindromicnumber%E5%9B%9E%E6%96%87%E6%95%B0/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1024palindromicnumber%E5%9B%9E%E6%96%87%E6%95%B0/</guid>
+      <description>1024 Palindromic Number # 0、题目 # A number that will be the same when it is written forwards or backwards is known as a Palindromic Number.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1024palindromicnumber%E5%9B%9E%E6%96%87%E6%95%B0/featured.png" />
+    </item>
+    
+    <item>
+      <title>1025PATRanking排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1025patranking%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1025patranking%E6%8E%92%E5%BA%8F/</guid>
+      <description>1025 PAT Ranking # 0、题目 # Programming Ability Test (PAT) is organized by the College of Computer Science and Technology of Zhejiang University.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1025patranking%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1027ColorsinMars</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1027colorsinmars/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1027colorsinmars/</guid>
+      <description>1027 Colors in Mars # 0、题目 # People in Mars represent the colors in their computers in a similar way as the Earth people.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1027colorsinmars/featured.png" />
+    </item>
+    
+    <item>
+      <title>1028ListSorting</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1028listsorting/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1028listsorting/</guid>
+      <description>1028 List Sorting # 0、题目 # Excel can sort records according to any column.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1028listsorting/featured.png" />
+    </item>
+    
+    <item>
+      <title>1029Median排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1029median%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1029median%E6%8E%92%E5%BA%8F/</guid>
+      <description>1029 Median # 0、题目 # Given an increasing sequence S of N integers, the median is the number at the middle position.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1029median%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1030TravelPlanDijkstaDFS</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1030travelplandijkstadfs/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1030travelplandijkstadfs/</guid>
+      <description>1030 Travel Plan（Dijksta +DFS） # 0、题目 # A traveler’s map gives the distances between cities along the highways, together with the cost of each highway.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1030travelplandijkstadfs/featured.png" />
+    </item>
+    
+    <item>
+      <title>1031HelloWorldforU</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1031helloworldforu/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1031helloworldforu/</guid>
+      <description>1031 Hello World for U # 0、题目 # Given any string of N (≥5) characters, you are asked to form the characters into the shape of U.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1031helloworldforu/featured.png" />
+    </item>
+    
+    <item>
+      <title>1032Sharing链表</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1032sharing%E9%93%BE%E8%A1%A8/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1032sharing%E9%93%BE%E8%A1%A8/</guid>
+      <description>1032 Sharing（链表） # 0、题目 # To store English words, one method is to use linked lists and store a word letter by letter.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1032sharing%E9%93%BE%E8%A1%A8/featured.png" />
+    </item>
+    
+    <item>
+      <title>1035Password</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1035password/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1035password/</guid>
+      <description>1035 Password # 0、题目 # To prepare for PAT, the judge sometimes has to generate random passwords for the users.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1035password/featured.png" />
+    </item>
+    
+    <item>
+      <title>1036BoysvsGirls排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1036boysvsgirls%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1036boysvsgirls%E6%8E%92%E5%BA%8F/</guid>
+      <description>1036 Boys vs Girls（排序） # 0、题目 # This time you are asked to tell the difference between the lowest grade of all the male students and the highest grade of all the female students.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1036boysvsgirls%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1037MagicCoupon贪心排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1037magiccoupon%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1037magiccoupon%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/</guid>
+      <description>1037 Magic Coupon（贪心，排序） # 0、题目 # The magic shop in Mars is offering some magic coupons.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1037magiccoupon%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1038RecovertheSmallestNumber贪心排序</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1038recoverthesmallestnumber%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1038recoverthesmallestnumber%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/</guid>
+      <description>1038 Recover the Smallest Number（贪心） # 0、题目 # Given a collection of number segments, you are supposed to recover the smallest number from them.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1038recoverthesmallestnumber%E8%B4%AA%E5%BF%83%E6%8E%92%E5%BA%8F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1039CourseListforStudent</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1039courselistforstudent/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1039courselistforstudent/</guid>
+      <description>1039 Course List for Student # 0、题目 # Zhejiang University has 40000 students and provides 2500 courses.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1039courselistforstudent/featured.png" />
+    </item>
+    
+    <item>
+      <title>1040LongestSymmetricString动态规划</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1040longestsymmetricstring%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1040longestsymmetricstring%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description>1040 Longest Symmetric String # 0、题目 # Given a string, you are supposed to output the length of the longest symmetric sub-string.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1040longestsymmetricstring%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/featured.png" />
+    </item>
+    
+    <item>
+      <title>1041BeUnique</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1041beunique/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1041beunique/</guid>
+      <description>1041 Be Unique # 0、题目 # Being unique is so important to people on Mars that even their lottery is designed in a unique way.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1041beunique/featured.png" />
+    </item>
+    
+    <item>
+      <title>1042ShufflingMachine模拟</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1042shufflingmachine%E6%A8%A1%E6%8B%9F/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1042shufflingmachine%E6%A8%A1%E6%8B%9F/</guid>
+      <description>1042 Shuffling Machine（模拟） # 0、题目 # Shuffling is a procedure used to randomize a deck of playing cards.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1042shufflingmachine%E6%A8%A1%E6%8B%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>1043IsItaBinarySearchTree二叉查找树BST</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1043isitabinarysearchtree%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91bst/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1043isitabinarysearchtree%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91bst/</guid>
+      <description>1043 Is It a Binary Search Tree # 0、题目 # A Binary Search Tree (BST) is recursively defined as a binary tree which has the following properties:</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1043isitabinarysearchtree%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91bst/featured.png" />
+    </item>
+    
+    <item>
+      <title>1044ShoppinginMars二分</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1044shoppinginmars%E4%BA%8C%E5%88%86/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1044shoppinginmars%E4%BA%8C%E5%88%86/</guid>
+      <description>1044 Shopping in Mars # 0、题目 # Shopping in Mars is quite a different experience.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1044shoppinginmars%E4%BA%8C%E5%88%86/featured.png" />
+    </item>
+    
+    <item>
+      <title>1045FavoriteColorStripe动态规划</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1045favoritecolorstripe%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1045favoritecolorstripe%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid>
+      <description>1045 Favorite Color Stripe（动态规划） # 0、题目 # Eva is trying to make her own color stripe out of a given one.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1045favoritecolorstripe%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/featured.png" />
+    </item>
+    
+    <item>
+      <title>1046ShortestDistance前缀和</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1046shortestdistance%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1046shortestdistance%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
+      <description>1046 Shortest Distance（前缀和） # 0、题目 # The task is really simple: given N exits on a highway which forms a simple cycle, you are supposed to tell the shortest distance between any pair of exits.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/1046shortestdistance%E5%89%8D%E7%BC%80%E5%92%8C/featured.png" />
+    </item>
+    
+    <item>
+      <title>PAT甲级题目分布</title>
+      <link>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/pat%E7%94%B2%E7%BA%A7%E9%A2%98%E7%9B%AE%E5%88%86%E5%B8%83/</link>
+      <pubDate>Fri, 01 Sep 2023 18:00:36 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/pat%E7%94%B2%E7%BA%A7%E9%A2%98%E7%9B%AE%E5%88%86%E5%B8%83/</guid>
+      <description>PAT 甲级题目分布 # 最短路径： # 1003、1018、1030、1072、1087、1111</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/algorithm/pat%E7%94%B2%E7%BA%A7/pat%E7%94%B2%E7%BA%A7%E9%A2%98%E7%9B%AE%E5%88%86%E5%B8%83/featured.png" />
     </item>
     
   </channel>
