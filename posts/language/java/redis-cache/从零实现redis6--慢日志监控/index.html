@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>从零实现redis(5)- 持久化 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="从零实现redis(5)- 持久化 &middot; WFUing&#39;s Blog" />
+  <title>从零实现redis(6)- 慢日志监控 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="从零实现redis(6)- 慢日志监控 &middot; WFUing&#39;s Blog" />
   
   <meta name="description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
   <meta name="keywords" content="java, redis, " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/" />
   
   
   
@@ -28,8 +28,10 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.23e599b55d39f53f46bf8a401b1c7fa9c8531db6e2f96a88e95ffd6ff20523bf046a3922e75aa1568c14f9b864927ff760e1ec45968ef52a6a163eece9fb6085.css"
-    integrity="sha512-I&#43;WZtV059T9Gv4pAGxx/qchTHbbi&#43;WqI6V/9b/IFI78Eajki51qhVowU&#43;bhkkn/3YOHsRZaO9SpqFj7s6ftghQ==" />
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -43,8 +45,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b77f53f347e99922ac7f7a137f0f74ef5f4a0cd5042af2ec7a16dced6cbe34a126f671316b5e37dfa4bc68ae701dfed7480810322f6a03adcbf4929327bf77a8.js"
-    integrity="sha512-t39T80fpmSKsf3oTfw90719KDNUEKvLsehbc7Wy&#43;NKEm9nExa14336S8aK5wHf7XSAgQMi9qA63L9JKTJ793qA==" data-copy="" data-copied=""></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
+    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
   
   
   <script src="/js/zoom.min.js"></script>
@@ -62,16 +64,16 @@
   
   
   
-  <meta property="og:title" content="从零实现redis(5)- 持久化" />
+  <meta property="og:title" content="从零实现redis(6)- 慢日志监控" />
 <meta property="og:description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/featured.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-29T15:15:08+08:00" />
-<meta property="article:modified_time" content="2024-02-29T15:15:08+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-01T15:15:08+08:00" />
+<meta property="article:modified_time" content="2024-03-01T15:15:08+08:00" />
 
-  <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/featured.png"/>
-<meta name="twitter:title" content="从零实现redis(5)- 持久化"/>
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/featured.png" /><meta name="twitter:title" content="从零实现redis(6)- 慢日志监控"/>
 <meta name="twitter:description" content="实现类似 guava-cache 中的 removeListener 删除监听器"/>
 
   
@@ -80,26 +82,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "从零实现redis(5)- 持久化",
-    "headline": "从零实现redis(5)- 持久化",
+    "name": "从零实现redis(6)- 慢日志监控",
+    "headline": "从零实现redis(6)- 慢日志监控",
     
     "abstract": "实现类似 guava-cache 中的 removeListener 删除监听器",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-02-29T15:15:08\u002b08:00",
-    "datePublished": "2024-02-29T15:15:08\u002b08:00",
+    "dateCreated": "2024-03-01T15:15:08\u002b08:00",
+    "datePublished": "2024-03-01T15:15:08\u002b08:00",
     
-    "dateModified": "2024-02-29T15:15:08\u002b08:00",
+    "dateModified": "2024-03-01T15:15:08\u002b08:00",
     
     "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "405"
+    "wordCount": "23"
   }]
   </script>
 
@@ -209,7 +211,7 @@ window.MathJax = {
             
   <a href="/posts/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
         Blogs
     </p>
 </a>
@@ -220,7 +222,7 @@ window.MathJax = {
   <div>
   <div class="cursor-pointer flex items-center nested-menu">
     
-    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="Architecture">
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
       Architecture
     </a>
     <span>
@@ -251,21 +253,21 @@ window.MathJax = {
         
         <a href="/posts/architecture/distributed/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Distributed Technology">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             Distributed
           </p>
         </a>
         
         <a href="/posts/architecture/iot/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Internet of Things">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             IoT
           </p>
         </a>
         
         <a href="/posts/architecture/serverless/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Serverless">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             Serverless
           </p>
         </a>
@@ -282,7 +284,7 @@ window.MathJax = {
   <div>
   <div class="cursor-pointer flex items-center nested-menu">
     
-    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="编程语言">
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
       Language
     </a>
     <span>
@@ -313,21 +315,21 @@ window.MathJax = {
         
         <a href="/posts/language/java/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Java">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             Java
           </p>
         </a>
         
         <a href="/posts/language/dsl/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Domain Specific Language">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             DSL
           </p>
         </a>
         
         <a href="/posts/language/code-generation/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Code Generation">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
             Code Generation
           </p>
         </a>
@@ -343,7 +345,7 @@ window.MathJax = {
             
   <a href="/read/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
         Books
     </p>
 </a>
@@ -487,7 +489,7 @@ window.MathJax = {
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
             Blogs
         </p>
     </a>
@@ -501,7 +503,7 @@ window.MathJax = {
   <li class="mt-1">
     <a class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Architecture">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
             Architecture
         </p>
         <span>
@@ -531,7 +533,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/distributed/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Distributed Technology">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             Distributed
         </p>
     </a>
@@ -540,7 +542,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/iot/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Internet of Things">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             IoT
         </p>
     </a>
@@ -549,7 +551,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/serverless/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Serverless">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             Serverless
         </p>
     </a>
@@ -565,7 +567,7 @@ window.MathJax = {
   <li class="mt-1">
     <a class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="编程语言">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
             Language
         </p>
         <span>
@@ -595,7 +597,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/java/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Java">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             Java
         </p>
     </a>
@@ -604,7 +606,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/dsl/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Domain Specific Language">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             DSL
         </p>
     </a>
@@ -613,7 +615,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/code-generation/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Code Generation">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
             Code Generation
         </p>
     </a>
@@ -629,7 +631,7 @@ window.MathJax = {
   <li class="mt-1">
     <a href="/read/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
             Books
         </p>
     </a>
@@ -692,7 +694,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/featured.png);">
+    style="background-image:url(/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/featured.png);">
     
 
 
@@ -718,7 +720,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      从零实现redis(5)- 持久化
+      从零实现redis(6)- 慢日志监控
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -763,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-29 15:15:08 &#43;0800 CST">29 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>405 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-01 15:15:08 &#43;0800 &#43;0800">1 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>23 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -914,14 +916,8 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识redis-持久化">背景知识——Redis 持久化</a>
-      <ul>
-        <li><a href="#aof-日志是如何实现的">AOF 日志是如何实现的？</a></li>
-        <li><a href="#rdb-快照是如何实现的呢">RDB 快照是如何实现的呢？</a></li>
-        <li><a href="#混合持久化">混合持久化</a></li>
-      </ul>
-    </li>
-    <li><a href="#实现redis-cache的监听器">实现redis-cache的监听器</a></li>
+    <li><a href="#背景知识redis-持久化">背景知识——Redis 持久化</a></li>
+    <li><a href="#实现redis-cache的慢日志监控">实现redis-cache的慢日志监控</a></li>
   </ul>
 </nav>
   </div>
@@ -936,14 +932,8 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识redis-持久化">背景知识——Redis 持久化</a>
-      <ul>
-        <li><a href="#aof-日志是如何实现的">AOF 日志是如何实现的？</a></li>
-        <li><a href="#rdb-快照是如何实现的呢">RDB 快照是如何实现的呢？</a></li>
-        <li><a href="#混合持久化">混合持久化</a></li>
-      </ul>
-    </li>
-    <li><a href="#实现redis-cache的监听器">实现redis-cache的监听器</a></li>
+    <li><a href="#背景知识redis-持久化">背景知识——Redis 持久化</a></li>
+    <li><a href="#实现redis-cache的慢日志监控">实现redis-cache的慢日志监控</a></li>
   </ul>
 </nav>
   </div>
@@ -1010,8 +1000,8 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.8"   target="_blank">
-    https://github.com/WFUing/redis-cache/tree/release_0.0.8</a></p>
+<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.9"   target="_blank">
+    https://github.com/WFUing/redis-cache/tree/release_0.0.9</a></p>
 <h2 class="relative group">背景知识——Redis 持久化 
     <div id="背景知识redis-持久化" class="anchor"></div>
     
@@ -1022,181 +1012,25 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p>Redis 的读写操作都是在内存中，所以 Redis 性能才会高，但是当 Redis 重启后，内存中的数据就会丢失，那为了保证内存中的数据不会丢失，Redis 实现了数据持久化的机制，这个机制会把数据存储到磁盘，这样在 Redis 重启就能够从磁盘中恢复原有的数据。</p>
-<p>Redis 共有三种数据持久化的方式：</p>
-<ul>
-<li>AOF 日志：每执行一条写操作命令，就把该命令以追加的方式写入到一个文件里；</li>
-<li>RDB 快照：将某一时刻的内存数据，以二进制的方式写入磁盘；</li>
-<li>混合持久化方式：Redis 4.0 新增的方式，集成了 AOF 和 RBD 的优点；</li>
-</ul>
-<h3 class="relative group">AOF 日志是如何实现的？ 
-    <div id="aof-日志是如何实现的" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#aof-%e6%97%a5%e5%bf%97%e6%98%af%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e7%9a%84" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>Redis 在执行完一条写操作命令后，就会把该命令以追加的方式写入到一个文件里，然后 Redis 重启时，会读取该文件记录的命令，然后逐一执行命令的方式来进行数据恢复。</p>
-<div align="center">
-<img src="./image.png" alt="" width="60%" height="auto">
-</div>
-<p>Reids 是先执行写操作命令后，才将该命令记录到 AOF 日志里的，这么做其实有两个好处。</p>
-<ul>
-<li><strong>避免额外的检查开销</strong>：因为如果先将写操作命令记录到 AOF 日志里，再执行该命令的话，如果当前的命令语法有问题，那么如果不进行命令语法检查，该错误的命令记录到 AOF 日志里后，Redis 在使用日志恢复数据时，就可能会出错。</li>
-<li><strong>不会阻塞当前写操作命令的执行</strong>：因为当写操作命令执行成功后，才会将命令记录到 AOF 日志。</li>
-</ul>
-<p>当然，这样做也会带来风险：</p>
-<ul>
-<li><strong>数据可能会丢失</strong>：执行写操作命令和记录日志是两个过程，那当 Redis 在还没来得及将命令写入到硬盘时，服务器发生宕机了，这个数据就会有丢失的风险。</li>
-<li><strong>可能阻塞其他操作</strong>：由于写操作命令执行成功后才记录到 AOF 日志，所以不会阻塞当前命令的执行，但因为 AOF 日志也是在主线程中执行，所以当 Redis 把日志文件写入磁盘的时候，还是会阻塞后续的操作无法执行。</li>
-</ul>
-<p><strong>Redis 写入 AOF 日志的过程</strong></p>
-<div align="center">
-<img src="./image-1.png" alt="" width="50%" height="auto">
-</div>
+<p>redis 中会存储慢操作的相关日志信息，主要是由两个参数构成：</p>
 <ol>
-<li>Redis 执行完写操作命令后，会将命令追加到 <code>server.aof_buf</code> 缓冲区；</li>
-<li>然后通过 <code>write()</code> 系统调用，将 <code>aof_buf</code> 缓冲区的数据写入到 AOF 文件，此时数据并没有写入到硬盘，而是拷贝到了内核缓冲区 page cache，等待内核将数据写入硬盘；</li>
-<li>具体内核缓冲区的数据什么时候写入到硬盘，由内核决定。</li>
+<li>slowlog-log-slower-than 预设阈值,它的单位是毫秒(1秒=1000000微秒)默认值是10000</li>
+<li>slowlog-max-len 最多存储多少条的慢日志记录</li>
 </ol>
-<p><strong>AOF 的 3 种写回策略</strong></p>
-<p>Redis 提供了 3 种写回硬盘的策略，控制的就是上面说的第三步的过程。 在 Redis.conf 配置文件中的 appendfsync 配置项可以有以下 3 种参数可填：</p>
+<p>不过 redis 是直接存储到内存中，而且有长度限制。</p>
+<p>根据实际工作体验，如果我们可以添加慢日志的监听，然后有对应的存储或者报警，这样更加方便问题的分析和快速反馈。</p>
+<p>所以我们引入类似于删除的监听器。</p>
 <ul>
-<li><code>Always</code>，这个单词的意思是「总是」，所以它的意思是每次写操作命令执行完后，同步将 AOF 日志数据写回硬盘；</li>
-<li><code>Everysec</code>，这个单词的意思是「每秒」，所以它的意思是每次写操作命令执行完后，先将命令写入到 AOF 文件的内核缓冲区，然后每隔一秒将缓冲区里的内容写回到硬盘；</li>
-<li><code>No</code>，意味着不由 Redis 控制写回硬盘的时机，转交给操作系统控制写回的时机，也就是每次写操作命令执行完后，先将命令写入到 AOF 文件的内核缓冲区，再由操作系统决定何时将缓冲区内容写回硬盘。</li>
+<li>我们处理所有的 cache 操作，并且记录对应的操作耗时。</li>
+<li>如果耗时操作用户设置的时间阈值，则调用慢操作监听器。</li>
 </ul>
-<div align="center">
-<img src="./image-2.png" alt="" width="80%" height="auto">
-</div>
-<p><strong>AOF 日志过大，会触发 AOF 重写机制</strong></p>
-<p>AOF 日志是一个文件，随着执行的写操作命令越来越多，文件的大小会越来越大。 如果当 AOF 日志文件过大就会带来性能问题，比如重启 Redis 后，需要读 AOF 文件的内容以恢复数据，如果文件过大，整个恢复的过程就会很慢。</p>
-<p>所以，Redis 为了避免 AOF 文件越写越大，提供了 <strong>AOF 重写机制</strong>，当 AOF 文件的大小超过所设定的阈值后，Redis 就会启用 AOF 重写机制，来压缩 AOF 文件。</p>
-<p>AOF 重写机制是在重写时，读取当前数据库中的所有键值对，然后将每一个键值对用一条命令记录到「新的 AOF 文件」，等到全部记录完后，就将新的 AOF 文件替换掉现有的 AOF 文件。</p>
-<p>重写工作完成后，就会将新的 AOF 文件覆盖现有的 AOF 文件，这就相当于压缩了 AOF 文件，使得 AOF 文件体积变小了。</p>
-<p><strong>重写 AOF 日志的过程</strong></p>
-<p>Redis 的重写 AOF 过程是由后台子进程 <code>bgrewriteaof</code> 来完成的，这么做可以达到两个好处：</p>
-<ul>
-<li>子进程进行 AOF 重写期间，主进程可以继续处理命令请求，从而避免阻塞主进程；</li>
-<li>子进程带有主进程的数据副本，这里使用子进程而不是线程，因为如果是使用线程，多线程之间会共享内存，那么在修改共享内存数据的时候，需要通过加锁来保证数据的安全，而这样就会降低性能。而使用子进程，创建子进程时，父子进程是共享内存数据的，不过这个共享的内存只能以只读的方式，而当父子进程任意一方修改了该共享内存，就会发生「写时复制」，于是父子进程就有了独立的数据副本，就不用加锁来保证数据安全。</li>
-</ul>
-<p>触发重写机制后，主进程就会创建重写 AOF 的子进程，此时父子进程共享物理内存，重写子进程只会对这个内存进行只读，重写 AOF 子进程会读取数据库里的所有数据，并逐一把内存数据的键值对转换成一条命令，再将命令记录到重写日志（新的 AOF 文件）。</p>
-<p>但是重写过程中，主进程依然可以正常处理命令，那问题来了，重写 AOF 日志过程中，如果主进程修改了已经存在 key-value，那么会发生写时复制，此时这个 key-value 数据在子进程的内存数据就跟主进程的内存数据不一致了，这时要怎么办呢？</p>
-<p>为了解决这种数据不一致问题，Redis 设置了一个 AOF 重写缓冲区，这个缓冲区在创建 bgrewriteaof 子进程之后开始使用。</p>
-<p>在重写 AOF 期间，当 Redis 执行完一个写命令之后，它会同时将这个写命令写入到 「AOF 缓冲区」和 「AOF 重写缓冲区」。</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/image-3.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>也就是说，在 bgrewriteaof 子进程执行 AOF 重写期间，主进程需要执行以下三个工作:</p>
-<ul>
-<li>执行客户端发来的命令；</li>
-<li>将执行后的写命令追加到 「AOF 缓冲区」；</li>
-<li>将执行后的写命令追加到 「AOF 重写缓冲区」；</li>
-</ul>
-<p>当子进程完成 AOF 重写工作（扫描数据库中所有数据，逐一把内存数据的键值对转换成一条命令，再将命令记录到重写日志）后，会向主进程发送一条信号，信号是进程间通讯的一种方式，且是异步的。</p>
-<p>主进程收到该信号后，会调用一个信号处理函数，该函数主要做以下工作：</p>
-<ul>
-<li>将 AOF 重写缓冲区中的所有内容追加到新的 AOF 的文件中，使得新旧两个 AOF 文件所保存的数据库状态一致；</li>
-<li>新的 AOF 的文件进行改名，覆盖现有的 AOF 文件。</li>
-</ul>
-<p>信号函数执行完后，主进程就可以继续像往常一样处理命令了。</p>
-<h3 class="relative group">RDB 快照是如何实现的呢？ 
-    <div id="rdb-快照是如何实现的呢" class="anchor"></div>
+<h2 class="relative group">实现redis-cache的慢日志监控 
+    <div id="实现redis-cache的慢日志监控" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#rdb-%e5%bf%ab%e7%85%a7%e6%98%af%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e7%9a%84%e5%91%a2" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>因为 AOF 日志记录的是操作命令，不是实际的数据，所以用 AOF 方法做故障恢复时，需要全量把日志都执行一遍，一旦 AOF 日志非常多，势必会造成 Redis 的恢复操作缓慢。</p>
-<p>为了解决这个问题，Redis 增加了 RDB 快照。所谓的快照，就是记录某一个瞬间东西，比如当我们给风景拍照时，那一个瞬间的画面和信息就记录到了一张照片。</p>
-<p>所以，RDB 快照就是记录某一个瞬间的内存数据，记录的是实际数据，而 AOF 文件记录的是命令操作的日志，而不是实际的数据。</p>
-<p>因此在 Redis 恢复数据时， RDB 恢复数据的效率会比 AOF 高些，因为直接将 RDB 文件读入内存就可以，不需要像 AOF 那样还需要额外执行操作命令的步骤才能恢复数据。</p>
-<p>Redis 提供了两个命令来生成 RDB 文件，分别是 save 和 bgsave，他们的区别就在于是否在「主线程」里执行：</p>
-<ul>
-<li>执行了 save 命令，就会在主线程生成 RDB 文件，由于和执行操作命令在同一个线程，所以如果写入 RDB 文件的时间太长，会阻塞主线程；</li>
-<li>执行了 bgsave 命令，会创建一个子进程来生成 RDB 文件，这样可以避免主线程的阻塞；</li>
-</ul>
-<p>Redis 还可以通过配置文件的选项来实现每隔一段时间自动执行一次 bgsave 命令，默认会提供以下配置：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">save <span class="m">900</span> <span class="m">1</span>
-</span></span><span class="line"><span class="cl">save <span class="m">300</span> <span class="m">10</span>
-</span></span><span class="line"><span class="cl">save <span class="m">60</span> <span class="m">10000</span>
-</span></span></code></pre></div><p>别看选项名叫 save，实际上执行的是 bgsave 命令，也就是会创建子进程来生成 RDB 快照文件。 只要满足上面条件的任意一个，就会执行 bgsave，它们的意思分别是：</p>
-<ul>
-<li>900 秒之内，对数据库进行了至少 1 次修改；</li>
-<li>300 秒之内，对数据库进行了至少 10 次修改；</li>
-<li>60 秒之内，对数据库进行了至少 10000 次修改。</li>
-</ul>
-<p>这里提一点，Redis 的快照是全量快照，也就是说每次执行快照，都是把内存中的「所有数据」都记录到磁盘中。所以执行快照是一个比较重的操作，如果频率太频繁，可能会对 Redis 性能产生影响。如果频率太低，服务器故障时，丢失的数据会更多。</p>
-<p><strong>RDB 在执行快照的时候，数据能修改</strong></p>
-<p>可以的，执行 bgsave 过程中，Redis 依然可以继续处理操作命令的，也就是数据是能被修改的，关键的技术就在于<strong>写时复制技术（Copy-On-Write, COW）</strong>。</p>
-<p>执行 bgsave 命令的时候，会通过 <code>fork()</code> 创建子进程，此时子进程和父进程是共享同一片内存数据的，因为创建子进程的时候，会复制父进程的页表，但是页表指向的物理内存还是一个，此时如果主线程执行读操作，则主线程和 bgsave 子进程互相不影响。</p>
-<div align="center">
-<img src="./image-4.png" alt="" width="70%" height="auto">
-</div>
-<p>如果主线程执行写操作，则被修改的数据会复制一份副本，然后 bgsave 子进程会把该副本数据写入 RDB 文件，在这个过程中，主线程仍然可以直接修改原来的数据。</p>
-<div align="center">
-<img src="./image-5.png" alt="" width="70%" height="auto">
-</div>
-<h3 class="relative group">混合持久化 
-    <div id="混合持久化" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%b7%b7%e5%90%88%e6%8c%81%e4%b9%85%e5%8c%96" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>RDB 优点是数据恢复速度快，但是快照的频率不好把握。频率太低，丢失的数据就会比较多，频率太高，就会影响性能。</p>
-<p>AOF 优点是丢失数据少，但是数据恢复不快。</p>
-<p>为了集成了两者的优点， Redis 4.0 提出了<strong>混合使用 AOF 日志和内存快照</strong>，也叫混合持久化，既保证了 Redis 重启速度，又降低数据丢失风险。</p>
-<p>混合持久化工作在 <strong>AOF 日志重写过程</strong>，当开启了混合持久化时，在 AOF 重写日志时，fork 出来的重写子进程会先将与主线程共享的内存数据以 RDB 方式写入到 AOF 文件，然后主线程处理的操作命令会被记录在重写缓冲区里，重写缓冲区里的增量命令会以 AOF 方式写入到 AOF 文件，写入完成后通知主进程将新的含有 RDB 格式和 AOF 格式的 AOF 文件替换旧的的 AOF 文件。</p>
-<p>也就是说，使用了混合持久化，AOF 文件的前半部分是 RDB 格式的全量数据，后半部分是 AOF 格式的增量数据。</p>
-<div align="center">
-<img src="./image-6.png" alt="" width="40%" height="auto">
-</div>
-<p>这样的好处在于，重启 Redis 加载数据的时候，由于前半部分是 RDB 内容，这样<strong>加载的时候速度会很快</strong>。</p>
-<p>加载完 RDB 的内容后，才会加载后半部分的 AOF 内容，这里的内容是 Redis 后台子进程重写 AOF 期间，主线程处理的操作命令，可以使得数据更少的丢失。</p>
-<p><strong>混合持久化优点</strong>：</p>
-<p>混合持久化结合了 RDB 和 AOF 持久化的优点，开头为 RDB 的格式，使得 Redis 可以更快的启动，同时结合 AOF 的优点，有减低了大量数据丢失的风险。</p>
-<p><strong>混合持久化缺点</strong>：</p>
-<ul>
-<li>AOF 文件中添加了 RDB 格式的内容，使得 AOF 文件的可读性变得很差；</li>
-<li>兼容性差，如果开启混合持久化，那么此混合持久化 AOF 文件，就不能用在 Redis 4.0 之前版本了。</li>
-</ul>
-<h2 class="relative group">实现redis-cache的监听器 
-    <div id="实现redis-cache的监听器" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e7%8e%b0redis-cache%e7%9a%84%e7%9b%91%e5%90%ac%e5%99%a8" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e7%8e%b0redis-cache%e7%9a%84%e6%85%a2%e6%97%a5%e5%bf%97%e7%9b%91%e6%8e%a7" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -1214,7 +1048,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5-%E6%8C%81%E4%B9%85%E5%8C%96/cache.png"
+        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/cache.png"
         alt=""
       />
       
@@ -1235,8 +1069,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/language\/java\/redis-cache\/从零实现redis(5)- 持久化\/index.md"
-        var oid_likes = "likes_posts\/language\/java\/redis-cache\/从零实现redis(5)- 持久化\/index.md"
+        var oid = "views_posts\/language\/java\/redis-cache\/从零实现redis(6)- 慢日志监控\/index.md"
+        var oid_likes = "likes_posts\/language\/java\/redis-cache\/从零实现redis(6)- 慢日志监控\/index.md"
       </script>
       
       
@@ -1259,40 +1093,18 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6-%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >从零实现redis(6)- 慢日志监控</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-03-01 15:15:08 &#43;0800 CST">1 March 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner-/">
+            <a class="flex text-right group ml-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >从零实现redis(4)- 监听器（Listerner） </span
+                  >从零实现redis(5)- 持久化</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-02-29 13:15:08 &#43;0800 CST">29 February 2024</time>
+                    <time datetime="2024-02-29 15:15:08 &#43;0800 &#43;0800">29 February 2024</time>
                   
                 </span>
               </span>
@@ -1358,7 +1170,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
-            title="TODO">
+            title="">
             
             TODO
           </a>
@@ -1366,7 +1178,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/leetcode/"
-            title="Leetcode">
+            title="">
             
             Leetcode
           </a>
@@ -1374,7 +1186,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
-            title="Tags">
+            title="">
             
             Tags
           </a>
