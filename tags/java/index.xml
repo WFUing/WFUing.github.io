@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Wed, 28 Feb 2024 12:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2024 15:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JAVA 中的代码生成包 CGLIB （Code Generation Library）</title>
+      <link>https://WFUing.github.io/posts/language/java/java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%8C%85cglib/</link>
+      <pubDate>Fri, 01 Mar 2024 15:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%8C%85cglib/</guid>
+      <description>CGLIB 是一个功能强大，高性能的代码生成包。它为没有实现接口的类提供代理，为 JDK 的动态代理提供了很好的补充。通常可以使用Java的动态代理创建代理，但当要代理的类没有实现接口或者为了更好的性能，CGLIB 是一个好的选择。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%8C%85cglib/featured.png" />
+    </item>
+    
+    <item>
+      <title>从零实现redis(3)- 拦截器（Interceptor）</title>
+      <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
+      <pubDate>Thu, 29 Feb 2024 12:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
+      <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
+    </item>
+    
     <item>
       <title>从零实现redis(2)- expire 过期原理</title>
       <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</link>
@@ -16,16 +36,6 @@
       <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</guid>
       <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png" />
-    </item>
-    
-    <item>
-      <title>从零实现redis(3)- 拦截器（Interceptor）</title>
-      <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
-      <pubDate>Wed, 28 Feb 2024 12:15:08 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
-      <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
     </item>
     
     <item>

@@ -66,8 +66,8 @@
 <meta property="og:description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3-%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3-%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-28T12:15:08+08:00" />
-<meta property="article:modified_time" content="2024-02-28T12:15:08+08:00" />
+<meta property="article:published_time" content="2024-02-29T12:15:08+08:00" />
+<meta property="article:modified_time" content="2024-02-29T12:15:08+08:00" />
 
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3-%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png"/>
@@ -91,15 +91,15 @@
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-02-28T12:15:08\u002b08:00",
-    "datePublished": "2024-02-28T12:15:08\u002b08:00",
+    "dateCreated": "2024-02-29T12:15:08\u002b08:00",
+    "datePublished": "2024-02-29T12:15:08\u002b08:00",
     
-    "dateModified": "2024-02-28T12:15:08\u002b08:00",
+    "dateModified": "2024-02-29T12:15:08\u002b08:00",
     
     "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "458"
+    "wordCount": "462"
   }]
   </script>
 
@@ -763,7 +763,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-28 12:15:08 &#43;0800 CST">28 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>458 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-02-29 12:15:08 &#43;0800 CST">29 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>462 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -914,7 +914,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识过期删除策略">背景知识——过期删除策略</a>
+    <li><a href="#背景知识拦截器interceptor">背景知识——拦截器（Interceptor）</a>
       <ul>
         <li><a href="#如何设置过期时间">如何设置过期时间？</a></li>
         <li><a href="#如何判定-key-已过期了">如何判定 key 已过期了？</a></li>
@@ -937,7 +937,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识过期删除策略">背景知识——过期删除策略</a>
+    <li><a href="#背景知识拦截器interceptor">背景知识——拦截器（Interceptor）</a>
       <ul>
         <li><a href="#如何设置过期时间">如何设置过期时间？</a></li>
         <li><a href="#如何判定-key-已过期了">如何判定 key 已过期了？</a></li>
@@ -1012,18 +1012,22 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.3"   target="_blank">
-    https://github.com/WFUing/redis-cache/tree/release_0.0.3</a></p>
-<h2 class="relative group">背景知识——过期删除策略 
-    <div id="背景知识过期删除策略" class="anchor"></div>
+<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.5"   target="_blank">
+    https://github.com/WFUing/redis-cache/tree/release_0.0.5</a></p>
+<h2 class="relative group">背景知识——拦截器（Interceptor） 
+    <div id="背景知识拦截器interceptor" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%83%8c%e6%99%af%e7%9f%a5%e8%af%86%e8%bf%87%e6%9c%9f%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e8%83%8c%e6%99%af%e7%9f%a5%e8%af%86%e6%8b%a6%e6%88%aa%e5%99%a8interceptor" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<p>拦截器（Interceptor）是一种常用的设计模式，用于在程序的执行过程中，插入额外的操作，而不改变原有逻辑的结构。</p>
+<p>Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。</p>
+<p>在缓存系统中，拦截器可以用于多种目的，如等。</p>
+<p><code>ICacheInterceptor&lt;K,V&gt;</code>接口体现了拦截器模式在缓存操作中的应用，通过定义两个方法before和after，它允许在缓存操作执行前后执行自定义逻辑。</p>
 <p>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</p>
 <h3 class="relative group">如何设置过期时间？ 
     <div id="如何设置过期时间" class="anchor"></div>
@@ -1277,15 +1281,10 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2-expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2-expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
@@ -1294,23 +1293,6 @@ window.MathJax = {
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
                     <time datetime="2024-02-28 12:15:08 &#43;0800 CST">28 February 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >从零实现redis(1)-实现固定缓存大小</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-02-28 11:15:08 &#43;0800 CST">28 February 2024</time>
                   
                 </span>
               </span>
