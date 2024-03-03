@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>从零实现redis(4)- 监听器（Listerner） &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="从零实现redis(4)- 监听器（Listerner） &middot; WFUing&#39;s Blog" />
+  <title>从零实现redis(4)- 监听器（Listerner）  &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="从零实现redis(4)- 监听器（Listerner）  &middot; WFUing&#39;s Blog" />
   
   <meta name="description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
   <meta name="keywords" content="java, redis, " />
@@ -64,7 +64,7 @@
   
   
   
-  <meta property="og:title" content="从零实现redis(4)- 监听器（Listerner）" />
+  <meta property="og:title" content="从零实现redis(4)- 监听器（Listerner） " />
 <meta property="og:description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" /><meta property="article:section" content="posts" />
@@ -73,7 +73,7 @@
 
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" /><meta name="twitter:title" content="从零实现redis(4)- 监听器（Listerner）"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" /><meta name="twitter:title" content="从零实现redis(4)- 监听器（Listerner） "/>
 <meta name="twitter:description" content="实现类似 guava-cache 中的 removeListener 删除监听器"/>
 
   
@@ -82,8 +82,8 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "从零实现redis(4)- 监听器（Listerner）",
-    "headline": "从零实现redis(4)- 监听器（Listerner）",
+    "name": "从零实现redis(4)- 监听器（Listerner） ",
+    "headline": "从零实现redis(4)- 监听器（Listerner） ",
     
     "abstract": "实现类似 guava-cache 中的 removeListener 删除监听器",
     "inLanguage": "en",
@@ -101,7 +101,7 @@
     "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "28"
+    "wordCount": "29"
   }]
   </script>
 
@@ -720,7 +720,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      从零实现redis(4)- 监听器（Listerner）
+      从零实现redis(4)- 监听器（Listerner） 
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -765,7 +765,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-29 13:15:08 &#43;0800 &#43;0800">29 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>28 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-29 13:15:08 &#43;0800 &#43;0800">29 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>29 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1022,8 +1022,9 @@ window.MathJax = {
 <p>为了实现删除的监听，我们需要找到删除的位置，然后调用监听器即可。</p>
 <ul>
 <li>evict 驱除的场景：每次 put 数据时，都会校验 size 是否达到最大的限制，如果达到，则进行 evict 淘汰。</li>
-<li>expire 过期的场景：用户指定 expire 时间之后，回后台异步执行刷新。</li>
+<li>expire 过期的场景</li>
 </ul>
+<p>用户指定 expire 时间之后，回后台异步执行刷新。</p>
 <p>也存在惰性删除的场景。</p>
 <h2 class="relative group">实现redis-cache的监听器 
     <div id="实现redis-cache的监听器" class="anchor"></div>
@@ -1093,6 +1094,28 @@ window.MathJax = {
       <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
       <div class="flex justify-between pt-3">
         <span>
+          
+            <a class="flex group mr-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >从零实现redis(5)- 持久化</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-02-29 15:15:08 &#43;0800 &#43;0800">29 February 2024</time>
+                  
+                </span>
+              </span>
+            </a>
           
         </span>
         <span>
