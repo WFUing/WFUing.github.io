@@ -7,14 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 29 Feb 2024 12:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Feb 2024 13:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零实现redis(4)- 监听器（Listerner）</title>
+      <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</link>
+      <pubDate>Thu, 29 Feb 2024 13:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</guid>
+      <description>实现类似 guava-cache 中的 removeListener 删除监听器</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" />
+    </item>
+    
     <item>
       <title>从零实现redis(3)- 拦截器（Interceptor）</title>
       <link>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
       <pubDate>Thu, 29 Feb 2024 12:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
-      <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
+      <description>Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
     </item>
     

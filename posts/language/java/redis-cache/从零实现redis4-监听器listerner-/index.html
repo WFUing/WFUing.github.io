@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>从零实现redis(1)-如何实现固定缓存大小 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="从零实现redis(1)-如何实现固定缓存大小 &middot; WFUing&#39;s Blog" />
+  <title>从零实现redis(4)- 监听器（Listerner） &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="从零实现redis(4)- 监听器（Listerner） &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。" />
+  <meta name="description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
   <meta name="keywords" content="java, redis, " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner-/" />
   
   
   
@@ -62,17 +62,17 @@
   
   
   
-  <meta property="og:title" content="从零实现redis(1)-如何实现固定缓存大小" />
-<meta property="og:description" content="redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。" />
+  <meta property="og:title" content="从零实现redis(4)- 监听器（Listerner）" />
+<meta property="og:description" content="实现类似 guava-cache 中的 removeListener 删除监听器" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-28T11:15:08+08:00" />
-<meta property="article:modified_time" content="2024-02-28T11:15:08+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner-/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner/featured.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-29T13:15:08+08:00" />
+<meta property="article:modified_time" content="2024-02-29T13:15:08+08:00" />
 
   <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png"/>
-<meta name="twitter:title" content="从零实现redis(1)-如何实现固定缓存大小"/>
-<meta name="twitter:description" content="redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner/featured.png"/>
+<meta name="twitter:title" content="从零实现redis(4)- 监听器（Listerner）"/>
+<meta name="twitter:description" content="实现类似 guava-cache 中的 removeListener 删除监听器"/>
 
   
   <script type="application/ld+json">
@@ -80,26 +80,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "从零实现redis(1)-如何实现固定缓存大小",
-    "headline": "从零实现redis(1)-如何实现固定缓存大小",
+    "name": "从零实现redis(4)- 监听器（Listerner）",
+    "headline": "从零实现redis(4)- 监听器（Listerner）",
     
-    "abstract": "redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。",
+    "abstract": "实现类似 guava-cache 中的 removeListener 删除监听器",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner-\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-02-28T11:15:08\u002b08:00",
-    "datePublished": "2024-02-28T11:15:08\u002b08:00",
+    "dateCreated": "2024-02-29T13:15:08\u002b08:00",
+    "datePublished": "2024-02-29T13:15:08\u002b08:00",
     
-    "dateModified": "2024-02-28T11:15:08\u002b08:00",
+    "dateModified": "2024-02-29T13:15:08\u002b08:00",
     
     "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "576"
+    "wordCount": "28"
   }]
   </script>
 
@@ -692,7 +692,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png);">
+    style="background-image:url(/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner/featured.png);">
     
 
 
@@ -718,7 +718,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      从零实现redis(1)-如何实现固定缓存大小
+      从零实现redis(4)- 监听器（Listerner）
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -763,7 +763,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-02-28 11:15:08 &#43;0800 CST">28 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>576 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-02-29 13:15:08 &#43;0800 CST">29 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>28 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -914,25 +914,8 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识驱除策略">背景知识——驱除策略</a>
-      <ul>
-        <li><a href="#如何设置-redis-最大运行内存">如何设置 Redis 最大运行内存？</a></li>
-        <li><a href="#redis-内存淘汰策略有哪些">Redis 内存淘汰策略有哪些？</a>
-          <ul>
-            <li><a href="#1不进行数据淘汰的策略">1、不进行数据淘汰的策略</a></li>
-            <li><a href="#2进行数据淘汰的策略">2、进行数据淘汰的策略</a></li>
-          </ul>
-        </li>
-        <li><a href="#具体算法">具体算法</a>
-          <ul>
-            <li><a href="#fifo-算法">FIFO 算法</a></li>
-            <li><a href="#lru-算法">LRU 算法</a></li>
-            <li><a href="#lfu-算法">LFU 算法</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#实现redis-cache的内存淘汰策略">实现redis-cache的内存淘汰策略</a></li>
+    <li><a href="#背景知识guava-cache的删除监听器">背景知识——guava-cache的删除监听器</a></li>
+    <li><a href="#实现redis-cache的监听器">实现redis-cache的监听器</a></li>
   </ul>
 </nav>
   </div>
@@ -947,25 +930,8 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#代码仓库">代码仓库</a></li>
-    <li><a href="#背景知识驱除策略">背景知识——驱除策略</a>
-      <ul>
-        <li><a href="#如何设置-redis-最大运行内存">如何设置 Redis 最大运行内存？</a></li>
-        <li><a href="#redis-内存淘汰策略有哪些">Redis 内存淘汰策略有哪些？</a>
-          <ul>
-            <li><a href="#1不进行数据淘汰的策略">1、不进行数据淘汰的策略</a></li>
-            <li><a href="#2进行数据淘汰的策略">2、进行数据淘汰的策略</a></li>
-          </ul>
-        </li>
-        <li><a href="#具体算法">具体算法</a>
-          <ul>
-            <li><a href="#fifo-算法">FIFO 算法</a></li>
-            <li><a href="#lru-算法">LRU 算法</a></li>
-            <li><a href="#lfu-算法">LFU 算法</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#实现redis-cache的内存淘汰策略">实现redis-cache的内存淘汰策略</a></li>
+    <li><a href="#背景知识guava-cache的删除监听器">背景知识——guava-cache的删除监听器</a></li>
+    <li><a href="#实现redis-cache的监听器">实现redis-cache的监听器</a></li>
   </ul>
 </nav>
   </div>
@@ -1032,221 +998,38 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.2"   target="_blank">
-    https://github.com/WFUing/redis-cache/tree/release_0.0.2</a></p>
-<h2 class="relative group">背景知识——驱除策略 
-    <div id="背景知识驱除策略" class="anchor"></div>
+<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.6"   target="_blank">
+    https://github.com/WFUing/redis-cache/tree/release_0.0.6</a></p>
+<h2 class="relative group">背景知识——guava-cache的删除监听器 
+    <div id="背景知识guava-cache的删除监听器" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%83%8c%e6%99%af%e7%9f%a5%e8%af%86%e9%a9%b1%e9%99%a4%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e8%83%8c%e6%99%af%e7%9f%a5%e8%af%86guava-cache%e7%9a%84%e5%88%a0%e9%99%a4%e7%9b%91%e5%90%ac%e5%99%a8" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。</p>
-<h3 class="relative group">如何设置 Redis 最大运行内存？ 
-    <div id="如何设置-redis-最大运行内存" class="anchor"></div>
+<p>我们在两种场景下删除数据是对用户透明的：</p>
+<ol>
+<li>size 满了之后，进行数据淘汰。</li>
+<li>expire 过期时，清除数据。</li>
+</ol>
+<p>这两个特性对用户本来应该是无感的，不过用户如果关心的话，也可以通过添加删除监听器来获取到相关的变更信息。</p>
+<p><strong>具体实现</strong></p>
+<p>为了实现删除的监听，我们需要找到删除的位置，然后调用监听器即可。</p>
+<ul>
+<li>evict 驱除的场景：每次 put 数据时，都会校验 size 是否达到最大的限制，如果达到，则进行 evict 淘汰。</li>
+<li>expire 过期的场景：用户指定 expire 时间之后，回后台异步执行刷新。</li>
+</ul>
+<p>也存在惰性删除的场景。</p>
+<h2 class="relative group">实现redis-cache的监听器 
+    <div id="实现redis-cache的监听器" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%ae-redis-%e6%9c%80%e5%a4%a7%e8%bf%90%e8%a1%8c%e5%86%85%e5%ad%98" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>在配置文件 redis.conf 中，可以通过参数 <code>maxmemory &lt;bytes&gt;</code> 来设定最大运行内存，只有在 Redis 的运行内存达到了我们设置的最大运行内存，才会触发内存淘汰策略。 不同位数的操作系统，maxmemory 的默认值是不同的：</p>
-<ul>
-<li>在 64 位操作系统中，maxmemory 的默认值是 0，表示没有内存大小限制，那么不管用户存放多少数据到 Redis 中，Redis 也不会对可用内存进行检查，直到 Redis 实例因内存不足而崩溃也无作为。</li>
-<li>在 32 位操作系统中，maxmemory 的默认值是 3G，因为 32 位的机器最大只支持 4GB 的内存，而系统本身就需要一定的内存资源来支持运行，所以 32 位操作系统限制最大 3 GB 的可用内存是非常合理的，这样可以避免因为内存不足而导致 Redis 实例崩溃。</li>
-</ul>
-<h3 class="relative group">Redis 内存淘汰策略有哪些？ 
-    <div id="redis-内存淘汰策略有哪些" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#redis-%e5%86%85%e5%ad%98%e6%b7%98%e6%b1%b0%e7%ad%96%e7%95%a5%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>Redis 内存淘汰策略共有八种，这八种策略大体分为「<strong>不进行数据淘汰</strong>」和「<strong>进行数据淘汰</strong>」两类策略。</p>
-<h4 class="relative group">1、不进行数据淘汰的策略 
-    <div id="1不进行数据淘汰的策略" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#1%e4%b8%8d%e8%bf%9b%e8%a1%8c%e6%95%b0%e6%8d%ae%e6%b7%98%e6%b1%b0%e7%9a%84%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<p>noeviction（Redis3.0之后，默认的内存淘汰策略） ：它表示当运行内存超过最大设置内存时，不淘汰任何数据，这时如果有新的数据写入，会报错通知禁止写入，不淘汰任何数据，但是如果没用数据写入的话，只是单纯的查询或者删除操作的话，还是可以正常工作。</p>
-<h4 class="relative group">2、进行数据淘汰的策略 
-    <div id="2进行数据淘汰的策略" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#2%e8%bf%9b%e8%a1%8c%e6%95%b0%e6%8d%ae%e6%b7%98%e6%b1%b0%e7%9a%84%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<p>针对「进行数据淘汰」这一类策略，又可以细分为「在设置了过期时间的数据中进行淘汰」和「在所有数据范围内进行淘汰」这两类策略。</p>
-<p>在设置了过期时间的数据中进行淘汰：</p>
-<ul>
-<li><code>volatile-random</code>：随机淘汰设置了过期时间的任意键值；</li>
-<li><code>volatile-ttl</code>：优先淘汰更早过期的键值。</li>
-<li><code>volatile-lru</code>（Redis3.0 之前，默认的内存淘汰策略）：淘汰所有设置了过期时间的键值中，最久未使用的键值；</li>
-<li><code>volatile-lfu</code>（Redis 4.0 后新增的内存淘汰策略）：淘汰所有设置了过期时间的键值中，最少使用的键值；</li>
-</ul>
-<p>在所有数据范围内进行淘汰：</p>
-<ul>
-<li><code>allkeys-random</code>：随机淘汰任意键值；</li>
-<li><code>allkeys-lru</code>：淘汰整个键值中最久未使用的键值；</li>
-<li><code>allkeys-lfu</code>（Redis 4.0 后新增的内存淘汰策略）：淘汰整个键值中最少使用的键值。</li>
-</ul>
-<blockquote>
-<p>如何查看当前 Redis 使用的内存淘汰策略？</p>
-<p>可以使用 <code>config get maxmemory-policy</code> 命令，来查看当前 Redis 的内存淘汰策略，命令如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">127.0.0.1:6379&gt; config get maxmemory-policy
-</span></span><span class="line"><span class="cl">1<span class="o">)</span> <span class="s2">&#34;maxmemory-policy&#34;</span>
-</span></span><span class="line"><span class="cl">2<span class="o">)</span> <span class="s2">&#34;noeviction&#34;</span>
-</span></span></code></pre></div><p>可以看出，当前 Redis 使用的是 noeviction 类型的内存淘汰策略，它是 Redis 3.0 之后默认使用的内存淘汰策略，表示当运行内存超过最大设置内存时，不淘汰任何数据，但新增操作会报错。</p>
-</blockquote>
-<blockquote>
-<p>如何修改 Redis 内存淘汰策略？</p>
-<p>设置内存淘汰策略有两种方法：</p>
-<ul>
-<li>方式一：通过 <code>config set maxmemory-policy &lt;策略&gt;</code> 命令设置。它的优点是设置之后立即生效，不需要重启 Redis 服务，缺点是重启 Redis 之后，设置就会失效。</li>
-<li>方式二：通过修改 Redis 配置文件修改，设置 <code>maxmemory-policy &lt;策略&gt;</code> ，它的优点是重启 Redis 服务后配置不会丢失，缺点是必须重启 Redis 服务，设置才能生效。</li>
-</ul>
-</blockquote>
-<h3 class="relative group">具体算法 
-    <div id="具体算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%85%b7%e4%bd%93%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<h4 class="relative group">FIFO 算法 
-    <div id="fifo-算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#fifo-%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<p>先进先出，在这种淘汰算法中，先进入缓存的会先被淘汰。这种可谓是最简单的了，但是会导致我们命中率很低。</p>
-<p>试想一下我们如果有个访问频率很高的数据是所有数据第一个访问的，而那些不是很高的是后面再访问的，那这样就会把我们的首个数据但是他的访问频率很高给挤出。</p>
-<h4 class="relative group">LRU 算法 
-    <div id="lru-算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#lru-%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<p>LRU 全称是 <strong>Least Recently Used</strong> 翻译为最近最少使用，会选择淘汰最近最少使用的数据。</p>
-<p>传统 LRU 算法的实现是基于「链表」结构，链表中的元素按照操作顺序从前往后排列，<strong>最新操作的键会被移动到表头</strong>，当需要内存淘汰时，只需要删除链表尾部的元素即可，因为链表尾部的元素就代表最久未被使用的元素。</p>
-<p>Redis 并没有使用这样的方式实现 LRU 算法，因为传统的 LRU 算法存在两个问题：</p>
-<ul>
-<li>需要用链表管理所有的缓存数据，这会带来额外的空间开销；</li>
-<li>当有数据被访问时，需要在链表上把该数据移动到头端，如果有大量数据被访问，就会带来很多链表移动操作，会很耗时，进而会降低 Redis 缓存性能。</li>
-</ul>
-<p><strong>Redis 实现 LRU 算法的方法</strong></p>
-<p>Redis 实现的是一种<strong>近似 LRU 算法</strong>，目的是为了更好的节约内存，它的<strong>实现方式是在 Redis 的对象结构体中添加一个额外的字段，用于记录此数据的最后一次访问时间</strong>。</p>
-<p>当 Redis 进行内存淘汰时，会使用<strong>随机采样的方式来淘汰数据</strong>，它是随机取 5 个值（此值可配置），然后<strong>淘汰最久没有使用的那个</strong>。</p>
-<p>Redis 实现的 LRU 算法的优点：</p>
-<ul>
-<li>不用为所有的数据维护一个大链表，节省了空间占用；</li>
-<li>不用在每次数据访问时都移动链表项，提升了缓存的性能；</li>
-</ul>
-<p>但是 LRU 算法有两个问题：</p>
-<ul>
-<li><strong>无法解决缓存污染问题</strong>，比如应用一次读取了大量的数据，而这些数据只会被读取这一次，那么这些数据会留存在 Redis 缓存中很长一段时间，造成缓存污染。</li>
-<li><strong>热点数据被淘汰问题</strong>，比如有个数据在1个小时的前59分钟访问了1万次(可见这是个热点数据)，再后一分钟没有访问这个数据，但是有其他的数据访问，就导致热点数据被淘汰。</li>
-</ul>
-<p>因此，在 Redis 4.0 之后引入了 LFU 算法来解决这个问题。</p>
-<h4 class="relative group">LFU 算法 
-    <div id="lfu-算法" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#lfu-%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h4>
-<p>LFU 全称是 Least Frequently Used 翻译为最近最不常用，LFU 算法是根据数据访问次数来淘汰数据的，它的核心思想是<strong>如果数据过去被访问多次，那么将来被访问的频率也更高</strong>。</p>
-<p>所以， LFU 算法会记录每个数据的访问次数。当一个数据被再次访问时，就会增加该数据的访问次数。这样就解决了偶尔被访问一次之后，数据留存在缓存中很长一段时间的问题，相比于 LRU 算法也更合理一些。</p>
-<p>LFU 算法相比于 LRU 算法的实现，多记录了「数据的访问频次」的信息。Redis 对象的结构如下：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">redisObject</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="cl">      
-</span></span><span class="line"><span class="cl">    <span class="c1">// 24 bits，用于记录对象的访问信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">unsigned</span> <span class="nl">lru</span><span class="p">:</span><span class="mi">24</span><span class="p">;</span>  
-</span></span><span class="line"><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">robj</span><span class="p">;</span>
-</span></span></code></pre></div><p>Redis 对象头中的 lru 字段，在 LRU 算法下和 LFU 算法下使用方式并不相同。</p>
-<p>在 LRU 算法中，Redis 对象头的 24 bits 的 lru 字段是用来记录 key 的访问时间戳，因此在 LRU 模式下，Redis可以根据对象头中的 lru 字段记录的值，来比较最后一次 key 的访问时间长，从而淘汰最久未被使用的 key。</p>
-<p>在 LFU 算法中，Redis对象头的 24 bits 的 lru 字段被分成两段来存储，高 16bit 存储 ldt(Last Decrement Time)，低 8bit 存储 logc(Logistic Counter)。</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/image.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<ul>
-<li>ldt 是用来记录 key 的访问时间戳；</li>
-<li>logc 是用来记录 key 的访问频次，它的值越小表示使用频率越低，越容易淘汰，每个新加入的 key 的logc 初始值为 5。</li>
-</ul>
-<blockquote>
-<p>注意，logc 并不是单纯的访问次数，而是访问频次（访问频率），因为 logc 会随时间推移而衰减的。</p>
-<p>在每次 key 被访问时，会先对 logc 做一个衰减操作，衰减的值跟前后访问时间的差距有关系，如果上一次访问的时间与这一次访问的时间差距很大，那么衰减的值就越大，这样实现的 LFU 算法是根据访问频率来淘汰数据的，而不只是访问次数。访问频率需要考虑 key 的访问是多长时间段内发生的。key 的先前访问距离当前时间越长，那么这个 key 的访问频率相应地也就会降低，这样被淘汰的概率也会更大。</p>
-<p>对 logc 做完衰减操作后，就开始对 logc 进行增加操作，增加操作并不是单纯的 + 1，而是根据概率增加，如果 logc 越大的 key，它的 logc 就越难再增加。</p>
-<p>所以，Redis 在访问 key 时，对于 logc 是这样变化的：</p>
-<ul>
-<li>先按照上次访问距离当前的时长，来对 logc 进行衰减；</li>
-<li>然后，再按照一定概率增加 logc 的值</li>
-</ul>
-<p>redis.conf 提供了两个配置项，用于调整 LFU 算法从而控制 logc 的增长和衰减：</p>
-<ul>
-<li><code>lfu-decay-time</code> 用于调整 logc 的衰减速度，它是一个以分钟为单位的数值，默认值为1，<code>lfu-decay-time</code> 值越大，衰减越慢；</li>
-<li><code>lfu-log-factor</code> 用于调整 logc 的增长速度，<code>lfu-log-factor</code> 值越大，logc 增长越慢。</li>
-</ul>
-</blockquote>
-<h2 class="relative group">实现redis-cache的内存淘汰策略 
-    <div id="实现redis-cache的内存淘汰策略" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e7%8e%b0redis-cache%e7%9a%84%e5%86%85%e5%ad%98%e6%b7%98%e6%b1%b0%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e7%8e%b0redis-cache%e7%9a%84%e7%9b%91%e5%90%ac%e5%99%a8" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -1264,7 +1047,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/cache-1.png"
+        src="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4-%E7%9B%91%E5%90%AC%E5%99%A8listerner/cache.png"
         alt=""
       />
       
@@ -1273,63 +1056,6 @@ window.MathJax = {
   
 
 </p>
-<pre tabindex="0"><code>├── cache-api
-│  ├── pom.xml
-│  ├── src
-│  │  └── main
-│  │      └── java
-│  │          └── com.github.houbb.cache
-│  │             └── api
-│  │                 ├── ICache.java
-│  │                 ├── ICacheContext.java
-│  │                 ├── ICacheEvict.java
-│  │                 ├── ICacheEvictContext.java
-│  │                 └── package-info.java
-</code></pre><p>这里使用依赖注入模式，<code>Cache</code> 类的构造函数接受一个 <code>ICacheContext</code> 对象作为参数，在实例化 <code>Cache</code> 对象时，需要提供一个符合 <code>ICacheContext</code> 接口的实现对象。这样做的好处是将 <code>Cache</code> 类与具体的缓存实现细节解耦，使得 <code>Cache</code> 类更加灵活，可以适配不同的缓存实现。<code>ICacheEvictContext</code> 和 <code>CacheEvict</code> 同理。</p>
-<pre tabindex="0"><code>├── cache-core
-│  ├── pom.xml
-│  ├── src
-│  │  └── main
-│  │      └── java
-│  │          └── com.github.houbb.cache
-│  │               └── core
-│  │                   ├── api
-│  │                   │  ├── CacheAdaptor.java
-│  │                   │  └── package-info.java
-│  │                   ├── bs
-│  │                   │  ├── CacheBs.java
-│  │                   │  └── package-info.java
-│  │                   ├── core
-│  │                   │  ├── Cache.java
-│  │                   │  └── CacheContext.java
-│  │                   ├── exception
-│  │                   │  └── CacheRuntimeException.java
-│  │                   ├── package-info.java
-│  │                   └── support
-│  │                       ├── evict
-│  │                       │  ├── CacheEvictContext.java
-│  │                       │  ├── CacheEvictFIFO.java
-│  │                       │  ├── CacheEvictNone.java
-│  │                       │  ├── CacheEvicts.java
-│  │                       │  └── package-info.java
-│  │                       ├── expire
-│  │                       │  └── package-info.java
-│  │                       ├── listener
-│  │                       │  └── package-info.java
-│  │                       ├── load
-│  │                       │  └── package-info.java
-│  │                       ├── map
-│  │                       │  └── package-info.java
-│  │                       ├── package-info.java
-│  │                       └── persist
-│  │                           └── package-info.java
-</code></pre><p>其中 evict 的部分使用工厂模式：</p>
-<ul>
-<li>接口定义：首先，定义了一个接口 <code>ICacheEvict</code>，用于表示缓存驱逐策略。</li>
-<li>具体实现类：然后，你创建了两个具体的缓存驱逐策略实现类 <code>CacheEvictNone</code> 和 <code>CacheEvictFIFO</code>，分别表示不执行任何驱逐操作和先进先出（FIFO）驱逐策略。</li>
-<li>工厂类：接着，你创建了一个工厂类 <code>CacheEvicts</code>，其中包含了两个静态方法 <code>none()</code> 和 <code>fifo()</code>，分别用于创建不同的缓存驱逐策略对象。</li>
-<li>调用示例：客户端代码可以通过调用 <code>CacheEvicts</code> 类的静态方法来获取所需的缓存驱逐策略对象，而不需要直接实例化具体的实现类。</li>
-</ul>
 
         </div>
                 
@@ -1342,8 +1068,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/language\/java\/redis-cache\/从零实现redis(1)-如何实现固定缓存大小\/index.md"
-        var oid_likes = "likes_posts\/language\/java\/redis-cache\/从零实现redis(1)-如何实现固定缓存大小\/index.md"
+        var oid = "views_posts\/language\/java\/redis-cache\/从零实现redis(4)- 监听器（Listerner） \/index.md"
+        var oid_likes = "likes_posts\/language\/java\/redis-cache\/从零实现redis(4)- 监听器（Listerner） \/index.md"
       </script>
       
       
@@ -1354,6 +1080,46 @@ window.MathJax = {
   <footer class="pt-8 max-w-prose print:hidden">
 
     
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3-%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >从零实现redis(3)- 拦截器（Interceptor）</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-02-29 12:15:08 &#43;0800 CST">29 February 2024</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
   
 
 

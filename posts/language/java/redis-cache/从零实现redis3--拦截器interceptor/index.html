@@ -11,7 +11,7 @@
   <title>从零实现redis(3)- 拦截器（Interceptor） &middot; WFUing&#39;s Blog</title>
   <meta name="title" content="从零实现redis(3)- 拦截器（Interceptor） &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。" />
+  <meta name="description" content="Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。" />
   <meta name="keywords" content="java, redis, " />
   
   
@@ -65,7 +65,7 @@
   
   
   <meta property="og:title" content="从零实现redis(3)- 拦截器（Interceptor）" />
-<meta property="og:description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。" />
+<meta property="og:description" content="Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-02-29T12:15:08+08:00" />
@@ -74,7 +74,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" /><meta name="twitter:title" content="从零实现redis(3)- 拦截器（Interceptor）"/>
-<meta name="twitter:description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。"/>
+<meta name="twitter:description" content="Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。"/>
 
   
   <script type="application/ld+json">
@@ -85,7 +85,7 @@
     "name": "从零实现redis(3)- 拦截器（Interceptor）",
     "headline": "从零实现redis(3)- 拦截器（Interceptor）",
     
-    "abstract": "Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。",
+    "abstract": "Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。",
     "inLanguage": "en",
     "url" : "https:\/\/WFUing.github.io\/posts\/language\/java\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor\/",
     "author" : {
@@ -1153,6 +1153,28 @@ window.MathJax = {
       <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
       <div class="flex justify-between pt-3">
         <span>
+          
+            <a class="flex group mr-3" href="/posts/language/java/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >从零实现redis(4)- 监听器（Listerner）</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-02-29 13:15:08 &#43;0800 &#43;0800">29 February 2024</time>
+                  
+                </span>
+              </span>
+            </a>
           
         </span>
         <span>
