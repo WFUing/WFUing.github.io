@@ -8,16 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>【LeetCode 368】最大整除子集 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="【LeetCode 368】最大整除子集 &middot; WFUing&#39;s Blog" />
+  <title>【LeetCode 446】等差数列划分 II - 子序列 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="【LeetCode 446】等差数列划分 II - 子序列 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="【LeetCode 368】最大整除子集题解。难点在于如何记录答案，最后把最大整除子集输出。幸运的是，题目没有限制输出的字典序，只要输出的是合理答案就可以。" />
-  
-  
-  
-  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" />
+  <meta name="description" content="【LeetCode 446】等差数列划分 II - 子序列题解。我们用一个二重循环去遍历 `nums` 中的所有元素对 `(nums[i], nums[j])`，其中 `j&lt;i`。将 `nums[i]` 和 `nums[j]` 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 `d=nums[i]-nums[j]`。由于公差相同，我们可以将 `nums[i]` 加到以 `nums[j]` 为尾项，公差为 `d` 的弱等差子序列的末尾，这对应着状态转移 `dp[i][d]&#43;=dp[j][d]`。同时，`(nums[i], nums[j])` 这一对元素也可以当作一个弱等差子序列，故有状态转移`dp[i][d]&#43;=dp[j][d]&#43;1`" />
   
   
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/" />
   
   
   
@@ -30,8 +28,8 @@
   
   
   
-  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
-    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.23e599b55d39f53f46bf8a401b1c7fa9c8531db6e2f96a88e95ffd6ff20523bf046a3922e75aa1568c14f9b864927ff760e1ec45968ef52a6a163eece9fb6085.css"
+    integrity="sha512-I&#43;WZtV059T9Gv4pAGxx/qchTHbbi&#43;WqI6V/9b/IFI78Eajki51qhVowU&#43;bhkkn/3YOHsRZaO9SpqFj7s6ftghQ==" />
   
   
   <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
@@ -45,8 +43,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.aa2a80d938ad305204df2c99e1dc0cde8fee122a308e9c8bf7f4cf45d42a26bbc471f623fe1920193f2a41c5a969485e6824629816dcbc549d4e57c3f9206d42.js"
-    integrity="sha512-qiqA2TitMFIE3yyZ4dwM3o/uEiowjpyL9/TPRdQqJrvEcfYj/hkgGT8qQcWpaUheaCRimBbcvFSdTlfD&#43;SBtQg==" data-copy="" data-copied=""></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b77f53f347e99922ac7f7a137f0f74ef5f4a0cd5042af2ec7a16dced6cbe34a126f671316b5e37dfa4bc68ae701dfed7480810322f6a03adcbf4929327bf77a8.js"
+    integrity="sha512-t39T80fpmSKsf3oTfw90719KDNUEKvLsehbc7Wy&#43;NKEm9nExa14336S8aK5wHf7XSAgQMi9qA63L9JKTJ793qA==" data-copy="" data-copied=""></script>
   
   
   <script src="/js/zoom.min.js"></script>
@@ -64,17 +62,17 @@
   
   
   
-  <meta property="og:title" content="【LeetCode 368】最大整除子集" />
-<meta property="og:description" content="【LeetCode 368】最大整除子集题解。难点在于如何记录答案，最后把最大整除子集输出。幸运的是，题目没有限制输出的字典序，只要输出的是合理答案就可以。" />
+  <meta property="og:title" content="【LeetCode 446】等差数列划分 II - 子序列" />
+<meta property="og:description" content="【LeetCode 446】等差数列划分 II - 子序列题解。我们用一个二重循环去遍历 nums 中的所有元素对 (nums[i], nums[j])，其中 j&lt;i。将 nums[i] 和 nums[j] 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 d=nums[i]-nums[j]。由于公差相同，我们可以将 nums[i] 加到以 nums[j] 为尾项，公差为 d 的弱等差子序列的末尾，这对应着状态转移 dp[i][d]&#43;=dp[j][d]。同时，(nums[i], nums[j]) 这一对元素也可以当作一个弱等差子序列，故有状态转移dp[i][d]&#43;=dp[j][d]&#43;1" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-01T17:16:02+08:00" />
-<meta property="article:modified_time" content="2024-03-01T17:16:02+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/" /><meta property="og:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/featured.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-01T18:16:02+08:00" />
+<meta property="article:modified_time" content="2024-03-01T18:16:02+08:00" />
 
-
-  <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/featured.png" /><meta name="twitter:title" content="【LeetCode 368】最大整除子集"/>
-<meta name="twitter:description" content="【LeetCode 368】最大整除子集题解。难点在于如何记录答案，最后把最大整除子集输出。幸运的是，题目没有限制输出的字典序，只要输出的是合理答案就可以。"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/featured.png"/>
+<meta name="twitter:title" content="【LeetCode 446】等差数列划分 II - 子序列"/>
+<meta name="twitter:description" content="【LeetCode 446】等差数列划分 II - 子序列题解。我们用一个二重循环去遍历 nums 中的所有元素对 (nums[i], nums[j])，其中 j&lt;i。将 nums[i] 和 nums[j] 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 d=nums[i]-nums[j]。由于公差相同，我们可以将 nums[i] 加到以 nums[j] 为尾项，公差为 d 的弱等差子序列的末尾，这对应着状态转移 dp[i][d]&#43;=dp[j][d]。同时，(nums[i], nums[j]) 这一对元素也可以当作一个弱等差子序列，故有状态转移dp[i][d]&#43;=dp[j][d]&#43;1"/>
 
   
   <script type="application/ld+json">
@@ -82,26 +80,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "【LeetCode 368】最大整除子集",
-    "headline": "【LeetCode 368】最大整除子集",
+    "name": "【LeetCode 446】等差数列划分 II - 子序列",
+    "headline": "【LeetCode 446】等差数列划分 II - 子序列",
     
-    "abstract": "【LeetCode 368】最大整除子集题解。难点在于如何记录答案，最后把最大整除子集输出。幸运的是，题目没有限制输出的字典序，只要输出的是合理答案就可以。",
+    "abstract": "【LeetCode 446】等差数列划分 II - 子序列题解。我们用一个二重循环去遍历 \u003ccode\u003enums\u003c\/code\u003e 中的所有元素对 \u003ccode\u003e(nums[i], nums[j])\u003c\/code\u003e，其中 \u003ccode\u003ej\u0026lt;i\u003c\/code\u003e。将 \u003ccode\u003enums[i]\u003c\/code\u003e 和 \u003ccode\u003enums[j]\u003c\/code\u003e 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 \u003ccode\u003ed=nums[i]-nums[j]\u003c\/code\u003e。由于公差相同，我们可以将 \u003ccode\u003enums[i]\u003c\/code\u003e 加到以 \u003ccode\u003enums[j]\u003c\/code\u003e 为尾项，公差为 \u003ccode\u003ed\u003c\/code\u003e 的弱等差子序列的末尾，这对应着状态转移 \u003ccode\u003edp[i][d]\u002b=dp[j][d]\u003c\/code\u003e。同时，\u003ccode\u003e(nums[i], nums[j])\u003c\/code\u003e 这一对元素也可以当作一个弱等差子序列，故有状态转移\u003ccode\u003edp[i][d]\u002b=dp[j][d]\u002b1\u003c\/code\u003e",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/algorithm\/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92\/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-03-01T17:16:02\u002b08:00",
-    "datePublished": "2024-03-01T17:16:02\u002b08:00",
+    "dateCreated": "2024-03-01T18:16:02\u002b08:00",
+    "datePublished": "2024-03-01T18:16:02\u002b08:00",
     
-    "dateModified": "2024-03-01T17:16:02\u002b08:00",
+    "dateModified": "2024-03-01T18:16:02\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "266"
+    "wordCount": "125"
   }]
   </script>
 
@@ -211,7 +209,7 @@ window.MathJax = {
             
   <a href="/posts/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="博客">
         Blogs
     </p>
 </a>
@@ -222,7 +220,7 @@ window.MathJax = {
   <div>
   <div class="cursor-pointer flex items-center nested-menu">
     
-    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="Architecture">
       Architecture
     </a>
     <span>
@@ -253,21 +251,21 @@ window.MathJax = {
         
         <a href="/posts/architecture/distributed/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Distributed Technology">
             Distributed
           </p>
         </a>
         
         <a href="/posts/architecture/iot/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Internet of Things">
             IoT
           </p>
         </a>
         
         <a href="/posts/architecture/serverless/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Serverless">
             Serverless
           </p>
         </a>
@@ -284,7 +282,7 @@ window.MathJax = {
   <div>
   <div class="cursor-pointer flex items-center nested-menu">
     
-    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="编程语言">
       Language
     </a>
     <span>
@@ -315,21 +313,21 @@ window.MathJax = {
         
         <a href="/posts/language/java/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Java">
             Java
           </p>
         </a>
         
         <a href="/posts/language/dsl/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Domain Specific Language">
             DSL
           </p>
         </a>
         
         <a href="/posts/language/code-generation/"  class="flex items-center">
           
-          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="Code Generation">
             Code Generation
           </p>
         </a>
@@ -345,7 +343,7 @@ window.MathJax = {
             
   <a href="/read/"  class="flex items-center">
     
-    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="阅读">
         Books
     </p>
 </a>
@@ -489,7 +487,7 @@ window.MathJax = {
   <li class="mt-1">
     <a href="/posts/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="博客">
             Blogs
         </p>
     </a>
@@ -503,7 +501,7 @@ window.MathJax = {
   <li class="mt-1">
     <a class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="Architecture">
             Architecture
         </p>
         <span>
@@ -533,7 +531,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/distributed/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Distributed Technology">
             Distributed
         </p>
     </a>
@@ -542,7 +540,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/iot/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Internet of Things">
             IoT
         </p>
     </a>
@@ -551,7 +549,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/architecture/serverless/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Serverless">
             Serverless
         </p>
     </a>
@@ -567,7 +565,7 @@ window.MathJax = {
   <li class="mt-1">
     <a class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="编程语言">
             Language
         </p>
         <span>
@@ -597,7 +595,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/java/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Java">
             Java
         </p>
     </a>
@@ -606,7 +604,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/dsl/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Domain Specific Language">
             DSL
         </p>
     </a>
@@ -615,7 +613,7 @@ window.MathJax = {
 <li class="mt-1">
     <a href="/posts/language/code-generation/"  class="flex items-center">
         
-        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="Code Generation">
             Code Generation
         </p>
     </a>
@@ -631,7 +629,7 @@ window.MathJax = {
   <li class="mt-1">
     <a href="/read/"  class="flex items-center">
         
-        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="阅读">
             Books
         </p>
     </a>
@@ -694,7 +692,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/featured.png);">
+    style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/featured.png);">
     
 
 
@@ -720,7 +718,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      【LeetCode 368】最大整除子集
+      【LeetCode 446】等差数列划分 II - 子序列
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -765,7 +763,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-01 17:16:02 &#43;0800 &#43;0800">1 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>266 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-01 18:16:02 &#43;0800 CST">1 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>125 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1008,7 +1006,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/featured.png"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/featured.png"
         alt=""
       />
       
@@ -1018,7 +1016,7 @@ window.MathJax = {
 
 </p>
 <ul>
-<li>链接：https://leetcode.cn/problems/largest-divisible-subset/description/</li>
+<li>链接：https://leetcode.cn/problems/arithmetic-slices-ii-subsequence/description/</li>
 </ul>
 <h2 class="relative group">难点 
     <div id="难点" class="anchor"></div>
@@ -1030,7 +1028,10 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p>难点在于如何记录答案，最后把最大整除子集输出。幸运的是，题目没有限制输出的字典序，只要输出的是合理答案就可以。</p>
+<p>我们首先考虑至少有两个元素的等差子序列，下文将其称作弱等差子序列。</p>
+<p>由于尾项和公差可以确定一个等差数列，因此我们定义状态 <code>dp[i][d]</code> 表示尾项为 <code>nums[i]</code>，公差为 <code>d</code> 的弱等差子序列的个数。</p>
+<p>我们用一个二重循环去遍历 <code>nums</code> 中的所有元素对 <code>(nums[i], nums[j])</code>，其中 <code>j&lt;i</code>。将 <code>nums[i]</code> 和 <code>nums[j]</code> 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 <code>d=nums[i]-nums[j]</code>。由于公差相同，我们可以将 <code>nums[i]</code> 加到以 <code>nums[j]</code> 为尾项，公差为 <code>d</code> 的弱等差子序列的末尾，这对应着状态转移 <code>dp[i][d]+=dp[j][d]</code>。同时，<code>(nums[i], nums[j])</code> 这一对元素也可以当作一个弱等差子序列，故有状态转移<code>dp[i][d]+=dp[j][d]+1</code></p>
+<p>由于题目要统计的等差子序列至少有三个元素，我们回顾上述二重循环，其中「将 <code>nums[i]</code> 加到以 <code>nums[j]</code> 为尾项，公差为 <code>d</code> 的弱等差子序列的末尾」这一操作，实际上就构成了一个至少有三个元素的等差子序列，因此我们将循环中的 <code>dp[j][d]</code> 累加，即为答案。</p>
 <h3 class="relative group">代码 
     <div id="代码" class="anchor"></div>
     
@@ -1041,38 +1042,26 @@ window.MathJax = {
     </span>        
     
 </h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">largestDivisibleSubset</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="n">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">maxx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="n">dp</span><span class="p">).</span><span class="na">max</span><span class="p">().</span><span class="na">getAsInt</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">maxx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">ans</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">while</span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">ans</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">numberOfArithmeticSlices</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;[]</span> <span class="n">dp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">long</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1L</span> <span class="o">*</span> <span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">].</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">d</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ans</span> <span class="o">+=</span> <span class="n">temp</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">put</span><span class="o">(</span><span class="n">d</span><span class="o">,</span> <span class="n">temp</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">d</span><span class="o">,</span> <span class="mi">0</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">ans</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>
 
 
 
@@ -1086,96 +1075,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/end.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>当然，用题解中的方法也可以，举个例子</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/temp.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>上图中 dp 为 4 的 16，肯定可以整除一个 dp 为 3 的，上面的就是 8，以此类推，得到结果。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">largestDivisibleSubset</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">nums</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 第 1 步：动态规划找出最大子集的个数、最大子集中的最大整数</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">len</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">maxSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">maxVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 题目中说「没有重复元素」很重要</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">maxSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">maxSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">maxVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 第 2 步：倒推获得最大子集</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">maxSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">maxSize</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">maxSize</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">maxVal</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">maxVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">maxSize</span><span class="o">--</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/end1.png"
+        src="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii-%E5%AD%90%E5%BA%8F%E5%88%97/end.png"
         alt=""
       />
       
@@ -1196,8 +1096,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 368】最大整除子集\/index.md"
-        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 368】最大整除子集\/index.md"
+        var oid = "views_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 446】等差数列划分 II - 子序列\/index.md"
+        var oid_likes = "likes_posts\/algorithm\/leetcode算法技巧\/动态规划\/【LeetCode 446】等差数列划分 II - 子序列\/index.md"
       </script>
       
       
@@ -1220,40 +1120,18 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii---%E5%AD%90%E5%BA%8F%E5%88%97/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 446】等差数列划分 II - 子序列</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-03-01 18:16:02 &#43;0800 &#43;0800">1 March 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-354%E4%BF%84%E7%BD%97%E6%96%AF%E5%A5%97%E5%A8%83%E4%BF%A1%E5%B0%81%E9%97%AE%E9%A2%98/">
+            <a class="flex text-right group ml-3" href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 354】俄罗斯套娃信封问题</span
+                  >【LeetCode 368】最大整除子集</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-02-29 17:16:02 &#43;0800 &#43;0800">29 February 2024</time>
+                    <time datetime="2024-03-01 17:16:02 &#43;0800 CST">1 March 2024</time>
                   
                 </span>
               </span>
@@ -1319,7 +1197,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
-            title="">
+            title="TODO">
             
             TODO
           </a>
@@ -1327,7 +1205,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/leetcode/"
-            title="">
+            title="Leetcode">
             
             Leetcode
           </a>
@@ -1335,7 +1213,7 @@ window.MathJax = {
         
         <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
           <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
-            title="">
+            title="Tags">
             
             Tags
           </a>

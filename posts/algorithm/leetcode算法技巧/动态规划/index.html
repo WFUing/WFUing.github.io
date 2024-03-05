@@ -776,6 +776,105 @@ window.MathJax = {
 
 
 
+  <a class="flex flex-wrap article " href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii---%E5%AD%90%E5%BA%8F%E5%88%97/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii---%E5%AD%90%E5%BA%8F%E5%88%97/featured.png);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-446%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E5%88%92%E5%88%86-ii---%E5%AD%90%E5%BA%8F%E5%88%97/">【LeetCode 446】等差数列划分 II - 子序列</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-01 18:16:02 &#43;0800 &#43;0800">1 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>125 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        【LeetCode 446】等差数列划分 II - 子序列题解。我们用一个二重循环去遍历 <code>nums</code> 中的所有元素对 <code>(nums[i], nums[j])</code>，其中 <code>j&lt;i</code>。将 <code>nums[i]</code> 和 <code>nums[j]</code> 分别当作等差数列的尾项和倒数第二项，则该等差数列的公差 <code>d=nums[i]-nums[j]</code>。由于公差相同，我们可以将 <code>nums[i]</code> 加到以 <code>nums[j]</code> 为尾项，公差为 <code>d</code> 的弱等差子序列的末尾，这对应着状态转移 <code>dp[i][d]+=dp[j][d]</code>。同时，<code>(nums[i], nums[j])</code> 这一对元素也可以当作一个弱等差子序列，故有状态转移<code>dp[i][d]+=dp[j][d]+1</code>
+      </div>
+      
+    </div>
+  </a>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a class="flex flex-wrap article " href="/posts/algorithm/leetcode%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/leetcode-368%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">
     
         
