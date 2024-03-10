@@ -101,7 +101,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "373"
+    "wordCount": "371"
   }]
   </script>
 
@@ -899,7 +899,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-10 10:16:02 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>373 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-10 10:16:02 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>371 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1088,7 +1088,6 @@ window.MathJax = {
       </ul>
     </li>
     <li><a href="#device_6-升级内容">Device_6 升级内容</a></li>
-    <li><a href="#关键组件和功能的分类">关键组件和功能的分类</a></li>
     <li><a href="#属性值">属性值</a></li>
   </ul>
 </nav>
@@ -1142,7 +1141,6 @@ window.MathJax = {
       </ul>
     </li>
     <li><a href="#device_6-升级内容">Device_6 升级内容</a></li>
-    <li><a href="#关键组件和功能的分类">关键组件和功能的分类</a></li>
     <li><a href="#属性值">属性值</a></li>
   </ul>
 </nav>
@@ -1672,22 +1670,6 @@ window.MathJax = {
     
 </h2>
 <p>Device_6主要作为一个版本标记，表明设备或TANGO服务支持或兼容至TANGO版本10的特性和API。</p>
-<h2 class="relative group">关键组件和功能的分类 
-    <div id="关键组件和功能的分类" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%85%b3%e9%94%ae%e7%bb%84%e4%bb%b6%e5%92%8c%e5%8a%9f%e8%83%bd%e7%9a%84%e5%88%86%e7%b1%bb" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<ul>
-<li>跟踪上下文传播：定义包括用于传播跟踪上下文的结构 (W3CTraceContextV0)，采用“W3C 跟踪上下文”标准。 这对于分布式系统调用的可观察性和监控非常重要，确保不同组件和服务之间的可追溯性。</li>
-<li>客户端标识 (ClntIdent)：扩展客户端标识机制以包含跟踪上下文以实现可观察性。 这对于识别和跟踪来自不同客户端的请求至关重要，尤其是在分布式环境中。</li>
-<li>LockerLanguage Enum：该枚举用于选择 ClntIdent 联合的编组/解组机制，支持 pre-IDL6 和 IDL6 数据结构。 这使得该接口能够支持不同版本的客户端识别，确保不同版本的TANGO系统之间的兼容性。</li>
-<li>模块化和可扩展性：该 IDL 文件中模块（例如 Tango 模块）的使用以及数据类型和结构的定义演示了设计模块化和可扩展系统的方法。 这种设计允许轻松添加新功能和组件，同时保持向后兼容性。</li>
-</ul>
 <h2 class="relative group">属性值 
     <div id="属性值" class="anchor"></div>
     
@@ -1707,6 +1689,10 @@ window.MathJax = {
 <li>ErrSeverity：枚举错误的严重级别，包括警告、错误和恐慌级别，这有助于确定问题的优先级。</li>
 <li>DevState：列出设备可能的状态，涵盖开、关、移动、故障等常见状态，这对于管理和监控设备操作至关重要。</li>
 <li>DispLevel：区分显示级别或访问级别，例如操作员和专家，可能根据用户的角色控制某些设备功能的可见性或访问。</li>
+<li>跟踪上下文传播：定义包括用于传播跟踪上下文的结构 (W3CTraceContextV0)，采用“W3C 跟踪上下文”标准。 这对于分布式系统调用的可观察性和监控非常重要，确保不同组件和服务之间的可追溯性。</li>
+<li>客户端标识 (ClntIdent)：扩展客户端标识机制以包含跟踪上下文以实现可观察性。 这对于识别和跟踪来自不同客户端的请求至关重要，尤其是在分布式环境中。</li>
+<li>LockerLanguage Enum：该枚举用于选择 ClntIdent 联合的编组/解组机制，支持 pre-IDL6 和 IDL6 数据结构。 这使得该接口能够支持不同版本的客户端识别，确保不同版本的TANGO系统之间的兼容性。</li>
+<li>模块化和可扩展性：该 IDL 文件中模块（例如 Tango 模块）的使用以及数据类型和结构的定义演示了设计模块化和可扩展系统的方法。 这种设计允许轻松添加新功能和组件，同时保持向后兼容性。</li>
 </ul>
 <p><strong>杂项结构</strong></p>
 <ul>
