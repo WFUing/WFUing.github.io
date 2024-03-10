@@ -3,13 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/</loc>
-    <lastmod>2024-03-09T13:43:45+08:00</lastmod>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-03-10T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iot/</loc>
+    <lastmod>2024-03-10T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iot/tango-idl/</loc>
+    <lastmod>2024-03-10T10:16:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-03-10T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/</loc>
     <lastmod>2024-03-09T13:43:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -233,12 +251,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/skills/</loc>
     <lastmod>2024-02-25T10:46:05+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-02-25T09:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -779,12 +791,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/language/java/java-network/http-process/</loc>
     <lastmod>2023-10-30T19:43:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/iot/</loc>
-    <lastmod>2023-10-30T09:16:13+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
