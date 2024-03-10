@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>分布式事务 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="分布式事务 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="事务的多个参与者分布在不同的地方。" />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/distributed/transaction/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.1271c22a557a15f10b5d38d2c87e49503604cfeffebadc1e7c267934e4b9f3ba1b74d81371219f9681dab2141482fc4ed2a8b462b179f0ef43a5f76d0575e85b.js"
+    integrity="sha512-EnHCKlV6FfELXTjSyH5JUDYEz&#43;/&#43;utwefCZ5NOS587obdNgTcSGfloHashQUgvxO0qi0YrF58O9DpfdtBXXoWw==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="分布式事务" />
+<meta property="og:description" content="事务的多个参与者分布在不同的地方。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/posts/architecture/distributed/transaction/" /><meta property="og:image" content="https://WFUing.github.io/posts/architecture/distributed/transaction/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-10T19:07:16+08:00" />
+<meta property="article:modified_time" content="2024-03-10T19:07:16+08:00" />
+
+
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/distributed/transaction/featured.png" /><meta name="twitter:title" content="分布式事务"/>
+<meta name="twitter:description" content="事务的多个参与者分布在不同的地方。"/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "分布式事务",
+    "headline": "分布式事务",
+    
+    "abstract": "事务的多个参与者分布在不同的地方。",
+    "inLanguage": "en",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/distributed\/transaction\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-03-10T19:07:16\u002b08:00",
+    "datePublished": "2024-03-10T19:07:16\u002b08:00",
+    
+    "dateModified": "2024-03-10T19:07:16\u002b08:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "599"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="img/qq.jpg" rel="me" />
+  
+  
+  <link href="img/wx.jpg" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script><body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Blogs
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+          </p>
+        </a>
+        
+        <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Internship Reviews
+          </p>
+        </a>
+        
+        <a href="/posts/design-pattern/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+          </p>
+        </a>
+        
+        <a href="/posts/skills/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Skills
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Architecture
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/architecture/distributed/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Distributed
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iac/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IAC
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iot/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IoT
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/serverless/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Serverless
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Language
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/language/java/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Java
+          </p>
+        </a>
+        
+        <a href="/posts/language/dsl/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            DSL
+          </p>
+        </a>
+        
+        <a href="/posts/language/code-generation/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Blogs
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Internship Reviews
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/design-pattern/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/skills/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Skills
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Architecture
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/distributed/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Distributed
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iac/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IAC
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iot/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IoT
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/serverless/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Serverless
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Language
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/java/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Java
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/dsl/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            DSL
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/code-generation/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/architecture/distributed/transaction/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      分布式事务
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-10 19:07:16 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>599 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a>
+      <ul>
+        <li><a href="#什么是分布式系统">什么是分布式系统</a></li>
+        <li><a href="#什么是事务">什么是事务</a></li>
+        <li><a href="#什么是分布式事务">什么是分布式事务？</a></li>
+      </ul>
+    </li>
+    <li><a href="#cap定理">CAP定理</a>
+      <ul>
+        <li><a href="#c---consistency">C - Consistency</a></li>
+        <li><a href="#a---availability">A - Availability</a></li>
+        <li><a href="#p---partition-tolerance">P - Partition tolerance</a></li>
+        <li><a href="#cap-组合方式">CAP 组合方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#base-理论">Base 理论</a>
+      <ul>
+        <li><a href="#基本可用">基本可用</a></li>
+        <li><a href="#软状态">软状态</a></li>
+        <li><a href="#最终一致">最终一致</a></li>
+      </ul>
+    </li>
+    <li><a href="#分布式事务常见-5-种解决方案">分布式事务常见 5 种解决方案</a>
+      <ul>
+        <li><a href="#2pc二阶段提交">2PC（二阶段提交）</a>
+          <ul>
+            <li><a href="#xa-事务">XA 事务</a></li>
+            <li><a href="#2pc-解决方案">2PC 解决方案</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a>
+      <ul>
+        <li><a href="#什么是分布式系统">什么是分布式系统</a></li>
+        <li><a href="#什么是事务">什么是事务</a></li>
+        <li><a href="#什么是分布式事务">什么是分布式事务？</a></li>
+      </ul>
+    </li>
+    <li><a href="#cap定理">CAP定理</a>
+      <ul>
+        <li><a href="#c---consistency">C - Consistency</a></li>
+        <li><a href="#a---availability">A - Availability</a></li>
+        <li><a href="#p---partition-tolerance">P - Partition tolerance</a></li>
+        <li><a href="#cap-组合方式">CAP 组合方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#base-理论">Base 理论</a>
+      <ul>
+        <li><a href="#基本可用">基本可用</a></li>
+        <li><a href="#软状态">软状态</a></li>
+        <li><a href="#最终一致">最终一致</a></li>
+      </ul>
+    </li>
+    <li><a href="#分布式事务常见-5-种解决方案">分布式事务常见 5 种解决方案</a>
+      <ul>
+        <li><a href="#2pc二阶段提交">2PC（二阶段提交）</a>
+          <ul>
+            <li><a href="#xa-事务">XA 事务</a></li>
+            <li><a href="#2pc-解决方案">2PC 解决方案</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <h2 class="relative group">前言 
+    <div id="前言" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%89%8d%e8%a8%80" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">什么是分布式系统 
+    <div id="什么是分布式系统" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>将硬件或软件组件(服务)分布在不同的网络计算机上，并且通过消息传递进行通信和协调。比如使用工行卡给支付宝充值，工行卡的账户位于工商银行的 db 中，而支付宝账户位于支付宝的 db 中，2 个 db 位于不同的地方。</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>分布性</li>
+<li>对等性
+<ul>
+<li>平等: 无主从之分</li>
+<li>独立: 拥有自己的CPU和内存，独立处理数据</li>
+</ul>
+</li>
+<li>并发性
+<ul>
+<li>外部: 承载多个客户端的并发访问</li>
+<li>内部: 作业(Job)被分解成多个任务(Task)，并发运行在不同的节点上</li>
+</ul>
+</li>
+<li>故障独立性
+<ul>
+<li>部分节点出现故障不影响整个系统的正常使用</li>
+</ul>
+</li>
+</ul>
+<h3 class="relative group">什么是事务 
+    <div id="什么是事务" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%80%e4%b9%88%e6%98%af%e4%ba%8b%e5%8a%a1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>完成某件事情，可能有多个参与者需要执行多个步骤，最终多个步骤要么全部成功，要么全部失败。</p>
+<p>举个例子：微信上 A 给 B 转账 100 元，A 账户减少 100，B 账户增加 100，这就是一个事务，这个操作中要么都成功，要么都失败。</p>
+<p>事务的场景有很多，参与者也是多种多样</p>
+<ol>
+<li>用户注册成功发送邮件，包含 2 个操作：db 中插入用户信息，给用户发送邮件，主要的 2 个参与者：db、邮件服务器</li>
+<li>使用支付宝充值话费，包含 2 个操作：支付宝账户资金减少，手机余额增加，主要的 2 个参与者：支付宝账户、手机号服务商账户</li>
+</ol>
+<p>事务的参与者是多种多样的，不过本文我们主要以 db 中的事务来做说明。</p>
+<p><strong>什么是本地事务？</strong></p>
+<p>本地事务，通俗点理解：即事务中所有操作发生在同一个数据库中的情况。</p>
+<p>比如 A 给 B 转账，A 和 B 的账户位于同一个数据库中。</p>
+<p>通常我们用的都是关系型数据库，比如：MySQL、Oracle、SQL Server，这些数据库默认情况，这些 db 已经实现了事务的功能，即在一个 db 中执行一个事务操作，db 本身就可以确保这个事务的正确性，而不需要我们自己去考虑如何确保事务的正确性。</p>
+<p><strong>数据库事务的 4 大特性</strong></p>
+<ul>
+<li>一致性(Consistency)：事务操作之后的结果和期望的结果是一致的，A 给 B 转账 100，事务结束之后，看到 A 的账户应该减少 100，B 的账户应该增加 100，不会出现其他情况</li>
+<li>原子性(Atomicity)：事务的整个过程如原子操作一样，最终要么全部成功，或者全部失败，这个原子性是从最终结果来看的，从最终结果来看这个过程是不可分割的。</li>
+<li>隔离性(Isolation)：一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</li>
+<li>持久性(Durability)：一个事务一旦提交，他对数据库中数据的改变就应该是永久性的。当事务提交之后，数据会持久化到硬盘，修改是永久性的。</li>
+</ul>
+<h3 class="relative group">什么是分布式事务？ 
+    <div id="什么是分布式事务" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%88%86%e5%b8%83%e5%bc%8f%e4%ba%8b%e5%8a%a1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>分布式、事务这 2 个概念大家都理解了，那么分布式事务很容易理解了：事务的多个参与者分布在不同的地方。</p>
+<p>单个 db 中我们很容易确保事务的正确性，但是当事务的参与者位于多个 db 中的时候，如何确保事务的正确性呢？</p>
+<p>比如：A 给 B 转账，A 位于 DB1 中，B 位于 DB2 中</p>
+<pre tabindex="0"><code>step1.通过网络，给DB1发送指令：给A账户减少100
+step2.通过网络，给DB2发送指令：给B账户增加100
+</code></pre><p>step1 成功之后，执行 step2 的时，网络出现故障，导致 step2 执行失败，最终：A 减少了 100，B 却没有增加 100，最终的结果和期望的结果不一致，导致了事务的失败。</p>
+<p>在介绍分布式事务的解决方案之前，我们需要先了解另外 2 个概念：CAP 和 Base 理论，这 2 个理论为分布式事务的解决提供了依据。</p>
+<h2 class="relative group">CAP定理 
+    <div id="cap定理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cap%e5%ae%9a%e7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>CAP 是 Consistency、Availability、Partition tolerance 三个词语的缩写，分别表示一致性、可用性、分区容忍性。</p>
+<p>下边我们分别来解释：</p>
+<p>为了方便对 CAP 理论的理解，我们结合电商系统中的一些业务场景来理解 CAP。</p>
+<p>如下图，是商品信息管理的执行流程：</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+      <figure >
+        
+          
+          <img
+            class="my-0 rounded-md"
+            src="/posts/architecture/distributed/transaction/cap-exam.png"
+            alt=""
+          />
+          
+        
+        
+      </figure>
+    
+  
+
+</center>
+<p>整体执行流程如下：</p>
+<ol>
+<li>商品服务请求主数据库写入商品信息（添加商品、修改商品、删除商品）</li>
+<li>主数据库向商品服务响应写入成功。</li>
+<li>商品服务请求从数据库读取商品信息。</li>
+</ol>
+<h3 class="relative group">C - Consistency 
+    <div id="c---consistency" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#c---consistency" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>一致性是指写操作后的读操作可以读取到最新的数据状态，当数据分布在多个节点上，从任意结点读取到的数据都是最新的状态。</p>
+<p>上图中，商品信息的读写要满足一致性就是要实现如下目标：</p>
+<ol>
+<li>商品服务写入主数据库成功，则向从数据库查询新数据也成功。</li>
+<li>商品服务写入主数据库失败，则向从数据库查询新数据也失败。</li>
+</ol>
+<p>如何实现一致性？</p>
+<ol>
+<li>写入主数据库后要将数据同步到从数据库。</li>
+<li>写入主数据库后，在向从数据库同步期间要将从数据库锁定，待同步完成后再释放锁，以免在新数据写入从库的过程中，客户端向从数据库查询到旧的数据。</li>
+</ol>
+<p>分布式系统一致性的特点：</p>
+<ol>
+<li>由于存在数据同步的过程，写操作的响应会有一定的延迟。</li>
+<li>为了保证数据一致性会对资源暂时锁定，待数据同步完成释放锁定资源。</li>
+<li>如果请求数据同步失败的结点则会返回错误信息，一定不会返回旧数据。</li>
+</ol>
+<h3 class="relative group">A - Availability 
+    <div id="a---availability" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#a---availability" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>可用性是指任何事务操作都可以得到响应结果，且不会出现响应超时或响应错误。</p>
+<p>上图中，商品信息读取满足可用性就是要实现如下目标：</p>
+<ol>
+<li>从数据库接收到数据查询的请求则立即能够响应数据查询结果。</li>
+<li>从数据库不允许出现响应超时或响应错误。</li>
+</ol>
+<p>如何实现可用性？</p>
+<ol>
+<li>写入主数据库后要将数据同步到从数据库。</li>
+<li>由于要保证从数据库的可用性，不可将从数据库中的资源进行锁定。</li>
+<li>即使数据还没有同步过来，从数据库也要返回要查询的数据，哪怕是旧数据，如果连旧数据也没有则可以按照约定返回一个默认信息，但不能返回错误或响应超时。</li>
+</ol>
+<p>分布式系统可用性的特点：</p>
+<ol>
+<li>所有请求都有响应，且不会出现响应超时或响应错误。</li>
+</ol>
+<h3 class="relative group">P - Partition tolerance 
+    <div id="p---partition-tolerance" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#p---partition-tolerance" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>通常分布式系统的各个结点部署在不同的子网，这就是网络分区，不可避免的会出现由于网络问题而导致结点之间通信失败，此时仍可对外提供服务，这叫分区容忍性。</p>
+<p>上图中，商品信息读写满足分区容忍性就是要实现如下目标：</p>
+<ol>
+<li>主数据库向从数据库同步数据失败不影响读写操作。</li>
+<li>其一个结点挂掉不影响另一个结点对外提供服务。</li>
+</ol>
+<p>如何实现分区容忍性？</p>
+<ol>
+<li>尽量使用异步取代同步操作，例如使用异步方式将数据从主数据库同步到从数据，这样结点之间能有效的实现松耦合。</li>
+<li>添加从数据库结点，其中一个从结点挂掉其它从结点提供服务。</li>
+</ol>
+<p>分布式分区容忍性的特点：</p>
+<ol>
+<li>分区容忍性分是布式系统具备的基本能力</li>
+</ol>
+<h3 class="relative group">CAP 组合方式 
+    <div id="cap-组合方式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#cap-%e7%bb%84%e5%90%88%e6%96%b9%e5%bc%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p><strong>1、上边商品管理的例子是否同时具备 CAP 呢？</strong></p>
+<p><strong>在所有分布式事务场景中不会同时具备 CAP 三个特性，因为在具备了 P 的前提下 C 和 A 是不能共存的。</strong></p>
+<p>比如：</p>
+<p>下图满足了 P 即表示实现分区容忍：</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+      <figure >
+        
+          
+          <img
+            class="my-0 rounded-md"
+            src="/posts/architecture/distributed/transaction/cap-exam.png"
+            alt=""
+          />
+          
+        
+        
+      </figure>
+    
+  
+
+</center>
+<p>本图分区容忍的含义是：</p>
+<ol>
+<li>主数据库通过网络向从数据同步数据，可以认为主从数据库部署在不同的分区，通过网络进行交互。</li>
+<li>当主数据库和从数据库之间的网络出现问题不影响主数据库和从数据库对外提供服务。</li>
+<li>其一个结点挂掉不影响另一个结点对外提供服务。</li>
+</ol>
+<p>如果要实现 C 则必须保证数据一致性，在数据同步的时候为防止向从数据库查询不一致的数据则需要将从数据库数据锁定，待同步完成后解锁，如果同步失败从数据库要返回错误信息或超时信息。</p>
+<p>如果要实现 A 则必须保证数据可用性，不管任何时候都可以向从数据查询数据，则不会响应超时或返回错误信息。</p>
+<p><strong>通过分析发现在满足 P 的前提下 C 和 A 存在矛盾性，如下：</strong></p>
+<p>网络分区的情况下，主库的数据无法同步给从库，为了确保外面看到数据是一致的，此时从库不能让外部访问，只能让主库对外提供服务，从库失去了可用性。</p>
+<p>网络分区的情况下，主库的数据无法同步给从库，此时 2 个库数据是不一致的，如果此允许 2 个库都可以对外提供服务（可用性），那么访问到的数据是不一致的。</p>
+<p>所以 CAP 无法同时满足。</p>
+<p><strong>2、CAP 有哪些组合方式呢？</strong></p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./cap.png" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>所以在生产中对分布式事务处理时要根据需求来确定满足 CAP 的哪两个方面。</p>
+<p><strong>1）AP：</strong></p>
+<p>放弃一致性，追求分区容忍性和可用性。这是很多分布式系统设计时的选择。</p>
+<p>例如：上边的商品管理，完全可以实现 AP，前提是只要用户可以接受所查询的到数据在一定时间内不是最新的即可。</p>
+<p>通常实现 AP 都会保证最终一致性，后面讲的 BASE 理论就是根据 AP 来扩展的，一些业务场景 比如：订单退款，今日退款成功，明日账户到账，只要用户可以接受在一定时间内到账即可。</p>
+<p><strong>2）CP：</strong></p>
+<p>放弃可用性，追求一致性和分区容错性，我们的 zookeeper 其实就是追求的强一致。</p>
+<p><strong>3）CA：</strong></p>
+<p>放弃分区容忍性，即不进行分区，不考虑由于网络不通或结点挂掉的问题，则可以实现一致性和可用性。</p>
+<p>那么系统将不是一个标准的分布式系统，我们最常用的关系型数据就满足了 CA。</p>
+<p>上边的商品管理，如果要实现 CA 则架构如下：</p>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+      <figure>
+        <img class="my-0 rounded-md" src="./ca.png" alt="" />
+        
+      </figure>
+    
+  
+
+</center>
+<p>主数据库和从数据库中间不再进行数据同步，数据库可以响应每次的查询请求，通过事务隔离级别实现每个查询请求都可以返回最新的数据。</p>
+<p>CAP 是一个已经被证实的理论：一个分布式系统最多只能同时满足一致性（Consistency）、可用性（Availability）和分区容忍性（Partition tolerance）这三项中的两项。它可以作为我们进行架构设计、技术选型的考量标准。对于多数大型互联网应用的场景，结点众多、部署分散，而且现在的集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到 N 个 9（99.99..%），并要达到良好的响应性能来提高用户体验，因此一般都会做出如下选择：保证 P 和 A，舍弃 C 强一致，保证最终一致性</p>
+<h2 class="relative group">Base 理论 
+    <div id="base-理论" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#base-%e7%90%86%e8%ae%ba" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>BASE 是 Basically Available（基本可用）、Soft state（软状态）和 Eventually consistent（最终一致性）三个短语的缩写。BASE 理论是对 CAP 中 AP 的一个扩展，通过牺牲强一致性来获得可用性，当出现故障允许部分不可用但要保证核心功能可用，允许数据在一段时间内是不一致的，但最终达到一致状态。满足 BASE 理论的事务，我们称之为“柔性事务”。</p>
+<h3 class="relative group">基本可用 
+    <div id="基本可用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e6%9c%ac%e5%8f%af%e7%94%a8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>分布式系统在出现故障时，允许损失部分可用功能，保证核心功能可用。如，电商网站交易付款出现问题了，商品依然可以正常浏览。</p>
+<h3 class="relative group">软状态 
+    <div id="软状态" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%bd%af%e7%8a%b6%e6%80%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>由于不要求强一致性，所以 BASE 允许系统中存在中间状态（也叫软状态），这个状态不影响系统可用性，如订单的&quot;支付中&quot;、“数据同步中”等状态，待数据最终一致后状态改为“成功”状态。</p>
+<h3 class="relative group">最终一致 
+    <div id="最终一致" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9c%80%e7%bb%88%e4%b8%80%e8%87%b4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>最终一致是指经过一段时间后，所有节点数据都将会达到一致。如订单的&quot;支付中&quot;状态，最终会变为&quot;支付成功&quot;或者&quot;支付失败&quot;，使订单状态与实际交易结果达成一致，但需要一定时间的延迟、等待。</p>
+<h2 class="relative group">分布式事务常见 5 种解决方案 
+    <div id="分布式事务常见-5-种解决方案" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e4%ba%8b%e5%8a%a1%e5%b8%b8%e8%a7%81-5-%e7%a7%8d%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>方案 1：2PC（二阶段提交）</li>
+<li>方案 2：3PC（三阶段提交）</li>
+<li>方案 3：TCC</li>
+<li>方案 4：可靠消息</li>
+<li>方案 5：最大努力通知型</li>
+</ol>
+<p>下面依次来介绍这 5 种方案。</p>
+<h3 class="relative group">2PC（二阶段提交） 
+    <div id="2pc二阶段提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2pc%e4%ba%8c%e9%98%b6%e6%ae%b5%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>2PC 即两阶段提交，是将整个事务流程分为两个阶段，准备阶段（Prepare phase）、提交阶段（commit phase），2 是指两个阶段，P 是指准备阶段，C 是指提交阶段。</p>
+<p>2PC 中主要的 2 个角色：</p>
+<ul>
+<li>事务协调者</li>
+<li>事务参与者</li>
+</ul>
+<p><strong>准备阶段</strong></p>
+<p>事务协调者给每个事务参与者发送 prepare 消息，每个参在本地执行本地事务但是不要提交事务（此时事务操作的资源可能被锁定），然后给协调者返回 yes 或者 no 的消息。</p>
+<p><strong>提交阶段</strong></p>
+<p>准备阶段中所有参与者返回 yes，此时事务协调者会给每个事务参与者发送 commit 消息，参与者接收到 commit 消息之后，会对本地事务执行提交操作。</p>
+<p>若准备阶段中有参与者返回 no，或者参与者响应超时（比如网络原因，导致事务协调者和事务参与者之间通讯故障），此时事务协调者会给每个事务参与者发送 rollback 消息，参与者接收到 rollback 消息之后，会对本地事务执行回滚操作。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/transaction/2pc.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>2pc 中的一些规则</strong></p>
+<ol>
+<li>阶段 2 commit 的条件：阶段 1 中所有的参与者返回 yes</li>
+<li>阶段 2 rollback 的条件，2 种情况：阶段 1 中任意参与者返回 no 时，或者阶段 1 中任意参与者响应超时</li>
+<li>当参与者 prepare 可以成功，那么给参与者发送 commit 也一定可以成功，发送 rollback 一定可以回滚</li>
+<li>2PC 中事务协调者这边有超时机制，即在阶段 1 中，协调者给参与者发送消息，一直没有回应，导致超时，此时，直接执行第二阶段 rollback；而协调者这边并没有超时机器，比如所有参与者阶段 1 执行完毕了，然后协调者挂了，此时参与者只能一直等了，干等。</li>
+</ol>
+<p><strong>2PC 存在的问题</strong></p>
+<ul>
+<li>当阶段一都执行完毕之后，参与者本地事务执行了但是还未提交，此时参与者本地事务中的资源处于锁定状态的，若此时协调者挂了，会导致参与者本地事务锁住的资源无法释放，而直接影响到其他业务的执行。</li>
+<li>比如参与者 1 中去对商品 1 减库存，商品 1 的库存记录会被上锁，若此时其他业务也需要修改这条记录，直接会被阻塞，导致无法执行。</li>
+<li>2PC 有性能问题：比如事务中有 10 个参与者，参与者 1 在阶段 1 中会锁定本地资源，然后等待其他 9 个参与者执行完毕阶段一，然后参与者 1 收到事务协调器发送的 commit 或者 rollback 之后，才会释放资源，参与者 1 需要等待 9 个参与者，导致锁定资源的时间太长，会影响系统的并发量。</li>
+<li>协调者有单点故障：当阶段 1 执行完毕之后，协调者挂了，此时参与者懵了，只能一直等待，这个可以通过协调者高可用来解决，后面讲到的 3pc 中解决了这个问题。</li>
+<li>事务不一致的问题：阶段 2 中部分参与者收到了 commit 信息，此时协调者挂了或者网络问题，导致其他协调者无法收到 commit 请求，这个过程中，多个协调者中数据是不一致的。解决方式：协调者、参与者要高可用，协调者支持 2PC 重试，2PC 中的 2 个阶段需要支持幂等。</li>
+</ul>
+<h4 class="relative group">XA 事务 
+    <div id="xa-事务" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#xa-%e4%ba%8b%e5%8a%a1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>XA（eXtended Architecture）是指由 X/Open 组织提出的分布式交易处理的规范。XA 是一个分布式事务协议，由 Tuxedo 提出，所以分布式事务也称为 XA 事务。</p>
+<p>XA 协议主要定义了事务管理器 TM（Transaction Manager，协调者）和资源管理器 RM（Resource Manager，参与者）之间的接口。</p>
+<p>其中，资源管理器往往由数据库实现，如 Oracle、DB2、MySQL，这些商业数据库都实现了 XA 接口，而事务管理器作为全局的调度者，负责各个本地资源的提交和回滚。</p>
+<p>XA 事务是基于两阶段提交（Two-phaseCommit，2PC）协议实现的，可以保证数据的一致性，许多分布式关系型数据管理系统都采用此协议来完成分布式。阶段一为准备阶段，即所有的参与者准备执行事务并锁住需要的资源。当参与者 Ready 时，向 TM 汇报自己已经准备好。阶段二为提交阶段。当 TM 确认所有参与者都 Ready 后，向所有参与者发送 COMMIT 命令。</p>
+<p>说的简单点：<strong>XA 就是 2PC 在数据中的一种实现。</strong></p>
+<p>mysql 大家都用过，普通事务过程：</p>
+<pre tabindex="0"><code>start transaction; //打开事务
+执行事务操作
+commit|rollback; // 提交或者回滚事务
+</code></pre><p>上面事务操作中，若当前连接未发送 commit 或者 rollback 操作，此时连接断掉或者 mysql 重启了，上面的事务会被自动回滚。</p>
+<p>mysql 中 xa 的语法：</p>
+<pre tabindex="0"><code>XA {START|BEGIN} xid [JOIN|RESUME]   //开启XA事务，如果使用的是XA START而不是XA BEGIN，那么不支持[JOIN|RESUME]，xid是一个唯一值，表示事务分支标识符
+XA END xid [SUSPEND [FOR MIGRATE]]   //结束一个XA事务，不支持[SUSPEND [FOR MIGRATE]]
+XA PREPARE xid 准备提交
+XA COMMIT xid [ONE PHASE] //提交，如果使用了ONE PHASE，则表示使用一阶段提交。两阶段提交协议中，如果只有一个RM参与，那么可以优化为一阶段提交
+XA ROLLBACK xid  //回滚
+XA RECOVER [CONVERT XID]  //列出所有处于PREPARE阶段的XA事务
+</code></pre><p>如：</p>
+<pre tabindex="0"><code>xa start &#39;xa-1&#39;;
+执行事务操作;
+xa prepare &#39;xa-1&#39;; //阶段1，此时事务操作的资源被锁住，事务未提交
+xa commit | rollback;//阶段2
+</code></pre><p>xa 事务和普通事务有点区别，上面这个 xa 事务有个标识<code>xa-1</code>，当<code>xa-1</code>prepare 之后，如果此时连接断掉或者 mysql 重启了，这个事务还是处于prepare阶段，mysql 重启或者调用者重新连接 mysql 之后，可以拿着这个事务标识<code>xa-1</code>继续发送xa commit |rollback来结束这个事务。</p>
+<p>大家可以在 mysql 中创建几个 db，然后通过上面的 xa 脚本试试两阶段提交，感受一下过程。</p>
+<p><strong>XA 中事务协调器设计要点</strong></p>
+<p>XA 中，事务参与者，比如常见的一些 db，已经实现了 2PC 的功能，但是协调器需要自己来开发，协调器的一些设计要点：</p>
+<ol>
+<li>生成全局唯一 XA 事务 id 记录，并且记录下来</li>
+<li>事务协调器需要有重试的功能，对于中间阶段操作异常的，通过不断的重试让事务最终能够完成</li>
+<li>协调器会有重试操作，所以需确保 2pc 中每个阶段都是幂等的</li>
+</ol>
+<h4 class="relative group">2PC 解决方案 
+    <div id="2pc-解决方案" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#2pc-%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>Seata：Seata 是由阿里中间件团队发起的开源项目 Fescar，后更名为 Seata，它是一个是开源的分布式事务框架，这个框架支持 2PC。</li>
+<li>atomikos+jta：jta 是 java 中对分布式事务制定的接口规范，atomikos 是 jta 的一种实现，内部是依靠 XA 的方式来实现的，如果事务参与者都自测 XA 事务，可以通过这种方式来解决，比如参与者是：mysql、oracle、sqlserver，可以使用采用这种方式；不过性能方面是值得大家考虑的一个问题。</li>
+<li>开发者自己实现 ：大家对 2pc 过程了解之后，可以自己开发一个，可以去挑战一下。</li>
+</ol>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/architecture\/distributed\/transaction\/index.md"
+        var oid_likes = "likes_posts\/architecture\/distributed\/transaction\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/distributed/ceph/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Ceph集群部署</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2023-12-05 09:46:05 &#43;0800 &#43;0800">5 December 2023</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
+            title="">
+            
+            TODO
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/leetcode/"
+            title="">
+            
+            Leetcode
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="">
+            
+            Tags
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
