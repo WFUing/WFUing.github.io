@@ -9,6 +9,26 @@
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>进程间通讯</title>
+      <link>https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF/</link>
+      <pubDate>Mon, 11 Mar 2024 19:07:16 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF/</guid>
+      <description>进程间通讯指不同进程之间交换数据或信息的过程。常用方法包括管道、共享内存、消息队列和套接字等。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF/featured.png" />
+    </item>
+    
+    <item>
+      <title>进程与线程的基本知识</title>
+      <link>https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Mon, 11 Mar 2024 10:07:16 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</guid>
+      <description>进程与线程的基本知识</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/featured.png" />
+    </item>
+    
+    <item>
       <title>分布式事务</title>
       <link>https://WFUing.github.io/posts/architecture/distributed/transaction/</link>
       <pubDate>Sun, 10 Mar 2024 19:07:16 +0800</pubDate>
@@ -1630,12 +1650,12 @@
     
     <item>
       <title>45 个常用Linux 命令，让你轻松玩转Linux！</title>
-      <link>https://WFUing.github.io/posts/os/linux-instructions/</link>
+      <link>https://WFUing.github.io/posts/reviews/os/linux-instructions/</link>
       <pubDate>Thu, 12 Oct 2023 19:43:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/os/linux-instructions/</guid>
+      <guid>https://WFUing.github.io/posts/reviews/os/linux-instructions/</guid>
       <description>Linux 的命令确实非常多，然而熟悉 Linux 的人从来不会因为 Linux 的命令太多而烦恼。因为我们仅仅只需要掌握常用命令，就完全可以驾驭 Linux。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/os/linux-instructions/featured.jpeg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/reviews/os/linux-instructions/featured.jpeg" />
     </item>
     
     <item>
