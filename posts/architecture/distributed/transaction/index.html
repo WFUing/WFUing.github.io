@@ -104,7 +104,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "599"
+    "wordCount": "1371"
   }]
   </script>
 
@@ -902,7 +902,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-10 19:07:16 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>599 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-03-10 19:07:16 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1371 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
   
 
   
@@ -1084,6 +1084,28 @@ window.MathJax = {
         </li>
       </ul>
     </li>
+    <li><a href="#3pc三阶段提交">3PC（三阶段提交）</a>
+      <ul>
+        <li><a href="#回顾-2pc">回顾 2PC</a></li>
+        <li><a href="#3pc">3PC</a>
+          <ul>
+            <li><a href="#例子王者荣耀-3pc-过程">例子：王者荣耀 3PC 过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#tcc">TCC</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#tcc-常见框架">TCC 常见框架</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#可靠消息">可靠消息</a></li>
+    <li><a href="#最大努力通知型">最大努力通知型</a></li>
+    <li><a href="#分布式事务对比分析">分布式事务对比分析</a></li>
   </ul>
 </nav>
   </div>
@@ -1129,6 +1151,28 @@ window.MathJax = {
         </li>
       </ul>
     </li>
+    <li><a href="#3pc三阶段提交">3PC（三阶段提交）</a>
+      <ul>
+        <li><a href="#回顾-2pc">回顾 2PC</a></li>
+        <li><a href="#3pc">3PC</a>
+          <ul>
+            <li><a href="#例子王者荣耀-3pc-过程">例子：王者荣耀 3PC 过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#tcc">TCC</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#tcc-常见框架">TCC 常见框架</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#可靠消息">可靠消息</a></li>
+    <li><a href="#最大努力通知型">最大努力通知型</a></li>
+    <li><a href="#分布式事务对比分析">分布式事务对比分析</a></li>
   </ul>
 </nav>
   </div>
@@ -1688,6 +1732,541 @@ xa commit | rollback;//阶段2
 <li>atomikos+jta：jta 是 java 中对分布式事务制定的接口规范，atomikos 是 jta 的一种实现，内部是依靠 XA 的方式来实现的，如果事务参与者都自测 XA 事务，可以通过这种方式来解决，比如参与者是：mysql、oracle、sqlserver，可以使用采用这种方式；不过性能方面是值得大家考虑的一个问题。</li>
 <li>开发者自己实现 ：大家对 2pc 过程了解之后，可以自己开发一个，可以去挑战一下。</li>
 </ol>
+<h2 class="relative group">3PC（三阶段提交） 
+    <div id="3pc三阶段提交" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3pc%e4%b8%89%e9%98%b6%e6%ae%b5%e6%8f%90%e4%ba%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">回顾 2PC 
+    <div id="回顾-2pc" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9b%9e%e9%a1%be-2pc" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>举个例子，A 邀请 B、C 一起打王者荣耀，2PC 过程如下：</p>
+<p>A 是协调者，B、C 是参与者。</p>
+<p><strong>阶段 1（prepare 阶段）</strong></p>
+<p>step1-1：A 微信 B</p>
+<pre tabindex="0"><code>step1-1-1：A-&gt;B：有空么，我们约C一起王者荣耀
+step1-1-2：B-&gt;A：有空
+step1-1-3：A-&gt;B：那你现在就打开电脑，登录王者荣耀，你等着，我去通知C，然后开个房间
+step1-1-4：B-&gt;A：已登录
+</code></pre><p>step1-2：A 微信 C</p>
+<pre tabindex="0"><code>step1-2-1：A-&gt;C：有空么，我约了B一起王者荣耀
+step1-2-2：C-&gt;A：有空
+step1-2-3：A-&gt;C：那你现在就打开电脑，登录王者荣耀，你等着，我去开个房间
+step1-2-4：C-&gt;A：已登录
+</code></pre><p><strong>阶段 2（commit 阶段）</strong></p>
+<p>此时 B、C 都已经登录王者容易了，然后 A 登录王者荣耀开了个房间</p>
+<p>step2-1：A 微信 B</p>
+<pre tabindex="0"><code>step2-1-1：A-&gt;B：房间号是xxx，你可以进来了
+step2-1-2：B-&gt;A：我的，我进来了
+</code></pre><p>step2-2：A 微信 C</p>
+<pre tabindex="0"><code>step2-2-1：A-&gt;C：房间号是xxx，你可以进来了
+step2-2-2：C-&gt;A：我的，我进来了
+</code></pre><p>然后 3 个人开始爽歪歪了。</p>
+<p><strong>2PC 一些异常情况</strong></p>
+<ul>
+<li>情况 1：step1-2-4 超时，导致 A 无法收到 C 已登录的消息
+<ul>
+<li>此时 A 不知道 C 是什么情况，<strong>但是 2PC 中协调者这边有超时机制</strong>，如果协调者给参与者发送信息，长时间得不到回应时，将作为失败处理，此时 A 会给 B 和 C 发送 rollback 消息，让 B 和 C 都进行回滚，即取消游戏。</li>
+</ul>
+</li>
+<li>情况 2：step1-1 之后，协调者 A 挂了
+<ul>
+<li>此时 B 已经打开电脑在那等着了，却始终不见 A、C 的踪影，相当苦恼，也不知道还要等多久，苦逼！</li>
+</ul>
+</li>
+<li>情况 3：阶段 1 之后，协调者 A 挂了
+<ul>
+<li>此时 B、C 登录账号了，也等了十几分钟了，就是不见 A 的踪影，也只能干等着，什么事情也做不了。</li>
+</ul>
+</li>
+<li>情况 4：step2-2-1 出现问题，C 网络故障
+<ul>
+<li>此时 C 收不到 A 发送过来的消息，结果是导致 A 和 B 都已经进入房间了，就缺 C 了，游戏无法正常开始，导致最终的结果和期望的结果无法一致（期望 3 个人一起玩游戏，实际上房间里只有 2 个人）</li>
+</ul>
+</li>
+</ul>
+<p><strong>总的来说，2PC 主要有 2 个问题</strong></p>
+<ul>
+<li><strong>参与者干等的问题</strong>：参与者只能按照协调者的指令办事，当收不到协调者的指令的时候，参与者只能坐等，在 db 中的效果，操作的数据会被一直锁着，导致其他操作者被阻塞。</li>
+<li><strong>数据不一致的问题</strong>：commit 阶段，协调者或者参与者挂掉，都可能导致最终数据不一致的问题。</li>
+</ul>
+<h3 class="relative group">3PC 
+    <div id="3pc" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3pc" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>3PC 主要解决了 2PC 中 commit 阶段参与者干等的问题，2PC 中 commit 阶段，若协调者挂了，参与者不知道如何走了。2PC 中只有协调者这边有超时机制，而 3PC 中，协调者和参与者这边引入了超时机制，commit 阶段，若参与超过一定的时间收不到 commit 命令，参与者会自动提交，从而解决了 2PC 中资源长时间被锁的问题。</p>
+<p>3PC 相对于 2PC，多了一个阶段，相当于把 2PC 的准备阶段再次一分为二，这样三阶段提交就有CanCommit、PreCommit、DoCommit三个阶段。</p>
+<p><strong>阶段 1：CanCommit 阶段</strong></p>
+<p>之前 2PC 的一阶段是本地事务执行结束后，最后不 Commit，等其它服务都执行结束并返回 Yes，由协调者发出 commit 才真正执行 commit，而这里的 CanCommit 指的是 尝试获取数据库锁 如果可以，就返回 Yes。</p>
+<p>这阶段主要分为 2 步</p>
+<ul>
+<li>事务询问：协调者向参与者发送 CanCommit 请求。询问是否可以执行事务提交操作。然后开始等待参与的响应。</li>
+<li>响应反馈：参与者接到 CanCommit 请求之后，正常情况下，如果其自身认为可以顺利执行事务，则返回 Yes 响应，并进入预备状态。否则反馈 No，然后事务就结束了，此时参与者并没有执行任务任何操作。</li>
+</ul>
+<p><strong>阶段 2：PreCommit 阶段</strong></p>
+<p>在阶段一中，如果所有的参与者都返回 Yes 的话，那么就会进入 PreCommit 阶段进行事务预提交。这里的 PreCommit 阶段 跟上面的第一阶段是差不多的，只不过这里 <strong>协调者和参与者都引入了超时机制</strong>（2PC 中只有协调者可以超时，参与者没有超时机制）。</p>
+<p><strong>阶段 3：DoCommit 阶段</strong></p>
+<p>这里跟 2pc 的阶段二是差不多的。</p>
+<h4 class="relative group">例子：王者荣耀 3PC 过程 
+    <div id="例子王者荣耀-3pc-过程" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%be%8b%e5%ad%90%e7%8e%8b%e8%80%85%e8%8d%a3%e8%80%80-3pc-%e8%bf%87%e7%a8%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p><strong>正常的过程</strong></p>
+<p><strong>阶段 1（CanCommit 阶段）</strong></p>
+<p>step1-1：A 微信 B</p>
+<pre tabindex="0"><code>step1-1-1：A-&gt;B：有空么，我们约C一起王者荣耀
+step1-1-2：B-&gt;A：有空
+</code></pre><p>step1-2：A 微信 C</p>
+<pre tabindex="0"><code>step1-1-1：A-&gt;B：有空么，我们约B一起王者荣耀
+step1-1-2：B-&gt;A：有空
+</code></pre><p><strong>阶段 2（PreCommit 阶段）</strong></p>
+<p>step2-1：A 微信 B</p>
+<pre tabindex="0"><code>step2-1-1：A-&gt;B：你现在就打开电脑，登录王者荣耀，等我消息，如果10分钟没消息，你就自己开个房间玩吧（参与者超时机制）。
+step2-1-2：B-&gt;A：已登录
+</code></pre><p>step2-2：A 微信 C</p>
+<pre tabindex="0"><code>step2-2-1：A-&gt;C：那你现在就打开电脑，登录王者荣耀，等我消息，如果10分钟没消息，你就自己开个房间玩吧（参与者超时机制）。
+step2-2-2：C-&gt;A：已登录
+</code></pre><p><strong>阶段 3（DoCommit 阶段）</strong></p>
+<p>此时 B、C 都已经登录王者荣耀了，然后 A 登录王者荣耀开了个房间</p>
+<p>step3-1：A 微信 B</p>
+<pre tabindex="0"><code>step3-1-1：A-&gt;B：房间号是xxx，你可以进来了
+step3-1-2：B-&gt;A：我的，我进来了
+</code></pre><p>step3-2：A 微信 C</p>
+<pre tabindex="0"><code>step3-2-1：A-&gt;C：房间号是xxx，你可以进来了
+step3-2-2：C-&gt;A：我的，我进来了
+</code></pre><p>然后 3 个人开始爽歪歪了。</p>
+<p><strong>异常的几种情况</strong></p>
+<ul>
+<li>阶段 1 异常：此时并没有进行事务操作，所以这个阶段出问题了，可以直接结束事务。</li>
+<li>阶段 2，参与者挂了：参与者挂了没关系，协调者直接通知其他参与者回滚。</li>
+<li>阶段 2，协调者挂了：协调者挂了，由于参与者引入了超时机制，所以参与者并不会无限期等待，等待一定的时间之后，会自动提交本地事务。虽然这个超时机制解决了无限等待的问题，却并没有解决一致性的问题，比如上面 3PC 中step2-1：A微信B之后，协调者挂了，此时 A 已经登录了，但是 C 未收到 A 要求登录的消息，超时 10 分钟之后，A 自己去开了一个游戏玩起来了，结果和期望的结果不一致了。</li>
+</ul>
+<p><strong>3PC 存在的问题</strong></p>
+<p>虽然解决了 2PC 中参与者长时间阻塞的问题（资源长时间无法释放的问题），但是并没有解决一致性的问题。</p>
+<p>有没有办法解决这些问题？</p>
+<p>有，TCC，接下来，我们来看 TCC。</p>
+<h2 class="relative group">TCC 
+    <div id="tcc" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tcc" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>分布式事务中的几个角色</p>
+<ul>
+<li>TM：事务管理器，可以理解为分布式事务的发起者</li>
+<li>分支事务：事务中的多个参与者，可以理解为一个个独立的事务。</li>
+</ul>
+<p>TCC 是 Try、Confirm、Cancel 三个词语的缩写，TCC 要求每个分支事务实现三个操作：预处理 Try、确认 Confirm、撤销 Cancel。</p>
+<p>Try 操作做业务检查及资源预留，Confirm 做业务确认操作，Cancel 实现一个与 Try 相反的操作即回滚操作。</p>
+<p>TM 首先发起所有的分支事务的 try 操作，任何一个分支事务的 try 操作执行失败，TM 将会发起所有分支事务的 Cancel 操作，若 try 操作全部成功，TM 将会发起所有分支事务的 Confirm 操作，其中 Confirm/Cancel 操作若执行失败，TM 会进行重试。</p>
+<p><strong>正常流程</strong></p>
+<ul>
+<li>try 阶段：依次调用参与者的 try 方法，都返回成功</li>
+<li>confirm 阶段：依次调用参与者的 confirm 方法，都返回成功</li>
+<li>事务完成。</li>
+</ul>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+      <figure >
+        
+          
+          <img
+            class="my-0 rounded-md"
+            src="/posts/architecture/distributed/transaction/tcc.png"
+            alt=""
+          />
+          
+        
+        
+      </figure>
+    
+  
+
+</center>
+<p><strong>异常流程</strong></p>
+<ul>
+<li>try 阶段：依次调用参与者的 try 方法，前面 2 个参与者 try 方法返回 yes，而参与者 3 返回 no</li>
+<li>cancel 阶段：对已经成功的参与者执行 cancel 操作，注意了：cancel 阶段参与者调用的顺序和 try 阶段参与者的顺序相反，即先调用参与者 2 的 cancel，然后调用参与者 1 的 cancel。</li>
+</ul>
+<center>
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+      <figure >
+        
+          
+          <img
+            class="my-0 rounded-md"
+            src="/posts/architecture/distributed/transaction/tcce.png"
+            alt=""
+          />
+          
+        
+        
+      </figure>
+    
+  
+
+</center>
+<p><strong>TCC 场景案例</strong></p>
+<p><em>案例 1：跨库转账</em></p>
+<p>举例，场景为 A 转账 100 元给 B，A 和 B 账户在不同的服务。</p>
+<pre tabindex="0"><code>账户A
+try：
+ try幂等校验
+ 检查余额是否够100元
+ A账户扣减100元
+confirm：
+ 空
+cancel：
+ cancel幂等校验
+ A账户增加可用余额100元
+
+账户B
+try：
+ 空
+confirm：
+ confirm幂等校验
+ B账户增加100元
+cancel：
+ 空
+</code></pre><p><em>案例 2：提现到支付宝</em></p>
+<p>举例，大家玩过抖音，有些朋友抖音上面有收益，可以将收益提现到支付宝，假如提现 100 到支付宝</p>
+<pre tabindex="0"><code>抖音(账户表：余额、冻结金额)
+try：
+ try幂等校验
+ 检查余额是否够100元
+ 抖音账户表余额-100，冻结金额+100
+confirm：
+ confirm幂等校验
+ 抖音账户冻结金额-100
+cancel：
+ cancel幂等校验
+ 抖音账户表余额+100，冻结金额-100
+
+账户B
+try：
+ 空
+confirm：
+ confirm幂等校验
+ 调用支付宝打款接口，打款100元（对于商户同一笔订单支付宝接口是支持幂等的）
+cancel：
+ 空
+</code></pre><h4 class="relative group">TCC 常见框架 
+    <div id="tcc-常见框架" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tcc-%e5%b8%b8%e8%a7%81%e6%a1%86%e6%9e%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<p>涉及到的角色（事务发起者、事务参与者、TCC 服务）</p>
+<ul>
+<li>事务发起者（TM）
+<ul>
+<li>发起分布式事务：调用 tcc 服务注册一个分布式事务订单</li>
+<li>调用分支：依次调用每个分支</li>
+<li>上报结果：最终将事务所有分支的执行结果汇报给 TCC 服务</li>
+<li>提供补偿接口：给 TCC 服务使用，tcc 服务会调用这个补偿接口对进行补偿操作</li>
+</ul>
+</li>
+<li>事务参与者
+<ul>
+<li>提供 3 个方法：try、confirm、cancel</li>
+<li>确保 3 个方法的幂等性</li>
+<li>3 个方法返回的结果状态码只有 3 种（成功、失败、处理中），处理中相当于状态未知，对于状态未知的，会在补偿的过程中进行重试</li>
+</ul>
+</li>
+<li>TCC 服务
+<ul>
+<li>是一个独立的服务</li>
+<li>提供分布式事务订单注册接口：给事务发起者使用【事务发起者调用 tcc 服务生成一个分布式事务订单（订单状态：0：处理中，1：处理成功，2：处理失败），获取一个分布式订单 id：TID】</li>
+<li>提供分布式事务结果上报接口：给事务发起者使用【事务发起者在事务的执行过程中将事务的执行结果汇报给 TCC 服务】</li>
+<li>提供事务补偿操作：启动一个 job 轮询 tcc 订单中状态为 1 的订单，继续调用事务发起者进行补偿，最终经过多次补偿，这个订单最终的状态应该为 1（成功）或者 2（失败）；否则人工介入进行处理</li>
+</ul>
+</li>
+</ul>
+<p><strong>自研 TCC 框架技术要点</strong></p>
+<ol>
+<li>框架应该考虑的地方：开发者应该只用关注分支中 3 个方法的代码，其他的应该全部交由框架去完成。</li>
+<li>tcc 服务中的事务订单表设计
+<ul>
+<li>id：订单 id</li>
+<li>bus_order_id：业务方订单 id</li>
+<li>bus_order_type：业务类型 （bus_order_id &amp; bus_order_type 需唯一）</li>
+<li>request_data：业务请求数据，json 格式存储，包含了玩转的业务方请求数据</li>
+<li>status：状态，0：处理中，100：处理成功，200：处理失败，初始状态为 0，最终必须为 100 或者 200</li>
+</ul>
+</li>
+<li>关于分支中 3 个方法幂等的设计</li>
+</ol>
+<p>以 java 中的 spring 为例，可以通过拦截器来实现，拦截器对分支的 3 个方法进行拦截，拦截器中实现幂等性的操作。</p>
+<p>可以用一张表来实现【分支方法执行记录表：tid、分支、方法（try、confirm、cancel）、状态（0：处理中；100:成功；200：失败）、request_json（请求参数）、response_json（响应参数）】</p>
+<p>关于请求参数：这个用来记录整个方法请求的完整参数，内部包含了业务参数，可以采用 json 格式存储。</p>
+<p>响应参数：分支方法的执行结果，以 json 格式存储。</p>
+<p>拦截器中，通过分支 &amp; 方法 这 2 个条件去查询分支方法执行记录表，如果查询的记录状态为 100 或者 200，那么直接将 response_json 返回。</p>
+<ol start="4">
+<li>try 阶段同步、其他阶段异步</li>
+</ol>
+<p>如果 try 阶段全部成功，那么 confirm 阶段最终应该一定是成功的，try 阶段如果有失败的，那么需要执行 cancel，最终所有的 cancel 应该也是一定可以成功的；所以 try 阶段完成之后，其实已经知道最终的结果了，所以 try 阶段完成之后，后面的 confirm 或者 cancel 可以采用异步的方式去执行；提升系统整体的性能。</p>
+<ol start="5">
+<li>异步上报事务执行结果</li>
+</ol>
+<p>发起方将所有分支每个步骤的执行结果及最终事务的执行结果上报给 tcc 服务，由 tcc 服务落库，方便运营人员查看事务执行结果以及排错。</p>
+<ol start="6">
+<li>关于补偿</li>
+</ol>
+<p>tcc 服务中添加一个补偿 job，定时轮询 tcc 分布式订单表，将状态为处理中的记录撸出来，订单表 request_data 包含了请求参数，使用 request_data 去调用事务发起者提供的补偿接口进行补偿操作，直到订单的状态为最终状态（成功或者失败）。</p>
+<p>补偿采用衰减的形式，对应同一笔订单采用时间间隔衰减的方式补偿，每次间隔时间：10s、20s、40s、80s、160s、320s。。。</p>
+<ol start="7">
+<li>人工干预</li>
+</ol>
+<p>tcc 分布式订单如果长期处于处理中，经过了很多次的补偿，也未能到达最终状态，此时可能业务有问题，需要人工进行补偿，对于这对订单记录需要有监控系统进行报警，提醒开发者进行干预处理。</p>
+<p>如果拿 TCC 事务的处理流程与 2PC 两阶段提交做比较，2PC 通常都是在跨库的 DB 层面，而 TCC 则在应用层面的处理，是 2PC 在应用层面的一种实现，需要通过业务逻辑来实现。这种分布式事务的实现方式的优势在于，可以让应用自己定义数据操作的粒度，使得降低锁冲突、提高吞吐量成为可能。而不足之处则在于对应用的侵入性非常强，业务逻辑的每个分支都需要实现 try、confirm、cancel 三个操作，代码量比较大。</p>
+<h2 class="relative group">可靠消息 
+    <div id="可靠消息" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%8f%af%e9%9d%a0%e6%b6%88%e6%81%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>可靠消息最终一致性方案是指当事务发起方执行完成本地事务后并发出一条消息，事务参与方(消息消费者)一定能够接收消息并处理事务成功，此方案强调的是只要消息发给事务参与方最终事务要达到一致。</p>
+<p>这里面有 2 个重点：</p>
+<ol>
+<li>消息发送方本地事物执行成功之后，消息一定会投递成功</li>
+<li>消息消费者最终也一定能够消费此消息，最终使分布式事务最终达成一致性</li>
+</ol>
+<p><strong>下单送积分</strong></p>
+<p>电商中有这样的一个场景：商品下单之后，需给用户送积分，订单表和积分表分别在不同的 db 中，涉及到分布式事务的问题。</p>
+<p>我们通过可靠消息来解决这个问题：</p>
+<ol>
+<li>商品下单成功之后送积分的操作，我们使用 mq 来实现</li>
+<li>商品下单成功之后，投递一条消息到 mq，积分系统消费消息，给用户增加积分</li>
+</ol>
+<p>我们主要讨论一下，商品下单及投递消息到 mq 的操作，如何实现？每种方式优缺点？</p>
+<p><strong>投递消息过程：方式一</strong></p>
+<ul>
+<li>step1：开启本地事务</li>
+<li>step2：生成购物订单</li>
+<li>step3：投递消息到 mq</li>
+<li>step4：提交本地事务</li>
+</ul>
+<p>这种方式是将发送消息放在了事务提交之前。</p>
+<p><em>可能存在的问题</em></p>
+<ul>
+<li>step3 发生异常：导致 step4 失败，商品下单失败，直接影响到商品下单业务</li>
+<li>step4 发生异常，其他 step 成功：商品下单失败，消息投递成功，给用户增加了积分</li>
+</ul>
+<p><strong>投递消息过程：方式二</strong></p>
+<ul>
+<li>step1：开启本地事务</li>
+<li>step2：生成购物订单</li>
+<li>step3：提交本地事务</li>
+<li>step4：投递消息到 mq</li>
+</ul>
+<p><em>可能会出现的问题</em></p>
+<p>step4 发生异常，其他 step 成功：导致商品下单成功，投递消息失败，用户未增加积分</p>
+<p><strong>投递消息过程：方式三</strong></p>
+<ul>
+<li>step1：开启本地事务</li>
+<li>step2：生成购物订单</li>
+<li>step3：本地库中插入一条需要发送消息的记录 t_msg_record</li>
+<li>step4：提交本地事务</li>
+<li>step5：新增一个定时器，轮询 t_msg_record，将待发送的记录投递到 mq 中</li>
+</ul>
+<p>这种方式借助了数据库的事务，业务和消息记录作为了一个原子操作，业务成功之后，消息日志必定是存在的。解决了前两种方式遇到的问题。如果我们的业务系统比较单一，可以采用这种方式。</p>
+<p>对于微服务化的情况，上面这种方式不是太好，每个服务都需要上面的操作；也不利于扩展。</p>
+<p><strong>投递消息过程：方式四</strong></p>
+<p>增加一个消息服务及消息库，负责消息的落库、将消息发送投递到 mq。</p>
+<ul>
+<li>step1：开启本地事务</li>
+<li>step2：生成购物订单</li>
+<li>step3：当前事务库插入一条日志：生成一个唯一的业务 id（bus_id），将 bus_id 和订单关联起来保存到当前事务所在的库中</li>
+<li>step4：调用消息服务：携带 bus_id，将消息先落地入库，此时消息的状态为待发送状态，返回消息 id(msg_id)</li>
+<li>step5：提交本地事务</li>
+<li>step6：如果上面都成功，调用消息服务，将消息投递到 mq 中；如果上面有失败的情况，则调用消息服务取消消息的发送</li>
+</ul>
+<p>能想到上面这种方式，已经算是有很大进步了，我们继续分析一下<em>可能存在的问题</em>：</p>
+<ol>
+<li>系统中增加了一个消息服务，商品下单操作依赖于该服务，业务对该服务依赖性比较高，当消息服务不可用时，整个业务将不可用。</li>
+<li>若 step6 失败，消息将处于待发送状态，此时业务方需要提供一个回查接口（通过 bus_id 查询）,验证业务是否执行成功；消息服务需新增一个定时任务，对于状态为待发送状态的消息做补偿处理，检查一下业务是否处理成功；从而确定消息是投递还是取消发送</li>
+<li>step4 依赖于消息服务，如果消息服务性能不佳，会导致当前业务的事务提交时间延长，容易产生死锁，并导致并发性能降低。我们通常是比较忌讳在事务中做远程调用处理的，远程调用的性能和时间往往不可控，会导致当前事务变为一个大事务，从而引发其他故障。</li>
+</ol>
+<p><strong>投递消息过程：方式五</strong></p>
+<p>在以上方式中，我们继续改进，进而出现了更好的一种方式：</p>
+<ul>
+<li>step1：生成一个全局唯一业务消息 id(bus_msg_id)，调用消息服务，携带 bus_msg_id，将消息先落地入库，此时消息的状态为待发送状态，返回消息 id（msg_id）</li>
+<li>step2：开启本地事务</li>
+<li>step3：生成购物订单</li>
+<li>step4：当前事务库插入一条日志（将 step3 中的业务和 bus_msg_id 关联起来）</li>
+<li>step5：提交本地事务</li>
+<li>step6：分 2 种情况：如果上面都成功，调用消息服务，将消息投递到 mq 中；如果上面有失败的情况，则调用消息服务取消消息的发送</li>
+</ul>
+<p>若 step6 失败，消息将处于待发送状态，此时业务方需要提供一个回查接口（通过 bus_msg_id 查询）,验证业务是否执行成功；</p>
+<p>消息服务需新增一个定时任务，对于状态为待发送状态的消息做补偿处理，检查一下业务是否处理成功；从而确定消息是投递还是取消发送。</p>
+<p>方式五和方式四对比，比较好的一个地方：将调用消息服务，消息落地操作，放在了事务之外进行，这点小的改进其实算是一个非常好的优化，减少了本地事务的执行时间，从而可以提升并发量，阿里有个消息中间件 RocketMQ 就支持方式 5 这种，大家可以去用用。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/transaction/666.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>如何解决重复消费的问题？</p>
+<p>消费者轮询从 mq server 中拉取消息，然后进行消费。</p>
+<p>消息消费者消费消息的过程</p>
+<ul>
+<li>step1：从 mq 中拉取消息</li>
+<li>step2：执行本地业务，比如增加积分操作</li>
+<li>step3：消费完毕之后，将消息从 mq 中删掉</li>
+</ul>
+<p>当 step2 成功，step3 失败之后，这个消息会再次从 mq 中拉取出来，会出现重复消费的问题，所以我们<strong>需要考虑消费的幂等性</strong>，同一条消息多次消费和一次消费产生的结果应该是一致的，关于幂等性是另外一个课题，下次会详说。</p>
+<h2 class="relative group">最大努力通知型 
+    <div id="最大努力通知型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%9c%80%e5%a4%a7%e5%8a%aa%e5%8a%9b%e9%80%9a%e7%9f%a5%e5%9e%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>支付宝充值案例</strong></p>
+<p>假如我们自己有一个电商系统，支持用户使用支付宝充值，流程如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/distributed/transaction/zfb.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>用户支付流程（是一个同步的过程）</strong></p>
+<ol>
+<li>用户在浏览器发起充值请求-&gt;电商服务</li>
+<li>电商服务生成充值订单，状态为 0：待支付（0：待支付、100：支付成功、200：支付失败）</li>
+<li>电商服务携带订单信息请求支付宝，生成支付宝订单，组装支付宝支付请求地址（订单信息、支付成功之后展示给用户的页面 return_url、支付异步通知地址 notify_url），将组装的信息返回给用户</li>
+<li>用户浏览器跳转至支付宝支付页面，确认支付</li>
+<li>支付宝携带支付结果同步回调 return_url，return_url 将支付结果展示给用户</li>
+</ol>
+<p><strong>支付宝将支付结果异步通知给商户</strong></p>
+<p>用户支付流程完毕之后，此时支付宝中支付订单已经支付完毕，但电商中的充值订单状态还是 0（待支付），此时支付宝会通过异步的方式将支付结果通知给 notify_url，通知的过程中可能由于网络问题，导致支付宝通知失败，此时支付宝会通过多次衰减式的重试，尽最大努力将结果通知给商户，这个过程就是最大努力通知型。</p>
+<p>商户接收到支付宝通知之后，通过幂等性的方式对本地订单进行处理，然后告知支付宝，处理成功，之后支付宝将不再通知。</p>
+<p><strong>什么是衰减式的通知？</strong></p>
+<p>比如支付宝最大会尝试通知 100 次，每次通知时间间隔会递增。比如第 1 次失败之后，隔 10s 进行第 2 次通知，第 2 次失败之后，隔 30s 进行第三次通知，间隔时间依次递增的方式进行通知。</p>
+<p><strong>如果支付宝一直通知不成功怎么办？</strong></p>
+<p>商户可以主动去调用支付宝的查询接口，查询订单的支付状态。</p>
+<p><strong>为什么需要进行异步通知？</strong></p>
+<p>用户支付过程中，不是有个 return_url 么？支付宝支付成功之后会携带支付结果同步调用这个地址，那么商户直接在这个 return_url 中去处理一下本地订单状态不就可以了么？这种做法可以，但是有可能用户的网络不好，调用 return_url 失败了，此时还得依靠异步通知 notify_url 的方式将支付结果告知商户。</p>
+<p><strong>最大努力通知型用在什么场景？</strong></p>
+<p>分布式事务中，不能立即知道调用结果的，被调方业务处理耗时可能比较长，被调方业务处理完毕之后，可以采用最大努力通知的方式将结果通知给调用方。</p>
+<p><strong>最大努力通知型要有补偿机制</strong></p>
+<p>被调方会尽最大努力将结果通知给调用方，极端情况下有失败的可能，此时被调方需提供查询接口。</p>
+<p>调用方对于长时间不知道结果的业务，可以主动去被调方查询，然后进行处理。</p>
+<p><strong>不需要通知，主动去查可以么？</strong></p>
+<p>可以，被调方会提供查询接口，调用方主动去查询的方式完全是可以知道结果的，不过采用通知的方式实时性更高的一些。</p>
+<p>被调方成功之后，会立即通知调用方，但是调用方主动采用查询的方式，那么什么时候查询呢？这个度不好把握，所以两则结合更好。</p>
+<h2 class="relative group">分布式事务对比分析 
+    <div id="分布式事务对比分析" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e4%ba%8b%e5%8a%a1%e5%af%b9%e6%af%94%e5%88%86%e6%9e%90" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>在学习各种分布式事务的解决方案后，我们了解到各种方案的优缺点：</p>
+<p>2PC 最大的诟病是一个阻塞协议。RM 在执行分支事务后需要等待 TM 的决定，此时服务会阻塞并锁定资源。由于其阻塞机制和最差时间复杂度高， 因此，这种设计不能适应随着事务涉及的服务数量增加而扩展的需要，很难用于并发较高以及子事务生命周期较长 (long-running transactions) 的分布式服务中。</p>
+<p>如果拿 TCC 事务的处理流程与 2PC 两阶段提交做比较，2PC 通常都是在跨库的 DB 层面，而 TCC 则在应用层面的处理，需要通过业务逻辑来实现。这种分布式事务的实现方式的优势在于，可以让应用自己定义数据操作的粒度，使得降低锁冲突、提高吞吐量成为可能。而不足之处则在于对应用的侵入性非常强，业务逻辑的每个分支都需要实现 try、confirm、cancel 三个操作。此外，其实现难度也比较大，需要按照网络状态、系统故障等不同的失败原因实现不同的回滚策略。典型的使用场景：满，登录送优惠券等。</p>
+<p>可靠消息最终一致性事务适合执行周期长且实时性要求不高的场景。引入消息机制后，同步的事务操作变为基于消息执行的异步操作, 避免了分布式事务中的同步阻塞操作的影响，并实现了两个服务的解耦。典型的使用场景：注册送积分，登录送优惠券等。</p>
+<p>最大努力通知是分布式事务中要求最低的一种,适用于一些最终一致性时间敏感度低的业务；允许发起通知方处理业务失败，在接收通知方收到通知后积极进行失败处理，无论发起通知方如何处理结果都会不影响到接收通知方的后续处理；发起通知方需提供查询执行情况接口，用于接收通知方校对结果。典型的使用场景：银行通知、支付结果通知等。</p>
 
         </div>
                 
