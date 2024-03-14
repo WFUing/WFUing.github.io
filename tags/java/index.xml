@@ -150,12 +150,12 @@
     
     <item>
       <title>Netty</title>
-      <link>https://WFUing.github.io/posts/language/java/java-network/netty/</link>
+      <link>https://WFUing.github.io/posts/reviews/network/netty/</link>
       <pubDate>Wed, 01 Nov 2023 18:53:17 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/java-network/netty/</guid>
+      <guid>https://WFUing.github.io/posts/reviews/network/netty/</guid>
       <description>Netty 是 JBoss 开源项目，是异步的、基于事件驱动的网络应用框架，以高性能、高并发著称。Netty 是基于 Java NIO 构建出来的，主要用于开发基于 TCP 协议的网络 IO 程序。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/java-network/netty/featured.jpeg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/reviews/network/netty/featured.jpeg" />
     </item>
     
   </channel>
