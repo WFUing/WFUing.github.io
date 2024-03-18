@@ -1023,6 +1023,90 @@ window.MathJax = {
   
   
 
+  <a href="/posts/reviews/network/socket/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+        
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/img/loading.gif);"></div>
+        
+      
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/reviews/network/socket/">Socket 编程</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-14 13:19:27 &#43;0800 &#43;0800">14 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>253 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          针对 TCP 应该如何 Socket 编程？ # 服务端和客户端初始化 socket，得到文件描述符； 服务端调用 bind，将 socket 绑定在指定的 IP 地址和端口; 服务端调用 listen，进行监听； 服务端调用 accept，等待客户端连接； 客户端调用 connect，向服务端的地址和端口发起连接请求； 服务端 accept 返回用于传输的 socket 的文件描述符； 客户端调用 write 写入数据；服务端调用 read 读取数据； 客户端断开连接时，会调用 close，那么服务端 read 读取数据的时候，就会读取到了 EOF，待处理完数据后，服务端调用 close，表示连接关闭。 这里需要注意的是，服务端调用 accept 时，连接成功了会返回一个已完成连接的 socket，后续用来传输数据。
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
   <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/%E9%9D%A2%E8%AF%95/ieg%E4%B8%80%E9%9D%A23.13/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
@@ -1096,6 +1180,90 @@ window.MathJax = {
         
         <div class="py-1 prose dark:prose-invert">
           处女面，感觉挺难的。
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
+  <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-189%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+        
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-189%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/featured.png);"></div>
+        
+      
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-189%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/">【LeetCode 189】轮转数组</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-12 10:16:02 &#43;0800 &#43;0800">12 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>92 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          【LeetCode 189】轮转数组题解。
         </div>
         
       </div>
@@ -1191,11 +1359,11 @@ window.MathJax = {
   
   
 
-  <a href="/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" class="min-w-full">
+  <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-45%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-ii/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
         
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/featured.png);"></div>
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-45%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-ii/featured.png);"></div>
         
       
 
@@ -1203,7 +1371,7 @@ window.MathJax = {
 
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">进程与线程的基本知识</div>
+          href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-45%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-ii/">【LeetCode 45】跳跃游戏 II</div>
         
 
         <div class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -1225,7 +1393,11 @@ window.MathJax = {
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1242,7 +1414,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-11 10:07:16 &#43;0800 &#43;0800">11 March 2024</time>
+  <time datetime="2024-03-11 10:16:02 &#43;0800 &#43;0800">11 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>134 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1259,7 +1431,7 @@ window.MathJax = {
 
         
         <div class="py-1 prose dark:prose-invert">
-          进程与线程的基本知识
+          【LeetCode 45】跳跃游戏 II题解。
         </div>
         
       </div>
@@ -1271,11 +1443,11 @@ window.MathJax = {
   
   
 
-  <a href="/posts/architecture/distributed/transaction/" class="min-w-full">
+  <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-80%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
         
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/distributed/transaction/featured.png);"></div>
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-80%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/featured.png);"></div>
         
       
 
@@ -1283,7 +1455,7 @@ window.MathJax = {
 
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/distributed/transaction/">分布式事务</div>
+          href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E6%95%B0%E7%BB%84/leetcode-80%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">【LeetCode 80】删除有序数组中的重复项</div>
         
 
         <div class="text-sm text-neutral-500 dark:text-neutral-400">
@@ -1326,7 +1498,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-10 19:07:16 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1371 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+  <time datetime="2024-03-11 10:16:02 &#43;0800 &#43;0800">11 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>92 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1343,175 +1515,7 @@ window.MathJax = {
 
         
         <div class="py-1 prose dark:prose-invert">
-          事务的多个参与者分布在不同的地方。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/architecture/iot/tango-idl/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/iot/tango-idl/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/iot/tango-idl/">TANGO idl definition</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-03-10 10:16:02 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>373 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C++/Java 对象，可以像本地一样进行实例化和远程访问。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/%E7%BE%8E%E5%9B%A22024%E5%B1%8A%E6%98%A5%E6%8B%9B%E7%AC%94%E8%AF%95%E7%AC%AC%E4%B8%80%E5%9C%BA%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/%E7%BE%8E%E5%9B%A22024%E5%B1%8A%E6%98%A5%E6%8B%9B%E7%AC%94%E8%AF%95%E7%AC%AC%E4%B8%80%E5%9C%BA%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/%E7%BE%8E%E5%9B%A22024%E5%B1%8A%E6%98%A5%E6%8B%9B%E7%AC%94%E8%AF%95%E7%AC%AC%E4%B8%80%E5%9C%BA%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/">美团2024届春招笔试第一场编程真题</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-03-09 13:43:45 &#43;0800 &#43;0800">9 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>5 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          第一场自己做的笔试，前三题感觉很水，半小时搞定了。后两题挺难的。
+          【LeetCode 80】删除有序数组中的重复项题解。
         </div>
         
       </div>

@@ -885,6 +885,112 @@ window.MathJax = {
       
       
       <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
+        2024
+      </h2>
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a class="flex flex-wrap article " href="/posts/reviews/network/socket/">
+    
+        
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/loading.gif);"></div>
+        
+      <div class=" mt-3 md:mt-0">
+      <div class="items-center text-left text-xl font-semibold">
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/reviews/network/socket/">Socket 编程</div>
+        
+        
+        
+      </div>
+      <div class="text-sm text-neutral-500 dark:text-neutral-400">
+        
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-14 13:19:27 &#43;0800 &#43;0800">14 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>253 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="py-1 max-w-fit prose dark:prose-invert">
+        针对 TCP 应该如何 Socket 编程？ # 服务端和客户端初始化 socket，得到文件描述符； 服务端调用 bind，将 socket 绑定在指定的 IP 地址和端口; 服务端调用 listen，进行监听； 服务端调用 accept，等待客户端连接； 客户端调用 connect，向服务端的地址和端口发起连接请求； 服务端 accept 返回用于传输的 socket 的文件描述符； 客户端调用 write 写入数据；服务端调用 read 读取数据； 客户端断开连接时，会调用 close，那么服务端 read 读取数据的时候，就会读取到了 EOF，待处理完数据后，服务端调用 close，表示连接关闭。 这里需要注意的是，服务端调用 accept 时，连接成功了会返回一个已完成连接的 socket，后续用来传输数据。
+      </div>
+      
+    </div>
+  </a>
+      
+      
+      
+      <h2 class="mt-12 text-2xl font-bold text-neutral-700 first:mt-8 dark:text-neutral-300">
         2023
       </h2>
       
