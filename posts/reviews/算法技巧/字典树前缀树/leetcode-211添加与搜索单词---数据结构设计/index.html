@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>【LeetCode 208】实现 Trie (前缀树) &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="【LeetCode 208】实现 Trie (前缀树) &middot; WFUing&#39;s Blog" />
+  <title>【LeetCode 211】添加与搜索单词 - 数据结构设计 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="【LeetCode 211】添加与搜索单词 - 数据结构设计 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="【LeetCode 208】实现 Trie (前缀树)题解。前缀树板子题。" />
+  <meta name="description" content="【LeetCode 211】添加与搜索单词 - 数据结构设计题解。前缀树板子题。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/" />
   
   
   
@@ -67,16 +67,16 @@
   
   
   
-  <meta property="og:title" content="【LeetCode 208】实现 Trie (前缀树)" />
-<meta property="og:description" content="【LeetCode 208】实现 Trie (前缀树)题解。前缀树板子题。" />
+  <meta property="og:title" content="【LeetCode 211】添加与搜索单词 - 数据结构设计" />
+<meta property="og:description" content="【LeetCode 211】添加与搜索单词 - 数据结构设计题解。前缀树板子题。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/" /><meta property="og:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/featured.png" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/" /><meta property="og:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/featured.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-03-22T17:16:02+08:00" />
 <meta property="article:modified_time" content="2024-03-22T17:16:02+08:00" />
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/featured.png" /><meta name="twitter:title" content="【LeetCode 208】实现 Trie (前缀树)"/>
-<meta name="twitter:description" content="【LeetCode 208】实现 Trie (前缀树)题解。前缀树板子题。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/featured.png" /><meta name="twitter:title" content="【LeetCode 211】添加与搜索单词 - 数据结构设计"/>
+<meta name="twitter:description" content="【LeetCode 211】添加与搜索单词 - 数据结构设计题解。前缀树板子题。"/>
 
   
   <script type="application/ld+json">
@@ -84,12 +84,12 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "【LeetCode 208】实现 Trie (前缀树)",
-    "headline": "【LeetCode 208】实现 Trie (前缀树)",
+    "name": "【LeetCode 211】添加与搜索单词 - 数据结构设计",
+    "headline": "【LeetCode 211】添加与搜索单词 - 数据结构设计",
     
-    "abstract": "【LeetCode 208】实现 Trie (前缀树)题解。前缀树板子题。",
+    "abstract": "【LeetCode 211】添加与搜索单词 - 数据结构设计题解。前缀树板子题。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/reviews\/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91\/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/reviews\/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91\/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
@@ -103,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "216"
+    "wordCount": "259"
   }]
   </script>
 
@@ -830,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/featured.png);">
+    style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/featured.png);">
     
 
 
@@ -856,7 +856,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      【LeetCode 208】实现 Trie (前缀树)
+      【LeetCode 211】添加与搜索单词 - 数据结构设计
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -901,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-22 17:16:02 &#43;0800 &#43;0800">22 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>216 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-22 17:16:02 &#43;0800 &#43;0800">22 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>259 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1051,12 +1051,7 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#字典树">字典树</a>
-      <ul>
-        <li><a href="#插入字符串">插入字符串</a></li>
-        <li><a href="#查找前缀">查找前缀</a></li>
-      </ul>
-    </li>
+    <li><a href="#思路">思路</a></li>
     <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
@@ -1071,12 +1066,7 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#字典树">字典树</a>
-      <ul>
-        <li><a href="#插入字符串">插入字符串</a></li>
-        <li><a href="#查找前缀">查找前缀</a></li>
-      </ul>
-    </li>
+    <li><a href="#思路">思路</a></li>
     <li><a href="#代码">代码</a></li>
   </ul>
 </nav>
@@ -1148,7 +1138,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/featured.png"
+        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/featured.png"
         alt=""
       />
       
@@ -1158,56 +1148,26 @@ window.MathJax = {
 
 </p>
 <ul>
-<li>链接：https://leetcode.cn/problems/implement-trie-prefix-tree/description/</li>
+<li>链接：https://leetcode.cn/problems/design-add-and-search-words-data-structure/description/</li>
 </ul>
-<h2 class="relative group">字典树 
-    <div id="字典树" class="anchor"></div>
+<h2 class="relative group">思路 
+    <div id="思路" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%ad%97%e5%85%b8%e6%a0%91" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e6%80%9d%e8%b7%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>又称前缀树或字典树，是一棵有根树，其每个节点包含以下字段：</p>
-<ul>
-<li>指向子节点的指针数组 $children$。对于本题而言，数组长度为 $26$，即小写英文字母的数量。此时 $children[0]$ 对应小写字母 $a$，$children[1]$ 对应小写字母 $b$，…，$children[25]$ 对应小写字母 $z$。</li>
-<li>布尔字段 $isEnd$，表示该节点是否为字符串的结尾。</li>
-</ul>
-<h3 class="relative group">插入字符串 
-    <div id="插入字符串" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%8f%92%e5%85%a5%e5%ad%97%e7%ac%a6%e4%b8%b2" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>我们从字典树的根开始，插入字符串。对于当前字符对应的子节点，有两种情况：</p>
-<ul>
-<li>子节点存在。沿着指针移动到子节点，继续处理下一个字符。</li>
-<li>子节点不存在。创建一个新的子节点，记录在 $children$ 数组的对应位置上，然后沿着指针移动到子节点，继续搜索下一个字符。</li>
-</ul>
-<p>重复以上步骤，直到处理字符串的最后一个字符，然后将当前节点标记为字符串的结尾。</p>
-<h3 class="relative group">查找前缀 
-    <div id="查找前缀" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%9f%a5%e6%89%be%e5%89%8d%e7%bc%80" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>我们从字典树的根开始，查找前缀。对于当前字符对应的子节点，有两种情况：</p>
-<ul>
-<li>子节点存在。沿着指针移动到子节点，继续搜索下一个字符。</li>
-<li>子节点不存在。说明字典树中不包含该前缀，返回空指针。</li>
-</ul>
-<p>重复以上步骤，直到返回空指针或搜索完前缀的最后一个字符。</p>
-<p>若搜索到了前缀的末尾，就说明字典树中存在该前缀。此外，若前缀末尾对应节点的 $isEnd$ 为真，则说明字典树中存在该字符串。</p>
+<p>根据题意，$\texttt{WordDictionary}$ 类需要支持添加单词和搜索单词的操作，可以使用字典树实现。</p>
+<p>对于添加单词，将单词添加到字典树中即可。</p>
+<p>对于搜索单词，从字典树的根结点开始搜索。由于待搜索的单词可能包含点号，因此在搜索过程中需要考虑点号的处理。对于当前字符是字母和点号的情况，分别按照如下方式处理：</p>
+<p>如果当前字符是字母，则判断当前字符对应的子结点是否存在，如果子结点存在则移动到子结点，继续搜索下一个字符，如果子结点不存在则说明单词不存在，返回 $\text{false}$；</p>
+<p>如果当前字符是点号，由于点号可以表示任何字母，因此需要对当前结点的所有非空子结点继续搜索下一个字符。</p>
+<p>重复上述步骤，直到返回 $\text{false}$ 或搜索完给定单词的最后一个字符。</p>
+<p>如果搜索完给定的单词的最后一个字符，则当搜索到的最后一个结点的 $\textit{isEnd}$ 为 $\text{true}$ 时，给定的单词存在。</p>
+<p>特别地，当搜索到点号时，只要存在一个非空子结点可以搜索到给定的单词，即返回 $\text{true}$。</p>
 <h2 class="relative group">代码 
     <div id="代码" class="anchor"></div>
     
@@ -1218,76 +1178,90 @@ window.MathJax = {
     </span>        
     
 </h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Trie</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//记录该字母的下一位所有可能的字母坐标</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Trie</span><span class="o">[]</span><span class="w"> </span><span class="n">children</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//该字母是否为最后一个字母</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isEnd</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Trie</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//初始化26个字母</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trie</span><span class="o">[</span><span class="n">26</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//默认为不是最后一个字母</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">isEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">WordDictionary</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Trie</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">WordDictionary</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trie</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//得到字典树根节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Trie</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//去遍历待插入单词的字符集合</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//得到该字符在数组中的坐标</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//如果正在遍历的该字母在上一个节点的数组坐标中没有记录，就新建一个字母节点在字典树中</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trie</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//每一次生成字母都移动指针到下一个字母节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//最后一个字母节点设置为最后一个字母</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">node</span><span class="p">.</span><span class="na">isEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addWord</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">root</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">word</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//返回检索到的最后一个字母节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Trie</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">searchPrefix</span><span class="p">(</span><span class="n">word</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//只有当该单词在字典树中存在并且最后一个字母节点为最后一个字母，才返回true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">isEnd</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">startsWith</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//只要前缀匹配存在于字典树中就返回true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">searchPrefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//前缀搜索 还是 全文搜索都是调用此方法，区别在于前缀搜索只要前缀匹配就返回true，全文搜索则要匹配到最后一个字母才返回true，所以这里返回的是最后一个字母节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Trie</span><span class="w"> </span><span class="nf">searchPrefix</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//得到字典树根节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Trie</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//开始验证字符串在字典树中是否存在</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//得到该字符在数组中的坐标</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//如果该字符在数组中存在，就移动指针到下一个字母节点，直至到达最后一个待搜索的最后一个字母节点</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">//如果在此过程中没有找到待搜索的其中一个字母节点，就返回null，代表该字母不存在于字典树中</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Trie</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">length</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">isEnd</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isLetter</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">childIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Trie</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">getChildren</span><span class="p">()</span><span class="o">[</span><span class="n">childIndex</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">child</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">26</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">Trie</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">getChildren</span><span class="p">()</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">child</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//没有问题，那就是到达了最后一个待搜索的最后一个字母节点，返回该节点(节点可能是最后一个字母节点也可能不是)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">node</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">Trie</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Trie</span><span class="o">[]</span><span class="w"> </span><span class="n">children</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isEnd</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Trie</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trie</span><span class="o">[</span><span class="n">26</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">isEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Trie</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ch</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trie</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">node</span><span class="p">.</span><span class="na">isEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Trie</span><span class="o">[]</span><span class="w"> </span><span class="nf">getChildren</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">children</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEnd</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">isEnd</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="cm">/**
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * Your Trie object will be instantiated and called as such:
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * Trie obj = new Trie();
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * obj.insert(word);
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Your WordDictionary object will be instantiated and called as such:
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * WordDictionary obj = new WordDictionary();
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * obj.addWord(word);
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * boolean param_2 = obj.search(word);
-</span></span></span><span class="line"><span class="cl"><span class="cm"> * boolean param_3 = obj.startsWith(prefix);
 </span></span></span><span class="line"><span class="cl"><span class="cm"> */</span><span class="w">
 </span></span></span></code></pre></div><ul>
-<li>时间复杂度：初始化为 $O(1)$，其余操作为 $O(|S|)$，其中 $|S|$ 是每次插入或查询的字符串的长度。</li>
-<li>空间复杂度：$O(|T|\cdot\Sigma)$，其中 $|T|$ 为所有插入字符串的长度之和，$\Sigma$ 为字符集的大小，本题 $\Sigma=26$。</li>
+<li>
+<p>时间复杂度：初始化为 $O(1)$，添加单词为 $O(|S|)$，搜索单词为 $O(|\Sigma|^{|S|})$，其中 $|S|$ 是每次添加或搜索的单词的长度，$\Sigma$ 是字符集，这道题中的字符集为全部小写英语字母，$\Sigma| = 26$。
+最坏情况下，待搜索的单词中的每个字符都是点号，则每个字符都有 $|\Sigma|$ 种可能。</p>
+</li>
+<li>
+<p>空间复杂度：$O(|T|\cdot|\Sigma|)$，其中 $|T|$ 是所有添加的单词的长度之和，$\Sigma$ 是字符集，这道题中的字符集为全部小写英语字母，$|\Sigma| = 26$。</p>
+</li>
 </ul>
 <p>
 
@@ -1303,7 +1277,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/end.png"
+        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/end.png"
         alt=""
       />
       
@@ -1324,8 +1298,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/reviews\/算法技巧\/字典树(前缀树)\/【LeetCode 208】实现 Trie (前缀树)\/index.md"
-        var oid_likes = "likes_posts\/reviews\/算法技巧\/字典树(前缀树)\/【LeetCode 208】实现 Trie (前缀树)\/index.md"
+        var oid = "views_posts\/reviews\/算法技巧\/字典树(前缀树)\/【LeetCode 211】添加与搜索单词 - 数据结构设计\/index.md"
+        var oid_likes = "likes_posts\/reviews\/算法技巧\/字典树(前缀树)\/【LeetCode 211】添加与搜索单词 - 数据结构设计\/index.md"
       </script>
       
       
@@ -1348,14 +1322,19 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-211%E6%B7%BB%E5%8A%A0%E4%B8%8E%E6%90%9C%E7%B4%A2%E5%8D%95%E8%AF%8D---%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+            <a class="flex group mr-3" href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%AD%97%E5%85%B8%E6%A0%91%E5%89%8D%E7%BC%80%E6%A0%91/leetcode-208%E5%AE%9E%E7%8E%B0-trie-%E5%89%8D%E7%BC%80%E6%A0%91/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 211】添加与搜索单词 - 数据结构设计</span
+                  >【LeetCode 208】实现 Trie (前缀树)</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1363,15 +1342,10 @@ window.MathJax = {
                   
                 </span>
               </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
             </a>
+          
+        </span>
+        <span>
           
         </span>
       </div>
