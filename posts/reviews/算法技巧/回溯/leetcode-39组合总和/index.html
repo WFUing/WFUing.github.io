@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>【LeetCode 17】电话号码的字母组合 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="【LeetCode 17】电话号码的字母组合 &middot; WFUing&#39;s Blog" />
+  <title>【LeetCode 39】组合总和 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="【LeetCode 39】组合总和 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="【LeetCode 17】电话号码的字母组合题解。回溯算法板子题。" />
+  <meta name="description" content="【LeetCode 39】组合总和题解。回溯算法板子题。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" />
   
   
   
@@ -67,16 +67,16 @@
   
   
   
-  <meta property="og:title" content="【LeetCode 17】电话号码的字母组合" />
-<meta property="og:description" content="【LeetCode 17】电话号码的字母组合题解。回溯算法板子题。" />
+  <meta property="og:title" content="【LeetCode 39】组合总和" />
+<meta property="og:description" content="【LeetCode 39】组合总和题解。回溯算法板子题。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/" /><meta property="og:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-23T18:16:02+08:00" />
-<meta property="article:modified_time" content="2024-03-23T18:16:02+08:00" />
+<meta property="og:url" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/" /><meta property="og:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-23T19:16:02+08:00" />
+<meta property="article:modified_time" content="2024-03-23T19:16:02+08:00" />
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/featured.png" /><meta name="twitter:title" content="【LeetCode 17】电话号码的字母组合"/>
-<meta name="twitter:description" content="【LeetCode 17】电话号码的字母组合题解。回溯算法板子题。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/featured.png" /><meta name="twitter:title" content="【LeetCode 39】组合总和"/>
+<meta name="twitter:description" content="【LeetCode 39】组合总和题解。回溯算法板子题。"/>
 
   
   <script type="application/ld+json">
@@ -84,26 +84,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "【LeetCode 17】电话号码的字母组合",
-    "headline": "【LeetCode 17】电话号码的字母组合",
+    "name": "【LeetCode 39】组合总和",
+    "headline": "【LeetCode 39】组合总和",
     
-    "abstract": "【LeetCode 17】电话号码的字母组合题解。回溯算法板子题。",
+    "abstract": "【LeetCode 39】组合总和题解。回溯算法板子题。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/reviews\/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%9B%9E%E6%BA%AF\/leetcode-77%E7%BB%84%E5%90%88\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/reviews\/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7\/%E5%9B%9E%E6%BA%AF\/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-03-23T18:16:02\u002b08:00",
-    "datePublished": "2024-03-23T18:16:02\u002b08:00",
+    "dateCreated": "2024-03-23T19:16:02\u002b08:00",
+    "datePublished": "2024-03-23T19:16:02\u002b08:00",
     
-    "dateModified": "2024-03-23T18:16:02\u002b08:00",
+    "dateModified": "2024-03-23T19:16:02\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "957"
+    "wordCount": "287"
   }]
   </script>
 
@@ -830,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/featured.png);">
+    style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/featured.png);">
     
 
 
@@ -856,7 +856,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      【LeetCode 17】电话号码的字母组合
+      【LeetCode 39】组合总和
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -901,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-23 18:16:02 &#43;0800 &#43;0800">23 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>957 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  <time datetime="2024-03-23 19:16:02 &#43;0800 &#43;0800">23 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>287 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1051,8 +1051,9 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#分析">分析</a></li>
-    <li><a href="#代码">代码</a></li>
+    <li><a href="#版本一">版本一</a></li>
+    <li><a href="#版本二">版本二</a></li>
+    <li><a href="#版本三-剪枝">版本三 剪枝</a></li>
   </ul>
 </nav>
   </div>
@@ -1066,8 +1067,9 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#分析">分析</a></li>
-    <li><a href="#代码">代码</a></li>
+    <li><a href="#版本一">版本一</a></li>
+    <li><a href="#版本二">版本二</a></li>
+    <li><a href="#版本三-剪枝">版本三 剪枝</a></li>
   </ul>
 </nav>
   </div>
@@ -1138,7 +1140,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/featured.png"
+        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/featured.png"
         alt=""
       />
       
@@ -1148,84 +1150,73 @@ window.MathJax = {
 
 </p>
 <ul>
-<li>链接：https://leetcode.cn/problems/combinations/description/</li>
+<li>链接：https://leetcode.cn/problems/combination-sum/description/</li>
 </ul>
-<h2 class="relative group">分析 
-    <div id="分析" class="anchor"></div>
+<h2 class="relative group">版本一 
+    <div id="版本一" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%88%86%e6%9e%90" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e7%89%88%e6%9c%ac%e4%b8%80" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>如果解决一个问题有多个步骤，每一个步骤有多种方法，题目又要我们找出所有的方法，可以使用回溯算法；
-回溯算法是在一棵树上的 深度优先遍历（因为要找所有的解，所以需要遍历）；
-组合问题，相对于排列问题而言，不计较一个组合内元素的顺序性（即 <code>[1, 2, 3]</code> 与 <code>[1, 3, 2]</code> 认为是同一个组合），因此很多时候需要按某种顺序展开搜索，这样才能做到不重不漏。</p>
-<p>既然是树形问题上的 深度优先遍历，因此首先画出树形结构。例如输入：<code>n = 4, k = 2</code>，我们可以发现如下递归结构：</p>
-<ul>
-<li>如果组合里有 <code>1</code> ，那么需要在 <code>[2, 3, 4]</code> 里再找 $1$ 个数；</li>
-<li>如果组合里有 <code>2</code> ，那么需要在 <code>[3, 4]</code> 里再找 $1$ 数。注意：这里不能再考虑 $1$，因为包含 $1$ 的组合，在第 1 种情况中已经包含。</li>
-</ul>
-<p>依次类推（后面部分省略），以上描述体现的 递归 结构是：在以 nnn 结尾的候选数组里，选出若干个元素。画出递归结构如下图：</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/image.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>叶子结点的信息体现在从根结点到叶子结点的路径上，因此需要一个表示路径的变量 <code>path</code>，它是一个列表，特别地，<code>path</code> 是一个栈；
-每一个结点递归地在做同样的事情，区别在于搜索起点，因此需要一个变量 <code>start</code> ，表示在区间 <code>[begin, n]</code> 里选出若干个数的组合；
-可能有一些分支没有必要执行，我们放在优化中介绍。</p>
-<h2 class="relative group">代码 
-    <div id="代码" class="anchor"></div>
+<p>按照回溯的板子写了一版代码</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combinationSum</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">candidates</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">temp</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="o">+</span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="o">-</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这版本代码会有重复，怎么避免这个问题呢？</p>
+<h2 class="relative group">版本二 
+    <div id="版本二" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e4%bb%a3%e7%a0%81" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e7%89%88%e6%9c%ac%e4%ba%8c" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combinationSum</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">candidates</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">());</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">path</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">temp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">temp</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">removeLast</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="o">+</span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">temp</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">temp</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="o">-</span><span class="n">1</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
@@ -1243,7 +1234,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/end.png"
+        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/end.png"
         alt=""
       />
       
@@ -1252,226 +1243,58 @@ window.MathJax = {
   
 
 </p>
-<p>如果对于回溯算法还理解不太透彻的朋友，可以在递归方法的前后，把 path 变量打印出来看一下，并结合上面画出的树形图进行理解。</p>
-<p>带 <code>System.out.println</code> 的调试语句不可以提交给力扣测评系统，会拖慢我们的程序执行时间。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayDeque</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Deque</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">path</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;递归之前 =&gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">path</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">removeLast</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;递归之后 =&gt; &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">path</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Solution</span><span class="w"> </span><span class="n">solution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Solution</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">5</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">3</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solution</span><span class="p">.</span><span class="na">combine</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">res</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>控制台输出：</p>
-<pre tabindex="0"><code>递归之前 =&gt; [1]
-递归之前 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 3]
-递归之后 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 4]
-递归之后 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 5]
-递归之后 =&gt; [1, 2]
-递归之后 =&gt; [1]
-递归之前 =&gt; [1, 3]
-递归之前 =&gt; [1, 3, 4]
-递归之后 =&gt; [1, 3]
-递归之前 =&gt; [1, 3, 5]
-递归之后 =&gt; [1, 3]
-递归之后 =&gt; [1]
-递归之前 =&gt; [1, 4]
-递归之前 =&gt; [1, 4, 5]
-递归之后 =&gt; [1, 4]
-递归之后 =&gt; [1]
-递归之前 =&gt; [1, 5]
-递归之后 =&gt; [1]
-递归之后 =&gt; []
-递归之前 =&gt; [2]
-递归之前 =&gt; [2, 3]
-递归之前 =&gt; [2, 3, 4]
-递归之后 =&gt; [2, 3]
-递归之前 =&gt; [2, 3, 5]
-递归之后 =&gt; [2, 3]
-递归之后 =&gt; [2]
-递归之前 =&gt; [2, 4]
-递归之前 =&gt; [2, 4, 5]
-递归之后 =&gt; [2, 4]
-递归之后 =&gt; [2]
-递归之前 =&gt; [2, 5]
-递归之后 =&gt; [2]
-递归之后 =&gt; []
-递归之前 =&gt; [3]
-递归之前 =&gt; [3, 4]
-递归之前 =&gt; [3, 4, 5]
-递归之后 =&gt; [3, 4]
-递归之后 =&gt; [3]
-递归之前 =&gt; [3, 5]
-递归之后 =&gt; [3]
-递归之后 =&gt; []
-递归之前 =&gt; [4]
-递归之前 =&gt; [4, 5]
-递归之后 =&gt; [4]
-递归之后 =&gt; []
-递归之前 =&gt; [5]
-递归之后 =&gt; []
-[[1, 2, 3], [1, 2, 4], [1, 2, 5], [1, 3, 4], [1, 3, 5], [1, 4, 5], [2, 3, 4], [2, 3, 5], [2, 4, 5], [3, 4, 5]]
-</code></pre><p><strong>优化：分析搜索起点的上界进行剪枝</strong></p>
-<p>我们上面的代码，搜索起点遍历到 <code>n</code>，即：递归函数中有下面的代码片段：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 从当前搜索起点 begin 遍历到 n</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">path</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">path</span><span class="p">.</span><span class="na">removeLast</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>事实上，如果 <code>n = 7, k = 4</code>，从 $5$ 开始搜索就已经没有意义了，这是因为：即使把 $5$ 选上，后面的数只有 $6$ 和 $7$，一共就 $3$ 个候选数，凑不出 $4$ 个数的组合。因此，搜索起点有上界，这个上界是多少，可以举几个例子分析。</p>
-<p>分析搜索起点的上界，其实是在深度优先遍历的过程中剪枝，剪枝可以避免不必要的遍历，剪枝剪得好，可以大幅度节约算法的执行时间。</p>
-<p>下面的图片绿色部分是剪掉的枝叶，当 <code>n</code> 很大的时候，能少遍历很多结点，节约了时间。</p>
-<p>（温馨提示：右键，在弹出的下拉列表框中选择「在新标签页中打开图片」，可以查看大图。）</p>
-<p>
-
-
-
-
-  
-  
+<h2 class="relative group">版本三 剪枝 
+    <div id="版本三-剪枝" class="anchor"></div>
     
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/image-1.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>容易知道：搜索起点和当前还需要选几个数有关，而当前还需要选几个数与已经选了几个数有关，即与 <code>path</code> 的长度相关。我们举几个例子分析：</p>
-<p>例如：<code>n = 6</code> ，<code>k = 4</code>。</p>
-<ul>
-<li><code>path.size() == 1</code> 的时候，接下来要选择 $3$ 个数，搜索起点最大是 $4$，最后一个被选的组合是 <code>[4, 5, 6]</code>；</li>
-<li><code>path.size() == 2</code> 的时候，接下来要选择 $2$ 个数，搜索起点最大是 $5$，最后一个被选的组合是 <code>[5, 6]</code>；</li>
-<li><code>path.size() == 3</code> 的时候，接下来要选择 $1$ 个数，搜索起点最大是 $6$，最后一个被选的组合是 <code>[6]</code>；</li>
-</ul>
-<p>再如：<code>n = 15</code> ，<code>k = 4</code>。</p>
-<ul>
-<li><code>path.size() == 1</code> 的时候，接下来要选择 $3$ 个数，搜索起点最大是
-$13$，最后一个被选的是 <code>[13, 14, 15]</code>；</li>
-<li><code>path.size() == 2</code> 的时候，接下来要选择 $2$ 个数，搜索起点最大是 $14$，最后一个被选的是 <code>[14, 15]</code>；</li>
-<li><code>path.size() == 3</code> 的时候，接下来要选择 $1$ 个数，搜索起点最大是 $15$，最后一个被选的是 <code>[15]</code>；</li>
-</ul>
-<p>可以归纳出：</p>
-<pre tabindex="0"><code>搜索起点的上界 + 接下来要选择的元素个数 - 1 = n
-</code></pre><p>其中，接下来要选择的元素个数 <code>= k - path.size()</code>，整理得到：</p>
-<pre tabindex="0"><code>搜索起点的上界 = n - (k - path.size()) + 1
-</code></pre><p>所以，我们的剪枝过程就是：把 <code>i &lt;= n</code> 改成 <code>i &lt;= n - (k - path.size()) + 1</code> ：</p>
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%89%88%e6%9c%ac%e4%b8%89-%e5%89%aa%e6%9e%9d" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayDeque</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Deque</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">combinationSum</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">candidates</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">len</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 排序是剪枝的前提</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">candidates</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 由于进入更深层的时候，小于 0 的部分被剪枝，因此递归终止条件值只判断等于 0 的情况</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">path</span><span class="p">));</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 只有这里 i &lt;= n - (k - path.size()) + 1 与参考代码 1 不同</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="na">size</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">begin</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 重点理解这里剪枝，前提是候选数组已经有序，</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">candidates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">path</span><span class="p">.</span><span class="na">removeLast</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><p>一些边界条件比较绕的，用具体的例子分析就不容易出错，主要考察的是细心，没有太多技巧；</p>
-<p>为参考代码 3 添加 path 的打印输出语句，可以看到输出语句会更少。</p>
-<pre tabindex="0"><code>递归之前 =&gt; [1]
-递归之前 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 3]
-递归之后 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 4]
-递归之后 =&gt; [1, 2]
-递归之前 =&gt; [1, 2, 5]
-递归之后 =&gt; [1, 2]
-递归之后 =&gt; [1]
-递归之前 =&gt; [1, 3]
-递归之前 =&gt; [1, 3, 4]
-递归之后 =&gt; [1, 3]
-递归之前 =&gt; [1, 3, 5]
-递归之后 =&gt; [1, 3]
-递归之后 =&gt; [1]
-递归之前 =&gt; [1, 4]
-递归之前 =&gt; [1, 4, 5]
-递归之后 =&gt; [1, 4]
-递归之后 =&gt; [1]
-递归之后 =&gt; []
-递归之前 =&gt; [2]
-递归之前 =&gt; [2, 3]
-递归之前 =&gt; [2, 3, 4]
-递归之后 =&gt; [2, 3]
-递归之前 =&gt; [2, 3, 5]
-递归之后 =&gt; [2, 3]
-递归之后 =&gt; [2]
-递归之前 =&gt; [2, 4]
-递归之前 =&gt; [2, 4, 5]
-递归之后 =&gt; [2, 4]
-递归之后 =&gt; [2]
-递归之后 =&gt; []
-递归之前 =&gt; [3]
-递归之前 =&gt; [3, 4]
-递归之前 =&gt; [3, 4, 5]
-递归之后 =&gt; [3, 4]
-递归之后 =&gt; [3]
-递归之后 =&gt; []
-[[1, 2, 3], [1, 2, 4], [1, 2, 5], [1, 3, 4], [1, 3, 5], [1, 4, 5], [2, 3, 4], [2, 3, 5], [2, 4, 5], [3, 4, 5]]
-</code></pre>
+</span></span></span></code></pre></div>
         </div>
                 
         
@@ -1483,8 +1306,8 @@ $13$，最后一个被选的是 <code>[13, 14, 15]</code>；</li>
      
     
      <script>
-        var oid = "views_posts\/reviews\/算法技巧\/回溯\/【LeetCode 77】组合\/index.md"
-        var oid_likes = "likes_posts\/reviews\/算法技巧\/回溯\/【LeetCode 77】组合\/index.md"
+        var oid = "views_posts\/reviews\/算法技巧\/回溯\/【LeetCode 39】组合总和\/index.md"
+        var oid_likes = "likes_posts\/reviews\/算法技巧\/回溯\/【LeetCode 39】组合总和\/index.md"
       </script>
       
       
@@ -1507,32 +1330,10 @@ $13$，最后一个被选的是 <code>[13, 14, 15]</code>；</li>
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >【LeetCode 39】组合总和</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-03-23 19:16:02 &#43;0800 &#43;0800">23 March 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">
+            <a class="flex text-right group ml-3" href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%9B%9E%E6%BA%AF/leetcode-77%E7%BB%84%E5%90%88/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
@@ -1540,7 +1341,7 @@ $13$，最后一个被选的是 <code>[13, 14, 15]</code>；</li>
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-03-21 17:16:02 &#43;0800 &#43;0800">21 March 2024</time>
+                    <time datetime="2024-03-23 18:16:02 &#43;0800 &#43;0800">23 March 2024</time>
                   
                 </span>
               </span>
