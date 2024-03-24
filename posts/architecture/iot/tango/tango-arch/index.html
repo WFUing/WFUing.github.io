@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>TANGO idl definition &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="TANGO idl definition &middot; WFUing&#39;s Blog" />
+  <title>Tango Controls Architecture &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Tango Controls Architecture &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C&#43;&#43;/Java 对象，可以像本地一样进行实例化和远程访问。" />
+  <meta name="description" content="Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/iot/tango-idl/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/" />
   
   
   
@@ -48,8 +48,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.1271c22a557a15f10b5d38d2c87e49503604cfeffebadc1e7c267934e4b9f3ba1b74d81371219f9681dab2141482fc4ed2a8b462b179f0ef43a5f76d0575e85b.js"
-    integrity="sha512-EnHCKlV6FfELXTjSyH5JUDYEz&#43;/&#43;utwefCZ5NOS587obdNgTcSGfloHashQUgvxO0qi0YrF58O9DpfdtBXXoWw==" data-copy="" data-copied=""></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b40e9fa2be0b34d2a44a3910aaee16f39a3d1a0b91ee8f7cf86e4cb095513986e2dd85827923f7810ea32e78c5925ba5c79a21c3db8c2aa899196b3b4b1dab46.js"
+    integrity="sha512-tA6for4LNNKkSjkQqu4W85o9GguR7o98&#43;G5MsJVROYbi3YWCeSP3gQ6jLnjFklulx5ohw9uMKqiZGWs7Sx2rRg==" data-copy="" data-copied=""></script>
   
   
   <script src="/js/zoom.min.js"></script>
@@ -67,17 +67,16 @@
   
   
   
-  <meta property="og:title" content="TANGO idl definition" />
-<meta property="og:description" content="TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C&#43;&#43;/Java 对象，可以像本地一样进行实例化和远程访问。" />
+  <meta property="og:title" content="Tango Controls Architecture" />
+<meta property="og:description" content="Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/architecture/iot/tango-idl/" /><meta property="og:image" content="https://WFUing.github.io/posts/architecture/iot/tango-idl/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-03-10T10:16:02+08:00" />
-<meta property="article:modified_time" content="2024-03-10T10:16:02+08:00" />
-
+<meta property="og:url" content="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/" /><meta property="og:image" content="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/featured.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-24T08:16:02+08:00" />
+<meta property="article:modified_time" content="2024-03-24T08:16:02+08:00" />
 
   <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/iot/tango-idl/featured.png" /><meta name="twitter:title" content="TANGO idl definition"/>
-<meta name="twitter:description" content="TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C&#43;&#43;/Java 对象，可以像本地一样进行实例化和远程访问。"/>
+<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/featured.png" /><meta name="twitter:title" content="Tango Controls Architecture"/>
+<meta name="twitter:description" content="Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。"/>
 
   
   <script type="application/ld+json">
@@ -85,26 +84,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "TANGO idl definition",
-    "headline": "TANGO idl definition",
+    "name": "Tango Controls Architecture",
+    "headline": "Tango Controls Architecture",
     
-    "abstract": "TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C\u002b\u002b\/Java 对象，可以像本地一样进行实例化和远程访问。",
+    "abstract": "Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/iot\/tango-idl\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/iot\/tango\/tango-arch\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-03-10T10:16:02\u002b08:00",
-    "datePublished": "2024-03-10T10:16:02\u002b08:00",
+    "dateCreated": "2024-03-24T08:16:02\u002b08:00",
+    "datePublished": "2024-03-24T08:16:02\u002b08:00",
     
-    "dateModified": "2024-03-10T10:16:02\u002b08:00",
+    "dateModified": "2024-03-24T08:16:02\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "373"
+    "wordCount": "326"
   }]
   </script>
 
@@ -831,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/iot/tango-idl/featured.png);">
+    style="background-image:url(/posts/architecture/iot/tango/tango-arch/featured.png);">
     
 
 
@@ -857,7 +856,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      TANGO idl definition
+      Tango Controls Architecture
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -902,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-10 10:16:02 &#43;0800 CST">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>373 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-24 08:16:02 &#43;0800 &#43;0800">24 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>326 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1052,46 +1051,17 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#idl-file">IDL FILE</a></li>
-    <li><a href="#版本演化">版本演化</a></li>
-    <li><a href="#device-的基本功能">Device 的基本功能</a>
+    <li><a href="#简化的-tango-device-server-model">简化的 Tango Device Server Model</a></li>
+    <li><a href="#tango-object-命名device-attribute-and-property">Tango object 命名（device, attribute and property）</a>
       <ul>
-        <li><a href="#命令执行">命令执行</a></li>
-        <li><a href="#属性读写">属性读写</a></li>
-        <li><a href="#设备信息和状态">设备信息和状态</a></li>
-        <li><a href="#命令和属性的查询">命令和属性的查询</a></li>
+        <li><a href="#full-object-name">Full object name</a>
+          <ul>
+            <li><a href="#关于-corba-您应该了解的-10-件事">关于 CORBA 您应该了解的 10 件事</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#device_2-升级内容">Device_2 升级内容</a>
-      <ul>
-        <li><a href="#轮询机制和数据源管理">轮询机制和数据源管理</a></li>
-        <li><a href="#属性和命令的配置增强">属性和命令的配置增强</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_3-升级内容">Device_3 升级内容</a>
-      <ul>
-        <li><a href="#增强的属性读写能力">增强的属性读写能力</a></li>
-        <li><a href="#设备信息的扩展">设备信息的扩展</a></li>
-        <li><a href="#属性配置的增强">属性配置的增强</a></li>
-        <li><a href="#属性和命令历史记录的查询">属性和命令历史记录的查询</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_4-升级内容">Device_4 升级内容</a>
-      <ul>
-        <li><a href="#客户端识别">客户端识别</a></li>
-        <li><a href="#增强的历史记录查询">增强的历史记录查询</a></li>
-        <li><a href="#灵活的属性和命令操作">灵活的属性和命令操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_5-升级内容">Device_5 升级内容</a>
-      <ul>
-        <li><a href="#更高级的属性配置">更高级的属性配置</a></li>
-        <li><a href="#增强的属性和管道读写能力">增强的属性和管道读写能力</a></li>
-        <li><a href="#管道操作">管道操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_6-升级内容">Device_6 升级内容</a></li>
-    <li><a href="#属性值">属性值</a></li>
+    <li><a href="#文档">文档</a></li>
   </ul>
 </nav>
   </div>
@@ -1105,46 +1075,17 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#idl-file">IDL FILE</a></li>
-    <li><a href="#版本演化">版本演化</a></li>
-    <li><a href="#device-的基本功能">Device 的基本功能</a>
+    <li><a href="#简化的-tango-device-server-model">简化的 Tango Device Server Model</a></li>
+    <li><a href="#tango-object-命名device-attribute-and-property">Tango object 命名（device, attribute and property）</a>
       <ul>
-        <li><a href="#命令执行">命令执行</a></li>
-        <li><a href="#属性读写">属性读写</a></li>
-        <li><a href="#设备信息和状态">设备信息和状态</a></li>
-        <li><a href="#命令和属性的查询">命令和属性的查询</a></li>
+        <li><a href="#full-object-name">Full object name</a>
+          <ul>
+            <li><a href="#关于-corba-您应该了解的-10-件事">关于 CORBA 您应该了解的 10 件事</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#device_2-升级内容">Device_2 升级内容</a>
-      <ul>
-        <li><a href="#轮询机制和数据源管理">轮询机制和数据源管理</a></li>
-        <li><a href="#属性和命令的配置增强">属性和命令的配置增强</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_3-升级内容">Device_3 升级内容</a>
-      <ul>
-        <li><a href="#增强的属性读写能力">增强的属性读写能力</a></li>
-        <li><a href="#设备信息的扩展">设备信息的扩展</a></li>
-        <li><a href="#属性配置的增强">属性配置的增强</a></li>
-        <li><a href="#属性和命令历史记录的查询">属性和命令历史记录的查询</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_4-升级内容">Device_4 升级内容</a>
-      <ul>
-        <li><a href="#客户端识别">客户端识别</a></li>
-        <li><a href="#增强的历史记录查询">增强的历史记录查询</a></li>
-        <li><a href="#灵活的属性和命令操作">灵活的属性和命令操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_5-升级内容">Device_5 升级内容</a>
-      <ul>
-        <li><a href="#更高级的属性配置">更高级的属性配置</a></li>
-        <li><a href="#增强的属性和管道读写能力">增强的属性和管道读写能力</a></li>
-        <li><a href="#管道操作">管道操作</a></li>
-      </ul>
-    </li>
-    <li><a href="#device_6-升级内容">Device_6 升级内容</a></li>
-    <li><a href="#属性值">属性值</a></li>
+    <li><a href="#文档">文档</a></li>
   </ul>
 </nav>
   </div>
@@ -1201,552 +1142,243 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C++/Java 对象，可以像本地一样进行实例化和远程访问。</p>
-<h2 class="relative group">IDL FILE 
-    <div id="idl-file" class="anchor"></div>
+          <p>Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕 <code>devices</code> 和 <code>device classes</code> 的概念构建的。</p>
+<p><code>devices</code> 由 <code>device servers</code> 创建。<code>device servers</code> 是实现 <code>device classes</code> 的进程。<code>device classes</code> 为每个类实现 <code>state machine</code> 、<code>command</code>(actions or methods)、<code>pipes</code> and <code>attributes</code>(data fields) 。因此，每个设备都具有state、零个或多个命令、零个或多个管道以及零个或多个属性。<code>device classes</code> 负责将硬件通信协议转换为 Tango Controls 通信。通过这种方式，您可以控制和监视所有设备，如电机、阀门、示波器等。设备类可用于实现任何算法或充当任何其他软件程序或系统的邮箱。</p>
+<p>Tango Controls 旨在管理小型和大型系统。每个系统都有一个集中的（MariaDB/MySQL）数据库。数据库存储设备服务器启动时使用的配置数据，并通过存储动态网络地址充当名称服务器。数据库充当需要记忆的动态设置的永久存储。每个 Tango Control 系统都有一个数据库并由其 Tango Host 识别。一个大系统可以由数以万计或设备组成（尚未达到极限）。该协议支持系统的系统，即API 支持从多个系统对设备的透明访问。</p>
+<p>Tango Controls 通信协议定义了系统的所有组件如何相互通信。 Tango 使用 CORBA 进行同步通信，使用 ZeroMQ 进行异步通信。这些协议的详细信息通过 API 和高级工具对 Tango 的开发人员和用户隐藏。</p>
+<h2 class="relative group">简化的 Tango Device Server Model 
+    <div id="简化的-tango-device-server-model" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#idl-file" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e7%ae%80%e5%8c%96%e7%9a%84-tango-device-server-model" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>IDL 文件包含以下网络接口：</p>
-<ul>
-<li>Device：所有控制对象（包括数据库）的基本接口。每个设备都有状态。通过执行传递一个输入参数并返回一个输出参数（TANGO 预定义数据类型之一）的命令，在设备上执行操作。命令可以同步或异步执行。异步命令必须提供回调对象才能接收答案。设备支持可读取或写入的属性列表。设备可以返回有关其自身或其状态的一般信息。每个设备都有一个包含最后 n 个命令的黑匣子并实现安全性。</li>
-<li>Callback：客户端对象将被服务器调用以返回异步响应。该回调有一个处理程序方法，该方法在解包响应时调用。</li>
-<li>Monitor：用于监视设备或属性的系统网络对象。客户登记他们的兴趣。</li>
-<li>Consumer：用于从监视器接收事件的客户端对象。</li>
-</ul>
-<p>TANGO还支持一些伪网络接口。伪网络接口仅在客户端实现，而不在服务器中实现。支持以下伪网络接口：</p>
-<ul>
-<li>GroupDevice：用于对设备进行分组并在一组设备上执行命令的客户端对象</li>
-<li>GroupAttributes：用于对不同设备的设备属性进行分组并读取和写入它们的客户端对象。</li>
-</ul>
-<p>代码仓库：https://gitlab.com/tango-controls/tango-idl</p>
-<h2 class="relative group">版本演化 
-    <div id="版本演化" class="anchor"></div>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/model.png"
+        alt="Tango Device Server Model"
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device</td>
+<td>TANGO device server object model 定义的抽象概念；它可以是一个硬件（互锁位）、硬件集合（连接到步进电机的屏幕）、逻辑设备（锥度）或所有这些的组合（加速器）。</td>
+</tr>
+<tr>
+<td>TANGO Class</td>
+<td>从面向对象编程的概念来看，这是开发人员必须实现的主要类。</td>
+</tr>
+<tr>
+<td>Device Server</td>
+<td>服务器（也称为设备服务器）是一个进程，其主要任务是向一个或多个客户端提供一项或多项服务。为此，服务器必须将大部分时间花在等待循环中，等待客户端连接到它。这些设备托管在服务器进程中。服务器能够托管多种类型的设备。简而言之，它是一个导出可用于接受请求的设备的过程。另请参阅术语表、设备服务器实例。</td>
+</tr>
+<tr>
+<td>Device Property</td>
+<td>存储在Tango 数据库中的配置参数。属性可以分配给设备类、设备或设备接口的元素（属性、 命令、管道）。属性也可以与设备无关——此类属性称为自由属性。Tango Controls系统的元素在启动期间经常使用属性值。这些通常提供配置硬件连接或调整用户首选项所需的信息。</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>属性代表系统中的一个或多个过程值。它可能具有不同的格式或维度，例如标量 (0D)、频谱 (1D) 或图像 (2D)。该属性允许根据程序员定义的访问来读取和/或写入这些值。这些值可能具有不同的数据类型。此外，属性还提供一些元数据，例如属性质量、时间戳或配置属性。如需完整列表，请参阅手册。特定设备可用的属性列表由其类定义。</td>
+</tr>
+<tr>
+<td>Pipe</td>
+<td>管道允许从设备读取结构化数据和/或向设备写入结构化数据。数据可以由几种基本 Tango 数据类型构建。数据的结构由设备类定义并且不固定。它可以在运行时由设备本身更改，也可以根据客户端的请求根据 管道提供的set_pipe_config操作进行修改。设备可用的管道列表由其 设备类定义。</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>事件是任何分布式控制系统的关键部分。他们的目标是提供一种快速高效的沟通机制。标准的CORBA通信范例是同步或异步的双向调用。对于对价值观始终感兴趣的客户来说，事件驱动的通信范式是一种更高效、更自然的编程方式。</td>
+</tr>
+<tr>
+<td>Command</td>
+<td>命令是用户可以在设备上调用的操作（例如SwitchOn、SwitchOff）。它还涉及到OOP（面向对象编程）中的一种具体方法。 Tango Controls 允许命令获取输入参数 (argin) 并返回值 (argout)。特定设备的可用命令列表由其设备类别定义。</td>
+</tr>
+<tr>
+<td>State</td>
+<td>设备可能处于运行时确定的某种状态。设备的状态可以反映与其连接的设备的状态或者以其他方式确定。该行为由实现状态机的设备类定义 。状态可以定义当前可用的属性、命令和管道操作。 Tango Controls 将设备可能处于的一组状态限制为 14 种：ON, OFF, CLOSE, OPEN, INSERT, EXTRACT, MOVING, STANDBY, FAULT, INIT, RUNNING, ALARM, DISABLE, and UNKNOWN</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>以格式化的 ascii 字符串表示的设备状态。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device</td>
+<td>domain/family/member</td>
+<td>To identify the device</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Left Block</th>
+<th>Right Block</th>
+<th>Multiplicity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device</td>
+<td>TANGO Class</td>
+<td>1</td>
+<td>每个设备都属于 Tango 类</td>
+</tr>
+<tr>
+<td>Attribute</td>
+<td>Event</td>
+<td>0..*</td>
+<td>一个属性可以有多个关联事件</td>
+</tr>
+<tr>
+<td>Device</td>
+<td>DeviceProperty</td>
+<td>0..*</td>
+<td>一台设备可以有多个关联的设备属性</td>
+</tr>
+<tr>
+<td>DeviceServer</td>
+<td>Device</td>
+<td>1..*</td>
+<td>每个设备服务器内部都有许多设备</td>
+</tr>
+<tr>
+<td>TANGO Class</td>
+<td>Attribute</td>
+<td>0..*</td>
+<td>一个 TANGO Class 可以有多个关联属性</td>
+</tr>
+<tr>
+<td>TANGO Class</td>
+<td>Command</td>
+<td>0..*</td>
+<td>一个 TANGO Class 可以有多个关联命令</td>
+</tr>
+<tr>
+<td>TANGO Class</td>
+<td>Pipe</td>
+<td>0..*</td>
+<td>一个 TANGO Class 可以有多个关联的 Pipe</td>
+</tr>
+</tbody>
+</table>
+<h2 class="relative group">Tango object 命名（device, attribute and property） 
+    <div id="tango-object-命名device-attribute-and-property" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e7%89%88%e6%9c%ac%e6%bc%94%e5%8c%96" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#tango-object-%e5%91%bd%e5%90%8ddevice-attribute-and-property" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>TANGO 系统通过一系列逐步扩展的接口定义（从 Device 接口到 Device_6 接口），展示了对设备控制和数据管理需求的不断演进和适应。</p>
+<p>Tango 设备名称是一个包含三个字段的名称。字段分隔符是 <code>/</code> 字符。第一个字段名为 <code>domain</code>，第二个字段名为 <code>family</code>，最后一个字段名为 <code>member</code>。tango 设备名称如下所示：<code>domain/family/member</code>。</p>
+<p>它是一种分层表示法。成员指定族中的哪个元素。该系列指定域内的设备类型。域对与其所属 accelerator/experiment 部分相关的设备进行分组。在ESRF，一些机器控制系统的域名是<code>SR</code>（存储环）、<code>TL1</code>（传输线1）或<code>SY</code>（同步加速器助推器）。对于实验，ID11 是属于插入 device 11 后面的实验的所有设备的域名。以下是 ESRF 中使用的 Tango 设备名称的一些示例：</p>
 <ul>
-<li>Device
-<ul>
-<li>基本功能: 提供设备的基础交互能力，包括同步执行命令、读写属性、获取设备信息等。</li>
-<li>属性和命令的管理: 支持对设备属性的配置及读写，对设备执行的命令进行查询和执行。</li>
+<li><code>sr/d-ct/1</code>：电流互感器。域部分是<code>sr</code>，表示存储环。系列部分是诊断/电流互感器的 <code>d-ct</code>，成员部分是 1</li>
+<li><code>fe/v-pen/id11-1</code>：领域部分是 <code>fe</code> 代表前端。系列部件是 <code>v-pen</code>，用于 vacuum/penning，成员名称是 id11-1，以指定这是插入设备 11 之后前端部件上的第一个仪表</li>
 </ul>
-</li>
-<li>Device_2
-<ul>
-<li>轮询和缓存支持: 引入数据源参数，支持从设备直接读取或从轮询缓存读取数据。</li>
-<li>命令和属性配置的扩展: 提供更详细的命令和属性配置信息，包括显示级别等。</li>
-</ul>
-</li>
-<li>Device_3
-<ul>
-<li>增强的属性读写: 支持更复杂的属性读写操作。</li>
-<li>扩展的设备信息: 提供更丰富的设备信息，包括设备类型等。</li>
-<li>属性配置增强: 支持更详细的属性配置。</li>
-</ul>
-</li>
-<li>Device_4
-<ul>
-<li>客户端识别: 引入客户端识别，用于命令执行和属性读写中。</li>
-<li>历史记录增强: 引入命令和属性的历史记录查询，支持更详细的历史数据分析。</li>
-<li>属性读写和配置的进一步增强: 支持更复杂的操作。</li>
-</ul>
-</li>
-<li>Device_5
-<ul>
-<li>管道管理: 引入管道(Pipe)的概念和管理方法，包括管道的读写和配置。</li>
-<li>属性配置和读写的最新扩展: 进一步增强了属性管理的能力。</li>
-<li>增强的历史记录和配置管理: 支持对属性和管道的更复杂配置，以及历史数据的查询。</li>
-</ul>
-</li>
-<li>Device_6
-<ul>
-<li>接口版本标记: 标识设备支持的TANGO版本为V10，没有引入新的方法或属性，主要作为版本更新的标识。</li>
-</ul>
-</li>
-</ul>
-<h2 class="relative group">Device 的基本功能 
-    <div id="device-的基本功能" class="anchor"></div>
+<h3 class="relative group">Full object name 
+    <div id="full-object-name" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device-%e7%9a%84%e5%9f%ba%e6%9c%ac%e5%8a%9f%e8%83%bd" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#full-object-name" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>如上所述的设备名称不足以涵盖所有 Tango 用法，例如没有数据库或多控制系统设备访问的设备服务器。通过命名模式，我们还必须能够命名属性和属性。因此，完整的命名模式是</p>
+<pre tabindex="0"><code>[protocol://][host:port/]device_name[/attribute][-&gt;property][#dbase=xx]
+</code></pre><p>protocol, host, port, attribute, property and dbase fields 是可选的。这些字段的含义是：</p>
+<ul>
+<li><code>protocol</code>: 指定使用哪种协议（Tango 或 Taco）。Tango是默认设置。</li>
+<li><code>#dbase</code>: xx 支持的值为 <code>yes</code> 和 <code>no</code>。该字段用于指定该设备是由使用或不使用数据库启动的设备服务器提供服务的设备。默认值为dbase=yes。</li>
+<li><code>host:port</code>: 根据 dbase 值，该字段具有不同的含义。如果 <code>dbase=yes</code>（默认），则 <code>host</code> 为控制系统数据库服务器运行的主机，<code>port</code> 为数据库服务器端口。它的优先级高于 <code>TANGO_HOST</code> 环境变量定义的值。如果 <code>dbase=no</code>，则 <code>host</code> 是为设备提供服务的设备服务器进程运行所在的主机名，port 是设备服务器进程端口。</li>
+<li><code>attribute</code>: 属性名</li>
+<li><code>property</code>: 特性名</li>
+<li>仅当创建用于远程访问设备的 <code>DeviceProxy</code> 对象时，<code>host:port</code> 和 <code>dbase=xx</code> 字段才是必需的。 <code>-&gt;</code> 字符用于指定属性名称。</li>
+</ul>
+<h4 class="relative group">关于 CORBA 您应该了解的 10 件事 
+    <div id="关于-corba-您应该了解的-10-件事" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%b3%e4%ba%8e-corba-%e6%82%a8%e5%ba%94%e8%af%a5%e4%ba%86%e8%a7%a3%e7%9a%84-10-%e4%bb%b6%e4%ba%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h4>
+<ol>
+<li>您无需了解 CORBA 即可使用 TANGO</li>
+<li>CORBA 是通用对象请求代理架构的缩写，它是由对象管理组 (OMG)定义的标准</li>
+<li>CORBA 使得用不同语言编写并在不同计算机上运行的软件之间能够进行通信</li>
+<li>CORBA应用程序由许多对象组成；对象正在运行提供功能并可以代表现实世界中某些事物的软件</li>
+<li>每个对象都有一个类型，该类型是用称为 IDL（接口定义语言）的语言定义的</li>
+<li>一个对象有一个接口和一个实现：这是 CORBA 的本质，因为它允许互操作性。</li>
+<li>CORBA 允许应用程序请求分布式对象执行操作，并将操作结果返回给发出请求的应用程序。</li>
+<li>CORBA 基于远程过程调用模型</li>
+<li>TANGO 设备是一个 CORBA 对象</li>
+<li>TANGO 设备服务器是一个 CORBA 应用程序</li>
+</ol>
+<h2 class="relative group">文档 
+    <div id="文档" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%96%87%e6%a1%a3" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>Device接口是TANGO控制系统中的核心部分，定义了与TANGO设备进行交互的基本功能。这些基本功能构成了TANGO设备交互的基础，使得客户端能够控制和监视设备的状态，以及对设备进行配置和管理。通过这些接口，TANGO系统提供了一个强大而灵活的框架，用于实现复杂的设备控制逻辑和数据处理任务。</p>
-<h3 class="relative group">命令执行 
-    <div id="命令执行" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%91%bd%e4%bb%a4%e6%89%a7%e8%a1%8c" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
 <ul>
-<li><code>command_inout</code>: 这是执行设备命令的基础方法，它允许客户端向设备发送命令并接收回应。该方法接受一个命令名（字符串形式）和一个命令输入参数（任意类型），返回命令的输出结果（也是任意类型）。这使得客户端可以执行如开关设备或调整设备参数等操作。</li>
-</ul>
-<h3 class="relative group">属性读写 
-    <div id="属性读写" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%b1%9e%e6%80%a7%e8%af%bb%e5%86%99" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ul>
-<li><code>read_attributes</code>: 允许客户端读取一个或多个设备属性的当前值。这个方法接收一个属性名的数组，并返回一个包含每个属性当前值的列表。每个属性值都包括实际的数据值、数据质量（如有效、无效、警告等）、时间戳等信息。</li>
-<li><code>write_attributes</code>: 使客户端能够设置一个或多个设备属性的值。客户端提供一个属性值列表，每个列表项包括属性名和新的属性值。这个方法不返回任何结果，但如果操作失败会抛出异常。</li>
-<li><code>get_attribute_config</code>: 用于获取一个或多个属性的配置信息，例如属性的数据类型、读写权限、最大维度等。这些配置信息对于理解属性的行为和约束条件非常重要。</li>
-<li><code>set_attribute_config</code>: 允许客户端为一个或多个属性设置新的配置。这可以包括改变属性的标签、描述、单位等元数据。</li>
-</ul>
-<h3 class="relative group">设备信息和状态 
-    <div id="设备信息和状态" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%ae%be%e5%a4%87%e4%bf%a1%e6%81%af%e5%92%8c%e7%8a%b6%e6%80%81" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ul>
-<li><code>ping</code>: 这个方法用于检测设备是否在线和可达。如果设备响应，说明它是活跃的；如果没有响应，客户端可能会收到一个异常。</li>
-<li><code>info</code>: 提供设备的一般信息，如设备的类别、服务器标识、位置等。这对于了解设备的背景和运行环境非常有用。</li>
-<li>状态和描述属性: Device接口还定义了几个只读属性，如<code>name</code>（设备名）、<code>description</code>（设备描述）、<code>state</code>（设备状态）和<code>status</code>（状态的文本描述）。这些属性为客户端提供了设备的基本信息和当前状态。</li>
-</ul>
-<h3 class="relative group">命令和属性的查询 
-    <div id="命令和属性的查询" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%91%bd%e4%bb%a4%e5%92%8c%e5%b1%9e%e6%80%a7%e7%9a%84%e6%9f%a5%e8%af%a2" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ul>
-<li><code>command_list_query</code>: 返回设备支持的所有命令的列表。这对于客户端了解设备能够执行哪些操作非常有用。</li>
-<li><code>command_query</code>: 提供指定命令的详细信息（一个<code>DevCmdInfo</code>结构），如命令的输入输出类型等，帮助客户端正确地构造命令调用。</li>
-</ul>
-<h2 class="relative group">Device_2 升级内容 
-    <div id="device_2-升级内容" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device_2-%e5%8d%87%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Device_2接口的引入，主要是为了提升数据访问的灵活性和效率，通过引入数据源管理的概念，使得客户端可以根据实际需要选择最合适的数据获取方式；对属性和命令配置的增强，提供了更多的信息和配置选项，使得设备管理和操作更加灵活和精细。</p>
-<h3 class="relative group">轮询机制和数据源管理 
-    <div id="轮询机制和数据源管理" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%bd%ae%e8%af%a2%e6%9c%ba%e5%88%b6%e5%92%8c%e6%95%b0%e6%8d%ae%e6%ba%90%e7%ae%a1%e7%90%86" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>
-<p>命令执行带数据源（command_inout_2）:</p>
-<ul>
-<li>功能描述: 在Device接口的command_inout方法基础上增加了一个新参数DevSource source，这允许客户端指定命令执行结果的数据来源是直接从设备读取还是从轮询缓存中获取。</li>
-<li>新增参数: DevSource source: 指定数据源，可以是设备直接（DEV）、缓存（CACHE）或先尝试缓存后设备（CACHE_DEV）。</li>
-<li>改进点: 提高了数据访问的灵活性和响应速度，特别是在数据频繁更新的场合。</li>
-</ul>
-</li>
-<li>
-<p>读取属性带数据源（read_attributes_2）:</p>
-<ul>
-<li>功能描述: 类似于command_inout_2，这个方法允许客户端在读取属性值时指定数据来源。</li>
-<li>新增参数 <code>DevSource source</code>: 允许选择数据来源，使得客户端可以更灵活地根据实际情况和需求选择读取数据的方式。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">属性和命令的配置增强 
-    <div id="属性和命令的配置增强" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%b1%9e%e6%80%a7%e5%92%8c%e5%91%bd%e4%bb%a4%e7%9a%84%e9%85%8d%e7%bd%ae%e5%a2%9e%e5%bc%ba" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>
-<p>获取属性配置（get_attribute_config_2）:</p>
-<ul>
-<li>功能描述: 扩展了get_attribute_config方法，提供了对属性更详细的配置信息，包括新增的显示级别（Display Level）等配置项。</li>
-<li>改进点: 增强了属性配置的能力，使客户端能够更细致地管理和配置设备属性，支持更复杂的应用场景。</li>
-</ul>
-</li>
-<li>
-<p>查询命令列表（command_list_query_2）:</p>
-<ul>
-<li>功能描述: 扩展了command_list_query方法，提供了命令配置中新增的显示级别等信息。</li>
-<li>改进点: 提供了更为详尽的命令信息，使客户端可以根据命令的不同级别进行相应的操作，增强了用户界面的友好性和操作的适应性。</li>
-</ul>
-</li>
-<li>
-<p>查询命令详情（command_query_2）:</p>
-<ul>
-<li>功能描述: 在command_query基础上增加了命令的显示级别信息。</li>
-<li>改进点: 通过引入显示级别，使得对命令的描述更加丰富和详细，有助于客户端或用户界面根据不同的应用场景选择合适的命令进行操作。</li>
-</ul>
-</li>
-</ol>
-<h2 class="relative group">Device_3 升级内容 
-    <div id="device_3-升级内容" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device_3-%e5%8d%87%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Device_3接口相比Device_2主要在属性管理和设备信息获取方面进行了显著的增强和扩展，引入了更细致的属性读写能力和更丰富的设备及属性配置信息。</p>
-<h3 class="relative group">增强的属性读写能力 
-    <div id="增强的属性读写能力" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%a2%9e%e5%bc%ba%e7%9a%84%e5%b1%9e%e6%80%a7%e8%af%bb%e5%86%99%e8%83%bd%e5%8a%9b" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>
-<p>读取属性（read_attributes_3）:</p>
-<ul>
-<li>功能描述: 这个方法扩展了Device_2中的read_attributes_2，引入了AttributeValueList_3，提供了对属性读取操作的增强，允许更灵活地处理属性值及其质量信息。</li>
-<li>改进点: 引入了属性维度信息和错误列表，使得客户端在读取属性时可以获取更多关于属性状态的详细信息，包括可能发生的错误。</li>
-</ul>
-</li>
-<li>
-<p>写入属性（write_attributes_3）:</p>
-<ul>
-<li>功能描述: 提供了一个增强的属性写入方法，支持更复杂的错误处理机制，包括MultiDevFailed异常。</li>
-<li>改进点: 在写入属性时，如果遇到错误，客户端可以得到更详细的错误信息，包括哪些属性写入失败及其原因，这对于错误诊断和异常处理非常有用。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">设备信息的扩展 
-    <div id="设备信息的扩展" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e8%ae%be%e5%a4%87%e4%bf%a1%e6%81%af%e7%9a%84%e6%89%a9%e5%b1%95" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>获取设备信息（info_3）:
-<ul>
-<li>功能描述: info_3方法扩展了Device接口的info方法，提供了设备的更多信息，如设备类型等。</li>
-<li>改进点: 这一扩展使得客户端可以获取更全面的设备信息，有助于更好地理解和管理设备。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">属性配置的增强 
-    <div id="属性配置的增强" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%b1%9e%e6%80%a7%e9%85%8d%e7%bd%ae%e7%9a%84%e5%a2%9e%e5%bc%ba" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>
-<p>获取属性配置（get_attribute_config_3）:</p>
-<ul>
-<li>功能描述: 该方法在Device_2的基础上进行了扩展，允许获取包括显示级别在内的更丰富的属性配置信息。</li>
-<li>改进点: 提供了对属性配置更细致的控制和管理，使得属性的展示和操作可以根据不同的使用场景进行调整。</li>
-</ul>
-</li>
-<li>
-<p>设置属性配置（set_attribute_config_3）:</p>
-<ul>
-<li>功能描述: 相比于Device_2，这个方法支持更复杂的属性配置设置，包括新引入的配置项。</li>
-<li>改进点: 使得客户端能够根据需求对设备属性进行更详细的配置，增强了设备管理的灵活性和精确度。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">属性和命令历史记录的查询 
-    <div id="属性和命令历史记录的查询" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%b1%9e%e6%80%a7%e5%92%8c%e5%91%bd%e4%bb%a4%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e7%9a%84%e6%9f%a5%e8%af%a2" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>Device_3接口并没有直接新增与属性和命令历史记录查询相关的方法，这些功能在后续的接口版本中得到了扩展。Device_3主要集中在提高属性读写的灵活性和扩展设备信息及属性配置的功能上。</p>
-<h2 class="relative group">Device_4 升级内容 
-    <div id="device_4-升级内容" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device_4-%e5%8d%87%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Device_4接口的引入标志着TANGO系统在客户端管理、操作审计、历史数据查询及操作效率方面的重大进步。</p>
-<h3 class="relative group">客户端识别 
-    <div id="客户端识别" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e8%af%86%e5%88%ab" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>客户端识别（ClntIdent）:
-<ul>
-<li>功能描述: Device_4引入了一个新的参数类型ClntIdent，用于在执行命令或读写属性时标识请求的客户端。这允许TANGO服务更准确地跟踪和管理来自不同客户端的操作，提高了系统的安全性和可追踪性。IDL 为 C++ 和 Java 客户端定义了不同的结构（CppClntIdent_6、JavaClntIdent_6），并提供与旧客户端识别机制的向后兼容性。</li>
-<li>改进点: 通过客户端识别，TANGO系统能够为每个客户端提供定制化的服务和响应，同时增强了对操作的审计和控制能力。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">增强的历史记录查询 
-    <div id="增强的历史记录查询" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%a2%9e%e5%bc%ba%e7%9a%84%e5%8e%86%e5%8f%b2%e8%ae%b0%e5%bd%95%e6%9f%a5%e8%af%a2" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>
-<p>命令历史记录查询（command_inout_history_4）:</p>
-<ul>
-<li>功能描述: 此方法扩展了历史记录查询功能，允许客户端获取指定命令的执行历史，包括命令的输入、输出以及执行时间等详细信息。</li>
-<li>改进点: 为系统维护人员和应用开发者提供了强大的工具，以分析和诊断系统中的操作和事件，帮助提高系统的稳定性和性能。</li>
-</ul>
-</li>
-<li>
-<p>属性值历史记录查询（read_attribute_history_4）:</p>
-<ul>
-<li>功能描述: 类似于命令历史记录的查询，这个方法允许查询特定属性的值变化历史，包括属性值、质量标志、时间戳等。</li>
-<li>改进点: 增强了对设备状态和行为分析的能力，特别是在需要监控和回溯设备性能或状态变化的场合。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">灵活的属性和命令操作 
-    <div id="灵活的属性和命令操作" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e7%81%b5%e6%b4%bb%e7%9a%84%e5%b1%9e%e6%80%a7%e5%92%8c%e5%91%bd%e4%bb%a4%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>带客户端识别的命令执行（command_inout_4）:
-<ul>
-<li>功能描述: 这个方法扩展了command_inout_2，增加了客户端识别参数，使得命令执行可以关联到特定的客户端请求。</li>
-<li>改进点: 提高了命令执行的安全性和可追踪性，有助于在多客户端环境中管理和控制对设备的访问。</li>
-</ul>
-</li>
-<li>带客户端识别的属性读写（read_attributes_4和write_attributes_4）:
-<ul>
-<li>功能描述: 这些方法在属性读写操作中引入了客户端识别，使得每次属性操作都可以与发起操作的客户端相关联。</li>
-<li>改进点: 这增强了属性操作的安全性和个性化处理能力，特别是在复杂的系统环境中，能够有效地管理和控制不同客户端对属性的操作。</li>
-</ul>
-</li>
-<li>写后读属性（write_read_attributes_4）:
-<ul>
-<li>功能描述: 新增的方法允许客户端在单个操作中先写入一组属性值，然后立即读取另一组（或相同的）属性值，这种原子操作减少了网络通信次数，提高了操作效率。</li>
-<li>改进点: 对于需要频繁更新并立即读取最新状态的应用场景，这个方法显著提高了效率和响应速度。</li>
-</ul>
-</li>
-</ol>
-<h2 class="relative group">Device_5 升级内容 
-    <div id="device_5-升级内容" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device_5-%e5%8d%87%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<h3 class="relative group">更高级的属性配置 
-    <div id="更高级的属性配置" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%9b%b4%e9%ab%98%e7%ba%a7%e7%9a%84%e5%b1%9e%e6%80%a7%e9%85%8d%e7%bd%ae" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>获取和设置属性配置（get_attribute_config_5和set_attribute_config_5）:
-<ul>
-<li>功能描述: 这两个方法扩展了Device_4中对属性配置的操作，引入了更详细的配置选项，如属性的记忆化（memorization）设置，允许系统记住属性的最后值并在设备重启时恢复这些值。</li>
-<li>改进点 最小/最大报警值（min_alarm、max_alarm）: 允许用户为属性设置最小和最大的报警阈值。当属性值超出这些阈值时，系统可以触发相应的报警，提示用户进行检查或采取行动</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">增强的属性和管道读写能力 
-    <div id="增强的属性和管道读写能力" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%a2%9e%e5%bc%ba%e7%9a%84%e5%b1%9e%e6%80%a7%e5%92%8c%e7%ae%a1%e9%81%93%e8%af%bb%e5%86%99%e8%83%bd%e5%8a%9b" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>读取属性（read_attributes_5）:
-<ul>
-<li>功能描述: 进一步增强了读取属性的能力，允许在读取属性时提供更详细的信息，如数据类型、数据格式等。</li>
-<li>改进点: 增强了对属性数据处理的灵活性，使客户端能够更准确地处理和解析返回的属性值。</li>
-</ul>
-</li>
-<li>写后读属性（write_read_attributes_5）:
-<ul>
-<li>功能描述: 此方法允许在单个操作中先写入一组属性值，然后立即读取一组（可能是不同的）属性值，进一步提升了Device_4中引入的相关操作的灵活性和效率。</li>
-<li>改进点: 通过减少网络通信次数，提高了操作效率，特别是对于需要频繁更新状态并快速获取最新状态的控制逻辑。</li>
-</ul>
-</li>
-<li>获取和设置管道配置（get_pipe_config_5和set_pipe_config_5）:
-<ul>
-<li>功能描述: 新增了对管道（一种复杂数据结构的集合）的配置读取和设置方法，允许客户端管理和控制管道的行为。</li>
-<li>改进点: 管道是TANGO系统中用于处理复杂数据传输的一种机制，这些方法提供了对管道高度灵活的配置和管理能力，适用于复杂的数据处理需求。</li>
-</ul>
-</li>
-</ol>
-<h3 class="relative group">管道操作 
-    <div id="管道操作" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e7%ae%a1%e9%81%93%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<ol>
-<li>读写管道（read_pipe_5、write_pipe_5和write_read_pipe_5）:
-<ul>
-<li>功能描述: 这一系列方法提供了对管道数据的读取、写入以及写后读操作，允许客户端与设备之间进行复杂数据结构的高效通信。</li>
-<li>改进点: 通过支持复杂数据结构的传输，这些方法使得TANGO系统能够更好地处理高级数据处理场景，如实时数据分析、复杂的设备控制逻辑等。</li>
-</ul>
-</li>
-</ol>
-<h2 class="relative group">Device_6 升级内容 
-    <div id="device_6-升级内容" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#device_6-%e5%8d%87%e7%ba%a7%e5%86%85%e5%ae%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>Device_6主要作为一个版本标记，表明设备或TANGO服务支持或兼容至TANGO版本10的特性和API。</p>
-<h2 class="relative group">属性值 
-    <div id="属性值" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%b1%9e%e6%80%a7%e5%80%bc" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p><strong>基本属性值</strong></p>
-<ul>
-<li>AttrQuality：描述属性值的质量，指示属性值是有效、无效、处于报警状态、正在变化还是处于警告状态。这使客户能够了解他们收到的数据的可靠性。</li>
-<li>AttrWriteType：指定属性的写入能力，例如只读、只写或读写，并包含未定义状态的未知类型。</li>
-<li>AttrDataFormat：定义属性的数据格式，区分标量值、光谱和图像，并使用未知格式的占位符。</li>
-<li>DevSource：表示设备信息的来源，区分直接设备访问、缓存或两者的组合。</li>
-<li>ErrSeverity：枚举错误的严重级别，包括警告、错误和恐慌级别，这有助于确定问题的优先级。</li>
-<li>DevState：列出设备可能的状态，涵盖开、关、移动、故障等常见状态，这对于管理和监控设备操作至关重要。</li>
-<li>DispLevel：区分显示级别或访问级别，例如操作员和专家，可能根据用户的角色控制某些设备功能的可见性或访问。</li>
-<li>跟踪上下文传播：定义包括用于传播跟踪上下文的结构 (W3CTraceContextV0)，采用“W3C 跟踪上下文”标准。 这对于分布式系统调用的可观察性和监控非常重要，确保不同组件和服务之间的可追溯性。</li>
-<li>客户端标识 (ClntIdent)：扩展客户端标识机制以包含跟踪上下文以实现可观察性。 这对于识别和跟踪来自不同客户端的请求至关重要，尤其是在分布式环境中。</li>
-<li>LockerLanguage Enum：该枚举用于选择 ClntIdent 联合的编组/解组机制，支持 pre-IDL6 和 IDL6 数据结构。 这使得该接口能够支持不同版本的客户端识别，确保不同版本的TANGO系统之间的兼容性。</li>
-<li>模块化和可扩展性：该 IDL 文件中模块（例如 Tango 模块）的使用以及数据类型和结构的定义演示了设计模块化和可扩展系统的方法。 这种设计允许轻松添加新功能和组件，同时保持向后兼容性。</li>
-</ul>
-<p><strong>杂项结构</strong></p>
-<ul>
-<li>TimeVal：表示时间值的结构，可能用于时间戳或调度目的。</li>
-<li>DevCmdInfo 和 DevCmdInfo_2：定义命令信息的结构，包括命令名称、输入和输出类型及其描述。 DevCmdInfo_2 使用附加显示级别字段扩展了 DevCmdInfo，指示预期的用户界面级别。</li>
-</ul>
-<p><strong>错误处理机制</strong></p>
-<ul>
-<li>DevError：包含有关错误的详细信息，包括原因、严重性、描述和来源。 这种结构可以实现详细的错误报告。</li>
-<li>NamedDevError：使用名称和索引扩展 DevError，可能用于分组或识别错误较大操作或命令序列中的错误。</li>
-<li>DevFailed 和 MultiDevFailed：处理错误和失败的异常，DevFailed 提供错误列表，MultiDevFailed 提供报告多个命名错误的方法。</li>
-</ul>
-<p><strong>属性管理</strong></p>
-<ul>
-<li>属性配置结构：AttributeConfig、AttributeConfig_2、AttributeConfig_3和AttributeConfig_5详细配置设备属性，包括名称、写入类型、数据格式、数据类型、维度、描述、单位、格式、值约束以及进一步定制的扩展。 这些结构演变为包括更详细的配置，例如警报设置、事件属性，并且在最新版本（AttributeConfig_5）中，还包括属性的记忆设置和枚举标签。</li>
-<li>属性值结构：这些结构（AttributeValue、AttributeValue_3、AttributeValue_4 和 AttributeValue_5）表示属性的值及其质量、时间戳、维度和错误列表（如果适用）。 它们不断发展以支持更复杂的数据结构和详细的错误报告。</li>
-<li>属性数据类型和联合：AttributeDataType 枚举和 AttrValUnion 提供了一种灵活的机制来表示不同类型的属性值，包括布尔值、数字类型、字符串、设备状态和编码数据。 这允许属性保存与设备操作和监控相关的各种数据。</li>
-<li>事件和警报配置：ChangeEventProp、PeriodicEventProp、ArchiveEventProp、EventProperties 和 AttributeAlarm 等结构允许配置属性更改如何根据特定阈值或周期触发事件和警报。 此功能对于自动监控和响应系统至关重要。</li>
-</ul>
-<p><strong>管道管理</strong></p>
-<ul>
-<li>管道配置：PipeConfig 结构定义管道的配置，管道是设备之间或客户端与设备之间的数据管道。 配置选项包括名称、描述、标签、访问级别、写入类型和其他设置的扩展。</li>
-<li>管道数据结构：DevPipeDataElt、DevPipeBlob 和 DevPipeData 结构有助于管道内的复杂数据处理，允许嵌套数据结构 (DevPipeDataElt)、用于对数据元素进行分组的 blob (DevPipeBlob) 以及带有时间戳的整体管道数据结构 (DevPipeData)。</li>
-</ul>
-<p><strong>数据就绪事件和设备接口更改</strong></p>
-<ul>
-<li>AttDataReady：此结构用于通知与属性关联的数据何时准备就绪，包括属性名称、其数据类型以及用于跟踪更新的计数器。</li>
-<li>DevIntrChange：表示设备接口更改事件，指示设备是否已启动并列出属于设备接口的命令和属性。 这对于设备功能可能随时间变化的动态系统至关重要。</li>
-</ul>
-<p><strong>设备信息</strong></p>
-<ul>
-<li>DevInfo 和 DevInfo_3：这些结构提供有关设备的基本和扩展信息，例如其类、服务器 ID、服务器主机、服务器版本、文档 URL 和设备类型（在 DevInfo_3 中）。 此信息对于管理设备和与设备交互至关重要。</li>
-</ul>
-<p><strong>命令和属性历史记录</strong></p>
-<ul>
-<li>历史结构：包括 DevCmdHistory、DevAttrHistory 及其版本，这些结构允许跟踪命令执行和属性更改的历史记录，包括时间戳、成功/失败状态、值、维度和错误。 这些历史数据对于诊断、审核和了解设备随时间的变化至关重要。</li>
-</ul>
-<p><strong>ZeroMQ事件系统</strong></p>
-<ul>
-<li>ZmqCallInfo：详细说明通过 ZeroMQ 事件系统进行的调用，包括版本、计数器、方法名称、对象 ID 以及调用是否导致异常。 该结构支持TANGO的事件驱动架构，促进高效的通信和事件处理。</li>
-</ul>
-<p><strong>设备接口</strong></p>
-<ul>
-<li>设备接口：定义 TANGO 设备的核心接口，包括设备名称、描述、状态、状态和管理员名称等属性。 它提供了执行命令、读取和写入属性配置和值、对设备进行 ping 操作以了解可用性、检索设备信息以及查询支持的命令的方法。 该接口是与 TANGO 设备交互的支柱，支持同步和异步操作。</li>
+<li><a href="https://tango-controls.readthedocs.io/en/latest/development/device-api/ds-guideline/index.html"   target="_blank">
+    TANGO 设备服务器指南</a></li>
+<li><a href="https://tango-controls.readthedocs.io/en/latest/development/device-api/device-server-model.html"   target="_blank">
+    TANGO 设备服务器模型</a></li>
+<li><a href="https://tango-controls.readthedocs.io/en/latest/development/device-api/device-server-writing.html"   target="_blank">
+    编写 TANGO 设备服务器</a></li>
+<li><a href="https://tango-controls.readthedocs.io/en/latest/development/device-api/forwarded-attribute.html"   target="_blank">
+    转发属性</a></li>
+<li><a href="https://tango-controls.readthedocs.io/en/latest/development/device-api/device-polling.html"   target="_blank">
+    设备轮询</a></li>
 </ul>
 
         </div>
@@ -1760,8 +1392,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/architecture\/iot\/tango-idl\/index.md"
-        var oid_likes = "likes_posts\/architecture\/iot\/tango-idl\/index.md"
+        var oid = "views_posts\/architecture\/iot\/tango\/tango-arch\/index.md"
+        var oid_likes = "likes_posts\/architecture\/iot\/tango\/tango-arch\/index.md"
       </script>
       
       
@@ -1787,15 +1419,15 @@ window.MathJax = {
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/architecture/iot/akka-java/">
+            <a class="flex text-right group ml-3" href="/posts/architecture/iot/tango/tango-idl/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >快速入门 Akka Java 指南</span
+                  >TANGO idl definition</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2023-10-30 09:16:13 &#43;0800 CST">30 October 2023</time>
+                    <time datetime="2024-03-10 10:16:02 &#43;0800 &#43;0800">10 March 2024</time>
                   
                 </span>
               </span>
