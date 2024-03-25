@@ -103,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "326"
+    "wordCount": "529"
   }]
   </script>
 
@@ -901,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-24 08:16:02 &#43;0800 &#43;0800">24 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>326 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-03-24 08:16:02 &#43;0800 &#43;0800">24 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>529 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1061,6 +1061,15 @@ window.MathJax = {
         </li>
       </ul>
     </li>
+    <li><a href="#tango-server">Tango Server</a>
+      <ul>
+        <li><a href="#设备层次结构">设备层次结构</a></li>
+        <li><a href="#沟通范式">沟通范式</a></li>
+        <li><a href="#类设备和设备服务器">类、设备和设备服务器</a></li>
+        <li><a href="#应用程序接口">应用程序接口</a></li>
+        <li><a href="#客户端和服务器之间使用api进行通信">客户端和服务器之间使用API​​进行通信</a></li>
+      </ul>
+    </li>
     <li><a href="#文档">文档</a></li>
   </ul>
 </nav>
@@ -1083,6 +1092,15 @@ window.MathJax = {
             <li><a href="#关于-corba-您应该了解的-10-件事">关于 CORBA 您应该了解的 10 件事</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#tango-server">Tango Server</a>
+      <ul>
+        <li><a href="#设备层次结构">设备层次结构</a></li>
+        <li><a href="#沟通范式">沟通范式</a></li>
+        <li><a href="#类设备和设备服务器">类、设备和设备服务器</a></li>
+        <li><a href="#应用程序接口">应用程序接口</a></li>
+        <li><a href="#客户端和服务器之间使用api进行通信">客户端和服务器之间使用API​​进行通信</a></li>
       </ul>
     </li>
     <li><a href="#文档">文档</a></li>
@@ -1358,6 +1376,323 @@ window.MathJax = {
 <li>TANGO 设备是一个 CORBA 对象</li>
 <li>TANGO 设备服务器是一个 CORBA 应用程序</li>
 </ol>
+<h2 class="relative group">Tango Server 
+    <div id="tango-server" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#tango-server" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Tango 控制系统是一个抽象概念，代表一组基于通用技术：Tango 的“微服务”。 Tango 本身是 CORBA/ZMQ 的面向控制/命令的专业化。 CORBA 支持在网络互连机器上运行的软件总线的概念。它提供对连接到总线的任何软件对象（或微服务）的透明访问，并通过二进制网络协议（基于 CORBA 和ZMQ）。</p>
+<p>该设备是Tango的核心概念。这个概念可以直接与微服务的概念联系起来：<code>1 个设备 = 1 个微服务</code></p>
+<p>一个设备可以代表：</p>
+<ul>
+<li>设备（例如：电源），</li>
+<li>一套设备（例如：由同一控制器驱动的一组4个电机），</li>
+<li>一组软件功能（例如：图像处理），</li>
+<li>代表子系统的一组设备</li>
+</ul>
+<h3 class="relative group">设备层次结构 
+    <div id="设备层次结构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%ae%be%e5%a4%87%e5%b1%82%e6%ac%a1%e7%bb%93%e6%9e%84" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Tango 控制系统可以分层组织。</p>
+<ul>
+<li>在较低级别，我们找到与设备相关的基本设备。例如：真空泵、电机、I/O 卡</li>
+<li>在更高的层面上，这些设备是<em>逻辑的</em>。这些设备基于较低级别的设备，管理并代表控制系统的子集。这通常是一组具有高级控制功能的设备的综合视图（功能可以在几个基本设备上执行一系列操作）。例如，一个高级设备实现了<em>复杂</em>的功能。无论硬件如何，该设备通常都会不断发展。因此，有必要将与逻辑功能相关的职责和与硬件接口相关的职责分开和隔离。</li>
+</ul>
+<p>可以从每个级别的每个设备访问任何其他设备。下图说明了设备层次结构的概念：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image.png"
+        alt="设备的软件总线视图"
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-1.png"
+        alt="设备的层次结构视图"
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h3 class="relative group">沟通范式 
+    <div id="沟通范式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%b2%9f%e9%80%9a%e8%8c%83%e5%bc%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>Tango 提供三种通信范例：同步、异步和发布-订阅调用。</p>
+<p>在同步和异步范例中，调用由联系服务器的客户端发起。服务器处理客户端的请求并将答案发送给客户端或抛出客户端捕获的异常。此范例涉及两个网络调用来接收单个答案，并要求客户端主动发起请求。客户端发起的调用可以通过两种机制完成：</p>
+<ol>
+<li>客户端等待（并被阻止）服务器发送答案或直到达到超时的同步机制</li>
+<li>客户端发送请求并立即返回的异步机制。它没有被阻止。它可以自由地做任何它必须做的事情，比如更新图形用户界面。客户端可以选择通过调用 API 特定调用来检查回复是否到达来检索服务器答案，或者通过请求在客户端收到服务器答案时执行回调方法来检索服务器答案。</li>
+</ol>
+<p>如果客户端需要在每次更改时或定期了解某个值，则他有义务每次轮询服务器以获取值的更新。这在网络带宽和客户端编程方面都效率不高。为此，发布-订阅事件通信更加高效。</p>
+<ol start="3">
+<li>发布-订阅通信范例是一种更高效、更自然的编程方式。在这种范例中，客户在事件（值）中注册一次他的兴趣。事件可以是值的更改、固定频率的定期更新或存档事件。此后，每次发生事件时，服务器都会通知客户端。这种范例避免了客户端轮询，将其释放出来做其他事情，速度很快并且可以有效地利用网络。</li>
+</ol>
+<h3 class="relative group">类、设备和设备服务器 
+    <div id="类设备和设备服务器" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%b1%bb%e8%ae%be%e5%a4%87%e5%92%8c%e8%ae%be%e5%a4%87%e6%9c%8d%e5%8a%a1%e5%99%a8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>有时，有关设备、设备服务器和 Tango 类等概念的语言存在误用。</p>
+<ul>
+<li>DeviceClass类：定义接口和状态机的类。</li>
+<li>设备类：实现设备控制的类。</li>
+<li>Device：Device 类的实例，提供对 DeviceClass 类的服务的访问。</li>
+<li>设备服务器：执行一个或多个 Tango 类的进程（设备服务器）。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>一个设备服务器可以托管多个设备类，每个类可以在同一设备服务器内实例化一次或多次。对于单个设备服务器中运行的类的最大数量或实例的最大数量，没有具体的规则。</p>
+<p>在特定情况下，由于硬件或软件接口的限制，并不总是可以在同一设备服务器中运行设备类的多个实例：</p>
+<ul>
+<li>DLL的使用情况：有些DLL不能被同一进程的两个线程使用。</li>
+</ul>
+<p>在其他情况下，在同一设备服务器中运行多个设备会很有用：</p>
+<ul>
+<li>电机案例： 4个电机的单轴控制器。</li>
+</ul>
+<p><strong>设备</strong></p>
+<p>&ndash; 查阅文档</p>
+<p><strong>设备属性</strong></p>
+<p>&ndash; 查阅文档</p>
+<p><strong>设备命令</strong></p>
+<p>&ndash; 查阅文档</p>
+<p><strong>设备状态</strong></p>
+<p>设备状态是将其集成到控制系统中的关键要素。因此，在设备实现中<strong>管理状态转换时应该非常小心</strong>。</p>
+<p><strong>设备状态必须在任何时候都反映它所代表的系统的内部状态。状态应该代表客户请求所做的任何更改。</strong></p>
+<p>这是至关重要的信息。事实上，<em>客户端</em>将主要或仅使用此信息来确定系统的内部状态。</p>
+<p>可用的状态仅限于：ON, OFF, CLOSE, OPEN, INSERT, EXTRACT, MOVING, STANDBY, FAULT, INIT, RUNNING, ALARM, DISABLE, and UNKNOWN</p>
+<p>最重要的是确保设备在状态转换方面的行为是可预测的。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>特性</strong></p>
+<p>&ndash; 查阅文档</p>
+<h3 class="relative group">应用程序接口 
+    <div id="应用程序接口" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e6%8e%a5%e5%8f%a3" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>虽然 TANGO 客户端确实可以仅使用 CORBA API 进行编程，但 CORBA 对 TANGO 一无所知。这意味着客户端必须了解从 TANGO 数据库检索 IOR 的所有详细信息、要在线发送的附加信息、TANGO 版本控制等。这些详细信息可以而且应该包含在 TANGO 应用程序程序员接口 (API) 中。该 API 在 C++ 中作为库实现，在 Java 中作为包实现。 API 使 TANGO 客户端易于编写。 API 由以下基本类组成：</p>
+<ul>
+<li>DeviceProxy 这是真实设备的代理</li>
+<li>DeviceData 用于封装通过命令从设备发送/接收数据</li>
+<li>DeviceAttribute 通过属性封装从设备发送/接收的数据</li>
+<li>组是一组设备的代理</li>
+</ul>
+<p>除了这些主要类之外，许多其他类还提供 TANGO 功能的完整接口。下图是使用 TANGO 的典型客户端/服务器应用程序的图。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>在服务器和客户端启动阶段使用数据库来建立客户端和服务器之间的连接。</p>
+<h3 class="relative group">客户端和服务器之间使用API​​进行通信 
+    <div id="客户端和服务器之间使用api进行通信" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e5%92%8c%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b9%8b%e9%97%b4%e4%bd%bf%e7%94%a8api%e8%bf%9b%e8%a1%8c%e9%80%9a%e4%bf%a1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>通过 API，可以请求在设备上执行的命令或使用所实现的两种通信模型之一来读取/写入设备属性。这两个模型是：</p>
+<ol>
+<li>客户端等待（并被阻止）服务器发送答案或直到达到超时的同步模型</li>
+<li>异步模型。在此模型中，客户端发送请求并立即返回。它没有被阻止。它可以自由地做任何它必须做的事情，比如更新图形用户界面。客户端可以选择通过调用 API 特定调用来检查回复是否到达来检索服务器答案，或者通过请求在客户端收到服务器答案时执行回调方法来检索服务器答案。</li>
+</ol>
+<p>在 TANGO 版本 8 之前，TANGO 使用 CORBA OMG COS 通知服务来生成事件。 TANGO 使用通知服务的omniNotify 实现。 omn​​iNotify 是与 TANGO 也使用的omniORB CORBA 实现结合开发的。通知服务的核心是通知守护进程。 omn​​iNotify 守护进程是从设备服务器接收事件并将其分发到所有订阅的客户端的进程。为了分配事件负载，每个主机有一个通知守护进程。服务器将其事件发送到本地主机上的守护程序。客户端和服务器从 TANGO 数据库获取主机的 IOR。</p>
+<p>下图是 Tango 8 之前版本的 Tango 事件系统示意图。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>从 Tango 8 开始，实施了新的事件系统设计。这个新设计基于 ZMQ 库。 ZMQ 是一个允许用户创建通信系统的库。它实现了几种众所周知的通信模式，包括发布/订阅模式，这是新 Tango 事件系统的基础。使用此库，不再需要单独的通知服务，并且仅可通过客户端和服务器进程进行事件通信，从而简化了整体设计。从 Tango 8.1 开始，设备和客户端之间的事件传播可以使用多播协议来完成。这样做的目的是减少网络带宽的使用和设备服务器端的 CPU 消耗。请参阅“高级功能”一章以获取有关此功能的所有详细信息。</p>
+<p>下图是从 Tango 版本 8 开始的 Tango 版本的 Tango 事件系统示意图。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/iot/tango/tango-arch/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <h2 class="relative group">文档 
     <div id="文档" class="anchor"></div>
     
