@@ -103,7 +103,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "669"
+    "wordCount": "651"
   }]
   </script>
 
@@ -120,10 +120,10 @@
   <link href="https://github.com/WFUing" rel="me" />
   
   
-  <link href="img/qq.jpg" rel="me" />
+  <link href="https://wfuing.github.io/img/qq.jpg" rel="me" />
   
   
-  <link href="img/wx.jpg" rel="me" />
+  <link href="https://wfuing.github.io/img/wx.jpg" rel="me" />
   
   
   
@@ -901,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-24 22:00:00 &#43;0800 &#43;0800">24 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>669 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+  <time datetime="2024-03-24 22:00:00 &#43;0800 &#43;0800">24 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>651 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -988,7 +988,7 @@ window.MathJax = {
       
         <a
           class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="img/qq.jpg"
+          href="https://wfuing.github.io/img/qq.jpg"
           target="_blank"
           aria-label="Qq"
           rel="me noopener noreferrer"
@@ -1005,7 +1005,7 @@ window.MathJax = {
       
         <a
           class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
-          href="img/wx.jpg"
+          href="https://wfuing.github.io/img/wx.jpg"
           target="_blank"
           aria-label="Wechat"
           rel="me noopener noreferrer"
@@ -1157,7 +1157,7 @@ window.MathJax = {
 再对第三个怪物使用斩杀，第3个怪物死亡。消耗的法力值为1+2=3。
 </code></pre><p><strong>思路</strong></p>
 <p>首先，根据题目描述，一技能一定要至少释放一次，这是释放二技能的前提。</p>
-<p>一种暴力的思想是可以直接枚举使用一技能的次数 $cnt$。但是，由于怪物的血量范围是 $1 \leq h_i {10}^9$ ，因此我们肯定不能直接枚举 $cnt$</p>
+<p>一种暴力的思想是可以直接枚举使用一技能的次数 $cnt$。但是，由于怪物的血量范围是 $1 \leq h_i \leq {10}^9$ ，因此我们肯定不能直接枚举 $cnt$</p>
 <p>由于只有 $n(2 \leq n \leq {10}^5)$ 个怪物，因此我们可以对怪物的血量从小到大进行排序，然后枚举第 $i$ 个怪物被一技能直接干掉。第 $i$ 个怪物被一技能直接干掉的一技能使用次数即为 $w[i]$ ，显然前面 $i-1$ 个怪物也会被干掉对于后面的怪物，都是用第二个技能，即为第 $i$ 个怪物的最小花费，因此第个怪物的最小花费即为 $w[i]+(n-i-1)*2$。</p>
 <p><strong>代码实现</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span><span class="w">
@@ -1280,7 +1280,7 @@ window.MathJax = {
 </h2>
 <p><strong>题目描述</strong></p>
 <p>小苯定义一个数字的权值为该数字的因子个数。</p>
-<p>小苯现在拿到了一个正整数，他希望将其分解为若干不等于 $1$ 的数字（也可以不做分解），使得所有分解出的正整数乘积等于 $z$ ，且所有数字的权值之和尽可能大，你能帮帮他求出最大的权值吗？</p>
+<p>小苯现在拿到了一个正整数，他希望将其分解为若干不等于 $1$ 的数字（也可以不做分解），使得所有分解出的正整数乘积等于 $x$ ，且所有数字的权值之和尽可能大，你能帮帮他求出最大的权值吗？</p>
 <p><strong>输入描述</strong></p>
 <blockquote>
 <p>输入包含 $T+1$ 行。第一行一个正整数 $T(1 \leq T \leq {10}^4)$ ，表示数据组数。</p>
@@ -1316,29 +1316,20 @@ window.MathJax = {
 <li>情况2：$r$ 有多个质因子，即 $x = a_1^{k_1} \times a_2^{k_2} \times &hellip; a_m^{k_m}$
 <ul>
 <li>拆分：根据情况1的计算公式，权值总和为 $\sum^m_{i=1}{k_i+1}$</li>
-<li>不拆分：根据情况1的计算公式，权值总和为 $\prod^m_{i=1}{y_i+1}$。我们可以明显得知，当 $a,b&gt;2$ 时，$a \times b&gt;a+b$ ，因此选择不拆分是最优解</li>
+<li>不拆分：根据情况1的计算公式，权值总和为 $\prod^m_{i=1}{k_i+1}$。我们可以明显得知，当 $a,b&gt;2$ 时，$a \times b&gt;a+b$ ，因此选择不拆分是最优解</li>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">1e5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">18</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">1e9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">7</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Pair</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Pair</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
@@ -1346,15 +1337,15 @@ window.MathJax = {
 </span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">x</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">cnt</span><span class="o">++</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">v</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">v</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">v</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">v</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="na">second</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="na">getValue</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="n">MOD</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
