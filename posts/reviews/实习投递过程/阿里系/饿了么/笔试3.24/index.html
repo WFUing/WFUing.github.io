@@ -1313,7 +1313,7 @@ window.MathJax = {
 <li>不拆分：对应因子个数为 $k+1$ （有 $1,a,a^2,&hellip;,a^k$ 这些因子，共计 $k+1$ 个），只要 $k&gt;1$，一定有 $2k&gt;k+1$ ，因此拆分是最优解</li>
 </ul>
 </li>
-<li>情况2：$r$ 有多个质因子，即 $x = a_1^{k_1} \times a_2^{k_2} \times &hellip; a_m^{k_m}$
+<li>情况2：$x$ 有多个质因子，即 $x = a_1^{k_1} \times a_2^{k_2} \times &hellip; a_m^{k_m}$
 <ul>
 <li>拆分：根据情况1的计算公式，权值总和为 $\sum^m_{i=1}{k_i+1}$</li>
 <li>不拆分：根据情况1的计算公式，权值总和为 $\prod^m_{i=1}{k_i+1}$。我们可以明显得知，当 $a,b&gt;2$ 时，$a \times b&gt;a+b$ ，因此选择不拆分是最优解</li>
