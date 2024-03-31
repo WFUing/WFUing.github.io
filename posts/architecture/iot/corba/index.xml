@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Sat, 30 Mar 2024 15:05:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/corba/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Mar 2024 07:05:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/corba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTango-DeviceProxy</title>
+      <link>https://WFUing.github.io/posts/architecture/iot/corba/pytango-deviceproxy/</link>
+      <pubDate>Sun, 31 Mar 2024 07:05:13 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/iot/corba/pytango-deviceproxy/</guid>
+      <description>在PyTango中，DeviceProxy是一个核心类，用于表示和操作Tango设备的客户端代理。这个类封装了与Tango设备通信的所有细节，包括网络通信、命令执行、属性读写、事件订阅等。DeviceProxy的实现隐藏了底层的CORBA细节，提供了一种简洁的方式来与Tango设备进行交互。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/corba/pytango-deviceproxy/featured.png" />
+    </item>
+    
     <item>
       <title>CORBA-IOR</title>
       <link>https://WFUing.github.io/posts/architecture/iot/corba/ior/</link>
