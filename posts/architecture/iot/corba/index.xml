@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CORBA on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/iot/corba/</link>
+    <description>Recent content in CORBA on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Sat, 30 Mar 2024 15:05:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/corba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CORBA-IOR</title>
+      <link>https://WFUing.github.io/posts/architecture/iot/corba/ior/</link>
+      <pubDate>Sat, 30 Mar 2024 15:05:13 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/iot/corba/ior/</guid>
+      <description>IOR（Interoperable Object Reference）是CORBA中的标准格式，用于唯一标识远程对象，允许跨平台通信。IOR包含对象的位置、类型和通信协议等信息，确保在不同系统之间的对象交互和通信的互操作性。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/corba/ior/featured.png" />
+    </item>
+    
+  </channel>
+</rss>
