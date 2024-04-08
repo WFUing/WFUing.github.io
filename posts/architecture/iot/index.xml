@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Sun, 31 Mar 2024 07:05:13 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Apr 2024 10:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vorto tango</title>
+      <link>https://WFUing.github.io/posts/architecture/iot/vorto-tango/</link>
+      <pubDate>Sun, 07 Apr 2024 10:16:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/iot/vorto-tango/</guid>
+      <description>用vorto刻画tango</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/vorto-tango/featured.png" />
+    </item>
+    
     <item>
       <title>快速入门 Akka Java 指南</title>
       <link>https://WFUing.github.io/posts/architecture/iot/akka-java/</link>

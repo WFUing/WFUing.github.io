@@ -3,13 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://WFUing.github.io/posts/reviews/knowledge/ai%E9%9D%A2%E7%BB%8F/</loc>
-    <lastmod>2024-04-05T13:53:28+08:00</lastmod>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-04-07T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iot/</loc>
+    <lastmod>2024-04-07T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iot/vorto-tango/</loc>
+    <lastmod>2024-04-07T10:16:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-04-07T10:16:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/reviews/knowledge/ai%E9%9D%A2%E7%BB%8F/</loc>
     <lastmod>2024-04-05T13:53:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -69,19 +87,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-03-31T07:05:13+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/architecture/iot/corba/</loc>
-    <lastmod>2024-03-31T07:05:13+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/iot/</loc>
     <lastmod>2024-03-31T07:05:13+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
