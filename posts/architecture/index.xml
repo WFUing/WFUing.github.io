@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Sun, 07 Apr 2024 10:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Apr 2024 10:53:28 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>高并发</title>
+      <link>https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Wed, 10 Apr 2024 10:53:28 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/</guid>
+      <description>慎入，高并发的水太深，什么高并发，大流量的东西都是虚拟的，笔者还太年轻，没有那个经历，把握不住。系统最大只搞过几千QPS，开心快乐就行，不PK，文明PK。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/featured.png" />
+    </item>
+    
     <item>
       <title>as a Service 模型</title>
       <link>https://WFUing.github.io/posts/architecture/aas/</link>
