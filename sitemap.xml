@@ -51,6 +51,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://WFUing.github.io/posts/reviews/knowledge/%E9%83%A8%E7%BD%B2%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2024-04-11T13:53:28+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/read/%E9%9D%A0%E8%B0%B1%E4%B8%89%E8%A6%81%E7%B4%A0/</loc>
     <lastmod>2024-04-11T13:16:22+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1883,6 +1889,16 @@
   <url>
     <loc>https://WFUing.github.io/</loc>
     <lastmod>2023-09-01T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/graduation-project/todo/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/graduation-project/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
