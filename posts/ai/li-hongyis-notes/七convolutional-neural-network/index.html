@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>七、Convolutional Neural Network.md &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="七、Convolutional Neural Network.md &middot; WFUing&#39;s Blog" />
+  <title>七、Convolutional Neural Network &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="七、Convolutional Neural Network &middot; WFUing&#39;s Blog" />
   
   
   
@@ -67,15 +67,16 @@
   
   
   
-  <meta property="og:title" content="七、Convolutional Neural Network.md" />
-<meta property="og:description" content="七、Convolutional Neural Network # [toc]" />
+  <meta property="og:title" content="七、Convolutional Neural Network" />
+<meta property="og:description" content="7.1 CNN入门详解 # 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/" /><meta property="og:image" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/featured.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-23T16:25:26+08:00" />
 <meta property="article:modified_time" content="2023-10-23T16:25:26+08:00" />
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="七、Convolutional Neural Network.md"/>
-<meta name="twitter:description" content="七、Convolutional Neural Network # [toc]"/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/featured.png" /><meta name="twitter:title" content="七、Convolutional Neural Network"/>
+<meta name="twitter:description" content="7.1 CNN入门详解 # 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？"/>
 
   
   <script type="application/ld+json">
@@ -83,10 +84,10 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "七、Convolutional Neural Network.md",
-    "headline": "七、Convolutional Neural Network.md",
+    "name": "七、Convolutional Neural Network",
+    "headline": "七、Convolutional Neural Network",
     
-    "abstract": "七、Convolutional Neural Network # [toc]",
+    "abstract": "7.1 CNN入门详解 # 卷积神经网络（CNN）常常被用来做图像处理，当然也可以用一般的神经网络，那它们各自有什么优缺点呢？",
     "inLanguage": "en",
     "url" : "https:\/\/WFUing.github.io\/posts\/ai\/li-hongyis-notes\/%E4%B8%83convolutional-neural-network\/",
     "author" : {
@@ -102,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "74"
+    "wordCount": "69"
   }]
   </script>
 
@@ -829,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/featured.png);">
     
 
 
@@ -855,7 +856,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      七、Convolutional Neural Network.md
+      七、Convolutional Neural Network
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -900,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>74 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>69 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1050,7 +1051,7 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#七convolutional-neural-network">七、Convolutional Neural Network</a>
+    <li>
       <ul>
         <li><a href="#71-cnn入门详解">7.1 CNN入门详解</a>
           <ul>
@@ -1076,7 +1077,7 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#七convolutional-neural-network">七、Convolutional Neural Network</a>
+    <li>
       <ul>
         <li><a href="#71-cnn入门详解">7.1 CNN入门详解</a>
           <ul>
@@ -1145,18 +1146,7 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">七、Convolutional Neural Network 
-    <div id="七convolutional-neural-network" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e4%b8%83convolutional-neural-network" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>[toc]</p>
-<h3 class="relative group">7.1 CNN入门详解 
+          <h3 class="relative group">7.1 CNN入门详解 
     <div id="71-cnn入门详解" class="anchor"></div>
     
     <span
@@ -1210,10 +1200,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121191806079.png" alt="image-20220121191806079" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h5 class="relative group"><strong>性质2：The same patterns appear in different regions.</strong> 
@@ -1232,10 +1234,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121191845761.png" alt="image-20220121191845761" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h5 class="relative group"><strong>性质3：Subsampling the pixels will not change the object</strong> 
@@ -1253,10 +1267,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121191906489.png" alt="image-20220121191906489" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h4 class="relative group">CNN架构说明 
@@ -1275,10 +1301,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121192318503.png" alt="image-20220121192318503" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>如上图所示，图片经过卷积层然后进行最大池化（max pooling），这个步骤可以进行多次；然后将数据展开（Flatten），然后将数据传进全连接前馈网络得到最后的图片分类结果。</p>
@@ -1287,10 +1325,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121192345918.png" alt="image-20220121192345918" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>如上图所示，卷积是针对了图片的性质1和性质2，最大池化是针对了图片的性质3。</p>
@@ -1321,10 +1371,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121192750541.png" alt="image-20220121192750541" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h4 class="relative group">怎么做卷积 
@@ -1343,10 +1405,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220121192816490.png" alt="image-20220121192816490" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E4%B8%83convolutional-neural-network/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <ul>
@@ -1372,8 +1446,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/ai\/li-hongyis-notes\/七、Convolutional Neural Network.md"
-        var oid_likes = "likes_posts\/ai\/li-hongyis-notes\/七、Convolutional Neural Network.md"
+        var oid = "views_posts\/ai\/li-hongyis-notes\/七、Convolutional Neural Network\/index.md"
+        var oid_likes = "likes_posts\/ai\/li-hongyis-notes\/七、Convolutional Neural Network\/index.md"
       </script>
       
       
@@ -1408,7 +1482,7 @@ window.MathJax = {
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >一、机器学习概论.md</span
+                  >一、机器学习概论</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1425,7 +1499,7 @@ window.MathJax = {
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >三、梯度下降.md</span
+                  >三、梯度下降</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   

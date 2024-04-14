@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>四、分类模型.md &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="四、分类模型.md &middot; WFUing&#39;s Blog" />
+  <title>四、分类模型 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="四、分类模型 &middot; WFUing&#39;s Blog" />
   
   
   
@@ -67,15 +67,16 @@
   
   
   
-  <meta property="og:title" content="四、分类模型.md" />
-<meta property="og:description" content="四、分类模型 # [toc]" />
+  <meta property="og:title" content="四、分类模型" />
+<meta property="og:description" content="4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/" /><meta property="og:image" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/featured.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-23T16:25:26+08:00" />
 <meta property="article:modified_time" content="2023-10-23T16:25:26+08:00" />
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="四、分类模型.md"/>
-<meta name="twitter:description" content="四、分类模型 # [toc]"/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/featured.png" /><meta name="twitter:title" content="四、分类模型"/>
+<meta name="twitter:description" content="4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行"/>
 
   
   <script type="application/ld+json">
@@ -83,10 +84,10 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "四、分类模型.md",
-    "headline": "四、分类模型.md",
+    "name": "四、分类模型",
+    "headline": "四、分类模型",
     
-    "abstract": "四、分类模型 # [toc]",
+    "abstract": "4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行",
     "inLanguage": "en",
     "url" : "https:\/\/WFUing.github.io\/posts\/ai\/li-hongyis-notes\/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B\/",
     "author" : {
@@ -102,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "632"
+    "wordCount": "629"
   }]
   </script>
 
@@ -829,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/featured.png);">
     
 
 
@@ -855,7 +856,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      四、分类模型.md
+      四、分类模型
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -900,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>632 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>629 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1050,7 +1051,7 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#四分类模型">四、分类模型</a>
+    <li>
       <ul>
         <li><a href="#41-分类简介及其与回归的区别">4.1 分类简介及其与回归的区别</a></li>
         <li><a href="#分类模型应用案例classification-cases">分类模型应用案例（Classification Cases）</a></li>
@@ -1117,7 +1118,7 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#四分类模型">四、分类模型</a>
+    <li>
       <ul>
         <li><a href="#41-分类简介及其与回归的区别">4.1 分类简介及其与回归的区别</a></li>
         <li><a href="#分类模型应用案例classification-cases">分类模型应用案例（Classification Cases）</a></li>
@@ -1227,18 +1228,7 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">四、分类模型 
-    <div id="四分类模型" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%9b%9b%e5%88%86%e7%b1%bb%e6%a8%a1%e5%9e%8b" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p>[toc]</p>
-<h3 class="relative group">4.1 分类简介及其与回归的区别 
+          <h3 class="relative group">4.1 分类简介及其与回归的区别 
     <div id="41-分类简介及其与回归的区别" class="anchor"></div>
     
     <span
@@ -1303,10 +1293,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220110213105315.png" alt="image-20220110213105315" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </li>
 </ul>
@@ -1325,7 +1327,7 @@ window.MathJax = {
 </h3>
 <ul>
 <li>模型：模型可以根据特征判断类型，输入是特征，输出是类别</li>
-<li>损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n} }$ 。这个函数不可微。</li>
+<li>损失函数：预测错误的次数，即$L(f)=\sum_n{\sigma(f(x_n) \neq \hat{y_n}) }$ 。这个函数不可微。</li>
 <li>如何找到最好的函数，比如感知机（Perceptron）、支持向量机（SVM）</li>
 </ul>
 <h3 class="relative group">4.2 分类模型指概率生成模型 
@@ -1432,10 +1434,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/v2-97436b02d3c5c7702959cc388e71f217_r.jpg" alt="preview" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <ul>
@@ -1554,10 +1568,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114095456941.png" alt="image-20220114095456941" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h4 class="relative group">模型 
@@ -1609,10 +1635,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114100921433.png" alt="image-20220114100921433" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>由上图可知，当label的值为1时，不管预测值是0还是1，梯度都为0，当label值为0时也是这样。</p>
@@ -1622,10 +1660,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220114100950925.png" alt="image-20220114100950925" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h3 class="relative group">判别模型 VS 生成模型 
@@ -1680,10 +1730,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119141011956.png" alt="image-20220119141011956" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h4 class="relative group">Softmax 
@@ -1699,7 +1761,29 @@ window.MathJax = {
 <p>使用softmax（$y_i=\frac{e_{z_i}}{\sum^c_{j=1}{e_{z_j}}}$）</p>
 <p>softmax公式中为什么要用$e$？这是由原因的/可解释的，可以看下PRML，也可以搜一下最大熵</p>
 <p>最大熵（Maximum Entropy）其实也是一种分类器，和逻辑回归一样，只是从信息论的角度来看</p>
-<img src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119141353415.png" alt="image-20220119141353415"  />
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <h4 class="relative group">损失函数 
     <div id="损失函数-2" class="anchor"></div>
     
@@ -1751,10 +1835,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119143941226.png" alt="image-20220119143941226" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>如下图所示，假如用逻辑回归做分类，即$y=\sigma(z)=\sigma(w_1\cdot x_1+w_2\cdot x_2+b)$，我们找不到一个可以把“蓝色”样本和“红色”样本间隔开的函数。</p>
@@ -1763,10 +1859,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144059137.png" alt="image-20220119144059137" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>假如一定要用逻辑回归，那我们可以怎么办呢？我们可以尝试特征变换（Feature Transformation）。</p>
@@ -1792,10 +1900,22 @@ window.MathJax = {
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144323062.png" alt="image-20220119144323062" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>但有一个问题是，我们并不一定知道怎么进行特征变换。或者说我们想让机器自己学会特征变换，这可以通过级联逻辑回归模型实现，即把多个逻辑回归模型连接起来，如下图所示。下图中有3个逻辑回归模型，根据颜色称它们为小蓝、小绿和小红。小蓝和小绿的作用是分别将原始的2维特征变换为新的特征$x_1&rsquo;和x_2&rsquo;$，小红的作用是在新的特征空间$\begin{bmatrix}
@@ -1807,10 +1927,22 @@ x_2&rsquo;\
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144455564.png" alt="image-20220119144455564" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <p>如下图所示，举一个例子。小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1&rsquo;$越大；小蓝的功能是（下图左上角），离$(1,0)$越远、离$(0,1)$越近，则$x_1&rsquo;$越小。小蓝和小绿将特征映射到新的特征空间$\begin{bmatrix}
@@ -1822,10 +1954,22 @@ x_2&rsquo;\
 
 
 
-  <figure>
-    <img class="my-0 rounded-md" src="https://gitee.com/jyj3621/image/raw/master/image/image-20220119144927053.png" alt="image-20220119144927053" />
+  
+  
     
-  </figure>
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
 
 </p>
 <h3 class="relative group">神经网络（Neural Network） 
@@ -1885,8 +2029,8 @@ TPR = TP / P = TP / (TP+FN)</li>
      
     
      <script>
-        var oid = "views_posts\/ai\/li-hongyis-notes\/四、分类模型.md"
-        var oid_likes = "likes_posts\/ai\/li-hongyis-notes\/四、分类模型.md"
+        var oid = "views_posts\/ai\/li-hongyis-notes\/四、分类模型\/index.md"
+        var oid_likes = "likes_posts\/ai\/li-hongyis-notes\/四、分类模型\/index.md"
       </script>
       
       
@@ -1921,7 +2065,7 @@ TPR = TP / P = TP / (TP+FN)</li>
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >六、Tips for Training DNN.md</span
+                  >六、Tips for Training DNN</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
@@ -1933,28 +2077,6 @@ TPR = TP / P = TP / (TP+FN)</li>
           
         </span>
         <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/ai/cross-entropy/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >交叉熵</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2023-10-13 09:25:45 &#43;0800 &#43;0800">13 October 2023</time>
-                  
-                </span>
-              </span>
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-            </a>
           
         </span>
       </div>
