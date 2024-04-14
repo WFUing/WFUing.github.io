@@ -70,11 +70,12 @@
   <meta property="og:title" content="推荐与广告计算 | 多目标优化介绍" />
 <meta property="og:description" content="多目标排序是推荐排序系统中常见的技术实现，在很多推荐与排序常见中，有多个业务目标，找到一种综合排序方法使得多个目标都达到整体最优，能有最好的总体收益。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://WFUing.github.io/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/" /><meta property="og:image" content="https://WFUing.github.io/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/featured.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-04-14T09:25:45+08:00" />
 <meta property="article:modified_time" content="2024-04-14T09:25:45+08:00" />
 
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="推荐与广告计算 | 多目标优化介绍"/>
+  <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://WFUing.github.io/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/featured.png" /><meta name="twitter:title" content="推荐与广告计算 | 多目标优化介绍"/>
 <meta name="twitter:description" content="多目标排序是推荐排序系统中常见的技术实现，在很多推荐与排序常见中，有多个业务目标，找到一种综合排序方法使得多个目标都达到整体最优，能有最好的总体收益。"/>
 
   
@@ -102,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "72"
+    "wordCount": "152"
   }]
   </script>
 
@@ -829,7 +830,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/featured.png);">
     
 
 
@@ -900,7 +901,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-14 09:25:45 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>72 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-14 09:25:45 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>152 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1052,6 +1053,12 @@ window.MathJax = {
   <ul>
     <li><a href="#一多目标优化介绍">一、多目标优化介绍</a></li>
     <li><a href="#二多目标学习与共享参数">二、多目标学习与共享参数</a></li>
+    <li><a href="#三多目标学习两大优化方向">三、多目标学习两大优化方向</a></li>
+    <li><a href="#四优化方向1网络结构优化">四、优化方向1：网络结构优化</a>
+      <ul>
+        <li><a href="#41-总体思想与演进思路">4.1 总体思想与演进思路</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1067,6 +1074,12 @@ window.MathJax = {
   <ul>
     <li><a href="#一多目标优化介绍">一、多目标优化介绍</a></li>
     <li><a href="#二多目标学习与共享参数">二、多目标学习与共享参数</a></li>
+    <li><a href="#三多目标学习两大优化方向">三、多目标学习两大优化方向</a></li>
+    <li><a href="#四优化方向1网络结构优化">四、优化方向1：网络结构优化</a>
+      <ul>
+        <li><a href="#41-总体思想与演进思路">4.1 总体思想与演进思路</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1123,7 +1136,9 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">一、多目标优化介绍 
+          <p>转载自 <a href="https://www.showmeai.tech/article-detail/60"   target="_blank">
+    https://www.showmeai.tech/article-detail/60</a> 本文为笔者自学的资料，读者若需要请支持原版。</p>
+<h2 class="relative group">一、多目标优化介绍 
     <div id="一多目标优化介绍" class="anchor"></div>
     
     <span
@@ -1357,6 +1372,7 @@ $$</p>
 <li>模型架构方面：在深度学习网络中可以共享embedding特征，或者共享中间层的某些隐藏单元，也可以是模型某一层或者最后一层的结果，并且共享之外的部分各自独立。在模型的设计中，层间关系自由组合搭配。</li>
 <li>特征组合方面：多个任务可以采用不同的特征组合，有的特征只属于模型架构的某个部分，有些特征整个模型都可以使用。</li>
 </ul>
+<p><strong>典型的一些参数共享机制</strong></p>
 <p>
 
 
@@ -1372,6 +1388,185 @@ $$</p>
       <img
         class="my-0 rounded-md"
         src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ol>
+<li>参数的硬共享机制（基于参数的共享，Parameter Based）：基于参数的共享是多目标学习最常用的方法。在深度学习的网络中，通过共享特征和特征的embedding以及隐藏层的网络架构，在最后一层通过全连接+softmax的方式来区分不同任务，最后做一个线性融合来实现多目标排序。</li>
+<li>参数的软共享机制（基于约束的共享，Regularization Based）：参数的软共享机制，每个任务都有自己的参数和模型结构，可以选择哪些共享哪些不共享。最后通过正则化的方式，来拉近模型参数之间的距离，例如使用 L2 进行正则化。</li>
+</ol>
+<p><strong>多目标优化的4种结果</strong></p>
+<p>实际多目标优化，在采用共享机制设计的各种模型结构后，可能有『Well Done』、『还不错』、『不理想』、『无法接受』 这 $4$ 种不同的结果：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>『Well Done』：最好的状态，所有share任务实现共同提升。</li>
+<li>『还不错』：其次的状态，所有任务不降低，至少一个任务提升。如果是 主任务 + 辅助任务 的搭配，能够实现牺牲辅助任务达到主任务提升的效果，也是 well done。</li>
+<li>『不理想』：跷跷板现象，任务有涨有跌。</li>
+<li>『无法接受』：负迁移现象，所有任务都不如从前。</li>
+</ul>
+<h2 class="relative group">三、多目标学习两大优化方向 
+    <div id="三多目标学习两大优化方向" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%89%e5%a4%9a%e7%9b%ae%e6%a0%87%e5%ad%a6%e4%b9%a0%e4%b8%a4%e5%a4%a7%e4%bc%98%e5%8c%96%e6%96%b9%e5%90%91" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>为了能够更好地『共享参数』，让同个模型中多个任务和谐共存、相辅相成、相得益彰，研究界有两大优化方向，分别是：</p>
+<ol>
+<li>网络结构优化，设计更好的参数共享位置与方式</li>
+<li>优化策略提升，设计更好的优化策略以提升优化 $Loss$ 过程中的多任务平衡</li>
+</ol>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>优化方向1：网络结构设计。网络结构设计方向思考哪些参数共享，在什么位置，如何共享等。</li>
+<li>优化方向2：优化方法与策略。多目标优化策略从loss与梯度的视角去思考任务与任务之间的关系。平衡loss体量（Magnitude），调节loss更新速度（velocity），优化Gradient更新方向（direction）。在微观层面缓解梯度冲突，参数撕扯，在宏观层面达到多任务的平衡优化。</li>
+</ul>
+<h2 class="relative group">四、优化方向1：网络结构优化 
+    <div id="四优化方向1网络结构优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9b%9b%e4%bc%98%e5%8c%96%e6%96%b9%e5%90%911%e7%bd%91%e7%bb%9c%e7%bb%93%e6%9e%84%e4%bc%98%e5%8c%96" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">4.1 总体思想与演进思路 
+    <div id="41-总体思想与演进思路" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#41-%e6%80%bb%e4%bd%93%e6%80%9d%e6%83%b3%e4%b8%8e%e6%bc%94%e8%bf%9b%e6%80%9d%e8%b7%af" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>网络结构设计是目前多任务研究和应用的主要焦点，它主要思考哪些参数共享，在什么位置，如何共享。优秀合理的共享网络结构对于最终效果提升作用巨大。</p>
+<p>近年来网络结构设计经历了 Share Bottom 公式 MMoE 公式 PLE 的典型结构变迁，重要的业界顶尖企业研究人员发表的多任务网络结构设计论文包括：</p>
+<ul>
+<li>Share Bottom：早期一直在使用的方式，参数共享（hard或者soft）的方式来对多任务建模。</li>
+<li>2018 Google MMOE：将hard的参数共享变成多个 expert，通过门控来控制不同loss对每个expert的影响。</li>
+<li>2019 Google SNR：借助简单的 NAS（Neural Architecture Search），对 Sub-Network 进行组合，为不同目标学习各自的网络结构。</li>
+<li>2020 腾讯 PLE：在 MMOE 的基础上增加了各任务独有的 Expert。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>下图中对早期的Share Bottom，MMoE，PLE三种典型网络结构及对应的动机和公式做了总结。</p>
+<ul>
+<li>Shared Bottom 公式 MMoE：MMoE将shared bottom分解成多个Expert，然后通过门控网络自动控制不同任务对这些Expert的梯度贡献。</li>
+<li>MMoE 公式 PLE：PLE在MMoE的基础上又为每个任务增加了自有的Expert，仅由本任务对其梯度更新。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/image-12.png"
         alt=""
       />
       
