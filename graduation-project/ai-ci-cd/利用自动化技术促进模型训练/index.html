@@ -103,7 +103,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "430"
+    "wordCount": "660"
   }]
   </script>
 
@@ -917,7 +917,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-14 20:22:18 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>430 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-04-14 20:22:18 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>660 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -1080,6 +1080,8 @@ window.MathJax = {
       <ul>
         <li><a href="#管道架构-pipelines-architecture">管道架构 Pipelines architecture</a></li>
         <li><a href="#azureml-pipelines">AzureML Pipelines</a></li>
+        <li><a href="#自动化模型训练和部署">自动化模型训练和部署</a></li>
+        <li><a href="#使用经过训练的模型">使用经过训练的模型</a></li>
       </ul>
     </li>
   </ul>
@@ -1108,6 +1110,8 @@ window.MathJax = {
       <ul>
         <li><a href="#管道架构-pipelines-architecture">管道架构 Pipelines architecture</a></li>
         <li><a href="#azureml-pipelines">AzureML Pipelines</a></li>
+        <li><a href="#自动化模型训练和部署">自动化模型训练和部署</a></li>
+        <li><a href="#使用经过训练的模型">使用经过训练的模型</a></li>
       </ul>
     </li>
   </ul>
@@ -1351,6 +1355,145 @@ window.MathJax = {
     </span>        
     
 </h3>
+<p>Microsoft AzureML 平台代表了基于云的技术的重大进步，为用户提供了一系列用于数据处理、模型训练和版本控制以及大规模部署的功能。鉴于我们的架构要求和项目需求，AzureML 被证明是非常适合我们工作的解决方案。</p>
+<p>AzureML 的管道设计器功能是一种低代码/无代码解决方案，用于开发用于模型训练和预测的机器学习管道。可视化组件支持管道的配置，只需对底层转换和机器学习算法有有限的了解即可执行管道配置。此外，其预先构建的基础设施和精心设计的环境使我们能够以最小的维护开销运行这些管道，而其多功能的功能套件使我们能够为我们的项目开发必要的模块。 AzureML 平台中的可视化管道设计器和具有策划环境的托管基础​​设施为寻求简化 AI 工作流程并提高运营效率的组织提供了创新且高效的解决方案。</p>
+<p>Microsoft AzureML 通过实施 Azure 数据集提供了另一个重要的接口，用于管理客户端使用的各种数据集。此功能允许从不同来源（包括内部和外部数据存储库）加载表格格式的数据集。此外，Azure 数据集可以进行版本控制，并且其创建可以触发关联管道的执行。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/image2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>上图中所示的演示管道以 Azure 数据集开始，该数据集充当后续数据处理步骤的主要输入。具体来说，管道执行一系列数据处理模块，包括列选择、缺失数据删除和数据分割。数据分割模块将输入数据集划分为单独的训练集和测试集，随后将其输入到训练模块中以进行模型开发。每个模块都包含可自定义的属性，可以根据特定的用户需求进行调整。例如，数据分割模块中分配给训练集和测试集的数据的百分比可以根据需要进行配置。</p>
+<p>在初始数据处理步骤之后，管道中的下一组模块涉及多个人工智能模型的训练，特别是决策树系列的回归模型。每个模型都通过训练模型模块使用指定的训练集进行训练，然后通过评分模型模块使用测试集进行测试。在此阶段结束时，使用评估模型模块来比较和评估每个训练模型的性能，最终目标是确定最佳模型。然后可以使用建立的阈值来确定性能最佳的模型是否满足业务案例的要求。如果模型超过预定义的阈值，则可以将其部署在生产环境中使用。因此，通过使用这些模块，AzureML 可以高效开发、测试和评估多个 AI 模型，最终目标是为给定任务确定最佳解决方案。</p>
+<p>AzureML 的灵活性和可扩展性通过其开放的内置组件库得到了进一步体现，该库由充满活力和支持的社区维护。对于许多用例，内置组件满足开发机器学习模型的必要要求。但是，在需要特定和专有步骤的情况下，开发人员可以利用 Python 编程语言和 azureml 库来实现自定义构建的组件。在与外部客户合作的背景下，我们设计和开发了一系列神经网络（特别是 LSTM  和 GRU 模型 ），这些网络经过定制和优化，以满足合作者的需求。然后，这些模型被部署为我们开发的 AzureML 管道中的自定义组件。虽然我们实现的模块和组件是根据我们的特定用例量身定制的，但它们仍然遵循总体原则，即让模型根据各自的准确性水平进行竞争以确定获胜者。通过提供使用预定义组件和实施定制组件的能力，AzureML 为 AI 开发的性能和可维护性提供了显着的提升，即使对于非专业开发人员也是如此。</p>
+<blockquote>
+<p>Hochreiter, S., and Schmidhuber, J. Long short-term memory. Neural computation 9, 8 (1997), 1735–1780.</p>
+<p>Chung, J., Gulcehre, C., Cho, K., and Bengio, Y. Empirical evaluation of gated recurrent neural networks on sequence modeling. arXiv preprint arXiv:1412.3555 (2014).</p>
+</blockquote>
+<h3 class="relative group">自动化模型训练和部署 
+    <div id="自动化模型训练和部署" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83%e5%92%8c%e9%83%a8%e7%bd%b2" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>为了实现模型训练和部署的强大生态系统，必须拥有一个结构良好的自动化管道，该管道可以响应一系列事件，根据预定义的阈值验证模型，并仅在阈值达到时将模型部署初始化为新版本超过了。为了确保流程顺利高效，拟议的管道必须遵循 CI/CD 原则，它提供了一组用于实时训练机器学习模型的协议，并使用 AzureML 提供的基础设施以高可用性和可扩展性部署它们。通过遵循 CI/CD 的原则，可以构建管道以简化模型开发流程、降低管理成本并最大化 AI 开发流程的投资回报。一般来说，CI/CD 原则对于确保模型训练和部署管道的稳健性和可扩展性至关重要，从而促进模型的快速部署，同时最大限度地减少对整个工作流程的干扰。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/image3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>上图描述了在 Microsoft AzureML 生态系统中使用 CI/CD 进行模型训练的建议自动化机制。每当与管道关联的 Azure 数据集发生更改时，都会触发 CI/CD 系统，指示新数据集可用于训练。然后，系统会提取最新版本的数据集并启动管道。如果管道中的组件位于层次结构中的同一级别，则它们将被并行化，从而允许同时执行所有模型训练，从而节省时间和资源，从而节省成本。</p>
+<p>在所提出的 CI/CD 管道的训练后阶段，最佳模型的准确性将与阈值进行比较，如果未达到阈值，将触发通知管理员对训练集进行额外的微调或修改组件（例如，通过添加更多清洁方法）。另一方面，如果超过阈值，最佳模型将被打包为二进制模型，封装到 Docker 化的 Web 微服务中。</p>
+<blockquote>
+<p>Merkel, D. Docker: lightweight linux containers for consistent development and deployment. Linux journal 2014, 239 (2014), 2.</p>
+</blockquote>
+<p>该微服务将作为服务部署在 AzureML 基础设施上，它将通过端点公开模型。此过程确保模型可以随时被其他服务使用。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/image4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>在 AzureML 的上下文中，打包训练模型的机制可以通过使用两个关键组件来实现，即 Web 服务输入模块和 Web 服务输出模块，如下图所示。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/image5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这些组件使 AzureML 能够识别输出火车模型部分的目的是封装在 Web 服务中。Web 服务输入组件负责接收一组输入参数，然后将这些参数传递给负责处理输入并将其提供给模型进行推理的组件。然后，模型输出被传递到 Web 服务输出组件，该组件又将结果返回到发起请求的服务。</p>
+<p>CI/CD 管道完成后，生成的 Web 服务可以位于 AzureML 端点部分，该部分提供与模型交互的所有必要详细信息。除了支持微服务的部署之外，AzureML 还包含一系列在部署后阶段特别有用的功能，确保模型的高可用性和性能。我们认为其中两个内置功能非常有用：容错 - AzureML 保证至少一个 Web 服务实例始终处于运行状态 - 以及自动扩展 - 在需求较高的情况下， Web 服务可以扩展到通过负载均衡器管理的多个实例。</p>
+<p>用于模型训练、验证和部署的底层基础设施可以配置为在 CPU 或 GPU 上运行。通常，GPU 在训练阶段是必不可少的。虽然 GPU 虚拟机比配备 CPU 的虚拟机贵得多，但权衡模型训练所需的时间与每小时成本可能会产生涉及 GPU 实例的经济高效的解决方案。</p>
+<p>建议使用 AzureML 管道进行模型训练和部署的解决方案是一种自动化机制，从将新数据集版本上传到关联的 Azure 数据集开始，一直持续到模型部署的最后一步。这种方法提供了自主且直观的维护过程的好处，因为管道的每个步骤都是根据定义的逻辑自动执行的。该管道及其部署机制适用于实时环境中使用的Web应用程序，满足可用性、易于维护和调试以及快速执行等要求。监控系统还可以快速识别和解决任何问题。由于所有这些，所提出的解决方案为自动化模型训练和部署过程提供了全面且可靠的解决方案。</p>
+<h3 class="relative group">使用经过训练的模型 
+    <div id="使用经过训练的模型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bd%bf%e7%94%a8%e7%bb%8f%e8%bf%87%e8%ae%ad%e7%bb%83%e7%9a%84%e6%a8%a1%e5%9e%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>本节介绍如何将 AzureML 中的模型部署为微服务，以及使用 Swagger 实现 Web 服务或 API 的标准化。 部署模型后，可以通过 HTTP 请求访问它，并且可以在 AzureML 端点部分找到有关 Web 服务的所有相关信息，例如 REST 端点、身份验证类型和监视日志。 此外，通过 AzureML Pipelines 创建的 Web 服务包含其自己的文档，其中提供了有关现有 Web 服务端点、其预期输入结构和预期输出结构的详细信息。 Swagger 是一种用于标准化 Web 服务或 API 的流行标准，它在 AzureML 中实现，以支持与语言无关的解决方案。 因此，任何具有 HTTP 框架的编程语言都可以向模型发出请求，并期望输出遵循其 Swagger 描述的结构。</p>
+<blockquote>
+<p>Swagger: The world’s most popular framework for apis. <a href="https://swagger.io"   target="_blank">
+    https://swagger.io</a>, 2022. Accessed: Feb. 7, 2022.</p>
+</blockquote>
 
         </div>
                 
