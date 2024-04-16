@@ -1,0 +1,3444 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>全球的MLOps和ML工具概览 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="全球的MLOps和ML工具概览 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="对于人工智能领域的任何人来说，MLOps 一词是解决所有问题的一个神奇词汇。 它结合了所有与机器学习相关的任务，从管理、处理和可视化数据、运行和跟踪实验，到将创建的模型投入到生产，理想情况下是大规模、合规和安全的。它定义了实施 ML 工作以创建基于AI的应用程序和服务的过程。" />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b40e9fa2be0b34d2a44a3910aaee16f39a3d1a0b91ee8f7cf86e4cb095513986e2dd85827923f7810ea32e78c5925ba5c79a21c3db8c2aa899196b3b4b1dab46.js"
+    integrity="sha512-tA6for4LNNKkSjkQqu4W85o9GguR7o98&#43;G5MsJVROYbi3YWCeSP3gQ6jLnjFklulx5ohw9uMKqiZGWs7Sx2rRg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="全球的MLOps和ML工具概览" />
+<meta property="og:description" content="对于人工智能领域的任何人来说，MLOps 一词是解决所有问题的一个神奇词汇。 它结合了所有与机器学习相关的任务，从管理、处理和可视化数据、运行和跟踪实验，到将创建的模型投入到生产，理想情况下是大规模、合规和安全的。它定义了实施 ML 工作以创建基于AI的应用程序和服务的过程。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://WFUing.github.io/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/" /><meta property="article:section" content="graduation-project" />
+<meta property="article:published_time" content="2024-04-16T09:22:18+08:00" />
+<meta property="article:modified_time" content="2024-04-16T09:22:18+08:00" />
+
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="全球的MLOps和ML工具概览"/>
+<meta name="twitter:description" content="对于人工智能领域的任何人来说，MLOps 一词是解决所有问题的一个神奇词汇。 它结合了所有与机器学习相关的任务，从管理、处理和可视化数据、运行和跟踪实验，到将创建的模型投入到生产，理想情况下是大规模、合规和安全的。它定义了实施 ML 工作以创建基于AI的应用程序和服务的过程。"/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Graduation-Projects",
+    "name": "全球的MLOps和ML工具概览",
+    "headline": "全球的MLOps和ML工具概览",
+    
+    "abstract": "对于人工智能领域的任何人来说，MLOps 一词是解决所有问题的一个神奇词汇。 它结合了所有与机器学习相关的任务，从管理、处理和可视化数据、运行和跟踪实验，到将创建的模型投入到生产，理想情况下是大规模、合规和安全的。它定义了实施 ML 工作以创建基于AI的应用程序和服务的过程。",
+    "inLanguage": "en",
+    "url" : "https:\/\/WFUing.github.io\/graduation-project\/ai-ci-cd\/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-04-16T09:22:18\u002b08:00",
+    "datePublished": "2024-04-16T09:22:18\u002b08:00",
+    
+    "dateModified": "2024-04-16T09:22:18\u002b08:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "961"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/qq.jpg" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/wx.jpg" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script><body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Blogs
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+          </p>
+        </a>
+        
+        <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Internship Reviews
+          </p>
+        </a>
+        
+        <a href="/posts/design-pattern/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+          </p>
+        </a>
+        
+        <a href="/posts/skills/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Skills
+          </p>
+        </a>
+        
+        <a href="/posts/ai/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            AI
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Architecture
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/architecture/distributed/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Distributed
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iac/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IAC
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iot/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IoT
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/serverless/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Serverless
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Language
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/language/java/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Java
+          </p>
+        </a>
+        
+        <a href="/posts/language/dsl/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            DSL
+          </p>
+        </a>
+        
+        <a href="/posts/language/code-generation/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Blogs
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Internship Reviews
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/design-pattern/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/skills/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Skills
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/ai/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            AI
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Architecture
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/distributed/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Distributed
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iac/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IAC
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iot/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IoT
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/serverless/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Serverless
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Language
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/java/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Java
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/dsl/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            DSL
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/code-generation/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/img/background.jpg);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      全球的MLOps和ML工具概览
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-04-16 09:22:18 &#43;0800 &#43;0800">16 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>961 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#关键统计数据">关键统计数据</a></li>
+    <li><a href="#mlops的生命周期">MLOps的生命周期</a></li>
+    <li><a href="#mlops平台对比">MLOps平台对比</a>
+      <ul>
+        <li><a href="#审查特征">审查特征</a></li>
+        <li><a href="#深入审查mlops平台">深入审查MLOps平台</a></li>
+      </ul>
+    </li>
+    <li><a href="#所有的mlops和ml工具与平台">所有的MLOps和ML工具与平台</a>
+      <ul>
+        <li><a href="#数据探索和管理">数据探索和管理</a></li>
+        <li><a href="#数据标注">数据标注</a></li>
+        <li><a href="#数据流">数据流</a></li>
+        <li><a href="#数据版本控制">数据版本控制</a></li>
+        <li><a href="#数据隐私">数据隐私</a></li>
+        <li><a href="#数据质量检查">数据质量检查</a></li>
+        <li><a href="#建模">建模</a></li>
+        <li><a href="#模型训练">模型训练</a></li>
+        <li><a href="#实验跟踪">实验跟踪</a></li>
+        <li><a href="#模型超参数优化">模型/超参数优化</a></li>
+        <li><a href="#自动机器学习">自动机器学习</a></li>
+        <li><a href="#模型管理">模型管理</a></li>
+        <li><a href="#模型评估">模型评估</a></li>
+        <li><a href="#模型可解释性">模型可解释性</a></li>
+        <li><a href="#持续部署">持续部署</a></li>
+        <li><a href="#模型验证model-validation">模型验证（Model validation）</a></li>
+        <li><a href="#模型序列化格式">模型序列化格式</a></li>
+        <li><a href="#计算管理">计算管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#关键统计数据">关键统计数据</a></li>
+    <li><a href="#mlops的生命周期">MLOps的生命周期</a></li>
+    <li><a href="#mlops平台对比">MLOps平台对比</a>
+      <ul>
+        <li><a href="#审查特征">审查特征</a></li>
+        <li><a href="#深入审查mlops平台">深入审查MLOps平台</a></li>
+      </ul>
+    </li>
+    <li><a href="#所有的mlops和ml工具与平台">所有的MLOps和ML工具与平台</a>
+      <ul>
+        <li><a href="#数据探索和管理">数据探索和管理</a></li>
+        <li><a href="#数据标注">数据标注</a></li>
+        <li><a href="#数据流">数据流</a></li>
+        <li><a href="#数据版本控制">数据版本控制</a></li>
+        <li><a href="#数据隐私">数据隐私</a></li>
+        <li><a href="#数据质量检查">数据质量检查</a></li>
+        <li><a href="#建模">建模</a></li>
+        <li><a href="#模型训练">模型训练</a></li>
+        <li><a href="#实验跟踪">实验跟踪</a></li>
+        <li><a href="#模型超参数优化">模型/超参数优化</a></li>
+        <li><a href="#自动机器学习">自动机器学习</a></li>
+        <li><a href="#模型管理">模型管理</a></li>
+        <li><a href="#模型评估">模型评估</a></li>
+        <li><a href="#模型可解释性">模型可解释性</a></li>
+        <li><a href="#持续部署">持续部署</a></li>
+        <li><a href="#模型验证model-validation">模型验证（Model validation）</a></li>
+        <li><a href="#模型序列化格式">模型序列化格式</a></li>
+        <li><a href="#计算管理">计算管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <p>力荐 <a href="https://www.zhihu.com/question/604383995/answer/3313582942"   target="_blank">
+    MLOop 技术栈</a></p>
+<p>我们在MLOps这个市场开展业务，但我们对还有哪些其他工具、平台和服务只有一个粗略的概念。 为了找到答案，我们对相关供应商进行了全面的搜索，一共找到了300多家！ 我们整理我们发现的活跃项目，只列出那些专门针对机器学习任务和目标的项目。</p>
+<p>下面是找到的<strong>全球的MLOps平台</strong>和<strong>ML工具总览</strong>的第一个版本。</p>
+<h2 class="relative group">关键统计数据 
+    <div id="关键统计数据" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%b3%e9%94%ae%e7%bb%9f%e8%ae%a1%e6%95%b0%e6%8d%ae" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>一共分析了300多个平台和工具，其中大约220个是活跃项目。</li>
+<li>在整个欧洲，只能辨认出4个MLOps平台（MLReef、Hopsworks、Valohai（芬兰）和Polyaxon（德国柏林））。</li>
+<li>大多数平台和工具涵盖 ML 生命周期中2-3个任务。</li>
+</ul>
+<h2 class="relative group">MLOps的生命周期 
+    <div id="mlops的生命周期" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#mlops%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>下图展示了哪些工具和平台为ML生命周期中的各个任务和流程提供服务。 为了更好地概览，我们将生命周期分为4个主要的ML领域：</p>
+<ul>
+<li><strong>数据管理</strong>：主要是所有以机器学习为重点的任务，用于探索、管理和创建数据（集）。</li>
+<li><strong>建模</strong>：主要是从数据处理、训练模型、验证模型等所有流水线（Pipeline）相关的任务。</li>
+<li><strong>持续部署</strong>：主要是与MLOps的“Ops”部分相关的所有任务，包括启动、监控和保护生产模型。</li>
+<li><strong>计算和资源管理</strong>： 主要是与计算和资源管理相关的所有功能</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<p>一个提供的工具可以在ML生命周期中多个任务中发现。 我们通过查看他们的网站、演示视频和动手测试来尽可能地确定他们的产品。</p>
+</blockquote>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">MLOps平台对比 
+    <div id="mlops平台对比" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#mlops%e5%b9%b3%e5%8f%b0%e5%af%b9%e6%af%94" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>我们想要更深入地分析工具，将他们定位为 ML 生命周期中涵盖更广泛任务的全面的平台。这种区分需要基于可识别和具体的指标进行，以避免随意选择。我们认为，MLOps 平台需要满足如下几点：</p>
+<ul>
+<li>至少涵盖 ML 生命周期中的 5 个任务，</li>
+<li>至少存在于 2 个主要领域（例如数据管理 + 建模），</li>
+<li>将自己定位为 MLOps 平台。</li>
+</ul>
+<p>根据这一标准，在220多个确定的平台和工具中，只有 18 个是 MLOps 平台。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h3 class="relative group">审查特征 
+    <div id="审查特征" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%a1%e6%9f%a5%e7%89%b9%e5%be%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>下一个有趣的问题是：这些平台之间的区别是什么？</p>
+<p>我们决定最好的方法不是列出特定的特性和功能，而是列出关于它们的产品的更通用的能力。我们提出以下“软”标准，在我们看来，这些标准定义了一个出色的 MLOps 平台：</p>
+<ul>
+<li><strong>整体性</strong>：MLOps 平台需要涵盖广泛的 ML 任务可供选择。图中长条的规则为：一个表示覆盖一个主要领域，两个表示覆盖两个主要领域，三个表示覆盖三个主要领域。</li>
+<li><strong>协作</strong>：MLOps 中的一项关键任务是协作，并且随着 ML 解决方案越来越多地嵌入到组织中，协作变得越来越重要。我们根据在数据处理、建模和管理运行时环境的流水线（Pipeline）上共享和并行工作的可能性来定义协作。规则：一个长条表示覆盖三个部分中的其中一个。</li>
+<li><strong>可重现性</strong>：在 ML 中重现整个增值链非常重要，因为它能够让我们理解预测并增加对已部署模型的信心。我们将可重现性定义为数据、源代码和超参数以及环境配置的跟踪和版本控制。规则：每个可变主题（例如数据、代码和超参数、运行时环境）表示一个长条。</li>
+<li><strong>社区</strong>：随着越来越多的数据集、基于代码的函数和库可用，我们认为访问社区内容越来越重要。GitHub 一直是一个很好的代码来源，Kaggle 和其他代码/项目托管平台也是如此。尽管如此，我们希望看到在MLOps平台中直接利用社区协同增效作用。规则：MLOps平台内的每个可共享 ML 元素对应一个条（对于团队外部来说）。</li>
+<li><strong>托管</strong>：在哪里可以使用该平台？仅限云、自托管或仅限本地。规则：主要的三种可能的使用方式中的每一种都对应一个长条。</li>
+<li><strong>数据连通性</strong>：本节描述了平台内数据获取的可能性。我们确定了四种：在平台上、通过数据源（数据连接器）、第三方应用程序的直接 API 以及通过直接访问数据库。 规则：前面提到的每种数据连接类型都有一个长条（限制为 3 个长条）。</li>
+<li><strong>专业水平</strong>：随着越来越多的新手进入 ML 市场，我们认为在平台的一般可操作性方面易于使用变得越来越重要。 最后一个特征更难评估，因为它涉及许多不同的方面（UI/UX、工作流机制、帮助文档、一般概念等）。这部分的讨论更加开放，但我们尽量做到客观。规则：一个长条表示仅限于专家，两个长条表示适用于专家和高级用户，三个长条表示适用于专家、高级和初学者。</li>
+</ul>
+<h3 class="relative group">深入审查MLOps平台 
+    <div id="深入审查mlops平台" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%b7%b1%e5%85%a5%e5%ae%a1%e6%9f%a5mlops%e5%b9%b3%e5%8f%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>以下部分将仔细研究上面列出的 MLOps 平台。 在接下来的概览分析中，我们还将包括我们找到的每个工具和平台的部分（但现在这有点太多了！）。</p>
+<p><strong>MLReef（开源）</strong></p>
+<ul>
+<li>描述：MLReef 是一个开源 MLOps 平台，为机器学习项目提供托管。 它建立在您的团队或社区制作的可重用 ML 模块之上，以提高快速迭代和易于采用的能力。 它基于 git 来促进并发工作流、更高效、协作和可重复的 ML 开发，包含四个主要部分：
+<ul>
+<li><strong>数据管理</strong>：完全版本化的数据托管和处理基础设施</li>
+<li><strong>发布代码存储库</strong>：容器化和版本化的脚本存储库，保证数据流水线中的使用不可变</li>
+<li><strong>实验管理</strong>：实验跟踪、环境和结果管理</li>
+<li><strong>MLOps</strong>：ML/DL作业的流水线（pipeline）和编排解决方案（k8s/云/裸机）</li>
+</ul>
+</li>
+<li>开源仓库：https://gitlab.com/mlreef/mlreef 和 <a href="https://github.com/MLReef/mlreef"   target="_blank">
+    https://github.com/MLReef/mlreef</a></li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Databricks</strong></p>
+<ul>
+<li>描述：一个开放、简单的平台，用于存储和管理您的所有数据并支持您的所有分析和 AI 用例。</li>
+<li>开源仓库：https://github.com/databricks</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>H2O（开源）</strong></p>
+<ul>
+<li>描述：H2O.ai 是 H2O 的创建者，H2O 是领先的开源机器学习和人工智能平台，受到全球 14,000 家企业的数据科学家的信赖。 我们的愿景是通过我们屡获殊荣的数据科学平台Driverless AI，让每个人的智能大众化。</li>
+<li>开源仓库：github.com/h2oai</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Iguazio</strong></p>
+<ul>
+<li>描述：Iguazio数据科学平台将人工智能项目转化为现实世界的业务成果。 使用 MLOps 和端到端自动化机器学习流水线（Pileline）来加速和扩展你的AI应用程序的开发、部署和管理。</li>
+<li>开源仓库：github.com/iguazio/</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>Iguazio MLOps 平台：自动化并加速数据科学工作流程，使概念从开发到部署顺利完成。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>关键组件：</p>
+<ul>
+<li>特征平台：实时和批量数据的自动化离线和在线特征工程。</li>
+<li>实时服务流水线：使用实时serverless技术快速开发可扩展数据和 ML 流水线。</li>
+<li>监控 &amp; 重新训练：无代码数据和模型监控、漂移检测和自动再训练。</li>
+<li>将CI/CD用于ML：使用主流的 ML、Git 和 CI/CD 框架，跨代码、数据和模型集成 CI/CD。</li>
+</ul>
+<p><strong>Hopsworks（新增，开源）</strong></p>
+<ul>
+<li>描述：Hopsworks 2.0 是一个用于 ML 模型开发和运行的开源平台，可用作本地平台（开源或企业版）以及 AWS 和 Azure 上的托管平台。</li>
+<li>开源仓库：https://github.com/logicalclocks/hopsworks</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Algorithmia</strong></p>
+<ul>
+<li>描述：Algorithmia 是机器学习运维 (MLOps) 软件，用于管理现有操作流程中 ML 生命周期的所有阶段。 快速、安全且经济高效地将模型投入生产。</li>
+<li>开源仓库：https://github.com/algorithmiaio</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-12.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-13.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Allegro AI（开源，ClearML）</strong></p>
+<ul>
+<li>描述：端到端企业级平台，供数据科学家、数据工程师、DevOps 和管理人员管理整个机器学习和深度学习产品生命周期。</li>
+<li>开源仓库：https://github.com/allegroai</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-14.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-15.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Valohai⭐️（商业化，来自芬兰）</strong></p>
+<ul>
+<li>描述：训练、评估、部署、重复。 Valohai 是唯一一个从数据提取到模型部署自动化的 MLOps 平台。</li>
+<li>开源仓库：github.com/valohai</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-16.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-17.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Amazon SageMaker</strong></p>
+<ul>
+<li>描述：Amazon SageMaker 通过汇集专为 ML 构建的广泛功能集，帮助数据科学家和开发人员快速准备、构建、训练和部署高质量的机器学习 (ML) 模型。</li>
+<li>开源仓库：https://github.com/aws/amazon-sagemaker-examples</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-18.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-19.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Pachyderm（开源）</strong></p>
+<ul>
+<li>描述：用于托管和管理的Pachydrm适用于希望获得Pachydrm所能提供的一切的用户，无需亲自管理基础设施。借助 Hub，您可以对数据进行版本控制、部署端到端流水线（Pipeline）等。 几乎不需要任何设置，而且是免费的！</li>
+<li>开源仓库：https://github.com/pachyderm/pachyderm</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-20.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-21.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-22.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Dataiku（商业化）</strong></p>
+<ul>
+<li>描述：Dataiku 是一个使数据访问大众化并使企业能够以以人为中心的方式构建自己的 AI 之路的平台。 注意：它们仅限于表格数据。</li>
+<li>开源仓库：github.com/dataiku</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-23.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-24.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Alteryx</strong></p>
+<ul>
+<li>描述：从数据到发现再到决策——只需几分钟。并且自动化和优化业务效果的分析。</li>
+<li>开源仓库：github.com/alteryx</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-25.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-26.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Domino Data Lab</strong></p>
+<ul>
+<li>描述：让您的数据科学团队使用他们喜欢的工具，并将它们整合到一个企业级平台中，使他们能够花更多时间解决关键业务问题。</li>
+<li>开源仓库：https://github.com/dominodatalab</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-27.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-28.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Google Cloud Platform</strong></p>
+<ul>
+<li>描述：利用 Google Cloud 对开源、多云和混合云的承诺，避免供应商锁定（lock-in）并加快开发速度。 在整个组织中实现更明智的决策。</li>
+<li>开源仓库：https://github.com/GoogleCloudPlatform/</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-29.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-30.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>OpenML</strong></p>
+<ul>
+<li>描述：由于机器学习正在增强我们理解自然和建设更美好未来的能力，因此让研究、教育和行业中的每个人都透明且易于访问是至关重要的。 OpenML（Open Machine Learning）项目是一项范围广泛的动作，旨在为机器学习构建一个开放、有组织的在线生态系统。</li>
+<li>开源仓库：github.com/openml</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-31.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-32.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>MLflow⭐️（开源）</strong></p>
+<ul>
+<li>描述：MLflow 是一个简化机器学习开发的平台，包括跟踪实验、将代码打包为能够可复现的运行以及共享和部署模型。 MLflow 提供了一组轻量级 API，可与任何现有的机器学习应用程序或库（TensorFlow、PyTorch、XGBoost 等）一起使用，无论您当前在何处运行 ML 代码（例如在notebooks、独立应用程序或云中）。</li>
+<li>开源仓库：github.com/mlflow</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-33.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-34.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>SAS</strong></p>
+<ul>
+<li>描述：通过一个单一的、集成的、协作的解决方案解决最复杂的分析问题——现在它有了自动化建模 API。</li>
+<li>开源仓库：github.com/sassoftware</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-35.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-36.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Polyaxon⭐️（来自德国柏林，开源，针对k8s的机器学习平台）</strong></p>
+<ul>
+<li>描述：使用生产级 MLOps 工具重现、自动化和扩展您的数据科学工作流。</li>
+<li>开源仓库：github.com/polyaxon</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-37.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Microsoft Azure</strong></p>
+<ul>
+<li>描述：无限的数据和分析能力。是的，无限。在专为数据和分析构建的云上获得无与伦比的洞察、大规模和性价比。</li>
+<li>开源仓库：github.com/Azure</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-38.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-39.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>DagsHub（git+dvc+mlflow）</strong></p>
+<ul>
+<li>描述：DagsHub 是一个供数据科学家和机器学习工程师对其数据、模型、实验和代码进行版本控制的平台。 它允许您和您的团队轻松共享、审查和重复使用您的工作，为机器学习提供 GitHub 体验。DagsHub 基于流行的开源工具和格式构建，可以轻松与您已经使用的工具集成。</li>
+<li>官方网站：dagshub.com/</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-40.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>Neu.ro⭐️</strong></p>
+<ul>
+<li>描述：Neuro MLOps 平台，用于在公有云、混合云和私有云上进行全周期 ML/DL 应用程序开发和部署。在多年为一系列企业客户开发创新 AI 解决方案的工作中，Neuro 获得了第一手了解构建和维护构建、部署和扩展 AI 解决方案所需的基础设施和工具所涉及的挑战。 这个 AI 基础设施现在被称为：MLOps。</li>
+</ul>
+<blockquote>
+<p>我们相信构建和部署 ML 模型应该像使用 DevOps 的软件工程一样简单、快速和安全。 &mdash; MLOps.community</p>
+</blockquote>
+<p>Neuro 平台使用户能够自动执行从数据收集到准备、训练、测试和部署的 ML 管道。 使用 Neuro，打包、扩展、微调、检测和持续交付的步骤都可以完全自动化，解决每个组织的两个主要挑战：上市时间和资源管理。</p>
+<p>开箱即用的 Neu.ro 启动了一个成熟的机器学习开发环境，您需要的所有工具都触手可及。它将开源和专有工具集成到面向客户端的系统中。具体组件如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-41.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Lifecycle Component</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Data labeling</td>
+<td>Label Studio</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data management</td>
+<td>DVC</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Development environment</td>
+<td>VSCode, Jupyter</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Remote debugging</td>
+<td>VSCode remote debugger</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Code management</td>
+<td>Git</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Experiment tracking</td>
+<td>MLflow</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Hyperparameter tuning</td>
+<td>NNI</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Distributed training</td>
+<td>Neu.ro</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Metadata management</td>
+<td>MLflow</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Model management</td>
+<td>MLflow</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Deployment</td>
+<td>Seldon Core</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Testing</td>
+<td>Locust</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Monitoring</td>
+<td>Prometheus + Grafana</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Interpretation</td>
+<td>Seldon Alibi</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Pipelines orchestration</td>
+<td>Neu.ro</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Resource orchestration</td>
+<td>Neu.ro</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Access control orchestration</td>
+<td>Neu.ro</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>官方网站：neu.ro/mlops/</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-42.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/image-43.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">所有的MLOps和ML工具与平台 
+    <div id="所有的mlops和ml工具与平台" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%89%80%e6%9c%89%e7%9a%84mlops%e5%92%8cml%e5%b7%a5%e5%85%b7%e4%b8%8e%e5%b9%b3%e5%8f%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>ML 生命周期中的这个主要领域侧重于管理数据。 我们决定将它作为一个单独的部分，因为它有许多方面位于“建模”部分之外。</p>
+<h3 class="relative group">数据探索和管理 
+    <div id="数据探索和管理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e6%8e%a2%e7%b4%a2%e5%92%8c%e7%ae%a1%e7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>帮助您管理、探索、存储和组织数据的工具和平台。</p>
+<ul>
+<li>Algorithmia</li>
+<li>Alluxio</li>
+<li>Amazon Redshift</li>
+<li>Amundsen</li>
+<li>Cohesity</li>
+<li>Aparavi</li>
+<li>AtScale</li>
+<li>Cazena</li>
+<li>Cloudera</li>
+<li>Clearsky</li>
+<li>Databricks</li>
+<li>Datagrok</li>
+<li>Dataiku</li>
+<li>Delta Lake</li>
+<li>Datera</li>
+<li>Dremio</li>
+<li>Druid</li>
+<li>Elastifile</li>
+<li>Erwin</li>
+<li>Excelero</li>
+<li>Fluree</li>
+<li>Gemini</li>
+<li>Hammerspace</li>
+<li>Hudi</li>
+<li>HYCU</li>
+<li>Imply</li>
+<li>Komprise</li>
+<li>Kyvos</li>
+<li>MLReef</li>
+<li>Microsoft Azure</li>
+<li>Milvus</li>
+<li>Octopai</li>
+<li>Openml</li>
+<li>Parquet</li>
+<li>Pilosa</li>
+<li>Presto</li>
+<li>Qri</li>
+<li>Rubrik</li>
+<li>Spark</li>
+<li>Tamr</li>
+<li>Waterline Data</li>
+<li>Whylabs</li>
+<li>Vearch</li>
+<li>Vexata</li>
+<li>Yellowbrick</li>
+</ul>
+<h3 class="relative group">数据标注 
+    <div id="数据标注" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e6%a0%87%e6%b3%a8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>支持您标记数据以创建训练数据集的工具。</p>
+<ul>
+<li>4SmartMachines</li>
+<li>Amazon Sage Maker - Data Labeling</li>
+<li>Appen</li>
+<li>Dataturks</li>
+<li>Defined Workflows</li>
+<li>Doccano</li>
+<li>Figure Eight</li>
+<li>iMerit</li>
+<li>Labelbox</li>
+<li>Prodigy</li>
+<li>Playment</li>
+<li>Scale</li>
+<li>Segments</li>
+<li>Snorkel</li>
+<li>Supervisely</li>
+</ul>
+<h3 class="relative group">数据流 
+    <div id="数据流" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e6%b5%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>用于将大量数据直接加载到数据流水线（pipelines）中的数据流服务和工具。</p>
+<ul>
+<li>Amazon Kinesis</li>
+<li>Alluxio</li>
+<li>Ares DB</li>
+<li>Confluent</li>
+<li>Flink</li>
+<li>Google Cloud Dataflow</li>
+<li>Hudi</li>
+<li>Kafka</li>
+<li>Microsoft Azure Stream Analytics</li>
+<li>Storm</li>
+<li>Striim</li>
+<li>Valohai</li>
+</ul>
+<h3 class="relative group">数据版本控制 
+    <div id="数据版本控制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>下面提供了一些数据版本控制的工具和平台。这是特别有价值的，因为数据对模型的表现是不可分割的一部分。检视数据变更和数据治理对于模型完全再现性至关重要。</p>
+<ul>
+<li>Dagshub</li>
+<li>Databricks</li>
+<li>Dataiku</li>
+<li>Dolt</li>
+<li>DVC</li>
+<li>Floydhub</li>
+<li>MLReef</li>
+<li>Pachyderm</li>
+<li>Qri</li>
+<li>Waterline Data</li>
+</ul>
+<h3 class="relative group">数据隐私 
+    <div id="数据隐私" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e9%9a%90%e7%a7%81" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>数据隐私包含匿名化、加密、高度安全的数据存储和其他保护数据隐私的方法。</p>
+<ul>
+<li>Amnesia</li>
+<li>AirCloak</li>
+<li>Data Anon</li>
+<li>Celantur</li>
+<li>Mostly AI</li>
+<li>PySyft</li>
+<li>Tumult</li>
+</ul>
+<h3 class="relative group">数据质量检查 
+    <div id="数据质量检查" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e8%b4%a8%e9%87%8f%e6%a3%80%e6%9f%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>确保数据健康的方法。</p>
+<ul>
+<li>Arize</li>
+<li>Great Expectations</li>
+<li>Naveego</li>
+<li>Whylabs</li>
+</ul>
+<h3 class="relative group">建模 
+    <div id="建模" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%bb%ba%e6%a8%a1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>ML 生命周期中的这个主要领域侧重于创建 ML 模型。 这包括与创建模型直接相关的所有步骤，例如准备数据、特征工程、实验跟踪直至模型管理。 可以说，这个阶段是所有魔法发生的地方。</p>
+<p><strong>Notebook / ML 代码管理</strong></p>
+<p>帮助您管理、探索、存储和组织Notebook或机器学习操作的工具和平台。 我们明确没有包括 SCM 平台，例如 GitHub 或 Gitlab，因为它们并不是专门针对 ML（尽管他们完全能够托管这些功能）。</p>
+<ul>
+<li>Amazon Sagemaker</li>
+<li>Dagshub</li>
+<li>Databricks</li>
+<li>Dataiku</li>
+<li>Deepnote</li>
+<li>Domino Data Labs</li>
+<li>Floydhub</li>
+<li>Google Colab</li>
+<li>H2O</li>
+<li>Kaggle</li>
+<li>MLReef</li>
+<li>Openml</li>
+<li>Polyaxon</li>
+<li>Pachyderm</li>
+<li>Valohai</li>
+<li>Weights and Biases</li>
+</ul>
+<p><strong>数据处理和可视化</strong></p>
+<p>专门的数据处理（例如数据清理、格式化、预处理等）和可视化流水线（pipelines），旨在分析大量数据。 我们明确排除了简单的数据表示，例如在表格数据中显示数据分布（有很多工具可以做到这一点）。</p>
+<ul>
+<li>Alteryx</li>
+<li>Ascend IO</li>
+<li>Google Colab</li>
+<li>Dask</li>
+<li>Dataiku</li>
+<li>Databricks</li>
+<li>Dotdata</li>
+<li>Flyte</li>
+<li>Gluent</li>
+<li>Koalas</li>
+<li>Iguazio</li>
+<li>Imply</li>
+<li>Incorta</li>
+<li>Mlflow</li>
+<li>Kyvos</li>
+<li>MLReef</li>
+<li>Modin</li>
+<li>Naveego</li>
+<li>Openml</li>
+<li>Pachyderm</li>
+<li>Pilosa</li>
+<li>Presto</li>
+<li>SAS</li>
+<li>Snorkel</li>
+<li>SQLflow</li>
+<li>Starburst</li>
+<li>Turi Create</li>
+<li>Vaex</li>
+<li>Valohai</li>
+<li>Weights and Biases</li>
+</ul>
+<p><strong>特征工程</strong></p>
+<p>专门的特征工程和特征存储平台和工具。</p>
+<ul>
+<li>Amazon Sagemaker</li>
+<li>Dotdata</li>
+<li>Feast</li>
+<li>Featuretools</li>
+<li>Pachyderm</li>
+<li>ScribbleData</li>
+<li>Tecton</li>
+<li>TSfresh</li>
+<li>MLReef</li>
+<li>Iguazio</li>
+</ul>
+<h3 class="relative group">模型训练 
+    <div id="模型训练" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e8%ae%ad%e7%bb%83" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>这些工具和平台具有专门的流水线（pipeline）和功能来训练机器学习模型。</p>
+<ul>
+<li>Alteryx</li>
+<li>Amazon Sagemaker</li>
+<li>Iguazio</li>
+<li>Microsoft Azure</li>
+<li>Google Cloud Platform</li>
+<li>Google Colab</li>
+<li>Databricks</li>
+<li>Dataiku</li>
+<li>Domino Data Labs</li>
+<li>Dotscience</li>
+<li>Floydhub</li>
+<li>Flyte</li>
+<li>Horovod</li>
+<li>IBM Watson</li>
+<li>Ludwig</li>
+<li>Kaggle</li>
+<li>MLReef</li>
+<li>H2O</li>
+<li>Metaflow</li>
+<li>Mlflow</li>
+<li>Paperspace</li>
+<li>PerceptiLabs</li>
+<li>Snorkel</li>
+<li>Turi Create</li>
+<li>Valohai</li>
+<li>SAS</li>
+<li>Anyscale</li>
+<li>Pachyderm</li>
+</ul>
+<h3 class="relative group">实验跟踪 
+    <div id="实验跟踪" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e9%aa%8c%e8%b7%9f%e8%b8%aa" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>提供跟踪、比较和记录模型训练指标的工具和平台。</p>
+<ul>
+<li>Allegro AI</li>
+<li>Amazon Sagemaker</li>
+<li>Comet ML</li>
+<li>Dagshub</li>
+<li>Dataiku</li>
+<li>Datarobot</li>
+<li>Datmo</li>
+<li>Domino Data Labs</li>
+<li>Floydhub</li>
+<li>Google Cloud Platform</li>
+<li>H2O</li>
+<li>Ludwig</li>
+<li>Iguazio</li>
+<li>Mlflow</li>
+<li>MLReef</li>
+<li>Neptune AI</li>
+<li>Openml</li>
+<li>Polyaxon</li>
+<li>Spell</li>
+<li>Valohai</li>
+<li>Weights and Biases</li>
+</ul>
+<h3 class="relative group">模型/超参数优化 
+    <div id="模型超参数优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e8%b6%85%e5%8f%82%e6%95%b0%e4%bc%98%e5%8c%96" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>允许您为模型搜索理想超参数的工具和平台（例如，包括贝叶斯或网格搜索、性能优化等）</p>
+<ul>
+<li>Alteryx</li>
+<li>Amazon Sagemaker</li>
+<li>Angel</li>
+<li>Comet ML</li>
+<li>Datarobot</li>
+<li>Hyperopt</li>
+<li>Polyaxon</li>
+<li>Sigopt</li>
+<li>Spell</li>
+<li>Tune</li>
+<li>Optuna</li>
+<li>Talos</li>
+</ul>
+<h3 class="relative group">自动机器学习 
+    <div id="自动机器学习" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%87%aa%e5%8a%a8%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>自动机器学习，也称为AutoML，是基于架构、数据和超参数自动化找到理想模型配置的过程。 AutoML 是一种更高级的模型优化方法，但并不总是适用。</p>
+<ul>
+<li>Datarobot</li>
+<li>DeterminedAI</li>
+<li>Dotdata</li>
+<li>Google Cloud Platform</li>
+<li>H2O</li>
+<li>Iguazio</li>
+<li>Tazi</li>
+<li>Transmogrify</li>
+</ul>
+<h3 class="relative group">模型管理 
+    <div id="模型管理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e7%ae%a1%e7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>模型管理包括模型存储、工件制品管理和模型版本控制。</p>
+<ul>
+<li>Algorithmia</li>
+<li>Allegro AI</li>
+<li>Amazon Sagemaker</li>
+<li>Databricks</li>
+<li>Dataiku</li>
+<li>DeterminedAI</li>
+<li>Dockship</li>
+<li>Domino Data Labs</li>
+<li>Dotdata</li>
+<li>Floydhub</li>
+<li>Gluon</li>
+<li>Google Cloud Platform</li>
+<li>H2O</li>
+<li>Huggingface</li>
+<li>IBM Watson</li>
+<li>Iguazio</li>
+<li>Mlflow</li>
+<li>Modzy</li>
+<li>Perceptilabs</li>
+<li>SAS</li>
+<li>Turi Create</li>
+<li>Valohai</li>
+<li>Verta</li>
+</ul>
+<h3 class="relative group">模型评估 
+    <div id="模型评估" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e8%af%84%e4%bc%b0" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>此任务涉及测量模型的预测性能。它还包括测量所需的计算资源、延迟检查和漏洞。</p>
+<ul>
+<li>Arize</li>
+<li>Dawnbench</li>
+<li>MLperf</li>
+<li>Streamlit</li>
+<li>Tensorboard</li>
+<li>Whylabs</li>
+</ul>
+<h3 class="relative group">模型可解释性 
+    <div id="模型可解释性" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e5%8f%af%e8%a7%a3%e9%87%8a%e6%80%a7" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>通过分析深度学习模型的架构、权重分布与测试数据、热力图等来消除（尤其是）深度学习模型的黑盒综合症。这些工具为模型可解释性提供了专用功能。</p>
+<ul>
+<li>Amazon Sagemaker Clarify</li>
+<li>Fiddler</li>
+<li>InterpretML</li>
+<li>Lucid</li>
+<li>Perceptilabs</li>
+<li>Shap</li>
+<li>Tensorboard</li>
+</ul>
+<h3 class="relative group">持续部署 
+    <div id="持续部署" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%8c%81%e7%bb%ad%e9%83%a8%e7%bd%b2" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>ML 生命周期中的这个主要领域侧重于将经过训练的模型投入生产。</p>
+<p><strong>数据流管理</strong></p>
+<p>这些工具让您可以在推理过程中管理和自动化数据流过程（新数据进入后会发生什么？），衡量性能和安全问题。</p>
+<ul>
+<li>Alluxio</li>
+<li>Spark</li>
+<li>Ascend IO</li>
+<li>Kafka</li>
+<li>Dataiku</li>
+<li>Dotdata</li>
+<li>HYCU</li>
+<li>Prefect</li>
+</ul>
+<p><strong>特征转换</strong></p>
+<p>类似于模型训练期间的过程，但现在在推理任务期间。 随着新数据的进入，需要对其进行转换以适应模型训练过的输入数据。 这些工具允许您创建应用于生产模型的特征转换。</p>
+<ul>
+<li>Feast</li>
+<li>Featuretools</li>
+<li>ScribbleData</li>
+<li>Tecton</li>
+<li>Iguazio</li>
+</ul>
+<p><strong>监控</strong></p>
+<p>模型性能监控非常重要，因为数据分布或计算性能的偏差可能会对业务逻辑和流程产生直接影响。</p>
+<ul>
+<li>Algorithmia</li>
+<li>Amazon Sagemaker</li>
+<li>Arize</li>
+<li>Dataiku</li>
+<li>Datadog</li>
+<li>Datatron</li>
+<li>Datarobot</li>
+<li>Domino Data Labs</li>
+<li>Dotscience</li>
+<li>Fiddler</li>
+<li>H2O</li>
+<li>Iguazio</li>
+<li>Losswise</li>
+<li>Snorkel</li>
+<li>Unravel</li>
+<li>Valohai</li>
+<li>Verta</li>
+<li>Whylabs</li>
+</ul>
+<p><strong>模型合规性和审计</strong></p>
+<p>此任务涉及提供模型来源的透明度。</p>
+<ul>
+<li>Algorithmia</li>
+<li>SAS</li>
+<li>H2O</li>
+</ul>
+<p><strong>模型部署和服务</strong></p>
+<p>集成模型部署功能的工具和平台。</p>
+<ul>
+<li>Amazon Sagemaker</li>
+<li>Aible</li>
+<li>Algorithmia</li>
+<li>Allegro AI</li>
+<li>Clipper</li>
+<li>Core ML</li>
+<li>Cortex</li>
+<li>Dataiku</li>
+<li>Datatron</li>
+<li>Datmo</li>
+<li>Domino Data Labs</li>
+<li>Dotdata</li>
+<li>Dotscience</li>
+<li>Floydhub</li>
+<li>Fritz AI</li>
+<li>Google Cloud Platform</li>
+<li>IBM Watson</li>
+<li>Iguazio</li>
+<li>Kubeflow</li>
+<li>Mlflow</li>
+<li>Modzy</li>
+<li>OctoML</li>
+<li>Paperspace</li>
+<li>Prediction IO</li>
+<li>SAS</li>
+<li>Seldon</li>
+<li>Spell</li>
+<li>Streamlit</li>
+<li>H2O</li>
+<li>Valohai</li>
+<li>Verta</li>
+</ul>
+<h3 class="relative group">模型验证（Model validation） 
+    <div id="模型验证model-validation" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e9%aa%8c%e8%af%81model-validation" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>模型验证是一组旨在验证模型是否按预期执行的过程和活动。模型有效性应在操作上（即通过确定模型输出是否与观察到的数据一致）和概念上（即通过确定模型背后的理论和假设是否合理）进行评估。</p>
+<ul>
+<li>Arize</li>
+<li>Datatron</li>
+<li>Fiddler</li>
+<li>Lucid</li>
+<li>MLperf</li>
+<li>SAS</li>
+<li>Streamlit</li>
+</ul>
+<h3 class="relative group">模型序列化格式 
+    <div id="模型序列化格式" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%a8%a1%e5%9e%8b%e5%ba%8f%e5%88%97%e5%8c%96%e6%a0%bc%e5%bc%8f" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>调整模型以与其他框架、库或语言兼容。</p>
+<ul>
+<li>MMdnn</li>
+<li>ONNX</li>
+<li>Plaidml</li>
+</ul>
+<h3 class="relative group">计算管理 
+    <div id="计算管理" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%ae%a1%e7%ae%97%e7%ae%a1%e7%90%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>ML 生命周期中的这个主要领域包括管理计算基础设施。 这一点尤其重要，因为机器学习有时需要大量的存储和计算资源。</p>
+<p><strong>计算和数据基础设施（服务器）</strong></p>
+<p>这些组织为您的 ML 项目提供所需的能力（在硬件方面）。</p>
+<ul>
+<li>Google Cloud Platform</li>
+<li>IBM Watson</li>
+<li>Amazon AWS</li>
+<li>Microsoft Azure</li>
+<li>Cloudera</li>
+<li>Paperspace</li>
+<li>Kamatera</li>
+<li>Linode</li>
+<li>Cloudways</li>
+<li>Liquidweb</li>
+<li>Digitalocean</li>
+<li>Vultr</li>
+</ul>
+<p><strong>环境管理</strong></p>
+<p>自定义脚本管理基础环境需要包、库和运行时环境。 以下工具和平台将帮助您管理基础环境。</p>
+<ul>
+<li>Conda</li>
+<li>Databricks</li>
+<li>Datmo</li>
+<li>Mahout</li>
+<li>MLReef</li>
+</ul>
+<p><strong>资源分配</strong></p>
+<p>以下工具和平台支持管理不同的资源（如计算实例、存储卷等）。 此外，还管理一些包括预算和团队优先权等，以控制支出。</p>
+<ul>
+<li>Amazon Sagemaker</li>
+<li>Algorithmia</li>
+<li>Google Cloud Platform</li>
+<li>MLReef</li>
+<li>Databricks</li>
+<li>Microsoft Azure</li>
+<li>Dataiku</li>
+<li>DeterminedAI</li>
+<li>Floydhub</li>
+<li>IBM Watson</li>
+<li>Polyaxon</li>
+<li>Spell</li>
+<li>Amazon Sagemaker</li>
+<li>Valohai</li>
+<li>Allegro AI</li>
+</ul>
+<p><strong>模型服务和计算任务扩展</strong></p>
+<p>这些工具提供对已部署模型和计算任务的弹性扩展。</p>
+<ul>
+<li>Amazon Sagemaker</li>
+<li>Argo</li>
+<li>Microsoft Azure</li>
+<li>Datadog</li>
+<li>Datatron</li>
+<li>Datmo</li>
+<li>Google Cloud Platform</li>
+<li>TensorRT</li>
+<li>Seldon</li>
+<li>TVM</li>
+</ul>
+<p><strong>安全与隐私</strong></p>
+<p>这些工具可让您在将模型部署到生产环境时管理隐私话题（例如，GDPR合规性）并提高安全水平。</p>
+<ul>
+<li>Algorithmia</li>
+<li>Clever Hans</li>
+<li>Datadog</li>
+<li>Modzy</li>
+<li>PySyft</li>
+<li>Tumult</li>
+</ul>
+<h2 class="relative group">Resources 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://juejin.cn/post/7035761114650509319"   target="_blank">
+    https://juejin.cn/post/7035761114650509319</a></li>
+<li><a href="https://link.juejin.cn/?target=https%3A%2F%2Fabout.mlreef.com%2Fblog%2Fglobal-mlops-and-ml-tools-landscape"   target="_blank">
+    Global MLOps and ML tools landscape</a></li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_graduation-project\/ai-ci-cd\/全球的MLOps和ML工具概览\/index.md"
+        var oid_likes = "likes_graduation-project\/ai-ci-cd\/全球的MLOps和ML工具概览\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/graduation-project/ai-ci-cd/mlops-zoomcamp/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >MLOPS-ZOOMCAMP</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-04-16 08:22:18 &#43;0800 &#43;0800">16 April 2024</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
+            title="">
+            
+            TODO
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/algorithm/"
+            title="">
+            
+            Algorithm
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="">
+            
+            Tags
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
