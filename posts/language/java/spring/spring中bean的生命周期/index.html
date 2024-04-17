@@ -67,16 +67,22 @@
   
   
   
-  <meta property="og:title" content="Spring中Bean的生命周期" />
-<meta property="og:description" content="对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" /><meta property="og:image" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-02-15T16:15:08+08:00" />
-<meta property="article:modified_time" content="2024-02-15T16:15:08+08:00" />
+  <meta property="og:url" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+  <meta property="og:site_name" content="WFUing&#39;s Blog">
+  <meta property="og:title" content="Spring中Bean的生命周期">
+  <meta property="og:description" content="对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-15T16:15:08+08:00">
+    <meta property="article:modified_time" content="2024-02-15T16:15:08+08:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Spring">
+    <meta property="og:image" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png">
 
-  <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" /><meta name="twitter:title" content="Spring中Bean的生命周期"/>
-<meta name="twitter:description" content="对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下："/>
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png"><meta name="twitter:title" content="Spring中Bean的生命周期">
+<meta name="twitter:description" content="对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：">
 
   
   <script type="application/ld+json">
