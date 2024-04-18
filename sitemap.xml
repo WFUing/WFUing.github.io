@@ -4,13 +4,19 @@
 
   <url>
     <loc>https://WFUing.github.io/graduation-project/ai-ci-cd/</loc>
-    <lastmod>2024-04-16T09:22:18+08:00</lastmod>
+    <lastmod>2024-04-16T15:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/graduation-project/</loc>
-    <lastmod>2024-04-16T09:22:18+08:00</lastmod>
+    <lastmod>2024-04-16T15:22:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/graduation-project/ai-ci-cd/mlflow/</loc>
+    <lastmod>2024-04-16T15:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -117,7 +123,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/%E9%9D%A2%E8%AF%95/qq%E9%9F%B3%E4%B9%90%E4%B8%80%E9%9D%A24.11/</loc>
+    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/qq%E9%9F%B3%E4%B9%90%E4%B8%80%E9%9D%A24.11/</loc>
     <lastmod>2024-04-11T20:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -130,12 +136,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/</loc>
-    <lastmod>2024-04-11T20:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2024-04-11T20:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -279,7 +279,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/%E9%9D%A2%E8%AF%95/qq%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80%E9%9D%A23.27/</loc>
+    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/qq%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%80%E9%9D%A23.27/</loc>
     <lastmod>2024-03-27T20:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -453,7 +453,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/%E9%9D%A2%E8%AF%95/ieg%E4%B8%80%E9%9D%A23.13/</loc>
+    <loc>https://WFUing.github.io/posts/reviews/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E8%85%BE%E8%AE%AF/ieg%E4%B8%80%E9%9D%A23.13/</loc>
     <lastmod>2024-03-13T20:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
