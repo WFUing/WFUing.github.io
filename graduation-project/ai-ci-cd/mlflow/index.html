@@ -76,8 +76,10 @@
   <meta property="article:section" content="graduation-project">
     <meta property="article:published_time" content="2024-04-16T15:22:18+08:00">
     <meta property="article:modified_time" content="2024-04-16T15:22:18+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/graduation-project/ai-ci-cd/mlflow/featured.png">
 
-  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="MLflow 入门">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://WFUing.github.io/graduation-project/ai-ci-cd/mlflow/featured.png"><meta name="twitter:title" content="MLflow 入门">
 <meta name="twitter:description" content="运行教程指南 # Databricks：开始使用 MLflow 的最简单方法是使用 Databricks 提供的托管 MLflow 服务。这里有两个单独的选项，一个对于 Databricks 客户来说是最方便的，另一个是任何人都可以免费使用的。">
 
   
@@ -105,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "57"
+    "wordCount": "107"
   }]
   </script>
 
@@ -832,7 +834,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/img/background.jpg);">
+    style="background-image:url(/graduation-project/ai-ci-cd/mlflow/featured.png);">
     
 
 
@@ -903,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-16 15:22:18 &#43;0800 &#43;0800">16 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>57 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-16 15:22:18 &#43;0800 &#43;0800">16 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>107 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1204,6 +1206,38 @@ window.MathJax = {
 <li><strong>记录</strong>（保存）模型以供以后检索</li>
 <li>使用 MLflow 模型注册表<strong>注册模型</strong>以启用部署</li>
 <li><strong>加载</strong>模型并将其用于推理</li>
+</ul>
+<p><strong>Step 1 - Get MLflow</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install mlflow
+</span></span></code></pre></div><p><strong>Step 2 - Start a Tracking Server</strong></p>
+<ul>
+<li>Using a Managed MLflow Tracking Server : 有关使用托管 MLflow 跟踪服务器的选项的详细信息，包括如何使用托管 MLflow 创建免费的 Databricks Community Edition 帐户。但是使用这些仓库需要用到 Google Cloud 相关的产品，只有14天的免费日期，之后就要付款</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/graduation-project/ai-ci-cd/mlflow/image2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>(Optional) Run a local Tracking Server : 我们将启动一个本地 MLflow 跟踪服务器，我们将连接到该服务器来记录本快速入门的数据。从终端运行 <code>mlflow server --host 127.0.0.1 --port 8080</code></li>
 </ul>
 <p>
 
