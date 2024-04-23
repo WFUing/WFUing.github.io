@@ -9,6 +9,16 @@
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>什么是在线机器学习</title>
+      <link>https://WFUing.github.io/posts/ai/online-ml/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9C%A8%E7%BA%BF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Tue, 23 Apr 2024 09:25:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/ai/online-ml/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9C%A8%E7%BA%BF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description>Online Learning是工业界比较常用的机器学习算法，在很多场景下都能有很好的效果。Online Learning并不是一种模型，而是一种模型的训练方法，Online Learning能够根据线上反馈数据，实时快速地进行模型调整，使得模型及时反映线上的变化，提高线上预测的准确率。Online Learning的流程包括：将模型的预测结果展现给用户，然后收集用户的反馈数据，再用来训练模型，形成闭环的系统。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/ai/online-ml/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9C%A8%E7%BA%BF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/featured.png" />
+    </item>
+    
+    <item>
       <title>蚂蚁金服笔试4.20</title>
       <link>https://WFUing.github.io/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E9%98%BF%E9%87%8C%E7%B3%BB/%E8%9A%82%E8%9A%81/%E7%AC%94%E8%AF%954.20/</link>
       <pubDate>Sat, 20 Apr 2024 22:00:00 +0800</pubDate>
