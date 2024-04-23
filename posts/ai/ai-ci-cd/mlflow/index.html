@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>智能维护推荐系统 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="智能维护推荐系统 &middot; WFUing&#39;s Blog" />
-  
-  <meta name="description" content="推荐引擎的技术已经在亚马逊、Netflix等不同领域证明了其性能。本文讨论了推荐引擎概念在工业领域，特别是在维护操作中的使用。如今，工厂维护团队需要针对突然的资产故障制定维护计划，以减少计划外的生产停机。然而，规划需要花费大量时间，因为根据故障情况和资产环境，需要从许多选项中选择适当的维护对策。因此，我们尝试针对故障情况提出可靠的对策，以缩短规划时间。在这项工作中，我们提出了两种基于人工智能技术的维护推荐系统方法来推荐维护操作。第一种方法是单级推荐系统，它读取操作员输入的缺陷信息及其描述，以针对历史数据中发现的类似缺陷推荐维护操作。第二种方法是多阶段推荐系统，其中系统首先估计一个维护属性，该属性用作下一阶段的输入来估计下一个维护属性。最后，我们将使用过去的维护报告来评估建议的准确性，该报告包含缺陷情况和过去实际采取的维护措施。我们发现多级系统在准确性方面优于单级系统，并且多级系统可能通过维护行动建议帮助维护团队应对突发资产故障。" />
+  <title>MLflow 入门 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="MLflow 入门 &middot; WFUing&#39;s Blog" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/ai/ai-ci-cd/mlflow/" />
   
   
   
@@ -67,47 +67,47 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/ai/ai-ci-cd/mlflow/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="智能维护推荐系统">
-  <meta property="og:description" content="推荐引擎的技术已经在亚马逊、Netflix等不同领域证明了其性能。本文讨论了推荐引擎概念在工业领域，特别是在维护操作中的使用。如今，工厂维护团队需要针对突然的资产故障制定维护计划，以减少计划外的生产停机。然而，规划需要花费大量时间，因为根据故障情况和资产环境，需要从许多选项中选择适当的维护对策。因此，我们尝试针对故障情况提出可靠的对策，以缩短规划时间。在这项工作中，我们提出了两种基于人工智能技术的维护推荐系统方法来推荐维护操作。第一种方法是单级推荐系统，它读取操作员输入的缺陷信息及其描述，以针对历史数据中发现的类似缺陷推荐维护操作。第二种方法是多阶段推荐系统，其中系统首先估计一个维护属性，该属性用作下一阶段的输入来估计下一个维护属性。最后，我们将使用过去的维护报告来评估建议的准确性，该报告包含缺陷情况和过去实际采取的维护措施。我们发现多级系统在准确性方面优于单级系统，并且多级系统可能通过维护行动建议帮助维护团队应对突发资产故障。">
+  <meta property="og:title" content="MLflow 入门">
+  <meta property="og:description" content="运行教程指南 # Databricks：开始使用 MLflow 的最简单方法是使用 Databricks 提供的托管 MLflow 服务。这里有两个单独的选项，一个对于 Databricks 客户来说是最方便的，另一个是任何人都可以免费使用的。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
-  <meta property="article:section" content="graduation-project">
-    <meta property="article:published_time" content="2024-04-14T19:22:18+08:00">
-    <meta property="article:modified_time" content="2024-04-14T19:22:18+08:00">
-    <meta property="og:image" content="https://WFUing.github.io/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/featured.png">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-16T15:22:18+08:00">
+    <meta property="article:modified_time" content="2024-04-16T15:22:18+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/ai/ai-ci-cd/mlflow/featured.png">
 
   <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://WFUing.github.io/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/featured.png"><meta name="twitter:title" content="智能维护推荐系统">
-<meta name="twitter:description" content="推荐引擎的技术已经在亚马逊、Netflix等不同领域证明了其性能。本文讨论了推荐引擎概念在工业领域，特别是在维护操作中的使用。如今，工厂维护团队需要针对突然的资产故障制定维护计划，以减少计划外的生产停机。然而，规划需要花费大量时间，因为根据故障情况和资产环境，需要从许多选项中选择适当的维护对策。因此，我们尝试针对故障情况提出可靠的对策，以缩短规划时间。在这项工作中，我们提出了两种基于人工智能技术的维护推荐系统方法来推荐维护操作。第一种方法是单级推荐系统，它读取操作员输入的缺陷信息及其描述，以针对历史数据中发现的类似缺陷推荐维护操作。第二种方法是多阶段推荐系统，其中系统首先估计一个维护属性，该属性用作下一阶段的输入来估计下一个维护属性。最后，我们将使用过去的维护报告来评估建议的准确性，该报告包含缺陷情况和过去实际采取的维护措施。我们发现多级系统在准确性方面优于单级系统，并且多级系统可能通过维护行动建议帮助维护团队应对突发资产故障。">
+<meta name="twitter:image" content="https://WFUing.github.io/posts/ai/ai-ci-cd/mlflow/featured.png"><meta name="twitter:title" content="MLflow 入门">
+<meta name="twitter:description" content="运行教程指南 # Databricks：开始使用 MLflow 的最简单方法是使用 Databricks 提供的托管 MLflow 服务。这里有两个单独的选项，一个对于 Databricks 客户来说是最方便的，另一个是任何人都可以免费使用的。">
 
   
   <script type="application/ld+json">
   [{
     "@context": "https://schema.org",
     "@type": "Article",
-    "articleSection": "Graduation-Projects",
-    "name": "智能维护推荐系统",
-    "headline": "智能维护推荐系统",
+    "articleSection": "博客",
+    "name": "MLflow 入门",
+    "headline": "MLflow 入门",
     
-    "abstract": "推荐引擎的技术已经在亚马逊、Netflix等不同领域证明了其性能。本文讨论了推荐引擎概念在工业领域，特别是在维护操作中的使用。如今，工厂维护团队需要针对突然的资产故障制定维护计划，以减少计划外的生产停机。然而，规划需要花费大量时间，因为根据故障情况和资产环境，需要从许多选项中选择适当的维护对策。因此，我们尝试针对故障情况提出可靠的对策，以缩短规划时间。在这项工作中，我们提出了两种基于人工智能技术的维护推荐系统方法来推荐维护操作。第一种方法是单级推荐系统，它读取操作员输入的缺陷信息及其描述，以针对历史数据中发现的类似缺陷推荐维护操作。第二种方法是多阶段推荐系统，其中系统首先估计一个维护属性，该属性用作下一阶段的输入来估计下一个维护属性。最后，我们将使用过去的维护报告来评估建议的准确性，该报告包含缺陷情况和过去实际采取的维护措施。我们发现多级系统在准确性方面优于单级系统，并且多级系统可能通过维护行动建议帮助维护团队应对突发资产故障。",
+    "abstract": "运行教程指南 # Databricks：开始使用 MLflow 的最简单方法是使用 Databricks 提供的托管 MLflow 服务。这里有两个单独的选项，一个对于 Databricks 客户来说是最方便的，另一个是任何人都可以免费使用的。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/graduation-project\/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4\/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/ai\/ai-ci-cd\/mlflow\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-04-14T19:22:18\u002b08:00",
-    "datePublished": "2024-04-14T19:22:18\u002b08:00",
+    "dateCreated": "2024-04-16T15:22:18\u002b08:00",
+    "datePublished": "2024-04-16T15:22:18\u002b08:00",
     
-    "dateModified": "2024-04-14T19:22:18\u002b08:00",
+    "dateModified": "2024-04-16T15:22:18\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "444"
+    "wordCount": "107"
   }]
   </script>
 
@@ -834,7 +834,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/featured.png);">
+    style="background-image:url(/posts/ai/ai-ci-cd/mlflow/featured.png);">
     
 
 
@@ -860,7 +860,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      智能维护推荐系统
+      MLflow 入门
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -905,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-14 19:22:18 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>444 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-04-16 15:22:18 &#43;0800 &#43;0800">16 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>107 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1055,11 +1055,10 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#推荐系统">推荐系统</a>
+    <li><a href="#运行教程指南">运行教程指南</a></li>
+    <li><a href="#入门指南">入门指南</a>
       <ul>
-        <li><a href="#数据集">数据集</a></li>
-        <li><a href="#单阶段推荐系统">单阶段推荐系统</a></li>
-        <li><a href="#多级推荐系统">多级推荐系统</a></li>
+        <li><a href="#mlflow-tracking-快速入门">MLflow Tracking 快速入门</a></li>
       </ul>
     </li>
   </ul>
@@ -1075,11 +1074,10 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#推荐系统">推荐系统</a>
+    <li><a href="#运行教程指南">运行教程指南</a></li>
+    <li><a href="#入门指南">入门指南</a>
       <ul>
-        <li><a href="#数据集">数据集</a></li>
-        <li><a href="#单阶段推荐系统">单阶段推荐系统</a></li>
-        <li><a href="#多级推荐系统">多级推荐系统</a></li>
+        <li><a href="#mlflow-tracking-快速入门">MLflow Tracking 快速入门</a></li>
       </ul>
     </li>
   </ul>
@@ -1138,75 +1136,22 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <ul>
-<li>Al-Najim A, Al-Amoudi A, Ooishi K, et al. Intelligent maintenance recommender system[C]//2022 7th International Conference on Data Science and Machine Learning Applications (CDMA). IEEE, 2022: 212-218.</li>
-</ul>
-<p>推荐引擎是智能系统，可根据用户的兴趣向特定用户（个人或公司）推荐最合适的项目（产品或服务）。由于兴趣和倾向是未来选择的有效指示，推荐分析通常基于有关项目、用户以及服务提供商和用户之间先前交互的相关信息。推荐系统的目标是通过评估用户的活动和/或其他用户的行为来预测用户的偏好和兴趣，从而提供个性化服务。</p>
-<blockquote>
-<p>J. Lu, D. Wu, M. Mao, W. Wang, and G. Zhang, “Recommender system application developments: A survey,” Decis. Support Syst., vol. 74, pp. 12–32, 2015, doi: 10.1016/j.dss.2015.03.008.</p>
-</blockquote>
-<p>推荐系统在质量和效率方面显示出显着的改进，这为服务提供商和用户层面的决策过程增加了价值。</p>
-<blockquote>
-<p>Portugal, P. Alencar, and D. Cowan, “The use of machine learning algorithms in recommender systems: A systematic review,” Expert Syst. Appl., vol. 97, no. November 2015, pp. 205–227, 2018, doi: 10.1016/j.eswa.2017.12.020.</p>
-</blockquote>
-<p>例如，推荐系统在降低搜索和选择产品的交易成本、增加电子商务业务的收入方面发挥着至关重要的作用。为了最大化用户利益，需要采用准确、高效的技术为用户提供适当、可靠的推荐。</p>
-<blockquote>
-<p>F. O. Isinkaye, Y. O. Folajimi, and B. A. Ojokoh, “Recommendation systems: Principles, methods and evaluation,” Egypt. Informatics J., vol. 16, no. 3, pp. 261–273, 2015, doi: 10.1016/j.eij.2015.06.005.</p>
-</blockquote>
-<p>如今，推荐系统已应用于许多领域，例如 Netflix [4] 等视频服务、亚马逊 [5] 等在线商店以及 Twitter [6] 等社交媒体。</p>
-<blockquote>
-<p>C. A. Gomez-Uribe and N. Hunt, “The netflix recommender system: Algorithms, business value, and innovation,” ACM Trans. Manag. Inf. Syst., vol. 6, no. 4, 2015, doi: 10.1145/2843948.</p>
-<p>G. Linden, B. Smith, and J. York, “Amazon.com recommendations: Item-to-item collaborative filtering,” IEEE Internet Comput., vol. 7, no. 1, pp. 76–80, 2003, doi: 10.1109/MIC.2003.1167344.</p>
-<p>N. Ben-Lhachemi and E. H. Nfaoui, “Using tweets embeddings for hashtag recommendation in twitter,” Procedia Comput. Sci., vol. 127, pp. 7–15, 2018, doi: 10.1016/j.procs.2018.01.092.</p>
-</blockquote>
-<p>在工业领域，维护是确保工厂过程安全、可靠、高效的关键操作之一。工厂维护团队的关键绩效指标（KPI）是更短的计划外停机时间。为了减少与预防性维护相关的停机时间和维护成本，公司已转向主要基于高级分析和大数据的预测性维护，以便能够识别故障的根本原因并更有效地预测故障何时发生。另一方面，一旦发生突发资产故障，维护团队应迅速制定并执行维护计划。然而，规划需要时间和经验，因为失败的情况各不相同，可供选择的选项也很多。维护团队需要从选项中选择适当的维护操作。如果选择了错误的维护操作，恢复和返工时间会使停机时间增加更多。因此维护动作的准确性非常重要。最近，维护作业推荐系统的实施开始引起业界的关注。</p>
-<p>文献中发现的相关工作之一是由 Ying Huang 等人提出的。作者提出了一个推荐系统，为给定的维护请求推荐最合适的维护文档。该系统使用推荐引擎概念，根据与历史数据的相似性、专家知识和聚类技术来推荐合适的维护文档。</p>
-<blockquote>
-<p>Ying Huang, Mickaël Gardoni, Amadou Coulibaly, et al. &ldquo;A decision support system designed for personalized maintenance recommendation based on proactive maintenance&rdquo;, In ICED, 2009</p>
-</blockquote>
-<p>Min 开发了一种基于协同过滤的机器学习推荐系统，旨在减少 oil well 设施的意外停机。开发的推荐系统利用客户之间的相似性来预测未来的购买并提出产品推荐。该模型能够为客户减少约 250 万美元的成本，并将每位客户每年的意外设备故障减少 1.7%。</p>
-<blockquote>
-<p>A. Min, “Reducing Oil Well Downtime with a Machine Learning Recommender System Reducing Oil Well Downtime with a Machine Learning Recommender System,” 2020.</p>
-</blockquote>
-<p>Wang 等人提出了一种基于矩阵分解技术的轴承状态识别协同过滤推荐系统。通过该方法对外环上不同位置的故障和不同类型的故障进行了分析。系统经过测试，准确率达到90%以上。</p>
-<blockquote>
-<p>G. Wang, Y. He, Y. Peng, and H. Li, “Bearing Fault Identification Method Based on Collaborative Filtering Recommendation Technology,” Shock Vib., vol. 2019, 2019, doi: 10.1155/2019/7378526.</p>
-</blockquote>
-<p>Das 在构建了基于交替最小二乘非负矩阵分解（ALS NMF）技术的协同过滤推荐系统来预测工业设备中的问题类型。系统在测试集上实现的准确率为 49.3%。尽管系统的准确度较低，但它能够识别设备中一些未知的问题类型。</p>
-<blockquote>
-<p>S. Das, “Maintenance action recommendation using collaborative filtering,” Int. J. Progn. Heal. Manag., vol. 4, no. 2, pp. 1–7, 2013.</p>
-</blockquote>
-<p>Anthony 提出了一种维护推荐系统，使用计算机化维护管理系统（CMMS）数据作为文本信息，使用能源管理和控制系统（EMCS）数据作为传感器数据。文本数据已使用扩展布尔模型进行处理。推荐引擎比较文本问题描述符和传感器数据描述符，以确定先前的维护操作和即将到来的维护操作之间的相似程度。</p>
-<blockquote>
-<p>B. Anthony, “Design of a Maintenance and Operations Recommender,” Ensemble, vol. 15, no. 4, pp. 250–260, 2013.</p>
-</blockquote>
-<p>Sun 等人提出了一种基于时间序列的推荐系统来预测石油钻井行业项目的安全检查顺序。系统预测每个项目的安全检查次数，并对其进行排序，生成安全检查流程。当系统进行测试时，发现它能够提供更好的安全检查程序。</p>
-<blockquote>
-<p>S. B. Sun, X. L. Dong, L. Zhang, Z. J. Jing, and F. Min, “Time series based interactive recommendation for petroleum drilling safety check,” Proc. - Int. Conf. Mach. Learn. Cybern., vol. 1, no. 1, pp. 13–18, 2016, doi: 10.1109/ICMLC.2016.7860870.</p>
-</blockquote>
-<p>识别故障的根本原因只是维护活动的第一步。然而，为了在行业中执行适当的维护操作，需要更多有关所需准备、设备、工具和技能的信息，以遵守维护程序和安全要求。虽然文献中的其他论文旨在利用推荐系统来识别故障根本原因，但本研究活动旨在开发一个推荐系统来推荐所需的维护程序。除了识别故障根本原因之外，我们的系统还可以自动建议必要的维护计划，包括所需的维护操作、准备活动工作、安全要求以及适合给定故障的任何其他操作。因此，维护团队可以在短时间内确定适当的维护准备操作。该系统可以增加的另一个价值是知识积累和向年轻成员的转移。</p>
-<h2 class="relative group">推荐系统 
-    <div id="推荐系统" class="anchor"></div>
+          <h2 class="relative group">运行教程指南 
+    <div id="运行教程指南" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%8e%a8%e8%8d%90%e7%b3%bb%e7%bb%9f" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e8%bf%90%e8%a1%8c%e6%95%99%e7%a8%8b%e6%8c%87%e5%8d%97" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>本节介绍推荐系统的两种方法，它们利用人工智能技术来推荐针对给定缺陷采取的维护操作。第一种方法是单阶段推荐器，它根据新缺陷与数据集中其他缺陷之间的相似性来推荐维护操作。然后，推荐系统根据最相似的缺陷建议合适的维护操作。第二种方法是多阶段推荐系统，其中推荐集是逐步生成的。在每次迭代中，我们推荐一个项目/特征，然后该项目/特征将用作输入的一部分来估计下一个项目/特征，依此类推，直到推荐所有所需的特征。</p>
-<h3 class="relative group">数据集 
-    <div id="数据集" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e6%95%b0%e6%8d%ae%e9%9b%86" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>使用的数据集是从一家化工厂过去十年生成的实际维护数据库中收集的。数据集中的每一行对应一个唯一的缺陷，其中列对应缺陷特征和相关的维护操作。在这个系统中，我们读取五个不同的输入：位置、优先级、团队、问题描述和详细描述。输出将是故障类型、根本原因、维修、组件、所需时间、所需人员数量以及必要的准备措施列表，如 TABLE I 所示。</p>
+<p><strong>Databricks</strong>：开始使用 MLflow 的最简单方法是使用 Databricks 提供的托管 MLflow 服务。这里有两个单独的选项，一个对于 Databricks 客户来说是最方便的，另一个是任何人都可以免费使用的。</p>
+<ul>
+<li><a href="https://docs.databricks.com/en/getting-started/community-edition.html"   target="_blank">
+    Databricks 社区版页面</a></li>
+</ul>
+<p>登录社区版后，您将看到如下所示的登录页面：</p>
 <p>
 
 
@@ -1221,7 +1166,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image.png"
+        src="/posts/ai/ai-ci-cd/mlflow/image.png"
         alt=""
       />
       
@@ -1230,53 +1175,43 @@ window.MathJax = {
   
 
 </p>
-<h3 class="relative group">单阶段推荐系统 
-    <div id="单阶段推荐系统" class="anchor"></div>
+<p><strong>自己托管 MLflow 服务器</strong>：如果您想要使用自己的托管 MLflow 服务器，则只需将 MLflow 跟踪 URI 设置为指向您的服务器即可。如果连接有其他配置或访问限制，请联系管理 MLflow 部署的小组以获取更多信息。</p>
+<p>要直接设置 MLflow 跟踪 URI（假设您没有设置额外的安全验证），您需要做的就是在笔记本中：</p>
+<pre tabindex="0"><code>mlflow.set_tracking_uri(
+    &#34;http://&lt;your-mlflow-server&gt;:&lt;the port number that is configured to accept traffic&gt;&#34;
+)
+</code></pre><h2 class="relative group">入门指南 
+    <div id="入门指南" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%8d%95%e9%98%b6%e6%ae%b5%e6%8e%a8%e8%8d%90%e7%b3%bb%e7%bb%9f" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<h3 class="relative group">MLflow Tracking 快速入门 
+    <div id="mlflow-tracking-快速入门" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#mlflow-tracking-%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
-<p>该系统由三个模块组成。</p>
+<p>MLflow Tracking 是 MLflow 的主要服务组件之一，可以用来</p>
 <ul>
-<li>第一个模块是数据准备模块，系统从外部 CSV 文件读取数据并构建评级表以将其传递到下一阶段。</li>
-<li>第二个模块是推荐引擎模块，系统读取新缺陷的信息以及前一个模块传递过来的评级表，构建新缺陷与历史数据中每个缺陷的相似度矩阵，并输出前五名类似的缺陷。</li>
-<li>第三个模块是维护动作提取模块。在该模块中，系统从原始数据集中提取前一个模块传递的前五个相似缺陷所采取的维护操作，并将其推荐给用户。</li>
+<li><strong>记录</strong>模型的训练统计数据（损失、准确性等）和超参数</li>
+<li><strong>记录</strong>（保存）模型以供以后检索</li>
+<li>使用 MLflow 模型注册表<strong>注册模型</strong>以启用部署</li>
+<li><strong>加载</strong>模型并将其用于推理</li>
 </ul>
-<p>下图说明了系统的工作流程。</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image1.png"
-        alt="单阶段推荐系统架构"
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p><strong>1. 数据预处理</strong></p>
-<p>第一个模块是数据准备模块，其中<strong>构建评级表并将其传递给推荐引擎</strong>。</p>
-<p>评级表由三列组成，分别包含以下信息：用户ID、项目信息和评级。</p>
+<p><strong>Step 1 - Get MLflow</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">pip install mlflow
+</span></span></code></pre></div><p><strong>Step 2 - Start a Tracking Server</strong></p>
 <ul>
-<li>在此项目中，我们将每个缺陷视为唯一用户，因此第一列将包含缺陷 ID。第二列包含将根据数据类型进行处理的项目信息，可将其分为两组。第一组包含类别输入，其中包括位置、优先级和团队。</li>
-<li>第二列将填充该组可能的特征值（例如位置 1、位置 2、优先级 1、优先级 2、团队 1、团队 2&hellip;等）。而包括文本输入（简要和详细描述）的第二组将通过插入指示两个输入的标签在评级表上进行处理（即，在第二列中，我们将插入一个用于简要描述的标签，另一个用于详细描述的标签）的描述）。</li>
-<li>第三列包含将根据相应功能的数据类型分配的评级值。如果数据类型是分类的，则评级值为 5 或 1。值 5 表示特定缺陷的真实项目对。例如，如果分配给位置 3 上的缺陷 2 的评级为 5，则这意味着缺陷 2 发生在位置 3。而其他位置上的缺陷 2 的评级将为 1，因为缺陷 2 未发生在其他位置。另一方面，文本输入具有一个评级值，该评级值表示新缺陷的文本输入与数据集中其他缺陷之间的相似度，该相似度是使用余弦相似度计算的。</li>
+<li>Using a Managed MLflow Tracking Server : 有关使用托管 MLflow 跟踪服务器的选项的详细信息，包括如何使用托管 MLflow 创建免费的 Databricks Community Edition 帐户。但是使用这些仓库需要用到 Google Cloud 相关的产品，只有14天的免费日期，之后就要付款</li>
 </ul>
 <p>
 
@@ -1292,31 +1227,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image3.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>余弦算法的输入是一个术语文档矩阵，该矩阵是通过称为术语频率 - 逆文档频率 (TFIDF) 的信息检索算法生成的。 术语-文档矩阵由包含所有缺陷的关键术语的行和包含缺陷标识符（缺陷 ID）的列组成。 单元格内是每个单词的频率，按输入大小加权。 TF-IDF算法由以下公式计算</p>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image2.png"
+        src="/posts/ai/ai-ci-cd/mlflow/image2.png"
         alt=""
       />
       
@@ -1326,12 +1237,8 @@ window.MathJax = {
 
 </p>
 <ul>
-<li>t：文档 d 中某个单词出现的次数</li>
-<li>n：文档总数</li>
-<li>df：包含给定单词的文档数量</li>
+<li>(Optional) Run a local Tracking Server : 我们将启动一个本地 MLflow 跟踪服务器，我们将连接到该服务器来记录本快速入门的数据。从终端运行 <code>mlflow server --host 127.0.0.1 --port 8080</code></li>
 </ul>
-<p><strong>2. 推荐引擎</strong></p>
-<p>在此模块中，推荐引擎是根据前一个模块的评级表构建的，以查找最相似的缺陷。一般来说，推荐系统会预测新用户可以给项目的评分，以推荐评分最高的项目。然而，由于缺少评级反馈，因此无法在系统中应用评级预测。因此，我们取消了最后一步，即评级预测，并仅找到与新缺陷最相似的缺陷。使用余弦相似度计算相似度，找出新缺陷与数据集中每个缺陷之间的距离，并构建相似度矩阵。两个向量之间的余弦相似度可以由下式给出：</p>
 <p>
 
 
@@ -1346,41 +1253,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image4.png"
-        alt=""
-      />
-      
-      
-    </figure>
-  
-
-</p>
-<p>从这个矩阵中，我们选择前五个相似的缺陷并将它们传递到最后一个模块。 在最后一个模块中，我们从原始数据集中提取前五个相似缺陷所采取的维护操作以进行推荐，从而结束该过程。</p>
-<h3 class="relative group">多级推荐系统 
-    <div id="多级推荐系统" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%a4%9a%e7%ba%a7%e6%8e%a8%e8%8d%90%e7%b3%bb%e7%bb%9f" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
-<p>
-
-
-
-
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/image5.png"
+        src="/posts/ai/ai-ci-cd/mlflow/image-1.png"
         alt=""
       />
       
@@ -1401,8 +1274,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_graduation-project\/智能运维\/智能维护推荐系统\/index.md"
-        var oid_likes = "likes_graduation-project\/智能运维\/智能维护推荐系统\/index.md"
+        var oid = "views_posts\/ai\/ai-ci-cd\/MLflow\/index.md"
+        var oid_likes = "likes_posts\/ai\/ai-ci-cd\/MLflow\/index.md"
       </script>
       
       
@@ -1428,15 +1301,15 @@ window.MathJax = {
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/graduation-project/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/">
+            <a class="flex text-right group ml-3" href="/posts/ai/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >企业IT智能运维管理方法研究</span
+                  >全球的MLOps和ML工具概览</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-04-14 17:22:18 &#43;0800 &#43;0800">14 April 2024</time>
+                    <time datetime="2024-04-16 09:22:18 &#43;0800 &#43;0800">16 April 2024</time>
                   
                 </span>
               </span>

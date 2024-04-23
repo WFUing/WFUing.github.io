@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>企业IT智能运维管理方法研究 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="企业IT智能运维管理方法研究 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="随着人工智能技术对各行各业的影响逐渐加深，企业IT运维管理也正在向更加智能化、先进的方向发生变化。为了改变企业IT运维管理方法单一、手段匮乏等实际问题，本文对企业IT智能运维管理技术的整体框架进行了分析研究，深入剖析了企业IT智能运维管理技术的关键智能化方法。故障预测、故障分析、运维调度等运维管理，为有效提升企业IT智能化运维水平和系统保障能力提供支撑。" />
+  
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.b40e9fa2be0b34d2a44a3910aaee16f39a3d1a0b91ee8f7cf86e4cb095513986e2dd85827923f7810ea32e78c5925ba5c79a21c3db8c2aa899196b3b4b1dab46.js"
+    integrity="sha512-tA6for4LNNKkSjkQqu4W85o9GguR7o98&#43;G5MsJVROYbi3YWCeSP3gQ6jLnjFklulx5ohw9uMKqiZGWs7Sx2rRg==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="https://WFUing.github.io/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/">
+  <meta property="og:site_name" content="WFUing&#39;s Blog">
+  <meta property="og:title" content="企业IT智能运维管理方法研究">
+  <meta property="og:description" content="随着人工智能技术对各行各业的影响逐渐加深，企业IT运维管理也正在向更加智能化、先进的方向发生变化。为了改变企业IT运维管理方法单一、手段匮乏等实际问题，本文对企业IT智能运维管理技术的整体框架进行了分析研究，深入剖析了企业IT智能运维管理技术的关键智能化方法。故障预测、故障分析、运维调度等运维管理，为有效提升企业IT智能化运维水平和系统保障能力提供支撑。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-14T17:22:18+08:00">
+    <meta property="article:modified_time" content="2024-04-14T17:22:18+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://WFUing.github.io/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/featured.png"><meta name="twitter:title" content="企业IT智能运维管理方法研究">
+<meta name="twitter:description" content="随着人工智能技术对各行各业的影响逐渐加深，企业IT运维管理也正在向更加智能化、先进的方向发生变化。为了改变企业IT运维管理方法单一、手段匮乏等实际问题，本文对企业IT智能运维管理技术的整体框架进行了分析研究，深入剖析了企业IT智能运维管理技术的关键智能化方法。故障预测、故障分析、运维调度等运维管理，为有效提升企业IT智能化运维水平和系统保障能力提供支撑。">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "企业IT智能运维管理方法研究",
+    "headline": "企业IT智能运维管理方法研究",
+    
+    "abstract": "随着人工智能技术对各行各业的影响逐渐加深，企业IT运维管理也正在向更加智能化、先进的方向发生变化。为了改变企业IT运维管理方法单一、手段匮乏等实际问题，本文对企业IT智能运维管理技术的整体框架进行了分析研究，深入剖析了企业IT智能运维管理技术的关键智能化方法。故障预测、故障分析、运维调度等运维管理，为有效提升企业IT智能化运维水平和系统保障能力提供支撑。",
+    "inLanguage": "en",
+    "url" : "https:\/\/WFUing.github.io\/posts\/devoops\/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4\/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-04-14T17:22:18\u002b08:00",
+    "datePublished": "2024-04-14T17:22:18\u002b08:00",
+    
+    "dateModified": "2024-04-14T17:22:18\u002b08:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "580"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/qq.jpg" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/wx.jpg" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script><body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Blogs
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+          </p>
+        </a>
+        
+        <a href="/posts/design-pattern/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+          </p>
+        </a>
+        
+        <a href="/posts/skills/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Skills
+          </p>
+        </a>
+        
+        <a href="/posts/ai/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            AI
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Architecture
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/architecture/distributed/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Distributed
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iac/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IAC
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iot/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IoT
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/serverless/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Serverless
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Language
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/language/java/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Java
+          </p>
+        </a>
+        
+        <a href="/posts/language/dsl/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            DSL
+          </p>
+        </a>
+        
+        <a href="/posts/language/code-generation/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Blogs
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/design-pattern/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/skills/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Skills
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/ai/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            AI
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Architecture
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/distributed/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Distributed
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iac/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IAC
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iot/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IoT
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/serverless/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Serverless
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Language
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/java/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Java
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/dsl/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            DSL
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/code-generation/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      企业IT智能运维管理方法研究
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-04-14 17:22:18 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>580 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#智能运维研究现状">智能运维研究现状</a></li>
+    <li><a href="#运维管理智能技术总体框架">运维管理智能技术总体框架</a></li>
+    <li><a href="#基于海量数据的智能故障预测方法">基于海量数据的智能故障预测方法</a>
+      <ul>
+        <li><a href="#基本思想">基本思想</a></li>
+        <li><a href="#主要步骤">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于业务特征的智能故障分析方法">基于业务特征的智能故障分析方法</a>
+      <ul>
+        <li><a href="#主要思想">主要思想</a></li>
+        <li><a href="#主要步骤-1">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#任务驱动的智能运维调度方法">任务驱动的智能运维调度方法</a>
+      <ul>
+        <li><a href="#基本思想-1">基本思想</a></li>
+        <li><a href="#主要步骤-2">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#resource">Resource</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#智能运维研究现状">智能运维研究现状</a></li>
+    <li><a href="#运维管理智能技术总体框架">运维管理智能技术总体框架</a></li>
+    <li><a href="#基于海量数据的智能故障预测方法">基于海量数据的智能故障预测方法</a>
+      <ul>
+        <li><a href="#基本思想">基本思想</a></li>
+        <li><a href="#主要步骤">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于业务特征的智能故障分析方法">基于业务特征的智能故障分析方法</a>
+      <ul>
+        <li><a href="#主要思想">主要思想</a></li>
+        <li><a href="#主要步骤-1">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#任务驱动的智能运维调度方法">任务驱动的智能运维调度方法</a>
+      <ul>
+        <li><a href="#基本思想-1">基本思想</a></li>
+        <li><a href="#主要步骤-2">主要步骤</a></li>
+      </ul>
+    </li>
+    <li><a href="#resource">Resource</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <ul>
+<li>Wang X, Su Y, Li Q, et al. Research on intelligent operation and maintenance management method of enterprise it[C]//Journal of Physics: Conference Series. IOP Publishing, 2021, 1732(1): 012059.</li>
+</ul>
+<p>问题：随着现代企业IT相关软硬件系统变得越来越庞大、越来越复杂，这意味着运维的主要对象庞大、复杂、多样，运维的边界不断扩大，运维数据已经日益量化，传统的人工运维管理模式已经逐渐无法适应。</p>
+<h2 class="relative group">智能运维研究现状 
+    <div id="智能运维研究现状" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e6%99%ba%e8%83%bd%e8%bf%90%e7%bb%b4%e7%a0%94%e7%a9%b6%e7%8e%b0%e7%8a%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>随着信息技术的发展，企业IT运维管理的发展大致经历了四个阶段：手工阶段、工具和自动化阶段、平台阶段和智能运维阶段。</p>
+<p>Gartner于2016年提出了人工智能IT运维（AIOps）的概念，并预测AIOps的全球部署率将从2017年的10%增长到2020年的50%。</p>
+<blockquote>
+<p>Gartner.https//blogs.gartner.com/andrew-learner/2017/08/09/aiops-platforms/Liu D， Zhao Y ， Xu H ， et al.Opprentice ： Towards Practical and Automatic Anomaly Detection Through Machine Learning[C]//Proceedings of the 2015 Internet Measurement Conference. New York： ACM Press，2015：211-224.</p>
+</blockquote>
+<p>目前，众多科研机构（如清华大学NetMan智能运维实验室等）、互联网企业（如阿里巴巴、百度、京东金融等）、大型金融机构（如交通银行、银行等）中国等）、技术厂商（如Splunk、IBM、华为等）均走在智能运维工程应用的前沿，构建了运维大数据平台、智能分析等实际应用和决策、自动化工具，取得了良好的运维效果。</p>
+<p>2019年，清华大学裴丹教授预测了AIOps产业的生态趋势。他指出：“各行业都在尝试落地AIOps，这为AIOps的方向提供了良好的产业基础。‘产、学、研、用’。各方都在积极跟进，形成AIOps生态圈。”</p>
+<blockquote>
+<p>PEI Dan, ZHANG Shenglin, PEI Changhua. Intelligent Operation and Maintenance Based on Machine Learning[J]. Communications of CCF, 2017, 13(12): 67-73.</p>
+</blockquote>
+<h2 class="relative group">运维管理智能技术总体框架 
+    <div id="运维管理智能技术总体框架" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%bf%90%e7%bb%b4%e7%ae%a1%e7%90%86%e6%99%ba%e8%83%bd%e6%8a%80%e6%9c%af%e6%80%bb%e4%bd%93%e6%a1%86%e6%9e%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>对于企业IT来说，传统IT工具仍然发挥作用，充分保护企业的初期投资。智能运维管理是将人工智能技术融入到运维系统中，以大数据和机器学习为基础，从多种数据源收集海量数据（包括日志、业务数据、系统数据等）用于运维管理。实时或离线分析挖掘，从海量运维数据中自动学习总结规则，辅助运维人员在动态复杂的场景条件下做出高效决策[1]。准确的决策和判断，从而实现更好更快的决策和任务过程自动化。</p>
+<p>因此，运维管理本质上是一个观察、判断、决策、执行的循环迭代过程。期望能够快速识别异常，准确定位故障，及时找出根本原因，及时响应和治疗，实现优质高效的愿景目标。从技术角度来看，智能运维管理基于多维度、海量时序KPI、文本日志、告警信息等，直接感知和采集各类关键运维数据。</p>
+<blockquote>
+<p>ZHU Haiqi, JIANG Feng, Research and Analysis of Anomaly Detection Technology for Operation and Maintenance Data in the Era of Artificial Intelligence, NetInfo Security. 2019, Vol. 19 Issue (11),pp 24-35</p>
+</blockquote>
+<p>加工后符合一定的规格和质量要求；基于大数据之上，利用机器学习等人工智能算法进行分析挖掘，根据具体运维场景分析确定运维事件的根源和传播关系，给出相应的决策建议，最后借助自动化工具直接进行运维操作。运维管理智能技术整体框架如下图所示。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>为了构建运维领域的知识图谱，需要对运维管理的知识来源进行梳理。这些知识包含在结构化（如报警事件、监控数据等）、半结构化（如配置管理信息、日志等）和非结构化（如各种规范、手册、案例）数据中。相应的数据，获取语料库进行采集和提取。然后进行相关知识存储、知识建模与表示、知识补充与融合、知识计算等，完成运维领域知识图谱的构建。以运维领域知识图谱为支撑，重点收集运维场景中相关历史数据和实时数据，研究和实现智能故障预测、智能故障分析、智能运维等。维护调度等关键落地场景技术方法。</p>
+<h2 class="relative group">基于海量数据的智能故障预测方法 
+    <div id="基于海量数据的智能故障预测方法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e4%ba%8e%e6%b5%b7%e9%87%8f%e6%95%b0%e6%8d%ae%e7%9a%84%e6%99%ba%e8%83%bd%e6%95%85%e9%9a%9c%e9%a2%84%e6%b5%8b%e6%96%b9%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>故障预测是运维管理中最基本的活动。传统运维通常在发现异常后采用运维方式进行处理，服务质量和用户体验往往受到不同程度的影响。如果将运维后的被动处理转变为事前的主动预测，用户体验和运维效率将得到大幅提升</p>
+<h3 class="relative group">基本思想 
+    <div id="基本思想" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e6%9c%ac%e6%80%9d%e6%83%b3" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>基于海量数据的智能故障预测方法依托人工智能的机器学习和深度学习能力，通过信息系统运维数据的实际采集和模拟生成部分训练数据，提取并分析看不见的特征故障事件发生前阶段前台业务异常情况的分析。</p>
+<blockquote>
+<p>Jiahao Bu, Ying Liu, Shenglin Zhang,Weibin Meng, Qitong Liu, Xiaotian Zhu, and Dan Pei. Rapid deployment of anomaly detection models for large number of emerging kpi streams. In IEEE IPCCC, 2018.</p>
+</blockquote>
+<p>网络指标下降、后台服务中断突变等常见特征，对主要、重大、一般、异常故障级别进行分类，并有效预测失败。</p>
+<h3 class="relative group">主要步骤 
+    <div id="主要步骤" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%bb%e8%a6%81%e6%ad%a5%e9%aa%a4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>智能故障预测方法利用机器学习和深度学习，挖掘故障与异常之间的深层关联特征，对系统承载的应用数据进行分析，借助数据分析技术建立预测模型，客观、准确地捕捉故障的预兆。 - 故障症状，进而预测故障。具体方法步骤如下图所示。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/image2.png"
+        alt="智能故障预测方法示意图"
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>首先，离线历史数据分析挖掘系统性能指标趋势和客观数据的深度关联特征，如运行环境、业务量突发事件、重大安全任务等。然后对性能指标进行在线实时监控，利用训练好的特征规则进行匹配推理，分析性能趋势，及时预测系统性能指标趋势。智能故障预测通过离线历史数据的训练得到预测模型。上线部署后，通过定期收集数据进行性能测试。同时，利用训练好的模型进行故障预测和推理。如果出现不可预测的故障，则汇总故障时间点之前的阶段数据作为训练输入，重新训练预测模型，不断迭代优化。</p>
+<h2 class="relative group">基于业务特征的智能故障分析方法 
+    <div id="基于业务特征的智能故障分析方法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e4%ba%8e%e4%b8%9a%e5%8a%a1%e7%89%b9%e5%be%81%e7%9a%84%e6%99%ba%e8%83%bd%e6%95%85%e9%9a%9c%e5%88%86%e6%9e%90%e6%96%b9%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>故障分析是运维管理中最常见的活动。企业信息系统故障表现出多样性，如性能报警、KPI异常或业务故障等。</p>
+<blockquote>
+<p>Shenglin Zhang, Ying Liu, Weibin Meng, Zhiling Luo, Jiahao Bu, Sen Yang, Peixian Liang,Dan Pei, Jun Xu, Yuzhi Zhang, et al. Prefix: Switch failure prediction in datacenter networks. Proceedings of the ACM on Measurement and Analysis of Computing Systems,2(1):2, 2018.</p>
+<p>ADEREMI O, ANDRONICUS A A. A Survey of Machine-learning and Nature-inspired Based Credit Card Fraud Detection Techniques[J]. International Journal of System Assurance Engineering and Management, 2017, 8(2): 937–953.</p>
+</blockquote>
+<p>单一的故障报警已无法反映准确的故障信息，给运维人员带来困难。依靠经验判断和快速准确的定位。</p>
+<h3 class="relative group">主要思想 
+    <div id="主要思想" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%bb%e8%a6%81%e6%80%9d%e6%83%b3" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>智能故障分析方法以业务承载的系统特征为切入点，综合分析企业信息系统网络、硬件、软件、数据、云平台等运维数据，进行故障预测和诊断。问题分析，弥补传统运维方式的缺陷。通过采用智能故障追踪技术，可以从多样化的告警中提取出共同特征，快速定位故障点，降低运维难度，提高运维效率。</p>
+<h3 class="relative group">主要步骤 
+    <div id="主要步骤-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%bb%e8%a6%81%e6%ad%a5%e9%aa%a4-1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>智能故障分析方法基于大数据分析和人工智能特征挖掘，基于系统中网络等软硬件及业务隶属关系进行综合多维度历史数据分析，如：KPI、报警、性能、配置、日志、故障解决历史、运维工单历史数据等，挖掘人工经验无法总结的潜在特征和规则，输出实际运维中故障事件和特征匹配的规则库过程中，根据故障特征自动匹配故障规则进行诊断，并给出判断和处理建议。同时可以结合智能工单管理技术，实现故障精准定位并触发运维资源调度。具体方法步骤如下图所示。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/image3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>智能故障诊断是故障分析的关键步骤，主要包括诊断规则库的生成和诊断规则的运行。</p>
+<blockquote>
+<p>KWON D, KIM H, KIM J, et al. A Survey of Deep Learning-based Network Anomaly Detection[J]. Cluster Computing, 2019, 22(1): 949-961.</p>
+</blockquote>
+<p>其中，基于AI学习的诊断规则库的生成包括多维度历史数据采集，并基于历史数据、人工智能模型算法实现的特征和规则挖掘数据。诊断规则的运行包括系统监控、实时故障和报警信息获取、匹配规则库、根本原因分析、智能故障诊断以及关联运维系统发出运维需求。</p>
+<blockquote>
+<p>LITJENS G, KOOI T, BEJNORDI B E, et al. A Survey on Deep Learning in Medical Image Analysis[J]. Medical Image Analysis, 2017, 42: 60-88.[12] MOHAMMADI M, ALA A F, SAMEH S, et al. Deep Learnin</p>
+</blockquote>
+<p>运维后，反转运维的有效性，对现有的规则体系进行修改和强化，进行自学习和自优化。</p>
+<h2 class="relative group">任务驱动的智能运维调度方法 
+    <div id="任务驱动的智能运维调度方法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%bb%e5%8a%a1%e9%a9%b1%e5%8a%a8%e7%9a%84%e6%99%ba%e8%83%bd%e8%bf%90%e7%bb%b4%e8%b0%83%e5%ba%a6%e6%96%b9%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>运维调度是运维管理中最关键的活动。在执行运维任务后，特别是定位故障后，需要尽快安排运维人员处置，调度各类运维力量，完成网络、硬件、软件、数据、安全和云平台。处置效果的好坏直接决定运维效率。</p>
+<h3 class="relative group">基本思想 
+    <div id="基本思想-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9f%ba%e6%9c%ac%e6%80%9d%e6%83%b3-1" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>智能运维调度方法通过建立科学规范的工单体系、流转流程和流转机制，将系统运维活动量化为工单内容，有效连接运维人员和运维人员活动通过工单形成以任务为基础的系统。驱动智能运维调度流程，缩短处理时间，提高响应效率。</p>
+<h3 class="relative group">主要步骤 
+    <div id="主要步骤-2" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%bb%e8%a6%81%e6%ad%a5%e9%aa%a4-2" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>智能运维调度技术包括故障工单预警和基于AI学习的实时智能调度。具体方法步骤如下图所示。故障工单预警从历史工单信息中提取与故障发生相关的特征向量，借助多项式拟合、神经网络等AI经典预测算法生成故障模型​​。通过该模型，提取当前特征来预测发生故障的可能性，为主动运维提供策略参考。实时智能调度利用遗传算法根据工单类型、需求、优先级、备件、故障位置等自动规划满足全局最优调度的路径，实现实时调度。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E4%BC%81%E4%B8%9Ait%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E7%A0%94%E7%A9%B6/image4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">Resource 
+    <div id="resource" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resource" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>[1]Gartner.https//blogs.gartner.com/andrew-learner/2017/08/09/aiops-platforms/Liu D， Zhao Y ， Xu H ， et al.Opprentice ： Towards Practical and Automatic Anomaly Detection Through Machine Learning[C]//Proceedings of the 2015 Internet Measurement Conference. New York： ACM Press，2015：211-224.</li>
+<li>[2]PEI Dan, ZHANG Shenglin, PEI Changhua. Intelligent Operation and Maintenance Based on Machine Learning[J]. Communications of CCF, 2017, 13(12): 67-73.</li>
+<li>[3]ZHU Haiqi, JIANG Feng, Research and Analysis of Anomaly Detection Technology for Operation and Maintenance Data in the Era of Artificial Intelligence, NetInfo Security. 2019, Vol. 19 Issue (11),pp 24-35</li>
+<li>[4]Song Hai-tao , Wei Da-wei , Tang Guang-ming ，et a1. Anoma1y detection of single user behaviors based on pattern ming [J ] . Journal of Chinese Comput er Systems ,2016 ,37(2) :221226.</li>
+<li>[5]Jiahao Bu, Ying Liu, Shenglin Zhang,Weibin Meng, Qitong Liu, Xiaotian Zhu, and Dan Pei. Rapid deployment of anomaly detection models for large number of emerging kpi streams. In IEEE IPCCC, 2018.</li>
+<li>[6]Shenglin Zhang, Ying Liu, Weibin Meng, Zhiling Luo, Jiahao Bu, Sen Yang, Peixian Liang,Dan Pei, Jun Xu, Yuzhi Zhang, et al. Prefix: Switch failure prediction in datacenter networks. Proceedings of the ACM on Measurement and Analysis of Computing Systems,2(1):2, 2018.</li>
+<li>[7]ADEREMI O, ANDRONICUS A A. A Survey of Machine-learning and Nature-inspired Based Credit Card Fraud Detection Techniques[J]. International Journal of System Assurance Engineering and Management, 2017, 8(2): 937–953.</li>
+<li>[8]KWON D, KIM H, KIM J, et al. A Survey of Deep Learning-based Network Anomaly Detection[J]. Cluster Computing, 2019, 22(1): 949-961.</li>
+<li>[9]LITJENS G, KOOI T, BEJNORDI B E, et al. A Survey on Deep Learning in Medical Image Analysis[J]. Medical Image Analysis, 2017, 42: 60-88.[12] MOHAMMADI M, ALA A F, SAMEH S, et al. Deep Learnin</li>
+</ul>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/devoops\/智能运维\/企业IT智能运维管理方法研究\/index.md"
+        var oid_likes = "likes_posts\/devoops\/智能运维\/企业IT智能运维管理方法研究\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/devoops/%E6%99%BA%E8%83%BD%E8%BF%90%E7%BB%B4/%E6%99%BA%E8%83%BD%E7%BB%B4%E6%8A%A4%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >智能维护推荐系统</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-04-14 19:22:18 &#43;0800 &#43;0800">14 April 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
+            title="">
+            
+            TODO
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/algorithm/"
+            title="">
+            
+            Algorithm
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="">
+            
+            Tags
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
