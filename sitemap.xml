@@ -4,30 +4,36 @@
 
   <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
-    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/k8s_deployment/</loc>
-    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/</loc>
-    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/kubevirt/</loc>
+    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/k8s_deployment/</loc>
     <lastmod>2024-04-25T12:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
