@@ -108,7 +108,7 @@
     "keywords": ["kubevela"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "185"
+    "wordCount": "191"
   }]
   </script>
 
@@ -906,7 +906,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>185 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>191 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1123,8 +1123,10 @@ window.MathJax = {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update
 </span></span><span class="line"><span class="cl">sudo apt-get install -y <span class="nv">kubelet</span><span class="o">=</span>1.27.0-00 <span class="nv">kubeadm</span><span class="o">=</span>1.27.0-00 <span class="nv">kubectl</span><span class="o">=</span>1.27.0-00
 </span></span></code></pre></div><p><strong>安装网络插件calico</strong></p>
-<p><a href="./calico.yaml"  >
-    calico.yaml</a></p>
+<p>可能会用到 <a href="https://docs.tigera.io/calico/latest/about"   target="_blank">
+    TIFERA</a></p>
+<p>下面给出 <a href="./calico.yaml"  >
+    calico.yaml</a>，需要的可以直接 copy</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl apply -f calico.yaml 
 </span></span></code></pre></div><p>修改containd的网络配置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/cni/net.d/10-containerd-net.conflist
@@ -1201,6 +1203,8 @@ window.MathJax = {
     Ubuntu22.04 安装 K8S 1.27.1</a></li>
 <li><a href="https://xdydy.github.io/2023/10/29/kubernetes/#Kubernetes-%E6%A6%82%E8%BF%B0"   target="_blank">
     Kubernetes 概述</a></li>
+<li><a href="https://medium.com/@vivekanand.poojari/installing-kubernetes-behind-a-corporate-proxy-bc5582e43fb8"   target="_blank">
+    在公司代理后面安装 Kubernetes</a></li>
 </ul>
 
         </div>
