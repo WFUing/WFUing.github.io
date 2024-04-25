@@ -107,7 +107,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "101"
+    "wordCount": "174"
   }]
   </script>
 
@@ -905,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-23 09:25:45 &#43;0800 &#43;0800">23 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>101 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-23 09:25:45 &#43;0800 &#43;0800">23 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>174 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1060,6 +1060,7 @@ window.MathJax = {
         <li><a href="#bayesian-online-learning">Bayesian Online Learning</a></li>
       </ul>
     </li>
+    <li><a href="#resources">Resources</a></li>
   </ul>
 </nav>
   </div>
@@ -1078,6 +1079,7 @@ window.MathJax = {
         <li><a href="#bayesian-online-learning">Bayesian Online Learning</a></li>
       </ul>
     </li>
+    <li><a href="#resources">Resources</a></li>
   </ul>
 </nav>
   </div>
@@ -1134,7 +1136,30 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>Online Learning是工业界比较常用的机器学习算法，在很多场景下都能有很好的效果。Online Learning并不是一种模型，而是一种模型的训练方法，Online Learning能够根据线上反馈数据，实时快速地进行模型调整，使得模型及时反映线上的变化，提高线上预测的准确率。Online Learning的流程包括：将模型的预测结果展现给用户，然后收集用户的反馈数据，再用来训练模型，形成闭环的系统。如下图所示：</p>
+          <p>Online Learning是工业界比较常用的机器学习算法，在很多场景下都能有很好的效果。</p>
+<blockquote>
+<p>机器学习纯粹主义者可能会嘲笑实时学习在线算法的想法。训练模型可能会以多种不同的方式出现错误：算法本身可能不合适，模型可能无法很好地泛化，学习率可能错误，正则化可能太低或太高……这样的例子不胜枚举。当无法保证会发生什么时，我们到底为什么要尝试立即学习？</p>
+<p>答案很简单：无论模型有多好，或者输入了多少数据，模型仍然是环境的不完美表示。为了立即做出最佳决策，我们不能拥有一个只知道昨天发生的事情的模型。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">SGDRegressor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 该fit()方法完成了所有的训练魔法，产生了一个我们可以用于预测的模型</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 还有一种partial_fit()方法，可以对小批量数据进行增量训练。</span>
+</span></span><span class="line"><span class="cl"><span class="n">clf</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">elapsed_time</span><span class="p">)</span>
+</span></span></code></pre></div><p>Online Learning（也称增量学习或核外学习）并不是一种模型，而是一种模型的训练方法，Online Learning能够根据线上反馈数据，实时快速地进行模型调整，使得模型及时反映线上的变化，提高线上预测的准确率。Online Learning的流程包括：将模型的预测结果展现给用户，然后收集用户的反馈数据，再用来训练模型，形成闭环的系统。如下图所示：</p>
 <p>
 
 
@@ -1238,6 +1263,27 @@ window.MathJax = {
   
 
 </p>
+<p>举个例子， 我们做一个抛硬币实验，估算硬币正面的概率 $\mu$ 。我们假设 $\mu$ 的先验满足 $p(\mu)=Beta(\alpha,\beta)$ 。</p>
+<ul>
+<li>对于观测值 $Y=1$ ，代表是正面，我们可以算的后验 $p(\mu | Y=1)=Beta(\alpha +1,\beta)$</li>
+<li>对于观测值 $Y=0$ ，代表是反面，我们可以算的后验 $p(\mu | Y=0)=Beta(\alpha,\beta + 1)$</li>
+</ul>
+<p>补充 Beta分布</p>
+<h2 class="relative group">Resources 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://medium.com/value-stream-design/online-machine-learning-515556ff72c5"   target="_blank">
+    什么是在线机器学习？</a></li>
+<li></li>
+</ul>
 
         </div>
                 

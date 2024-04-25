@@ -3,6 +3,60 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
+    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/k8s_deployment/</loc>
+    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/</loc>
+    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-04-25T12:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/</loc>
+    <lastmod>2024-04-25T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/beta%E5%88%86%E5%B8%83/</loc>
+    <lastmod>2024-04-25T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2024-04-25T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83/</loc>
+    <lastmod>2024-04-24T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E5%8D%8E%E4%B8%BA/</loc>
     <lastmod>2024-04-23T18:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -15,12 +69,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/ai/</loc>
-    <lastmod>2024-04-23T09:25:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/ai/online-ml/</loc>
     <lastmod>2024-04-23T09:25:45+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -28,12 +76,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/ai/online-ml/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9C%A8%E7%BA%BF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-04-23T09:25:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-04-23T09:25:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -215,12 +257,6 @@
   <url>
     <loc>https://WFUing.github.io/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E5%8D%8E%E4%B8%BA/%E5%8D%8E%E4%B8%BA4.10%E7%AC%94%E8%AF%95/</loc>
     <lastmod>2024-04-10T22:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-04-10T10:53:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -533,12 +569,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/reviews/os/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2024-03-11T10:07:16+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
-    <lastmod>2024-03-10T19:07:16+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1145,12 +1175,6 @@
   <url>
     <loc>https://WFUing.github.io/read/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-12-05T13:16:22+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/distributed/k8s/</loc>
-    <lastmod>2023-12-05T10:27:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
