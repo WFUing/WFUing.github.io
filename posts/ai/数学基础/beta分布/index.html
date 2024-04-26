@@ -107,7 +107,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "7"
+    "wordCount": "56"
   }]
   </script>
 
@@ -905,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-25 09:25:45 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>7 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-25 09:25:45 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>56 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1082,6 +1082,34 @@ window.MathJax = {
   
 
 </p>
+<p>让我们暂时忽略系数 $\frac{1}{Beta(\alpha, \beta)}$ ，只看分子 $x^{\alpha - 1}(1-x)^{\beta - 1}$，因为 $\frac{1}{Bata(\alpha, \beta)}$ 只是使该函数积分为 $1$ 的规格化常数。然后，分子中的术语 $-x$ 表示某的幂乘以 $1-x$ 表示某的幂看起来很熟悉。</p>
+<p>当我们从二项式分布的角度来看时，Beta分布的直觉就起作用了。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/ai/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/beta%E5%88%86%E5%B8%83/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>二项式和Beta之间的区别在于，前者对成功次数(x)进行建模，而后者对成功概率(p)进行建模。 换句话说，概率是二项式的参数；在Beta中，概率是一个随机变量。</p>
+<p>解释 $\alpha$、$\beta$</p>
+<p>你能想到的 $\alpha-1$ 作为成功的数目和 $\beta-1$ 作为失败的次数，就像ñ＆NX二项式条款。 您可以选择 $\alpha$ 和 $\beta$ 参数，但是您认为它们应该是。如果你觉得成功的概率是非常高的，比方说 $90％$，设置 $90 \alpha$ 和 $10 \beta$。否则，$\beta$ 为90，$\alpha$ 为10。 随着 $\alpha$ 变大（成功事件越多），概率分布的大部分将向右移动，而β的增加则使分布向左移动（更多的失败）。 同样，如果我们同时确定 $\alpha$ 和 $\beta$ 都增加，则分布将变窄。</p>
 
         </div>
                 

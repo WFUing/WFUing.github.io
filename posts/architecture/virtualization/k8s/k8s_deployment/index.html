@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>Kubevela &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="Kubevela &middot; WFUing&#39;s Blog" />
+  <title>k8s 安装 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="k8s 安装 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="KubeVela 是一个开箱即用的现代化应用交付与管理平台，它使得应用在面向混合云环境中的交付更简单、快捷。使用 KubeVela 的软件开发团队，可以按需使用云原生能力构建应用，随着团队规模的发展、业务场景的变化扩展其功能，一次构建应用，随处运行。" />
+  <meta name="description" content="k8s 安装过程" />
   <meta name="keywords" content="kubevela, " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/virtualization/k8s/k8s_deployment/" />
   
   
   
@@ -67,21 +67,21 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/virtualization/k8s/k8s_deployment/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="Kubevela">
-  <meta property="og:description" content="KubeVela 是一个开箱即用的现代化应用交付与管理平台，它使得应用在面向混合云环境中的交付更简单、快捷。使用 KubeVela 的软件开发团队，可以按需使用云原生能力构建应用，随着团队规模的发展、业务场景的变化扩展其功能，一次构建应用，随处运行。">
+  <meta property="og:title" content="k8s 安装">
+  <meta property="og:description" content="k8s 安装过程">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2023-11-27T16:11:01+08:00">
-    <meta property="article:modified_time" content="2023-11-27T16:11:01+08:00">
+    <meta property="article:published_time" content="2024-04-25T12:11:01+08:00">
+    <meta property="article:modified_time" content="2024-04-25T12:11:01+08:00">
     <meta property="article:tag" content="Kubevela">
-    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela/featured.png">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/virtualization/k8s/k8s_deployment/featured.png">
 
   <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/distributed/k8s/kubevela/featured.png"><meta name="twitter:title" content="Kubevela">
-<meta name="twitter:description" content="KubeVela 是一个开箱即用的现代化应用交付与管理平台，它使得应用在面向混合云环境中的交付更简单、快捷。使用 KubeVela 的软件开发团队，可以按需使用云原生能力构建应用，随着团队规模的发展、业务场景的变化扩展其功能，一次构建应用，随处运行。">
+<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/virtualization/k8s/k8s_deployment/featured.png"><meta name="twitter:title" content="k8s 安装">
+<meta name="twitter:description" content="k8s 安装过程">
 
   
   <script type="application/ld+json">
@@ -89,26 +89,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "Kubevela",
-    "headline": "Kubevela",
+    "name": "k8s 安装",
+    "headline": "k8s 安装",
     
-    "abstract": "KubeVela 是一个开箱即用的现代化应用交付与管理平台，它使得应用在面向混合云环境中的交付更简单、快捷。使用 KubeVela 的软件开发团队，可以按需使用云原生能力构建应用，随着团队规模的发展、业务场景的变化扩展其功能，一次构建应用，随处运行。",
+    "abstract": "k8s 安装过程",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/distributed\/k8s\/kubevela\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/virtualization\/k8s\/k8s_deployment\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
-    "copyrightYear": "2023",
-    "dateCreated": "2023-11-27T16:11:01\u002b08:00",
-    "datePublished": "2023-11-27T16:11:01\u002b08:00",
+    "copyrightYear": "2024",
+    "dateCreated": "2024-04-25T12:11:01\u002b08:00",
+    "datePublished": "2024-04-25T12:11:01\u002b08:00",
     
-    "dateModified": "2023-11-27T16:11:01\u002b08:00",
+    "dateModified": "2024-04-25T12:11:01\u002b08:00",
     
     "keywords": ["kubevela"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "60"
+    "wordCount": "246"
   }]
   </script>
 
@@ -835,7 +835,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/distributed/k8s/kubevela/featured.png);">
+    style="background-image:url(/posts/architecture/virtualization/k8s/k8s_deployment/featured.png);">
     
 
 
@@ -861,7 +861,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      Kubevela
+      k8s 安装
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -906,7 +906,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2023-11-27 16:11:01 &#43;0800 &#43;0800">27 November 2023</time><span class="px-2 text-primary-500">&middot;</span><span>60 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>246 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1051,41 +1051,191 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <p>最近在用 kubevela 部署微服务，遇到了不少麻烦，主要还是 docker 和 K8s 的命令不熟悉，以后一定补上。在这里先记录下几个非常 nice 的博客，以免迷路。</p>
+          <p>关闭防火墙 <code>sudo ufw disable</code></p>
+<p>前置知识：</p>
 <ul>
-<li><a href="https://kubevela.net/zh/docs/"   target="_blank">
-    官网</a>，不仅仅是文档，后面的博客写的也很好，几乎所有跟 Kubevela 相关的内容都在这里了。
+<li><strong>docker</strong>：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/"   target="_blank">
+    清华源下载docket-ce</a></li>
+<li><strong>containerd</strong>：https://containerd.io/downloads/</li>
+</ul>
+<p>设置代理</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim ./bashrc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> setproxy<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>proxy.i2ec.top:21087
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>proxy.i2ec.top:21087export 
+</span></span><span class="line"><span class="cl">  <span class="nv">no_proxy</span><span class="o">=</span>*.i2ec.top,*.local,localhost,127.0.0.1,127.0.0.0/8,172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> unsetproxy<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">unset</span> http_proxy
+</span></span><span class="line"><span class="cl">  <span class="nb">unset</span> https_proxy
+</span></span><span class="line"><span class="cl">  <span class="nb">unset</span> no_proxy
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/tools/bin&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;source ~/.bashrc&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">k</span><span class="o">=</span>kubectl
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">kg</span><span class="o">=</span><span class="s2">&#34;kubectl get&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">kd</span><span class="o">=</span><span class="s2">&#34;kubectl describe&#34;</span>
+</span></span></code></pre></div><p>如果你一开始安装过k8s，并且有原来的文件残留，你可以用这个过程把它的文件先删光</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt remove kubelet kubeadm kubectl
+</span></span><span class="line"><span class="cl">sudo rm -rf .kube/config
+</span></span><span class="line"><span class="cl">sudo rm -rf /etc/kubernetes/
+</span></span><span class="line"><span class="cl">sudo rm -r /etc/cni/net.d/
+</span></span><span class="line"><span class="cl">sudo rm -rf /var/lib/etcd/
+</span></span><span class="line"><span class="cl">sudo rm -rf /var/lib/kubelet/
+</span></span></code></pre></div><p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/image1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>可以用清华源，也可以用阿里源，这里使用阿里云的镜像构建 k8s</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install -y apt-transport-https
+</span></span><span class="line"><span class="cl">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add -
+</span></span></code></pre></div><p>之后将阿里云的镜像地址写到 sources.list 当中</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/apt/sources.list.d/kubernetes.list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 写入下列内容</span>
+</span></span><span class="line"><span class="cl">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
+</span></span></code></pre></div><p>退出后更新软件包，下载 k8s</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install -y <span class="nv">kubelet</span><span class="o">=</span>1.27.0-00 <span class="nv">kubeadm</span><span class="o">=</span>1.27.0-00 <span class="nv">kubectl</span><span class="o">=</span>1.27.0-00
+</span></span></code></pre></div><p><strong>安装网络插件calico</strong></p>
+<p>可能会用到 <a href="https://docs.tigera.io/calico/latest/about"   target="_blank">
+    TIFERA</a></p>
+<p>下面给出 <a href="./calico.yaml"  >
+    calico.yaml</a>，需要的可以直接 copy</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl apply -f calico.yaml 
+</span></span></code></pre></div><p>修改containd的网络配置</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/cni/net.d/10-containerd-net.conflist
+</span></span></code></pre></div><p>从 <a href="https://kubernetes.io/docs/tasks/administer-cluster/migrating-from-dockershim/troubleshooting-cni-plugin-related-errors/#an-example-containerd-configuration-file"   target="_blank">
+    An example containerd configuration file</a> copy 相关的内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;cniVersion&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;containerd-net&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&#34;plugins&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">   <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;bridge&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;bridge&#34;</span><span class="p">:</span> <span class="s2">&#34;cni0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;isGateway&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;ipMasq&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;promiscMode&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;ipam&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;host-local&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&#34;ranges&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">         <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">           <span class="nt">&#34;subnet&#34;</span><span class="p">:</span> <span class="s2">&#34;10.88.0.0/16&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">         <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">           <span class="nt">&#34;subnet&#34;</span><span class="p">:</span> <span class="s2">&#34;2001:db8:4860::/64&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}]</span>
+</span></span><span class="line"><span class="cl">       <span class="p">],</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&#34;routes&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">         <span class="p">{</span> <span class="nt">&#34;dst&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0/0&#34;</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">         <span class="p">{</span> <span class="nt">&#34;dst&#34;</span><span class="p">:</span> <span class="s2">&#34;::/0&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">       <span class="p">]</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="p">},</span>
+</span></span><span class="line"><span class="cl">   <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;portmap&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;capabilities&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;portMappings&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&#34;externalSetMarkChain&#34;</span><span class="p">:</span> <span class="s2">&#34;KUBE-MARK-MASQ&#34;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart containerd.service
+</span></span></code></pre></div><p>等待，安装完成</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/image2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl get nodes worker01 -o yaml <span class="p">|</span> code -
+</span></span></code></pre></div><p>搜索 <code>taint</code></p>
+<p>然后把污点删除 <code>kubectl taint node worker01 node-role.kubernetes.io/control-plane-</code></p>
+<p>查看cpu架构</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(</span>uname -s <span class="p">|</span> tr A-Z a-z<span class="k">)</span>-<span class="k">$(</span>uname -m <span class="p">|</span> sed <span class="s1">&#39;s/x86_64/amd64/&#39;</span><span class="k">)</span> <span class="o">||</span> windows-amd64.exe
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>
+</span></span></code></pre></div><p><strong>Resources</strong></p>
 <ul>
-<li><a href="https://kubevela.io/zh/docs/platform-engineers/cue/advanced/"   target="_blank">
-    交付完整模块</a>，其中有如何使用 cuelang 定义 addon，并且部署到相关 vela component 仓库。</li>
-<li><a href="https://www.cnblogs.com/CupricNitrate/p/16017761.html"   target="_blank">
-    kubevela addon添加组件-微服务应用</a>，不是官方的博客，但是很适合入门 kubevela addon，当时也是用 spring cloud 和 vela 的关键词找到的，缺点是没有整个项目的源代码链接，不能对照着学习。</li>
-<li><a href="https://github.com/kubevela/samples"   target="_blank">
-    Examples</a>，官方的负载案例，很全面，值得学习。</li>
-<li><code>vela show webservice --web</code> ：查看文档。</li>
+<li><a href="https://www.cnblogs.com/xuweiweiwoaini/p/13884112.html"   target="_blank">
+    https://www.cnblogs.com/xuweiweiwoaini/p/13884112.html</a></li>
+<li><a href="https://xdydy.github.io/2023/11/27/PXE/#DHCP-%E6%9C%8D%E5%8A%A1%E5%99%A8"   target="_blank">
+    PXE 批量部署</a></li>
+<li><a href="https://blog.frognew.com/2023/08/kubeadm-install-kubernetes-1.28.html"   target="_blank">
+    使用kubeadm部署Kubernetes 1.28</a></li>
+<li><a href="https://www.cnblogs.com/yinzhengjie/p/17981419"   target="_blank">
+    二进制部署企业级K8S 1.28.3+集群实战</a></li>
+<li><a href="https://www.jianshu.com/p/4d696c8a6f41"   target="_blank">
+    Ubuntu22.04 安装 K8S 1.27.1</a></li>
+<li><a href="https://xdydy.github.io/2023/10/29/kubernetes/#Kubernetes-%E6%A6%82%E8%BF%B0"   target="_blank">
+    Kubernetes 概述</a></li>
+<li><a href="https://medium.com/@vivekanand.poojari/installing-kubernetes-behind-a-corporate-proxy-bc5582e43fb8"   target="_blank">
+    在公司代理后面安装 Kubernetes</a></li>
 </ul>
-</li>
-<li><a href="https://k8s.easydoc.net/docs/dRiQjyTY/28366845/6GiNOzyZ/C0fakgwO"   target="_blank">
-    k8s简易文档</a>，这几天没时间全面地了解k8s，看的就是这个简易文档，快速了解概念。
-<ul>
-<li><a href="https://cloud.tencent.com/developer/article/1783227"   target="_blank">
-    Kubernetes 部署 Mysql 8.0 数据库(单节点)</a>，使用 kubevela 部署的第一个 docker 镜像是 mysql:5.7，重点在于如何用 OAM 刻画 Application。</li>
-<li><a href="https://www.qiniu.com/qfans/qnso-45681780"   target="_blank">
-    在Kubernetes上创建mysql容器时如何初始化</a></li>
-</ul>
-</li>
-<li><a href="https://kubernetes.io/zh-cn/docs/home/"   target="_blank">
-    k8s官方文档</a>，正式的官方文档，很详细。
-<ul>
-<li><a href="https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/translate-compose-kubernetes/"   target="_blank">
-    将 Docker Compose 文件转换为 Kubernetes 资源</a></li>
-</ul>
-</li>
-<li><a href="https://github.com/macrozheng/mall-swarm"   target="_blank">
-    mall-swarm</a>，最后需要实现的微服务项目部署，选择的原因也很简单，它的<a href="https://www.macrozheng.com/"   target="_blank">
-    文档</a>比较全。</li>
-</ul>
-<p>最后感慨一下，ChatGPT 真的是一项跨时代的技术，在毫无头绪的时候，它能提供思路，虽然正确率不是很高，但是至少有了思路，但是如果想要全面地了解一个技术，最直接有效的还是阅读官方的文档，无论你找了多久的资料，浏览了多久的网页，别人的博客都是在官网的基础上进行了扩展，甚至只是照搬了官网，所以在学习新技术的时候，先克服恐惧，这种恐惧是来自对未知的恐惧，不知道自己能不能处理这个问题，不知道能不能在截止日期前完成，所以会盲目地去寻找，试图找到一个与自己项目最接近的案例，但是很多情况是根本找不到这样的案例，最快的方法还是学习官网上的一则则文档，然后找一个案例学习。</p>
 
         </div>
                 
@@ -1098,8 +1248,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/architecture\/distributed\/k8s\/kubevela\/index.md"
-        var oid_likes = "likes_posts\/architecture\/distributed\/k8s\/kubevela\/index.md"
+        var oid = "views_posts\/architecture\/virtualization\/k8s\/k8s_deployment\/index.md"
+        var oid_likes = "likes_posts\/architecture\/virtualization\/k8s\/k8s_deployment\/index.md"
       </script>
       
       
@@ -1122,7 +1272,7 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/architecture/distributed/k8s/kubevela-mall-swarm/">
+            <a class="flex group mr-3" href="/posts/architecture/virtualization/k8s/kubevirt/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1134,6 +1284,23 @@ window.MathJax = {
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >使用 KubeVirt 在 Kubernetes 中进行虚拟机编排</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-04-25 14:11:01 &#43;0800 &#43;0800">25 April 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/virtualization/k8s/kubevela-mall-swarm/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
                   >使用 Kubevela 部署 mall-swarm 项目</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
@@ -1142,10 +1309,15 @@ window.MathJax = {
                   
                 </span>
               </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
             </a>
-          
-        </span>
-        <span>
           
         </span>
       </div>
