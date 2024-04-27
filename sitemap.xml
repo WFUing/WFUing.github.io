@@ -3,6 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/reviews/os/</loc>
+    <lastmod>2024-04-27T14:43:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-04-27T14:43:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/reviews/</loc>
+    <lastmod>2024-04-27T14:43:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
     <lastmod>2024-04-26T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -10,12 +28,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/virtualization/qemu/</loc>
-    <lastmod>2024-04-26T14:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-04-26T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -107,12 +119,6 @@
   <url>
     <loc>https://WFUing.github.io/%E5%AE%9E%E4%B9%A0%E6%8A%95%E9%80%92%E8%BF%87%E7%A8%8B/%E9%98%BF%E9%87%8C%E7%B3%BB/%E8%9A%82%E8%9A%81/%E7%AC%94%E8%AF%954.20/</loc>
     <lastmod>2024-04-20T22:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/reviews/</loc>
-    <lastmod>2024-04-19T12:51:58+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -400,12 +406,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/reviews/os/mesi/</loc>
-    <lastmod>2024-03-24T14:43:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/reviews/os/</loc>
     <lastmod>2024-03-24T14:43:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
