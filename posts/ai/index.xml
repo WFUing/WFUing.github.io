@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 25 Apr 2024 09:25:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Apr 2024 10:25:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ray</title>
+      <link>https://WFUing.github.io/posts/ai/ray/</link>
+      <pubDate>Sat, 27 Apr 2024 10:25:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/ai/ray/</guid>
+      <description>Ray是一个开源项目，为构建分布式应用程序提供了简单、通用的 API。它广泛应用于机器学习和数据处理领域的扩展应用。Ray 因其能够以最少的代码更改将 Python 应用程序从单机扩展到大型集群而闻名。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/ai/ray/featured.png" />
+    </item>
+    
     <item>
       <title>交叉熵</title>
       <link>https://WFUing.github.io/posts/ai/cross-entropy/</link>
