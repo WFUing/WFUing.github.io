@@ -29,6 +29,16 @@
     </item>
     
     <item>
+      <title>Virtualization</title>
+      <link>https://WFUing.github.io/posts/architecture/virtualization/overview/</link>
+      <pubDate>Fri, 26 Apr 2024 18:11:01 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/virtualization/overview/</guid>
+      <description>虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/virtualization/overview/featured.png" />
+    </item>
+    
+    <item>
       <title>QEMU</title>
       <link>https://WFUing.github.io/posts/architecture/virtualization/qemu/</link>
       <pubDate>Fri, 26 Apr 2024 14:11:01 +0800</pubDate>

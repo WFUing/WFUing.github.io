@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>QEMU &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="QEMU &middot; WFUing&#39;s Blog" />
+  <title>Virtualization &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Virtualization &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。" />
+  <meta name="description" content="虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/virtualization/qemu/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/virtualization/overview/" />
   
   
   
@@ -67,20 +67,20 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/virtualization/qemu/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/virtualization/overview/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="QEMU">
-  <meta property="og:description" content="QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。">
+  <meta property="og:title" content="Virtualization">
+  <meta property="og:description" content="虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-04-26T14:11:01+08:00">
-    <meta property="article:modified_time" content="2024-04-26T14:11:01+08:00">
-    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/virtualization/qemu/featured.png">
+    <meta property="article:published_time" content="2024-04-26T18:11:01+08:00">
+    <meta property="article:modified_time" content="2024-04-26T18:11:01+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/virtualization/overview/featured.png">
 
   <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/virtualization/qemu/featured.png"><meta name="twitter:title" content="QEMU">
-<meta name="twitter:description" content="QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。">
+<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/virtualization/overview/featured.png"><meta name="twitter:title" content="Virtualization">
+<meta name="twitter:description" content="虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。">
 
   
   <script type="application/ld+json">
@@ -88,26 +88,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "QEMU",
-    "headline": "QEMU",
+    "name": "Virtualization",
+    "headline": "Virtualization",
     
-    "abstract": "QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。",
+    "abstract": "虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/virtualization\/qemu\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/virtualization\/overview\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-04-26T14:11:01\u002b08:00",
-    "datePublished": "2024-04-26T14:11:01\u002b08:00",
+    "dateCreated": "2024-04-26T18:11:01\u002b08:00",
+    "datePublished": "2024-04-26T18:11:01\u002b08:00",
     
-    "dateModified": "2024-04-26T14:11:01\u002b08:00",
+    "dateModified": "2024-04-26T18:11:01\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "270"
+    "wordCount": "849"
   }]
   </script>
 
@@ -834,7 +834,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/virtualization/qemu/featured.png);">
+    style="background-image:url(/posts/architecture/virtualization/overview/featured.png);">
     
 
 
@@ -860,7 +860,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      QEMU
+      Virtualization
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -905,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-26 14:11:01 &#43;0800 &#43;0800">26 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>270 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-04-26 18:11:01 &#43;0800 &#43;0800">26 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>849 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -1055,10 +1055,12 @@ window.MathJax = {
     class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#use-qemu">Use QEMU</a></li>
-    <li><a href="#在qemu上的虚拟机中运行ubuntu">在QEMU上的虚拟机中运行Ubuntu</a></li>
-    <li><a href="#其他">其他</a></li>
+    <li><a href="#虚拟化类型">虚拟化类型</a></li>
+    <li><a href="#硬件辅助虚拟化技术hvm">硬件辅助虚拟化技术（HVM）</a></li>
+    <li><a href="#虚拟化组件">虚拟化组件</a></li>
+    <li><a href="#虚拟化细节">虚拟化细节</a></li>
+    <li><a href="#工具的使用已熟练使用">工具的使用（已熟练使用）</a></li>
+    <li><a href="#resources">Resources</a></li>
   </ul>
 </nav>
   </div>
@@ -1072,10 +1074,12 @@ window.MathJax = {
     class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#简介">简介</a></li>
-    <li><a href="#use-qemu">Use QEMU</a></li>
-    <li><a href="#在qemu上的虚拟机中运行ubuntu">在QEMU上的虚拟机中运行Ubuntu</a></li>
-    <li><a href="#其他">其他</a></li>
+    <li><a href="#虚拟化类型">虚拟化类型</a></li>
+    <li><a href="#硬件辅助虚拟化技术hvm">硬件辅助虚拟化技术（HVM）</a></li>
+    <li><a href="#虚拟化组件">虚拟化组件</a></li>
+    <li><a href="#虚拟化细节">虚拟化细节</a></li>
+    <li><a href="#工具的使用已熟练使用">工具的使用（已熟练使用）</a></li>
+    <li><a href="#resources">Resources</a></li>
   </ul>
 </nav>
   </div>
@@ -1132,57 +1136,14 @@ window.MathJax = {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">简介 
-    <div id="简介" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e7%ae%80%e4%bb%8b" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p><strong>VirtualBox 与 QEMU</strong></p>
-<p>VirtualBox 提供用户友好的 GUI，适合想要以简单方式在桌面上运行虚拟机的用户。相比之下，QEMU 提供更多的控制和灵活性，但通常需要命令行交互。两者之间的选择取决于您的具体用例和偏好。</p>
-<p>两者之间存在一些关键差异：</p>
+          <p>操作系统上的程序分为两种，</p>
 <ul>
-<li>Emulation：QEMU 可以仿真各种硬件，包括 CPU、内存控制器和设备。另一方面，VirtualBox 主要设计用于虚拟化 x86 和 AMD64 系统。</li>
-<li>Performance：QEMU 通常比 VirtualBox 更快，尤其是在运行模拟系统时。</li>
-<li>Compatibility：QEMU 比 ​​VirtualBox 更兼容更广泛的客户操作系统。</li>
+<li>一种是用户态的程序，例如 Word、Excel 等；</li>
+<li>一种是内核态的程序，例如内核代码、驱动程序等。</li>
 </ul>
-<p><strong>QEMU 的优势</strong></p>
-<ul>
-<li>Versatility: QEMU 可以模拟各种硬件并运行各种客户操作系统。</li>
-<li>Performance: QEMU 通常比其他虚拟化软件更快，尤其是在运行模拟系统时。</li>
-<li>Compatibility: 与其他虚拟化软件相比，QEMU 与更广泛的客户操作系统兼容。</li>
-<li>Open source: QEMU 是免费的开源软件，这意味着它会不断得到改进和更新。</li>
-</ul>
-<p><strong>QEMU 的缺点</strong></p>
-<ul>
-<li>Complex Configuration: QEMU 的命令行界面和配置文件对于初学者来说可能会令人望而生畏。</li>
-<li>Performance Overhead: 与 KVM 等虚拟化解决方案相比，仿真往往会产生更多的性能开销。</li>
-<li>Limited GUI: QEMU 的默认界面是基于命令行的，这可能不像 VirtualBox 的 GUI 那样用户友好。</li>
-</ul>
-<p><strong>QEMU vs. KVM</strong></p>
-<ul>
-<li>KVM (Kernel-based Virtual Machine) 是一种内置于 Linux 内核中的虚拟化技术。它使用硬件虚拟化功能在单个主机系统上运行多个虚拟机。</li>
-<li>QEMU 和 KVM 可以一起使用，提供更高效、更强大的虚拟化解决方案。QEMU可以用来模拟KVM不支持的硬件，并且KVM可以用来为虚拟机提供更好的性能。</li>
-</ul>
-<h2 class="relative group">Use QEMU 
-    <div id="use-qemu" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#use-qemu" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
-<p><strong>1. 更新系统</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt update <span class="o">&amp;&amp;</span> sudo apt upgrade -y 
-</span></span></code></pre></div><p><strong>2. 检查CPU和虚拟化是否开启：</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">LC_ALL</span><span class="o">=</span>C lscpu <span class="p">|</span> grep Virtualization
-</span></span></code></pre></div><p>如果是 intel 处理器，它应该带来以下输出：</p>
+<p>为了区分内核态和用户态，CPU 专门设置四个特权等级 0、1、2、3 来做这个事情。大牛们在写 Linux 内核的时候，如果用户态程序做事情，就将扳手掰到第 3 等级，一旦要申请使用更多的资源，就需要申请将扳手掰到第 0 等级，内核才能在高权限访问这些资源，申请完资源，返回到用户态，扳手再掰回去。这个程序一直非常顺利地运行着，直到虚拟机出现了。</p>
+<p><strong>虚拟化</strong>是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。</p>
+<p>每一个操作系统都有一个内核 kernel ，而这个 kernel 是需要对 CPU 的 ring0 进行操作的。如果没有任何限制，运行多台虚拟机则会出现多个操作系统同时抢占 CPU。所以运行多台虚拟机就需要一个调度程序去进行调度，它被称为 <strong>hypervisor</strong>（虚拟机控制软件）。</p>
 <p>
 
 
@@ -1197,7 +1158,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/architecture/virtualization/qemu/image1.png"
+        src="/posts/architecture/virtualization/overview/featured.png"
         alt=""
       />
       
@@ -1206,66 +1167,114 @@ window.MathJax = {
   
 
 </p>
-<p>如果是 AMD 处理器，它应该会为您提供以下输出：</p>
-<pre tabindex="0"><code>Virtualization:                  AMD-V
-</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">egrep -c <span class="s1">&#39;(vmx|svm)&#39;</span> /proc/cpuinfo
-</span></span></code></pre></div><p>如果输出大于 0，则 CPU 虚拟化已启用。否则，您需要在系统 BIOS 中启用它。</p>
-<p><strong>3. 安装QEMU</strong></p>
-<p>使用 <code>sudo apt install qemu</code> 即可在 Ubuntu 中安装 QEMU，安装完成后会有很多以 qemu- 开头的命令，如：</p>
-<ul>
-<li><code>qemu-system-i386</code>：用于模拟 32 位的 80386 硬件环境</li>
-<li><code>qemu-system-x86_64</code>：用于模拟 64 位的 x86 硬件环境</li>
-<li><code>qemu-system-arm</code>：用于模拟 ARM 硬件环境</li>
-</ul>
-<p>这些命令又可以分为以 <code>qemu-system-</code> 开头和以 <code>qemu-</code> 开头，</p>
-<ul>
-<li>以 <code>qemu-system-</code> 开头的用于在模拟的硬件环境上运行整个系统；</li>
-<li>以 <code>qemu-</code> 开头的用于在模拟的硬件环境上运行某个程序，而非整个系统。</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemon
-</span></span></code></pre></div><p><strong>4. 启用并启动libvirtd服务</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> --now libvirtd
-</span></span></code></pre></div><p><strong>5. 安装 Virt-Manager</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt install virt-manager -y
-</span></span></code></pre></div><p>Virt-Manager 是一个用于管理虚拟机的 GUI 工具。</p>
-<p><strong>6. 使用 QEMU</strong></p>
-<p>安装 QEMU 后，您就可以开始使用它来创建和运行虚拟机。</p>
-<p>要创建新的虚拟机，可以使用以下命令：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-kvm -name &lt;vm_name&gt; -m &lt;memory_size&gt; -cdrom &lt;iso_file&gt;
-</span></span></code></pre></div><p>这将创建一个具有指定名称、内存大小和 ISO 文件的新虚拟机。</p>
-<p>使用 QEMU 模拟一个硬件环境并运行整个系统的命令格式为</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>disk_image<span class="o">]</span>
-</span></span></code></pre></div><p>其中 disk_image 即硬盘镜像文件。其常用的参数如下：</p>
-<ul>
-<li><code>-hda file</code>：使用 file 作为硬盘 0 的镜像文件。</li>
-<li><code>-m megs</code>：设定虚拟内存为 megs M 字节，默认为 128 M 字节。</li>
-<li><code>-smp n</code>：设置为有 n 个 CPU 的 SMP 系统。</li>
-</ul>
-<p>值得注意的是，QEMU 的启动需要有图形界面，若未安装图形界面，则会报错：</p>
-<pre tabindex="0"><code>Could not initialize SDL(No available video device) - exiting
-</code></pre><p>若要无图形界面启动需要加参数 <code>-nographic</code>。</p>
-<p>要启动虚拟机，可以使用以下命令：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qm launch &lt;vm_name&gt;
-</span></span></code></pre></div><p>要停止虚拟机，可以使用以下命令：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qm stop &lt;vm_name&gt;
-</span></span></code></pre></div><p><strong>Resources</strong></p>
-<ul>
-<li><a href="https://medium.com/@cds.chamath/whats-qemu-c47c2d0297d3"   target="_blank">
-    什么是 QEMU</a></li>
-<li><a href="https://howiezhao.github.io/2019/04/18/qemu/"   target="_blank">
-    QEMU 小记</a></li>
-</ul>
-<h2 class="relative group">在QEMU上的虚拟机中运行Ubuntu 
-    <div id="在qemu上的虚拟机中运行ubuntu" class="anchor"></div>
+<p>通过这样处理以后，我们就得到了虚拟机，而虚机运行在 ring3 环。反过来说。在 ring3 称为用户模式下的 <strong>全虚拟化</strong> 虚拟机，而 ring2 使用 hypervisor 实现资源调度；多台同时运行在 ring0 下的 <strong>半虚拟化</strong> 虚拟机容易崩。</p>
+<h2 class="relative group">虚拟化类型 
+    <div id="虚拟化类型" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%9c%a8qemu%e4%b8%8a%e7%9a%84%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%b8%ad%e8%bf%90%e8%a1%8cubuntu" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e8%99%9a%e6%8b%9f%e5%8c%96%e7%b1%bb%e5%9e%8b" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p>首先，我们需要获取将在虚拟机中运行的 Linux 发行版的iso映像。在此示例中，我们将使用 Ubuntu 24.04 LTS，您可以在此链接中找到它（https://ubuntu.com/download/desktop）</p>
+<p>虚拟化主要分为三种类型：完全虚拟化、半虚拟化和软件虚拟化。</p>
+<ul>
+<li><strong>完全虚拟化</strong>使用系统 CPU 的硬件特性为虚拟客户提供底层物理系统的完全抽象。
+<ul>
+<li>完全虚拟化(full virtualization)：允许未修改的操作系统和软件在虚拟机上的运行，就像直接在真实硬件上的运行。</li>
+<li>配备虚拟外围设备后,虚拟机环境看起来就像是裸机一样。物理硬件的访问权限由 hypervisor 控制，因此虚拟机不会互相干扰。</li>
+</ul>
+</li>
+<li><strong>半虚拟化</strong>使用呈现给虚拟客户的软件和数据结构的集合，要求客户中的软件修改以使用半虚拟化环境。
+<ul>
+<li>半虚拟化(Paravirtualization)：允许hypervisor为客户机操作系统提供特殊接口,以便其更有效地与hypervisor进行通信。通常,这需要对客户机操作系统或特殊hypervisor 感知型驱动程序的安装进行修改。</li>
+<li>半虚拟化应用一系列呈现给虚拟机的软件和数据结构，需要客机中的软件修改以使用半虚拟环境。</li>
+<li>半虚拟化包含整个内核，就像 Xen 准虚拟机，或者虚拟化 I/O 设备的驱动程序一样。</li>
+</ul>
+</li>
+<li><strong>软件虚拟化</strong>使用较慢的二进制转换和其他仿真技术来运行未经修改的操作系统。像直接使用 QEMU 这种仿真技术。
+<ul>
+<li>Red Hat Enterprise Linux 不支持软件虚拟化。</li>
+</ul>
+</li>
+<li><strong>原生虚拟化</strong>(native virtualization)或<strong>硬件辅助完全虚拟化</strong>(hardware-assisted fullvirtualization)允许几乎所有的代码都可未经更改地由CPU直接运行，从而提高效率。
+<ul>
+<li>hypervisior 只需在代码在使用干涉系统管理程序的状态或其支持环境的敏感指令时介入</li>
+<li>当今32位和64位x86处理器上的Intel虚拟化技术(VT-x)和AMD虚拟化(AMD-V)的发展使硬件辅助完全虚拟化成为可能。利用处理器的硬件特性，向客机提供底层实体系统的总抽象。这创建了新的虚拟系统，被称为一个虚拟机（virtual machine），它允许客机操作系统在无需修改的情况下运行。客机操作系统和任何在客机虚拟机器中的应用并不会察觉出虚拟化环境并正常运作。</li>
+</ul>
+</li>
+</ul>
+<p>**原生虚拟化，性能更好。**允许几乎所有的代码都可未经更改地由 CPU 直接运行，从而提高效率。</p>
+<p>也是工程师不断的在改进的地方，要更好的支持<strong>原生虚拟化</strong>。让虚拟化的速度和物理机一样，无论是 CPU 还是 IO or RAM。</p>
+<h2 class="relative group">硬件辅助虚拟化技术（HVM） 
+    <div id="硬件辅助虚拟化技术hvm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e7%a1%ac%e4%bb%b6%e8%be%85%e5%8a%a9%e8%99%9a%e6%8b%9f%e5%8c%96%e6%8a%80%e6%9c%afhvm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>为了<strong>让虚拟机达到原生虚拟化</strong>的目的，需要使用硬件辅助虚拟化技术。</p>
+<p>在第一代技术中，支持Intel VT/AMD-V的CPU上提供新处理器指令，可将CPU置入新的执行模式。为硬件辅助虚拟机执行指令时，CPU将切换到非root或客户机模式，在该模式下虚拟机的内核能够以级别0运行，而用户空间能够以级别3运行。</p>
+<p>对于虚拟机内核来讲，只要将标志位设为虚拟机状态，我们就可以直接在 CPU 上执行大部分的指令，不需要虚拟化软件在中间转述，除非遇到特别敏感的指令，才需要将标志位设为物理机内核态运行，这样大大提高了效率。</p>
+<p><strong>这样操作以后，就出现了 CPU 快而 RAM 慢的情况。</strong></p>
+<p>第二代 x86 硬件虚拟化支持内存管理单元(MMU)虚拟化。通常,CPU需要花费很多周期来处理内存页面与虚拟机的映射。MMU 虚拟化允许将工作负载转移到特殊硬件,从而提高性能。Intel将此技术称为扩展页表(ERT),在Nehalem微型架构处理器中引入。AMD将此技术称为快速虚拟化索引(RVi), 于2007年在四核Opteron处理器中引入。</p>
+<p><strong>这样 CPU 和 RAM 就都解决掉了。</strong></p>
+<p>第三代x86 硬件虚拟化支持集中于I/0虚拟化。主板芯片集上的使能技术为安全PCI穿透,允许将物理PCI设备直接连接到虚拟机。该技术可为虚拟机提供近似原生的I/O性能。在Intel中,这称为直接1/O虚拟化技术(VT-d);在AMD中,称为1/0虚拟化技术(AMD- Vi)(最初称为IOMMU)</p>
+<p>之前，网卡 nic 还是要通过 hypervsor 交给虚拟机来用 vm ，到了千兆上不去。现在，新技术 SR-IOV 的网卡划48个口，跨过 hypervisor 直接给 vm 调用。很多通道的处理，直接交给网卡自己来做。<strong>通过这种技术，就解决了 IO 性能问题</strong>。</p>
+<h2 class="relative group">虚拟化组件 
+    <div id="虚拟化组件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%99%9a%e6%8b%9f%e5%8c%96%e7%bb%84%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>KVM</strong></p>
+<p>KVM（英文 Kernel-based Virtual Machine 的缩写） 来说，其是一款支持虚拟机技术，而且是 linux 内核中的一个功能模块。它在 linux2.6.20 之后的任何 linux 分支中都被支持。</p>
+<ul>
+<li>KVM 是基于内核的虚拟机，直接集成到Linux内核中。它允许 Linux 内核在裸机上运行,并直接自行充当 hypervisor。</li>
+<li>KVM 项目由 Qumranet(现属于红帽) 于2006年10月启动。从 RHEL 5.4 开始,在 x86-64 架构上运行的红帽企业 Linux 中完全支持 KVM</li>
+<li>KVM 设计性能十分优异，hypervisor 所需的许多功能都已通过 Linux 内核实施,如处理器调度、内存管理、物理设备驱动程序等</li>
+<li>KVM 需要芯片支持虚拟化技术（英特尔的 VT 扩展或者 AMD 的 AMD-V 扩展）
+<ul>
+<li>对于是否支持也可以通过命令行查看：<code>egrep '(vmx|svm)' --color=always /proc/cpuinfo</code>
+<ul>
+<li>在 bios 中是默认设置不打开该功能的，要去 bios 设置其为 enable</li>
+</ul>
+</li>
+<li>如果有任何内容则说明当期硬件架构是支持 kvm 的，否则就不支持。</li>
+</ul>
+</li>
+</ul>
+<p>Q：为什么还要 yum install libvirt*</p>
+<p>A：<strong>操作系统装以后，天生就可以安装虚拟机了</strong>。但是，内核支持虚拟化，不代表应用就能直接访问虚拟化。应用需要调用 lib 来使用虚拟化，这是免费的。</p>
+<p>Q：<code>英特尔的 VT 扩展或者 AMD 的 AMD-V</code> 扩展 是做什么的？</p>
+<p>A：因为完全虚拟化是非常慢的，所以要使用硬件辅助虚拟化技术 Intel-VT，AMD-V，所以需要 CPU 硬件开启这个标志位，一般在 BIOS 里面设置。当确认开始了标志位之后，通过 KVM，GuestOS 的 CPU 指令不用经过 Qemu 转译，直接运行，大大提高了速度。所以，KVM 在内核里面需要有一个模块，来设置当前 CPU 是 Guest OS 在用，还是 Host OS 在用。</p>
+<p><strong>libvirt</strong></p>
+<p>libvirt 程序包是一个与 <strong>虚拟机监控程序</strong> 相独立的 <strong>虚拟化应用程序接口</strong>，它可以与操作系统的一系列虚拟化性能进行交互。</p>
+<p>libvirt 是一个管理虚拟化平台的工具包，可从 C、Python、Perl、Go 等访问。</p>
+<p>libvirt 项目旨在为运行在不同虚拟机管理程序技术上的虚拟管理工具提供长期稳定的 C API。</p>
+<p>也有 Python 写好的 libvirt-python 软件包，来调用 libvirt 库接口，从而方便自己的应用程序更好的使用虚拟化功能。</p>
+<p>libvirt 程序包在 GNU 较宽松公共许可证下，可作为免费软件使用。</p>
+<p>Red Hat Enterprise Linux 7 支持 <strong>libvirt</strong> 以及其包括的基于 libvirt 的工具作为默认虚拟化管理（如 Red Hat Enterprise Virtualization 管理），例如 <strong>virt-manager</strong> 与 <strong>virsh</strong> 命令行管理工具。</p>
+<p><strong>libvirt</strong> 的主要功能：</p>
+<ul>
+<li>一个稳定的<strong>通用层</strong>来安全地管理主机上的虚拟机。</li>
+<li>一个管理本地系统和连网主机的通用接口。</li>
+<li>提供 API 来列举、监测和使用管理节点上的可用资源，其中包括 CPU、内存、储存、网络和非一致性内存访问（NUMA）分区。
+<ul>
+<li>部署、创建、修改、监测、控制、迁移以及停止虚拟机操作都需要这些 API。</li>
+</ul>
+</li>
+<li>尽管 <strong>libvirt</strong> 可同时访问多个主机，但 API 只限于<strong>单节点操作</strong>。</li>
+<li>管理工具可以位于独立于主机的物理机上，并通过安全协议和主机进行交流。</li>
+</ul>
 <p>
 
 
@@ -1280,7 +1289,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/architecture/virtualization/qemu/image.png"
+        src="/posts/architecture/virtualization/overview/image.png"
         alt=""
       />
       
@@ -1289,30 +1298,247 @@ window.MathJax = {
   
 
 </p>
-<p>iso文件下载完成后，为了运行虚拟机，我们创建以下脚本：</p>
-<p><strong>Resources</strong></p>
+<p>从该图可以看出，libvirt 的设计理念，是面向驱动的架构设计。对任何一种虚拟机技术都开发设计相对于该技术的驱动。在 libvirt api 之上会有很多个 driver，对于每一种虚拟机技术都会有一种 driver，用来充当该虚拟机技术与 libvirt 之间的包装接口。如此设计就可以避免 libvirt 需要设计各种针对不同虚拟机技术的接口，它主要关注底层的实现，提供对外接口调用，而不同的虚拟机技术通过调用 libvirt 提供的接口来完成自己所需要的功能。不同虚拟机技术就可以使用不同驱动，而且相互直接不会影响，方便扩展。而且 libvirt 提供了多种语言的编程接口，可以直接通过编程，调用 libvirt 提供的对外接口实现对虚拟机的操作。</p>
+<p><strong>QEMU</strong></p>
+<p>QEMU 是一个通用的开源机器模拟器和虚拟器。QEMU 有整套的虚拟机实现，由以下部分构成</p>
 <ul>
-<li><a href="https://www.tecmint.com/install-qemu-kvm-ubuntu-create-virtual-machines/"   target="_blank">
-    如何在Ubuntu上安装QEMU/KVM创建虚拟机</a></li>
-<li><a href="https://nikosmouzakitis.medium.com/running-ubuntu-in-a-virtual-machine-on-qemu-quick-emulator-1607c10f4ba5"   target="_blank">
-    在QEMU（快速模拟器）上的虚拟机中运行Ubuntu</a></li>
-<li><a href="https://itsfoss.com/qemu-ubuntu/"   target="_blank">
-    在 Ubuntu 上安装和使用 Qemu</a></li>
+<li>处理器模拟器（x86、IBM Z、PowerPC、Sparc）</li>
+<li>模拟的设备（显卡、网卡、硬盘、鼠标）</li>
+<li>用于将被模拟设备连接到相关主机设备的通用设备</li>
+<li>被模拟计算机（PC、Power Mac）的说明</li>
+<li>调试程序</li>
+<li>用来与模拟器交互的用户界面</li>
 </ul>
-<h2 class="relative group">其他 
-    <div id="其他" class="anchor"></div>
+<p>QEMU 是一个用户空间的进程，需要通过特定的接口才能调用到 KVM 模块提供的功能。</p>
+<p>从 QEMU 角度来看，虚拟机运行期间，QEMU 通过 KVM 模块提供的系统调用接口进行内核设置，由 KVM 模块负责将虚拟机置于处理器的特殊模式运行。QEMU 使用了 KVM 模块的虚拟化功能，为自己的虚拟机提供硬件虚拟化加速以提高虚拟机的性能。</p>
+<p>当用作虚拟器时，QEMU 通过直接在主机 CPU 上执行来宾代码来实现接近原生的性能。在 Xen 管理程序下执行或在 Linux 中使用 KVM 内核模块时，QEMU 支持虚拟化。使用 KVM 时，QEMU 可以虚拟化 x86、服务器和嵌入式 PowerPC、64 位 POWER、S390、32 位和 64 位 ARM 以及 MIPS 客户机。</p>
+<p>Q：KVM 和 QEMU 有什么区别？</p>
+<p>A：QEMU 使用仿真；KVM 使用处理器扩展 (HVM) 进行虚拟化。</p>
+<p>Q：QEMU 和 KVM 是独立的吗？</p>
+<p>A：是，但不完全是。KVM 模块的职责就是打开并初始化 VMX 功能，提供相应的接口以支持虚拟机的运行。 QEMU（quick emulator) 本身并不包含或依赖 KVM 模块，而 是一套由 Fabrice Bellard 编写的模拟计算机的自由软件。 QEMU 虚拟机 是一个纯软件的实现，可以在没有 KVM 模块的情况下独立运行，但是性能比较低。</p>
+<p>Q：那为何还会有 qemu-kvm 这个名词？</p>
+<p>A：单纯的使用 Qemu 属于完全虚拟化，性能特别低。所以 Qemu 将 KVM 整合进来，将有关 CPU 指令的部分交由内核模块来做，就是 qemu-kvm (qemu-system-XXX)。另外 Qemu 还会模拟其他的硬件，如网络和硬盘。同样，全虚拟化的方式也会影响这些设备的性能。这个时候就需要让 GuestOS 知道自己是虚拟机，需要加载特殊的半虚拟化驱动来提高性能。总之 qemu-kvm 就是这样的一种技术。它补充了 kvm 技术的不足，而且在性能上对 kvm 进行了优化。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/overview/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>Q：QEMU 和 KVM 到底有什么联系？</p>
+<p>A：KVM 只是内核模块，用户并没法直接跟内核模块交互，需要借助用户空间的管理工具，而这个工具就是 QEMU。KVM 和 QEMU 相辅相成，QEMU 通过 KVM 达到了硬件虚拟化的速度，而 KVM 则通过 QEMU 来模拟设备。简单直接的理解就是：QEMU 是个计算机模拟器，而 KVM 为计算机的模拟提供加速功能。</p>
+<p>Q：QEMU 又和 libvirt 有什么关系？</p>
+<p>A：对于 KVM 来说。其匹配的用户空间工具并不仅仅只有 QEMU 作为唯一选择，还有 RedHat 开发的 libvirt、virsh、virt-manager 等。</p>
+<h2 class="relative group">虚拟化细节 
+    <div id="虚拟化细节" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#%e5%85%b6%e4%bb%96" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#%e8%99%9a%e6%8b%9f%e5%8c%96%e7%bb%86%e8%8a%82" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<p><strong>Resources</strong></p>
+<p><strong>1、内存</strong></p>
+<p>内存管理和内核同页合并(KSM):</p>
 <ul>
-<li><a href="https://medium.com/@nullbyte.in/docker-and-qemu-a-powerful-combination-for-accelerating-edge-computing-development-and-optimizing-42da00259a02"   target="_blank">
-    Docker 和 QEMU：加速边缘计算开发和优化代码编译的强大组合</a></li>
+<li>允许在进程间共享相同的内存页面
+<ul>
+<li>对于同一个模板部署出来的虚拟机有用，对异构的没有效果。</li>
+</ul>
+</li>
+<li>KVM 使用该机制来允许内存过量使用。在两个相似的虚拟机中,内存中很有可能有许多相同页面。KSM允许主机扫描虚拟机内存来查找相同页面,并将它们整合成一个共享内存页面,从而减少物理内存消耗
+<ul>
+<li>同一个虚拟机模板运行10个虚拟机，大量页是相同的，可以合并成一份。如果修改了一些东西，发生了变化就多占用一些。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2、存储</strong></p>
+<p>虚拟机的储存从虚拟机使用的物理储存中提取。它通过使用半虚拟化或仿真块设备驱动与虚拟机相连。</p>
+<p><em>2.1. 储存池</em></p>
+<p>储存池（storage pool）即一个由 “libvirt” 管理的文件、目录或储存设备，其目的是为虚拟机提供储存空间。储存池被分隔为存储卷（volume），可以用来存储虚拟机镜像或附加到虚拟机作为额外额存储。多个客机可共享同一储存池，允许储存资源得到更好分配。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/overview/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>本地储存池：本地储存池直接连接到主机服务器。它们包括本地目录、直接连接的磁盘、物理分区和本地设备上的 LVM 卷组。本地储存池对开发、测试及不需要迁移或具有大量虚拟机的小型部署十分有用。因为本地储存池不支持实时迁移，所有它可能不适用于某些生产环境。</li>
+<li>网络（共享）储存池：网络储存池包括在网络上使用标准协议共享的储存设备。使用 virt-manager 在主机间进行虚拟机的迁移需要网络储存，但是当使用 <code>virsh</code> 迁移时，它是可选的。网络储存池由 libvirt 进行管理。</li>
+</ul>
+<p><em>2.2. 储存卷</em></p>
+<p>储存池进一步划分为储存卷（storage volume）。储存卷是物理分区、LVM 逻辑卷、基于文件的磁盘镜像及其它由 libvirt 控制的储存形式的抽象层。不论基于何种硬件，储存卷会作为本地储存设备呈现给虚拟机。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/overview/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><em>2.3. 仿真储存设备</em></p>
+<p>虚拟机可以被提供一系列经主机仿真的储存设备。每种储存设备都适用于特定的使用情况。具有可以选择不同种类储存设备的功能，可以使灵活性以及与客机操作系统的兼容性达到最大化。</p>
+<ul>
+<li>virtio-scsi：virtio-scsi 是为使用大量磁盘或高级储功能（如 TRIM）的客机推荐使用的半虚拟化设备。使用除 Red Hat Enterprise Linux 7 以外操作系统的客机可能需要安装相应的客机驱动。</li>
+<li>virtio-blk：virtio-blk 是适用于向客机提供镜像文件的半虚拟化储存设备。virtio-blk 可以为虚拟机提供最好的磁盘 I/O 性能，但比 virtio-scsi 的功能少。</li>
+<li>IDE：IDE 是推荐给不支持 virtio 驱动的旧客机用的。IDE 性能不如 virtio-scsi 或 virtio-blk，但它与不同系统广泛兼容。</li>
+<li>CD-ROM：ATAPI CD-ROM 与 virtio-scsi CD-ROM 都能向客机提供 ISO 文件或主机 CD-ROM 驱动。virtio-scsi CD-ROM 可以与安装了 virtio-scsi 驱动的客机一同使用。ATAPI CD-ROM 兼容性广泛但性能较低。</li>
+<li>USB 存储设备和软盘：如需要可移动介质，可使用 USB 存储设备和软盘。USB 存储设备由于其较大的容量比软盘更受欢迎。</li>
+<li>AHCI：仿真 AHCI（高级主机控制器接口，Advanced Host Controller Interface）总线是 IDE 的一种替代品，它的特征增多、性能提高，包括与串行 ATA（SATA）设备交流。AHCI 作为一种技术预览包括在 Red Hat Enterprise Linux 7.1 中。</li>
+</ul>
+<p><em>2.4 主机存储</em></p>
+<p>磁盘镜像可以储存在一系列和主机相连的本地或远程存储中。</p>
+<ul>
+<li>镜像文件：镜像文件储存在主机文件系统中。它可以储存在本地文件系统中，如 ext4 或 xfs；或网络文件系统中，如 NFS 。例如 libguestfs 这样的工具，能管理、备份及监控文件。KVM 上的磁盘镜像格式包括：
+<ul>
+<li>raw：raw 镜像文件指不包含附加元数据的磁盘内容。假如主机文件系统允许，raw 文件可以是预分配（pre-allocated）或稀疏（sparse）。稀疏文件根据需求分配主机磁盘空间，因此它是一种精简配置形式（thin provisioning）。预分配文件的所有空间需要被预先分配，但它比稀疏文件性能好。当对磁盘 I/O 性能要求非常高，而且通常不需要通过网络传输镜像文件时，可以使用 raw 文件。</li>
+<li>qcow2：qcow2 镜像文件提供许多高级磁盘镜像特征，如快照、压缩及加密。它们可以用来代表通过模板镜像创建的虚拟机。因为只有虚拟机写入的扇区部分才会分配在镜像中，所以 qcow2 文件的网络传输效率较高。Red Hat Enterprise Linux 7.0 及更新版本支持 qcow2 v3 镜像文件格式。</li>
+</ul>
+</li>
+<li>LVM 卷：逻辑卷可用于磁盘镜像，并使用系统的 LVM 工具进行管理。 由于它使用更简单的块储存模式，LVM 比文件系统的性能更高。LVM 精简配置为 LVM 卷提供快照和高效的空间使用，它可以作为 qcow2 的一种替代选择。</li>
+<li>主机设备：主机设备如物理 CD-ROM、原始磁盘或 LUN 都可以提供给客机。这使得 SAN 或 iSCSI LUN 还有本地 CD-ROM 都可以提供给客机所用。在 SAN 而不是主机上进行储存管理时，可以使用主机设备。</li>
+<li>分布式存储系统：Gluster 卷可用作磁盘镜像。它提供了高效的、使用网络的集群存储。Red Hat Enterprise Linux 7 包括在 GlusterFS 上对磁盘镜像的原生支援。这使 KVM 主机可以直接从 GlusterFS 卷引导虚拟机镜像，并使用 GlusterFS 卷中的镜像作为虚拟机的数据磁盘。与 GlusterFS FUSE 相比，KVM 原生支持性能更好。</li>
+</ul>
+<p><strong>数据恢复</strong></p>
+<p><a href="https://www.cnblogs.com/itxdm/p/linuxdate_recover.html"   target="_blank">
+    Linux 意外操作后如何进行数据抢救</a></p>
+<p><strong>虚拟化嵌套</strong></p>
+<p>从 Red Hat Enterprise Linux 7.5 开始，嵌套虚拟化作为 KVM 来宾虚拟机的技术预览版提供。借助此功能，在物理主机（ 0 级或 L0 级）上运行的来宾虚拟机（也称为 1 级或 L1 ）可以充当管理程序，并创建自己的来宾虚拟机 ( L2 )。</p>
+<p>嵌套虚拟化在各种场景中都很有用，例如在受限环境中调试管理程序以及在有限数量的物理资源上测试更大的虚拟部署。但是，请注意，在生产用户环境中不支持或不推荐使用嵌套虚拟化，它主要用于开发和测试。</p>
+<p>嵌套虚拟化依赖于主机虚拟化扩展来运行，它不应与使用 QEMU Tiny Code Generator (TCG) 仿真在虚拟环境中运行来宾混淆，红帽企业 Linux 不支持这种仿真。</p>
+<p>按照以下步骤启用、配置和开始使用嵌套虚拟化：</p>
+<ul>
+<li><strong>启用</strong>：默认情况下禁用该功能。要启用它，请在 L0 主机物理机上使用以下过程。</li>
+</ul>
+<blockquote>
+<p>对于英特尔：</p>
+<ol>
+<li>检查您的主机系统上是否可以使用嵌套虚拟化。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ cat /sys/module/kvm_intel/parameters/nested
+</span></span></code></pre></div><p>如果此命令返回 <code>Y</code> 或 <code>1</code>，则启用该功能。</p>
+<p>如果命令返回 <code>0</code> or <code>N</code>，请使用步骤 ii 和 iii。</p>
+<p>卸载 <code>kvm_intel</code> 模块：</p>
+<pre tabindex="0"><code>#modprobe -r kvm_intel
+</code></pre><p>激活嵌套功能：</p>
+<pre tabindex="0"><code>#modprobe kvm_intel nested=1
+</code></pre><p>嵌套功能现在仅在 L0 主机下一次重新引导之前启用。要永久启用它，请将以下行添加到 <code>/etc/&gt; modprobe.d/kvm.conf</code> 文件中：</p>
+<pre tabindex="0"><code>option kvm_intel nested=1
+</code></pre><p><strong>对于 AMD</strong>：</p>
+<p>检查您的系统上是否可以使用嵌套虚拟化：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nv">$cat</span> /sys/module/kvm_amd/parameters/nested
+</span></span></code></pre></div><ul>
+<li>如果此命令返回 <code>Y</code> 或 <code>1</code> ，则启用该功能。</li>
+<li>如果命令返回 <code>0</code> or <code>N</code>，请使用步骤 ii 和 iii。</li>
+</ul>
+<p>卸载 <code>kvm_amd</code> 模块</p>
+<pre tabindex="0"><code>#modprobe -r kvm_amd
+</code></pre><p>激活嵌套功能</p>
+<pre tabindex="0"><code>#modprobe kvm_amd nested=1
+</code></pre><p>嵌套功能现在仅在 L0 主机下一次重新引导之前启用。要永久启用它，请将以下行添加到 <code>/etc/&gt; modprobe.d/kvm.conf</code> 文件中：</p>
+<pre tabindex="0"><code>option kvm_intel nested=1
+</code></pre></blockquote>
+<ul>
+<li>
+<p>使用以下方法之一为嵌套虚拟化 配置 L1 虚拟机：</p>
+<ul>
+<li>虚拟管理器：打开预期来宾的 GUI，然后单击<code>显示虚拟硬件详细信息</code>图标。选择Processor菜单，在Configuration部分中，输入host-passthroughModel字段（不要使用下拉选择），然后单击Apply。</li>
+<li>域 XML：将以下行添加到来宾的域 XML 文件中：<code>&lt;cpu mode='主机直通'/&gt;</code> 如果来宾的 XML 配置文件已经包含一个 <code>&lt;cpu&gt;</code> 元素，则重写它。</li>
+</ul>
+</li>
+<li>
+<p>要开始使用嵌套虚拟化，请在 L1 来宾中安装 L2 来宾。为此，请遵循与安装 L1 来宾时相同的过程 - 有关详细信息，请参阅</p>
+</li>
+</ul>
+<h2 class="relative group">工具的使用（已熟练使用） 
+    <div id="工具的使用已熟练使用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%b7%a5%e5%85%b7%e7%9a%84%e4%bd%bf%e7%94%a8%e5%b7%b2%e7%86%9f%e7%bb%83%e4%bd%bf%e7%94%a8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>virsh</strong>：virsh 是一个用于监控系统程序和客户机虚拟机器的命令行接口（CLI）工具。virsh 命令行工具建立在 libvirt 管理 API，并作为可选择的一个运行方式来替代 qemu-kvm 命令和图形界面的 virt-manager 应用。无特权的用户以只读的方式使用 virsh 命令；有根用户权限的用户可以使用该命令的所有功能。virsh 是一个对虚拟环境的管理任务进行脚本化的理想工具。另外，virsh 工具是 virsh 客机域的一个主要管理接口，可以用于创造、暂停和关闭域，或罗列现有域。这一工具作为 libvirt-client 软件包中的一部分被安装。</p>
+<ul>
+<li>virsh list &ndash;all</li>
+<li>virsh destroy servername</li>
+<li>virsh start servername</li>
+<li>virsh snapshot-create</li>
+<li>virsh reboot</li>
+<li>virsh shutdown</li>
+<li>virsh dumpxml servername</li>
+<li>virsh define 使用一个xml文件来创建虚拟机</li>
+<li>virsh create 使用一个xml文件来创建并启动虚拟机</li>
+</ul>
+<p><strong>virt-install</strong>：virt-install 是一个命令行工具，它提供了一种将操作系统配置到虚拟机中的简单方法。virt-install 是一个用来配置新的虚拟机器的命令行工具。它通过使用连续的控制台、SPICE 或 VNC 客户 / 服务器成对图形，支持基于文本和图形的安装。安装介质可以是本地的，或已有的远程 NFS、HTTP 或 FTP 服务器。考虑到便捷的自动化安装，还可以通过配置此工具实现在无需人工参与的情况下运行，并在安装完成时快速启动客机。此工具以 python-virtinst 软件包的一部分进行安装。</p>
+<p><strong>virt-manager</strong>：virt-manager应用程序是一个桌面用户界面，用于通过 libvirt 管理虚拟机。它主要针对KVM虚拟机，但也管理Xen和LXC（Linux 容器）。它提供了正在运行的域、它们的实时性能和资源利用率统计信息的摘要视图。向导可以创建新域，以及配置和调整域的资源分配和虚拟硬件。嵌入式 VNC 和 SPICE 客户端查看器向来宾域提供完整的图形控制台。virt-manager 是一个用于管理虚拟机器的简单的图形工具。它所提供的功能用以控制现有机器寿命周期、储备新机器、管理虚拟网络、访问虚拟机器的图形控制台并查看性能数据。这个工具包括在同名的软件包中，称为 virt-manager。</p>
+<p><strong>virt-viewer</strong>：virt-viewer是一个轻量级的 UI 界面，用于与虚拟客户操作系统的图形显示进行交互。它可以显示 VNC 或 SPICE，并使用 libvirt 查找图形连接详细信息。Virt Viewer 用于使用 SPICE 远程桌面协议访问 KVM 虚拟机。它是用于 KVM 虚拟化解决方案（如 Proxmox）的 VMware 远程控制台 (VMRC) 的替代方案。Virt Viewer 具有许多高级功能，例如 VMware Remote Console (VMRC)。</p>
+<h2 class="relative group">Resources 
+    <div id="resources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/itxdm/p/libvirt_and_QEMU.html"   target="_blank">
+    libvirt and QEMU 基础篇</a></li>
+<li><a href="https://www.cnblogs.com/itxdm/p/libvirt_and_QEMU2.html"   target="_blank">
+    libvirt and QEMU 进阶篇</a></li>
 </ul>
 
         </div>
@@ -1326,8 +1552,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/architecture\/virtualization\/qemu\/index.md"
-        var oid_likes = "likes_posts\/architecture\/virtualization\/qemu\/index.md"
+        var oid = "views_posts\/architecture\/virtualization\/overview\/index.md"
+        var oid_likes = "likes_posts\/architecture\/virtualization\/overview\/index.md"
       </script>
       
       
@@ -1350,30 +1576,30 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/architecture/virtualization/overview/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/virtualization/qemu/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >Virtualization</span
+                  >QEMU</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-04-26 18:11:01 &#43;0800 &#43;0800">26 April 2024</time>
+                    <time datetime="2024-04-26 14:11:01 &#43;0800 &#43;0800">26 April 2024</time>
                   
                 </span>
               </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
             </a>
-          
-        </span>
-        <span>
           
         </span>
       </div>
