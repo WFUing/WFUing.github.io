@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "270"
+    "wordCount": "639"
   }]
   </script>
 
@@ -905,7 +905,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-26 14:11:01 &#43;0800 &#43;0800">26 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>270 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-04-26 14:11:01 &#43;0800 &#43;0800">26 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>639 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1289,7 +1289,145 @@ window.MathJax = {
   
 
 </p>
-<p>iso文件下载完成后，为了运行虚拟机，我们创建以下脚本：</p>
+<p>iso文件下载完成后，使用QEMU创建一个虚拟硬盘映像，例如创建一个大小为20GB的qcow2格式硬盘映像：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-img create -f qcow2 ubuntu-vm.qcow2 20G
+</span></span></code></pre></div><p>启动虚拟机</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">qemu-system-x86_64 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -m <span class="m">2048</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -cpu max <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -smp <span class="m">2</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -boot d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -drive <span class="nv">file</span><span class="o">=</span>ubuntu-vm.qcow2,format<span class="o">=</span>qcow2 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -cdrom ubuntu-22.04.4-live-server-amd64.iso <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -vnc :1 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -net nic <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -net user,hostfwd<span class="o">=</span>tcp::2222-:22 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -nographic
+</span></span></code></pre></div><ul>
+<li><code>-m 2048</code>：分配2048 MB内存给虚拟机。</li>
+<li><code>-cpu host</code>：使用与宿主机相同的CPU型号。</li>
+<li><code>-smp 2</code>：分配2个CPU核心。</li>
+<li><code>-boot d</code>：从光驱启动，即ISO文件。</li>
+<li><code>-drive</code>：指定硬盘文件和格式。</li>
+<li><code>-cdrom</code>：指定ISO文件路径。</li>
+<li><code>-vnc :1</code>：开启VNC服务，在5901端口监听（因为VNC端口是5900+N，这里N=1）。</li>
+<li><code>-net nic</code>：创建一个网络接口。</li>
+<li><code>-net user</code>：使用用户模式网络，包括端口转发设置，这里把宿主机的2222端口转发到虚拟机的22端口，以便SSH访问。</li>
+<li><code>-nographic</code>：不启用图形输出。</li>
+</ul>
+<p><strong>qemu的标准选项</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># qemu的标准选项主要涉及指定主机类型、CPU模式、NUMA、软驱设备、光驱设备及硬件设备等。</span>
+</span></span><span class="line"><span class="cl">-name name		<span class="c1"># 虚拟机名称</span>
+</span></span><span class="line"><span class="cl">-M machine		<span class="c1"># 指定要模拟的主机类型，如standard PC，ISA-only PC或Intel-Mac等，可以使用“qemu-kvm -M ?”获取所支持的所有类型</span>
+</span></span><span class="line"><span class="cl">-m megs			<span class="c1"># 设定虚拟机的RAM大小</span>
+</span></span><span class="line"><span class="cl">-cpu model		<span class="c1"># 设定CPU模型，如coreduo、qemu64等，可以使用&#34;qemu-kvm -cpu ?&#34;获取所支持的所有模型</span>
+</span></span><span class="line"><span class="cl">-smp n			<span class="c1"># 设定模拟的SMP架构中CPU的个数</span>
+</span></span><span class="line"><span class="cl">    <span class="o">[</span>,cores<span class="o">=</span>cores<span class="o">]</span>		<span class="c1"># 每个CPU的核心数</span>
+</span></span><span class="line"><span class="cl">    <span class="o">[</span>,threads<span class="o">=</span>threads<span class="o">]</span>  <span class="c1"># 线程数</span>
+</span></span><span class="line"><span class="cl">    <span class="o">[</span>,sockets<span class="o">=</span>sockets<span class="o">]</span>  <span class="c1"># CPU的socket数目</span>
+</span></span><span class="line"><span class="cl">    <span class="o">[</span>,maxcpus<span class="o">=</span>maxcpus<span class="o">]</span>  <span class="c1"># 用于指定热插入的CPU个数上限</span>
+</span></span><span class="line"><span class="cl">-numa   非一致内存访问
+</span></span><span class="line"><span class="cl">-numa opts：指定模拟多节点的numa设备
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">-fda file：
+</span></span><span class="line"><span class="cl">-fdb file：使用指定文件<span class="o">(</span>file<span class="o">)</span>作为软盘镜像，file为/dev/fd0表示使用物理软驱
+</span></span><span class="line"><span class="cl">-hda file：
+</span></span><span class="line"><span class="cl">-hdb file：
+</span></span><span class="line"><span class="cl">-hdc file：
+</span></span><span class="line"><span class="cl">-hdd file：使用指定file作为硬盘镜像
+</span></span><span class="line"><span class="cl">-cdrom file：使用指定file作为CD-ROM镜像，需要注意的是-cdrom和-hdc不能同时使用：将file指定为/dev/cdrom可以直接使用物理光驱
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">-drive						<span class="c1"># 定义一个硬盘设备：可用子选项有很多</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">file</span><span class="o">=</span>/path/to/somefile	<span class="c1"># 硬盘映像文件</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="o">=</span>interface			<span class="c1"># 硬盘设备接口类型 ide、scsi、sd、virtio（半虚拟化）</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">index</span><span class="o">=</span>index				<span class="c1"># 设定同一种控制器类型中不同设备的索引号，即标识号</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">media</span><span class="o">=</span>media				<span class="c1"># 定义介质类型为硬盘还是光盘disk、cdrom</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">snapshot</span><span class="o">=</span>snapshot		<span class="c1"># 指定当前硬盘设备是否支持快照功能：on或off</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">cache</span><span class="o">=</span>cache				<span class="c1"># 定义如何使用物理机缓存来访问块数据，其可用值有none、writeback、unsafe和writethrough四个</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">format</span><span class="o">=</span>format			<span class="c1"># 指定映像文件的格式，具体格式可参见qemu-img命令</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">-boot <span class="o">[</span><span class="nv">order</span><span class="o">=</span>drives<span class="o">][</span>,once<span class="o">=</span>drives<span class="o">][</span>,menu<span class="o">=</span>on<span class="p">|</span>off<span class="o">]</span>	<span class="c1"># 定义启动设备的引导次序，每种设备使用一个字符表示：不同的架构所支持的设备及其表示字符不尽相同，在x86 PC架构上，a、b表示软驱，c表示第一个光驱设备，n-p表示网络适配器，默认为硬盘设备。例如：-boot order=dc,once=d</span>
+</span></span></code></pre></div><p><strong>qemu显示选项</strong></p>
+<p>显示选项用于定义虚拟机启动后的显示接口相关类型及属性等。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">SDL 
+</span></span><span class="line"><span class="cl"> -sdl			<span class="c1"># 启用SDL</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">VNC
+</span></span><span class="line"><span class="cl"> -vnc display <span class="o">[</span>option，option<span class="o">]</span>	<span class="c1"># 默认情况下，qemu使用SDL显示VGA输出；使用-vnc选项，可以让qemu监听在vnc上，并将VGA输出重定向至vnc会话，使用此选项时，必须使用-k选项指定键盘布局类型;其中有许多子选项，具体请参考qemu的手册</span>
+</span></span><span class="line"><span class="cl">    display
+</span></span><span class="line"><span class="cl">        1、host:N				<span class="c1"># N为控制台号</span>
+</span></span><span class="line"><span class="cl">            192.168.1.1:1		<span class="c1"># 5900为起始端口</span>
+</span></span><span class="line"><span class="cl">        2、unix:/path/to/socket_file					<span class="c1"># 监听在套接字</span>
+</span></span><span class="line"><span class="cl">        3、none					<span class="c1"># 不显示</span>
+</span></span><span class="line"><span class="cl">    option
+</span></span><span class="line"><span class="cl">        password				<span class="c1"># 连接时需要验证密码，设定密码通过monitor接口使用change</span>
+</span></span><span class="line"><span class="cl">        reverse					<span class="c1"># “反向”连接至某处于监听状态的vncview上</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">-vga <span class="nb">type</span>		<span class="c1"># 指定要仿真的VGA接口类型，常见的类型有：</span>
+</span></span><span class="line"><span class="cl">	cirrus: Cirrus Logic GD5446显示卡
+</span></span><span class="line"><span class="cl">	std：带有Bochs VBI扩展的标准VGA显示卡
+</span></span><span class="line"><span class="cl">	vmware：VMware SVGA-II兼容的显示适配器
+</span></span><span class="line"><span class="cl">	qxl：QXL半虚拟化显示卡：与VGA兼容，在Guest中安装qxl驱动后能以很好的方式工作，在使用spice协议时推荐使用此类型
+</span></span><span class="line"><span class="cl">	none：禁用VGA卡
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">-monitor stdio	<span class="c1"># 在标准输入输出上显示monitor界面</span>
+</span></span><span class="line"><span class="cl">-nographic		<span class="c1"># 默认情况下，qemu使用SDL来显示VGA输出，而此选项用于禁止图形接口，此时，qemu类似一个简单的命令行程序，其仿真串口设备将被重定向到控制台</span>
+</span></span><span class="line"><span class="cl">-curses			<span class="c1"># 禁止图形接口，并使用curses/ncurses作为交互接口</span>
+</span></span><span class="line"><span class="cl">-alt-grab		<span class="c1"># 使用Ctrl+Alt+Shift组合键释放鼠标</span>
+</span></span><span class="line"><span class="cl">-ctrl-grab		<span class="c1"># 使用右Ctrl键释放鼠标</span>
+</span></span><span class="line"><span class="cl">-spice option<span class="o">[</span>,option<span class="o">[</span>,...<span class="o">]]</span>	<span class="c1"># 启用spice远程桌面协议：其中有许多子选项，具体请参照qemu-kvm手册。</span>
+</span></span></code></pre></div><p><strong>网络属性相关选项</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">nic     <span class="c1">#定义网络接口</span>
+</span></span><span class="line"><span class="cl">-net nic <span class="o">[</span>,vlan<span class="o">=</span>n,macaddr<span class="o">=</span>n,model<span class="o">=</span>type,name<span class="o">=</span>name,addr<span class="o">=</span>addr,vectors<span class="o">=</span>v<span class="o">]</span>		<span class="c1"># 创建一个新的网卡设备并连接至vlan n中：PC架构上默认的NIC为e1000，macaddr用于为其制定mac地址，name用于指定一个在监控时显示的网上设备名称；qemu可以模拟多个类型的网卡设备，如virtio、i82557b、i82559er、ne2k_isa、pcnet、rtl8139、e1000、smc91c111、lance及mcf_fec等；不过，不同平台架构上，其支持的类型可能只包含前述列表中的一部分，可以使用qemu-system-x86_64 -net nic,model=?来获取当前平台支持的类型。</span>
+</span></span><span class="line"><span class="cl">    vlan		<span class="c1"># vlan号</span>
+</span></span><span class="line"><span class="cl">    macaddr		<span class="c1"># mac地址(mac 默认不变)</span>
+</span></span><span class="line"><span class="cl">    model		<span class="c1"># e1000 virtio</span>
+</span></span><span class="line"><span class="cl">    name		<span class="c1"># 设备名</span>
+</span></span><span class="line"><span class="cl">    addr		<span class="c1"># ip地址</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">tap     <span class="c1">#nic管理虚拟机中的接口，tap就是管理宿主机上的对应接口</span>
+</span></span><span class="line"><span class="cl">-net tap<span class="o">[</span>,vlan<span class="o">=</span>n<span class="o">][</span>,name<span class="o">=</span>name<span class="o">][</span>,fd<span class="o">=</span>h<span class="o">][</span>,ifname<span class="o">=</span>name<span class="o">][</span>,script<span class="o">=</span>file<span class="o">][</span>,downscript<span class="o">=</span>dfile<span class="o">]</span>		<span class="c1"># 通过物理机的TAP网络接口连接至vlan n中，使用script=file指定的脚本（默认为/etc/qemu-ifup）来配置当前网络接口，并使用downscript=file指定的脚本(默认为/etc/qemu-ifdown)来撤销接口配置；使用script=no和downscript=no可分别用来禁止执行脚本。</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">user
+</span></span><span class="line"><span class="cl">-net user<span class="o">[</span>,option<span class="o">][</span>,option<span class="o">][</span>,...<span class="o">]</span>：在用户模式配置网络栈，其不依赖于管理权限；有效选项有：
+</span></span><span class="line"><span class="cl">	<span class="nv">vlan</span><span class="o">=</span>n			<span class="c1"># 连接至vlan n，默认n=0</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">name</span><span class="o">=</span>name		<span class="c1"># 指定接口的显示名称，常用于监控模式中</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">net</span><span class="o">=</span>addr<span class="o">[</span>/mask<span class="o">]</span>	<span class="c1"># 设定GuestOS中可见的IP网络，掩码可选，默认为10.0.2.0/8</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">host</span><span class="o">=</span>addr		<span class="c1"># 指定GuestOS中看到的物理机的IP地址，默认为指定网络中的第二个，即x.x.x.2</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">dhcpstart</span><span class="o">=</span>addr	<span class="c1"># 指定DHCP服务地址池中16个地址的起始IP，默认为第16个至第31个，即x.x.x.16-x.x.x.31</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">dns</span><span class="o">=</span>addr		<span class="c1"># 指定GuestOS可见的dns服务器地址，默认为GuestOS网络中的第3个地址，即x.x.x.3</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">tftp</span><span class="o">=</span>dir		<span class="c1"># 激活内置的tftp服务器，并使用指定的dir作为tftp服务器的默认根目录</span>
+</span></span><span class="line"><span class="cl">	<span class="nv">bootfile</span><span class="o">=</span>file	<span class="c1"># BOOTP文件名称，用于实现网络引导GuestOS,如：qemu -hda linux.img -boot n -net user,tftp=/tftpserver/pub,bootfile=/pexlinux.0</span>
+</span></span></code></pre></div><p><strong>kvm的网络模型</strong></p>
+<pre tabindex="0"><code>1、隔离模型
+    使用bridge连接各个虚拟机但不关联物理网卡
+2、nat模型
+    在路由模型上添加nat规则 iptables
+3、路由模型
+    在隔离模型的基础之上添加一个虚拟网卡，开启路由转发功能。
+    需要虚拟机指定虚拟网卡的ip为网关
+    需要在要通信的主机或路由添加回复报文的路由条目
+4、桥接模型
+    在隔离模型的bridge上添加物理网卡
+    将物理网卡变为bridge，将原来的IP放到一张虚拟网卡并添加到桥上
+dhcp        服务器
+namespace   名称空间
+</code></pre><p><strong>手动创建bridge</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">yum install bridge-utils    <span class="c1">#安装工具包</span>
+</span></span><span class="line"><span class="cl">rpm -ql bridge-utils    <span class="c1">#查看utils释放的文件</span>
+</span></span><span class="line"><span class="cl">brctl -h                <span class="c1">#查看帮助</span>
+</span></span><span class="line"><span class="cl">brctl addbr br0         <span class="c1">#添加网桥</span>
+</span></span><span class="line"><span class="cl">ifconfig -a             <span class="c1">#查看全部接口</span>
+</span></span><span class="line"><span class="cl">brctl stp br0 off       <span class="c1">#关闭生成树</span>
+</span></span><span class="line"><span class="cl">ip link <span class="nb">set</span> br0 up      <span class="c1">#启动br0设备</span>
+</span></span><span class="line"><span class="cl">ip addr del 192.168.1.50/24 dev ens33   <span class="c1">#拆除物理网卡ip</span>
+</span></span><span class="line"><span class="cl">ip addr add 192.168.1.50/24 dev br0     <span class="c1">#添加ip</span>
+</span></span><span class="line"><span class="cl">ip a                    <span class="c1">#ip是否添加成功</span>
+</span></span><span class="line"><span class="cl">ping 192.168.1.50       <span class="c1">#检查ip可用</span>
+</span></span><span class="line"><span class="cl">ip link <span class="nb">set</span> dev ens33 master br0        <span class="c1">#物理网卡加入桥接设备</span>
+</span></span><span class="line"><span class="cl">brctl show      <span class="c1">#查看是否加入桥</span>
+</span></span></code></pre></div><p><a href="https://www.ibm.com/docs/zh/linux-on-systems?topic=linuxonibm/liabp/liabpcommonvirsh.html"   target="_blank">
+    常用的 virsh 命令选项</a></p>
 <p><strong>Resources</strong></p>
 <ul>
 <li><a href="https://www.tecmint.com/install-qemu-kvm-ubuntu-create-virtual-machines/"   target="_blank">
@@ -1298,6 +1436,16 @@ window.MathJax = {
     在QEMU（快速模拟器）上的虚拟机中运行Ubuntu</a></li>
 <li><a href="https://itsfoss.com/qemu-ubuntu/"   target="_blank">
     在 Ubuntu 上安装和使用 Qemu</a></li>
+<li><a href="https://www.cnblogs.com/luokeli0755/articles/17861638.html"   target="_blank">
+    制作自动安装Ubuntu22.04-server的iso镜像以及安装过程详解</a></li>
+<li><a href="https://juejin.cn/post/7257784425044328508"   target="_blank">
+    Linux实现KVM+QEMU+libvirt的虚拟机环境 并使用virsh对虚拟机进行管理</a></li>
+<li><a href="https://yadom.in/archives/automatic-os-installation.html"   target="_blank">
+    全自动化系统安装</a></li>
+<li><a href="https://canonical-subiquity.readthedocs-hosted.com/en/latest/intro-to-autoinstall.html"   target="_blank">
+    Introduction to autoinstall</a></li>
+<li><a href="https://www.cnblogs.com/super-age/p/14952469.html"   target="_blank">
+    ubuntu20.04打包iso镜像自动安装</a></li>
 </ul>
 <h2 class="relative group">其他 
     <div id="其他" class="anchor"></div>
