@@ -171,6 +171,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://WFUing.github.io/posts/devoops/</loc>
+    <lastmod>2024-04-19T20:40:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/devoops/git/</loc>
+    <lastmod>2024-04-19T20:40:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/devoops/git/gnutls_handshake/</loc>
+    <lastmod>2024-04-19T20:40:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2024-04-19T12:51:58+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -221,12 +239,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/ai/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/</loc>
     <lastmod>2024-04-14T20:22:18+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/devoops/</loc>
-    <lastmod>2024-04-14T19:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1631,12 +1643,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/serverless/alicloud-fc-api/</loc>
     <lastmod>2023-10-20T12:47:12+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/devoops/git/</loc>
-    <lastmod>2023-10-19T20:58:09+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

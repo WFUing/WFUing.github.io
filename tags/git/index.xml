@@ -7,14 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 19 Oct 2023 20:40:43 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Apr 2024 20:40:43 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跳坑 gnutls_handshake() failed: The TLS connection was non-properly terminated.</title>
+      <link>https://WFUing.github.io/posts/devoops/git/gnutls_handshake/</link>
+      <pubDate>Fri, 19 Apr 2024 20:40:43 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/devoops/git/gnutls_handshake/</guid>
+      <description>Git 帮助手册</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/devoops/git/gnutls_handshake/featured.png" />
+    </item>
+    
     <item>
       <title>Git Tutorial</title>
       <link>https://WFUing.github.io/posts/devoops/git/git-tutorial/</link>
       <pubDate>Thu, 19 Oct 2023 20:40:43 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/devoops/git/git-tutorial/</guid>
-      <description>Git 帮助手册 # 国外网友制作了一张 Git Cheat Sheet，总结很精炼，各位不妨收藏一下。</description>
+      <description>Git 帮助手册</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/devoops/git/git-tutorial/featured.png" />
     </item>
     
