@@ -108,7 +108,7 @@
     "keywords": ["kubevela"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "246"
+    "wordCount": "525"
   }]
   </script>
 
@@ -984,7 +984,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>246 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>525 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1134,17 +1134,86 @@ window.MathJax = {
 <ul>
 <li><strong>docker</strong>：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/"   target="_blank">
     清华源下载docket-ce</a></li>
-<li><strong>containerd</strong>：https://containerd.io/downloads/</li>
+<li><strong>containerd</strong>：https://containerd.io/downloads/ <code>apt install constanerd</code></li>
 </ul>
-<p>设置代理</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim ./bashrc
+<p>containerd设置代理</p>
+<p>我的版本是这样的，</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/v.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这里以通过 systemd 安装的 containerd 为例。</p>
+<p>containerd 的配置一般位于 <code>/etc/containerd/config.toml</code> 下，service 文件位于：<code>/lib/systemd/system/containerd.service</code> 配置 Proxy 可以通过 service 环境变量方式配置，具体如下：</p>
+<p>修改 <code>/etc/containerd/config.toml</code> 文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 1 </span>
+</span></span><span class="line"><span class="cl"><span class="c"># 阿里云镜像</span>
+</span></span><span class="line"><span class="cl"><span class="nx">sandbox_image</span> <span class="p">=</span> <span class="s2">&#34;registry.k8s.io/pause:3.8&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">改为</span>
+</span></span><span class="line"><span class="cl"><span class="nx">sandbox_image</span> <span class="p">=</span> <span class="s2">&#34;registry.aliyuncs.com/k8sxio/pause:3.8&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 2</span>
+</span></span><span class="line"><span class="cl"><span class="nx">SystemdCgroup</span> <span class="p">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl"><span class="err">修改为</span>
+</span></span><span class="line"><span class="cl"><span class="nx">SystemdCgroup</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 3</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 配置镜像加速</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 上下级配置,缩进两个空格</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">plugins</span><span class="p">.</span><span class="s2">&#34;io.containerd.grpc.v1.cri&#34;</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">mirrors</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">plugins</span><span class="p">.</span><span class="s2">&#34;io.containerd.grpc.v1.cri&#34;</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">mirrors</span><span class="p">.</span><span class="s2">&#34;docker.io&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoint</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https://bqr1dr1n.mirror.aliyuncs.com&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">plugins</span><span class="p">.</span><span class="s2">&#34;io.containerd.grpc.v1.cri&#34;</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">mirrors</span><span class="p">.</span><span class="s2">&#34;k8s.gcr.io&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">endpoint</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;https://registry.aliyuncs.com/k8sxio&#34;</span><span class="p">]</span>
+</span></span></code></pre></div><p>创建或编辑文件：<code>/lib/systemd/system/containerd.service.d/http-proxy.conf</code></p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">[Service]
+Environment=&#34;HTTP_PROXY=http://127.0.0.1:7890&#34;
+Environment=&#34;HTTPS_PROXY=http://127.0.0.1:7890&#34;
+Environment=&#34;NO_PROXY=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local,.ewhisper.cn,&lt;nodeCIDR&gt;,&lt;APIServerInternalURL&gt;,&lt;serviceNetworkCIDRs&gt;,&lt;etcdDiscoveryDomain&gt;,&lt;clusterNetworkCIDRs&gt;,&lt;platformSpecific&gt;,&lt;REST_OF_CUSTOM_EXCEPTIONS&gt;&#34;
+</code></pre><p>这里有个推荐 NO_PROXY 配置：</p>
+<ul>
+<li>本地地址和网段：<code>localhost</code> 和 <code>127.0.0.1</code> 或 <code>127.0.0.0/8</code></li>
+<li>Kubernetes 的默认域名后缀：<code>.svc</code> 和 <code>.cluster.local</code></li>
+<li>Kubernetes Node 的网段甚至所有应该不用 proxy 访问的 node 网段：<code>&lt;nodeCIDR&gt;</code></li>
+<li>APIServer 的内部 URL: <code>&lt;APIServerInternalURL&gt;</code></li>
+<li>Service Network: <code>&lt;serviceNetworkCIDRs&gt;</code></li>
+<li>（如有）etcd 的 Discovery Domain: <code>&lt;etcdDiscoveryDomain&gt;</code></li>
+<li>Cluster Network: <code>&lt;clusterNetworkCIDRs&gt;</code></li>
+<li>其他特定平台相关网段(如 DevOps, Git/制品仓库。..): <code>&lt;platformSpecific&gt;</code></li>
+<li>其他特定 NO_PROXY 网段：<code>&lt;REST_OF_CUSTOM_EXCEPTIONS&gt;</code></li>
+<li>常用内网网段：
+<ul>
+<li><code>10.0.0.0/8</code></li>
+<li><code>172.16.0.0/12</code></li>
+<li><code>192.168.0.0/16</code></li>
+</ul>
+</li>
+</ul>
+<p>系统设置代理</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim ~/.bashrc
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">function</span> setproxy<span class="o">()</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>proxy.i2ec.top:21087
-</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>proxy.i2ec.top:21087export 
-</span></span><span class="line"><span class="cl">  <span class="nv">no_proxy</span><span class="o">=</span>*.i2ec.top,*.local,localhost,127.0.0.1,127.0.0.0/8,172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>proxy.i2ec.top:21087
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">no_proxy</span><span class="o">=</span>*.i2ec.top,*.local,localhost,127.0.0.1,127.0.0.0/8,172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">function</span> unsetproxy<span class="o">()</span> <span class="o">{</span>
@@ -1152,6 +1221,8 @@ window.MathJax = {
 </span></span><span class="line"><span class="cl">  <span class="nb">unset</span> https_proxy
 </span></span><span class="line"><span class="cl">  <span class="nb">unset</span> no_proxy
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># setproxy()</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/tools/bin&#34;</span>
 </span></span><span class="line"><span class="cl">
@@ -1223,7 +1294,134 @@ window.MathJax = {
 </span></span></code></pre></div><p>退出后更新软件包，下载 k8s</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update
 </span></span><span class="line"><span class="cl">sudo apt-get install -y <span class="nv">kubelet</span><span class="o">=</span>1.27.0-00 <span class="nv">kubeadm</span><span class="o">=</span>1.27.0-00 <span class="nv">kubectl</span><span class="o">=</span>1.27.0-00
-</span></span></code></pre></div><p><strong>安装网络插件calico</strong></p>
+</span></span></code></pre></div><p><strong>初始化k8s</strong></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/eee.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这次初始化遇到三个问题</p>
+<p>首先是 <code>[WARNING Swap]: swap is enabled; production deployments should disable swap unless testing the NodeSwap feature gate of the kubelet</code></p>
+<p>需要把虚拟存储交换关掉</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo swapoff -a
+</span></span><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo vim /etc/fstab
+</span></span><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo mount -a
+</span></span><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ free -h
+</span></span><span class="line"><span class="cl">               total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">内存：          28Gi       4.6Gi       532Mi       241Mi        23Gi        23Gi
+</span></span><span class="line"><span class="cl">交换：            0B          0B          0B
+</span></span></code></pre></div><p>然后是 <code>[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables does not exist</code>，这是之前配置的 br_netfilter 没有启动，运行下面的命令即可。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo modprobe br_netfilter
+</span></span><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ <span class="nb">echo</span> <span class="m">1</span> <span class="p">|</span> sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
+</span></span><span class="line"><span class="cl"><span class="m">1</span>
+</span></span></code></pre></div><p>这个问题同理 <code>[ERROR FileContent--proc-sys-net-ipv4-ip_forward]: /proc/sys/net/ipv4/ip_forward contents are not set to 1</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ <span class="nb">echo</span> <span class="m">1</span> <span class="p">|</span> sudo tee /proc/sys/net/ipv4/ip_forward
+</span></span><span class="line"><span class="cl"><span class="m">1</span>
+</span></span></code></pre></div><p>然后可以先<strong>拉取镜像</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo kubeadm config images list
+</span></span><span class="line"><span class="cl">I0503 08:02:18.239000   <span class="m">90461</span> version.go:256<span class="o">]</span> remote version is much newer: v1.30.0<span class="p">;</span> falling back to: stable-1.27
+</span></span><span class="line"><span class="cl">W0503 08:02:19.105381   <span class="m">90461</span> images.go:80<span class="o">]</span> could not find officially supported version of etcd <span class="k">for</span> Kubernetes v1.27.13, falling back to the nearest etcd version <span class="o">(</span>3.5.7-0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-apiserver:v1.27.13
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-controller-manager:v1.27.13
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-scheduler:v1.27.13
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-proxy:v1.27.13
+</span></span><span class="line"><span class="cl">registry.k8s.io/pause:3.9
+</span></span><span class="line"><span class="cl">registry.k8s.io/etcd:3.5.7-0
+</span></span><span class="line"><span class="cl">registry.k8s.io/coredns/coredns:v1.10.1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">(</span>base<span class="o">)</span> wds@wds-NucBox-K8:~$ sudo kubeadm config images pull --image-repository registry.aliyuncs.com/google_containers
+</span></span></code></pre></div><p>若是遇到下面的问题</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/eeq.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>你可以用我上面的命令，用<code>--image-repository option</code>来指定拉去的仓库</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/aa.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>然后初始化 <code>kubeadm init</code></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/virtualization/k8s/k8s_deployment/dd.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p><strong>安装网络插件calico</strong></p>
 <p>可能会用到 <a href="https://docs.tigera.io/calico/latest/about"   target="_blank">
     TIFERA</a></p>
 <p>下面给出 <a href="./calico.yaml"  >
