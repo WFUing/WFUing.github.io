@@ -3,13 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</loc>
-    <lastmod>2024-05-02T10:46:05+08:00</lastmod>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/ap-vm/</loc>
+    <lastmod>2024-05-05T08:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-05-05T08:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-05-05T08:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/</loc>
+    <lastmod>2024-05-05T08:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</loc>
     <lastmod>2024-05-02T10:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -27,19 +45,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-04-30T08:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/architecture/virtualization/ovs/</loc>
-    <lastmod>2024-04-30T08:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/virtualization/</loc>
     <lastmod>2024-04-30T08:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
