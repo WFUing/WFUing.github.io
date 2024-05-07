@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "294"
+    "wordCount": "598"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-05 08:11:01 &#43;0800 &#43;0800">5 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>294 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-05-05 08:11:01 &#43;0800 &#43;0800">5 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>598 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1075,6 +1075,7 @@ window.MathJax = {
     <li><a href="#配置环境">配置环境</a></li>
     <li><a href="#配置虚拟webcam">配置虚拟webcam</a></li>
     <li><a href="#虚拟机扩容">虚拟机扩容</a></li>
+    <li><a href="#配置-open-vswitch">配置 open-vswitch</a></li>
     <li><a href="#运行-actor">运行 Actor</a></li>
   </ul>
 </nav>
@@ -1093,6 +1094,7 @@ window.MathJax = {
     <li><a href="#配置环境">配置环境</a></li>
     <li><a href="#配置虚拟webcam">配置虚拟webcam</a></li>
     <li><a href="#虚拟机扩容">虚拟机扩容</a></li>
+    <li><a href="#配置-open-vswitch">配置 open-vswitch</a></li>
     <li><a href="#运行-actor">运行 Actor</a></li>
   </ul>
 </nav>
@@ -1177,16 +1179,16 @@ window.MathJax = {
 <p><strong>安装Go环境</strong></p>
 <p>有两种方法</p>
 <ul>
-<li>APT 安装
-<ul>
-<li><code>sudo apt install golang-go</code>，可以直接安装，安装的cache在<code>/var/lib/apt</code>，项目目录在<code>/usr/local</code></li>
-</ul>
-</li>
 <li>Go 官网推荐的方法
 <ul>
 <li><code>rm -rf /usr/local/go &amp;&amp; curl -OL https://golang.org/dl/go1.22.2.linux-amd64.tar.gz &amp;&amp; tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz</code></li>
 <li><code>sudo vim $HOME/.profile</code> ，添加 <code>export PATH=$PATH:/usr/local/go/bin</code></li>
 <li><code>source $HOME/.profile</code></li>
+</ul>
+</li>
+<li>APT 安装
+<ul>
+<li><code>sudo apt install golang-go</code>，可以直接安装，安装的cache在<code>/var/lib/apt</code>，项目目录在<code>/usr/local</code>，具体没有考证过，已使用第一种方法安装了</li>
 </ul>
 </li>
 </ul>
@@ -1224,7 +1226,7 @@ window.MathJax = {
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> gocv
 </span></span><span class="line"><span class="cl">make install
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/gocv.io/x/gocv
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/go/src/gocv.io/x/gocv
 </span></span><span class="line"><span class="cl">go run ./cmd/version/main.go
 </span></span></code></pre></div><p>输出</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">gocv version: 0.36.1
@@ -1305,6 +1307,113 @@ WantedBy=multi-user.target
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo lvextend -L +10G /dev/mapper/vgname-lvname
 </span></span><span class="line"><span class="cl"><span class="c1"># 或者扩展到所有可用空间</span>
 </span></span><span class="line"><span class="cl">sudo lvextend -l +100%FREE /dev/mapper/vgname-lvname
+</span></span></code></pre></div><h2 class="relative group">配置 open-vswitch 
+    <div id="配置-open-vswitch" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e9%85%8d%e7%bd%ae-open-vswitch" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>力荐<a href="https://kiosk007.top/post/%E4%BD%BF%E7%94%A8open-vswitch%E6%9E%84%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%BD%91%E7%BB%9C/#openvswtich"   target="_blank">
+    使用Open-vSwitch创建虚拟网络</a>这篇博文，写的很全</p>
+<p>在宿主机上下载</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt install openvswitch-switch
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">systemctl start openvswitch-switch.service
+</span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> openvswitch-switch.service
+</span></span></code></pre></div><p>这边列出 <code>ovs-vsctl</code> 的常用命令</p>
+<ul>
+<li>添加网桥：<code>ovs-vsctl add-br br0</code></li>
+<li>列出所有网桥：<code>ovs-vsctl list-br</code></li>
+<li>判断网桥是否存在：<code>ovs-vsctl br-exists br0</code></li>
+<li>将物理网卡挂接到网桥：<code>ovs-vsctl add-port br0 eth0</code></li>
+<li>列出网桥中的所有端口：<code>ovs-vsctl list-ports br0</code></li>
+<li>列出所有挂接到网卡上的网桥：<code>ovs-vsctl port-to-br eth0</code></li>
+<li>查看OVS 状态：<code>ovs-vsctl show</code></li>
+<li>查看OVS 的所有Interface、Port 等：<code>ovs-vsctl list (Interface|Port)</code> 或 <code>ovs-vsctl list Port ens37</code></li>
+<li>删除网桥上已经挂接的网口：<code>vs-vsctl del-port br0 eth0</code></li>
+<li>删除网桥：<code>ovs-vsctl del-br br0</code></li>
+</ul>
+<p><strong>配置无密码sudo</strong></p>
+<p>如果你需要频繁地运行需要超级用户权限的命令（如 <code>ip</code>, <code>ovs-vsctl</code>, <code>ovs-ofctl</code>），有几种方法可以方便地管理这些权限</p>
+<p>通过 <code>which &lt;指令名&gt;</code> 查找指令目录</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 使用 visudo 命令以安全方式编辑 sudoers 文件</span>
+</span></span><span class="line"><span class="cl">sudo visudo
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在打开的文件中添加以下行，替换 &#39;username&#39; 为你的用户名</span>
+</span></span><span class="line"><span class="cl">username <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者为特定命令配置无密码 sudo：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">username <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: /usr/sbin/ip, /usr/bin/ovs-vsctl, /usr/bin/ovs-ofctl
+</span></span></code></pre></div><p><strong>启用 Linux 系统的 IP 转发功能</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo sysctl -w net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;net.ipv4.ip_forward = 1&#34;</span> <span class="p">|</span> sudo tee -a /etc/sysctl.conf
+</span></span></code></pre></div><p><strong>创建ovs网桥</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="k">if</span> ! sudo ovs-vsctl br-exists ovsbr0<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  sudo ovs-vsctl add-br ovsbr0
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 删除网桥</span>
+</span></span><span class="line"><span class="cl">sudo ovs-vsctl del-br ovsbr0
+</span></span></code></pre></div><p><strong>配置ovs网桥的ip地址</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ip addr add 192.168.100.1/24 dev ovsbr0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo ip addr del 192.168.100.1/24 dev ovsbr0
+</span></span></code></pre></div><p>将虚拟机加入到网桥以后，可以在先查看下端口信息 <code>sudo ovs-vsctl show</code>。</p>
+<p>若端口已经加入，则可以实现选择在虚拟机里设置静态ip或者动态ip</p>
+<p><strong>手动配置 IP 地址</strong></p>
+<p>如果你的网络环境支持静态 IP 或者你已经有指定的 IP 地址范围，你可以手动为 ens3 设置 IP 地址。在虚拟机中执行以下命令：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ip addr add 192.168.100.10/24 dev ens3
+</span></span><span class="line"><span class="cl">sudo ip link <span class="nb">set</span> ens3 up
+</span></span></code></pre></div><p>此外，你还需要设置默认网关（通常是你的网络的路由器地址）：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ip route add default via 192.168.100.1
+</span></span></code></pre></div><p><strong>使用 DHCP 自动获取 IP 地址</strong></p>
+<p>在宿主机上安装dhcp服务器</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install isc-dhcp-server
+</span></span></code></pre></div><p>配置 DHCP 服务器</p>
+<p>编辑 DHCP 配置文件 <code>/etc/dhcp/dhcpd.conf</code>，添加适用于你的网络环境的配置。例如，如果你的 bridge 接口名为 <code>ovsbr0</code>，且想要分配的 IP 范围在 <code>192.168.100.50</code> 到 <code>192.168.100.99</code> 之间：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/dhcp/dhcpd.conf
+</span></span></code></pre></div><p>添加内容</p>
+<pre tabindex="0"><code>subnet 192.168.100.0 netmask 255.255.255.0 {
+  range 192.168.100.50 192.168.100.99;
+  option routers 192.168.100.1;
+  option subnet-mask 255.255.255.0;
+  option domain-name-servers 8.8.8.8, 8.8.4.4;
+  default-lease-time 600;
+  max-lease-time 7200;
+}
+</code></pre><p>指定 DHCP 服务的网络接口</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/default/isc-dhcp-server
+</span></span></code></pre></div><p>添加或修改以下行，指定你的 bridge 接口：</p>
+<pre tabindex="0"><code>INTERFACES=&#34;ovsbr0&#34;
+</code></pre><p>启动 DHCP 服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart isc-dhcp-server
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> isc-dhcp-server
+</span></span></code></pre></div><p><strong>配置虚拟机</strong></p>
+<p>在新版的ubuntu中，Netplan 是默认的网络配置工具：</p>
+<p>找到 Netplan 的配置文件，通常在 <code>/etc/netplan/</code> 目录下。打开这个文件进行编辑：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/netplan/01-netcfg.yaml
+</span></span></code></pre></div><p>确保配置如下，以允许 <code>ens3</code> 接口使用 DHCP：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">network</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">renderer</span><span class="p">:</span><span class="w"> </span><span class="l">networkd</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ethernets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ens3</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">dhcp4</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>应用配置更改</p>
+<pre tabindex="0"><code>sudo netplan apply
+</code></pre><p>老版需要修改 <code>/etc/network/interfaces</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/network/interfaces
+</span></span></code></pre></div><p>确保有以下行以启用 DHCP：</p>
+<pre tabindex="0"><code>auto ens3
+iface ens3 inet dhcp
+</code></pre><p>重启网络服务以应用更改：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart networking
 </span></span></code></pre></div><h2 class="relative group">运行 Actor 
     <div id="运行-actor" class="anchor"></div>
     
