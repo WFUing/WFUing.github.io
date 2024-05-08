@@ -74,8 +74,8 @@
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-05-05T08:11:01+08:00">
-    <meta property="article:modified_time" content="2024-05-05T08:11:01+08:00">
+    <meta property="article:published_time" content="2024-05-08T08:11:01+08:00">
+    <meta property="article:modified_time" content="2024-05-08T08:11:01+08:00">
     <meta property="og:image" content="https://WFUing.github.io/posts/architecture/virtualization/ap-vm/featured.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -99,15 +99,15 @@
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-05-05T08:11:01\u002b08:00",
-    "datePublished": "2024-05-05T08:11:01\u002b08:00",
+    "dateCreated": "2024-05-08T08:11:01\u002b08:00",
+    "datePublished": "2024-05-08T08:11:01\u002b08:00",
     
-    "dateModified": "2024-05-05T08:11:01\u002b08:00",
+    "dateModified": "2024-05-08T08:11:01\u002b08:00",
     
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "598"
+    "wordCount": "652"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-05 08:11:01 &#43;0800 &#43;0800">5 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>598 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>652 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -1367,10 +1367,39 @@ WantedBy=multi-user.target
 <p>若端口已经加入，则可以实现选择在虚拟机里设置静态ip或者动态ip</p>
 <p><strong>手动配置 IP 地址</strong></p>
 <p>如果你的网络环境支持静态 IP 或者你已经有指定的 IP 地址范围，你可以手动为 ens3 设置 IP 地址。在虚拟机中执行以下命令：</p>
+<p><strong>很多时候的问题都是接口没有激活，得先up一下</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ip addr add 192.168.100.10/24 dev ens3
 </span></span><span class="line"><span class="cl">sudo ip link <span class="nb">set</span> ens3 up
 </span></span></code></pre></div><p>此外，你还需要设置默认网关（通常是你的网络的路由器地址）：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ip route add default via 192.168.100.1
+</span></span></code></pre></div><p>可以写成开机自启动，开机的时候挂载一个hdd的iso</p>
+<p>使用 vim 创建脚本文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /usr/local/bin/mount_and_apply_netplan.sh
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>mount /dev/sr0 /mnt
+</span></span><span class="line"><span class="cl">cp /mnt/network-config /etc/netplan/01-netcfg.yaml
+</span></span><span class="line"><span class="cl">netplan apply
+</span></span></code></pre></div><p>使脚本可执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo chmod +x /usr/local/bin/mount_and_apply_netplan.sh
+</span></span></code></pre></div><p>创建 systemd 服务单元文件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/systemd/system/mount_netplan.service
+</span></span></code></pre></div><pre tabindex="0"><code>[Unit]
+Description=Mount sr0 and apply netplan configuration
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mount_and_apply_netplan.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>启用并启动服务</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> mount_netplan.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl start mount_netplan.service
 </span></span></code></pre></div><p><strong>使用 DHCP 自动获取 IP 地址</strong></p>
 <p>在宿主机上安装dhcp服务器</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt update
