@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "652"
+    "wordCount": "713"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>652 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>713 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -1250,6 +1250,8 @@ window.MathJax = {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ffmpeg -loop <span class="m">1</span> -re -i /media/wds/zhitai/images.jpeg -f v4l2 -vcodec rawvideo -pix_fmt yuv420p /dev/video10
 </span></span></code></pre></div><p>验证webcam输出</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ffplay /dev/video10
+</span></span><span class="line"><span class="cl"><span class="c1"># 或</span>
+</span></span><span class="line"><span class="cl">fswebcam -d /dev/video0 output.jpg
 </span></span></code></pre></div><p><strong>设置开机启动服务</strong></p>
 <p><em>配置 v4l2loopback 模块自动加载</em></p>
 <p>创建模块配置文件</p>
@@ -1269,15 +1271,28 @@ Description=Start Virtual Webcam
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/ffmpeg -stream_loop -1 -re -i /home/ubuntu/video.mp4 -map 0:v -f v4l2 /dev/video10
+ExecStart=/usr/bin/ffmpeg -stream_loop -1 -re -i /home/ubuntu/video.mp4 -map 0:v -vcodec mjpeg -q:v 2 -f v4l2 /dev/video10
 Restart=always
 RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-</code></pre><p>启用并启动服务</p>
+</code></pre><ul>
+<li><code>-vcodec mjpeg</code>: 指定视频编解码器为 MJPEG。</li>
+<li><code>-q:v 2</code>: 设置视频质量，数值范围通常是 2-31，数值越小质量越高。你可以根据需要调整这个值以获得最佳质量和性能平衡。</li>
+<li><code>-stream_loop -1</code>: 使视频文件循环播放无限次。</li>
+<li><code>-re</code>: 按照原始帧率读取文件，模拟实时数据流。</li>
+<li><code>-i /home/ubuntu/video.mp4</code>: 指定输入文件。</li>
+<li><code>-map 0:v</code>: 从输入文件中选择视频流。</li>
+<li><code>-vcodec mjpeg</code>: 使用 MJPEG 编解码器，这是一种每帧都完整压缩的视频流格式，基于 JPEG。</li>
+<li><code>-q:v 2</code>: 设置 JPEG 压缩质量，数值越低质量越高。</li>
+<li><code>-f v4l2</code>: 指定输出格式为 Video4Linux2。</li>
+<li><code>/dev/video0</code>: 指定输出设备。</li>
+</ul>
+<p>启用并启动服务</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> virtual-webcam.service
-</span></span><span class="line"><span class="cl">sudo systemctl start virtual-web
+</span></span><span class="line"><span class="cl">sudo systemctl start virtual-cam.service
+</span></span><span class="line"><span class="cl">sudo systemctl restart virtual-cam.service
 </span></span></code></pre></div><p>重启即可</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">reboot
 </span></span></code></pre></div><h2 class="relative group">虚拟机扩容 
@@ -1453,8 +1468,8 @@ iface ens3 inet dhcp
     </span>        
     
 </h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">go run head/main.go
-</span></span><span class="line"><span class="cl">go run worker/main.go
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">go run head/main.go head --addr &lt;head_addr&gt; --port &lt;head_port&gt;
+</span></span><span class="line"><span class="cl">go run worker/main.go --addr &lt;worker_addr&gt; --remote_addr &lt;head_addr&gt; --remote_port &lt;head_port&gt;
 </span></span></code></pre></div>
         </div>
                 
