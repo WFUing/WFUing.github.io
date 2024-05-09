@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "883"
+    "wordCount": "935"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>883 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>935 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
   
 
   
@@ -1460,6 +1460,33 @@ WantedBy=multi-user.target
 iface ens3 inet dhcp
 </code></pre><p>重启网络服务以应用更改：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart networking
+</span></span></code></pre></div><p><strong>配置开机设置网络的服务</strong></p>
+<p>名称为 wfuing_network_init</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/wfuing_network_init.sh
+</span></span></code></pre></div><p>在编辑器中输入以下内容：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>mkdir -p /mnt
+</span></span><span class="line"><span class="cl">mount /dev/sr0 /mnt
+</span></span><span class="line"><span class="cl">cp /mnt/network-config /etc/netplan/01-netcfg.yaml
+</span></span><span class="line"><span class="cl">netplan apply
+</span></span></code></pre></div><p>给脚本执行权限：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo chmod +x /etc/wfuing_network_init.sh
+</span></span></code></pre></div><p>创建 systemd 服务文件：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/systemd/system/wfuing_network_init.service
+</span></span></code></pre></div><p>在编辑器中添加以下内容：</p>
+<pre tabindex="0"><code>[Unit]
+Description=Initialize network settings at startup
+
+[Service]
+Type=oneshot
+ExecStart=/etc/wfuing_network_init.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>启用并启动服务：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> wfuing_network_init.service
+</span></span><span class="line"><span class="cl">sudo systemctl start wfuing_network_init.service
 </span></span></code></pre></div><h2 class="relative group">libvirt操作 
     <div id="libvirt操作" class="anchor"></div>
     
