@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "713"
+    "wordCount": "883"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>713 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>883 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
   
 
   
@@ -1076,6 +1076,7 @@ window.MathJax = {
     <li><a href="#配置虚拟webcam">配置虚拟webcam</a></li>
     <li><a href="#虚拟机扩容">虚拟机扩容</a></li>
     <li><a href="#配置-open-vswitch">配置 open-vswitch</a></li>
+    <li><a href="#libvirt操作">libvirt操作</a></li>
     <li><a href="#运行-actor">运行 Actor</a></li>
   </ul>
 </nav>
@@ -1095,6 +1096,7 @@ window.MathJax = {
     <li><a href="#配置虚拟webcam">配置虚拟webcam</a></li>
     <li><a href="#虚拟机扩容">虚拟机扩容</a></li>
     <li><a href="#配置-open-vswitch">配置 open-vswitch</a></li>
+    <li><a href="#libvirt操作">libvirt操作</a></li>
     <li><a href="#运行-actor">运行 Actor</a></li>
   </ul>
 </nav>
@@ -1458,6 +1460,86 @@ WantedBy=multi-user.target
 iface ens3 inet dhcp
 </code></pre><p>重启网络服务以应用更改：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart networking
+</span></span></code></pre></div><h2 class="relative group">libvirt操作 
+    <div id="libvirt操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#libvirt%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>查看和管理虚拟机
+<ul>
+<li>列出所有虚拟机: <code>virsh list --all</code></li>
+<li>启动虚拟机: <code>virsh start &lt;vm_name&gt;</code></li>
+<li>关闭虚拟机: <code>virsh shutdown &lt;vm_name&gt;</code></li>
+<li>强制关闭虚拟机 (类似于断电): <code>virsh destroy &lt;vm_name&gt;</code></li>
+<li>重启虚拟机: <code>virsh reboot &lt;vm_name&gt;</code></li>
+<li>暂停虚拟机: <code>virsh suspend &lt;vm_name&gt;</code></li>
+<li>恢复暂停的虚拟机: <code>virsh resume &lt;vm_name&gt;</code></li>
+</ul>
+</li>
+<li>管理虚拟机快照
+<ul>
+<li>创建快照: <code>virsh snapshot-create-as &lt;vm_name&gt; &lt;snapshot_name&gt;</code></li>
+<li>列出所有快照: <code>virsh snapshot-list &lt;vm_name&gt;</code></li>
+<li>恢复快照: <code>virsh snapshot-revert &lt;vm_name&gt; &lt;snapshot_name&gt;</code></li>
+<li>删除快照: <code>virsh snapshot-delete &lt;vm_name&gt; &lt;snapshot_name&gt;</code></li>
+</ul>
+</li>
+<li>配置和资源管理
+<ul>
+<li>查看虚拟机配置: <code>virsh dumpxml &lt;vm_name&gt;</code></li>
+<li>编辑虚拟机配置: <code>virsh edit &lt;vm_name&gt;</code></li>
+<li>设置虚拟机自动启动: <code>virsh autostart &lt;vm_name&gt;</code></li>
+<li>取消虚拟机自动启动: <code>virsh autostart --disable &lt;vm_name&gt;</code></li>
+</ul>
+</li>
+<li>网络管理
+<ul>
+<li>列出所有网络: <code>virsh net-list --all</code></li>
+<li>启动一个网络: <code>virsh net-start &lt;network_name&gt;</code></li>
+<li>停止一个网络: <code>virsh net-destroy &lt;network_name&gt;</code></li>
+<li>创建网络: <code>virsh net-create &lt;xml_file&gt;</code></li>
+<li>编辑网络配置: <code>virsh net-edit &lt;network_name&gt;</code></li>
+</ul>
+</li>
+<li>存储管理
+<ul>
+<li>列出所有存储池: <code>virsh pool-list --all</code></li>
+<li>创建存储池: <code>virsh pool-create &lt;xml_file&gt;</code></li>
+<li>删除存储池: <code>virsh pool-destroy &lt;pool_name&gt;</code></li>
+<li>查看存储池信息: <code>virsh pool-info &lt;pool_name&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>如果要在启动一个pool路径下的虚拟机</p>
+<p>需要给 pool 路径上所有的文件夹目录赋权限，才能使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo chown -R libvirt-qemu:kvm /home/wfuing/test/images/
+</span></span><span class="line"><span class="cl">sudo chmod -R <span class="m">775</span> /home/wfuing/test/images/
+</span></span><span class="line"><span class="cl">sudo chmod -R <span class="m">775</span> /home/wfuing/test
+</span></span><span class="line"><span class="cl">sudo chmod -R <span class="m">775</span> /home/wfuing
+</span></span><span class="line"><span class="cl"><span class="c1"># 将一个用户加入组</span>
+</span></span><span class="line"><span class="cl">sudo gpasswd -a username groupname
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看用户的群组信息</span>
+</span></span><span class="line"><span class="cl">id username
+</span></span><span class="line"><span class="cl"><span class="c1"># 列出群组成员</span>
+</span></span><span class="line"><span class="cl">getent group groupname
+</span></span></code></pre></div><p><strong>virsh console</strong></p>
+<p>如果要<a href="https://serverfault.com/questions/364895/virsh-vm-console-does-not-show-any-output"   target="_blank">
+    连接到console</a>，需要在配置文件中先加上</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;serial</span> <span class="na">type=</span><span class="s">&#39;pty&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;target</span> <span class="na">port=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/serial&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;console</span> <span class="na">type=</span><span class="s">&#39;pty&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;target</span> <span class="na">type=</span><span class="s">&#39;serial&#39;</span> <span class="na">port=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/console&gt;</span>
+</span></span></code></pre></div><p>然后在虚拟机中启动</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> serial-getty@ttyS0.service
+</span></span><span class="line"><span class="cl">systemctl start serial-getty@ttyS0.service
 </span></span></code></pre></div><h2 class="relative group">运行 Actor 
     <div id="运行-actor" class="anchor"></div>
     
