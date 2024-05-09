@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "935"
+    "wordCount": "1135"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>935 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  <time datetime="2024-05-08 08:11:01 &#43;0800 &#43;0800">8 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1135 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
   
 
   
@@ -1487,6 +1487,24 @@ WantedBy=multi-user.target
 </code></pre><p>启用并启动服务：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> wfuing_network_init.service
 </span></span><span class="line"><span class="cl">sudo systemctl start wfuing_network_init.service
+</span></span></code></pre></div><p><strong>限制端口流量</strong></p>
+<p>定义 QoS 和队列</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 创建 QoS 规则并同时定义两个队列</span>
+</span></span><span class="line"><span class="cl">sudo ovs-vsctl -- --id<span class="o">=</span>@qos create QoS <span class="nv">type</span><span class="o">=</span>linux-htb other-config:max-rate<span class="o">=</span><span class="m">250000</span> queues:1<span class="o">=</span>@q1 queues:2<span class="o">=</span>@q2 -- <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                --id<span class="o">=</span>@q1 create Queue other-config:min-rate<span class="o">=</span><span class="m">160000</span> other-config:max-rate<span class="o">=</span><span class="m">250000</span> -- <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                --id<span class="o">=</span>@q2 create Queue other-config:min-rate<span class="o">=</span><span class="m">160000</span> other-config:max-rate<span class="o">=</span><span class="m">200000</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>                -- <span class="nb">set</span> Port YOUR-BRIDGE-PORT <span class="nv">qos</span><span class="o">=</span>@qos
+</span></span></code></pre></div><p>在这个例子中：</p>
+<ul>
+<li><code>YOUR-BRIDGE-PORT</code> 是需要应用带宽限制的端口名称。</li>
+<li><code>max-rate</code> 是最大速率限制，单位是 bps（比特每秒），这里 250000 对应250kbps。</li>
+<li><code>min-rate</code> 是最小速率限制，同样单位是 bps，这里 160000 对应160kbps。</li>
+<li>创建了两个队列：<code>@q1</code> 用于 Multi-tone（限制为250kbps），<code>@q2</code> 用于 Single-tone（限制为200kbps）。</li>
+</ul>
+<p>应用 QoS 到特定端口，修改上面的命令中的 YOUR-BRIDGE-PORT 来指定正确的端口。</p>
+<p>完成配置后，可以使用以下命令来检查 QoS 设置是否已正确应用：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo ovs-vsctl list qos
+</span></span><span class="line"><span class="cl">sudo ovs-vsctl list queue
 </span></span></code></pre></div><h2 class="relative group">libvirt操作 
     <div id="libvirt操作" class="anchor"></div>
     
@@ -1567,7 +1585,52 @@ WantedBy=multi-user.target
 </span></span></code></pre></div><p>然后在虚拟机中启动</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> serial-getty@ttyS0.service
 </span></span><span class="line"><span class="cl">systemctl start serial-getty@ttyS0.service
-</span></span></code></pre></div><h2 class="relative group">运行 Actor 
+</span></span></code></pre></div><pre tabindex="0"><code>resource &#34;null_resource&#34; &#34;enable_ip_forwarding&#34; {
+  provisioner &#34;local-exec&#34; {
+    command = &lt;&lt;EOF
+sudo sysctl -w net.ipv4.ip_forward=1
+echo &#34;net.ipv4.ip_forward = 1&#34; | sudo tee -a /etc/sysctl.conf
+EOF
+  }
+}
+
+# 确保创建桥接和设置桥接 IP 地址的资源在启用 IP 转发之后执行
+resource &#34;null_resource&#34; &#34;create_ovs_bridge&#34; {
+  depends_on = [null_resource.enable_ip_forwarding]
+  provisioner &#34;local-exec&#34; {
+    command = &lt;&lt;EOF
+if ! sudo ovs-vsctl br-exists ovsbr0; then
+  sudo ovs-vsctl add-br ovsbr0
+fi
+EOF
+  }
+
+  provisioner &#34;local-exec&#34; {
+    when    = destroy
+    command = &#34;sudo ovs-vsctl del-br ovsbr0&#34;
+  }
+}
+
+resource &#34;null_resource&#34; &#34;setup_bridge_ip&#34; {
+  depends_on = [null_resource.create_ovs_bridge]
+  provisioner &#34;local-exec&#34; {
+    command = &#34;sudo ip addr add 192.168.100.1/24 dev ovsbr0&#34;
+  }
+
+  provisioner &#34;local-exec&#34; {
+    when    = destroy
+    command = &#34;sudo ip addr del 192.168.100.1/24 dev ovsbr0&#34;
+  }
+}
+
+data &#34;template_file&#34; &#34;user_data&#34; {
+  count    = var.vm_count
+  template = file(&#34;${path.module}/user_data.yaml&#34;)
+  vars = {
+    name = &#34;vm-${count.index}&#34;
+  }
+}
+</code></pre><h2 class="relative group">运行 Actor 
     <div id="运行-actor" class="anchor"></div>
     
     <span
