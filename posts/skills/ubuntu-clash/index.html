@@ -107,7 +107,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "68"
+    "wordCount": "221"
   }]
   </script>
 
@@ -921,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-01 10:46:05 &#43;0800 &#43;0800">1 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>68 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-05-01 10:46:05 &#43;0800 &#43;0800">1 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>221 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1072,6 +1072,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#命令行安装">命令行安装</a></li>
+    <li><a href="#docker-安装">docker 安装</a></li>
     <li><a href="#图形化界面安装">图形化界面安装</a></li>
   </ul>
 </nav>
@@ -1087,6 +1088,7 @@ window.MathJax = {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#命令行安装">命令行安装</a></li>
+    <li><a href="#docker-安装">docker 安装</a></li>
     <li><a href="#图形化界面安装">图形化界面安装</a></li>
   </ul>
 </nav>
@@ -1163,8 +1165,11 @@ window.MathJax = {
     
 </h2>
 <p><strong>下载clash</strong></p>
-<p>去release下载对应版本的clash，我这里是 <a href="https://down.clash.la/Clash/Core/Releases/clash-linux-amd64-v1.18.0.gz"   target="_blank">
-    clash-linux-amd64-v1.18.0</a></p>
+<ol>
+<li><code>sudo snap install clash</code> 一般不是最新版本</li>
+<li>去release下载对应版本的clash，我这里是 <a href="https://down.clash.la/Clash/Core/Releases/clash-linux-amd64-v1.18.0.gz"   target="_blank">
+    clash-linux-amd64-v1.18.0</a></li>
+</ol>
 <p>很奇怪，直接用wget报错</p>
 <p>
 
@@ -1200,8 +1205,131 @@ window.MathJax = {
 <li><code>username@remote_host</code>：远程服务器的用户名和地址。</li>
 <li><code>/path/to/remote/folder</code>：远程服务器上目的地文件夹的路径。</li>
 </ul>
-<p>后面改用图形化界面安装了，这个更快，等以后要用命令行安装的时候再补上吧！</p>
-<h2 class="relative group">图形化界面安装 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gunzip clash-linux-amd64-v1.18.0.gz
+</span></span><span class="line"><span class="cl">mv clash-linux-amd64-v1.18.0 clash
+</span></span></code></pre></div><p>然后就可以直接</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod +x clash
+</span></span><span class="line"><span class="cl">./clash -d iggfeed
+</span></span></code></pre></div><pre tabindex="0"><code>├── clash
+├── configs
+│   ├── i2ec
+│   │   ├── cache.db
+│   │   ├── config.yaml
+│   │   └── Country.mmdb
+│   ├── iggfeed
+│   │   ├── cache.db
+│   │   ├── config.yaml
+│   │   └── Country.mmdb
+│   ├── iggfeed.yaml
+│   └── proxy.i2ec.top.yaml
+</code></pre><h2 class="relative group">docker 安装 
+    <div id="docker-安装" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#docker-%e5%ae%89%e8%a3%85" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Clash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">clash</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">dreamacro/clash:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">clash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">/home/wds/clash/configs/iggfeed.yaml:/root/.config/clash/config.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7890:7890/tcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7890:7890/udp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;9090:9090&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">clash-dashboard</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">hitian/clash-dashboard</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">clash-dashboard</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;7880:80&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span></code></pre></div><p>如果要使用clash-dashboard，则必须将clash的控制接口9090端口开放访问。</p>
+<p>请检查订阅的配置文件中external-controller这一项是<code>0.0.0.0:9090</code>，否则dashboard无法获取和控制clash配置信息，一般这里默认是<code>127.0.0.1</code></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/skills/ubuntu-clash/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>添加控制配置密码（用于dashboard）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 在external-controller下一行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;你的密码&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/skills/ubuntu-clash/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 直接使用 Docker 官方的 Compose 插件</span>
+</span></span><span class="line"><span class="cl"><span class="nv">DOCKER_CONFIG</span><span class="o">=</span><span class="si">${</span><span class="nv">DOCKER_CONFIG</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.docker</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$DOCKER_CONFIG</span>/cli-plugins
+</span></span><span class="line"><span class="cl">curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span><span class="line"><span class="cl">chmod +x <span class="nv">$DOCKER_CONFIG</span>/cli-plugins/docker-compose
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker compose up --build -d
+</span></span></code></pre></div><p>或者</p>
+<ul>
+<li><a href="https://v2raya.org/docs/prologue/installation/"   target="_blank">
+    v2ray下载</a></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>docker run -d <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --restart<span class="o">=</span>always <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --privileged <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --network<span class="o">=</span>host <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name v2raya <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">V2RAYA_LOG_FILE</span><span class="o">=</span>/tmp/v2raya.log <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -e <span class="nv">V2RAYA_V2RAY_BIN</span><span class="o">=</span>/usr/local/bin/v2ray <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /lib/modules:/lib/modules:ro <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /etc/resolv.conf:/etc/resolv.conf <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -v /etc/v2raya:/etc/v2raya <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  mzz2017/v2raya
+</span></span></code></pre></div><h2 class="relative group">图形化界面安装 
     <div id="图形化界面安装" class="anchor"></div>
     
     <span
