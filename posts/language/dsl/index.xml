@@ -15,7 +15,7 @@
       
       <guid>https://WFUing.github.io/posts/language/dsl/cuelang/</guid>
       <description>CUE 是一种开源数据验证语言和推理引擎，源于逻辑编程。虽然该语言不是通用编程语言，但它有许多应用，如数据验证、数据模板、配置、查询、代码生成甚至脚本编写。推理引擎可用于验证代码中的数据，或将其作为代码生成管道的一部分。</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/dsl/cuelang/featured.png" />
     </item>
     
     <item>
@@ -25,7 +25,7 @@
       
       <guid>https://WFUing.github.io/posts/language/dsl/iot-dsl/</guid>
       <description>vorto # InformationModel: &amp;#39;vortolang&amp;#39; 1.</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/dsl/iot-dsl/featured.png" />
     </item>
     
     <item>
@@ -34,8 +34,8 @@
       <pubDate>Tue, 31 Oct 2023 10:46:20 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/dsl/langium/</guid>
-      <description>Usage # 1 Langium download # https://www.</description>
-      
+      <description>langium相关</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/dsl/langium/featured.png" />
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       
       <guid>https://WFUing.github.io/posts/language/dsl/vscode-language-server/</guid>
       <description>Resource # Protocol specification https://microsoft.</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/dsl/vscode-language-server/featured.png" />
     </item>
     
     <item>
@@ -55,7 +55,7 @@
       
       <guid>https://WFUing.github.io/posts/language/dsl/xtext/</guid>
       <description>Usage # 项目创建 # XText 开发一个新的语言</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/dsl/xtext/featured.png" />
     </item>
     
   </channel>
