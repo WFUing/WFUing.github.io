@@ -7,17 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Wed, 15 May 2024 19:07:16 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/distributed/rpc/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>RPC 实战与核心原理</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Wed, 15 May 2024 19:07:16 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</guid>
-      <description>精挑细选了 20 多个 RPC 相关的高频场景化问题，帮你搞懂 RPC 核心原理</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/featured.png" />
-    </item>
-    
+    <lastBuildDate>Thu, 16 May 2024 19:07:16 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/distributed/rpc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RPC-概述</title>
       <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</link>

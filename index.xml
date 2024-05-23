@@ -9,6 +9,16 @@
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Elasticsearch 底层数据结构</title>
+      <link>https://WFUing.github.io/posts/architecture/distributed/es/</link>
+      <pubDate>Wed, 22 May 2024 09:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/distributed/es/</guid>
+      <description>Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/es/featured.png" />
+    </item>
+    
+    <item>
       <title>Spring Core 常用错误</title>
       <link>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</link>
       <pubDate>Sat, 18 May 2024 08:15:08 +0800</pubDate>
@@ -19,13 +29,23 @@
     </item>
     
     <item>
-      <title>RPC 实战与核心原理</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</link>
+      <title>RPC 实战与核心原理 - 进阶篇</title>
+      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
+      <pubDate>Thu, 16 May 2024 19:07:16 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</guid>
+      <description>RPC 实战与核心原理 - 进阶篇</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/featured.png" />
+    </item>
+    
+    <item>
+      <title>RPC 实战与核心原理 - 基础篇</title>
+      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
       <pubDate>Wed, 15 May 2024 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</guid>
-      <description>精挑细选了 20 多个 RPC 相关的高频场景化问题，帮你搞懂 RPC 核心原理</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/featured.png" />
+      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <description>RPC 实战与核心原理 - 基础篇</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
     </item>
     
     <item>
@@ -350,12 +370,12 @@
     
     <item>
       <title>高并发架构学习笔记</title>
-      <link>https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/</link>
+      <link>https://WFUing.github.io/posts/architecture/high-concurrency/</link>
       <pubDate>Wed, 10 Apr 2024 10:53:28 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/</guid>
       <description>慎入，高并发的水太深，什么高并发，大流量的东西都是虚拟的，笔者还太年轻，没有那个经历，把握不住。系统最大只搞过几千QPS，开心快乐就行，不PK，文明PK。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/%E9%AB%98%E5%B9%B6%E5%8F%91/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/featured.png" />
     </item>
     
     <item>
