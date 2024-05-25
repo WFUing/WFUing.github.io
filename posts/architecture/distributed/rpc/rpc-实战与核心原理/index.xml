@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 16 May 2024 19:07:16 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 May 2024 19:07:16 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RPC 实战与核心原理 - 高级篇</title>
+      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</link>
+      <pubDate>Fri, 17 May 2024 19:07:16 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</guid>
+      <description>RPC 实战与核心原理 - 高级篇</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/featured.png" />
+    </item>
+    
     <item>
       <title>RPC 实战与核心原理 - 进阶篇</title>
       <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
