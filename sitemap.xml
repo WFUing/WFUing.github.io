@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/language/java/</loc>
+    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/language/java/spring/</loc>
+    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</loc>
+    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/language/</loc>
+    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/ai/</loc>
     <lastmod>2024-05-24T09:25:45+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -10,12 +40,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/ai/llm/langchain/</loc>
-    <lastmod>2024-05-24T09:25:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-05-24T09:25:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -39,31 +63,19 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/language/java/</loc>
-    <lastmod>2024-05-18T08:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/language/java/spring/</loc>
-    <lastmod>2024-05-18T08:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</loc>
     <lastmod>2024-05-18T08:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/</loc>
     <lastmod>2024-05-18T08:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/language/</loc>
+    <loc>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/</loc>
     <lastmod>2024-05-18T08:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
