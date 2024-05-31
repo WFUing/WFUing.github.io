@@ -3,6 +3,54 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-05-30T09:21:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iac/</loc>
+    <lastmod>2024-05-30T09:21:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iac/terraform/</loc>
+    <lastmod>2024-05-30T09:21:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/iac/terraform/terraform%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%AF%91in-house%E7%9A%84providers/</loc>
+    <lastmod>2024-05-30T09:21:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-05-30T09:21:20+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
+    <lastmod>2024-05-29T09:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/kafka/</loc>
+    <lastmod>2024-05-29T09:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</loc>
+    <lastmod>2024-05-29T09:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/language/java/</loc>
     <lastmod>2024-05-27T16:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -16,12 +64,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</loc>
-    <lastmod>2024-05-27T16:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-05-27T16:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -41,18 +83,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/ai/llm/langchain/</loc>
     <lastmod>2024-05-24T09:25:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-05-22T09:46:05+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/distributed/</loc>
-    <lastmod>2024-05-22T09:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -1361,12 +1391,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/kubevela/</loc>
     <lastmod>2023-11-27T16:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/iac/</loc>
-    <lastmod>2023-11-17T09:21:20+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

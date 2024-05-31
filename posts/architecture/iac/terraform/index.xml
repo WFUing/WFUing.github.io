@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>terraform on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/iac/terraform/</link>
+    <description>Recent content in terraform on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Thu, 30 May 2024 09:21:20 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iac/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform使用本地编译（In-house）的Providers</title>
+      <link>https://WFUing.github.io/posts/architecture/iac/terraform/terraform%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%AF%91in-house%E7%9A%84providers/</link>
+      <pubDate>Thu, 30 May 2024 09:21:20 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/iac/terraform/terraform%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%AF%91in-house%E7%9A%84providers/</guid>
+      <description>Terraform Provider的全网标识符 # Terraform的Provider在全网的的标识符由三部分组成，分别为hostname，namespace和type组成，即&amp;lt;hostname&amp;gt;/&amp;lt;namespace&amp;gt;/&amp;lt;type&amp;gt;。hostname是指分发、下载Provider的域名，默认为registry.</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iac/terraform/terraform%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%AF%91in-house%E7%9A%84providers/featured.png" />
+    </item>
+    
+  </channel>
+</rss>
