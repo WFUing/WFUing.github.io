@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Redis on WFUing&#39;s Blog</title>
-    <link>https://WFUing.github.io/tags/redis/</link>
-    <description>Recent content in Redis on WFUing&#39;s Blog</description>
+    <title>从零实现redis-cache on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/</link>
+    <description>Recent content in 从零实现redis-cache on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Fri, 01 Mar 2024 15:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Mar 2024 15:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从零实现redis(6)- 慢日志监控</title>
       <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</link>
