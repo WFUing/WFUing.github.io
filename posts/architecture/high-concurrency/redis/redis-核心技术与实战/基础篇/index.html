@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title> &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content=" &middot; WFUing&#39;s Blog" />
+  <title>Redis 核心技术与实战 - 基础篇 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Redis 核心技术与实战 - 基础篇 &middot; WFUing&#39;s Blog" />
   
-  
-  
+  <meta name="description" content="Redis 核心技术与实战 - 基础篇" />
+  <meta name="keywords" content="java, redis, " />
   
   
   <link rel="canonical" href="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/" />
@@ -48,8 +48,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.1271c22a557a15f10b5d38d2c87e49503604cfeffebadc1e7c267934e4b9f3ba1b74d81371219f9681dab2141482fc4ed2a8b462b179f0ef43a5f76d0575e85b.js"
-    integrity="sha512-EnHCKlV6FfELXTjSyH5JUDYEz&#43;/&#43;utwefCZ5NOS587obdNgTcSGfloHashQUgvxO0qi0YrF58O9DpfdtBXXoWw==" data-copy="" data-copied=""></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.7ee3d0153e96d78a28093d1c97e8a649b6de332eeb66d2c28a48d1afcba0d47a6e7c45dc76a5c9c732c97307593e103bbb0f5fce2f2dab0efb6d411d63064c37.js"
+    integrity="sha512-fuPQFT6W14ooCT0cl&#43;imSbbeMy7rZtLCikjRr8ug1HpufEXcdqXJxzLJcwdZPhA7uw9fzi8tqw77bUEdYwZMNw==" data-copy="" data-copied=""></script>
   
   
   <script src="/js/zoom.min.js"></script>
@@ -67,17 +67,24 @@
   
   
   
-  <meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/" /><meta property="og:image" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" /><meta property="article:section" content="posts" />
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/">
+  <meta property="og:site_name" content="WFUing&#39;s Blog">
+  <meta property="og:title" content="Redis 核心技术与实战 - 基础篇">
+  <meta property="og:description" content="Redis 核心技术与实战 - 基础篇">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-05-31T15:15:08+08:00">
+    <meta property="article:modified_time" content="2024-05-31T15:15:08+08:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Redis">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png">
 
-
-
-
-  <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" /><meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png">
+  <meta name="twitter:title" content="Redis 核心技术与实战 - 基础篇">
+  <meta name="twitter:description" content="Redis 核心技术与实战 - 基础篇">
 
   
   <script type="application/ld+json">
@@ -85,23 +92,23 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "",
-    "headline": "",
+    "name": "Redis 核心技术与实战 - 基础篇",
+    "headline": "Redis 核心技术与实战 - 基础篇",
     
-    
+    "abstract": "Redis 核心技术与实战 - 基础篇",
     "inLanguage": "en",
     "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/high-concurrency\/redis\/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98\/%E5%9F%BA%E7%A1%80%E7%AF%87\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-05-31T15:15:08\u002b08:00",
+    "datePublished": "2024-05-31T15:15:08\u002b08:00",
     
+    "dateModified": "2024-05-31T15:15:08\u002b08:00",
     
-    
-    
-    
-    
-    
+    "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
     "wordCount": "0"
@@ -873,7 +880,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      
+      Redis 核心技术与实战 - 基础篇
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -914,7 +921,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="0001-01-01 00:00:00 &#43;0000 UTC">1 January 0001</time>
+  <time datetime="2024-05-31 15:15:08 &#43;0800 &#43;0800">31 May 2024</time>
   
 
   
@@ -1077,7 +1084,7 @@ window.MathJax = {
       
       
       
-      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+      <script type="text/javascript" src="/js/page.min.f94e5beb747249fb2315a14fc6417e483411d48b59dc1376bbafa8c37fce65d397d5401be15c7461670ec7bb90ac2bf148d7d48eaf02f317cd9dc04d4851fd31.js" integrity="sha512-&#43;U5b63RySfsjFaFPxkF&#43;SDQR1ItZ3BN2u6&#43;ow3/OZdOX1UAb4Vx0YWcOx7uQrCvxSNfUjq8C8xfNncBNSFH9MQ=="></script>
   
     </section>
   <footer class="pt-8 max-w-prose print:hidden">
@@ -1185,7 +1192,7 @@ window.MathJax = {
   </script>
   
   
-  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>
