@@ -4,7 +4,37 @@
 
   <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
+    <lastmod>2024-06-01T18:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/</loc>
+    <lastmod>2024-06-01T18:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-06-01T18:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90-kubernetes/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF%E6%A6%82%E5%BF%B5/</loc>
+    <lastmod>2024-06-01T18:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/</loc>
+    <lastmod>2024-06-01T18:11:01+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90-kubernetes/docker%E5%8F%91%E5%B1%95%E5%8F%B2-%E5%85%AB%E5%8D%A6%E7%AF%87/</loc>
+    <lastmod>2024-06-01T08:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -22,12 +52,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-05-31T15:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -171,12 +195,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/virtualization/</loc>
-    <lastmod>2024-05-08T08:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</loc>
     <lastmod>2024-05-02T10:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -245,12 +263,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/reviews/24%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0/</loc>
     <lastmod>2024-04-25T20:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/</loc>
-    <lastmod>2024-04-25T14:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
