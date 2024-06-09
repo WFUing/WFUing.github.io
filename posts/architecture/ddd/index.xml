@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DDD领域驱动 on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/ddd/</link>
+    <description>Recent content in DDD领域驱动 on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Thu, 06 Jun 2024 16:47:45 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/ddd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDD实战课-基础篇</title>
+      <link>https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <pubDate>Thu, 06 Jun 2024 16:47:45 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <description>基于 DDD 的微服务拆分与设计</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
+    </item>
+    
+  </channel>
+</rss>
