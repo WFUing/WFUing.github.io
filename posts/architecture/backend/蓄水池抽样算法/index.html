@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>数据库分库分表 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="数据库分库分表 &middot; WFUing&#39;s Blog" />
+  <title>蓄水池抽样算法（Reservoir Sampling） &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="蓄水池抽样算法（Reservoir Sampling） &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="数据库分库分表相关" />
+  <meta name="description" content="我是在一次失败的面试经历中听说蓄水池算法的。之后上网搜了搜，知道是一个数据抽样算法，寥寥几行，却暗藏玄机。主要用来解决如下问题。" />
   <meta name="keywords" content=", " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/reviews/knowledge/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/" />
   
   
   
@@ -67,22 +67,22 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/posts/reviews/knowledge/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="数据库分库分表">
-  <meta property="og:description" content="数据库分库分表相关">
+  <meta property="og:title" content="蓄水池抽样算法（Reservoir Sampling）">
+  <meta property="og:description" content="我是在一次失败的面试经历中听说蓄水池算法的。之后上网搜了搜，知道是一个数据抽样算法，寥寥几行，却暗藏玄机。主要用来解决如下问题。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-04-03T13:53:28+08:00">
-    <meta property="article:modified_time" content="2024-04-03T13:53:28+08:00">
-    <meta property="og:image" content="https://WFUing.github.io/posts/reviews/knowledge/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png">
+    <meta property="article:published_time" content="2024-04-12T13:53:28+08:00">
+    <meta property="article:modified_time" content="2024-04-12T13:53:28+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://WFUing.github.io/posts/reviews/knowledge/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png">
-  <meta name="twitter:title" content="数据库分库分表">
-  <meta name="twitter:description" content="数据库分库分表相关">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/featured.png">
+  <meta name="twitter:title" content="蓄水池抽样算法（Reservoir Sampling）">
+  <meta name="twitter:description" content="我是在一次失败的面试经历中听说蓄水池算法的。之后上网搜了搜，知道是一个数据抽样算法，寥寥几行，却暗藏玄机。主要用来解决如下问题。">
 
   
   <script type="application/ld+json">
@@ -90,26 +90,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "数据库分库分表",
-    "headline": "数据库分库分表",
+    "name": "蓄水池抽样算法（Reservoir Sampling）",
+    "headline": "蓄水池抽样算法（Reservoir Sampling）",
     
-    "abstract": "数据库分库分表相关",
+    "abstract": "我是在一次失败的面试经历中听说蓄水池算法的。之后上网搜了搜，知道是一个数据抽样算法，寥寥几行，却暗藏玄机。主要用来解决如下问题。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/reviews\/knowledge\/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-04-03T13:53:28\u002b08:00",
-    "datePublished": "2024-04-03T13:53:28\u002b08:00",
+    "dateCreated": "2024-04-12T13:53:28\u002b08:00",
+    "datePublished": "2024-04-12T13:53:28\u002b08:00",
     
-    "dateModified": "2024-04-03T13:53:28\u002b08:00",
+    "dateModified": "2024-04-12T13:53:28\u002b08:00",
     
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "6"
+    "wordCount": "5"
   }]
   </script>
 
@@ -852,7 +852,7 @@ window.MathJax = {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/reviews/knowledge/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png);">
+    style="background-image:url(/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/featured.png);">
     
 
 
@@ -878,7 +878,7 @@ window.MathJax = {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      数据库分库分表
+      蓄水池抽样算法（Reservoir Sampling）
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -923,7 +923,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-03 13:53:28 &#43;0800 &#43;0800">3 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>6 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-12 13:53:28 &#43;0800 &#43;0800">12 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>5 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1155,10 +1155,10 @@ window.MathJax = {
     
 </h2>
 <ul>
-<li><a href="https://www.cnblogs.com/zwh-Seeking/articles/13297231.html"   target="_blank">
-    5个数据库性能测试工具哪个更好用？对比结果新鲜出炉！</a></li>
-<li><a href="https://blog.51cto.com/u_93011/7284757"   target="_blank">
-    mysql 的最大QPS支持 mysql单机qps最大能到多少? </a></li>
+<li><a href="https://www.jianshu.com/p/7a9ea6ece2af"   target="_blank">
+    蓄水池抽样算法（Reservoir Sampling）</a></li>
+<li><a href="https://huangjj27.gitlab.io/reservoirsampling/"   target="_blank">
+    蓄水池算法原理</a></li>
 </ul>
 
         </div>
@@ -1172,8 +1172,8 @@ window.MathJax = {
      
     
      <script>
-        var oid = "views_posts\/reviews\/knowledge\/数据库分库分表\/index.md"
-        var oid_likes = "likes_posts\/reviews\/knowledge\/数据库分库分表\/index.md"
+        var oid = "views_posts\/architecture\/backend\/蓄水池抽样算法\/index.md"
+        var oid_likes = "likes_posts\/architecture\/backend\/蓄水池抽样算法\/index.md"
       </script>
       
       
@@ -1196,15 +1196,10 @@ window.MathJax = {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/reviews/knowledge/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/">
-              <span
-                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
-                >&larr;</span
-              >
-              <span
-                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
-                >&rarr;</span
-              >
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/backend/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
@@ -1213,23 +1208,6 @@ window.MathJax = {
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
                     <time datetime="2024-04-04 13:53:28 &#43;0800 &#43;0800">4 April 2024</time>
-                  
-                </span>
-              </span>
-            </a>
-          
-        </span>
-        <span>
-          
-            <a class="flex text-right group ml-3" href="/posts/reviews/knowledge/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/">
-              <span class="flex flex-col">
-                <span
-                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >前后端请求加载流程</span
-                >
-                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
-                  
-                    <time datetime="2024-03-18 13:53:28 &#43;0800 &#43;0800">18 March 2024</time>
                   
                 </span>
               </span>
