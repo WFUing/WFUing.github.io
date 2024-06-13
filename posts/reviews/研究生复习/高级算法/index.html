@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1717"
+    "wordCount": "1851"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1717 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1851 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
   
 
   
@@ -1094,6 +1094,8 @@ window.MathJax = {
     <li><a href="#2-动态规划">2. 动态规划</a></li>
     <li><a href="#3-复杂度表示法">3. 复杂度表示法</a></li>
     <li><a href="#4-平滑函数性质和主定理">4. 平滑函数性质和主定理</a></li>
+    <li><a href="#5-近似算法">5. 近似算法</a></li>
+    <li><a href="#6-npc">6. NPC</a></li>
   </ul>
 </nav>
   </div>
@@ -1112,6 +1114,8 @@ window.MathJax = {
     <li><a href="#2-动态规划">2. 动态规划</a></li>
     <li><a href="#3-复杂度表示法">3. 复杂度表示法</a></li>
     <li><a href="#4-平滑函数性质和主定理">4. 平滑函数性质和主定理</a></li>
+    <li><a href="#5-近似算法">5. 近似算法</a></li>
+    <li><a href="#6-npc">6. NPC</a></li>
   </ul>
 </nav>
   </div>
@@ -1926,6 +1930,194 @@ $$</p>
 <li><strong>连续性</strong>：检查函数是否在其定义域内是连续的。</li>
 <li><strong>导数的存在性和连续性</strong>：检查函数的导数是否存在，并且导数在定义域内是否也是连续的。如果是高阶光滑函数，则需要检查所有阶导数的连续性。</li>
 <li><strong>近似性</strong>：如果一个函数 $g(x)$ 是 $f(x)$ 的光滑版本，则 $g(x)$ 应该在定义域内良好地近似 $f(x)$。这意味着对于所有 $x$，$g(x)$ 应该尽可能接近 $f(x)$，并且这种近似在函数的导数上也是成立的。</li>
+</ol>
+<p><strong>示例</strong></p>
+<p><strong>例子</strong>：处理取整符号的光滑函数</p>
+<p>考虑函数 $f(x) = \left\lfloor \frac{x}{2} \right\rfloor$。为了去掉取整符号，我们希望找到一个光滑函数来近似它。</p>
+<p>假设 $n = 2^k$，那么 $f(x) = \left\lfloor \frac{x}{2} \right\rfloor$ 可以去掉取整符号，因为在这些点上 $x$ 是 2 的整数倍，因此取整符号对结果没有影响。</p>
+<p>为了将这种性质扩展到整个数轴上，我们可以使用一个光滑函数来近似它，例如：</p>
+<p>$$
+[ g(x) = \frac{x}{2} - \frac{1}{2} \sin\left(2\pi \frac{x}{2}\right) ]
+$$</p>
+<p>在这种情况下，$g(x)$ 是 $\left\lfloor \frac{x}{2} \right\rfloor$ 的一个光滑近似，它在所有点上都是连续和可微的。</p>
+<p><strong>验证</strong>：</p>
+<ol>
+<li><strong>连续性</strong>：$g(x)$ 在整个定义域内是连续的。</li>
+<li><strong>导数的存在性和连续性</strong>：$g(x)$ 的导数存在并且是连续的。</li>
+<li><strong>近似性</strong>：对于所有 $x$，$g(x)$ 都接近于 $\left\lfloor \frac{x}{2} \right\rfloor$。</li>
+</ol>
+<p>因此，$g(x)$ 是 $\left\lfloor \frac{x}{2} \right\rfloor$ 的一个光滑近似函数。</p>
+<p><strong>4.2 分治法和主定理</strong></p>
+<p>解方程 $T(n)=bT(n/c)+f(n)$</p>
+<ul>
+<li>不用背别的；就用Master Theorem就行</li>
+<li>判断满足主定理的哪一条，算一下case 1、case2、case3，然后代入主定理的结论就行；
+<ul>
+<li>T(n)=9T(n/3)+n</li>
+<li>有3个辅助量；D、E、L</li>
+</ul>
+</li>
+<li>03-Recursion.ppt：</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">5. 近似算法 
+    <div id="5-近似算法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#5-%e8%bf%91%e4%bc%bc%e7%ae%97%e6%b3%95" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ul>
+<li>考点1：近似算法的定义和如何衡量近似算法的好坏？</li>
+<li>考点2：掌握几种装箱问题的贪心算法；（FF、NF等）</li>
+</ul>
+<p>具体：</p>
+<ol>
+<li>近似定理：
+<ul>
+<li>求最小还是最大，始终让近似比大于等于1</li>
+<li>让算法的比值越小越接近1，近似精度越好；否则相反；</li>
+</ul>
+</li>
+<li>不管证明；搞懂3种过程（都是贪心）</li>
+</ol>
+<ul>
+<li>NF算法 Next Fit
+<ul>
+<li>放不放得下？
+<ul>
+<li>放得下。放进箱子。</li>
+<li>放不下，来个新箱子。</li>
+</ul>
+</li>
+<li>O(n)</li>
+<li>只看当前箱子</li>
+</ul>
+</li>
+<li>FF算法 First Fit
+<ul>
+<li>从第一个箱子开始判断，会遍历前面的箱子；
+<ul>
+<li>放不放得下？
+<ul>
+<li>放得下。放进箱子。</li>
+<li>放不下，来个新箱子。</li>
+</ul>
+</li>
+<li>O(nm)约等于O(n^2)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>FFD算法：先把所有元素排序；然后尽可能装最大的
+<ul>
+<li>伪代码：先写排序；</li>
+<li>箱子大小是单位1；</li>
+<li>for-i for-j；i是物品；j是箱子；</li>
+<li>O(ilogi);O(ij)</li>
+<li>不是在线算法；因为输入已经结束了，知道了所有输入；</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>3个算法哪个是/不是在线算法？复杂度如何？
+<ul>
+<li>FFD不是在线算法，其他都是；因为FFD要做排序，做了排序就不是在线算法了（相当于你已经看过所有数据了，即数据输入已经结束了，在线算法意思是要实时接收算法输入）</li>
+</ul>
+</li>
+</ol>
+<h2 class="relative group">6. NPC 
+    <div id="6-npc" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#6-npc" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>考点1：NPC的定义是什么？介绍NPC理论；P、NP、NPC
+<ul>
+<li>含义和实际应用场景；发现一个NPC问题；</li>
+</ul>
+</li>
+<li>考点2：列举一些NPC问题
+<ol>
+<li>子集和问题</li>
+<li>哈米尔顿图、哈米尔顿回路</li>
+<li>01背包</li>
+<li>装箱问题</li>
+</ol>
+</li>
+<li>考点3：怎么证装箱问题和01背包是NPC问题
+<ol>
+<li>首先证明NP，写NP算法；
+<ul>
+<li>step1：猜测；genCertificate()这一步；猜k次；包含k个点的组合；并行多道；O(1)时间；</li>
+<li>step2：验证；任意两个点之间都有边，就是完全子图；</li>
+<li>如果满足条件，输出yes</li>
+</ul>
+</li>
+<li>然后证明它们是NP Hard 问题</li>
+<li>（没听懂老师说的）能不能用另一个NP定义？多项式时间内验证、证明，找完全子图；blablabla&hellip; 也是可以的</li>
+</ol>
+</li>
+<li>如何证明装箱问题和01背包是NP Hard 问题？
+<ol>
+<li>会给这样给题目：已知装箱问题是NP Hard 问题，请你给出多项式规约，证明 01背包和装箱问题其实是等价的，因此01背包是NP Hard 问题</li>
+<li>证明过程后续会在moodle上给出详细的pdf资料，认真看就行。</li>
+<li>多项式规约的含义？规约=证明问题等价。多项式规约意思是我们能用一个多项式时间复杂度的算法，将问题A的输入和约束转换为已解决问题B的输入和约束。这个转换过程就是多项式规约。</li>
+</ol>
+</li>
 </ol>
 
         </div>
