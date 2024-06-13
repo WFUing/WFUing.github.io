@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "968"
+    "wordCount": "1717"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>968 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1717 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
   
 
   
@@ -1178,7 +1178,7 @@ window.MathJax = {
     </span>        
     
 </h2>
-<p>课程的教学目标：掌握蛮力、分治、减治、边治和时空权衡等算法设计思想的特点：</p>
+<p>课程的教学目标：掌握蛮力、分治、减治、边治和时空权衡等算法设计思想的特点。</p>
 <ol>
 <li>能够熟练使用蛮力法解决问题，作为优化的基线方法，例如找到数组中大小最接近的两个元素的差、找到凸包极点等问题</li>
 <li>分治思想在具体实现的时候，可以使用递归的方法，也可以结合特殊的数据结构使用循环的方法，例如合并排序、快速排序等</li>
@@ -1642,7 +1642,115 @@ window.MathJax = {
   
 
 </p>
-<h2 class="relative group">3. 复杂度表示法 
+<p><strong>动态规划的思想</strong>：</p>
+<p>动态规划（Dynamic Programming, DP）是一种通过将复杂问题分解为更小的子问题来解决复杂问题的算法技术。动态规划与分治法类似，但与分治法不同的是，动态规划会存储子问题的结果，从而避免重复计算。</p>
+<p><strong>动态规划的特点</strong>：</p>
+<ul>
+<li>最优子结构：问题的最优解包含其子问题的最优解。</li>
+<li>重叠子问题：子问题被多次重复计算。</li>
+<li>子问题独立性：子问题间相互独立。</li>
+</ul>
+<p><strong>动态规划的经典问题</strong></p>
+<ol>
+<li>最长公共子序列（LCS）</li>
+</ol>
+<p>问题描述：给定两个序列X和Y，找出它们的最长公共子序列Z。最长公共子序列是指在不改变序列相对顺序的前提下，从两个序列中选取的最长子序列。</p>
+<p>递归式：</p>
+<p>设$X$的长度为$m$，$Y$的长度为$n$，$dp[i][j]$表示$X$的前$i$个字符和$Y$的前$j$个字符的最长公共子序列长度。</p>
+<ul>
+<li>如果$X[i-1] == Y[j-1]$，则$dp[i][j] = dp[i-1][j-1] + 1$</li>
+<li>如果$X[i-1] != Y[j-1]$，则$dp[i][j] = max(dp[i-1][j], dp[i][j-1])$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LCS</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">longestCommonSubsequence</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">X</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">m</span><span class="o">][</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;ABCBDAB&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;BDCAB&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;最长公共子序列长度: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ol start="2">
+<li>回文子序列</li>
+</ol>
+<p>问题描述：给定一个字符串，找到它的最长回文子序列。回文子序列是指从左到右和从右到左都一样的子序列。</p>
+<p>递归式：设字符串长度为$n$，$dp[i][j]$表示字符串从第$i$个字符到第$j$个字符的最长回文子序列长度。</p>
+<ul>
+<li>如果$s[i] == s[j]$，则$dp[i][j] = dp[i+1][j-1] + 2$</li>
+<li>如果$s[i] != s[j]$，则$dp[i][j] = max(dp[i+1][j], dp[i][j-1])$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LongestPalindromicSubsequence</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">longestPalindromeSubseq</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">j</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;bbbab&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;最长回文子序列长度: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">longestPalindromeSubseq</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ol start="3">
+<li>矩阵连乘问题</li>
+</ol>
+<p>问题描述：给定一组矩阵，确定它们的相乘顺序，以使得乘积的计算代价最小。矩阵连乘问题中的计算代价由矩阵的维数决定。</p>
+<p>递归式：设$dp[i][j]$表示从第$i$个矩阵到第$j$个矩阵的最小乘积计算代价，$p$为矩阵链的维数数组。</p>
+<ul>
+<li>$dp[i][j] = min(dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j]) (i ≤ k &lt; j)$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MatrixChainMultiplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">matrixChainOrder</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">2</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="kt">int</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">k</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">[</span><span class="n">k</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">q</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">dp</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dp</span><span class="o">[</span><span class="n">0</span><span class="o">][</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">1</span><span class="p">,</span><span class="w"> </span><span class="n">2</span><span class="p">,</span><span class="w"> </span><span class="n">3</span><span class="p">,</span><span class="w"> </span><span class="n">4</span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;最小矩阵连乘计算代价: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matrixChainOrder</span><span class="p">(</span><span class="n">p</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h2 class="relative group">3. 复杂度表示法 
     <div id="3-复杂度表示法" class="anchor"></div>
     
     <span
@@ -1681,6 +1789,93 @@ window.MathJax = {
   
 
 </p>
+<p>大O记号（$O(f)$）、大Ω记号（$\Omega(f)$）、大Θ记号（$\Theta(f)$）的性质</p>
+<p><strong>考点1：三个性质的含义</strong></p>
+<ol>
+<li><strong>大O记号（$O(f)$）</strong></li>
+</ol>
+<p><strong>Definition</strong>: 对于两个函数 $f(n)$ 和 $g(n)$，如果存在正整数 $c$ 和 $n_0$，使得当 $n \ge n_0$ 时，$0 \le f(n) \le c \cdot g(n)$，则称 $f(n)$ 是 $g(n)$ 的大O记号，记作 $f(n) = O(g(n))$。</p>
+<p><strong>极限描述</strong>:</p>
+<p>$$
+f(n) = O(g(n)) \iff \lim_{n \to \infty} \frac{f(n)}{g(n)} \le C \quad (C \text{为常数})
+$$</p>
+<p><strong>自然语言描述</strong>: $f(n)$ 的增长速度最多和 $g(n)$ 的增长速度一样快（或更慢）。</p>
+<ol start="2">
+<li><strong>大Ω记号（$\Omega(f)$）</strong></li>
+</ol>
+<p><strong>Definition</strong>: 对于两个函数 $f(n)$ 和 $g(n)$，如果存在正整数 $c$ 和 $n_0$，使得当 $n \ge n_0$ 时，$0 \le c \cdot g(n) \le f(n)$，则称 $f(n)$ 是 $g(n)$ 的大Ω记号，记作 $f(n) = \Omega(g(n))$。</p>
+<p><strong>极限描述</strong>:</p>
+<p>$$
+f(n) = \Omega(g(n)) \iff \lim_{n \to \infty} \frac{f(n)}{g(n)} \ge C \quad (C \text{为常数})
+$$</p>
+<p><strong>自然语言描述</strong>: $f(n)$ 的增长速度至少和 $g(n)$ 的增长速度一样快（或更快）。</p>
+<ol start="3">
+<li><strong>大Θ记号（$\Theta(f)$）</strong></li>
+</ol>
+<p><strong>Definition</strong>: 对于两个函数 $f(n)$ 和 $g(n)$，如果存在正整数 $c_1, c_2$ 和 $n_0$，使得当 $n \ge n_0$ 时，$0 \le c_1 \cdot g(n) \le f(n) \le c_2 \cdot g(n)$，则称 $f(n)$ 是 $g(n)$ 的大Θ记号，记作 $f(n) = \Theta(g(n))$。</p>
+<p><strong>极限描述</strong>:</p>
+<p>$$
+f(n) = \Theta(g(n)) \iff \lim_{n \to \infty} \frac{f(n)}{g(n)} = C \quad (C \text{为常数})
+$$</p>
+<p><strong>自然语言描述</strong>: $f(n)$ 的增长速度和 $g(n)$ 的增长速度一样快（同阶）。</p>
+<p><strong>考点2：性质transitive、对称性和properties</strong></p>
+<ol>
+<li><strong>Transitive（传递性）</strong></li>
+</ol>
+<ul>
+<li><strong>大O记号</strong>：
+如果 $f(n) = O(g(n))$ 且 $g(n) = O(h(n))$，则 $f(n) = O(h(n))$。</li>
+<li><strong>大Ω记号</strong>：
+如果 $f(n) = \Omega(g(n))$ 且 $g(n) = \Omega(h(n))$，则 $f(n) = \Omega(h(n))$。</li>
+<li><strong>大Θ记号</strong>：
+如果 $f(n) = \Theta(g(n))$ 且 $g(n) = \Theta(h(n))$，则 $f(n) = \Theta(h(n))$。</li>
+</ul>
+<ol start="2">
+<li><strong>对称性</strong></li>
+</ol>
+<ul>
+<li>
+<p><strong>大O记号</strong>：
+大O记号没有对称性，即 $f(n) = O(g(n))$ 并不意味着 $g(n) = O(f(n))$。</p>
+</li>
+<li>
+<p><strong>大Ω记号</strong>：
+大Ω记号没有对称性，即 $f(n) = \Omega(g(n))$ 并不意味着 $g(n) = \Omega(f(n))$。</p>
+</li>
+<li>
+<p><strong>大Θ记号</strong>：
+大Θ记号具有对称性，即 $f(n) = \Theta(g(n))$ 意味着 $g(n) = \Theta(f(n))$。</p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>Properties（其他性质）</strong></li>
+</ol>
+<ul>
+<li>
+<p><strong>大O记号</strong>的性质：</p>
+<ul>
+<li>如果 $f_1(n) = O(g_1(n))$ 且 $f_2(n) = O(g_2(n))$，则 $f_1(n) + f_2(n) = O(\max(g_1(n), g_2(n)))$。</li>
+<li>如果 $f(n) = O(g(n))$ 且 $g(n) = O(h(n))$，则 $f(n) = O(h(n))$（传递性）。</li>
+<li>如果 $c$ 是常数，且 $f(n) = O(g(n))$，则 $c \cdot f(n) = O(g(n))$。</li>
+</ul>
+</li>
+<li>
+<p><strong>大Ω记号</strong>的性质：</p>
+<ul>
+<li>如果 $f_1(n) = \Omega(g_1(n))$ 且 $f_2(n) = \Omega(g_2(n))$，则 $f_1(n) + f_2(n) = \Omega(\min(g_1(n), g_2(n)))$。</li>
+<li>如果 $f(n) = \Omega(g(n))$ 且 $g(n) = \Omega(h(n))$，则 $f(n) = \Omega(h(n))$（传递性）。</li>
+<li>如果 $c$ 是常数，且 $f(n) = \Omega(g(n))$，则 $c \cdot f(n) = \Omega(g(n))$。</li>
+</ul>
+</li>
+<li>
+<p><strong>大Θ记号</strong>的性质：</p>
+<ul>
+<li>如果 $f_1(n) = \Theta(g_1(n))$ 且 $f_2(n) = \Theta(g_2(n))$，则 $f_1(n) + f_2(n) = \Theta(\max(g_1(n), g_2(n)))$。</li>
+<li>如果 $f(n) = \Theta(g(n))$ 且 $g(n) = \Theta(h(n))$，则 $f(n) = \Theta(h(n))$（传递性）。</li>
+<li>如果 $c$ 是常数，且 $f(n) = \Theta(g(n))$，则 $c \cdot f(n) = \Theta(g(n))$。</li>
+</ul>
+</li>
+</ul>
 <h2 class="relative group">4. 平滑函数性质和主定理 
     <div id="4-平滑函数性质和主定理" class="anchor"></div>
     
@@ -1713,6 +1908,25 @@ $$</p>
 <li>考点3：某个函数是不是另一个函数的Smooth函数</li>
 </ul>
 <p>类似判断题、概念题；</p>
+<p><strong>考点1：什么是 Smooth Function（定义）</strong></p>
+<p><strong>定义</strong>：Smooth Function（光滑函数）通常是指在其定义域内具有连续导数（包括高阶导数）的函数。这意味着在数学上，光滑函数不仅是连续的，而且其导数也是连续的。通常，光滑函数可以在其定义域内进行无穷次微分。</p>
+<p><strong>Smoothness Rule</strong>：光滑函数的一个基本规则是：一个函数 $f(x)$ 被称为是光滑的，当且仅当它在其定义域内的所有阶导数都存在且连续。</p>
+<p>形式化定义：如果 $f(x)$ 在区间 $[a, b]$ 内的任意点处都具有任意阶的连续导数，则称 $f(x)$ 是区间 $[a, b]$ 上的光滑函数。</p>
+<p><strong>考点2：Smooth函数有什么用</strong>？</p>
+<p>光滑函数在数学和工程中有许多重要的应用，主要包括以下几个方面：</p>
+<ol>
+<li><strong>简化计算和分析</strong>：在某些情况下，我们需要对离散或不连续的函数进行处理。例如，在复杂性分析中，处理取整符号（如 $\left\lfloor \frac{x}{2} \right\rfloor$）的函数可能比较麻烦。通过用光滑函数进行近似，可以简化计算和分析。</li>
+<li><strong>信号处理</strong>：在信号处理中，光滑函数用于平滑数据，消除噪声。通过将不规则的数据转换为平滑的曲线，可以更容易地分析数据的趋势和模式。</li>
+<li><strong>数值分析和优化</strong>：在数值分析和优化问题中，光滑函数用于确保函数在迭代过程中具有良好的数值稳定性。光滑函数有助于避免不稳定的数值行为，并且在求解最优化问题时可以提高收敛速度。</li>
+<li><strong>计算机图形学</strong>：在计算机图形学中，光滑函数用于生成光滑的曲面和曲线，使图形渲染更加平滑和逼真。</li>
+</ol>
+<p><strong>考点3：某个函数是不是另一个函数的 Smooth 函数</strong></p>
+<p>要判断一个函数是否是另一个函数的光滑函数，我们通常需要检查以下几个方面：</p>
+<ol>
+<li><strong>连续性</strong>：检查函数是否在其定义域内是连续的。</li>
+<li><strong>导数的存在性和连续性</strong>：检查函数的导数是否存在，并且导数在定义域内是否也是连续的。如果是高阶光滑函数，则需要检查所有阶导数的连续性。</li>
+<li><strong>近似性</strong>：如果一个函数 $g(x)$ 是 $f(x)$ 的光滑版本，则 $g(x)$ 应该在定义域内良好地近似 $f(x)$。这意味着对于所有 $x$，$g(x)$ 应该尽可能接近 $f(x)$，并且这种近似在函数的导数上也是成立的。</li>
+</ol>
 
         </div>
                 
