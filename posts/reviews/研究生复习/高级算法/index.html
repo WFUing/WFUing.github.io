@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "3629"
+    "wordCount": "3935"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>3629 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">18 mins</span>
+  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>3935 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">19 mins</span>
   
 
   
@@ -2342,6 +2342,68 @@ $$</p>
 <p>类似判断题、概念题；</p>
 <p><strong>考点1：什么是 Smooth Function（定义）</strong></p>
 <p><strong>定义</strong>：Smooth Function（光滑函数）通常是指在其定义域内具有连续导数（包括高阶导数）的函数。这意味着在数学上，光滑函数不仅是连续的，而且其导数也是连续的。通常，光滑函数可以在其定义域内进行无穷次微分。</p>
+<p>在凸优化中，平滑函数是指具有一定光滑性（smoothness）的函数。具体来说，一个函数 $f(x)$ 被称为 $L$-平滑的（$L$-smooth），如果它的梯度满足以下条件：</p>
+<p>$$
+[ |\nabla f(x) - \nabla f(y)| \leq L |x - y| ]
+$$</p>
+<p>对所有 $x$ 和 $y$ 适用。这里，$L$ 是一个常数，称为 Lipschitz 常数，表示梯度变化的最大速率。</p>
+<p>这个定义表明函数的梯度变化不会太剧烈，即梯度是 Lipschitz 连续的。这在优化算法中非常重要，因为它可以帮助我们理解和控制梯度的变化。</p>
+<p><strong>为什么需要定义平滑</strong></p>
+<p>定义平滑性主要是为了描述函数梯度的变化程度。在优化算法中，函数的梯度趋近于零意味着我们正在接近极小值点。平滑性可以帮助我们理解梯度在不同点之间的变化，这对于分析和设计优化算法非常有用。</p>
+<p><strong>平滑函数与凸性</strong></p>
+<p>我们有以下命题：</p>
+<p><strong>命题</strong>： 如果一个函数 $f(x)$ 是 $L$-平滑的，那么该函数是凸函数。</p>
+<p><strong>证明</strong>：</p>
+<p>设 $f(x)$ 是 $L$-平滑的，定义函数 $g(x) = f(x) - \frac{L}{2} |x|^2$。</p>
+<p>我们需要证明函数 $g(x)$ 是凸函数。为了证明这一点，我们需要证明 $g(x)$ 是单调的（即 $g(x)$ 的梯度是非递减的）。</p>
+<p>计算 $g(x)$ 的梯度：</p>
+<p>$$
+[ \nabla g(x) = \nabla f(x) - Lx ]
+$$</p>
+<p>接下来，我们检查 $g(x)$ 的二阶导数是否非负。即 Hessian 矩阵是否半正定：</p>
+<p>$$
+[ \nabla^2 g(x) = \nabla^2 f(x) - L I ]
+$$</p>
+<p>其中 $I$ 是单位矩阵。</p>
+<p>因为 $f(x)$ 是 $L$-平滑的，我们有：</p>
+<p>$$
+[ |\nabla f(x) - \nabla f(y)| \leq L |x - y| ]
+$$</p>
+<p>这意味着 Hessian 矩阵的特征值不大于 $L$，即：</p>
+<p>$$
+[ \nabla^2 f(x) \preceq L I ]
+$$</p>
+<p>因此，$\nabla^2 g(x) = \nabla^2 f(x) - L I \preceq 0$，即 Hessian 矩阵是负半定的。</p>
+<p>这表明函数 $g(x)$ 是凸的。</p>
+<p>根据函数 $g(x)$ 是凸函数，我们可以得到函数 $f(x)$ 的一个上界：</p>
+<p>$$
+[ f(y) \leq f(x) + \nabla f(x)^T (y - x) + \frac{L}{2} |y - x|^2 ]
+$$</p>
+<p>这个上界对于后续分析优化算法的收敛性非常重要。</p>
+<p>在公式</p>
+<p>$$
+[ |\nabla f(x) - \nabla f(y)| \leq L |x - y| ]
+$$</p>
+<p>中，符号</p>
+<p>$$
+[ | \cdot | ]
+$$</p>
+<p>表示向量的范数（norm），通常情况下是欧几里得范数（也称为二范数，L2范数）。以下是对范数的详细解释：</p>
+<p><strong>范数的定义</strong></p>
+<p>范数是一个函数，它将向量映射到非负实数，表示向量的“大小”或“长度”。常见的向量范数有几种类型：</p>
+<p><strong>欧几里得范数（L2范数）</strong>：</p>
+<p>定义：对于一个向量 $[ \mathbf{v} = (v_1, v_2, \ldots, v_n) ]$，其欧几里得范数定义为：$[ |\mathbf{v}|_2 = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2} ]$</p>
+<p>也可以表示为：$[ |\mathbf{v}|<em>2 = \sqrt{\sum</em>{i=1}^n v_i^2} ]$</p>
+<p><strong>L1范数</strong>：</p>
+<p>定义：对于一个向量 $[ \mathbf{v} = (v_1, v_2, \ldots, v_n) ]$，其L1范数定义为：$[ |\mathbf{v}|_1 = |v_1| + |v_2| + \cdots + |v_n| ]$</p>
+<p>也可以表示为：$[ |\mathbf{v}|<em>1 = \sum</em>{i=1}^n |v_i| ]$</p>
+<p><strong>无穷范数（L∞范数）</strong>：</p>
+<p>定义：对于一个向量 $[ \mathbf{v} = (v_1, v_2, \ldots, v_n) ]$，其L∞范数定义为：
+$[ |\mathbf{v}|_\infty = \max { |v_1|, |v_2|, \ldots, |v_n| } ]$</p>
+<p><strong>公式中的范数</strong></p>
+<p>在公式 $[ |\nabla f(x) - \nabla f(y)| \leq L |x - y| ]$ 中，范数通常是指欧几里得范数（L2范数），除非另有说明。这是因为欧几里得范数在优化和梯度计算中最为常用。具体来说：</p>
+<p>$[ |\nabla f(x) - \nabla f(y)| ]$ 表示梯度向量 $[ \nabla f(x) ]$ 和 $[ \nabla f(y) ]$ 之间的欧几里得距离（即梯度差的长度）。</p>
+<p>$[ |x - y| ]$ 表示点 $[ x ]$ 和 $[ y ]$ 之间的欧几里得距离（即坐标差的长度）。</p>
 <p><strong>Smoothness Rule</strong>：光滑函数的一个基本规则是：一个函数 $f(x)$ 被称为是光滑的，当且仅当它在其定义域内的所有阶导数都存在且连续。</p>
 <p>形式化定义：如果 $f(x)$ 在区间 $[a, b]$ 内的任意点处都具有任意阶的连续导数，则称 $f(x)$ 是区间 $[a, b]$ 上的光滑函数。</p>
 <p><strong>考点2：Smooth函数有什么用</strong>？</p>
