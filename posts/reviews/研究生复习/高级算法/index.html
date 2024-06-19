@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "4236"
+    "wordCount": "4453"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>4236 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">20 mins</span>
+  <time datetime="2024-06-12 18:26:58 &#43;0800 &#43;0800">12 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>4453 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">21 mins</span>
   
 
   
@@ -2994,6 +2994,94 @@ $$</p>
   
 
 </p>
+<p><strong>分治法和主定理</strong></p>
+<p>分治法（Divide and Conquer）是一种常用的算法设计范式，其基本思想是将一个复杂的问题分解为若干个规模较小的子问题，递归地求解这些子问题，然后将子问题的解合并得到原问题的解。</p>
+<p><strong>主定理（Master Theorem）</strong></p>
+<p>主定理是用来分析分治算法时间复杂度的一种工具。它适用于以下形式的递归方程：</p>
+<p>$$
+[ T(n) = aT\left(\frac{n}{b}\right) + f(n) ]
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$a \geq 1$ 表示每次递归调用产生的子问题数。</li>
+<li>$b &gt; 1$ 表示子问题规模缩减的因子。</li>
+<li>$f(n)$ 是分解和合并所需的时间。</li>
+</ul>
+<p>主定理将递归方程的解分为三种情况：</p>
+<ol>
+<li>
+<p><strong>情况 1</strong>： 如果 $f(n) = O(n^c)$ 且 $c &lt; \log_b a$，则
+$[ T(n) = \Theta(n^{\log_b a}) ]$</p>
+</li>
+<li>
+<p><strong>情况 2</strong>： 如果 $f(n) = \Theta(n^c)$ 且 $c = \log_b a$，则
+$[ T(n) = \Theta(n^c \log n) ]$</p>
+</li>
+<li>
+<p><strong>情况 3</strong>： 如果 $f(n) = \Omega(n^c)$ 且 $c &gt; \log_b a$，并且满足正则性条件 $af\left(\frac{n}{b}\right) \leq kf(n)$ 对于某个常数 $k &lt; 1$ 和足够大的 $n$，则
+$[ T(n) = \Theta(f(n)) ]$</p>
+</li>
+</ol>
+<p><strong>示例：合并排序（Merge Sort）</strong></p>
+<p>合并排序是一种典型的分治算法，其时间复杂度可以通过主定理来分析。</p>
+<p><strong>合并排序的递归方程：</strong></p>
+<p>$$
+[ T(n) = 2T\left(\frac{n}{2}\right) + O(n) ]
+$$</p>
+<ul>
+<li>$a = 2$：每次递归产生两个子问题。</li>
+<li>$b = 2$：每个子问题的规模是原问题的一半。</li>
+<li>$f(n) = O(n)$：合并两个子问题所需的时间。</li>
+</ul>
+<p><strong>应用主定理：</strong></p>
+<ol>
+<li>
+<p>计算 $\log_b a$：
+$[ \log_2 2 = 1 ]$</p>
+</li>
+<li>
+<p>对比 $f(n)$ 和 $n^{\log_b a}$：</p>
+<ul>
+<li>$f(n) = O(n)$</li>
+<li>$n^{\log_b a} = n^1 = n$</li>
+</ul>
+</li>
+</ol>
+<p>因为 $f(n) = \Theta(n)$ 和 $n^{\log_b a} = n$，这符合主定理的第二种情况。</p>
+<p><strong>结论：</strong></p>
+<p>根据主定理的第二种情况：
+$$
+[ T(n) = \Theta(n \log n) ]
+$$</p>
+<p><strong>另一个示例：二分查找（Binary Search）</strong></p>
+<p>二分查找是一种经典的分治算法，用于在排序数组中查找元素，其时间复杂度也可以通过主定理来分析。</p>
+<p><strong>二分查找的递归方程：</strong></p>
+<p>$$
+[ T(n) = T\left(\frac{n}{2}\right) + O(1) ]
+$$</p>
+<ul>
+<li>$a = 1$：每次递归产生一个子问题。</li>
+<li>$b = 2$：子问题的规模是原问题的一半。</li>
+<li>$f(n) = O(1)$：分解和合并所需的时间是常数时间。</li>
+</ul>
+<p><strong>应用主定理：</strong></p>
+<ol>
+<li>
+<p>计算 $\log_b a$：
+[ \log_2 1 = 0 ]</p>
+</li>
+<li>
+<p>对比 $f(n)$ 和 $n^{\log_b a}$：</p>
+<ul>
+<li>$f(n) = O(1)$</li>
+<li>$n^{\log_b a} = n^0 = 1$</li>
+</ul>
+</li>
+</ol>
+<p>因为 $f(n) = \Theta(1)$ 和 $n^{\log_b a} = 1$，这符合主定理的第二种情况。</p>
+<p><strong>结论：</strong></p>
+<p>根据主定理的第二种情况：
+[ T(n) = \Theta(\log n) ]</p>
 <h2 class="relative group">7. 复杂度表示法 
     <div id="7-复杂度表示法" class="anchor"></div>
     
