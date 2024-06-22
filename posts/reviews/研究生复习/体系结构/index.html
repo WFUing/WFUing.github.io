@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "937"
+    "wordCount": "1068"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>937 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1068 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
   
 
   
@@ -1093,6 +1093,14 @@ window.MathJax = {
     <li><a href="#基础部分">基础部分</a>
       <ul>
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#11-宏观体系结构">1.1 宏观体系结构</a>
+      <ul>
+        <li><a href="#atam的应用">ATAM的应用：</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
         <li><a href="#4-架构设计">4. 架构设计</a></li>
@@ -1126,6 +1134,14 @@ window.MathJax = {
     <li><a href="#基础部分">基础部分</a>
       <ul>
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#11-宏观体系结构">1.1 宏观体系结构</a>
+      <ul>
+        <li><a href="#atam的应用">ATAM的应用：</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
         <li><a href="#4-架构设计">4. 架构设计</a></li>
@@ -1235,12 +1251,12 @@ window.MathJax = {
     </span>        
     
 </h3>
-<p><strong>什么是软件架构</strong></p>
+<p><strong>1.1 什么是软件架构</strong></p>
 <ul>
 <li>SEI定义：是整个程序或计算系统的结构（Structure），包含了程序的元素（Software Elements）、外部可见的元素属性（Properties）和元素之间的关系（Relationship）。</li>
 <li>IEEE定义：是一个系统的基本组织，包含了它的所有组件（Components）、组件之间的关系、环境以及指导该系统设计（Design）和演化（Evolution）的原则（Principle）。</li>
 </ul>
-<p><strong>软件架构师（software architect）的工作</strong></p>
+<p><strong>1.2 软件架构师（software architect）的工作</strong></p>
 <ul>
 <li>联络（Liaison）：
 <ol>
@@ -1252,39 +1268,309 @@ window.MathJax = {
 <li>技术知识（Technology knowledge）：对技术领域的深度理解</li>
 <li>风险管理（Risk management）：与设计、技术选择有关的风险</li>
 </ul>
-<p><strong>架构从何而来</strong></p>
+<p><strong>1.3 架构从何而来</strong></p>
 <ul>
-<li>NFRs（非功能性需求）：描述的是系统工作的有多好，包括技术约束、业务约束与质量属性</li>
-<li>ASRs（架构攸关需求）</li>
-<li>质量需求</li>
-<li>涉众（stakeholder</li>
-<li>开发组织（organization）</li>
-<li>技术环境（Technical Environments）</li>
-</ul>
-<p><strong>架构视图</strong>（4+1）</p>
-<ul>
-<li>逻辑视图：描述架构中重要的元素以及它们之间的关系。（静态的）</li>
-<li>过程视图：描述架构中元素的并发性和交流。（动态的，运行时的）</li>
-<li>物理视图：描述主要进程和组件如何映射到应用程序硬件。（软件和现实的关联）</li>
-<li>开发视图：捕捉软件组件的内部组织。（开发时分配任务、项目管理（基于逻辑视图，关注开发顺序等））</li>
-<li>架构用例：捕获架构的需求，不止与一个特定视图有关。</li>
-</ul>
-<p><strong>软件架构活动</strong></p>
-<ul>
-<li>为系统创建业务用例</li>
-<li>理解需求</li>
-<li>构造并选择架构</li>
-<li>与涉众交流架构（包括开发者）</li>
-<li>分析和评估架构：
+<li>NFRs（非功能性需求，Non-Functional Requirements）：描述的是系统工作的有多好，包括技术约束、业务约束与质量属性
 <ol>
-<li>整体方法；</li>
-<li>质量具体技术</li>
+<li>性能（Performance）：系统响应时间、吞吐量、资源利用率等。</li>
+<li>可用性（Availability）：系统在一定时间内可正常工作的比例。</li>
+<li>可扩展性（Scalability）：系统应对增长需求的能力。</li>
+<li>安全性（Security）：系统防止未授权访问和数据保护的能力。</li>
+<li>可维护性（Maintainability）：系统的可修改、可调试和可扩展性。</li>
+<li>可移植性（Portability）：系统在不同环境中的运行能力。</li>
 </ol>
 </li>
-<li>实现架构</li>
-<li>确保与架构一致</li>
+<li>ASRs（架构攸关需求，Architecturally Significant Requirements）：ASRs是对系统架构设计具有重要影响的需求。它们通常涵盖关键的NFRs和某些功能需求。ASRs通常是那些对系统成功至关重要的需求，如果忽视这些需求，系统可能无法满足预期的目标。</li>
+<li>质量需求（Quality Requirements）：质量需求是对系统整体质量的期望，包括上述的NFRs。它们是ASRs的一部分，直接影响架构设计决策。例如，高性能需求可能会影响数据库选择和缓存策略，而高安全性需求可能会影响认证和授权机制的设计。</li>
+<li>涉众（stakeholder）：涉众是指与系统有利益相关关系的所有个人或团体，包括但不限于：
+<ol>
+<li>客户：出资和使用系统的人。</li>
+<li>开发人员：负责系统开发和维护的人。</li>
+<li>管理人员：负责项目管理和监督的人。</li>
+<li>用户：最终使用系统的人。</li>
+<li>运维人员：负责系统部署、监控和维护的人。</li>
+</ol>
+</li>
+<li>开发组织（organization）：开发组织是指负责系统开发的团队或公司。开发组织的能力、资源和经验对架构设计有直接影响。例如，开发团队的技术能力和经验可能会影响技术栈的选择和架构复杂性的控制。</li>
+<li>技术环境（Technical Environments）：技术环境包括系统运行和开发所需的所有技术条件和工具，如：
+<ol>
+<li>硬件环境：服务器、存储设备、网络设备等。</li>
+<li>软件环境：操作系统、中间件、数据库、开发工具等。</li>
+<li>开发工具和框架：编程语言、集成开发环境（IDE）、版本控制系统等。</li>
+</ol>
+</li>
 </ul>
-<p><strong>架构过程</strong></p>
+<p><strong>1.4 架构视图</strong>（4+1）</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-17.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ol>
+<li>场景视图（也叫用例视图）：黑盒视图。从外部视角，描述系统的参与者（用户）与系统功能用例的关系。反映的是系统的最终用户需求和交互设计。</li>
+<li>逻辑视图（也叫结构视图）：白盒视图。从结构化视角，描述该系统对用户提供的所需功能服务所具备的组件结构和数据结构，以及一些边界约束条件，清晰的描述给用户提供的功能需求服务是如何构建的。描述该系统内部所具备了那些组织结构，以达到实现对外功能。</li>
+<li>开发视图（也叫实现视图）：白盒视图。从结构化视角和行为视角，去描述实现系统功能的各个组件和模块是如何实现的。</li>
+<li>处理视图（也叫过程视图、行为视图）：白盒视图。从行为视角，描述系统各个组件和模块是如何进行通信的。</li>
+<li>物理视图（也叫部署视图）：黑盒视图。从交互视角，描述系统可以部署到哪些物理环境（如服务器、PC端、移动端等）上和软件环境（如虚拟机、容器、进程等）上。</li>
+</ol>
+<ul>
+<li>逻辑视图：描述架构中重要的元素以及它们之间的关系。（静态的）</li>
+</ul>
+<p>springcloud微服务的逻辑视图：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>Java体系架构逻辑视图：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>过程视图：描述架构中元素的并发性和交流。（动态的，运行时的）</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-15.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-16.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>物理视图：描述主要进程和组件如何映射到应用程序硬件。（软件和现实的关联）</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-13.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-14.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>开发视图：捕捉软件组件的内部组织。（开发时分配任务、项目管理（基于逻辑视图，关注开发顺序等））</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-12.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>架构用例：捕获架构的需求，不止与一个特定视图有关。</li>
+</ul>
+<p><strong>1.5 软件架构活动</strong></p>
+<ul>
+<li>为系统创建业务用例：业务用例是描述系统如何在不同情境下与用户或其他系统交互的场景。创建业务用例的目的是确保对系统功能需求有清晰的理解，并帮助识别关键的架构需求。
+<ol>
+<li>与业务涉众讨论和确认系统功能。</li>
+<li>描述系统与用户或其他系统的交互过程。</li>
+<li>定义业务用例的触发条件、流程和预期结果。</li>
+</ol>
+</li>
+<li>理解需求：需求理解是架构设计的基础。需求包括功能需求和非功能需求，后者尤其重要，因为它们直接影响系统架构的决策。
+<ol>
+<li>收集和记录需求。</li>
+<li>分析和分类需求。</li>
+<li>确定架构攸关需求（ASRs）。</li>
+</ol>
+</li>
+<li>构造并选择架构：构造和选择架构是软件架构活动的核心。它包括设计架构候选方案，并根据需求和约束选择最优的架构。
+<ol>
+<li>设计多个架构候选方案。</li>
+<li>比较和评估不同方案的优缺点。</li>
+<li>选择最能满足需求的架构。</li>
+</ol>
+</li>
+<li>与涉众交流架构（包括开发者）：架构设计需要与各个涉众（包括开发者）进行有效的交流，以确保各方理解和支持架构决策。
+<ol>
+<li>准备架构文档和示意图。</li>
+<li>召开架构评审会，与涉众讨论架构方案。</li>
+<li>收集反馈并做出相应调整。</li>
+</ol>
+</li>
+<li>分析和评估架构：
+<ol>
+<li>整体方法；
+<ul>
+<li>使用架构评估方法（如ATAM）。</li>
+<li>分析架构在不同场景下的表现。</li>
+</ul>
+</li>
+<li>质量具体技术
+<ul>
+<li>评估性能、安全性、可维护性等质量属性。</li>
+<li>使用原型或模拟测试关键质量属性。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>实现架构：架构实现是将设计好的架构转化为实际的系统代码和配置。这一过程需要严格遵循架构设计，以确保系统的正确性和质量。
+<ol>
+<li>制定详细的实施计划。</li>
+<li>分配开发任务，确保开发团队理解架构。</li>
+<li>编码、测试和集成系统组件。</li>
+</ol>
+</li>
+<li>确保与架构一致：确保最终的系统实现与设计的架构保持一致是软件架构活动的最后一步。这需要持续的监控和调整，以应对开发过程中可能出现的变化。
+<ol>
+<li>定期进行架构评审和代码检查。</li>
+<li>使用自动化工具检测架构违背情况。</li>
+<li>解决架构不一致的问题，保持系统与架构一致。</li>
+</ol>
+</li>
+</ul>
+<p><strong>1.6 架构过程</strong></p>
 <p>
 
 
@@ -1308,7 +1594,18 @@ window.MathJax = {
   
 
 </p>
-<p><strong>软件架构知识领域</strong></p>
+<p>tactics是什么东西：一般指的是战术模式</p>
+<p>DDD中的战术模式包括但不限于以下几种：</p>
+<ol>
+<li><strong>实体（Entity）</strong>：具有唯一标识和生命周期的对象，其属性随时间变化。</li>
+<li><strong>值对象（Value Object）</strong>：描述领域概念的属性集合，通常用于描述没有独立存在意义的对象，它们是不可变的。</li>
+<li><strong>聚合（Aggregate）</strong>：一组相关对象的集合，它们一起作为数据修改的单元，有一个根实体（Aggregate Root）来控制外部对象对聚合内对象的访问。</li>
+<li><strong>领域事件（Domain Event）</strong>：领域中发生的业务事件，通常用于触发领域内其他业务逻辑。</li>
+<li><strong>领域服务（Domain Service）</strong>：执行领域逻辑的无状态服务，通常作为领域模型的一部分，但不归属于任何聚合。</li>
+<li><strong>存储库（Repository）</strong>：提供对聚合根的检索和持久化机制的接口，封装了数据访问逻辑。</li>
+<li><strong>工厂（Factory）</strong>：用于创建复杂对象的类或方法，隐藏对象创建的复杂性，通常与聚合根相关联。</li>
+</ol>
+<p><strong>1.7 软件架构知识领域</strong></p>
 <ul>
 <li>软件设计的基本概念：软件开发的生命周期，设计过程等</li>
 <li>关键问题（技术）：并发性（concurrency）、事件的控制和处理、分发、异常处理、交互系统、持久性</li>
@@ -1317,7 +1614,145 @@ window.MathJax = {
 <li>软件设计质量分析和评估：质量属性、策略、质量分析和评估的方法技术和工具</li>
 <li>微服务架构、业务和企业架构</li>
 </ul>
-<p><strong>软件产品线的体系结构与简单产品的体系结构的区别</strong></p>
+<h1 class="relative group">1.补充知识点 
+    <div id="1补充知识点" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#1%e8%a1%a5%e5%85%85%e7%9f%a5%e8%af%86%e7%82%b9" aria-label="Anchor">#</a>
+    </span>        
+    
+</h1>
+<h2 class="relative group">1.1 宏观体系结构 
+    <div id="11-宏观体系结构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#11-%e5%ae%8f%e8%a7%82%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li><strong>分层架构（Layered Architecture）</strong>：
+<ul>
+<li>将系统分解为逻辑层次，例如表示层、业务逻辑层和数据访问层。</li>
+</ul>
+</li>
+<li><strong>管道-过滤器架构（Pipes and Filters）</strong>：
+<ul>
+<li>组件（过滤器）通过管道连接，数据在管道中流动，每个过滤器对数据进行处理。</li>
+</ul>
+</li>
+<li><strong>事件驱动架构（Event-Driven Architecture）</strong>：
+<ul>
+<li>系统组件通过事件进行通信，事件触发特定的处理逻辑。</li>
+</ul>
+</li>
+<li><strong>微服务架构（Microservices Architecture）</strong>：
+<ul>
+<li>将应用程序分解为一组小服务，每个服务围绕特定业务功能构建，独立部署和扩展。
+1.2 <strong>属性驱动设计（Attribute-Driven Design, ADD）</strong></li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>这种方法侧重于识别和满足系统的关键质量属性，如性能、可靠性、可用性、可维护性和安全性。设计决策基于这些属性的需求来进行。</p>
+<ol>
+<li><strong>识别关键属性</strong>：
+<ul>
+<li>确定系统的关键质量属性，如性能、可靠性、可扩展性和安全性。</li>
+</ul>
+</li>
+<li><strong>定义场景</strong>：
+<ul>
+<li>创建场景来模拟用户行为和系统负载，例如，高流量下的购物车操作、支付处理等。</li>
+</ul>
+</li>
+<li><strong>分析和设计</strong>：
+<ul>
+<li>根据关键属性设计系统架构，例如，使用负载均衡来提高性能，使用冗余服务器来提高可靠性。</li>
+</ul>
+</li>
+<li><strong>权衡决策</strong>：
+<ul>
+<li>在不同的质量属性之间做出权衡，例如，可能需要在快速响应时间和系统复杂性之间做出选择。</li>
+</ul>
+</li>
+<li><strong>原型和评估</strong>：
+<ul>
+<li>开发原型并对其进行评估，以验证设计是否满足所有关键属性。</li>
+</ul>
+</li>
+<li><strong>迭代改进</strong>：
+<ul>
+<li>根据评估结果迭代改进架构，直到满足所有关键属性的要求。
+1.3 ATAkaoM，即架构权衡分析方法（Architecture Tradeoff Analysis Method）</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol>
+<li><strong>准备阶段</strong>：
+<ul>
+<li>确定评估目标和范围。</li>
+<li>选择评估团队，包括架构师、利益相关者和领域专家。</li>
+</ul>
+</li>
+<li><strong>架构描述</strong>：
+<ul>
+<li>详细描述当前架构，包括组件、它们之间的关系以及架构决策。</li>
+</ul>
+</li>
+<li><strong>场景开发</strong>：
+<ul>
+<li>基于质量属性需求，开发一系列场景，这些场景模拟了系统在不同条件下的行为。</li>
+</ul>
+</li>
+<li><strong>场景分析</strong>：
+<ul>
+<li>对每个场景进行分析，评估架构如何支持或违反质量属性需求。</li>
+</ul>
+</li>
+<li><strong>权衡优先级</strong>：
+<ul>
+<li>确定架构中的关键权衡点，如性能与可扩展性、安全性与可用性等。</li>
+</ul>
+</li>
+<li><strong>风险评估</strong>：
+<ul>
+<li>识别架构中的风险和潜在问题，评估这些问题对项目的影响。</li>
+</ul>
+</li>
+<li><strong>决策和建议</strong>：
+<ul>
+<li>根据分析结果，提出改进建议和决策支持，帮助团队做出更明智的架构选择。</li>
+</ul>
+</li>
+<li><strong>报告和记录</strong>：
+<ul>
+<li>编写详细的评估报告，记录分析过程、发现的问题和建议。</li>
+</ul>
+<h3 class="relative group">ATAM的应用： 
+    <div id="atam的应用" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#atam%e7%9a%84%e5%ba%94%e7%94%a8" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<ul>
+<li><strong>质量属性焦点</strong>：ATAM专注于质量属性，如性能、可靠性、可用性、安全性等，确保架构设计能够满足这些关键需求。</li>
+<li><strong>多角度评估</strong>：通过不同利益相关者的参与，ATAM提供了多角度的评估视角，增加了评估的全面性和客观性。</li>
+<li><strong>风险识别</strong>：ATAM有助于识别架构设计中可能被忽视的风险和问题，为风险管理提供支持。</li>
+<li><strong>持续改进</strong>：ATAM是一个迭代的过程，可以在软件开发的不同阶段重复应用，以持续改进架构设计。</li>
+</ul>
+</li>
+</ol>
+<p><strong>1.8 软件产品线的体系结构与简单产品的体系结构的区别</strong></p>
 <ol>
 <li>产品线的目的是实现高重用性与高可修改性，之所以十分有效是因为可以通过重用充分利用产品的共性，从⽽实现生产的经济性。</li>
 <li>在产品线架构中有一组明确允许发生的变化，但是对于常规架构来说，只要满足了单个系统的行为和质量目标，几乎任何实例都是可以的。</li>
