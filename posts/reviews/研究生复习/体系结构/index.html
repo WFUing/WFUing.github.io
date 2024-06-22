@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1068"
+    "wordCount": "1109"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1068 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1109 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
   
 
   
@@ -1093,14 +1093,6 @@ window.MathJax = {
     <li><a href="#基础部分">基础部分</a>
       <ul>
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li><a href="#11-宏观体系结构">1.1 宏观体系结构</a>
-      <ul>
-        <li><a href="#atam的应用">ATAM的应用：</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
         <li><a href="#4-架构设计">4. 架构设计</a></li>
@@ -1134,14 +1126,6 @@ window.MathJax = {
     <li><a href="#基础部分">基础部分</a>
       <ul>
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
-      </ul>
-    </li>
-  </ul>
-
-  <ul>
-    <li><a href="#11-宏观体系结构">1.1 宏观体系结构</a>
-      <ul>
-        <li><a href="#atam的应用">ATAM的应用：</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
         <li><a href="#4-架构设计">4. 架构设计</a></li>
@@ -1594,6 +1578,46 @@ window.MathJax = {
   
 
 </p>
+<ol>
+<li>指定架构攸关需求（Specifying ASRs）
+<ul>
+<li><strong>涉众（Stakeholders）</strong>：涉众包括所有与系统有利益相关的人员或团体，如客户、用户、开发团队等。</li>
+<li><strong>优先级质量属性场景（Prioritized Quality Attribute Scenarios）</strong>：从涉众收集并优先级排序的质量属性需求，如性能、安全性、可扩展性等。</li>
+<li><strong>需求和约束（Requirements and Constraints）</strong>：包括系统的功能需求和非功能需求，以及开发和技术约束。</li>
+</ul>
+</li>
+<li>架构设计（Architecture Design）
+<ul>
+<li><strong>模式和策略（Patterns and Tactics）</strong>：使用设计模式和策略来指导架构设计，确保设计能够满足指定的质量属性。</li>
+<li><strong>候选视图草图（Sketches of Candidate Views）</strong>：根据设计模式和策略，创建架构候选方案的草图。</li>
+<li><strong>确定的视图（Determined by Patterns）</strong>：选择和确定最优的架构视图，以满足系统需求。</li>
+</ul>
+</li>
+<li>文档化（Documenting）
+<ul>
+<li><strong>选定的组合视图及超出视图的文档（Chosen, Combined Views plus doc&rsquo;n beyond views）</strong>：将选定的架构视图进行组合，并进行详细的文档化，不仅包括视图，还包括额外的架构说明和设计决策。</li>
+</ul>
+</li>
+<li>架构评估（Architecture Evaluation）
+<ul>
+<li><strong>架构评估（Architecture Evaluation）</strong>：对设计好的架构进行评估，确保其能够满足所有的需求和约束。
+<ul>
+<li>评估可能包括使用架构评估方法，如ATAM（Architecture Tradeoff Analysis Method），分析架构在不同场景下的表现。</li>
+<li>涉众参与评估，提供反馈和改进建议。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>反馈循环
+<ul>
+<li><strong>反馈和改进（Feedback and Improvement）</strong>：通过评估得到的反馈，可以用于改进架构设计。
+<ul>
+<li>这种反馈循环确保架构在整个开发过程中不断得到验证和优化，最终确保系统的质量和性能。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 <p>tactics是什么东西：一般指的是战术模式</p>
 <p>DDD中的战术模式包括但不限于以下几种：</p>
 <ol>
@@ -1614,26 +1638,10 @@ window.MathJax = {
 <li>软件设计质量分析和评估：质量属性、策略、质量分析和评估的方法技术和工具</li>
 <li>微服务架构、业务和企业架构</li>
 </ul>
-<h1 class="relative group">1.补充知识点 
-    <div id="1补充知识点" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#1%e8%a1%a5%e5%85%85%e7%9f%a5%e8%af%86%e7%82%b9" aria-label="Anchor">#</a>
-    </span>        
-    
-</h1>
-<h2 class="relative group">1.1 宏观体系结构 
-    <div id="11-宏观体系结构" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#11-%e5%ae%8f%e8%a7%82%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
+<ol>
+<li>补充知识点</li>
+</ol>
+<p>1.1 宏观体系结构</p>
 <ol>
 <li><strong>分层架构（Layered Architecture）</strong>：
 <ul>
@@ -1657,7 +1665,6 @@ window.MathJax = {
 </ul>
 </li>
 </ol>
-<hr>
 <p>这种方法侧重于识别和满足系统的关键质量属性，如性能、可靠性、可用性、可维护性和安全性。设计决策基于这些属性的需求来进行。</p>
 <ol>
 <li><strong>识别关键属性</strong>：
@@ -1687,12 +1694,11 @@ window.MathJax = {
 </li>
 <li><strong>迭代改进</strong>：
 <ul>
-<li>根据评估结果迭代改进架构，直到满足所有关键属性的要求。
-1.3 ATAkaoM，即架构权衡分析方法（Architecture Tradeoff Analysis Method）</li>
+<li>根据评估结果迭代改进架构，直到满足所有关键属性的要求。</li>
 </ul>
 </li>
 </ol>
-<hr>
+<p>1.3 ATAkaoM，即架构权衡分析方法（Architecture Tradeoff Analysis Method）</p>
 <ol>
 <li><strong>准备阶段</strong>：
 <ul>
@@ -1734,24 +1740,15 @@ window.MathJax = {
 <ul>
 <li>编写详细的评估报告，记录分析过程、发现的问题和建议。</li>
 </ul>
-<h3 class="relative group">ATAM的应用： 
-    <div id="atam的应用" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#atam%e7%9a%84%e5%ba%94%e7%94%a8" aria-label="Anchor">#</a>
-    </span>        
-    
-</h3>
+</li>
+</ol>
+<p>ATAM的应用：</p>
 <ul>
 <li><strong>质量属性焦点</strong>：ATAM专注于质量属性，如性能、可靠性、可用性、安全性等，确保架构设计能够满足这些关键需求。</li>
 <li><strong>多角度评估</strong>：通过不同利益相关者的参与，ATAM提供了多角度的评估视角，增加了评估的全面性和客观性。</li>
 <li><strong>风险识别</strong>：ATAM有助于识别架构设计中可能被忽视的风险和问题，为风险管理提供支持。</li>
 <li><strong>持续改进</strong>：ATAM是一个迭代的过程，可以在软件开发的不同阶段重复应用，以持续改进架构设计。</li>
 </ul>
-</li>
-</ol>
 <p><strong>1.8 软件产品线的体系结构与简单产品的体系结构的区别</strong></p>
 <ol>
 <li>产品线的目的是实现高重用性与高可修改性，之所以十分有效是因为可以通过重用充分利用产品的共性，从⽽实现生产的经济性。</li>
