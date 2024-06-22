@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1109"
+    "wordCount": "1304"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1109 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1304 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
   
 
   
@@ -1215,6 +1215,29 @@ window.MathJax = {
 <li>DDD部分：简答题，结合具体案例考察对于DDD原理、流程和应用的理解。</li>
 <li>企业架构部分：简答题，考察对于企业架构原理、流程和意义的理解。</li>
 </ol>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-18.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <h2 class="relative group">基础部分 
     <div id="基础部分" class="anchor"></div>
     
@@ -1240,7 +1263,15 @@ window.MathJax = {
 <li>SEI定义：是整个程序或计算系统的结构（Structure），包含了程序的元素（Software Elements）、外部可见的元素属性（Properties）和元素之间的关系（Relationship）。</li>
 <li>IEEE定义：是一个系统的基本组织，包含了它的所有组件（Components）、组件之间的关系、环境以及指导该系统设计（Design）和演化（Evolution）的原则（Principle）。</li>
 </ul>
-<p><strong>1.2 软件架构师（software architect）的工作</strong></p>
+<p>元素、关系、设计、结构、属性</p>
+<p>工业上：在所有设计阶段的重要决定组成的都称之为软件架构，按重要程度</p>
+<p><strong>1.2 软件架构用来做什么</strong></p>
+<ul>
+<li>将系统分解成组件、模块和子系统：定义了组件的接口，组件的交互和相互依赖关系，组件的职责；</li>
+<li>说明了交流方式：包括数据传输机制和控制流；</li>
+<li>架构处理非功能需求，包括技术约束、业务约束和质量属性</li>
+</ul>
+<p>软件架构师（software architect）的工作：</p>
 <ul>
 <li>联络（Liaison）：
 <ol>
@@ -1299,7 +1330,7 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
-        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-17.png"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-19.png"
         alt=""
       />
       
@@ -1569,6 +1600,30 @@ window.MathJax = {
       
       <img
         class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-20.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>按照上面的图是需求规范→架构设计决策→逻辑设计细节→细节设计决策→物理设计细节</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
         src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image.png"
         alt=""
       />
@@ -1578,6 +1633,17 @@ window.MathJax = {
   
 
 </p>
+<p>详细描述版本：</p>
+<ol>
+<li>通过StackHolder获取到ASRs(架构攸关的需求)</li>
+<li>通过排序、分析得到Prioritized Quality Attribute Scenarios(高优先级质量属性解决方案)和Requirements，Constraints(需求和约束)</li>
+<li>将上述部分，结合模式和策略，综合可以得到架构的设计</li>
+<li>根据架构的设计得到由模式决定的候选视图的示意图，之后完成文档化</li>
+<li>选择、组合视图，将文档进行进一步的评估，这一部分需要StackHolders的参与、也需要Prioritized Quality Attribute Scenarios和文档等作为参考。</li>
+</ol>
+<p>本科内容速记：从需求文档中收集ASR，通过采访涉众来收集ASR，通过了解业务目标来收集ASR，在项目树中管理ASR</p>
+<p>ASR：除了设计文档，还要与 stakeholders 交互，通过 workshop 等形式，然后排序（根据对用户
+的重要程度、对开发人员来说是实现他的难易程度这俩个维度进行评价）</p>
 <ol>
 <li>指定架构攸关需求（Specifying ASRs）
 <ul>
@@ -1631,116 +1697,170 @@ window.MathJax = {
 </ol>
 <p><strong>1.7 软件架构知识领域</strong></p>
 <ul>
-<li>软件设计的基本概念：软件开发的生命周期，设计过程等</li>
-<li>关键问题（技术）：并发性（concurrency）、事件的控制和处理、分发、异常处理、交互系统、持久性</li>
-<li>软件结构和架构：体系结构样式和模式（宏观体系结构，macro-architecture），设计模式（微观体系结构，micro-architecture）</li>
-<li>软件设计方法：架构方法（如ADD，属性驱动设计）、设计方法（如DDD，领域驱动设计）</li>
-<li>软件设计质量分析和评估：质量属性、策略、质量分析和评估的方法技术和工具</li>
-<li>微服务架构、业务和企业架构</li>
-</ul>
+<li>软件设计的基本概念：
+<ul>
+<li>软件开发的生命周期：
 <ol>
-<li>补充知识点</li>
+<li>需求分析：收集和定义软件的功能和非功能需求。</li>
+<li>设计：创建软件的架构和详细设计。</li>
+<li>构造：编码和实现软件。</li>
+<li>测试：验证和确认软件的功能和质量。</li>
+<li>部署：将软件交付给用户。</li>
+<li>维护：对软件进行修改和改进。</li>
 </ol>
+</li>
+<li>设计过程：
+<ol>
+<li>系统设计：定义系统的整体架构，包括主要组件及其交互。</li>
+<li>详细设计：定义每个组件的内部结构和算法。</li>
+</ol>
+</li>
+<li>整体设计概念：</li>
+</ul>
+</li>
+<li>上下文：软件开发周期——需求、设计、构造和测试；
+<ul>
+<li>需求：定义系统必须实现的功能和特性。</li>
+<li>设计：制定满足需求的系统架构和设计细节。</li>
+<li>构造：将设计转化为可运行的软件代码。</li>
+<li>测试：验证软件是否符合需求并且没有缺陷。</li>
+</ul>
+</li>
+<li>关键问题（技术）：并发性（concurrency）、事件的控制和处理、分发、异常处理、交互系统、持久性
+<ul>
+<li>并发性（Concurrency）：管理多个任务同时执行，保证系统的高效性和可靠性。</li>
+<li>事件的控制和处理：处理系统中的各种事件和信号，确保系统的响应能力。</li>
+<li>分发（Distribution）：在多个计算节点上分配和协调任务，确保系统的可扩展性。</li>
+<li>异常处理（Exception Handling）：检测和处理系统中的错误和异常，保证系统的稳健性。</li>
+<li>交互系统（Interactive Systems）：设计用户界面和用户交互流程，提高用户体验。</li>
+<li>持久性（Persistence）：管理数据的长期存储和访问，确保数据的可靠性和可用性。</li>
+</ul>
+</li>
+<li>软件结构和架构：体系结构样式和模式（宏观体系结构，macro-architecture），设计模式（微观体系结构，micro-architecture）
+<ul>
+<li>宏观体系结构（Macro-architecture）：定义系统的整体结构，如分层架构、微服务架构等。</li>
+<li>微观体系结构（Micro-architecture）：定义组件内部的设计模式，如单例模式、工厂模式等。</li>
+</ul>
+</li>
+<li>软件设计方法：架构方法（如ADD，属性驱动设计）、设计方法（如DDD，领域驱动设计）
+<ul>
+<li>属性驱动设计（Attribute-Driven Design, ADD）：基于系统的质量属性（如性能、安全性）进行架构设计。
+<ul>
+<li>识别质量属性：根据系统需求和涉众期望，确定关键的质量属性。</li>
+<li>定义架构策略：针对每个质量属性，制定实现和优化的策略。</li>
+<li>创建架构视图：根据架构策略，设计系统的逻辑视图、开发视图、过程视图和物理视图。</li>
+<li>评估和改进架构：通过评估方法（如ATAM），验证架构是否满足质量属性需求，并进行必要的改进。</li>
+</ul>
+</li>
+<li>领域驱动设计（Domain-Driven Design, DDD）：以业务领域为核心进行设计，通过模型驱动开发来解决复杂的软件系统问题。
+<ul>
+<li>领域模型：创建一个反映业务逻辑的模型，用于指导系统设计和实现。</li>
+<li>限界上下文（Bounded Context）：将系统划分为多个独立的子系统，每个子系统有明确的边界和职责。</li>
+<li>聚合（Aggregates）：定义由一组相关对象组成的聚合，用于维护数据的一致性和完整性。</li>
+<li>实体（Entities）和值对象（Value Objects）：区分具有唯一标识的实体和不变的值对象。</li>
+<li>仓储（Repositories）：提供访问和管理聚合根的接口，处理数据存储和检索。</li>
+<li>服务（Services）：定义不属于任何实体或值对象的业务逻辑操作。</li>
+</ul>
+</li>
+<li>动态系统开发方法（Dynamic Systems Development Method, DSDM）
+<ul>
+<li>用户参与：确保最终用户在整个开发过程中持续参与，以便及时反馈和改进。</li>
+<li>频繁交付：定期发布可工作的产品增量，以便早期识别问题并进行调整。</li>
+<li>业务需求优先：将业务需求置于技术需求之上，确保开发的每个功能都能满足业务目标。</li>
+<li>合作和团队合作：促进开发团队、业务团队和用户之间的紧密合作。</li>
+<li>质量内建：将质量保证作为开发过程的一部分，而不是事后的检查。</li>
+<li>可变范围：在固定时间和资源的前提下，灵活调整需求和范围，以实现最优的业务价值。</li>
+<li>持续交付和集成：保持代码的持续交付和集成，确保系统始终处于可用状态。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>软件设计质量分析和评估：质量属性、策略、质量分析和评估的方法技术和工具
+<ul>
+<li>质量属性：软件设计质量属性包括性能、可用性、安全性、可维护性等。</li>
+<li>策略：通过设计策略来实现和优化质量属性，例如使用缓存来提高性能，使用冗余来提高可用性。</li>
+<li>质量分析和评估的方法、技术和工具：
+<ul>
+<li>方法：如ATAM（Architecture Tradeoff Analysis Method）。</li>
+<li>技术：如静态代码分析、性能测试。</li>
+<li>工具：如SonarQube、JMeter。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>微服务架构、业务和企业架构
+<ul>
+<li>微服务架构：微服务架构是一种将应用程序设计为一组松耦合、独立部署的服务的架构模式，每个服务负责特定的业务功能。</li>
+<li>业务架构：业务架构描述了组织的业务策略、业务流程和业务能力，确保业务需求与技术实现之间的对齐。</li>
+<li>企业架构：企业架构是一种全面的架构方法，用于描述和设计整个组织的信息技术基础设施，确保业务和IT战略的一致性。</li>
+</ul>
+</li>
+</ul>
+<p><strong>课堂知识点</strong></p>
+<ul>
+<li>科学和工程有什么不同？What is Difference between Science and Engineering?
+<ol>
+<li>科学的研究是研究这个世界既有的部分</li>
+<li>工程是研究的是人类创造新的世界(是不是因为人才产生的)</li>
+</ol>
+</li>
+<li>软件和硬件有什么不同？What is Difference between &lsquo;Software&rsquo; and &lsquo;Hardware&rsquo; ?
+<ol>
+<li>软件是不可⻅的：软件是虚拟的，而硬件是实体的。</li>
+<li>软件制作出来就是为了被修改和改变的(软件的演化是他的本质属性)</li>
+</ol>
+</li>
+<li>体系结构和设计有什么不同？What is Difference between Architecture and Design?
+<ol>
+<li>所有的体系结构都是软件设计，但是不是所有的软件设计都是体系结构</li>
+<li>体系结构是设计过程的一个过程。</li>
+<li>其他观点
+a. 体系结构是更高层的设计，是为了修改的
+b. 体系结构是设计决策的组合</li>
+</ol>
+</li>
+<li>体系结构和结构有什么不同？What is Difference between Architecture and Structure?
+<ol>
+<li>体系结构定义了组件(Component)的接口，Component之间如何交流以及如何相互依赖，Component的职责。</li>
+<li>体系结构提供了设计的更高层抽象视⻆，隐藏设计的复杂性和实现，更强调非功能性需求。</li>
+<li>【标准】架构是包括结构信息的，因为结构是一种静态的、逻辑的、是关于系统如何构成。但是架构除了包含结构，还会增加组件的相互之间的关系接口，还会定义一些动态的行为(一个组件可能和谁进行交互)</li>
+</ol>
+</li>
+<li>为什么要在架构中使用抽象？Why Abstraction in Architecture?
+<ol>
+<li>更高层的视⻆，更关注本身的结构而不是本身的实现。</li>
+<li>降低架构设计时的系统复杂度，可以屏蔽和隐藏一些细节。</li>
+</ol>
+</li>
+</ul>
+<p><strong>补充知识点</strong></p>
 <p>1.1 宏观体系结构</p>
 <ol>
-<li><strong>分层架构（Layered Architecture）</strong>：
-<ul>
-<li>将系统分解为逻辑层次，例如表示层、业务逻辑层和数据访问层。</li>
-</ul>
-</li>
-<li><strong>管道-过滤器架构（Pipes and Filters）</strong>：
-<ul>
-<li>组件（过滤器）通过管道连接，数据在管道中流动，每个过滤器对数据进行处理。</li>
-</ul>
-</li>
-<li><strong>事件驱动架构（Event-Driven Architecture）</strong>：
-<ul>
-<li>系统组件通过事件进行通信，事件触发特定的处理逻辑。</li>
-</ul>
-</li>
-<li><strong>微服务架构（Microservices Architecture）</strong>：
-<ul>
-<li>将应用程序分解为一组小服务，每个服务围绕特定业务功能构建，独立部署和扩展。
-1.2 <strong>属性驱动设计（Attribute-Driven Design, ADD）</strong></li>
-</ul>
-</li>
+<li><strong>分层架构（Layered Architecture）</strong>：将系统分解为逻辑层次，例如表示层、业务逻辑层和数据访问层。</li>
+<li><strong>管道-过滤器架构（Pipes and Filters）</strong>：组件（过滤器）通过管道连接，数据在管道中流动，每个过滤器对数据进行处理。</li>
+<li><strong>事件驱动架构（Event-Driven Architecture）</strong>：系统组件通过事件进行通信，事件触发特定的处理逻辑。</li>
+<li><strong>微服务架构（Microservices Architecture）</strong>：将应用程序分解为一组小服务，每个服务围绕特定业务功能构建，独立部署和扩展。</li>
 </ol>
+<p>1.2 <strong>属性驱动设计（Attribute-Driven Design, ADD）</strong></p>
 <p>这种方法侧重于识别和满足系统的关键质量属性，如性能、可靠性、可用性、可维护性和安全性。设计决策基于这些属性的需求来进行。</p>
 <ol>
-<li><strong>识别关键属性</strong>：
-<ul>
-<li>确定系统的关键质量属性，如性能、可靠性、可扩展性和安全性。</li>
-</ul>
-</li>
-<li><strong>定义场景</strong>：
-<ul>
-<li>创建场景来模拟用户行为和系统负载，例如，高流量下的购物车操作、支付处理等。</li>
-</ul>
-</li>
-<li><strong>分析和设计</strong>：
-<ul>
-<li>根据关键属性设计系统架构，例如，使用负载均衡来提高性能，使用冗余服务器来提高可靠性。</li>
-</ul>
-</li>
-<li><strong>权衡决策</strong>：
-<ul>
-<li>在不同的质量属性之间做出权衡，例如，可能需要在快速响应时间和系统复杂性之间做出选择。</li>
-</ul>
-</li>
-<li><strong>原型和评估</strong>：
-<ul>
-<li>开发原型并对其进行评估，以验证设计是否满足所有关键属性。</li>
-</ul>
-</li>
-<li><strong>迭代改进</strong>：
-<ul>
-<li>根据评估结果迭代改进架构，直到满足所有关键属性的要求。</li>
-</ul>
-</li>
+<li><strong>识别关键属性</strong>：确定系统的关键质量属性，如性能、可靠性、可扩展性和安全性。</li>
+<li><strong>定义场景</strong>：创建场景来模拟用户行为和系统负载，例如，高流量下的购物车操作、支付处理等。</li>
+<li><strong>分析和设计</strong>：根据关键属性设计系统架构，例如，使用负载均衡来提高性能，使用冗余服务器来提高可靠性。</li>
+<li><strong>权衡决策</strong>：在不同的质量属性之间做出权衡，例如，可能需要在快速响应时间和系统复杂性之间做出选择。</li>
+<li><strong>原型和评估</strong>：开发原型并对其进行评估，以验证设计是否满足所有关键属性。</li>
+<li><strong>迭代改进</strong>：根据评估结果迭代改进架构，直到满足所有关键属性的要求。</li>
 </ol>
-<p>1.3 ATAkaoM，即架构权衡分析方法（Architecture Tradeoff Analysis Method）</p>
+<p>1.3 ATAM，即架构权衡分析方法（Architecture Tradeoff Analysis Method）</p>
 <ol>
-<li><strong>准备阶段</strong>：
-<ul>
-<li>确定评估目标和范围。</li>
-<li>选择评估团队，包括架构师、利益相关者和领域专家。</li>
-</ul>
-</li>
-<li><strong>架构描述</strong>：
-<ul>
-<li>详细描述当前架构，包括组件、它们之间的关系以及架构决策。</li>
-</ul>
-</li>
-<li><strong>场景开发</strong>：
-<ul>
-<li>基于质量属性需求，开发一系列场景，这些场景模拟了系统在不同条件下的行为。</li>
-</ul>
-</li>
-<li><strong>场景分析</strong>：
-<ul>
-<li>对每个场景进行分析，评估架构如何支持或违反质量属性需求。</li>
-</ul>
-</li>
-<li><strong>权衡优先级</strong>：
-<ul>
-<li>确定架构中的关键权衡点，如性能与可扩展性、安全性与可用性等。</li>
-</ul>
-</li>
-<li><strong>风险评估</strong>：
-<ul>
-<li>识别架构中的风险和潜在问题，评估这些问题对项目的影响。</li>
-</ul>
-</li>
-<li><strong>决策和建议</strong>：
-<ul>
-<li>根据分析结果，提出改进建议和决策支持，帮助团队做出更明智的架构选择。</li>
-</ul>
-</li>
-<li><strong>报告和记录</strong>：
-<ul>
-<li>编写详细的评估报告，记录分析过程、发现的问题和建议。</li>
-</ul>
-</li>
+<li><strong>准备阶段</strong>：确定评估目标和范围。选择评估团队，包括架构师、利益相关者和领域专家。</li>
+<li><strong>架构描述</strong>：详细描述当前架构，包括组件、它们之间的关系以及架构决策。</li>
+<li><strong>场景开发</strong>：基于质量属性需求，开发一系列场景，这些场景模拟了系统在不同条件下的行为。</li>
+<li><strong>场景分析</strong>：对每个场景进行分析，评估架构如何支持或违反质量属性需求。</li>
+<li><strong>权衡优先级</strong>：确定架构中的关键权衡点，如性能与可扩展性、安全性与可用性等。</li>
+<li><strong>风险评估</strong>：识别架构中的风险和潜在问题，评估这些问题对项目的影响。</li>
+<li><strong>决策和建议</strong>：根据分析结果，提出改进建议和决策支持，帮助团队做出更明智的架构选择。</li>
+<li><strong>报告和记录</strong>：编写详细的评估报告，记录分析过程、发现的问题和建议。</li>
 </ol>
 <p>ATAM的应用：</p>
 <ul>
@@ -1748,6 +1868,12 @@ window.MathJax = {
 <li><strong>多角度评估</strong>：通过不同利益相关者的参与，ATAM提供了多角度的评估视角，增加了评估的全面性和客观性。</li>
 <li><strong>风险识别</strong>：ATAM有助于识别架构设计中可能被忽视的风险和问题，为风险管理提供支持。</li>
 <li><strong>持续改进</strong>：ATAM是一个迭代的过程，可以在软件开发的不同阶段重复应用，以持续改进架构设计。</li>
+</ul>
+<p><strong>软件架构为什么重要</strong>：</p>
+<ul>
+<li>便于交流、协调顾客需求；</li>
+<li>实现早期的设计决策；促进质量属性的实现；</li>
+<li>包含潜在的change change包括（local.nonlocal.architectural）等等其他</li>
 </ul>
 <p><strong>1.8 软件产品线的体系结构与简单产品的体系结构的区别</strong></p>
 <ol>
@@ -1792,9 +1918,9 @@ window.MathJax = {
 </ul>
 <p><strong>质量属性</strong></p>
 <ul>
-<li>Modeling quality attribute scenarios</li>
-</ul>
-<p>
+<li>Modeling quality attribute scenarios
+<ul>
+<li>
 
 
 
@@ -1816,10 +1942,7 @@ window.MathJax = {
     </figure>
   
 
-</p>
-<ul>
-<li>
-<ul>
+</li>
 <li>刺激源（Source）：生成刺激的实体（人、系统或其它刺激器）</li>
 <li>刺激（Stimulus）：是某事物，当其到达系统后需要对其加以考虑</li>
 <li>环境（Environment）：刺激发生时的各种条件</li>
@@ -1828,8 +1951,7 @@ window.MathJax = {
 <li>响应度量（Response Measure）：能够以某种方式对响应进行度量</li>
 </ul>
 </li>
-<li>
-<p>Availability, Interoperability, Modifiability, Performance, Security, Testability, Usability, X-ability…</p>
+<li>Availability, Interoperability, Modifiability, Performance, Security, Testability, Usability, X-ability…
 <ul>
 <li>Availability：可用性。和整个程序的可靠性（Reliability）有关，是系统修复故障的能力，是大多数IT系统和应用的关键需求。Fault：错误，系统内在的缺陷，特定条件下才会触发。Failure：故障，由fault导致的结果。Error：failure和fault之间的状态。</li>
 <li>Interoperability：互操作性。描述多个系统在特定上下文中通过接口交换有用信息的程度，包括交换和正确推断信息。</li>
@@ -1844,13 +1966,44 @@ window.MathJax = {
 <li>Development Distributability：支持分布式软件开发</li>
 </ul>
 </li>
-<li>
-<p>Tactics for quality attributes</p>
+<li>Tactics for quality attributes
 <ul>
 <li>每年都会考&quot;How to model quality attribute scenarios? Graphically model two quality attributes in “stimulus-response” format: x-ability and y-ability.&quot;</li>
 <li>或者让你说几个tactics和他们的用处，把每个刺激-响应的图和表看看，背几个tactics。（重点可用性，可修改性，都考过两次）</li>
 </ul>
 </li>
+</ul>
+<p><strong>设计决策 Tactics</strong></p>
+<ol>
+<li>Tatics是一种设计决策（等同于design decision）</li>
+<li>tactics的集合称为体系结构策略，A collectionof tactics is called an architectural strategy</li>
+<li>Tactics可以由tactics组成，pattern一样。</li>
+</ol>
+<p>Tactics等同于Quality Design Decisions：</p>
+<ol>
+<li>结构是设计决策的集合，Architecture is a collection of design decisions</li>
+<li>7个设计决策的类型：重要，后面复习大纲重点提了
+<ol>
+<li>职责分配 Allocation of responsibilities：将大的职责进行分配</li>
+<li>协调模型 Coordination model：各部分之间的沟通、交互</li>
+<li>数据模型 Data model：数据格式、存储方式(缓存等)</li>
+<li>资源管理 Management of resources：CPU、网络、内存、时间(部分时间敏感的场景)等资源</li>
+<li>架构元素之间的映射 Mapping among architecture elements：将架构元素如何映射到软件的实现上</li>
+<li>绑定时间决策 Binding time decisions：
+<ol>
+<li>系统的变化可以在什么时间点前需要固定下来，也就是这个时间前，系统还是可以变化的，但是这个时间之后就不可以变化了</li>
+<li>比如选择安装环境是需要在一个时间点前完成的，技术是否添加、编译时间、初始化时间，运行时绑定，但运行时是弹性最大的</li>
+<li>实际上我们希望绑定时间越往后越好，但是也就要付出相应的代价</li>
+</ol>
+</li>
+<li>技术选择 Choice of technology：前面的部分都确定后，我们可以选择技术栈相对比较局限，解空间已经被压缩了。</li>
+</ol>
+</li>
+</ol>
+<p><strong>多个质量属性以及对应的通用场景、刺激响应图</strong></p>
+<ul>
+<li>通用场景是系统独立的场景，目的是去引导整个质量属性需求</li>
+<li>具体场景是系统相关的场景，目的是去构建在质量属性在具体应用上的定义。 这是通用场景的一种扩展。</li>
 </ul>
 <p><strong>如何识别ASR</strong></p>
 <ul>
@@ -1871,10 +2024,17 @@ window.MathJax = {
 <p>架构模式是一组适用于反复出现的设计问题的设计决策集合，并对不同的软件开发上下文下的问题进行了参数化处理。架构模式是在不断尝试中找到的、有着可重用的一组属性，描述了一组架构的类别。</p>
 <p>描述的是下边三者之间的关系：</p>
 <ol>
-<li>上下文：现实生活中反复出现的、导致这个问题的情况。</li>
-<li>问题：给定上下文中出现的问题。</li>
-<li>解决方案：元素+关系+约束。</li>
+<li>上下文context：现实生活中反复出现的、导致这个问题的情况。</li>
+<li>问题problem：给定上下文中出现的问题。</li>
+<li>解决方案solution：元素+关系+约束。对成功的结构解决方案适当的抽象。</li>
 </ol>
+<ul>
+<li>只能被发现而不是发明，不可能完全被发现</li>
+<li>理解：如果只有解决方案，就蜕变成⻛格</li>
+</ul>
+<p>DSSA：Domain-Specific Software Architecture特定领域软件构造：关注特定任务、生成领域
+内高效使用并且有标准的构建成功应用的拓扑，是最大化复用已有知识和进行前向发展设计的最佳
+实践。</p>
 <p>可以分成三类：模块模式、组件-连接器模式以及分配模式。</p>
 <p>架构模式是在实践过程中发现的，而不是被创造出来的，因此永远不会拥有一个完整的架构模式集合。</p>
 <p>考点：每个模式的内容、好处、限制以及模式间的对比。</p>
