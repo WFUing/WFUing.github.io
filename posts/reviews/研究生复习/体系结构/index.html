@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1304"
+    "wordCount": "1499"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1304 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">7 mins</span>
+  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1499 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
   
 
   
@@ -1890,7 +1890,7 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
-<p><strong>软件需求</strong></p>
+<p><strong>2.1 软件需求</strong></p>
 <ul>
 <li>功能性需求（Functional requirements）
 <ul>
@@ -1916,7 +1916,7 @@ b. 体系结构是设计决策的组合</li>
 </ul>
 </li>
 </ul>
-<p><strong>质量属性</strong></p>
+<p><strong>2.2 质量属性</strong></p>
 <ul>
 <li>Modeling quality attribute scenarios
 <ul>
@@ -2005,12 +2005,79 @@ b. 体系结构是设计决策的组合</li>
 <li>通用场景是系统独立的场景，目的是去引导整个质量属性需求</li>
 <li>具体场景是系统相关的场景，目的是去构建在质量属性在具体应用上的定义。 这是通用场景的一种扩展。</li>
 </ul>
-<p><strong>如何识别ASR</strong></p>
+<p><strong>2.3 如何识别ASR</strong></p>
 <ul>
 <li>ASR是将会对架构产生深远影响的需求，如果没有这样的需求，架构可能会有很大的不同。质量属性需求越困难、越重要，就越可能对架构产生重大影响，因此可能是ASR，ASR的实现可能会影响质量属性。</li>
 <li>识别ASR的方式：需求文档、访谈利益相关人员（涉众）、理解业务目标、质量属性效用树（utility tree）。</li>
 </ul>
-<h3 class="relative group">3. 架构模式（Architectural Patterns） 
+<p><strong>补充知识点</strong></p>
+<p><em><strong>质量属性效用树（utility tree）</strong></em></p>
+<p>质量属性效用树的组成部分：</p>
+<ol>
+<li><strong>质量属性（Quality Attributes）</strong>：树的根是系统的主要质量属性，如性能、安全性、可维护性等。</li>
+<li><strong>效用（Utility）</strong>：从每个质量属性分支出的节点代表该属性对用户的具体效用，即该属性如何影响用户的需求和满意度。</li>
+<li><strong>场景（Scenarios）</strong>：进一步细分，每个效用节点下可能挂接具体的使用场景或情境，描述在特定情况下质量属性如何影响用户体验。</li>
+<li><strong>需求（Requirements）</strong>：与每个场景相关联的是特定的需求，这些需求描述了系统在该场景下应如何表现以满足用户期望。</li>
+<li><strong>权衡（Trade-offs）</strong>：树中也可能展示不同质量属性或效用之间的潜在权衡，因为提高一个属性可能会牺牲另一个属性。</li>
+<li><strong>优先级（Prioritization）</strong>：通过效用树，团队可以确定哪些质量属性和效用对项目最重要，从而为需求优先级排序提供依据。</li>
+</ol>
+<p><strong>质量属性效用树的作用</strong>：</p>
+<ul>
+<li><strong>需求发现</strong>：帮助团队发现和理解用户对系统质量的期望。</li>
+<li><strong>沟通工具</strong>：作为与利益相关者沟通质量属性重要性的工具。</li>
+<li><strong>决策支持</strong>：在设计和实现阶段，支持团队做出关于资源分配和设计选择的决策。</li>
+<li><strong>风险管理</strong>：帮助识别可能影响质量属性的风险和潜在问题。</li>
+<li><strong>测试和验证</strong>：指导测试计划的制定，确保关键的质量属性得到验证。</li>
+</ul>
+<p><strong>建模步骤</strong>：</p>
+<ol>
+<li><strong>确定质量属性</strong>：识别系统的关键质量属性。</li>
+<li><strong>定义效用</strong>：确定每个质量属性如何影响用户和系统。</li>
+<li><strong>创建场景</strong>：为每个效用定义具体的使用场景。</li>
+<li><strong>细化需求</strong>：从场景中提取具体的需求。</li>
+<li><strong>评估优先级</strong>：确定哪些质量属性和效用最为关键。</li>
+<li><strong>分析权衡</strong>：识别和讨论不同质量属性之间的权衡。</li>
+</ol>
+<p><em><strong>质量属性效用树的图</strong></em></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-21.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>mermaid代码:</p>
+<pre tabindex="0"><code>graph TD
+    A[软件系统] --&gt; B[性能]
+    A --&gt; C[可靠性]
+    A --&gt; D[安全性]
+    A --&gt; E[可用性]
+    B --&gt; B1[响应时间]
+    B --&gt; B2[并发用户数]
+    B --&gt; B3[数据吞吐量]
+    C --&gt; C1[故障恢复时间]
+    C --&gt; C2[系统稳定性]
+    D --&gt; D1[数据加密]
+    D --&gt; D2[访问控制]
+    E --&gt; E1[系统正常运行时间]
+    E --&gt; E2[故障通知]
+</code></pre><h3 class="relative group">3. 架构模式（Architectural Patterns） 
     <div id="3-架构模式architectural-patterns" class="anchor"></div>
     
     <span
@@ -2020,7 +2087,7 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
-<p><strong>架构模式</strong></p>
+<p><strong>3.1 架构模式</strong></p>
 <p>架构模式是一组适用于反复出现的设计问题的设计决策集合，并对不同的软件开发上下文下的问题进行了参数化处理。架构模式是在不断尝试中找到的、有着可重用的一组属性，描述了一组架构的类别。</p>
 <p>描述的是下边三者之间的关系：</p>
 <ol>
@@ -2032,33 +2099,116 @@ b. 体系结构是设计决策的组合</li>
 <li>只能被发现而不是发明，不可能完全被发现</li>
 <li>理解：如果只有解决方案，就蜕变成⻛格</li>
 </ul>
-<p>DSSA：Domain-Specific Software Architecture特定领域软件构造：关注特定任务、生成领域
+<pre tabindex="0"><code>元素（Elements）：
+元素是问题域或系统的基本构成部分或组件。
+在软件设计中，元素可能指代类、对象、模块、服务等。
+在现实生活中，元素可以是问题涉及的个人、物体、事件等。
+关系（Relationships）：
+关系定义了元素之间的相互作用、连接或依赖。
+在软件中，关系可以是对象之间的继承、组合、关联等。
+在现实生活中，关系可以是人与人的社交联系、物体之间的物理连接等。
+约束（Constraints）：
+约束是限制元素和关系的条件、规则或限制。
+它们可以来自于技术限制、业务规则、法律要求或设计决策。
+约束指导如何在给定的边界内构建元素和关系。
+</code></pre><p>DSSA：Domain-Specific Software Architecture特定领域软件构造：关注特定任务、生成领域
 内高效使用并且有标准的构建成功应用的拓扑，是最大化复用已有知识和进行前向发展设计的最佳
 实践。</p>
 <p>可以分成三类：模块模式、组件-连接器模式以及分配模式。</p>
 <p>架构模式是在实践过程中发现的，而不是被创造出来的，因此永远不会拥有一个完整的架构模式集合。</p>
 <p>考点：每个模式的内容、好处、限制以及模式间的对比。</p>
-<p><strong>模块模式</strong>（Module Patterns）</p>
+<p><strong>3.2 模块模式</strong>（Module Patterns）</p>
 <ul>
-<li>Layered pattern (micro-kernel pattern)</li>
-</ul>
-<p><strong>组件-连接器模式</strong>（Component-Connector Patterns）</p>
+<li>Layered pattern (micro-kernel pattern)：分层模式是将系统分解为多个层次，每个层次负责不同的职责，并通过特定的接口进行交互。常见的分层包括表示层、业务逻辑层和数据访问层等。
 <ul>
-<li>Broker pattern</li>
-<li>Model-view-controller pattern</li>
-<li>Pipe-and-filter pattern</li>
-<li>Client-server pattern</li>
-<li>Peer-to-peer pattern,</li>
-<li>Service-oriented pattern</li>
-<li>Publish-subscribe pattern</li>
-<li>Share-data pattern</li>
+<li>表示层（Presentation Layer）：处理用户界面和用户交互。</li>
+<li>业务逻辑层（Business Logic Layer）：包含系统的业务规则和逻辑处理。</li>
+<li>数据访问层（Data Access Layer）：负责与数据库或其他存储系统的交互。</li>
 </ul>
-<p><strong>分配模式</strong>（Allocation Patterns）</p>
+</li>
+<li>微内核模式（Micro-Kernel Pattern）：微内核模式，亦称为插件架构模式，是将系统的核心功能和可扩展部分分离，核心部分只包含最基本的功能，而其他功能通过插件或扩展模块实现。核心模块负责提供插件管理、通信和基本服务。
 <ul>
-<li>Map-reduce pattern</li>
-<li>Multi-tier pattern</li>
+<li>插件管理：负责加载、卸载和管理插件。</li>
+<li>基本服务：提供插件所需的基础服务和接口。</li>
 </ul>
-<p><strong>模式与战术</strong>（Patterns vs. Tactics）</p>
+</li>
+</ul>
+<p><strong>3.3 组件-连接器模式</strong>（Component-Connector Patterns）</p>
+<ul>
+<li>Broker pattern：Broker Pattern是一种用于分布式系统的模式，其中的组件通过中介（Broker）进行通信，Broker负责管理组件之间的交互和数据传输。</li>
+</ul>
+<pre tabindex="0"><code>Client &lt;-&gt; Broker &lt;-&gt; Server
+</code></pre><ul>
+<li>Model-view-controller pattern：MVC模式将系统分为三部分：模型（Model）、视图（View）和控制器（Controller）。模型管理数据和业务逻辑，视图负责用户界面，控制器处理用户输入并更新模型和视图。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-22.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>Pipe-and-filter pattern：Pipe-and-Filter Pattern将系统分为一系列独立的过滤器（Filter），每个过滤器执行特定的处理操作，过滤器之间通过管道（Pipe）传递数据。</li>
+</ul>
+<pre tabindex="0"><code>Input -&gt; Filter1 -&gt; Filter2 -&gt; Filter3 -&gt; Output
+</code></pre><ul>
+<li>Client-server pattern：Client-Server Pattern将系统分为客户端（Client）和服务器（Server），客户端发出请求，服务器处理请求并返回响应。</li>
+</ul>
+<pre tabindex="0"><code>Client &lt;-&gt; Server
+</code></pre><ul>
+<li>Peer-to-peer pattern：P2P模式中的每个节点既是客户端又是服务器，各节点之间对等通信和资源共享。</li>
+</ul>
+<pre tabindex="0"><code>Node &lt;-&gt; Node &lt;-&gt; Node
+</code></pre><ul>
+<li>Service-oriented pattern：SOA模式将系统功能封装为独立的服务，各服务通过标准接口进行通信和协作。</li>
+</ul>
+<pre tabindex="0"><code>Service1 &lt;-&gt; Service2 &lt;-&gt; Service3
+</code></pre><ul>
+<li>Publish-subscribe pattern：发布-订阅模式中，发布者（Publisher）将消息发送到特定主题，订阅者（Subscriber）订阅主题并接收相关消息。</li>
+</ul>
+<pre tabindex="0"><code>Publisher -&gt; Topic -&gt; Subscriber
+</code></pre><ul>
+<li>Share-data pattern：共享数据模式中，各组件通过共享数据存储进行通信和数据交换。</li>
+</ul>
+<pre tabindex="0"><code>Component1 &lt;-&gt; Shared Data &lt;-&gt; Component2
+</code></pre><p><strong>3.4 分配模式</strong>（Allocation Patterns）</p>
+<ul>
+<li>Map-reduce pattern：Map-Reduce模式是一种用于大规模数据处理的分布式计算模型。它将数据处理任务分解为两个阶段：Map阶段和Reduce阶段。
+<ul>
+<li>Map阶段：将输入数据分割成若干独立的块，并行处理这些数据块，生成中间结果。</li>
+<li>Reduce阶段：将Map阶段生成的中间结果进行合并和处理，生成最终结果。</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>Input Data -&gt; Map -&gt; Shuffle and Sort -&gt; Reduce -&gt; Output Data
+</code></pre><ul>
+<li>Multi-tier pattern：多层模式（Multi-Tier Pattern），也称为多层架构，是将应用程序分解为多个层次，每个层次负责特定的功能和职责。常见的层次包括表示层、业务逻辑层和数据访问层。
+<ul>
+<li>表示层（Presentation Tier）：负责处理用户界面和用户交互。</li>
+<li>业务逻辑层（Business Logic Tier）：包含系统的业务规则和逻辑处理。</li>
+<li>数据访问层（Data Access Tier）：负责与数据库或其他存储系统的交互。</li>
+</ul>
+</li>
+</ul>
+<pre tabindex="0"><code>Client -&gt; Presentation Tier -&gt; Business Logic Tier -&gt; Data Access Tier -&gt; Database
+</code></pre><p><strong>3.5 模式与战术</strong>（Patterns vs. Tactics）</p>
 <ul>
 <li>战术比架构模式简单，战术使用一种结构或机制去解决一个单独的架构问题</li>
 <li>战术是一种设计决策，而架构模式是一组设计决策的集合</li>
@@ -2077,7 +2227,7 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
-<p><strong>通用设计策略</strong></p>
+<p><strong>4.1 通用设计策略</strong></p>
 <ul>
 <li>Abstraction抽象：提取系统的关键特性和功能，同时忽略不必要的细节。</li>
 <li>Decomposition分解：将质量属性需求分解并分配给元素，使其满足给定的约束条件，实现系统的质量和业务目标。</li>
@@ -2086,17 +2236,17 @@ b. 体系结构是设计决策的组合</li>
 <li>Iteration迭代：不断地重复生成和测试来进行迭代。</li>
 <li>Reuse重用：提取设计中可以重用的元素，可以供日后使用。</li>
 </ul>
-<p><strong>设计决策类别</strong></p>
-<ul>
-<li>Responsibilities</li>
-<li>Coordination</li>
-<li>Data</li>
-<li>Resources</li>
-<li>Elements mapping</li>
-<li>Binding time</li>
-<li>Technology</li>
-</ul>
-<p><strong>属性驱动设计</strong>（Attribute-Driven Design）</p>
+<p><strong>4.2 设计决策类别</strong></p>
+<ol>
+<li>Responsibilities - 责任</li>
+<li>Coordination - 协调</li>
+<li>Data - 数据</li>
+<li>Resources - 资源</li>
+<li>Elements mapping - 元素映射</li>
+<li>Binding time - 绑定时间</li>
+<li>Technology - 技术</li>
+</ol>
+<p><strong>4.3 属性驱动设计</strong>（Attribute-Driven Design）</p>
 <ul>
 <li>输入：功能需求、质量属性、约束</li>
 <li>输出：软件元素（完成各种决策和职责、定义属性并与其他软件元素相关以组成系统架构的计算或开发工件）、角色（一组相关职责的集合）、职责、属性、元素之间的关系</li>
