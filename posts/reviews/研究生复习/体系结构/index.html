@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1499"
+    "wordCount": "1646"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1499 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
+  <time datetime="2024-06-11 18:26:58 &#43;0800 &#43;0800">11 June 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1646 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span>
   
 
   
@@ -1095,7 +1095,7 @@ window.MathJax = {
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
-        <li><a href="#4-架构设计">4. 架构设计</a></li>
+        <li><a href="#4-架构设计designing-architecture">4. 架构设计（Designing Architecture）</a></li>
         <li><a href="#5-领域驱动设计domain-driven-design简答题">5. 领域驱动设计（Domain-Driven Design）——简答题</a></li>
         <li><a href="#6-企业与业务架构简答题">6. 企业与业务架构——简答题</a></li>
         <li><a href="#7-微服务架构msa分析设计题">7. 微服务架构（MSA）——分析设计题</a></li>
@@ -1128,7 +1128,7 @@ window.MathJax = {
         <li><a href="#1-软件架构概述">1. 软件架构概述</a></li>
         <li><a href="#2-质量属性">2. 质量属性</a></li>
         <li><a href="#3-架构模式architectural-patterns">3. 架构模式（Architectural Patterns）</a></li>
-        <li><a href="#4-架构设计">4. 架构设计</a></li>
+        <li><a href="#4-架构设计designing-architecture">4. 架构设计（Designing Architecture）</a></li>
         <li><a href="#5-领域驱动设计domain-driven-design简答题">5. 领域驱动设计（Domain-Driven Design）——简答题</a></li>
         <li><a href="#6-企业与业务架构简答题">6. 企业与业务架构——简答题</a></li>
         <li><a href="#7-微服务架构msa分析设计题">7. 微服务架构（MSA）——分析设计题</a></li>
@@ -1890,6 +1890,11 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
+<p>属性分为内部的，和外部的。用户能否感知（observable）</p>
+<p>课上，重点学习了常⻅的质量属性。</p>
+<p>以ability结尾。</p>
+<p>常⻅的混淆问题：可用性和易用性 availability&amp; usability</p>
+<p>可用性和互用性：availability&amp; interoperabilit</p>
 <p><strong>2.1 软件需求</strong></p>
 <ul>
 <li>功能性需求（Functional requirements）
@@ -1973,6 +1978,7 @@ b. 体系结构是设计决策的组合</li>
 </ul>
 </li>
 </ul>
+<p>utility tree ：抓住不同解决问题的策略，每个分支都提供最小粒度的tactic</p>
 <p><strong>设计决策 Tactics</strong></p>
 <ol>
 <li>Tatics是一种设计决策（等同于design decision）</li>
@@ -2114,10 +2120,23 @@ b. 体系结构是设计决策的组合</li>
 </code></pre><p>DSSA：Domain-Specific Software Architecture特定领域软件构造：关注特定任务、生成领域
 内高效使用并且有标准的构建成功应用的拓扑，是最大化复用已有知识和进行前向发展设计的最佳
 实践。</p>
+<p>Pattern和tactic的关系</p>
+<ul>
+<li>都是固定的形式组合，解决反复出现的某一类问题</li>
+<li>策略比模式更简单，策略使用单个的结构或者机制处理单个架构关注点；</li>
+<li>模式是由多个设计决定组合成的包；</li>
+<li>模式和策略一起构成了软件架构的基本工具</li>
+<li>策略是对创建架构模式的设计进行块的构建；</li>
+<li>大多数的模式包含：为一个共同的目的服务；需要保障不同的质量属性，比如layered 模式</li>
+</ul>
+<p><strong>具体的pattern</strong></p>
+<p>design strategies:【strategies 和 tactic的中文都是指策略，但是前者更为宏观，后者偏向具体实施】</p>
 <p>可以分成三类：模块模式、组件-连接器模式以及分配模式。</p>
 <p>架构模式是在实践过程中发现的，而不是被创造出来的，因此永远不会拥有一个完整的架构模式集合。</p>
 <p>考点：每个模式的内容、好处、限制以及模式间的对比。</p>
 <p><strong>3.2 模块模式</strong>（Module Patterns）</p>
+<p>Module pattern 静态的，结构化的</p>
+<p>layered 最经典的分层的，在内部和在层和层之间进行约束</p>
 <ul>
 <li>Layered pattern (micro-kernel pattern)：分层模式是将系统分解为多个层次，每个层次负责不同的职责，并通过特定的接口进行交互。常见的分层包括表示层、业务逻辑层和数据访问层等。
 <ul>
@@ -2134,6 +2153,7 @@ b. 体系结构是设计决策的组合</li>
 </li>
 </ul>
 <p><strong>3.3 组件-连接器模式</strong>（Component-Connector Patterns）</p>
+<p>Component connector patterns 不会存在孤立的connector 根据需要选择 Broker 等</p>
 <ul>
 <li>Broker pattern：Broker Pattern是一种用于分布式系统的模式，其中的组件通过中介（Broker）进行通信，Broker负责管理组件之间的交互和数据传输。</li>
 </ul>
@@ -2189,6 +2209,7 @@ b. 体系结构是设计决策的组合</li>
 </ul>
 <pre tabindex="0"><code>Component1 &lt;-&gt; Shared Data &lt;-&gt; Component2
 </code></pre><p><strong>3.4 分配模式</strong>（Allocation Patterns）</p>
+<p>Allocation Patterns如何把软件元素对应到物理世界的环境</p>
 <ul>
 <li>Map-reduce pattern：Map-Reduce模式是一种用于大规模数据处理的分布式计算模型。它将数据处理任务分解为两个阶段：Map阶段和Reduce阶段。
 <ul>
@@ -2197,6 +2218,7 @@ b. 体系结构是设计决策的组合</li>
 </ul>
 </li>
 </ul>
+<p>map-reduce Multitier pattern【可能会跨越不同层之间的交互，每一个层不一定存在，区分和 layerer pattern】</p>
 <pre tabindex="0"><code>Input Data -&gt; Map -&gt; Shuffle and Sort -&gt; Reduce -&gt; Output Data
 </code></pre><ul>
 <li>Multi-tier pattern：多层模式（Multi-Tier Pattern），也称为多层架构，是将应用程序分解为多个层次，每个层次负责特定的功能和职责。常见的层次包括表示层、业务逻辑层和数据访问层。
@@ -2208,7 +2230,18 @@ b. 体系结构是设计决策的组合</li>
 </li>
 </ul>
 <pre tabindex="0"><code>Client -&gt; Presentation Tier -&gt; Business Logic Tier -&gt; Data Access Tier -&gt; Database
-</code></pre><p><strong>3.5 模式与战术</strong>（Patterns vs. Tactics）</p>
+</code></pre><p>针对每个设计属性给出check list ，所作出的设计决定是否完整覆盖了那七个方面。</p>
+<ul>
+<li>responsibilities：责任、和功能需求不一样，为实现质量要求而赋予的责任</li>
+<li>coordinattion：不同元素之间的相互关系，可能是静态或动态</li>
+<li>data：为了实现的执行加密、存储等，对数据进行操作</li>
+<li>resources：资源的分配</li>
+<li>elements mapping：怎么将架构映射到软件元素</li>
+<li>time binding：确定时间，变化的可能性</li>
+<li>technology：技术栈要掌握</li>
+</ul>
+<p>ADD 有哪些步骤，然后每个步骤的输入输出 ADD2.0有八个步骤</p>
+<p><strong>3.5 模式与战术</strong>（Patterns vs. Tactics）</p>
 <ul>
 <li>战术比架构模式简单，战术使用一种结构或机制去解决一个单独的架构问题</li>
 <li>战术是一种设计决策，而架构模式是一组设计决策的集合</li>
@@ -2217,24 +2250,53 @@ b. 体系结构是设计决策的组合</li>
 <li>大多架构模式包含几个不同的战术，他们可能用来实现同一个目标，也可能分别用于满足不同的质量属性。例如分层模式体现了增加内聚，降低依赖的战术</li>
 <li>大多数架构模式也会包含其他架构模式</li>
 </ul>
-<h3 class="relative group">4. 架构设计 
-    <div id="4-架构设计" class="anchor"></div>
+<h3 class="relative group">4. 架构设计（Designing Architecture） 
+    <div id="4-架构设计designing-architecture" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#4-%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#4-%e6%9e%b6%e6%9e%84%e8%ae%be%e8%ae%a1designing-architecture" aria-label="Anchor">#</a>
     </span>        
     
 </h3>
 <p><strong>4.1 通用设计策略</strong></p>
 <ul>
 <li>Abstraction抽象：提取系统的关键特性和功能，同时忽略不必要的细节。</li>
-<li>Decomposition分解：将质量属性需求分解并分配给元素，使其满足给定的约束条件，实现系统的质量和业务目标。</li>
+<li>Decomposition分解：
+<ul>
+<li>将质量属性需求分解并分配给元素，使其满足给定的约束条件，实现系统的质量和业务目标。</li>
+<li>质量属性需求可以被分解，并且分配给分解好的元素。要考虑给定的约束并安排分解，以便可以适应这些约束。设计活动的目标是生成能够适应约束并实现系统质量和业务目标的设计。</li>
+</ul>
+</li>
 <li>Divide &amp; conquer分治：根据ASR逐步设计，最后整合出完整的架构。</li>
-<li>Generation and test生成和测试：生成当前的设计，并将其看做一个假设，然后测试当前假设中的错误， 在下⼀个设计假设中修正当前的错误，只保留正确的东西。</li>
+<li>Generation and test生成和测试：
+<ul>
+<li>生成当前的设计，并将其看做一个假设，然后测试当前假设中的错误， 在下⼀个设计假设中修正当前的错误，只保留正确的东西。</li>
+<li>把一个特定的设计作为假设：这个设计版本的假设中有误的内容要在下个版本修复，正确的内容继续保持。
+<ul>
+<li>初始假设的来源：已存在的系统；框架；模式和策略；设计检查表。</li>
+<li>测试应用：分析技术、设计检查表（清单）（重复一遍）
+<ol>
+<li>Allocation of Responsibility</li>
+<li>Coordination Model</li>
+<li>Data Model</li>
+<li>Mapping among Architecture Elements</li>
+<li>Resource Management</li>
+<li>Binding Time</li>
+<li>Choice of Technology</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他没有具体的内容的：Iteration（迭代）Reusable Elements，Abstraction，Divide &amp; Conquer
+<ul>
 <li>Iteration迭代：不断地重复生成和测试来进行迭代。</li>
 <li>Reuse重用：提取设计中可以重用的元素，可以供日后使用。</li>
+</ul>
+</li>
 </ul>
 <p><strong>4.2 设计决策类别</strong></p>
 <ol>
@@ -2282,6 +2344,114 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
+<p><strong>不会考DDD的流程</strong>！</p>
+<p>重点1：DDD设计过程中，三个空间</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-27.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-28.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>极限押题：</p>
+<ul>
+<li>重点2：6个模式概念和解决的问题</li>
+<li>注意实体和值对象的名词的差别，原话：这俩个非常重要</li>
+<li>搞清楚为什么要有这些标红的模式？可能让大家分析一下这些模式提出来的原因和原理是什么。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-29.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>ps： 第一次上课记录：</p>
+<p>在战略设计里面梳理限界上下文</p>
+<ul>
+<li>标红的尤其关注： 是什么、领域驱动 分析、设计和实现 模式解决了什么</li>
+<li>实体和值对象的俩大区别</li>
+<li>面向对象的基础之上的聚合的模式</li>
+<li>理解每个模式解决的问题以及为什么要设计</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-30.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <p><strong>领域驱动设计</strong>（DDD）</p>
 <ul>
 <li>域和域模型（Domain &amp; Domain model）</li>
@@ -2300,6 +2470,59 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
+<p>经典方法没有必要掌握</p>
+<p>EA 企业架构：</p>
+<p>课堂</p>
+<ul>
+<li>领域一些已有的经典方法，结合一些具体的案例（比较老）</li>
+<li>理解基本的背景、以全局化、结构化的思维（说了无数次）</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-31.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-32.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <p><strong>原理、流程和意义</strong></p>
 <h3 class="relative group">7. 微服务架构（MSA）——分析设计题 
     <div id="7-微服务架构msa分析设计题" class="anchor"></div>
@@ -2311,6 +2534,107 @@ b. 体系结构是设计决策的组合</li>
     </span>        
     
 </h3>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-24.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-25.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>用了五个课时讲的针对微服务的问题、有哪些可复用的方案</p>
+<p>原话记录：不会考大家微服务的定义、而是考特性</p>
+<ul>
+<li>6个特性：
+<ul>
+<li>拆分服务&ndash;组件化（通过进程间通信的方式变成独立单元）；</li>
+<li>微服务中，团队围绕业务组织；</li>
+<li>服务与服务之间遵循面向对象的高内聚低耦合；</li>
+<li>拆分后的分布式系统，服务数量变多，可能带来一致性等问题，具有去中心化的特性；</li>
+<li>自动化的管理，依赖基础设施服务（主要是运维层面）；</li>
+<li>设计过程中针对质量属性的策略，核心是故障，保障服务等设计；SOA和微服务不同的三个点  了解一下（不重要</li>
+</ul>
+</li>
+</ul>
+<p>主要特性、优势、问题和挑战 -&gt; 微服务架构设计模式</p>
+<ul>
+<li>基础知识：可能会考：主要特性&mdash;（6大特性）巴拉巴拉讲了6个特性），⻅上面原话记录</li>
+<li>核心架构设计模式   模式解决的问题、和需求、模式之间的关系</li>
+</ul>
+<p>也就是说要看每个模式有哪些问题和context、然后具体的解决模式对应（背不下来啊</p>
+<ul>
+<li>拆分模式：包括在上面主要特性的时候，针对不同问题、上下文谈谈理解、约束部署的时候不同模式的差分</li>
+<li>业务能力：具有层次结构的，包含子结构</li>
+<li>通信模式：重点 复杂 建议看原版ppt和review ppt 如何选择；针对故障的问题；服务实例如何交互</li>
+<li>数据模式：context ，数据可能来自多个服务，读和写&ndash;API组合查询模式；saga 数据一致性；</li>
+<li>部署模式： 重要，对着reiview ppt 的图，部署服务的约束：服务之间是异构的；实例之间的隔离性（从故障出发）；成本考虑; 有6个模式，要理清之间的关系，哪些互为替代，不断发展演化 【大家要重点掌握</li>
+<li>运维模式：原话简单过以下就好了，那就不记了；但是讲了很久，可以看下模式，从ppt找到所支持的基础设施</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-26.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>复习课讲了很多个重点X</p>
+<p>包括但不限于：拆分和定义，数据模式，通信模式、数据模式、部署模式</p>
+<p>基础知识:原话是只要了解基础知识，考试只看标红的（微服务全是标红的）</p>
+<p>极限押题：一道大题=拆分+通信模式、部署模式</p>
 <p>微服务架构是把应用程序功能性分解为一组服务的架构风格，每一个服务都是由一组专注、内聚的功能职责组成。服务之间采用轻量级通信机制进行交互，可以进行分布式管理，从而支持不同的编程语言进行开发和不同的数据存储技术进行存储。是分布式架构，SOA的一种拓展。</p>
 <p>电商应用微服务架构</p>
 <p>
@@ -2948,6 +3272,31 @@ b. 体系结构是设计决策的组合</li>
 <li><strong>连线，并对每种 style 列出四种视图</strong></li>
 <li>Layered pattern 和 Multi-tier pattern 的区别</li>
 <li>描述 ADD 过程</li>
+</ol>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/%E7%A0%94%E7%A9%B6%E7%94%9F%E5%A4%8D%E4%B9%A0/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/image-23.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ol start="9">
 <li><strong>为什么软件架构需要用不同的视图描述？举出四种视图的例子（列出名称和目的）</strong></li>
 <li>软件产品线架构如何实现可变性？描述可变性机制的工作方式</li>
 <li>设计一个飞行模拟软件，要求能模拟多种飞机的特性。为了在将来支持更多飞机种类，要求使用策略模式。画出架构图和类图</li>
