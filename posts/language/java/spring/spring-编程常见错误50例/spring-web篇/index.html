@@ -109,7 +109,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "77"
+    "wordCount": "691"
   }]
   </script>
 
@@ -939,7 +939,7 @@ window.MathJax = {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-05-18 08:15:08 &#43;0800 &#43;0800">18 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>77 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-05-18 08:15:08 &#43;0800 &#43;0800">18 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>691 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
   
 
   
@@ -1201,7 +1201,316 @@ window.MathJax = {
 </span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="n">method</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">controllerObject</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">};</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
-</span></span></span></code></pre></div><h2 class="relative group">09｜Spring Web URL 解析常见错误 
+</span></span></span></code></pre></div><p>那么现在需要哪些组件来完成一个请求的对应和执行呢？</p>
+<ol>
+<li>需要有一个地方（例如 Map）去维护从 HTTP path/method 到具体执行方法的映射；</li>
+<li>当一个请求来临时，根据请求的关键信息来获取对应的需要执行的方法；</li>
+<li>根据方法定义解析出调用方法的参数值，然后通过反射调用方法，获取返回结果。</li>
+</ol>
+<p>除此之外，你还需要一个东西，就是利用底层通信层来解析出你的 HTTP 请求。只有解析出请求了，才能知道 path/method 等信息，才有后续的执行，否则也是“巧妇难为无米之炊”了。</p>
+<p>所以综合来看，你大体上需要这些过程才能完成一个请求的解析和处理。那么接下来我们就按照处理顺序分别看下 Spring Boot 是如何实现的，对应的一些关键实现又长什么样。</p>
+<p>首先，解析 HTTP 请求。对于 Spring 而言，它本身并不提供通信层的支持，它是依赖于 Tomcat、Jetty 等容器来完成通信层的支持，例如当我们引入 Spring Boot 时，我们就间接依赖了 Tomcat。依赖关系图如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>另外，正是这种自由组合的关系，让我们可以做到直接置换容器而不影响功能。例如我们可以通过下面的配置从默认的 Tomcat 切换到 Jetty：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nt">&lt;exclusions&gt;</span>
+</span></span><span class="line"><span class="cl">             <span class="nt">&lt;exclusion&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-tomcat<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">             <span class="nt">&lt;/exclusion&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/exclusions&gt;</span>- 
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Use Jetty instead --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-jetty<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>依赖了 Tomcat 后，Spring Boot 在启动的时候，就会把 Tomcat 启动起来做好接收连接的准备。</p>
+<p>关于 Tomcat 如何被启动，你可以通过下面的调用栈来大致了解下它的过程：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>说白了，就是调用下述代码行就会启动 Tomcat：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">Application</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div><p>那为什么使用的是 Tomcat？你可以看下面这个类，或许就明白了：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">ServletWebServerFactoryConfiguration</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@Configuration</span><span class="p">(</span><span class="n">proxyBeanMethods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@ConditionalOnClass</span><span class="p">({</span><span class="w"> </span><span class="n">Servlet</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">Tomcat</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">UpgradeProtocol</span><span class="p">.</span><span class="na">class</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@ConditionalOnMissingBean</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServletWebServerFactory</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SearchStrategy</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmbeddedTomcat</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kd">public</span><span class="w"> </span><span class="n">TomcatServletWebServerFactory</span><span class="w"> </span><span class="nf">tomcatServletWebServerFactory</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="c1">//省略非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="n">factory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Configuration</span><span class="p">(</span><span class="n">proxyBeanMethods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ConditionalOnClass</span><span class="p">({</span><span class="w"> </span><span class="n">Servlet</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">Server</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">Loader</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">WebAppContext</span><span class="p">.</span><span class="na">class</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ConditionalOnMissingBean</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServletWebServerFactory</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SearchStrategy</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmbeddedJetty</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">JettyServletWebServerFactory</span><span class="w"> </span><span class="nf">JettyServletWebServerFactory</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">ObjectProvider</span><span class="o">&lt;</span><span class="n">JettyServerCustomizer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">serverCustomizers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="c1">//省略非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">factory</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//省略其他容器配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>前面我们默认依赖了 Tomcat 内嵌容器的 JAR，所以下面的条件会成立，进而就依赖上了 Tomcat：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@ConditionalOnClass</span><span class="p">({</span><span class="w"> </span><span class="n">Servlet</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">Tomcat</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">UpgradeProtocol</span><span class="p">.</span><span class="na">class</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span></code></pre></div><p>有了 Tomcat 后，当一个 HTTP 请求访问时，会触发 Tomcat 底层提供的 NIO 通信来完成数据的接收，这点我们可以从下面的代码（org.apache.tomcat.util.net.NioEndpoint.Poller#run）中看出来：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="c1">//省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="c1">//轮询注册的兴趣事件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wakeupCounter</span><span class="p">.</span><span class="na">getAndSet</span><span class="p">(</span><span class="o">-</span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="n">keyCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selector</span><span class="p">.</span><span class="na">selectNow</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">               </span><span class="n">keyCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selector</span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="n">selectorTimeout</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">SelectionKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">keyCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">selector</span><span class="p">.</span><span class="na">selectedKeys</span><span class="p">().</span><span class="na">iterator</span><span class="p">()</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">iterator</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">iterator</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">SelectionKey</span><span class="w"> </span><span class="n">sk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iterator</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">NioSocketWrapper</span><span class="w"> </span><span class="n">socketWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">NioSocketWrapper</span><span class="p">)</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//处理事件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">processKey</span><span class="p">(</span><span class="n">sk</span><span class="p">,</span><span class="w"> </span><span class="n">socketWrapper</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">           
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="c1">//省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>上述代码会完成请求事件的监听和处理，最终在 processKey 中把请求事件丢入线程池去处理。请求事件的接收具体调用栈如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>线程池对这个请求的处理的调用栈如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>在上述调用中，最终会进入 Spring Boot 的处理核心，即 DispatcherServlet（上述调用栈没有继续截取完整调用，所以未显示）。可以说，DispatcherServlet 是用来处理 HTTP 请求的中央调度入口程序，为每一个 Web 请求映射一个请求的处理执行体（API controller/method）。</p>
+<p>我们可以看下它的核心是什么？它本质上就是一种 Servlet，所以它是由下面的 Servlet 核心方法触发：</p>
+<blockquote>
+<p>javax.servlet.http.HttpServlet#service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)</p>
+</blockquote>
+<p>最终它执行到的是下面的 doService()，这个方法完成了请求的分发和处理：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doService</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">doDispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>我们可以看下它是如何分发和执行的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doDispatch</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 1. 分发：Determine handler for the current request.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">HandlerExecutionChain</span><span class="w"> </span><span class="n">mappedHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getHandler</span><span class="p">(</span><span class="n">processedRequest</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">//Determine handler adapter for the current request.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">HandlerAdapter</span><span class="w"> </span><span class="n">ha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getHandlerAdapter</span><span class="p">(</span><span class="n">mappedHandler</span><span class="p">.</span><span class="na">getHandler</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 2. 执行：Actually invoke the handler.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">mv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ha</span><span class="p">.</span><span class="na">handle</span><span class="p">(</span><span class="n">processedRequest</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">mappedHandler</span><span class="p">.</span><span class="na">getHandler</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="c1">// 省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>在上述代码中，很明显有两个关键步骤：</p>
+<ol>
+<li><strong>分发，即根据请求寻找对应的执行方法</strong></li>
+</ol>
+<p>寻找方法参考 DispatcherServlet#getHandler，具体的查找远比开始给出的 Map 查找来得复杂，但是无非还是一个根据请求寻找候选执行方法的过程，这里我们可以通过一个调试视图感受下这种对应关系：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这里的关键映射 Map，其实就是上述调试视图中的 RequestMappingHandlerMapping。</p>
+<ol start="2">
+<li><strong>执行，反射执行寻找到的执行方法</strong></li>
+</ol>
+<p>这点可以参考下面的调试视图来验证这个结论，参考代码 <code>org.springframework.web.method.support.InvocableHandlerMethod#doInvoke</code>：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>最终我们是通过反射来调用执行方法的。</p>
+<p>通过上面的梳理，你应该基本了解了一个 HTTP 请求是如何执行的。但是你可能会产生这样一个疑惑：Handler 的映射是如何构建出来的呢？</p>
+<p>说白了，核心关键就是 RequestMappingHandlerMapping 这个 Bean 的构建过程。</p>
+<p>它的构建完成后，会调用 afterPropertiesSet 来做一些额外的事，这里我们可以先看下它的调用栈：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>其中关键的操作是 AbstractHandlerMethodMapping#processCandidateBean 方法：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processCandidateBean</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">beanName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">//省略非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">beanType</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isHandler</span><span class="p">(</span><span class="n">beanType</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">detectHandlerMethods</span><span class="p">(</span><span class="n">beanName</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>isHandler(beanType) 的实现参考以下关键代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">protected</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isHandler</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">beanType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">AnnotatedElementUtils</span><span class="p">.</span><span class="na">hasAnnotation</span><span class="p">(</span><span class="n">beanType</span><span class="p">,</span><span class="w"> </span><span class="n">Controller</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">AnnotatedElementUtils</span><span class="p">.</span><span class="na">hasAnnotation</span><span class="p">(</span><span class="n">beanType</span><span class="p">,</span><span class="w"> </span><span class="n">RequestMapping</span><span class="p">.</span><span class="na">class</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>这里你会发现，判断的关键条件是，是否标记了合适的注解（Controller 或者 RequestMapping）。只有标记了，才能添加到 Map 信息。换言之，Spring 在构建 RequestMappingHandlerMapping 时，会处理所有标记 Controller 和 RequestMapping 的注解，然后解析它们构建出请求到处理的映射关系。</p>
+<p>以上即为 Spring Boot 处理一个 HTTP 请求的核心过程，无非就是绑定一个内嵌容器（Tomcat/Jetty/ 其他）来接收请求，然后为请求寻找一个合适的方法，最后反射执行它。当然，这中间还会掺杂无数的细节，不过这不重要，抓住这个核心思想对你接下来理解 Spring Web 中各种类型的错误案例才是大有裨益的！</p>
+<h2 class="relative group">09｜Spring Web URL 解析常见错误 
     <div id="09spring-web-url-解析常见错误" class="anchor"></div>
     
     <span
@@ -1211,7 +1520,152 @@ window.MathJax = {
     </span>        
     
 </h2>
+<p>这里说的 Web 服务就是指使用 HTTP 协议的服务。而对于 HTTP 请求，首先要处理的就是 URL，所以今天我们就先来介绍下，在 URL 的处理上，Spring 都有哪些经典的案例。闲话少叙，下面我们直接开始演示吧。</p>
+<p><strong>案例 1</strong>：当 @PathVariable 遇到 <code>/</code></p>
+<p>在解析一个 URL 时，我们经常会使用 @PathVariable 这个注解。例如我们会经常见到如下风格的代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Slf4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HelloWorldController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;/hi1/{name}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequestMethod</span><span class="p">.</span><span class="na">GET</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">hello1</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">};</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>当我们使用 <code>http://localhost:8080/hi1/xiaoming</code> 访问这个服务时，会返回&quot;xiaoming&quot;，即 Spring 会把 name 设置为 URL 中对应的值。</p>
+<p>看起来顺风顺水，但是假设这个 name 中含有特殊字符 <code>/</code> 时（例如<code>http://localhost:8080/hi1/xiao/ming</code>），会如何？如果我们不假思索，或许答案是&quot;xiao/ming&quot;？然而稍微敏锐点的程序员都会判定这个访问是会报错的，具体错误参考：</p>
+<p>
 
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>如图所示，当 name 中含有 <code>/</code>，这个接口不会为 name 获取任何值，而是直接报 Not Found 错误。当然这里的“找不到”并不是指 name 找不到，而是指服务于这个特殊请求的接口。</p>
+<p>实际上，这里还存在另外一种错误，即当 name 的字符串以 / 结尾时，/ 会被自动去掉。例如我们访问 <code>http://localhost:8080/hi1/xiaoming/</code>，Spring 并不会报错，而是返回 xiaoming。</p>
+<p>针对这两种类型的错误，应该如何理解并修正呢？</p>
+<p><strong>案例解析</strong></p>
+<p>实际上，这两种错误都是 URL 匹配执行方法的相关问题，所以我们有必要先了解下 URL 匹配执行方法的大致过程。参考 AbstractHandlerMethodMapping#lookupHandlerMethod：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Nullable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">protected</span><span class="w"> </span><span class="n">HandlerMethod</span><span class="w"> </span><span class="nf">lookupHandlerMethod</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">lookupPath</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">&gt;</span><span class="w"> </span><span class="n">matches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">//尝试按照 URL 进行精准匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">directPathMatches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">mappingRegistry</span><span class="p">.</span><span class="na">getMappingsByUrl</span><span class="p">(</span><span class="n">lookupPath</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">directPathMatches</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//精确匹配上，存储匹配结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">addMatchingMappings</span><span class="p">(</span><span class="n">directPathMatches</span><span class="p">,</span><span class="w"> </span><span class="n">matches</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">matches</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//没有精确匹配上，尝试根据请求来匹配</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">addMatchingMappings</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">mappingRegistry</span><span class="p">.</span><span class="na">getMappings</span><span class="p">().</span><span class="na">keySet</span><span class="p">(),</span><span class="w"> </span><span class="n">matches</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">matches</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">&gt;</span><span class="w"> </span><span class="n">comparator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MatchComparator</span><span class="p">(</span><span class="n">getMappingComparator</span><span class="p">(</span><span class="n">request</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">matches</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">comparator</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">Match</span><span class="w"> </span><span class="n">bestMatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">matches</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">matches</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="c1">//处理多个匹配的情况</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//省略其他非关键代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">bestMatch</span><span class="p">.</span><span class="na">handlerMethod</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//匹配不上，直接报错</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">handleNoMatch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">mappingRegistry</span><span class="p">.</span><span class="na">getMappings</span><span class="p">().</span><span class="na">keySet</span><span class="p">(),</span><span class="w"> </span><span class="n">lookupPath</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>大体分为这样几个基本步骤。</p>
+<ol>
+<li><strong>根据 Path 进行精确匹配</strong></li>
+</ol>
+<p>这个步骤执行的代码语句是&quot;this.mappingRegistry.getMappingsByUrl(lookupPath)&quot;，实际上，它是查询 MappingRegistry#urlLookup，它的值可以用调试视图查看，如下图所示：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>查询 urlLookup 是一个精确匹配 Path 的过程。很明显，<code>http://localhost:8080/hi1/xiao/ming</code> 的 lookupPath 是&quot;/hi1/xiao/ming&quot;，并不能得到任何精确匹配。这里需要补充的是，&quot;/hi1/{name}&ldquo;这种定义本身也没有出现在 urlLookup 中。</p>
+<ol start="2">
+<li><strong>假设 Path 没有精确匹配上，则执行模糊匹配</strong></li>
+</ol>
+<p>在步骤 1 匹配失败时，会根据请求来尝试模糊匹配，待匹配的匹配方法可参考下图：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>显然，&quot;/hi1/{name}&ldquo;这个匹配方法已经出现在待匹配候选中了。具体匹配过程可以参考方法 RequestMappingInfo#getMatchingCondition：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="n">RequestMappingInfo</span><span class="w"> </span><span class="nf">getMatchingCondition</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">RequestMethodsRequestCondition</span><span class="w"> </span><span class="n">methods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">methodsCondition</span><span class="p">.</span><span class="na">getMatchingCondition</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">methods</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">ParamsRequestCondition</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">paramsCondition</span><span class="p">.</span><span class="na">getMatchingCondition</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">params</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">//省略其他匹配条件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">PatternsRequestCondition</span><span class="w"> </span><span class="n">patterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">patternsCondition</span><span class="p">.</span><span class="na">getMatchingCondition</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">patterns</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="c1">//省略其他匹配条件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RequestMappingInfo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">,</span><span class="w"> </span><span class="n">patterns</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">methods</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="n">headers</span><span class="p">,</span><span class="w"> </span><span class="n">consumes</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="p">,</span><span class="w"> </span><span class="n">custom</span><span class="p">.</span><span class="na">getCondition</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
                 
         
