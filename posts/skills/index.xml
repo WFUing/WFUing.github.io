@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Thu, 27 Jun 2024 19:38:48 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/skills/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jul 2024 10:46:05 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/skills/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chrome DevTools：如何过滤网络请求</title>
+      <link>https://WFUing.github.io/posts/skills/chrome-devtools/</link>
+      <pubDate>Mon, 01 Jul 2024 10:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/skills/chrome-devtools/</guid>
+      <description>DevTools 中的主要部分之一是 network（网络）面板。如何过滤网络请求是在开发过程中的很重要的一环。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/chrome-devtools/featured.png" />
+    </item>
+    
     <item>
       <title>macos time error</title>
       <link>https://WFUing.github.io/posts/skills/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/</link>
