@@ -3,25 +3,55 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/</loc>
+    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/mysql-remote/</loc>
+    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/env/</loc>
+    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/</loc>
+    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/jetbrains-remote-ide/</loc>
+    <lastmod>2024-07-06T11:47:47+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/skills/chrome-devtools/</loc>
     <lastmod>2024-07-01T10:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2024-07-01T10:46:05+08:00</lastmod>
+    <loc>https://WFUing.github.io/posts/skills/env/macos/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2024-06-27T19:38:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/</loc>
-    <lastmod>2024-07-01T10:46:05+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/skills/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/macos/</loc>
     <lastmod>2024-06-27T19:38:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -261,13 +291,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/ubuntu-anaconda/</loc>
     <lastmod>2024-05-02T10:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/ubuntu-clash/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/ubuntu-clash/</loc>
     <lastmod>2024-05-01T10:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -639,7 +669,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/ssh-tutorial/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/ssh-tutorial/</loc>
     <lastmod>2024-04-02T11:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1431,7 +1461,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/meta/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/macos/meta/</loc>
     <lastmod>2023-12-12T11:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1863,7 +1893,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/shell/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/linux/shell/</loc>
     <lastmod>2023-10-19T11:47:47+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -2001,7 +2031,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/skills/frp-nat-traversal/</loc>
+    <loc>https://WFUing.github.io/posts/skills/env/frp-nat-traversal/</loc>
     <lastmod>2023-10-12T19:38:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

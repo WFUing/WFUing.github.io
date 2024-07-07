@@ -10,12 +10,12 @@
     <lastBuildDate>Thu, 12 Oct 2023 19:38:48 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/nat-traversal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Frp Nat Traversal</title>
-      <link>https://WFUing.github.io/posts/skills/frp-nat-traversal/</link>
+      <link>https://WFUing.github.io/posts/skills/env/frp-nat-traversal/</link>
       <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/skills/frp-nat-traversal/</guid>
+      <guid>https://WFUing.github.io/posts/skills/env/frp-nat-traversal/</guid>
       <description>Frp是一款开源的内网穿透工具，可实现将内部网络服务暴露给外部网络访问。它通过服务器端和客户端配合工作，服务器端位于外网，客户端位于内网，通过建立反向代理通道实现数据传输。Frp支持TCP、UDP、HTTP等协议，具有简单易用、配置灵活、跨平台等特点，常用于搭建家庭服务器、内网访问、远程调试等场景。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/frp-nat-traversal/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/env/frp-nat-traversal/featured.png" />
     </item>
     
   </channel>

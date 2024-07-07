@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Mon, 01 Jul 2024 10:46:05 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/skills/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jul 2024 12:47:47 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/skills/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chrome DevTools：如何过滤网络请求</title>
       <link>https://WFUing.github.io/posts/skills/chrome-devtools/</link>
@@ -16,46 +16,6 @@
       <guid>https://WFUing.github.io/posts/skills/chrome-devtools/</guid>
       <description>DevTools 中的主要部分之一是 network（网络）面板。如何过滤网络请求是在开发过程中的很重要的一环。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/chrome-devtools/featured.png" />
-    </item>
-    
-    <item>
-      <title>macos time error</title>
-      <link>https://WFUing.github.io/posts/skills/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/</link>
-      <pubDate>Thu, 27 Jun 2024 19:38:48 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/</guid>
-      <description>mac air 出现时区错误问题</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/macos%E6%97%B6%E5%8C%BA%E9%94%99%E8%AF%AF/featured.JPG" />
-    </item>
-    
-    <item>
-      <title>Ubuntu-Anaconda</title>
-      <link>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</link>
-      <pubDate>Thu, 02 May 2024 10:46:05 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/ubuntu-anaconda/</guid>
-      <description>Ubuntu 上的 Anaconda 配置。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/ubuntu-anaconda/featured.png" />
-    </item>
-    
-    <item>
-      <title>ubuntu-配置clash</title>
-      <link>https://WFUing.github.io/posts/skills/ubuntu-clash/</link>
-      <pubDate>Wed, 01 May 2024 10:46:05 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/ubuntu-clash/</guid>
-      <description>ubuntu上配置clash</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/ubuntu-clash/featured.png" />
-    </item>
-    
-    <item>
-      <title>ssh 相关内容</title>
-      <link>https://WFUing.github.io/posts/skills/ssh-tutorial/</link>
-      <pubDate>Tue, 02 Apr 2024 11:46:05 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/ssh-tutorial/</guid>
-      <description>ssh 相关内容</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/ssh-tutorial/featured.png" />
     </item>
     
     <item>
@@ -69,16 +29,6 @@
     </item>
     
     <item>
-      <title>Meta Key</title>
-      <link>https://WFUing.github.io/posts/skills/meta/</link>
-      <pubDate>Tue, 12 Dec 2023 11:22:18 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/meta/</guid>
-      <description>在MacOS终端中，可以将“Option”键设置为“Meta”键。打开终端偏好设置，选择“Profiles” &amp;gt; “Keyboard” &amp;gt; “Use Option as Meta key”。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/meta/featured.jpeg" />
-    </item>
-    
-    <item>
       <title>Markdown公式语法.md</title>
       <link>https://WFUing.github.io/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</link>
       <pubDate>Mon, 23 Oct 2023 16:25:26 +0800</pubDate>
@@ -86,26 +36,6 @@
       <guid>https://WFUing.github.io/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</guid>
       <description>一、公式使用参考 # 1．如何插入公式 # $ \LaTeX $ 的数学公式有两种：行中公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/featured.png" />
-    </item>
-    
-    <item>
-      <title>Shell 简介</title>
-      <link>https://WFUing.github.io/posts/skills/shell/</link>
-      <pubDate>Thu, 19 Oct 2023 11:47:47 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/shell/</guid>
-      <description>Shell 是一个用 C 语言编写的程序，是用户使用 Linux 的桥梁，它既是一种命令语言，又是一种程序设计语言。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/shell/featured.png" />
-    </item>
-    
-    <item>
-      <title>Frp Nat Traversal</title>
-      <link>https://WFUing.github.io/posts/skills/frp-nat-traversal/</link>
-      <pubDate>Thu, 12 Oct 2023 19:38:48 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/skills/frp-nat-traversal/</guid>
-      <description>Frp是一款开源的内网穿透工具，可实现将内部网络服务暴露给外部网络访问。它通过服务器端和客户端配合工作，服务器端位于外网，客户端位于内网，通过建立反向代理通道实现数据传输。Frp支持TCP、UDP、HTTP等协议，具有简单易用、配置灵活、跨平台等特点，常用于搭建家庭服务器、内网访问、远程调试等场景。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/frp-nat-traversal/featured.png" />
     </item>
     
   </channel>
