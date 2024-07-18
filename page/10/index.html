@@ -180,7 +180,50 @@ window.MathJax = {
   }
 };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script><body
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+
+const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror =  (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+    const loadPlantUMLOnNeed = () => {
+    let plantumlPrefix = "language-plantuml";
+
+    if (document.querySelectorAll("[class^=" + plantumlPrefix + "]").length > 0) {
+      loadScript('https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js', () => {
+        (function(){
+          Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+            let image = document.createElement("IMG");
+            image.loading = 'lazy'; 
+            image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+            code.parentNode.insertBefore(image, code);
+            code.style.display = 'none';
+          });
+        })();
+
+        console.log("PlantUML init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function(event) {
+    
+    loadPlantUMLOnNeed();
+  })
+
+</script>
+<body
   class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
   <div id="the-top" class="absolute flex self-center">
     <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
@@ -1059,6 +1102,90 @@ window.MathJax = {
   
   
 
+  <a href="/posts/reviews/os/%E9%80%82%E5%90%88-ubuntu%E7%9A%848%E6%AC%BE%E6%9C%80%E4%BD%B3%E5%BD%95%E5%B1%8F%E8%BD%AF%E4%BB%B6/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+        
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/os/%E9%80%82%E5%90%88-ubuntu%E7%9A%848%E6%AC%BE%E6%9C%80%E4%BD%B3%E5%BD%95%E5%B1%8F%E8%BD%AF%E4%BB%B6/featured.png);"></div>
+        
+      
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/reviews/os/%E9%80%82%E5%90%88-ubuntu%E7%9A%848%E6%AC%BE%E6%9C%80%E4%BD%B3%E5%BD%95%E5%B1%8F%E8%BD%AF%E4%BB%B6/">适合 Ubuntu的8款最佳录屏软件</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-03-10 10:07:16 &#43;0800 &#43;0800">10 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1 word</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          适合 Ubuntu的8款最佳录屏软件
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
   <a href="/posts/reviews/24%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0/%E7%BE%8E%E5%9B%A2/%E7%AC%94%E8%AF%95/%E7%BE%8E%E5%9B%A22024%E5%B1%8A%E6%98%A5%E6%8B%9B%E7%AC%94%E8%AF%95%E7%AC%AC%E4%B8%80%E5%9C%BA%E7%BC%96%E7%A8%8B%E7%9C%9F%E9%A2%98/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
@@ -1468,90 +1595,6 @@ window.MathJax = {
         
         <div class="py-1 prose dark:prose-invert">
           这次的笔试，很多签到题，没什么难度，主要是第七题和第九题，比较有难度。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%B9%B6%E6%9F%A5%E9%9B%86/leetcode-684%E5%86%97%E4%BD%99%E8%BF%9E%E6%8E%A5/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%B9%B6%E6%9F%A5%E9%9B%86/leetcode-684%E5%86%97%E4%BD%99%E8%BF%9E%E6%8E%A5/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/%E5%B9%B6%E6%9F%A5%E9%9B%86/leetcode-684%E5%86%97%E4%BD%99%E8%BF%9E%E6%8E%A5/">【LeetCode 684】冗余连接</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-03-03 17:16:02 &#43;0800 &#43;0800">3 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>244 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          【LeetCode 684】冗余连接题解。是第一次刷并查集的题目，比较陌生了。给出一个并查集的模版。
         </div>
         
       </div>

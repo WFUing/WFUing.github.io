@@ -180,7 +180,50 @@ window.MathJax = {
   }
 };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script><body
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+
+const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror =  (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+    const loadPlantUMLOnNeed = () => {
+    let plantumlPrefix = "language-plantuml";
+
+    if (document.querySelectorAll("[class^=" + plantumlPrefix + "]").length > 0) {
+      loadScript('https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js', () => {
+        (function(){
+          Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+            let image = document.createElement("IMG");
+            image.loading = 'lazy'; 
+            image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+            code.parentNode.insertBefore(image, code);
+            code.style.display = 'none';
+          });
+        })();
+
+        console.log("PlantUML init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function(event) {
+    
+    loadPlantUMLOnNeed();
+  })
+
+</script>
+<body
   class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
   <div id="the-top" class="absolute flex self-center">
     <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
@@ -1059,6 +1102,90 @@ window.MathJax = {
   
   
 
+  <a href="/posts/ai/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/" class="min-w-full">
+    
+    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
+        
+        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/ai/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/featured.png);"></div>
+        
+      
+
+      <div class="px-6 py-4">
+
+        
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
+          href="/posts/ai/ai-ci-cd/%E5%85%A8%E7%90%83%E7%9A%84mlops%E5%92%8Cml%E5%B7%A5%E5%85%B7%E6%A6%82%E8%A7%88/">全球的MLOps和ML工具概览</div>
+        
+
+        <div class="text-sm text-neutral-500 dark:text-neutral-400">
+          
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-04-16 09:22:18 &#43;0800 &#43;0800">16 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>958 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+        </div>
+
+        
+        <div class="py-1 prose dark:prose-invert">
+          对于人工智能领域的任何人来说，MLOps 一词是解决所有问题的一个神奇词汇。 它结合了所有与机器学习相关的任务，从管理、处理和可视化数据、运行和跟踪实验，到将创建的模型投入到生产，理想情况下是大规模、合规和安全的。它定义了实施 ML 工作以创建基于AI的应用程序和服务的过程。
+        </div>
+        
+      </div>
+      <div class="px-6 pt-4 pb-2">
+
+      </div>
+    </div>
+  </a>
+  
+  
+
   <a href="/posts/ai/ai-ci-cd/mlops-zoomcamp/" class="min-w-full">
     
     <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
@@ -1468,90 +1595,6 @@ window.MathJax = {
         
         <div class="py-1 prose dark:prose-invert">
           随着人工智能技术对各行各业的影响逐渐加深，企业IT运维管理也正在向更加智能化、先进的方向发生变化。为了改变企业IT运维管理方法单一、手段匮乏等实际问题，本文对企业IT智能运维管理技术的整体框架进行了分析研究，深入剖析了企业IT智能运维管理技术的关键智能化方法。故障预测、故障分析、运维调度等运维管理，为有效提升企业IT智能化运维水平和系统保障能力提供支撑。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/ai/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%8E%A8%E8%8D%90%E4%B8%8E%E5%B9%BF%E5%91%8A%E8%AE%A1%E7%AE%97/%E5%A4%9A%E7%9B%AE%E6%A0%87%E4%BC%98%E5%8C%96%E5%8F%8A%E5%BA%94%E7%94%A8/">推荐与广告计算 | 多目标优化介绍</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-04-14 09:25:45 &#43;0800 &#43;0800">14 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>152 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          多目标排序是推荐排序系统中常见的技术实现，在很多推荐与排序常见中，有多个业务目标，找到一种综合排序方法使得多个目标都达到整体最优，能有最好的总体收益。
         </div>
         
       </div>
