@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Redis on WFUing&#39;s Blog</title>
-    <link>https://WFUing.github.io/tags/redis/</link>
-    <description>Recent content in Redis on WFUing&#39;s Blog</description>
+    <title>从零实现redis-cache on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/</link>
+    <description>Recent content in 从零实现redis-cache on WFUing&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Fri, 31 May 2024 15:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redis 核心技术与实战 - 基础篇</title>
-      <link>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
-      <pubDate>Fri, 31 May 2024 15:15:08 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
-      <description>Redis 核心技术与实战 - 基础篇</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
-    </item>
-    
+    <lastBuildDate>Fri, 01 Mar 2024 15:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>从零实现redis(6)- 慢日志监控</title>
       <link>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</link>

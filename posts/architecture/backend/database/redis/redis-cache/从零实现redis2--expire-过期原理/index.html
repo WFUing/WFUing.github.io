@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>前后端请求加载流程 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="前后端请求加载流程 &middot; WFUing&#39;s Blog" />
+  <title>从零实现redis(2)- expire 过期原理 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="从零实现redis(2)- expire 过期原理 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。" />
-  <meta name="keywords" content=", " />
+  <meta name="description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。" />
+  <meta name="keywords" content="java, redis, " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/" />
   
   
   
@@ -67,22 +67,24 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="前后端请求加载流程">
-  <meta property="og:description" content="前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。">
+  <meta property="og:title" content="从零实现redis(2)- expire 过期原理">
+  <meta property="og:description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-03-18T13:53:28+08:00">
-    <meta property="article:modified_time" content="2024-03-18T13:53:28+08:00">
-    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/featured.png">
+    <meta property="article:published_time" content="2024-02-28T12:15:08+08:00">
+    <meta property="article:modified_time" content="2024-02-28T12:15:08+08:00">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Redis">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/featured.png">
-  <meta name="twitter:title" content="前后端请求加载流程">
-  <meta name="twitter:description" content="前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png">
+  <meta name="twitter:title" content="从零实现redis(2)- expire 过期原理">
+  <meta name="twitter:description" content="Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。">
 
   
   <script type="application/ld+json">
@@ -90,26 +92,26 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "前后端请求加载流程",
-    "headline": "前后端请求加载流程",
+    "name": "从零实现redis(2)- expire 过期原理",
+    "headline": "从零实现redis(2)- expire 过期原理",
     
-    "abstract": "前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。",
+    "abstract": "Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/database\/redis\/redis-cache\/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
     },
     "copyrightYear": "2024",
-    "dateCreated": "2024-03-18T13:53:28\u002b08:00",
-    "datePublished": "2024-03-18T13:53:28\u002b08:00",
+    "dateCreated": "2024-02-28T12:15:08\u002b08:00",
+    "datePublished": "2024-02-28T12:15:08\u002b08:00",
     
-    "dateModified": "2024-03-18T13:53:28\u002b08:00",
+    "dateModified": "2024-02-28T12:15:08\u002b08:00",
     
-    "keywords": [""],
+    "keywords": ["java","redis"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "29"
+    "wordCount": "458"
   }]
   </script>
 
@@ -911,7 +913,7 @@ const loadScript = (url, onloadFunction) => {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/featured.png);">
+    style="background-image:url(/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png);">
     
 
 
@@ -937,7 +939,7 @@ const loadScript = (url, onloadFunction) => {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      前后端请求加载流程
+      从零实现redis(2)- expire 过期原理
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -982,7 +984,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-03-18 13:53:28 &#43;0800 &#43;0800">18 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>29 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-02-28 12:15:08 &#43;0800 &#43;0800">28 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>458 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1119,7 +1121,101 @@ const loadScript = (url, onloadFunction) => {
   
   <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     
-    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码仓库">代码仓库</a></li>
+    <li><a href="#背景知识过期删除策略">背景知识——过期删除策略</a>
+      <ul>
+        <li><a href="#如何设置过期时间">如何设置过期时间？</a></li>
+        <li><a href="#如何判定-key-已过期了">如何判定 key 已过期了？</a></li>
+        <li><a href="#过期删除策略有哪些">过期删除策略有哪些？</a></li>
+        <li><a href="#redis-过期删除策略是什么">Redis 过期删除策略是什么？</a></li>
+      </ul>
+    </li>
+    <li><a href="#实现redis-cache的过期删除策略">实现redis-cache的过期删除策略</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#代码仓库">代码仓库</a></li>
+    <li><a href="#背景知识过期删除策略">背景知识——过期删除策略</a>
+      <ul>
+        <li><a href="#如何设置过期时间">如何设置过期时间？</a></li>
+        <li><a href="#如何判定-key-已过期了">如何判定 key 已过期了？</a></li>
+        <li><a href="#过期删除策略有哪些">过期删除策略有哪些？</a></li>
+        <li><a href="#redis-过期删除策略是什么">Redis 过期删除策略是什么？</a></li>
+      </ul>
+    </li>
+    <li><a href="#实现redis-cache的过期删除策略">实现redis-cache的过期删除策略</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
 
       <div class="min-w-0 min-h-0 max-w-fit">
         
@@ -1127,53 +1223,261 @@ const loadScript = (url, onloadFunction) => {
 
 
         <div class="article-content max-w-prose mb-20">
-          <ul>
-<li><a href="https://blog.51cto.com/u_12865/8266475"   target="_blank">
-    https://blog.51cto.com/u_12865/8266475</a></li>
-<li><a href="https://blog.csdn.net/qq_36331657/article/details/86646549"   target="_blank">
-    https://blog.csdn.net/qq_36331657/article/details/86646549</a></li>
+          <h2 class="relative group">代码仓库 
+    <div id="代码仓库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%bb%a3%e7%a0%81%e4%bb%93%e5%ba%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><a href="https://github.com/WFUing/redis-cache/tree/release_0.0.3"   target="_blank">
+    https://github.com/WFUing/redis-cache/tree/release_0.0.3</a></p>
+<h2 class="relative group">背景知识——过期删除策略 
+    <div id="背景知识过期删除策略" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%83%8c%e6%99%af%e7%9f%a5%e8%af%86%e8%bf%87%e6%9c%9f%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</p>
+<h3 class="relative group">如何设置过期时间？ 
+    <div id="如何设置过期时间" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%ae%e8%bf%87%e6%9c%9f%e6%97%b6%e9%97%b4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>先说一下对 key 设置过期时间的命令。 设置 key 过期时间的命令一共有 4 个：</p>
+<p><code>expire &lt;key&gt; &lt;n&gt;</code>：设置 key 在 n 秒后过期，比如 expire key 100 表示设置 key 在 100 秒后过期；
+<code>pexpire &lt;key&gt; &lt;n&gt;</code>：设置 key 在 n 毫秒后过期，比如 pexpire key2 100000 表示设置 key2 在 100000 毫秒（100 秒）后过期。
+<code>expireat &lt;key&gt; &lt;n&gt;</code>：设置 key 在某个时间戳（精确到秒）之后过期，比如 expireat key3 1655654400 表示 key3 在时间戳 1655654400 后过期（精确到秒）；
+<code>pexpireat &lt;key&gt; &lt;n&gt;</code>：设置 key 在某个时间戳（精确到毫秒）之后过期，比如 pexpireat key4 1655654400000 表示 key4 在时间戳 1655654400000 后过期（精确到毫秒）</p>
+<p>当然，在设置字符串时，也可以同时对 key 设置过期时间，共有 3 种命令：</p>
+<p><code>set &lt;key&gt; &lt;value&gt; ex &lt;n&gt;</code> ：设置键值对的时候，同时指定过期时间（精确到秒）；
+<code>set &lt;key&gt; &lt;value&gt; px &lt;n&gt;</code> ：设置键值对的时候，同时指定过期时间（精确到毫秒）；
+<code>setex &lt;key&gt; &lt;n&gt; &lt;valule&gt;</code> ：设置键值对的时候，同时指定过期时间（精确到秒）。</p>
+<p>如果你想查看某个 key 剩余的存活时间，可以使用 <code>TTL &lt;key&gt;</code> 命令。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 设置键值对的时候，同时指定过期时间位 60 秒</span>
+</span></span><span class="line"><span class="cl">&gt; setex key1 <span class="m">60</span> value1
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看 key1 过期时间还剩多少</span>
+</span></span><span class="line"><span class="cl">&gt; ttl key1
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">56</span>
+</span></span><span class="line"><span class="cl">&gt; ttl key1
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">52</span>
+</span></span></code></pre></div><p>如果突然反悔，取消 key 的过期时间，则可以使用 <code>PERSIST &lt;key&gt;</code> 命令。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 取消 key1 的过期时间</span>
+</span></span><span class="line"><span class="cl">&gt; persist key1
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用完 persist 命令之后，</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 查下 key1 的存活时间结果是 -1，表明 key1 永不过期 </span>
+</span></span><span class="line"><span class="cl">&gt; ttl key1 
+</span></span><span class="line"><span class="cl"><span class="o">(</span>integer<span class="o">)</span> -1
+</span></span></code></pre></div><h3 class="relative group">如何判定 key 已过期了？ 
+    <div id="如何判定-key-已过期了" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%a6%82%e4%bd%95%e5%88%a4%e5%ae%9a-key-%e5%b7%b2%e8%bf%87%e6%9c%9f%e4%ba%86" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>每当我们对一个 key 设置了过期时间时，Redis 会把该 key 带上过期时间存储到一个**过期字典（expires dict）**中，也就是说「过期字典」保存了数据库中所有 key 的过期时间。</p>
+<p>过期字典存储在 redisDb 结构中，如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">redisDb</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dict</span> <span class="o">*</span><span class="n">dict</span><span class="p">;</span>    <span class="cm">/* 数据库键空间，存放着所有的键值对 */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dict</span> <span class="o">*</span><span class="n">expires</span><span class="p">;</span> <span class="cm">/* 键的过期时间 */</span>
+</span></span><span class="line"><span class="cl">    <span class="p">....</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">redisDb</span><span class="p">;</span>
+</span></span></code></pre></div><p>过期字典数据结构结构如下：</p>
+<ul>
+<li>过期字典的 key 是一个指针，指向某个键对象；</li>
+<li>过期字典的 value 是一个 long long 类型的整数，这个整数保存了 key 的过期时间；</li>
 </ul>
-<p>前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。这个过程通常遵循以下几个步骤：</p>
+<p>过期字典的数据结构如下图所示：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>字典实际上是哈希表，哈希表的最大好处就是让我们可以用 O(1) 的时间复杂度来快速查找。当我们查询一个 key 时，Redis 首先检查该 key 是否存在于过期字典中：</p>
+<ul>
+<li>如果不在，则正常读取键值；</li>
+<li>如果存在，则会获取该 key 的过期时间，然后与当前系统时间进行比对，如果比系统时间大，那就没有过期，否则判定该 key 已过期。</li>
+</ul>
+<p>过期键判断流程如下图所示：</p>
+<div align="center">
+<img src="./image-1.png" alt="" width="40%" height="auto">
+</div>
+<h3 class="relative group">过期删除策略有哪些？ 
+    <div id="过期删除策略有哪些" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e8%bf%87%e6%9c%9f%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5%e6%9c%89%e5%93%aa%e4%ba%9b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>在说 Redis 过期删除策略之前，先跟大家介绍下，常见的三种过期删除策略：</p>
+<ul>
+<li>定时删除；</li>
+<li>惰性删除；</li>
+<li>定期删除；</li>
+</ul>
+<p><strong>定时删除策略</strong></p>
+<p>定时删除策略的做法是，<strong>在设置 key 的过期时间时，同时创建一个定时事件，当时间到达时，由事件处理器自动执行 key 的删除操作</strong>。</p>
+<ul>
+<li>定时删除策略的优点：可以保证过期 key 会被尽快删除，也就是内存可以被尽快地释放。因此，<strong>定时删除对内存是最友好的</strong>。</li>
+<li>定时删除策略的缺点：<strong>在过期 key 比较多的情况下</strong>，删除过期 key 可能会占用相当一部分 CPU 时间，在内存不紧张但 CPU 时间紧张的情况下，将 CPU 时间用于删除和当前任务无关的过期键上，无疑会对服务器的响应时间和吞吐量造成影响。所以，定时删除策略对 CPU 不友好。</li>
+</ul>
+<p><strong>惰性删除策略</strong></p>
+<p>惰性删除策略的做法是，<strong>不主动删除过期键，每次从数据库访问 key 时，都检测 key 是否过期，如果过期则删除该 key</strong>。</p>
+<ul>
+<li>惰性删除策略的优点：因为每次访问时，才会检查 key 是否过期，所以此策略只会使用很少的系统资源，因此，惰性删除策略对 <strong>CPU 时间</strong>最友好。</li>
+<li>惰性删除策略的缺点：如果一个 key 已经过期，而这个 key 又仍然保留在数据库中，那么只要这个过期 key 一直没有被访问，它所占用的内存就不会释放，造成了一定的内存空间浪费。所以，惰性删除策略对内存不友好。</li>
+</ul>
+<p><strong>定期删除策略</strong></p>
+<p>定期删除策略的做法是，每隔一段时间「随机」从数据库中取出一定数量的 key 进行检查，并删除其中的过期key。</p>
+<ul>
+<li>定期删除策略的优点：通过限制删除操作执行的时长和频率，来减少删除操作对 CPU 的影响，同时也能删除一部分过期的数据减少了过期键对空间的无效占用。</li>
+<li>定期删除策略的缺点：
+<ul>
+<li>内存清理方面没有定时删除效果好，同时没有惰性删除使用的系统资源少。</li>
+<li>难以确定删除操作执行的时长和频率。如果执行的太频繁，定期删除策略变得和定时删除策略一样，对CPU不友好；如果执行的太少，那又和惰性删除一样了，过期 key 占用的内存不会及时得到释放。</li>
+</ul>
+</li>
+</ul>
+<h3 class="relative group">Redis 过期删除策略是什么？ 
+    <div id="redis-过期删除策略是什么" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#redis-%e8%bf%87%e6%9c%9f%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5%e6%98%af%e4%bb%80%e4%b9%88" aria-label="Anchor">#</a>
+    </span>        
+    
+</h3>
+<p>前面介绍了三种过期删除策略，每一种都有优缺点，仅使用某一个策略都不能满足实际需求。</p>
+<p>所以， <strong>Redis 选择「惰性删除+定期删除」这两种策略配和使用</strong>，以求在合理使用 CPU 时间和避免内存浪费之间取得平衡。</p>
+<p>Redis 的惰性删除策略由 <code>db.c</code> 文件中的 <code>expireIfNeeded</code> 函数实现，代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">expireIfNeeded</span><span class="p">(</span><span class="n">redisDb</span> <span class="o">*</span><span class="n">db</span><span class="p">,</span> <span class="n">robj</span> <span class="o">*</span><span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 判断 key 是否过期
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">keyIsExpired</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">key</span><span class="p">))</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">....</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* 删除过期键 */</span>
+</span></span><span class="line"><span class="cl">    <span class="p">....</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 如果 server.lazyfree_lazy_expire 为 1 表示异步删除，反之同步删除；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">server</span><span class="p">.</span><span class="n">lazyfree_lazy_expire</span> <span class="o">?</span> <span class="nf">dbAsyncDelete</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">key</span><span class="p">)</span> <span class="o">:</span>
+</span></span><span class="line"><span class="cl">                                         <span class="nf">dbSyncDelete</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Redis 在访问或者修改 key 之前，都会调用 <code>expireIfNeeded</code> 函数对其进行检查，检查 key 是否过期：</p>
+<ul>
+<li>如果过期，则删除该 key，至于选择异步删除，还是选择同步删除，根据 <code>lazyfree_lazy_expire</code> 参数配置决定（Redis 4.0版本开始提供参数），然后返回 <code>null</code> 客户端；</li>
+<li>如果没有过期，不做任何处理，然后返回正常的键值对给客户端；</li>
+</ul>
+<p>惰性删除的流程图如下：</p>
+<div align="center">
+<img src="./image-2.png" alt="" width="50%" height="auto">
+</div>
+<p><strong>Redis 实现定期删除</strong></p>
+<p>再回忆一下，定期删除策略的做法：每隔一段时间「随机」从数据库中取出一定数量的 key 进行检查，并删除其中的过期key。</p>
+<p><em>1、这个间隔检查的时间是多长呢？</em></p>
+<p>在 Redis 中，默认每秒进行 10 次过期检查一次数据库，此配置可通过 Redis 的配置文件 <code>redis.conf</code> 进行配置，配置键为 <code>hz</code> 它的默认值是 <code>hz 10</code>。</p>
+<p>特别强调下，每次检查数据库并不是遍历过期字典中的所有 key，而是从数据库中随机抽取一定数量的 key 进行过期检查。</p>
+<p><em>2、随机抽查的数量是多少呢？</em></p>
+<p>我查了下源码，定期删除的实现在 <code>expire.c</code> 文件下的 <code>activeExpireCycle</code> 函数中，其中随机抽查的数量由 <code>ACTIVE_EXPIRE_CYCLE_LOOKUPS_PER_LOOP</code> 定义的，它是写死在代码中的，数值是 <code>20</code>。</p>
+<p>也就是说，数据库每轮抽查时，会随机选择 20 个 key 判断是否过期。</p>
+<p>接下来，详细说说 Redis 的定期删除的流程：</p>
 <ol>
-<li>用户操作或触发请求</li>
+<li>从过期字典中随机抽取 20 个 key；</li>
+<li>检查这 20 个 key 是否过期，并删除已过期的 key；</li>
+<li>如果本轮检查的已过期 key 的数量，超过 5 个（20/4），也就是「已过期 key 的数量」占比「随机抽取 key 的数量」大于 25%，则继续重复步骤 1；如果已过期的 key 比例小于 25%，则停止继续删除过期 key，然后等待下一轮再检查。</li>
 </ol>
-<p>用户在前端界面进行操作，如点击按钮、提交表单等。这些操作触发前端代码（通常是JavaScript）发起一个对后端服务器的请求。</p>
-<ol start="2">
-<li>发送请求</li>
-</ol>
-<p>前端通过HTTP（超文本传输协议）或HTTPS（HTTP安全）协议，发送一个请求到服务器。这个请求包括：</p>
-<ul>
-<li>请求方法：如GET（获取数据）、POST（提交数据）、PUT（更新数据）等。</li>
-<li>请求URL：指明请求的资源或接口路径。</li>
-<li>请求头：包含请求的元数据，如内容类型（Content-Type）、认证信息等。</li>
-<li>请求体：对于POST和PUT请求，请求体中包含要发送给服务器的数据。</li>
-</ul>
-<ol start="3">
-<li>服务器处理请求</li>
-</ol>
-<p>服务器接收到请求后，由Web服务器（如Apache、Nginx）转发给后端应用服务器处理（如基于Node.js、Python Flask、Django、Java Spring等）。</p>
-<p>应用服务器根据请求的URL、方法等信息，调用相应的后端逻辑处理请求。</p>
-<p>如果需要，后端会与数据库或其他服务进行交互，获取或更新数据。</p>
-<ol start="4">
-<li>发送响应</li>
-</ol>
-<p>一旦后端处理完成，服务器会构造一个HTTP响应返回给前端。</p>
-<p>响应通常包括：</p>
-<ul>
-<li>状态码：表示请求成功与否的代码，如200（成功）、404（未找到）、500（服务器错误）等。</li>
-<li>响应头：包含响应的元数据，如内容类型。</li>
-<li>响应体：包含返回给前端的数据，通常是JSON或XML格式。</li>
-</ul>
-<ol start="5">
-<li>前端处理响应</li>
-</ol>
-<p>前端接收到响应后，根据状态码和返回的数据进行相应的处理。</p>
-<p>通常，数据会被解析并用于更新网页内容或界面状态，提供用户反馈。</p>
-<ol start="6">
-<li>用户界面更新</li>
-</ol>
-<p>用户界面根据处理结果更新，显示新的数据或给用户反馈，完成一次前后端交互流程。</p>
-<p>在这个过程中，安全措施非常重要，包括使用HTTPS保证传输加密、验证和授权确保数据访问安全、输入验证防止注入攻击等。</p>
+<p>可以看到，定期删除是一个循环的流程。</p>
+<p>那 Redis 为了保证定期删除不会出现循环过度，导致线程卡死现象，为此增加了定期删除循环流程的时间上限，默认不会超过 25ms。</p>
+<p>针对定期删除的流程，我写了个伪代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//已过期的数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">expired</span> <span class="o">=</span> <span class="mi">0</span><span class="err">；</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//随机抽取的数量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">num</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">num</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//1. 从过期字典中随机抽取 1 个 key
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//2. 判断该 key 是否过期，如果已过期则进行删除，同时对 expired++
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 超过时间限制则退出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">timelimit_exit</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 如果本轮检查的已过期 key 的数量，超过 25%，则继续随机抽查，否则退出本轮检查 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">expired</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span> 
+</span></span></code></pre></div><div align="center">
+<img src="./image-3.png" alt="" width="60%" height="auto">
+</div>
+<h2 class="relative group">实现redis-cache的过期删除策略 
+    <div id="实现redis-cache的过期删除策略" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%ae%9e%e7%8e%b0redis-cache%e7%9a%84%e8%bf%87%e6%9c%9f%e5%88%a0%e9%99%a4%e7%ad%96%e7%95%a5" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/cache-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 
         </div>
                 
@@ -1186,8 +1490,8 @@ const loadScript = (url, onloadFunction) => {
      
     
      <script>
-        var oid = "views_posts\/architecture\/backend\/前后端请求加载流程\/index.md"
-        var oid_likes = "likes_posts\/architecture\/backend\/前后端请求加载流程\/index.md"
+        var oid = "views_posts\/architecture\/backend\/database\/redis\/redis-cache\/从零实现redis(2)- expire 过期原理\/index.md"
+        var oid_likes = "likes_posts\/architecture\/backend\/database\/redis\/redis-cache\/从零实现redis(2)- expire 过期原理\/index.md"
       </script>
       
       
@@ -1210,7 +1514,7 @@ const loadScript = (url, onloadFunction) => {
       <div class="flex justify-between pt-3">
         <span>
           
-            <a class="flex group mr-3" href="/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/">
+            <a class="flex group mr-3" href="/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/">
               <span
                 class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
                 >&larr;</span
@@ -1222,11 +1526,11 @@ const loadScript = (url, onloadFunction) => {
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >蓄水池抽样算法（Reservoir Sampling）</span
+                  >从零实现redis(3)- 拦截器（Interceptor）</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-04-12 13:53:28 &#43;0800 &#43;0800">12 April 2024</time>
+                    <time datetime="2024-02-29 12:15:08 &#43;0800 &#43;0800">29 February 2024</time>
                   
                 </span>
               </span>
@@ -1235,15 +1539,15 @@ const loadScript = (url, onloadFunction) => {
         </span>
         <span>
           
-            <a class="flex text-right group ml-3" href="/posts/architecture/backend/vodtobopodo%E5%8C%BA%E5%88%AB/">
+            <a class="flex text-right group ml-3" href="/posts/architecture/backend/database/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/">
               <span class="flex flex-col">
                 <span
                   class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
-                  >VO、DTO、BO、PO、DO区别</span
+                  >从零实现redis(1)-实现固定缓存大小</span
                 >
                 <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
                   
-                    <time datetime="2024-02-17 16:15:08 &#43;0800 &#43;0800">17 February 2024</time>
+                    <time datetime="2024-02-28 11:15:08 &#43;0800 &#43;0800">28 February 2024</time>
                   
                 </span>
               </span>
