@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadoop on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/</link>
+    <description>Recent content in Hadoop on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Sun, 25 Feb 2024 09:46:05 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop-HDFS</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/</link>
+      <pubDate>Sun, 25 Feb 2024 09:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/</guid>
+      <description>HDFS是Hadoop Distribute File System 的简称，意为Hadoop分布式文件系统。是Hadoop核心组件之一，作为最底层的分布式存储服务而存在。分布式文件系统解决的问题就是大数据存储。它们是横跨在多台计算机上的存储系统。分布式文件系统在大数据时代有着广泛的应用前景，它们为存储和处理超大规模数据提供所需的扩展能力。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rpc on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/</link>
+    <description>Recent content in rpc on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Fri, 17 May 2024 19:07:16 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RPC-概述</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</link>
+      <pubDate>Wed, 31 Jan 2024 13:55:43 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</guid>
+      <description>RPC 的全称是 Remote Procedure Call Protocol，中文名是远程过程调用协议。官方的描述是：一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

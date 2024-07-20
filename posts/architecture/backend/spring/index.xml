@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/backend/spring/</link>
+    <description>Recent content in Spring on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Mon, 27 May 2024 16:15:08 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/backend/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring Boot 手把手教你写一个 Starter</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</link>
+      <pubDate>Mon, 27 May 2024 16:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</guid>
+      <description>大家在开发的过程中应该经常会看到各种各样的Starter</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/featured.png" />
+    </item>
+    
+    <item>
+      <title>Spring MVC常用注解</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Wed, 21 Feb 2024 16:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <description>Spring MVC 是一个基于 Java 的 Web 应用开发框架，它通过提供模型-视图-控制器（MVC）架构来简化 Web 开发。Spring MVC 充分利用了依赖注入和面向切面编程等特性，使得开发者能够轻松地构建灵活、模块化的 Web 应用。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/featured.png" />
+    </item>
+    
+    <item>
+      <title>Spring中Bean的生命周期</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Thu, 15 Feb 2024 16:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description>对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" />
+    </item>
+    
+    <item>
+      <title>Spring Boot 的核心注解</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</link>
+      <pubDate>Wed, 07 Feb 2024 16:15:08 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</guid>
+      <description>Spring Boot 是一种快速开发应用程序的框架，提供了一系列的注解来简化开发过程。其中，最重要的就是核心注解，它能帮助开发者快速配置应用程序。本文将深入探讨 Spring Boot 的核心注解，介绍它的作用以及常见的组成注解。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/featured.jpeg" />
+    </item>
+    
+  </channel>
+</rss>

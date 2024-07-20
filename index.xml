@@ -25,7 +25,7 @@
       
       <guid>https://WFUing.github.io/posts/skills/env/linux/mysql-remote/</guid>
       <description>MYSQL 远程连接</description>
-      
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/skills/env/linux/mysql-remote/featured.png" />
     </item>
     
     <item>
@@ -60,12 +60,12 @@
     
     <item>
       <title>DDD实战课-进阶篇</title>
-      <link>https://WFUing.github.io/posts/architecture/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
       <pubDate>Thu, 20 Jun 2024 16:47:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/</guid>
       <description>基于 DDD 的微服务拆分与设计</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/featured.png" />
     </item>
     
     <item>
@@ -100,12 +100,12 @@
     
     <item>
       <title>DDD实战课-基础篇</title>
-      <link>https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
       <pubDate>Thu, 06 Jun 2024 16:47:45 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
       <description>基于 DDD 的微服务拆分与设计</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/ddd/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
     </item>
     
     <item>
@@ -130,12 +130,12 @@
     
     <item>
       <title>Redis 核心技术与实战 - 基础篇</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
       <pubDate>Fri, 31 May 2024 15:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
       <description>Redis 核心技术与实战 - 基础篇</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
     </item>
     
     <item>
@@ -150,82 +150,82 @@
     
     <item>
       <title>Kafka 核心技术与实战</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</link>
       <pubDate>Wed, 29 May 2024 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</guid>
       <description>01 | 消息引擎系统ABC # kafka 是什么呢？</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/kafka/kafka-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/featured.png" />
     </item>
     
     <item>
       <title>Spring Boot 手把手教你写一个 Starter</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</link>
       <pubDate>Mon, 27 May 2024 16:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</guid>
       <description>大家在开发的过程中应该经常会看到各种各样的Starter</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/featured.png" />
     </item>
     
     <item>
       <title>Elasticsearch 底层数据结构</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/es/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/es/</link>
       <pubDate>Wed, 22 May 2024 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/es/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/es/</guid>
       <description>Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/es/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/es/featured.png" />
     </item>
     
     <item>
       <title>Spring Core 常用错误</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</link>
       <pubDate>Sat, 18 May 2024 08:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/</guid>
       <description>Spring Core 常用错误</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spirng-core%E7%AF%87/featured.png" />
     </item>
     
     <item>
       <title>Spring Web 常用错误</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/</link>
       <pubDate>Sat, 18 May 2024 08:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/</guid>
       <description>Spring Web 常用错误</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-%E7%BC%96%E7%A8%8B%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF50%E4%BE%8B/spring-web%E7%AF%87/featured.png" />
     </item>
     
     <item>
       <title>RPC 实战与核心原理 - 高级篇</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</link>
       <pubDate>Fri, 17 May 2024 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/</guid>
       <description>RPC 实战与核心原理 - 高级篇</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E9%AB%98%E7%BA%A7%E7%AF%87/featured.png" />
     </item>
     
     <item>
       <title>RPC 实战与核心原理 - 进阶篇</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</link>
       <pubDate>Thu, 16 May 2024 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/</guid>
       <description>RPC 实战与核心原理 - 进阶篇</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E8%BF%9B%E9%98%B6%E7%AF%87/featured.png" />
     </item>
     
     <item>
       <title>RPC 实战与核心原理 - 基础篇</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
       <pubDate>Wed, 15 May 2024 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
       <description>RPC 实战与核心原理 - 基础篇</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/featured.png" />
     </item>
     
     <item>
@@ -550,12 +550,12 @@
     
     <item>
       <title>高并发架构学习笔记</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/tutorial/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/tutorial/</link>
       <pubDate>Wed, 10 Apr 2024 10:53:28 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/tutorial/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/tutorial/</guid>
       <description>慎入，高并发的水太深，什么高并发，大流量的东西都是虚拟的，笔者还太年轻，没有那个经历，把握不住。系统最大只搞过几千QPS，开心快乐就行，不PK，文明PK。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/tutorial/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/tutorial/featured.png" />
     </item>
     
     <item>
@@ -600,12 +600,12 @@
     
     <item>
       <title>如何处理高并发请求</title>
-      <link>https://WFUing.github.io/posts/architecture/backend/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Thu, 04 Apr 2024 13:53:28 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/backend/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/</guid>
       <description>如何处理高并发请求</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%AB%98%E5%B9%B6%E5%8F%91%E8%AF%B7%E6%B1%82/featured.png" />
     </item>
     
     <item>
@@ -910,12 +910,12 @@
     
     <item>
       <title>分布式事务</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/transaction/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/transaction/</link>
       <pubDate>Sun, 10 Mar 2024 19:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/transaction/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/transaction/</guid>
       <description>事务的多个参与者分布在不同的地方。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/transaction/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/transaction/featured.png" />
     </item>
     
     <item>
@@ -1030,12 +1030,12 @@
     
     <item>
       <title>从零实现redis(6)- 慢日志监控</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</link>
       <pubDate>Fri, 01 Mar 2024 15:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/</guid>
       <description>实现类似 guava-cache 中的 removeListener 删除监听器</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis6--%E6%85%A2%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7/featured.png" />
     </item>
     
     <item>
@@ -1060,32 +1060,32 @@
     
     <item>
       <title>从零实现redis(5)- 持久化</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/</link>
       <pubDate>Thu, 29 Feb 2024 15:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/</guid>
       <description>实现类似 guava-cache 中的 removeListener 删除监听器</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis5--%E6%8C%81%E4%B9%85%E5%8C%96/featured.png" />
     </item>
     
     <item>
       <title>从零实现redis(4)- 监听器（Listerner） </title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</link>
       <pubDate>Thu, 29 Feb 2024 13:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/</guid>
       <description>实现类似 guava-cache 中的 removeListener 删除监听器</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis4--%E7%9B%91%E5%90%AC%E5%99%A8listerner-/featured.png" />
     </item>
     
     <item>
       <title>从零实现redis(3)- 拦截器（Interceptor）</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</link>
       <pubDate>Thu, 29 Feb 2024 12:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/</guid>
       <description>Interceptor（拦截器）是用于实现AOP（面向切面编程）的工具之一，常用于对系统中的某些操作进行拦截并在其之前或之后加入某些处理，例如性能监控、日志记录、安全检查、事务处理、权限检查等。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis3--%E6%8B%A6%E6%88%AA%E5%99%A8interceptor/featured.png" />
     </item>
     
     <item>
@@ -1130,22 +1130,22 @@
     
     <item>
       <title>从零实现redis(2)- expire 过期原理</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</link>
       <pubDate>Wed, 28 Feb 2024 12:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/</guid>
       <description>Redis 是可以对 key 设置过期时间的，因此需要有相应的机制将已过期的键值对删除，而做这个工作的就是过期键值删除策略。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis2--expire-%E8%BF%87%E6%9C%9F%E5%8E%9F%E7%90%86/featured.png" />
     </item>
     
     <item>
       <title>从零实现redis(1)-实现固定缓存大小</title>
-      <link>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</link>
       <pubDate>Wed, 28 Feb 2024 11:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/</guid>
       <description>redis 的驱除策略，也称为内存淘汰策略。当 Redis 的运行内存已经超过 Redis 设置的最大内存之后，则会使用内存淘汰策略删除符合条件的 key，以此来保障 Redis 高效的运行。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/redis/redis-cache/%E4%BB%8E%E9%9B%B6%E5%AE%9E%E7%8E%B0redis1-%E5%AE%9E%E7%8E%B0%E5%9B%BA%E5%AE%9A%E7%BC%93%E5%AD%98%E5%A4%A7%E5%B0%8F/featured.png" />
     </item>
     
     <item>
@@ -1220,12 +1220,12 @@
     
     <item>
       <title>Hadoop-HDFS</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/hadoop/hdfs/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/</link>
       <pubDate>Sun, 25 Feb 2024 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/hadoop/hdfs/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/</guid>
       <description>HDFS是Hadoop Distribute File System 的简称，意为Hadoop分布式文件系统。是Hadoop核心组件之一，作为最底层的分布式存储服务而存在。分布式文件系统解决的问题就是大数据存储。它们是横跨在多台计算机上的存储系统。分布式文件系统在大数据时代有着广泛的应用前景，它们为存储和处理超大规模数据提供所需的扩展能力。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/hadoop/hdfs/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/hadoop/hdfs/featured.png" />
     </item>
     
     <item>
@@ -1270,32 +1270,32 @@
     
     <item>
       <title>Spring MVC常用注解</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Wed, 21 Feb 2024 16:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/</guid>
       <description>Spring MVC 是一个基于 Java 的 Web 应用开发框架，它通过提供模型-视图-控制器（MVC）架构来简化 Web 开发。Spring MVC 充分利用了依赖注入和面向切面编程等特性，使得开发者能够轻松地构建灵活、模块化的 Web 应用。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-mvc%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3/featured.png" />
     </item>
     
     <item>
       <title>VO、DTO、BO、PO、DO区别</title>
-      <link>https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/vodtobopodo%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sat, 17 Feb 2024 16:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/vodtobopodo%E5%8C%BA%E5%88%AB/</guid>
       <description>VO（View Object）视图对象；DTO（Data Transfer Object）数据传输对象；BO（Business Object）业务层对象；PO（Persistent Object）持久化对象；DO（Domain Object）领域对象。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/vodtobopodo%E5%8C%BA%E5%88%AB/featured.png" />
     </item>
     
     <item>
       <title>Spring中Bean的生命周期</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
       <pubDate>Thu, 15 Feb 2024 16:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
       <description>对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" />
     </item>
     
     <item>
@@ -1320,12 +1320,12 @@
     
     <item>
       <title>Spring Boot 的核心注解</title>
-      <link>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</link>
       <pubDate>Wed, 07 Feb 2024 16:15:08 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/language/java/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</guid>
       <description>Spring Boot 是一种快速开发应用程序的框架，提供了一系列的注解来简化开发过程。其中，最重要的就是核心注解，它能帮助开发者快速配置应用程序。本文将深入探讨 Spring Boot 的核心注解，介绍它的作用以及常见的组成注解。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/language/java/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/featured.jpeg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/featured.jpeg" />
     </item>
     
     <item>
@@ -1340,12 +1340,12 @@
     
     <item>
       <title>RPC-概述</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</link>
       <pubDate>Wed, 31 Jan 2024 13:55:43 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/</guid>
       <description>RPC 的全称是 Remote Procedure Call Protocol，中文名是远程过程调用协议。官方的描述是：一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E6%A6%82%E8%BF%B0/featured.png" />
     </item>
     
     <item>
@@ -1790,12 +1790,12 @@
     
     <item>
       <title>Ceph集群部署</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/ceph/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/ceph/</link>
       <pubDate>Tue, 05 Dec 2023 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/ceph/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/ceph/</guid>
       <description>Ceph是一种开源分布式存储系统，为大规模数据提供可扩展性和高性能。它使用分布式对象存储、块存储和文件系统，通过智能数据复制和动态数据分布，确保高可用性和容错性。Ceph的设计使其适用于云计算和大数据环境，提供灵活、可靠的存储解决方案，同时支持自动负载平衡和故障恢复。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/ceph/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/ceph/featured.png" />
     </item>
     
     <item>
@@ -2470,22 +2470,22 @@
     
     <item>
       <title>Zookeeper Code</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-code/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-code/</link>
       <pubDate>Sat, 14 Oct 2023 12:00:54 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-code/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-code/</guid>
       <description>Resources # 官方 ZooKeeper 官网 ZooKeeper 官方文档 ZooKeeper Github 博客 ZooKeeper源码阅读心得分享+源码基本结构+源码环境搭建 手摸手教你阅读和调试大型开源项目 ZooKeeper </description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-code/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-code/featured.png" />
     </item>
     
     <item>
       <title>Zookeeper 原理</title>
-      <link>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-theory/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-theory/</link>
       <pubDate>Fri, 13 Oct 2023 20:07:16 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-theory/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-theory/</guid>
       <description>ZooKeeper 是 Apache 的顶级项目。ZooKeeper 为分布式应用提供了高效且可靠的分布式协调服务，提供了诸如统一命名服务、配置管理和分布式锁等分布式的基础服务。在解决分布式数据一致性方面，ZooKeeper 并没有直接采用 Paxos 算法，而是采用了名为 ZAB 的一致性协议。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/distributed/zookeeper/zookeeper-theory/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/zookeeper/zookeeper-theory/featured.png" />
     </item>
     
     <item>
