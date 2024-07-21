@@ -3,6 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/architecture/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/redis/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-jike-course/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/</loc>
+    <lastmod>2024-07-21T15:15:08+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/language/java/</loc>
     <lastmod>2024-07-12T23:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -16,12 +52,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/language/java/java%E6%A0%B8%E5%BF%83%E9%9D%A2%E8%AF%95%E7%B2%BE%E8%AE%B2/basic/</loc>
-    <lastmod>2024-07-12T23:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-07-12T23:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -81,12 +111,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-06-20T16:47:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/ddd/%E8%BF%9B%E9%98%B6%E7%AF%87/</loc>
     <lastmod>2024-06-20T16:47:45+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -94,12 +118,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/ddd/</loc>
-    <lastmod>2024-06-20T16:47:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/</loc>
     <lastmod>2024-06-20T16:47:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -161,30 +179,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/virtualization/k8s/%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90-kubernetes/docker%E5%8F%91%E5%B1%95%E5%8F%B2-%E5%85%AB%E5%8D%A6%E7%AF%87/</loc>
     <lastmod>2024-06-01T08:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/database/redis/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/database/redis/redis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/database/</loc>
-    <lastmod>2024-05-31T15:15:08+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
