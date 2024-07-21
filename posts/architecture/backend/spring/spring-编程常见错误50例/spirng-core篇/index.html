@@ -1133,11 +1133,11 @@ const loadScript = (url, onloadFunction) => {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#spring基础知识">Spring基础知识</a></li>
-    <li><a href="#spring-bean-定义常见错误">Spring Bean 定义常见错误</a></li>
-    <li><a href="#spring-bean-依赖注入常见错误">Spring Bean 依赖注入常见错误</a></li>
-    <li><a href="#spring-bean-生命周期常见错误">Spring Bean 生命周期常见错误</a></li>
-    <li><a href="#spring-aop-常见错误">Spring AOP 常见错误</a></li>
-    <li><a href="#spring事件常见错误">Spring事件常见错误</a></li>
+    <li><a href="#01spring-bean-定义常见错误">01｜Spring Bean 定义常见错误</a></li>
+    <li><a href="#0203spring-bean-依赖注入常见错误">02/03｜Spring Bean 依赖注入常见错误</a></li>
+    <li><a href="#04spring-bean-生命周期常见错误">04｜Spring Bean 生命周期常见错误</a></li>
+    <li><a href="#0506spring-aop-常见错误">05/06｜Spring AOP 常见错误</a></li>
+    <li><a href="#07spring事件常见错误">07｜Spring事件常见错误</a></li>
   </ul>
 </nav>
   </div>
@@ -1152,11 +1152,11 @@ const loadScript = (url, onloadFunction) => {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#spring基础知识">Spring基础知识</a></li>
-    <li><a href="#spring-bean-定义常见错误">Spring Bean 定义常见错误</a></li>
-    <li><a href="#spring-bean-依赖注入常见错误">Spring Bean 依赖注入常见错误</a></li>
-    <li><a href="#spring-bean-生命周期常见错误">Spring Bean 生命周期常见错误</a></li>
-    <li><a href="#spring-aop-常见错误">Spring AOP 常见错误</a></li>
-    <li><a href="#spring事件常见错误">Spring事件常见错误</a></li>
+    <li><a href="#01spring-bean-定义常见错误">01｜Spring Bean 定义常见错误</a></li>
+    <li><a href="#0203spring-bean-依赖注入常见错误">02/03｜Spring Bean 依赖注入常见错误</a></li>
+    <li><a href="#04spring-bean-生命周期常见错误">04｜Spring Bean 生命周期常见错误</a></li>
+    <li><a href="#0506spring-aop-常见错误">05/06｜Spring AOP 常见错误</a></li>
+    <li><a href="#07spring事件常见错误">07｜Spring事件常见错误</a></li>
   </ul>
 </nav>
   </div>
@@ -1337,13 +1337,13 @@ const loadScript = (url, onloadFunction) => {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>这个时候，很明显了，假设你的 Bean 名字是 ComponentA，那么就应该返回 ComponentA 类型的代理对象了。至于这些规则是怎么建立起来的呢？你看到它上面使用的各种注解大概就能明白其中的规则了，无非就是<strong>扫描注解，根据注解创建规则</strong>。</p>
-<h2 class="relative group">Spring Bean 定义常见错误 
-    <div id="spring-bean-定义常见错误" class="anchor"></div>
+<h2 class="relative group">01｜Spring Bean 定义常见错误 
+    <div id="01spring-bean-定义常见错误" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#spring-bean-%e5%ae%9a%e4%b9%89%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#01spring-bean-%e5%ae%9a%e4%b9%89%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -1751,13 +1751,13 @@ com.spring.puzzle.class1.example3.error.ServiceImpl@4908af
   
 
 </p>
-<h2 class="relative group">Spring Bean 依赖注入常见错误 
-    <div id="spring-bean-依赖注入常见错误" class="anchor"></div>
+<h2 class="relative group">02/03｜Spring Bean 依赖注入常见错误 
+    <div id="0203spring-bean-依赖注入常见错误" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#spring-bean-%e4%be%9d%e8%b5%96%e6%b3%a8%e5%85%a5%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#0203spring-bean-%e4%be%9d%e8%b5%96%e6%b3%a8%e5%85%a5%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -2448,13 +2448,13 @@ user.password=pass
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">createStudent</span><span class="p">(</span><span class="n">4</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;fu&#34;</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>总之，都是可以的。还有一点要注意：<strong>在对于同一个集合对象的注入上，混合多种注入方式是不可取的，这样除了错乱，别无所得。</strong></p>
-<h2 class="relative group">Spring Bean 生命周期常见错误 
-    <div id="spring-bean-生命周期常见错误" class="anchor"></div>
+<h2 class="relative group">04｜Spring Bean 生命周期常见错误 
+    <div id="04spring-bean-生命周期常见错误" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#spring-bean-%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#04spring-bean-%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -2843,13 +2843,13 @@ user.password=pass
 </span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="n">String</span><span class="w"> </span><span class="nf">destroyMethod</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">AbstractBeanDefinition</span><span class="p">.</span><span class="na">INFER_METHOD</span><span class="p">;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>继续对照代码，你就会发现 @Service 标记的 LightService 也没有实现 AutoCloseable、DisposableBean，最终没有添加一个 DisposableBeanAdapter。所以最终我们定义的 shutdown 方法没有被调用。</p>
-<h2 class="relative group">Spring AOP 常见错误 
-    <div id="spring-aop-常见错误" class="anchor"></div>
+<h2 class="relative group">05/06｜Spring AOP 常见错误 
+    <div id="0506spring-aop-常见错误" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#spring-aop-%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#0506spring-aop-%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
@@ -3740,13 +3740,13 @@ Exception in thread “main” java.lang.RuntimeException: authority check faile
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>我们可以将原来的 validateAuthority() 改为 checkAuthority()，这种情况下，<strong>对增强（Advisor）的排序，其实最后就是在比较字符 l 和 字符 c</strong>。显然易见，checkAuthority() 的排序会靠前，从而被优先执行，最终问题得以解决。</p>
-<h2 class="relative group">Spring事件常见错误 
-    <div id="spring事件常见错误" class="anchor"></div>
+<h2 class="relative group">07｜Spring事件常见错误 
+    <div id="07spring事件常见错误" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#spring%e4%ba%8b%e4%bb%b6%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#07spring%e4%ba%8b%e4%bb%b6%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
