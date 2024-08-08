@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8" />
+  
+  <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>四万字32图，Kafka知识体系保姆级教程宝典 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="四万字32图，Kafka知识体系保姆级教程宝典 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="四万字32图，Kafka知识体系保姆级教程宝典" />
+  <meta name="keywords" content=", " />
+  
+  
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/high-concurrency/mq/kafka-base/" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link type="text/css" rel="stylesheet" href="/css/main.bundle.min.fc89c3235e8aa9100f2ce90dd986f02fc2460e94acd5d39daa975d7b5f2576aa17189b93a5b350f879d24557e15a66ff555dcd36bfeda109a1c5df5eefbd497a.css"
+    integrity="sha512-/InDI16KqRAPLOkN2YbwL8JGDpSs1dOdqpdde18ldqoXGJuTpbNQ&#43;HnSRVfhWmb/VV3NNr/toQmhxd9e771Jeg==" />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.7ee3d0153e96d78a28093d1c97e8a649b6de332eeb66d2c28a48d1afcba0d47a6e7c45dc76a5c9c732c97307593e103bbb0f5fce2f2dab0efb6d411d63064c37.js"
+    integrity="sha512-fuPQFT6W14ooCT0cl&#43;imSbbeMy7rZtLCikjRr8ug1HpufEXcdqXJxzLJcwdZPhA7uw9fzi8tqw77bUEdYwZMNw==" data-copy="" data-copied=""></script>
+  
+  
+  <script src="/js/zoom.min.js"></script>
+  
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/mq/kafka-base/">
+  <meta property="og:site_name" content="WFUing&#39;s Blog">
+  <meta property="og:title" content="四万字32图，Kafka知识体系保姆级教程宝典">
+  <meta property="og:description" content="四万字32图，Kafka知识体系保姆级教程宝典">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-08T13:53:28+08:00">
+    <meta property="article:modified_time" content="2024-08-08T13:53:28+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/mq/kafka-base/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/mq/kafka-base/featured.png">
+  <meta name="twitter:title" content="四万字32图，Kafka知识体系保姆级教程宝典">
+  <meta name="twitter:description" content="四万字32图，Kafka知识体系保姆级教程宝典">
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "四万字32图，Kafka知识体系保姆级教程宝典",
+    "headline": "四万字32图，Kafka知识体系保姆级教程宝典",
+    
+    "abstract": "四万字32图，Kafka知识体系保姆级教程宝典",
+    "inLanguage": "en",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/high-concurrency\/mq\/kafka-base\/",
+    "author" : {
+      "@type": "Person",
+      "name": "WFUing"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-08-08T13:53:28\u002b08:00",
+    "datePublished": "2024-08-08T13:53:28\u002b08:00",
+    
+    "dateModified": "2024-08-08T13:53:28\u002b08:00",
+    
+    "keywords": [""],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1840"
+  }]
+  </script>
+
+
+  
+  
+  <meta name="author" content="WFUing" />
+  
+  
+  
+  <link href="mailto:522023320072@smail.nju.edu.cn" rel="me" />
+  
+  
+  <link href="https://github.com/WFUing" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/qq.jpg" rel="me" />
+  
+  
+  <link href="https://wfuing.github.io/img/wx.jpg" rel="me" />
+  
+  
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.js" integrity=""></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+  <meta name="theme-color"/>
+  
+  
+</head>
+
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['[tex]/noerrors']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js" integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+
+const loadScript = (url, onloadFunction) => {
+    var newScript = document.createElement("script");
+    newScript.onerror =  (oError) => {
+      throw new URIError("The script " + oError.target.src + " didn't load correctly.");
+    };
+    if (onloadFunction) { newScript.onload = onloadFunction; }
+    document.head.insertAdjacentElement('beforeend', newScript);
+    newScript.src = url;
+  }
+
+    const loadPlantUMLOnNeed = () => {
+    let plantumlPrefix = "language-plantuml";
+
+    if (document.querySelectorAll("[class^=" + plantumlPrefix + "]").length > 0) {
+      loadScript('https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js', () => {
+        (function(){
+          Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function(code){
+            let image = document.createElement("IMG");
+            image.loading = 'lazy'; 
+            image.src = 'http://www.plantuml.com/plantuml/svg/~1' + plantumlEncoder.encode(code.innerText);
+            code.parentNode.insertBefore(image, code);
+            code.style.display = 'none';
+          });
+        })();
+
+        console.log("PlantUML init done");
+      })
+    }
+  }
+
+  window.addEventListener('load', function(event) {
+    
+    loadPlantUMLOnNeed();
+  })
+
+</script>
+<body
+  class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32">
+  <div id="the-top" class="absolute flex self-center">
+    <a class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+      href="#main-content"><span
+        class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a>
+  </div>
+  
+  
+  <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px]" style="z-index:100">
+  <div id="menu-blur" class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl shadow-2xl"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
+    class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    
+    <div class="flex flex-1 items-center justify-between">
+        <nav class="flex space-x-3">
+
+            
+            <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">WFUing&rsquo;s Blog</a>
+            
+
+        </nav>
+        <nav class="hidden md:flex items-center space-x-5 md:ml-12 h-12">
+
+            
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Blogs
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+          </p>
+        </a>
+        
+        <a href="/posts/design-pattern/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+          </p>
+        </a>
+        
+        <a href="/posts/skills/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Skills
+          </p>
+        </a>
+        
+        <a href="/posts/ai/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            AI
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/architecture/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Architecture
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/architecture/iac/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IAC
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/iot/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            IoT
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/backend/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            backend
+          </p>
+        </a>
+        
+        <a href=""  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Distributed
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/serverless/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Serverless
+          </p>
+        </a>
+        
+        <a href="/posts/architecture/virtualization/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            virtualization
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+             
+  <div>
+  <div class="cursor-pointer flex items-center nested-menu">
+    
+    <a  href="/posts/language/"   class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+      Language
+    </a>
+    <span>
+      
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+    </span>
+  </div>
+  <div class="absolute menuhide">
+    <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+      <div class="flex flex-col space-y-3">
+        
+        <a href="/posts/language/java/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Java
+          </p>
+        </a>
+        
+        <a href="/posts/language/dsl/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            DSL
+          </p>
+        </a>
+        
+        <a href="/posts/language/code-generation/"  class="flex items-center">
+          
+          <p class="text-sm font-sm text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+          </p>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            
+            
+  <a href="/read/"  class="flex items-center">
+    
+    <p class="text-base font-medium text-gray-500 hover:text-gray-900" title="">
+        Books
+    </p>
+</a>
+
+
+            
+            
+
+            
+
+
+            
+            <button id="search-button" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400 h-12"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+
+            
+            
+            <div
+                class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400">
+                <button id="appearance-switcher" aria-label="Dark mode switcher" type="button">
+                    <div class="flex items-center justify-center h-12 dark:hidden">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                    </div>
+                    <div class="items-center justify-center hidden h-12 dark:flex">
+                        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                    </div>
+                </button>
+            </div>
+            
+
+        </nav>
+        <div class="flex md:hidden items-center space-x-5 md:ml-12">
+
+            <span></span>
+
+            
+
+
+            
+            <button id="search-button-mobile" aria-label="Search" class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+                title="">
+                
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+            </button>
+            
+
+            
+            
+            <button id="appearance-switcher-mobile" aria-label="Dark mode switcher" type="button" style="margin-right:5px">
+                <div class="flex items-center justify-center h-12 dark:hidden">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+                </div>
+                <div class="items-center justify-center hidden h-12 dark:flex">
+                    
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+                </div>
+            </button>
+            
+
+        </div>
+    </div>
+    <div class="-my-2 -mr-2 md:hidden">
+
+        <label id="menu-button" for="menu-controller" class="block">
+            <input type="checkbox" id="menu-controller" class="hidden" />
+            
+            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+                
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+
+  </span>
+
+
+            </div>
+            <div id="menu-wrapper" style="padding-top:5px;"
+                class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50">
+                <ul
+                    class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none ltr:text-right rtl:text-left max-w-7xl">
+
+                    <li>
+                        <span
+                            class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+</span>
+                    </li>
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Blogs
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Algorithm
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/design-pattern/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Design Pattern
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/skills/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Skills
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/ai/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            AI
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Architecture
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iac/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IAC
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/iot/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            IoT
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/backend/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            backend
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href=""  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Distributed
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/serverless/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Serverless
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/architecture/virtualization/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            virtualization
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                     
+  <li class="mt-1">
+    <a class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Language
+        </p>
+        <span>
+            
+
+  <span class="relative block icon">
+    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+
+  </span>
+
+
+        </span>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/java/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Java
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/dsl/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            DSL
+        </p>
+    </a>
+</li>
+
+<li class="mt-1">
+    <a href="/posts/language/code-generation/"  class="flex items-center">
+        
+        <p class="text-sm font-small text-gray-500 hover:text-gray-900" title="">
+            Code Generation
+        </p>
+    </a>
+</li>
+
+<li class="mb-2"></li>
+
+
+
+                    
+
+                    
+  <li class="mt-1">
+    <a href="/read/"  class="flex items-center">
+        
+        <p class="text-bg font-bg text-gray-500 hover:text-gray-900" title="">
+            Books
+        </p>
+    </a>
+</li>
+
+
+
+                    
+
+                </ul>
+                
+                
+
+            </div>
+        </label>
+    </div>
+</div>
+
+
+
+
+<script>
+    (function () {
+        var $mainmenu = $('.main-menu');
+        var path = window.location.pathname;
+        $mainmenu.find('a[href="' + path + '"]').each(function (i, e) {
+            $(e).children('p').addClass('active');
+        });
+    })();
+</script>
+
+
+  </div>
+</div>
+<script>
+  window.addEventListener('scroll', function (e) {
+    var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var background_blur = document.getElementById('menu-blur');
+    background_blur.style.opacity = (scroll / 300);
+  });
+</script>
+
+  
+  <div class="relative flex flex-col grow">
+    <main id="main-content" class="grow">
+      
+
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/architecture/backend/high-concurrency/mq/kafka-base/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
+<script>
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
+    });
+</script>
+
+  
+  
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      四万字32图，Kafka知识体系保姆级教程宝典
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-08-08 13:53:28 &#43;0800 &#43;0800">8 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>1840 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
+      
+      
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
+
+  <span class="relative block icon">
+    <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
+  </span>
+
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一消息队列">一、消息队列</a></li>
+    <li><a href="#二kafka基础">二、Kafka基础</a></li>
+    <li><a href="#三kafka架构及组件">三、Kafka架构及组件</a></li>
+    <li><a href="#四kafka集群操作">四、Kafka集群操作</a></li>
+    <li><a href="#五kafka的javaapi操作">五、Kafka的JavaAPI操作</a></li>
+    <li><a href="#六kafka中的数据不丢失机制">六、Kafka中的数据不丢失机制</a></li>
+    <li><a href="#七kafka配置文件说明">七、Kafka配置文件说明</a></li>
+    <li><a href="#八cap理论">八、CAP理论</a></li>
+    <li><a href="#九kafka中的cap机制">九、Kafka中的CAP机制</a></li>
+    <li><a href="#十kafka监控及运维">十、Kafka监控及运维</a></li>
+    <li><a href="#十一kafka大厂面试题">十一、Kafka大厂面试题</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一消息队列">一、消息队列</a></li>
+    <li><a href="#二kafka基础">二、Kafka基础</a></li>
+    <li><a href="#三kafka架构及组件">三、Kafka架构及组件</a></li>
+    <li><a href="#四kafka集群操作">四、Kafka集群操作</a></li>
+    <li><a href="#五kafka的javaapi操作">五、Kafka的JavaAPI操作</a></li>
+    <li><a href="#六kafka中的数据不丢失机制">六、Kafka中的数据不丢失机制</a></li>
+    <li><a href="#七kafka配置文件说明">七、Kafka配置文件说明</a></li>
+    <li><a href="#八cap理论">八、CAP理论</a></li>
+    <li><a href="#九kafka中的cap机制">九、Kafka中的CAP机制</a></li>
+    <li><a href="#十kafka监控及运维">十、Kafka监控及运维</a></li>
+    <li><a href="#十一kafka大厂面试题">十一、Kafka大厂面试题</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
+
+
+        <div class="article-content max-w-prose mb-20">
+          <p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-10.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">一、消息队列 
+    <div id="一消息队列" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%80%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>1. 消息队列的介绍</strong></p>
+<p>消息（Message）是指在应用之间传送的数据，消息可以非常简单，比如只包含文本字符串，也可以更复杂，可能包含嵌入对象。消息队列（Message Queue）是一种应用间的通信方式，消息发送后可以立即返回，有消息系统来确保信息的可靠专递，消息发布者只管把消息发布到MQ中而不管谁来取，消息使用者只管从MQ中取消息而不管谁发布的，这样发布者和使用者都不用知道对方的存在。</p>
+<p><strong>2. 消息队列的应用场景</strong></p>
+<p>消息队列在实际应用中包括如下四个场景：</p>
+<ul>
+<li>应用耦合：多应用间通过消息队列对同一消息进行处理，避免调用接口失败导致整个过程失败；</li>
+<li>异步处理：多应用对消息队列中同一消息进行处理，应用间并发处理消息，相比串行处理，减少处理时间；</li>
+<li>限流削峰：广泛应用于秒杀或抢购活动中，避免流量过大导致应用系统挂掉的情况；</li>
+<li>消息驱动的系统：系统分为消息队列、消息生产者、消息消费者，生产者负责产生消息，消费者(可能有多个)负责对消息进行处理；</li>
+</ul>
+<p>下面详细介绍上述四个场景以及消息队列如何在上述四个场景中使用：</p>
+<ul>
+<li>异步处理
+<ul>
+<li>具体场景：用户为了使用某个应用，进行注册，系统需要发送注册邮件并验证短信。对这两个操作的处理方式有两种：串行及并行。</li>
+<li>串行方式：新注册信息生成后，先发送注册邮件，再发送验证短信；
+<ul>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>在这种方式下，需要最终发送验证短信后再返回给客户端。</li>
+</ul>
+</li>
+<li>并行处理：新注册信息写入后，由发短信和发邮件并行处理；
+<ul>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-2.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>在这种方式下，发短信和发邮件 需处理完成后再返回给客户端。假设以上三个子系统处理的时间均为50ms，且不考虑网络延迟，则总的处理时间：
+<ul>
+<li>串行：50+50+50=150ms</li>
+<li>并行：50+50 = 100ms</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>若使用消息队列：
+<ul>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-3.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>在写入消息队列后立即返回成功给客户端，则总的响应时间依赖于写入消息队列的时间，而写入消息队列的时间本身是可以很快的，基本可以忽略不计，因此总的处理时间相比串行提高了2倍，相比并行提高了一倍；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用耦合
+<ul>
+<li>具体场景：用户使用QQ相册上传一张图片，人脸识别系统会对该图片进行人脸识别，一般的做法是，服务器接收到图片后，图片上传系统立即调用人脸识别系统，调用完成后再返回成功，如下图所示：
+<ul>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-4.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+</ul>
+</li>
+<li>该方法有如下缺点：
+<ul>
+<li>人脸识别系统被调失败，导致图片上传失败；</li>
+<li>延迟高，需要人脸识别系统处理完成后，再返回给客户端，即使用户并不需要立即知道结果；</li>
+<li>图片上传系统与人脸识别系统之间互相调用，需要做耦合；</li>
+</ul>
+</li>
+<li>若使用消息队列：
+<ul>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-5.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>客户端上传图片后，图片上传系统将图片信息批次写入消息队列，直接返回成功；而人脸识别系统则定时从消息队列中取数据，完成对新增图片的识别。此时图片上传系统并不需要关心人脸识别系统是否对这些图片信息的处理、以及何时对这些图片信息进行处理。事实上，由于用户并不需要立即知道人脸识别结果，人脸识别系统可以选择不同的调度策略，按照闲时、忙时、正常时间，对队列中的图片信息进行处理。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>限流削峰
+<ul>
+<li>具体场景：购物网站开展秒杀活动，一般由于瞬时访问量过大，服务器接收过大，会导致流量暴增，相关系统无法处理请求甚至崩溃。而加入消息队列后，系统可以从消息队列中取数据，相当于消息队列做了一次缓冲。</li>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-6.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>该方法有如下优点：
+<ul>
+<li>请求先入消息队列，而不是由业务处理系统直接处理，做了一次缓冲,极大地减少了业务处理系统的压力；</li>
+<li>队列长度可以做限制，事实上，秒杀时，后入队列的用户无法秒杀到商品，这些请求可以直接被抛弃，返回活动已结束或商品已售完信息；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>消息驱动的系统
+<ul>
+<li>具体场景：用户新上传了一批照片，人脸识别系统需要对这个用户的所有照片进行聚类，聚类完成后由对账系统重新生成用户的人脸索引(加快查询)。这三个子系统间由消息队列连接起来，前一个阶段的处理结果放入队列中，后一个阶段从队列中获取消息继续处理。</li>
+<li>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-7.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</li>
+<li>该方法有如下优点：
+<ul>
+<li>避免了直接调用下一个系统导致当前系统失败；</li>
+<li>每个子系统对于消息的处理方式可以更为灵活，可以选择收到消息时就处理，可以选择定时处理，也可以划分时间段按不同处理速度处理；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 消息队列的两种模式</strong></p>
+<p>消息队列包括两种模式，点对点模式（point to point， queue）和发布/订阅模式（publish/subscribe，topic）</p>
+<ol>
+<li>点对点模式</li>
+</ol>
+<p>点对点模式下包括三个角色：</p>
+<ul>
+<li>消息队列</li>
+<li>发送者 (生产者)</li>
+<li>接收者（消费者）</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-8.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>消息发送者生产消息发送到queue中，然后消息接收者从queue中取出并且消费消息。消息被消费以后，queue中不再有存储，所以消息接收者不可能消费到已经被消费的消息。</p>
+<p>点对点模式特点：</p>
+<ul>
+<li>每个消息只有一个接收者（Consumer）(即一旦被消费，消息就不再在消息队列中)；</li>
+<li>发送者和接发收者间没有依赖性，发送者发送消息之后，不管有没有接收者在运行，都不会影响到发送者下次发送消息；</li>
+<li>接收者在成功接收消息之后需向队列应答成功，以便消息队列删除当前接收的消息；</li>
+</ul>
+<ol start="2">
+<li>发布/订阅模式</li>
+</ol>
+<p>发布/订阅模式下包括三个角色：</p>
+<ul>
+<li>角色主题（Topic）</li>
+<li>发布者(Publisher)</li>
+<li>订阅者(Subscriber)</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-9.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>发布者将消息发送到Topic，系统将这些消息传递给多个订阅者。</p>
+<p>发布/订阅模式特点：</p>
+<ul>
+<li>每个消息可以有多个订阅者；</li>
+<li>发布者和订阅者之间有时间上的依赖性。针对某个主题（Topic）的订阅者，它必须创建一个订阅者之后，才能消费发布者的消息。</li>
+<li>为了消费消息，订阅者需要提前订阅该角色主题，并保持在线运行；</li>
+</ul>
+<h2 class="relative group">二、Kafka基础 
+    <div id="二kafka基础" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%ba%8ckafka%e5%9f%ba%e7%a1%80" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>1. kafka的基本介绍</strong></p>
+<p>官网：http://kafka.apache.org/</p>
+<p>kafka是最初由linkedin公司开发的，使用scala语言编写，kafka是一个分布式，分区的，多副本的，多订阅者的日志系统（分布式MQ系统），可以用于搜索日志，监控日志，访问日志等。</p>
+<p>Kafka is a distributed,partitioned,replicated commit logservice。它提供了类似于JMS的特性，但是在设计实现上完全不同，此外它并不是JMS规范的实现。kafka对消息保存时根据Topic进行归类，发送消息者成为Producer,消息接受者成为Consumer,此外kafka集群有多个kafka实例组成，每个实例(server)成为broker。无论是kafka集群，还是producer和consumer都依赖于zookeeper来保证系统可用性集群保存一些meta信息。</p>
+<p><strong>2. kafka的好处</strong></p>
+<ul>
+<li>可靠性：分布式的，分区，复本和容错的。</li>
+<li>可扩展性：kafka消息传递系统轻松缩放，无需停机。</li>
+<li>耐用性：kafka使用分布式提交日志，这意味着消息会尽可能快速的保存在磁盘上，因此它是持久的。</li>
+<li>性能：kafka对于发布和定于消息都具有高吞吐量。即使存储了许多TB的消息，他也爆出稳定的性能。</li>
+<li>kafka非常快：保证零停机和零数据丢失。</li>
+</ul>
+<p><strong>3. 分布式的发布与订阅系统</strong></p>
+<p>apache kafka是一个分布式发布-订阅消息系统和一个强大的队列，可以处理大量的数据，并使能够将消息从一个端点传递到另一个端点，kafka适合离线和在线消息消费。kafka消息保留在磁盘上，并在集群内复制以防止数据丢失。kafka构建在zookeeper同步服务之上。它与apache和spark非常好的集成，应用于实时流式数据分析。</p>
+<p><strong>4. kafka的主要应用场景</strong></p>
+<ol>
+<li>指标分析：kafka 通常用于操作监控数据。这设计聚合来自分布式应用程序的统计信息， 以产生操作的数据集中反馈</li>
+<li>日志聚合解决方法：kafka可用于跨组织从多个服务器收集日志，并使他们以标准的格式提供给多个服务器。</li>
+<li>流式处理：流式处理框架（spark，storm，ﬂink）重主题中读取数据，对齐进行处理，并将处理后的数据写入新的主题，供 用户和应用程序使用，kafka的强耐久性在流处理的上下文中也非常的有用。</li>
+</ol>
+<h2 class="relative group">三、Kafka架构及组件 
+    <div id="三kafka架构及组件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%89kafka%e6%9e%b6%e6%9e%84%e5%8f%8a%e7%bb%84%e4%bb%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p><strong>1. kafka架构</strong></p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-11.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ul>
+<li>生产者API：允许应用程序发布记录流至一个或者多个kafka的主题（topics）。</li>
+<li>消费者API：允许应用程序订阅一个或者多个主题，并处理这些主题接收到的记录流。</li>
+<li>StreamsAPI：允许应用程序充当流处理器（stream processor），从一个或者多个主题获取输入流，并生产一个输出流到一个或 者多个主题，能够有效的变化输入流为输出流。</li>
+<li>ConnectAPI：允许构建和运行可重用的生产者或者消费者，能够把kafka主题连接到现有的应用程序或数据系统。例如：一个连接到关系数据库的连接器可能会获取每个表的变化。</li>
+</ul>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-12.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>Kafka 架构</p>
+<p>注：在Kafka 2.8.0 版本，移除了对Zookeeper的依赖，通过KRaft进行自己的集群管理，使用Kafka内部的Quorum控制器来取代ZooKeeper，因此用户第一次可在完全不需要ZooKeeper的情况下执行Kafka，这不只节省运算资源，并且也使得Kafka效能更好，还可支持规模更大的集群。</p>
+<p>过去Apache ZooKeeper是Kafka这类分布式系统的关键，ZooKeeper扮演协调代理的角色，所有代理服务器启动时，都会连接到Zookeeper进行注册，当代理状态发生变化时，Zookeeper也会储存这些数据，在过去，ZooKeeper是一个强大的工具，但是毕竟ZooKeeper是一个独立的软件，使得Kafka整个系统变得复杂，因此官方决定使用内部Quorum控制器来取代ZooKeeper。</p>
+<p>这项工作从去年4月开始，而现在这项工作取得部分成果，用户将可以在2.8版本，在没有ZooKeeper的情况下执行Kafka，官方称这项功能为Kafka Raft元数据模式（KRaft）。在KRaft模式，过去由Kafka控制器和ZooKeeper所操作的元数据，将合并到这个新的Quorum控制器，并且在Kafka集群内部执行，当然，如果使用者有特殊使用情境，Quorum控制器也可以在专用的硬件上执行。</p>
+<p>好，说完在新版本中移除zookeeper这个事，咱们在接着聊kafka的其他功能：</p>
+<p>kafka支持消息持久化，消费端是主动拉取数据，消费状态和订阅关系由客户端负责维护，<strong>消息消费完后，不会立即删除，会保留历史消</strong>息。因此支持多订阅时，消息只会存储一份就可以。</p>
+<ul>
+<li>broker：kafka集群中包含一个或者多个服务实例（节点），这种服务实例被称为broker（一个broker就是一个节点/一个服务器）；</li>
+<li>topic：每条发布到kafka集群的消息都属于某个类别，这个类别就叫做topic；</li>
+<li>partition：partition是一个物理上的概念，每个topic包含一个或者多个partition；</li>
+<li>segment：一个partition当中存在多个segment文件段，每个segment分为两部分，.log文件和 .index 文件，其中 .index 文件是索引文件，主要用于快速查询， .log 文件当中数据的偏移量位置；</li>
+<li>producer：消息的生产者，负责发布消息到 kafka 的 broker 中；</li>
+<li>consumer：消息的消费者，向 kafka 的 broker 中读取消息的客户端；</li>
+<li>consumer group：消费者组，每一个 consumer 属于一个特定的 consumer group（可以为每个consumer指定 groupName）；</li>
+<li>.log：存放数据文件；</li>
+<li>.index：存放.log文件的索引数据。</li>
+</ul>
+<p><strong>2. Kafka 主要组件</strong></p>
+<ol>
+<li>producer（生产者）</li>
+</ol>
+<p>producer主要是用于生产消息，是kafka当中的消息生产者，生产的消息通过topic进行归类，保存到kafka的broker里面去。</p>
+<ol start="2">
+<li>topic（主题）</li>
+</ol>
+<ul>
+<li>kafka将消息以topic为单位进行归类；</li>
+<li>topic特指kafka处理的消息源（feeds of messages）的不同分类；</li>
+<li>topic是一种分类或者发布的一些列记录的名义上的名字。kafka主题始终是支持多用户订阅的；也就是说，一个主题可以有零个、一个或者多个消费者订阅写入的数据；</li>
+<li>在kafka集群中，可以有无数的主题；</li>
+<li>生产者和消费者消费数据一般以主题为单位。更细粒度可以到分区级别。</li>
+</ul>
+<ol start="3">
+<li>partition（分区）</li>
+</ol>
+<p>kafka当中，topic是消息的归类，一个topic可以有多个分区（partition），每个分区保存部分topic的数据，所有的partition当中的数据全部合并起来，就是一个topic当中的所有的数据。</p>
+<p>一个broker服务下，可以创建多个分区，broker数与分区数没有关系；</p>
+<p>在kafka中，每一个分区会有一个编号：编号从0开始。</p>
+<p><strong>每一个分区内的数据是有序的，但全局的数据不能保证是有序的。</strong>（有序是指生产什么样顺序，消费时也是什么样的顺序）</p>
+<ol start="4">
+<li>consumer（消费者）</li>
+</ol>
+<p>consumer是kafka当中的消费者，主要用于消费kafka当中的数据，消费者一定是归属于某个消费组中的。</p>
+<ol start="5">
+<li>consumer group（消费者组）</li>
+</ol>
+<p>消费者组由一个或者多个消费者组成，<strong>同一个组中的消费者对于同一条消息只消费一次</strong>。</p>
+<p>每个消费者都属于某个消费者组，如果不指定，那么所有的消费者都属于默认的组。</p>
+<p>每个消费者组都有一个ID，即group ID。组内的所有消费者协调在一起来消费一个订阅主题( topic)的所有分区(partition)。当然，<strong>每个分区只能由同一个消费组内的一个消费者(consumer)来消费</strong>，可以由不同的<strong>消费组</strong>来消费。</p>
+<p><strong>partition数量决定了每个consumer group中并发消费者的最大数量</strong>。如下图：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-13.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>如上面左图所示，如果只有两个分区，即使一个组内的消费者有4个，也会有两个空闲的。</p>
+<p>如上面右图所示，有4个分区，每个消费者消费一个分区，并发量达到最大4。</p>
+<p>在来看如下一幅图：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-14.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>如上图所示，不同的消费者组消费同一个topic，这个topic有4个分区，分布在两个节点上。左边的 消费组1有两个消费者，每个消费者就要消费两个分区才能把消息完整的消费完，右边的 消费组2有四个消费者，每个消费者消费一个分区即可。</p>
+<p>总结下kafka中分区与消费组的关系：</p>
+<p>消费组： 由一个或者多个消费者组成，同一个组中的消费者对于同一条消息只消费一次。 某一个主题下的分区数，对于消费该主题的同一个消费组下的消费者数量，应该小于等于该主题下的分区数。</p>
+<p>如：某一个主题有4个分区，那么消费组中的消费者应该小于等于4，而且最好与分区数成整数倍 1 2 4 这样。<strong>同一个分区下的数据，在同一时刻，不能同一个消费组的不同消费者消费</strong>。</p>
+<p>总结：<strong>分区数越多，同一时间可以有越多的消费者来进行消费，消费数据的速度就会越快，提高消费的性能</strong>。</p>
+<p><strong>6. partition replicas（分区副本）</strong></p>
+<p>kafka 中的分区副本如下图所示：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-15.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>kafka 分区副本</p>
+<p><strong>副本数</strong>（replication-factor）：控制消息保存在几个broker（服务器）上，一般情况下副本数等于broker的个数。</p>
+<p>一个broker服务下，不可以创建多个副本因子。<strong>创建主题时，副本因子应该小于等于可用的broker数</strong>。</p>
+<p>副本因子操作以分区为单位的。每个分区都有各自的主副本和从副本；</p>
+<p>主副本叫做 leader，从副本叫做 follower（在有多个副本的情况下，kafka会为同一个分区下的所有分区，设定角色关系：1个leader和N个follower），<strong>处于同步状态的副本叫做in-sync-replicas(ISR)</strong>；</p>
+<p>follower通过拉的方式从leader同步数据。<strong>消费者和生产者都是从leader读写数据，不与follower交互</strong>。</p>
+<p>副本因子的作用：让kafka读取数据和写入数据时的可靠性。</p>
+<p>副本因子是包含本身，同一个副本因子不能放在同一个broker中。</p>
+<p>如果某一个分区有三个副本因子，就算其中一个挂掉，那么只会剩下的两个中，选择一个leader，但不会在其他的broker中，另启动一个副本（因为在另一台启动的话，存在数据传递，只要在机器之间有数据传递，就会长时间占用网络IO，kafka是一个高吞吐量的消息系统，这个情况不允许发生）所以不会在另一个broker中启动。</p>
+<p>如果所有的副本都挂了，生产者如果生产数据到指定分区的话，将写入不成功。</p>
+<p>lsr表示：当前可用的副本。</p>
+<p><strong>7. segment文件</strong></p>
+<p>一个partition当中由多个segment文件组成，每个segment文件，包含两部分，一个是 .log 文件，另外一个是 .index 文件，其中 .log 文件包含了我们发送的数据存储，.index 文件，记录的是我们.log文件的数据索引值，以便于我们加快数据的查询速度。</p>
+<p><em>索引文件与数据文件的关系</em></p>
+<p>既然它们是一一对应成对出现，必然有关系。索引文件中元数据指向对应数据文件中message的物理偏移地址。</p>
+<p>比如索引文件中 3,497 代表：数据文件中的第三个message，它的偏移地址为497。</p>
+<p>再来看数据文件中，Message 368772表示：在全局partiton中是第368772个message。</p>
+<blockquote>
+<p>注：segment index file 采取稀疏索引存储方式，减少索引文件大小，通过mmap（内存映射）可以直接内存操作，稀疏索引为数据文件的每个对应message设置一个元数据指针，它比稠密索引节省了更多的存储空间，但查找起来需要消耗更多的时间。</p>
+</blockquote>
+<p>.index 与 .log 对应关系如下：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-16.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>上图左半部分是索引文件，里面存储的是一对一对的key-value，其中key是消息在数据文件（对应的log文件）中的编号，比如“1,3,6,8……”，分别表示在log文件中的第1条消息、第3条消息、第6条消息、第8条消息……</p>
+<p>那么为什么在index文件中这些编号不是连续的呢？这是因为index文件中并没有为数据文件中的每条消息都建立索引，而是采用了稀疏存储的方式，每隔一定字节的数据建立一条索引。 这样避免了索引文件占用过多的空间，从而可以将索引文件保留在内存中。 但缺点是没有建立索引的Message也不能一次定位到其在数据文件的位置，从而需要做一次顺序扫描，但是这次顺序扫描的范围就很小了。</p>
+<p>value 代表的是在全局partiton中的第几个消息。</p>
+<p>以索引文件中元数据 3,497 为例，其中3代表在右边log数据文件中从上到下第3个消息，497表示该消息的物理偏移地址（位置）为497(也表示在全局partiton表示第497个消息-顺序写入特性)。</p>
+<p>log日志目录及组成 kafka在我们指定的log.dir目录下，会创建一些文件夹；名字是 （主题名字-分区名） 所组成的文件夹。 在（主题名字-分区名）的目录下，会有两个文件存在，如下所示：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1">#索引文件</span>
+</span></span><span class="line"><span class="cl">00000000000000000000.index
+</span></span><span class="line"><span class="cl"><span class="c1">#日志内容</span>
+</span></span><span class="line"><span class="cl">00000000000000000000.log
+</span></span></code></pre></div><p>在目录下的文件，会根据log日志的大小进行切分，.log文件的大小为1G的时候，就会进行切分文件；如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root 389k  1月  <span class="m">17</span>  18:03   00000000000000000000.index
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root 1.0G  1月  <span class="m">17</span>  18:03   00000000000000000000.log
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root  10M  1月  <span class="m">17</span>  18:03   00000000000000077894.index
+</span></span><span class="line"><span class="cl">-rw-r--r--. <span class="m">1</span> root root 127M  1月  <span class="m">17</span>  18:03   00000000000000077894.log
+</span></span></code></pre></div><p>在kafka的设计中，将offset值作为了文件名的一部分。</p>
+<p><em>segment文件命名规则</em>：partion全局的第一个segment从0开始，后续每个segment文件名为上一个全局 partion的最大offset（偏移message数）。数值最大为64位long大小，20位数字字符长度，没有数字就用 0 填充。</p>
+<p>通过索引信息可以快速定位到message。通过index元数据全部映射到内存，可以避免segment File的IO磁盘操作；</p>
+<p>通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小。</p>
+<p>稀疏索引：为了数据创建索引，但范围并不是为每一条创建，而是为某一个区间创建；好处：就是可以减少索引值的数量。 不好的地方：找到索引区间之后，要得进行第二次处理。</p>
+<p><strong>8. message的物理结构</strong></p>
+<p>生产者发送到kafka的每条消息，都被kafka包装成了一个message</p>
+<p>message 的物理结构如下图所示：</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-17.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>dex 与 .log</p>
+<p>所以生产者发送给kafka的消息并不是直接存储起来，而是经过kafka的包装，每条消息都是上图这个结构，只有最后一个字段才是真正生产者发送的消息数据。</p>
+<h2 class="relative group">四、Kafka集群操作 
+    <div id="四kafka集群操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%9b%9bkafka%e9%9b%86%e7%be%a4%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>创建topic</li>
+</ol>
+<p>创建一个名字为test的主题， 有三个分区，有两个副本：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --create --zookeeper node01:2181 --replication-factor <span class="m">2</span> --partitions <span class="m">3</span> --topic <span class="nb">test</span>
+</span></span></code></pre></div><ol start="2">
+<li>查看主题命令</li>
+</ol>
+<p>查看kafka当中存在的主题:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh  --list --zookeeper node01:2181,node02:2181,node03:2181
+</span></span></code></pre></div><ol start="3">
+<li>生产者生产数据</li>
+</ol>
+<p>模拟生产者来生产数据:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 --topic <span class="nb">test</span>
+</span></span></code></pre></div><ol start="4">
+<li>消费者消费数据</li>
+</ol>
+<p>执行以下命令来模拟消费者进行消费数据:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-console-consumer.sh --from-beginning --topic <span class="nb">test</span>  --zookeeper node01:2181,node02:2181,node03:2181
+</span></span></code></pre></div><ol start="5">
+<li>运行describe topics命令</li>
+</ol>
+<p>执行以下命令运行describe查看topic的相关信息:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --describe --zookeeper node01:2181 --topic <span class="nb">test</span>
+</span></span></code></pre></div><p>结果说明：</p>
+<p>这是输出的解释。第一行给出了所有分区的摘要，每个附加行提供有关一个分区的信息。由于我们只有一个分 区用于此主题，因此只有一行。</p>
+<p>“leader”是负责给定分区的所有读取和写入的节点。每个节点将成为随机选择的分区部分的领导者。（因为在kafka中 如果有多个副本的话，就会存在leader和follower的关系，表示当前这个副本为leader所在的broker是哪一个）</p>
+<p>“replicas”是复制此分区日志的节点列表，无论它们是否为领导者，或者即使它们当前处于活动状态。（所有副本列表0,1,2）</p>
+<p>“isr”是“同步”复制品的集合。这是副本列表的子集，该列表当前处于活跃状态并且已经被领导者捕获。（可用的列表数）</p>
+<ol start="6">
+<li>增加topic分区数</li>
+</ol>
+<p>执行以下命令可以增加topic分区数:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --zookeeper zkhost:port --alter --topic topicName --partitions <span class="m">8</span>
+</span></span></code></pre></div><ol start="7">
+<li>增加配置</li>
+</ol>
+<p>动态修改kakfa的配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --zookeeper node01:2181 --alter --topic <span class="nb">test</span> --config flush.messages<span class="o">=</span><span class="m">1</span>
+</span></span></code></pre></div><ol start="8">
+<li>删除配置</li>
+</ol>
+<p>动态删除kafka集群配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --zookeeper node01:2181 --alter --topic <span class="nb">test</span> --delete-config flush.messages
+</span></span></code></pre></div><ol start="9">
+<li>删除topic</li>
+</ol>
+<p>目前删除topic在默认情况下知识打上一个删除的标记，在重新启动kafka后才删除。</p>
+<p>如果需要立即删除，则需要在server.properties中配置：</p>
+<p>​<code>​delete.topic.enable=true​​</code></p>
+<p>然后执行以下命令进行删除topic:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kafka-topics.sh --zookeeper zkhost:port --delete --topic topicName
+</span></span></code></pre></div><h2 class="relative group">五、Kafka的JavaAPI操作 
+    <div id="五kafka的javaapi操作" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%ba%94kafka%e7%9a%84javaapi%e6%93%8d%e4%bd%9c" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>生产者代码</li>
+</ol>
+<p>使用生产者，生产数据：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">* 订单的生产者代码，
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderProducer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="cm">/* 
+</span></span></span><span class="line"><span class="cl"><span class="cm">        * 1、连接集群，通过配置文件的方式
+</span></span></span><span class="line"><span class="cl"><span class="cm">        * 2、发送数据-topic:order，value
+</span></span></span><span class="line"><span class="cl"><span class="cm">        */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;bootstrap.servers&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;node01:9092&#34;</span><span class="p">);</span><span class="w"> </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;acks&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;all&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;retries&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;batch.size&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">16384</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;linger.ms&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;buffer.memory&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">33554432</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;key.serializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringSerializer&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;value.serializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringSerializer&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kafkaProducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">1000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 发送数据 ,需要一个producerRecord对象,最少参数 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;订单信息！&#34;</span><span class="o">+</span><span class="n">i</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">100</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>kafka当中的数据分区：kafka生产者发送的消息，都是保存在broker当中，我们可以自定义分区规则，决定消息发送到哪个partition里面去进行保存查看ProducerRecord这个类的源码，就可以看到kafka的各种不同分区策略</p>
+<p>kafka当中支持以下四种数据的分区方式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//第一种分区策略，如果既没有指定分区号，也没有指定数据 key，那么就会使用轮询的方式将数据均匀的发送到不同的分区里面去</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">producerRecord1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">&#34;mypartition&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mymessage&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">producerRecord1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//第二种分区策略 如果没有指定分区号，指定了数据key，通过 key.hashCode % numPartitions 来计算数据究竟会保存在哪一个分区里面</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//注意：如果数据key，没有变化   key.hashCode % numPartitions  =  固定值  所有的数据都会写入到某一个分区里面去</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">producerRecord2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">&#34;mypartition&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mykey&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mymessage&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">producerRecord2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//第三种分区策略：如果指定了分区号，那么就会将数据直接写入到对应的分区里面去</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">producerRecord3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">&#34;mypartition&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mykey&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mymessage&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">producerRecord3</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//第四种分区策略：自定义分区策略。如果不自定义分区规则，那么会将数据使用轮询的方式均匀的发送到各个分区里面去</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;mypartition&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;mymessage&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">));</span><span class="w">
+</span></span></span></code></pre></div><p>自定义分区策略:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">KafkaCustomPartitioner</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Partitioner</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="o">?&gt;</span><span class="w"> </span><span class="n">configs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">partition</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">arg1</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">keyBytes</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">arg3</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">arg4</span><span class="p">,</span><span class="w"> </span><span class="n">Cluster</span><span class="w"> </span><span class="n">cluster</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PartitionInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">partitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cluster</span><span class="p">.</span><span class="na">partitionsForTopic</span><span class="p">(</span><span class="n">topic</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">partitionNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">partitions</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Random</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">partition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="na">nextInt</span><span class="p">(</span><span class="n">partitionNum</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">partition</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>主代码中添加配置:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">kafkaProducer</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//1、准备配置文件</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;bootstrap.servers&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;node01:9092,node02:9092,node03:9092&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;acks&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;all&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;retries&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;batch.size&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">16384</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;linger.ms&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;buffer.memory&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">33554432</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;partitioner.class&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;cn.itcast.kafka.partitioner.KafkaCustomPartitioner&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;key.serializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringSerializer&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;value.serializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringSerializer&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">//2、创建KafkaProducer</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kafkaProducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaProducer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">100</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//3、发送数据</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ProducerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;testpart&#34;</span><span class="p">,</span><span class="s">&#34;0&#34;</span><span class="p">,</span><span class="s">&#34;value&#34;</span><span class="o">+</span><span class="n">i</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">kafkaProducer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ol start="2">
+<li>消费者代码</li>
+</ol>
+<p>消费必要条件:</p>
+<p>消费者要从kafka Cluster进行消费数据，必要条件有以下四个:</p>
+<ul>
+<li>地址：bootstrap.servers=node01:9092</li>
+<li>序列化：key.serializer=org.apache.kafka.common.serialization.StringSerializer value.serializer=org.apache.kafka.common.serialization.StringSerializer</li>
+<li>主题（topic）：需要制定具体的某个topic（order）即可。</li>
+<li>消费者组：group.id=test</li>
+</ul>
+<ol>
+<li>自动提交offset</li>
+</ol>
+<p>消费完成之后，自动提交offset：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">* 消费订单数据--- javaben.tojson
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderConsumer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 1、连接集群</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;bootstrap.servers&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;hadoop-01:9092&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;group.id&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;test&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 以下两行代码 ---消费者自动提交offset值 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;enable.auto.commit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;auto.commit.interval.ms&#34;</span><span class="p">,</span><span class="w">  </span><span class="s">&#34;1000&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;key.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;value.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kafkaConsumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 2、发送数据 发送数据需要，订阅下要消费的topic。 order kafkaConsumer.subscribe(Arrays.asList(&#34;order&#34;)); </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// jdk queue offer插入、poll获取元素。 blockingqueue put插入原生， take获取元素</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ConsumerRecords</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">consumerRecords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kafkaConsumer</span><span class="p">.</span><span class="na">poll</span><span class="p">(</span><span class="n">100</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">consumerRecords</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;消费的数据为：&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="na">value</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ol start="2">
+<li>手动提交offset</li>
+</ol>
+<p>如果Consumer在获取数据后，需要加入处理，数据完毕后才确认offset，需要程序来控制offset的确认。</p>
+<p>关闭自动提交确认选项：​​props.put(&ldquo;enable.auto.commit&rdquo;, &ldquo;false&rdquo;);​​</p>
+<p>手动提交offset值：​​kafkaConsumer.commitSync();​​</p>
+<p>完整代码如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;bootstrap.servers&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;localhost:9092&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;group.id&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;test&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//关闭自动提交确认选项</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;enable.auto.commit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;false&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;key.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;value.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">consumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaConsumer</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">consumer</span><span class="p">.</span><span class="na">subscribe</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">minBatchSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">200</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">List</span><span class="o">&lt;</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ConsumerRecords</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">consumer</span><span class="p">.</span><span class="na">poll</span><span class="p">(</span><span class="n">100</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buffer</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">record</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">minBatchSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">insertIntoDb</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 手动提交offset值</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">consumer</span><span class="p">.</span><span class="na">commitSync</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">buffer</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ol start="3">
+<li>消费完每个分区之后手动提交offset</li>
+</ol>
+<p>上面的示例使用commitSync将所有已接收的记录标记为已提交。在某些情况下，可能希望通过明确指定偏移量来更好地控制已提交的记录。在下面的示例中，我们在完成处理每个分区中的记录后提交偏移量:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">running</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ConsumerRecords</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">consumer</span><span class="p">.</span><span class="na">poll</span><span class="p">(</span><span class="n">Long</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">TopicPartition</span><span class="w"> </span><span class="n">partition</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="na">partitions</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">partitionRecords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">records</span><span class="p">.</span><span class="na">records</span><span class="p">(</span><span class="n">partition</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">partitionRecords</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="na">offset</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="na">value</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">long</span><span class="w"> </span><span class="n">lastOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">partitionRecords</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">partitionRecords</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="n">1</span><span class="p">).</span><span class="na">offset</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">consumer</span><span class="p">.</span><span class="na">commitSync</span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">singletonMap</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OffsetAndMetadata</span><span class="p">(</span><span class="n">lastOffset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">1</span><span class="p">)));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">consumer</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>注意事项：</p>
+<p>提交的偏移量应始终是应用程序将读取的下一条消息的偏移量。 因此，在调用commitSync（偏移量）时，应该在最后处理的消息的偏移量中添加一个。</p>
+<ol start="4">
+<li>指定分区数据进行消费</li>
+</ol>
+<ul>
+<li>如果进程正在维护与该分区关联的某种本地状态（如本地磁盘上的键值存储），那么它应该只获取它在磁盘上维护的分区的记录。</li>
+<li>如果进程本身具有高可用性，并且如果失败则将重新启动（可能使用YARN，Mesos或AWS工具等集群管理框 架，或作为流处理框架的一部分）。在这种情况下，Kafka不需要检测故障并重新分配分区，因为消耗过程将在另一台机器上重新启动。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;bootstrap.servers&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;localhost:9092&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;group.id&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;test&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;enable.auto.commit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;true&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;auto.commit.interval.ms&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;1000&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;key.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&#34;value.deserializer&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;org.apache.kafka.common.serialization.StringDeserializer&#34;</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">KafkaConsumer</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">consumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaConsumer</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">props</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">consumer</span><span class="p">.</span><span class="na">subscribe</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&#34;foo&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;bar&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//手动指定消费指定分区的数据---start </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;foo&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TopicPartition</span><span class="w"> </span><span class="n">partition0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TopicPartition</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">0</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">TopicPartition</span><span class="w"> </span><span class="n">partition1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TopicPartition</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w"> </span><span class="n">consumer</span><span class="p">.</span><span class="na">assign</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">partition0</span><span class="p">,</span><span class="w">  </span><span class="n">partition1</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//手动指定消费指定分区的数据---end</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">ConsumerRecords</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">consumer</span><span class="p">.</span><span class="na">poll</span><span class="p">(</span><span class="n">100</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ConsumerRecord</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">records</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&#34;offset = %d, key = %s, value = %s%n&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="na">offset</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="na">key</span><span class="p">(),</span><span class="w"> </span><span class="n">record</span><span class="p">.</span><span class="na">value</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>注意事项：</p>
+<ul>
+<li>要使用此模式，只需使用要使用的分区的完整列表调用assign（Collection），而不是使用subscribe订阅主题。</li>
+<li>主题与分区订阅只能二选一。</li>
+</ul>
+<ol start="5">
+<li>重复消费与数据丢失</li>
+</ol>
+<p>说明：</p>
+<ul>
+<li>已经消费的数据对于kafka来说，会将消费组里面的oﬀset值进行修改，那什么时候进行修改了？是在数据消费 完成之后，比如在控制台打印完后自动提交；</li>
+<li>提交过程：是通过kafka将oﬀset进行移动到下个message所处的oﬀset的位置。</li>
+<li>拿到数据后，存储到hbase中或者mysql中，如果hbase或者mysql在这个时候连接不上，就会抛出异常，如果在处理数据的时候已经进行了提交，那么kafka伤的oﬀset值已经进行了修改了，但是hbase或者mysql中没有数据，这个时候就会出现数据丢失。</li>
+</ul>
+<ol start="4">
+<li>什么时候提交oﬀset值？</li>
+</ol>
+<p>在Consumer将数据处理完成之后，再来进行oﬀset的修改提交。默认情况下oﬀset是 自动提交，需要修改为手动提交oﬀset值。</p>
+<p>如果在处理代码中正常处理了，但是在提交oﬀset请求的时候，没有连接到kafka或者出现了故障，那么该次修 改oﬀset的请求是失败的，那么下次在进行读取同一个分区中的数据时，会从已经处理掉的oﬀset值再进行处理一 次，那么在hbase中或者mysql中就会产生两条一样的数据，也就是数据重复。</p>
+<ol start="6">
+<li>consumer消费者消费数据流程</li>
+</ol>
+<p>流程描述：</p>
+<p>Consumer连接指定的Topic partition所在leader broker，采用pull方式从kafkalogs中获取消息。对于不同的消费模式，会将offset保存在不同的地方官网关于high level API 以及low level API的简介： <a href="http://kafka.apache.org/0100/documentation.html#impl_consume"   target="_blank">
+    http://kafka.apache.org/0100/documentation.html#impl_consume</a></p>
+<p>高阶API（High Level API）：</p>
+<p>kafka消费者高阶API简单；隐藏Consumer与Broker细节；相关信息保存在zookeeper中：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/* create a connection to the cluster */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">ConsumerConnector</span><span class="w"> </span><span class="n">connector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Consumer</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">consumerConfig</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">interface</span> <span class="nc">ConsumerConnector</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">    This method is used to get a list of KafkaStreams, which are iterators over
+</span></span></span><span class="line"><span class="cl"><span class="cm">    MessageAndMetadata objects from which you can obtain messages and their
+</span></span></span><span class="line"><span class="cl"><span class="cm">    associated metadata (currently only topic).
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Input: a map of &lt;topic, #streams&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Output: a map of &lt;topic, list of message streams&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">List</span><span class="o">&lt;</span><span class="n">KafkaStream</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">createMessageStreams</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">topicCountMap</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">    You can also obtain a list of KafkaStreams, that iterate over messages
+</span></span></span><span class="line"><span class="cl"><span class="cm">    from topics that match a TopicFilter. (A TopicFilter encapsulates a
+</span></span></span><span class="line"><span class="cl"><span class="cm">    whitelist or a blacklist which is a standard Java regex.)
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">KafkaStream</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createMessageStreamsByFilter</span><span class="p">(</span><span class="w"> </span><span class="n">TopicFilter</span><span class="w"> </span><span class="n">topicFilter</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numStreams</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/* Commit the offsets of all messages consumed so far. */</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">commitOffsets</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/* Shut down the connector */</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">shutdown</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>说明：大部分的操作都已经封装好了，比如：当前消费到哪个位置下了，但是不够灵活（工作过程推荐使用）</p>
+<p>低级API(Low Level API):</p>
+<p>kafka消费者低级API非常灵活；需要自己负责维护连接Controller Broker。保存offset，Consumer Partition对应关系：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">SimpleConsumer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/* Send fetch request to a broker and get back a set of messages. */</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ByteBufferMessageSet</span><span class="w"> </span><span class="nf">fetch</span><span class="p">(</span><span class="n">FetchRequest</span><span class="w"> </span><span class="n">request</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/* Send a list of fetch requests to a broker and get back a response set. */</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">MultiFetchResponse</span><span class="w"> </span><span class="nf">multifetch</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">FetchRequest</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fetches</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">    Get a list of valid offsets (up to maxSize) before the given time.
+</span></span></span><span class="line"><span class="cl"><span class="cm">    The result is a list of offsets, in descending order.
+</span></span></span><span class="line"><span class="cl"><span class="cm">    @param time: time in millisecs,
+</span></span></span><span class="line"><span class="cl"><span class="cm">    if set to OffsetRequest$.MODULE$.LATEST_TIME(), get from the latest
+</span></span></span><span class="line"><span class="cl"><span class="cm">    offset available. if set to OffsetRequest$.MODULE$.EARLIEST_TIME(), get from the earliest
+</span></span></span><span class="line"><span class="cl"><span class="cm">    available. 
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">long</span><span class="o">[]</span><span class="w"> </span><span class="nf">getOffsetsBefore</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">topic</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">partition</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxNumOffsets</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>说明：没有进行包装，所有的操作有用户决定，如自己的保存某一个分区下的记录，你当前消费到哪个位置。</p>
+<ol start="3">
+<li>kafka Streams API开发</li>
+</ol>
+<p>需求：使用StreamAPI获取test这个topic当中的数据，然后将数据全部转为大写，写入到test2这个topic当中去。</p>
+<p>第一步：创建一个topic</p>
+<p>node01服务器使用以下命令来常见一个 topic 名称为test2：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-topics.sh --create  --partitions <span class="m">3</span> --replication-factor <span class="m">2</span> --topic test2 --zookeeper node01:2181,node02:2181,node03:2181
+</span></span></code></pre></div><p>第二步：开发StreamAPI</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">StreamAPI</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Properties</span><span class="w"> </span><span class="n">props</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Properties</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">StreamsConfig</span><span class="p">.</span><span class="na">APPLICATION_ID_CONFIG</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;wordcount-application&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">StreamsConfig</span><span class="p">.</span><span class="na">BOOTSTRAP_SERVERS_CONFIG</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;node01:9092&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">StreamsConfig</span><span class="p">.</span><span class="na">KEY_SERDE_CLASS_CONFIG</span><span class="p">,</span><span class="w"> </span><span class="n">Serdes</span><span class="p">.</span><span class="na">String</span><span class="p">().</span><span class="na">getClass</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">props</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">StreamsConfig</span><span class="p">.</span><span class="na">VALUE_SERDE_CLASS_CONFIG</span><span class="p">,</span><span class="w"> </span><span class="n">Serdes</span><span class="p">.</span><span class="na">String</span><span class="p">().</span><span class="na">getClass</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KStreamBuilder</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KStreamBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">builder</span><span class="p">.</span><span class="na">stream</span><span class="p">(</span><span class="s">&#34;test&#34;</span><span class="p">).</span><span class="na">mapValues</span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">toUpperCase</span><span class="p">()).</span><span class="na">to</span><span class="p">(</span><span class="s">&#34;test2&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">KafkaStreams</span><span class="w"> </span><span class="n">streams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">KafkaStreams</span><span class="p">(</span><span class="n">builder</span><span class="p">,</span><span class="w"> </span><span class="n">props</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">streams</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>执行上述代码，监听获取 test 中的数据，然后转成大写，将结果写入 test2。</p>
+<p>第三步：生产数据</p>
+<p>node01执行以下命令，向test这个topic当中生产数据:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-console-producer.sh --broker-list node01:9092,node02:9092,node03:9092 --topic <span class="nb">test</span>
+</span></span></code></pre></div><p>第四步：消费数据</p>
+<p>node02执行一下命令消费test2这个topic当中的数据:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">bin/kafka-console-consumer.sh --from-beginning  --topic test2 --zookeeper node01:2181,node02:2181,node03:2181
+</span></span></code></pre></div><h2 class="relative group">六、Kafka中的数据不丢失机制 
+    <div id="六kafka中的数据不丢失机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%adkafka%e4%b8%ad%e7%9a%84%e6%95%b0%e6%8d%ae%e4%b8%8d%e4%b8%a2%e5%a4%b1%e6%9c%ba%e5%88%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>生产者生产数据不丢失</li>
+</ol>
+<p>发送消息方式，生产者发送给kafka数据，可以采用同步方式或异步方式</p>
+<ul>
+<li>同步方式：发送一批数据给kafka后，等待kafka返回结果
+<ul>
+<li>生产者等待10s，如果broker没有给出ack响应，就认为失败。</li>
+<li>生产者重试3次，如果还没有响应，就报错.</li>
+</ul>
+</li>
+<li>异步方式：发送一批数据给kafka，只是提供一个回调函数
+<ul>
+<li>先将数据保存在生产者端的buffer中。buffer大小是2万条 。</li>
+<li>满足数据阈值或者数量阈值其中的一个条件就可以发送数据。</li>
+<li>发送一批数据的大小是500条。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注：如果broker迟迟不给ack，而buffer又满了，开发者可以设置是否直接清空buffer中的数据。</p>
+</blockquote>
+<p><strong>ack机制（确认机制）</strong></p>
+<p>生产者数据发送出去，需要服务端返回一个确认码，即ack响应码；ack的响应有三个状态值0,1，-1</p>
+<ul>
+<li>0：生产者只负责发送数据，不关心数据是否丢失，丢失的数据，需要再次发送</li>
+<li>1：partition的leader收到数据，不管follow是否同步完数据，响应的状态码为1</li>
+<li>-1：所有的从节点都收到数据，响应的状态码为-1</li>
+</ul>
+<blockquote>
+<p>如果broker端一直不返回ack状态，producer永远不知道是否成功；producer可以设置一个超时时间10s，超过时间认为失败。</p>
+</blockquote>
+<ol start="2">
+<li>broker中数据不丢失</li>
+</ol>
+<p>在broker中，保证数据不丢失主要是通过副本因子（冗余），防止数据丢失。</p>
+<ol start="3">
+<li>消费者消费数据不丢失</li>
+</ol>
+<p>在消费者消费数据的时候，只要每个消费者记录好offset值即可，就能保证数据不丢失。</p>
+<p>也就是需要我们自己维护偏移量(offset)，可保存在 Redis 中。</p>
+<h2 class="relative group">七、Kafka配置文件说明 
+    <div id="七kafka配置文件说明" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b8%83kafka%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e8%af%b4%e6%98%8e" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Server.properties配置文件说明：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1">#broker的全局唯一编号，不能重复</span>
+</span></span><span class="line"><span class="cl">broker.id<span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#用来监听链接的端口，producer或consumer将在此端口建立连接</span>
+</span></span><span class="line"><span class="cl"><span class="nv">port</span><span class="o">=</span><span class="m">9092</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#处理网络请求的线程数量</span>
+</span></span><span class="line"><span class="cl">num.network.threads<span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#用来处理磁盘IO的线程数量</span>
+</span></span><span class="line"><span class="cl">num.io.threads<span class="o">=</span><span class="m">8</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#发送套接字的缓冲区大小</span>
+</span></span><span class="line"><span class="cl">socket.send.buffer.bytes<span class="o">=</span><span class="m">102400</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#接受套接字的缓冲区大小</span>
+</span></span><span class="line"><span class="cl">socket.receive.buffer.bytes<span class="o">=</span><span class="m">102400</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#请求套接字的缓冲区大小</span>
+</span></span><span class="line"><span class="cl">socket.request.max.bytes<span class="o">=</span><span class="m">104857600</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#kafka运行日志存放的路径</span>
+</span></span><span class="line"><span class="cl">log.dirs<span class="o">=</span>/export/data/kafka/
+</span></span><span class="line"><span class="cl"><span class="c1">#topic在当前broker上的分片个数</span>
+</span></span><span class="line"><span class="cl">num.partitions<span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#用来恢复和清理data下数据的线程数量</span>
+</span></span><span class="line"><span class="cl">num.recovery.threads.per.data.dir<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#segment文件保留的最长时间，超时将被删除</span>
+</span></span><span class="line"><span class="cl">log.retention.hours<span class="o">=</span><span class="m">168</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#滚动生成新的segment文件的最大时间</span>
+</span></span><span class="line"><span class="cl">log.roll.hours<span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#日志文件中每个segment的大小，默认为1G</span>
+</span></span><span class="line"><span class="cl">log.segment.bytes<span class="o">=</span><span class="m">1073741824</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#周期性检查文件大小的时间</span>
+</span></span><span class="line"><span class="cl">log.retention.check.interval.ms<span class="o">=</span><span class="m">300000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#日志清理是否打开</span>
+</span></span><span class="line"><span class="cl">log.cleaner.enable<span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#broker需要使用zookeeper保存meta数据</span>
+</span></span><span class="line"><span class="cl">zookeeper.connect<span class="o">=</span>zk01:2181,zk02:2181,zk03:2181
+</span></span><span class="line"><span class="cl"><span class="c1">#zookeeper链接超时时间</span>
+</span></span><span class="line"><span class="cl">zookeeper.connection.timeout.ms<span class="o">=</span><span class="m">6000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#partion buffer中，消息的条数达到阈值，将触发flush到磁盘</span>
+</span></span><span class="line"><span class="cl">log.flush.interval.messages<span class="o">=</span><span class="m">10000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#消息buffer的时间，达到阈值，将触发flush到磁盘</span>
+</span></span><span class="line"><span class="cl">log.flush.interval.ms<span class="o">=</span><span class="m">3000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#删除topic需要server.properties中设置delete.topic.enable=true否则只是标记删除</span>
+</span></span><span class="line"><span class="cl">delete.topic.enable<span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#此处的host.name为本机IP(重要),如果不改,则客户端会抛出:Producer connection to localhost:9092 unsuccessful 错误!</span>
+</span></span><span class="line"><span class="cl">host.name<span class="o">=</span>kafka01
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">advertised.host.name<span class="o">=</span>192.168.140.128
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">producer生产者配置文件说明
+</span></span><span class="line"><span class="cl"><span class="c1">#指定kafka节点列表，用于获取metadata，不必全部指定</span>
+</span></span><span class="line"><span class="cl">metadata.broker.list<span class="o">=</span>node01:9092,node02:9092,node03:9092
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定分区处理类。默认kafka.producer.DefaultPartitioner，表通过key哈希到对应分区</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#partitioner.class=kafka.producer.DefaultPartitioner</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 是否压缩，默认0表示不压缩，1表示用gzip压缩，2表示用snappy压缩。压缩后消息中会有头来指明消息压缩类型，故在消费者端消息解压是透明的无需指定。</span>
+</span></span><span class="line"><span class="cl">compression.codec<span class="o">=</span>none
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定序列化处理类</span>
+</span></span><span class="line"><span class="cl">serializer.class<span class="o">=</span>kafka.serializer.DefaultEncoder
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果要压缩消息，这里指定哪些topic要压缩消息，默认empty，表示不压缩。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#compressed.topics=</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置发送数据是否需要服务端的反馈,有三个值0,1,-1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0: producer不会等待broker发送ack </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 1: 当leader接收到消息之后发送ack </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -1: 当所有的follower都同步消息成功后发送ack. </span>
+</span></span><span class="line"><span class="cl">request.required.acks<span class="o">=</span><span class="m">0</span> 
+</span></span><span class="line"><span class="cl"><span class="c1"># 在向producer发送ack之前,broker允许等待的最大时间 ，如果超时,broker将会向producer发送一个error ACK.意味着上一次消息因为某种原因未能成功(比如follower未能同步成功) </span>
+</span></span><span class="line"><span class="cl">request.timeout.ms<span class="o">=</span><span class="m">10000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 同步还是异步发送消息，默认“sync”表同步，&#34;async&#34;表异步。异步可以提高发送吞吐量,</span>
+</span></span><span class="line"><span class="cl">也意味着消息将会在本地buffer中,并适时批量发送，但是也可能导致丢失未发送过去的消息
+</span></span><span class="line"><span class="cl">producer.type<span class="o">=</span>sync
+</span></span><span class="line"><span class="cl"><span class="c1"># 在async模式下,当message被缓存的时间超过此值后,将会批量发送给broker,默认为5000ms</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 此值和batch.num.messages协同工作.</span>
+</span></span><span class="line"><span class="cl">queue.buffering.max.ms <span class="o">=</span> <span class="m">5000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 在async模式下,producer端允许buffer的最大消息量</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 无论如何,producer都无法尽快的将消息发送给broker,从而导致消息在producer端大量沉积</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 此时,如果消息的条数达到阀值,将会导致producer端阻塞或者消息被抛弃，默认为10000</span>
+</span></span><span class="line"><span class="cl">queue.buffering.max.messages<span class="o">=</span><span class="m">20000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果是异步，指定每次批量发送数据量，默认为200</span>
+</span></span><span class="line"><span class="cl">batch.num.messages<span class="o">=</span><span class="m">500</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 当消息在producer端沉积的条数达到&#34;queue.buffering.max.meesages&#34;后 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 阻塞一定时间后,队列仍然没有enqueue(producer仍然没有发送出任何消息) </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 此时producer可以继续阻塞或者将消息抛弃,此timeout值用于控制&#34;阻塞&#34;的时间 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -1: 无阻塞超时限制,消息不会被抛弃 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 0:立即清空队列,消息被抛弃 </span>
+</span></span><span class="line"><span class="cl">queue.enqueue.timeout.ms<span class="o">=</span>-1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 当producer接收到error ACK,或者没有接收到ACK时,允许消息重发的次数 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 因为broker并没有完整的机制来避免消息重复,所以当网络异常时(比如ACK丢失) </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 有可能导致broker接收到重复的消息,默认值为3.</span>
+</span></span><span class="line"><span class="cl">message.send.max.retries<span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># producer刷新topic metada的时间间隔,producer需要知道partition leader的位置,以及当前topic的情况 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 因此producer需要一个机制来获取最新的metadata,当producer遇到特定错误时,将会立即刷新 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># (比如topic失效,partition丢失,leader失效等),此外也可以通过此参数来配置额外的刷新机制，默认值600000 </span>
+</span></span><span class="line"><span class="cl">topic.metadata.refresh.interval.ms<span class="o">=</span><span class="m">60000</span>
+</span></span></code></pre></div><p>consumer消费者配置详细说明:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># zookeeper连接服务器地址</span>
+</span></span><span class="line"><span class="cl">zookeeper.connect<span class="o">=</span>zk01:2181,zk02:2181,zk03:2181
+</span></span><span class="line"><span class="cl"><span class="c1"># zookeeper的session过期时间，默认5000ms，用于检测消费者是否挂掉</span>
+</span></span><span class="line"><span class="cl">zookeeper.session.timeout.ms<span class="o">=</span><span class="m">5000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#当消费者挂掉，其他消费者要等该指定时间才能检查到并且触发重新负载均衡</span>
+</span></span><span class="line"><span class="cl">zookeeper.connection.timeout.ms<span class="o">=</span><span class="m">10000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定多久消费者更新offset到zookeeper中。注意offset更新时基于time而不是每次获得的消息。一旦在更新zookeeper发生异常并重启，将可能拿到已拿到过的消息</span>
+</span></span><span class="line"><span class="cl">zookeeper.sync.time.ms<span class="o">=</span><span class="m">2000</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#指定消费 </span>
+</span></span><span class="line"><span class="cl">group.id<span class="o">=</span>itcast
+</span></span><span class="line"><span class="cl"><span class="c1"># 当consumer消费一定量的消息之后,将会自动向zookeeper提交offset信息 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 注意offset信息并不是每消费一次消息就向zk提交一次,而是现在本地保存(内存),并定期提交,默认为true</span>
+</span></span><span class="line"><span class="cl">auto.commit.enable<span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 自动更新时间。默认60 * 1000</span>
+</span></span><span class="line"><span class="cl">auto.commit.interval.ms<span class="o">=</span><span class="m">1000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 当前consumer的标识,可以设定,也可以有系统生成,主要用来跟踪消息消费情况,便于观察</span>
+</span></span><span class="line"><span class="cl">conusmer.id<span class="o">=</span>xxx 
+</span></span><span class="line"><span class="cl"><span class="c1"># 消费者客户端编号，用于区分不同客户端，默认客户端程序自动产生</span>
+</span></span><span class="line"><span class="cl">client.id<span class="o">=</span>xxxx
+</span></span><span class="line"><span class="cl"><span class="c1"># 最大取多少块缓存到消费者(默认10)</span>
+</span></span><span class="line"><span class="cl">queued.max.message.chunks<span class="o">=</span><span class="m">50</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 当有新的consumer加入到group时,将会reblance,此后将会有partitions的消费端迁移到新  的consumer上,如果一个consumer获得了某个partition的消费权限,那么它将会向zk注册 &#34;Partition Owner registry&#34;节点信息,但是有可能此时旧的consumer尚没有释放此节点, 此值用于控制,注册节点的重试次数. </span>
+</span></span><span class="line"><span class="cl">rebalance.max.retries<span class="o">=</span><span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取消息的最大尺寸,broker不会像consumer输出大于此值的消息chunk 每次feth将得到多条消息,此值为总大小,提升此值,将会消耗更多的consumer端内存</span>
+</span></span><span class="line"><span class="cl">fetch.min.bytes<span class="o">=</span><span class="m">6553600</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 当消息的尺寸不足时,server阻塞的时间,如果超时,消息将立即发送给consumer</span>
+</span></span><span class="line"><span class="cl">fetch.wait.max.ms<span class="o">=</span><span class="m">5000</span>
+</span></span><span class="line"><span class="cl">socket.receive.buffer.bytes<span class="o">=</span><span class="m">655360</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果zookeeper没有offset值或offset值超出范围。那么就给个初始的offset。有smallest、largest、anything可选，分别表示给当前最小的offset、当前最大的offset、抛异常。默认largest</span>
+</span></span><span class="line"><span class="cl">auto.offset.reset<span class="o">=</span>smallest
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定序列化处理类</span>
+</span></span><span class="line"><span class="cl">derializer.class<span class="o">=</span>kafka.serializer.DefaultDecoder
+</span></span></code></pre></div><h2 class="relative group">八、CAP理论 
+    <div id="八cap理论" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%85%abcap%e7%90%86%e8%ae%ba" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>分布式系统当中的CAP理论</li>
+</ol>
+<p>分布式系统（distributed system）正变得越来越重要，大型网站几乎都是分布式的。</p>
+<p>分布式系统的最大难点，就是各个节点的状态如何同步。</p>
+<p>为了解决各个节点之间的状态同步问题，在1998年，由加州大学的计算机科学家 Eric Brewer 提出分布式系统的三个指标，分别是:</p>
+<ul>
+<li>Consistency：一致性</li>
+<li>Availability：可用性</li>
+<li>Partition tolerance：分区容错性</li>
+</ul>
+<p>Eric Brewer 说，这三个指标不可能同时做到。最多只能同时满足其中两个条件，这个结论就叫做 CAP 定理。</p>
+<p>CAP理论是指：分布式系统中，一致性、可用性和分区容忍性最多只能同时满足两个。</p>
+<ul>
+<li>一致性：Consistency
+<ul>
+<li>通过某个节点的写操作结果对后面通过其它节点的读操作可见</li>
+<li>如果更新数据后，并发访问情况下后续读操作可立即感知该更新，称为强一致性</li>
+<li>如果允许之后部分或者全部感知不到该更新，称为弱一致性</li>
+<li>若在之后的一段时间（通常该时间不固定）后，一定可以感知到该更新，称为最终一致性</li>
+</ul>
+</li>
+<li>可用性：Availability
+<ul>
+<li>任何一个没有发生故障的节点必须在有限的时间内返回合理的结果</li>
+</ul>
+</li>
+<li>分区容错性：Partition tolerance
+<ul>
+<li>部分节点宕机或者无法与其它节点通信时，各分区间还可保持分布式系统的功能</li>
+</ul>
+</li>
+</ul>
+<p>一般而言，都要求保证分区容忍性。所以在CAP理论下，更多的是需要在可用性和一致性之间做权衡。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-18.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ol start="2">
+<li>Partition tolerance</li>
+</ol>
+<p>先看 Partition tolerance，中文叫做&quot;分区容错&quot;。</p>
+<p>大多数分布式系统都分布在多个子网络。每个子网络就叫做一个区（partition）。分区容错的意思是，区间通信可能失败。比如，一台服务器放在中国，另一台服务器放在美国，这就是两个区，它们之间可能无法通信。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-19.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>上图中，G1 和 G2 是两台跨区的服务器。G1 向 G2 发送一条消息，G2 可能无法收到。系统设计的时候，必须考虑到这种情况。</p>
+<p>一般来说，分区容错无法避免，因此可以认为 CAP 的 P 总是存在的。即永远可能存在分区容错这个问题</p>
+<ol start="3">
+<li>Consistency</li>
+</ol>
+<p>Consistency 中文叫做&quot;一致性&quot;。意思是，写操作之后的读操作，必须返回该值。举例来说，某条记录是 v0，用户向 G1 发起一个写操作，将其改为 v1。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-20.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>接下来，用户的读操作就会得到 v1。这就叫一致性</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-21.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>问题是，用户有可能向 G2 发起读操作，由于 G2 的值没有发生变化，因此返回的是 v0。G1 和 G2 读操作的结果不一致，这就不满足一致性了。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-22.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>为了让 G2 也能变为 v1，就要在 G1 写操作的时候，让 G1 向 G2 发送一条消息，要求 G2 也改成 v1。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-23.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<p>这样的话，用户向 G2 发起读操作，也能得到 v1。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-24.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<ol start="4">
+<li>Availability</li>
+</ol>
+<p>Availability 中文叫做&quot;可用性&quot;，意思是只要收到用户的请求，服务器就必须给出回应。用户可以选择向 G1 或 G2 发起读操作。不管是哪台服务器，只要收到请求，就必须告诉用户，到底是 v0 还是 v1，否则就不满足可用性。</p>
+<h2 class="relative group">九、Kafka中的CAP机制 
+    <div id="九kafka中的cap机制" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e4%b9%9dkafka%e4%b8%ad%e7%9a%84cap%e6%9c%ba%e5%88%b6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>kafka是一个分布式的消息队列系统，既然是一个分布式的系统，那么就一定满足CAP定律，那么在kafka当中是如何遵循CAP定律的呢？kafka满足CAP定律当中的哪两个呢？</p>
+<p>kafka满足的是CAP定律当中的CA，其中Partition tolerance通过的是一定的机制尽量的保证分区容错性。</p>
+<p>其中C表示的是数据一致性。A表示数据可用性。</p>
+<p>kafka首先将数据写入到不同的分区里面去，每个分区又可能有好多个副本，数据首先写入到leader分区里面去，读写的操作都是与leader分区进行通信，保证了数据的一致性原则，也就是满足了Consistency原则。然后kafka通过分区副本机制，来保证了kafka当中数据的可用性。但是也存在另外一个问题，就是副本分区当中的数据与leader当中的数据存在差别的问题如何解决，这个就是Partition tolerance的问题。</p>
+<p>kafka为了解决Partition tolerance的问题，使用了ISR的同步策略，来尽最大可能减少Partition tolerance的问题。</p>
+<p>每个leader会维护一个ISR（a set of in-sync replicas，基本同步）列表。</p>
+<p>ISR列表主要的作用就是决定哪些副本分区是可用的，也就是说可以将leader分区里面的数据同步到副本分区里面去，决定一个副本分区是否可用的条件有两个：</p>
+<ul>
+<li>replica.lag.time.max.ms=10000 副本分区与主分区心跳时间延迟</li>
+<li>replica.lag.max.messages=4000 副本分区与主分区消息同步最大差</li>
+</ul>
+<p>produce 请求被认为完成时的确认值：​<code>​request.required.acks=0</code>​​。</p>
+<ul>
+<li>ack=0：producer不等待broker同步完成的确认，继续发送下一条(批)信息。</li>
+<li>ack=1（默认）：producer要等待leader成功收到数据并得到确认，才发送下一条message。</li>
+<li>ack=-1：producer得到follwer确认，才发送下一条数据。</li>
+</ul>
+<h2 class="relative group">十、Kafka监控及运维 
+    <div id="十kafka监控及运维" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%8d%81kafka%e7%9b%91%e6%8e%a7%e5%8f%8a%e8%bf%90%e7%bb%b4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>在开发工作中，消费在Kafka集群中消息，数据变化是我们关注的问题，当业务前提不复杂时，我们可以使用Kafka 命令提供带有Zookeeper客户端工具的工具，可以轻松完成我们的工作。随着业务的复杂性，增加Group和 Topic，那么我们使用Kafka提供命令工具，已经感到无能为力，那么Kafka监控系统目前尤为重要，我们需要观察 消费者应用的细节。</p>
+<ol>
+<li>kafka-eagle概述</li>
+</ol>
+<p>为了简化开发者和服务工程师维护Kafka集群的工作有一个监控管理工具，叫做 Kafka-eagle。这个管理工具可以很容易地发现分布在集群中的哪些topic分布不均匀，或者是分区在整个集群分布不均匀的的情况。它支持管理多个集群、选择副本、副本重新分配以及创建Topic。同时，这个管理工具也是一个非常好的可以快速浏览这个集群的工具，</p>
+<ol start="2">
+<li>
+<p>环境和安装</p>
+</li>
+<li>
+<p>环境要求</p>
+</li>
+</ol>
+<p>需要安装jdk，启动zk以及kafka的服务</p>
+<ol start="2">
+<li>安装步骤</li>
+</ol>
+<p>下载源码包，kafka-eagle官网：http://download.kafka-eagle.org/</p>
+<p>我们可以从官网上面直接下载最细的安装包即可kafka-eagle-bin-1.3.2.tar.gz这个版本即可</p>
+<p>代码托管地址：https://github.com/smartloli/kafka-eagle/releases</p>
+<p>这里我们选择将kafak-eagle安装在第三台。</p>
+<p>直接将kafka-eagle安装包上传到node03服务器的/export/softwares路径下，然后进行解压node03服务器执行一下命令进行解压。</p>
+<p>准备数据库</p>
+<p>kafka-eagle需要使用一个数据库来保存一些元数据信息，我们这里直接使用msyql数据库来保存即可，在node03服务器执行以下命令创建一个mysql数据库即可。</p>
+<p>进入mysql客户端:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">create database eagle<span class="p">;</span>
+</span></span></code></pre></div><p>修改kafak-eagle配置文件</p>
+<p>执行以下命令修改kafak-eagle配置文件:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">vim system-config.properties
+</span></span></code></pre></div><p>修改为如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kafka.eagle.zk.cluster.alias<span class="o">=</span>cluster1,cluster2
+</span></span><span class="line"><span class="cl">cluster1.zk.list<span class="o">=</span>node01:2181,node02:2181,node03:2181
+</span></span><span class="line"><span class="cl">cluster2.zk.list<span class="o">=</span>node01:2181,node02:2181,node03:2181
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kafka.eagle.driver<span class="o">=</span>com.mysql.jdbc.Driver
+</span></span><span class="line"><span class="cl">kafka.eagle.url<span class="o">=</span>jdbc:mysql://node03:3306/eagle
+</span></span><span class="line"><span class="cl">kafka.eagle.username<span class="o">=</span>root
+</span></span><span class="line"><span class="cl">kafka.eagle.password<span class="o">=</span><span class="m">123456</span>
+</span></span></code></pre></div><p>配置环境变量</p>
+<p>kafka-eagle必须配置环境变量，node03服务器执行以下命令来进行配置环境变量: <code>​​vim /etc/profile</code>​​：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KE_HOME</span><span class="o">=</span>/opt//kafka-eagle-bin-1.3.2/kafka-eagle-web-1.3.2
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>:<span class="nv">$KE_HOME</span>/bin:<span class="nv">$PATH</span>
+</span></span></code></pre></div><p>修改立即生效，执行: <code>​​source /etc/profile​​</code></p>
+<p>启动kafka-eagle</p>
+<p>执行以下界面启动kafka-eagle：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="nb">cd</span> kafka-eagle-web-1.3.2/bin
+</span></span><span class="line"><span class="cl">chmod u+x ke.sh
+</span></span><span class="line"><span class="cl">./ke.sh start
+</span></span></code></pre></div><p>主界面</p>
+<p>访问kafka-eagle</p>
+<p>http://node03:8048/ke/account/signin?/ke/</p>
+<p>用户名：admin</p>
+<p>密码：123456</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/high-concurrency/mq/kafka-base/image-25.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">十一、Kafka大厂面试题 
+    <div id="十一kafka大厂面试题" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%8d%81%e4%b8%80kafka%e5%a4%a7%e5%8e%82%e9%9d%a2%e8%af%95%e9%a2%98" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>为什么要使用 kafka？</li>
+</ol>
+<ul>
+<li>缓冲和削峰：上游数据时有突发流量，下游可能扛不住，或者下游没有足够多的机器来保证冗余，kafka在中间可以起到一个缓冲的作用，把消息暂存在kafka中，下游服务就可以按照自己的节奏进行慢慢处理。</li>
+<li>解耦和扩展性：项目开始的时候，并不能确定具体需求。消息队列可以作为一个接口层，解耦重要的业务流程。只需要遵守约定，针对数据编程即可获取扩展能力。</li>
+<li>冗余：可以采用一对多的方式，一个生产者发布消息，可以被多个订阅topic的服务消费到，供多个毫无关联的业务使用。</li>
+<li>健壮性：消息队列可以堆积请求，所以消费端业务即使短时间死掉，也不会影响主要业务的正常进行。</li>
+<li>异步通信：很多时候，用户不想也不需要立即处理消息。消息队列提供了异步处理机制，允许用户把一个消息放入队列，但并不立即处理它。想向队列中放入多少消息就放多少，然后在需要的时候再去处理它们。</li>
+</ul>
+<ol start="2">
+<li>Kafka消费过的消息如何再消费？</li>
+</ol>
+<p>kafka消费消息的offset是定义在zookeeper中的， 如果想重复消费kafka的消息，可以在redis中自己记录offset的checkpoint点（n个），当想重复消费消息时，通过读取redis中的checkpoint点进行zookeeper的offset重设，这样就可以达到重复消费消息的目的了。</p>
+<ol start="3">
+<li>kafka的数据是放在磁盘上还是内存上，为什么速度会快？</li>
+</ol>
+<p>kafka使用的是磁盘存储。</p>
+<p>速度快是因为：</p>
+<ul>
+<li>
+<p>顺序写入：因为硬盘是机械结构，每次读写都会寻址-&gt;写入，其中寻址是一个“机械动作”，它是耗时的。所以硬盘 “讨厌”随机I/O， 喜欢顺序I/O。为了提高读写硬盘的速度，Kafka就是使用顺序I/O。</p>
+</li>
+<li>
+<p>Memory Mapped Files（内存映射文件）：64位操作系统中一般可以表示20G的数据文件，它的工作原理是直接利用操作系统的Page来实现文件到物理内存的直接映射。完成映射之后你对物理内存的操作会被同步到硬盘上。</p>
+</li>
+<li>
+<p>Kafka高效文件存储设计： Kafka把topic中一个parition大文件分成多个小文件段，通过多个小文件段，就容易定期清除或删除已经消费完文件，减少磁盘占用。通过索引信息可以快速定位message和确定response的 大小。通过index元数据全部映射到memory（内存映射文件）， 可以避免segment file的IO磁盘操作。通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小。</p>
+</li>
+<li>
+<p>Kafka解决查询效率的手段之一是将数据文件分段，比如有100条Message，它们的offset是从0到99。假设将数据文件分成5段，第一段为0-19，第二段为20-39，以此类推，每段放在一个单独的数据文件里面，数据文件以该段中 小的offset命名。这样在查找指定offset的Message的时候，用二分查找就可以定位到该Message在哪个段中。</p>
+</li>
+<li>
+<p>为数据文件建 索引数据文件分段 使得可以在一个较小的数据文件中查找对应offset的Message 了，但是这依然需要顺序扫描才能找到对应offset的Message。为了进一步提高查找的效率，Kafka为每个分段后的数据文件建立了索引文件，文件名与数据文件的名字是一样的，只是文件扩展名为.index。</p>
+</li>
+</ul>
+<ol start="4">
+<li>Kafka数据怎么保障不丢失？</li>
+</ol>
+<p>分三个点说，一个是生产者端，一个消费者端，一个broker端。</p>
+<p><strong>生产者数据的不丢失</strong></p>
+<p><strong>kafka的ack机制</strong>：在kafka发送数据的时候，每次发送消息都会有一个确认反馈机制，确保消息正常的能够被收到，其中状态有0，1，-1。</p>
+<p>如果是同步模式：</p>
+<p>ack设置为0，风险很大，一般不建议设置为0。即使设置为1，也会随着leader宕机丢失数据。所以如果要严格保证生产端数据不丢失，可设置为-1。</p>
+<p>如果是异步模式：</p>
+<p>也会考虑ack的状态，除此之外，异步模式下的有个buffer，通过buffer来进行控制数据的发送，有两个值来进行控制，时间阈值与消息的数量阈值，如果buffer满了数据还没有发送出去，有个选项是配置是否立即清空buffer。可以设置为-1，永久阻塞，也就数据不再生产。异步模式下，即使设置为-1。也可能因为程序员的不科学操作，操作数据丢失，比如kill -9，但这是特别的例外情况。</p>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>ack=0：producer不等待broker同步完成的确认，继续发送下一条(批)信息。</li>
+<li>ack=1（默认）：producer要等待leader成功收到数据并得到确认，才发送下一条message。</li>
+<li>ack=-1：producer得到follwer确认，才发送下一条数据。</li>
+</ul>
+</blockquote>
+<p><strong>消费者数据的不丢失</strong></p>
+<p>通过offset commit 来保证数据的不丢失，kafka自己记录了每次消费的offset数值，下次继续消费的时候，会接着上次的offset进行消费。</p>
+<p>而offset的信息在kafka0.8版本之前保存在zookeeper中，在0.8版本之后保存到topic中，即使消费者在运行过程中挂掉了，再次启动的时候会找到offset的值，找到之前消费消息的位置，接着消费，由于 offset 的信息写入的时候并不是每条消息消费完成后都写入的，所以这种情况有可能会造成重复消费，但是不会丢失消息。</p>
+<p>唯一例外的情况是，我们在程序中给原本做不同功能的两个consumer组设置KafkaSpoutConfig.bulider.setGroupid的时候设置成了一样的groupid，这种情况会导致这两个组共享同一份数据，就会产生组A消费partition1，partition2中的消息，组B消费partition3的消息，这样每个组消费的消息都会丢失，都是不完整的。 为了保证每个组都独享一份消息数据，groupid一定不要重复才行。</p>
+<p><strong>kafka集群中的broker的数据不丢失</strong></p>
+<p>每个broker中的partition我们一般都会设置有replication（副本）的个数，生产者写入的时候首先根据分发策略（有partition按partition，有key按key，都没有轮询）写入到leader中，follower（副本）再跟leader同步数据，这样有了备份，也可以保证消息数据的不丢失。</p>
+<ol start="5">
+<li>采集数据为什么选择kafka？</li>
+</ol>
+<p>采集层 主要可以使用Flume, Kafka等技术。</p>
+<p>Flume：Flume 是管道流方式，提供了很多的默认实现，让用户通过参数部署，及扩展API.</p>
+<p>Kafka：Kafka是一个可持久化的分布式的消息队列。 Kafka 是一个非常通用的系统。你可以有许多生产者和很多的消费者共享多个主题Topics。</p>
+<p>相比之下,Flume是一个专用工具被设计为旨在往HDFS，HBase发送数据。它对HDFS有特殊的优化，并且集成了Hadoop的安全特性。</p>
+<p>所以，Cloudera 建议如果数据被多个系统消费的话，使用kafka；如果数据被设计给Hadoop使用，使用Flume。</p>
+<ol start="6">
+<li>kafka 重启是否会导致数据丢失？</li>
+</ol>
+<p>kafka是将数据写到磁盘的，一般数据不会丢失。</p>
+<p>但是在重启kafka过程中，如果有消费者消费消息，那么kafka如果来不及提交offset，可能会造成数据的不准确（丢失或者重复消费）。</p>
+<ol start="7">
+<li>kafka 宕机了如何解决？</li>
+</ol>
+<p>先考虑业务是否受到影响：kafka 宕机了，首先我们考虑的问题应该是所提供的服务是否因为宕机的机器而受到影响，如果服务提供没问题，如果实现做好了集群的容灾机制，那么这块就不用担心了。</p>
+<p>节点排错与恢复：想要恢复集群的节点，主要的步骤就是通过日志分析来查看节点宕机的原因，从而解决，重新恢复节点。</p>
+<ol start="8">
+<li>为什么Kafka不支持读写分离？</li>
+</ol>
+<p>在 Kafka 中，生产者写入消息、消费者读取消息的操作都是与 leader 副本进行交互的，从 而实现的是一种主写主读的生产消费模型。Kafka 并不支持 主写从读，因为主写从读有 2 个很明显的缺点:</p>
+<ul>
+<li>数据一致性问题：数据从主节点转到从节点必然会有一个延时的时间窗口，这个时间 窗口会导致主从节点之间的数据不一致。某一时刻，在主节点和从节点中 A 数据的值都为 X， 之后将主节点中 A 的值修改为 Y，那么在这个变更通知到从节点之前，应用读取从节点中的 A 数据的值并不为最新的 Y，由此便产生了数据不一致的问题。</li>
+<li>延时问题：类似 Redis 这种组件，数据从写入主节点到同步至从节点中的过程需要经历 网络→主节点内存→网络→从节点内存 这几个阶段，整个过程会耗费一定的时间。而在 Kafka 中，主从同步会比 Redis 更加耗时，它需要经历 网络→主节点内存→主节点磁盘→网络→从节 点内存→从节点磁盘 这几个阶段。对延时敏感的应用而言，主写从读的功能并不太适用。</li>
+</ul>
+<p>而kafka的主写主读的优点就很多了：</p>
+<ul>
+<li>可以简化代码的实现逻辑，减少出错的可能;</li>
+<li>将负载粒度细化均摊，与主写从读相比，不仅负载效能更好，而且对用户可控;</li>
+<li>没有延时的影响;</li>
+<li>在副本稳定的情况下，不会出现数据不一致的情况。</li>
+</ul>
+<ol start="9">
+<li>kafka数据分区和消费者的关系？</li>
+</ol>
+<p>每个分区只能由同一个消费组内的一个消费者(consumer)来消费，可以由不同的消费组的消费者来消费，同组的消费者则起到并发的效果。</p>
+<ol start="10">
+<li>kafka的数据offset读取流程</li>
+</ol>
+<ul>
+<li>连接ZK集群，从ZK中拿到对应topic的partition信息和partition的Leader的相关信息</li>
+<li>连接到对应Leader对应的broker</li>
+<li>consumer将⾃自⼰己保存的offset发送给Leader</li>
+<li>Leader根据offset等信息定位到segment（索引⽂文件和⽇日志⽂文件）</li>
+<li>根据索引⽂文件中的内容，定位到⽇日志⽂文件中该偏移量量对应的开始位置读取相应⻓长度的数据并返回给consumer</li>
+</ul>
+<ol start="11">
+<li>kafka内部如何保证顺序，结合外部组件如何保证消费者的顺序？</li>
+</ol>
+<p>kafka只能保证partition内是有序的，但是partition间的有序是没办法的。爱奇艺的搜索架构，是从业务上把需要有序的打到同⼀个partition。</p>
+<ol start="12">
+<li>Kafka消息数据积压，Kafka消费能力不足怎么处理？</li>
+</ol>
+<p>如果是Kafka消费能力不足，则可以考虑增加Topic的分区数，并且同时提升消费组的消费者数量，消费者数=分区数。（两者缺一不可）</p>
+<p>如果是下游的数据处理不及时：提高每批次拉取的数量。批次拉取数据过少（拉取数据/处理时间&lt;生产速度），使处理的数据小于生产的数据，也会造成数据积压。</p>
+<ol start="13">
+<li>Kafka单条日志传输大小</li>
+</ol>
+<p>kafka对于消息体的大小默认为单条最大值是1M但是在我们应用场景中, 常常会出现一条消息大于1M，如果不对kafka进行配置。则会出现生产者无法将消息推送到kafka或消费者无法去消费kafka里面的数据, 这时我们就要对kafka进行以下配置：server.properties</p>
+<pre tabindex="0"><code>replica.fetch.max.bytes: 1048576  broker可复制的消息的最大字节数, 默认为1M
+message.max.bytes: 1000012   kafka 会接收单个消息size的最大限制， 默认为1M左右
+</code></pre><p>注意：message.max.bytes必须小于等于replica.fetch.max.bytes，否则就会导致replica之间数据同步失败。</p>
+
+        </div>
+                
+        
+
+        
+
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/architecture\/backend\/high-concurrency\/mq\/kafka-base\/index.md"
+        var oid_likes = "likes_posts\/architecture\/backend\/high-concurrency\/mq\/kafka-base\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.f94e5beb747249fb2315a14fc6417e483411d48b59dc1376bbafa8c37fce65d397d5401be15c7461670ec7bb90ac2bf148d7d48eaf02f317cd9dc04d4851fd31.js" integrity="sha512-&#43;U5b63RySfsjFaFPxkF&#43;SDQR1ItZ3BN2u6&#43;ow3/OZdOX1UAb4Vx0YWcOx7uQrCvxSNfUjq8C8xfNncBNSFH9MQ=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
+
+    
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
+</article>
+
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+    </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+    <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400">
+      <ul class="flex flex-col list-none sm:flex-row">
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/todo/"
+            title="">
+            
+            TODO
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/algorithm/"
+            title="">
+            
+            Algorithm
+          </a>
+        </li>
+        
+        <li class="flex mb-1 ltr:text-right rtl:text-left sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+          <a class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center" href="/tags/"
+            title="">
+            
+            Tags
+          </a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  
+  <div class="flex items-center justify-between">
+
+    
+    
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      &copy;
+      2024
+      WFUing
+    </p>
+    
+
+    
+    
+    <p class="text-xs text-neutral-500 dark:text-neutral-400">
+      
+      
+      Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+        href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; WFUing
+    </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script>
+  
+  
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+  <a rel="me" href="https://masto.ai/@blowfish"></a>
+  
+</footer><div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="https://WFUing.github.io/"
+  style="z-index:500"
+>
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)"
+      >
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>
