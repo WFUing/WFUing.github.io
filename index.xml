@@ -9,6 +9,26 @@
     <copyright>© 2024 WFUing</copyright>
     <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://WFUing.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>ES与Mysql数据同步</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-mysql/</link>
+      <pubDate>Sun, 11 Aug 2024 09:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-mysql/</guid>
+      <description>ES与Mysql数据同步</description>
+      
+    </item>
+    
+    <item>
+      <title>ES-黑马程序员教程</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-heima/</link>
+      <pubDate>Sat, 10 Aug 2024 09:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-heima/</guid>
+      <description>Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-heima/featured.png" />
+    </item>
+    
+    <item>
       <title>四万字32图，Kafka知识体系保姆级教程宝典</title>
       <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/mq/kafka-base/</link>
       <pubDate>Thu, 08 Aug 2024 13:53:28 +0800</pubDate>
@@ -200,12 +220,22 @@
     
     <item>
       <title>Elasticsearch 底层数据结构</title>
-      <link>https://WFUing.github.io/posts/architecture/backend/distributed/es/</link>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-data/</link>
       <pubDate>Wed, 22 May 2024 09:46:05 +0800</pubDate>
       
-      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/es/</guid>
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-data/</guid>
       <description>Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/es/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-data/featured.png" />
+    </item>
+    
+    <item>
+      <title>ES底层读写工作原理</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-read-data/</link>
+      <pubDate>Wed, 22 May 2024 09:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-read-data/</guid>
+      <description>Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/es-read-data/featured.png" />
     </item>
     
     <item>

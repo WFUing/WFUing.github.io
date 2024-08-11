@@ -8,16 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>后端开发 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="后端开发 &middot; WFUing&#39;s Blog" />
+  <title>Elasticsearch &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Elasticsearch &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="后端开发是指构建和维护网站或应用程序的服务器端逻辑和数据库管理。它涉及处理服务器、数据库、API，以及确保数据的安全性和高效传输，以支持前端用户体验。" />
+  <meta name="description" content="Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。" />
   
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/" />
   
-  <link rel="alternate" type="application/rss+xml" href="/posts/architecture/backend/index.xml" title="WFUing's Blog" />
+  <link rel="alternate" type="application/rss+xml" href="/posts/architecture/backend/high-concurrency/es/index.xml" title="WFUing's Blog" />
   
   
   
@@ -69,19 +69,19 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="后端开发">
-  <meta property="og:description" content="后端开发是指构建和维护网站或应用程序的服务器端逻辑和数据库管理。它涉及处理服务器、数据库、API，以及确保数据的安全性和高效传输，以支持前端用户体验。">
+  <meta property="og:title" content="Elasticsearch">
+  <meta property="og:description" content="Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
-    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/featured.png">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/featured.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/featured.png">
-  <meta name="twitter:title" content="后端开发">
-  <meta name="twitter:description" content="后端开发是指构建和维护网站或应用程序的服务器端逻辑和数据库管理。它涉及处理服务器、数据库、API，以及确保数据的安全性和高效传输，以支持前端用户体验。">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/high-concurrency/es/featured.png">
+  <meta name="twitter:title" content="Elasticsearch">
+  <meta name="twitter:description" content="Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。">
 
   
   
@@ -880,7 +880,7 @@ const loadScript = (url, onloadFunction) => {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/backend/featured.png);">
+    style="background-image:url(/posts/architecture/backend/high-concurrency/es/featured.png);">
     
 
 
@@ -902,7 +902,7 @@ const loadScript = (url, onloadFunction) => {
 
  <header>
   
-  <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">后端开发</h1>
+  <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">Elasticsearch</h1>
   <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
     
 
@@ -935,8 +935,8 @@ const loadScript = (url, onloadFunction) => {
   </div>
   
   <script>
-    var oid = "views_posts\/architecture\/backend\/_index.md"
-    var oid_likes = "likes_posts\/architecture\/backend\/_index.md"
+    var oid = "views_posts\/architecture\/backend\/high-concurrency\/es\/_index.md"
+    var oid_likes = "likes_posts\/architecture\/backend\/high-concurrency\/es\/_index.md"
   </script>
   
   
@@ -992,16 +992,16 @@ const loadScript = (url, onloadFunction) => {
 
 
 
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/high-concurrency/">
+  <a class="flex flex-wrap article " href="/posts/architecture/backend/high-concurrency/es/es-mysql/">
     
         
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/high-concurrency/featured.png);"></div>
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/img/loading.gif);"></div>
         
       <div class=" mt-3 md:mt-0">
       <div class="items-center text-left text-xl font-semibold">
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/high-concurrency/">高并发</div>
+          href="/posts/architecture/backend/high-concurrency/es/es-mysql/">ES与Mysql数据同步</div>
         
         
         
@@ -1025,7 +1025,11 @@ const loadScript = (url, onloadFunction) => {
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1042,7 +1046,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-08-11 09:46:05 &#43;0800 &#43;0800">11 August 2024</time>
+  <time datetime="2024-08-11 09:46:05 &#43;0800 &#43;0800">11 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>365 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1058,7 +1062,7 @@ const loadScript = (url, onloadFunction) => {
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        慎入，高并发的水太深，什么高并发，大流量的东西都是虚拟的，笔者还太年轻，没有那个经历，把握不住。
+        ES与Mysql数据同步
       </div>
       
     </div>
@@ -1087,16 +1091,16 @@ const loadScript = (url, onloadFunction) => {
 
 
 
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/database/">
+  <a class="flex flex-wrap article " href="/posts/architecture/backend/high-concurrency/es/es-heima/">
     
         
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/database/featured.png);"></div>
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/high-concurrency/es/es-heima/featured.png);"></div>
         
       <div class=" mt-3 md:mt-0">
       <div class="items-center text-left text-xl font-semibold">
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/database/">数据库</div>
+          href="/posts/architecture/backend/high-concurrency/es/es-heima/">ES-黑马程序员教程</div>
         
         
         
@@ -1137,7 +1141,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-07-21 10:15:08 &#43;0800 &#43;0800">21 July 2024</time>
+  <time datetime="2024-08-10 09:46:05 &#43;0800 &#43;0800">10 August 2024</time>
   
 
   
@@ -1153,7 +1157,7 @@ const loadScript = (url, onloadFunction) => {
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        数据库是存储、检索和管理数据的系统，支持结构化查询语言(SQL)，用于高效数据操作和分析。
+        Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。
       </div>
       
     </div>
@@ -1182,16 +1186,16 @@ const loadScript = (url, onloadFunction) => {
 
 
 
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/ddd/">
+  <a class="flex flex-wrap article " href="/posts/architecture/backend/high-concurrency/es/es-read-data/">
     
         
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/ddd/featured.png);"></div>
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/high-concurrency/es/es-read-data/featured.png);"></div>
         
       <div class=" mt-3 md:mt-0">
       <div class="items-center text-left text-xl font-semibold">
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/ddd/">DDD领域驱动</div>
+          href="/posts/architecture/backend/high-concurrency/es/es-read-data/">ES底层读写工作原理</div>
         
         
         
@@ -1215,7 +1219,11 @@ const loadScript = (url, onloadFunction) => {
 
 
 
+  
 
+
+
+  
 
 
 
@@ -1232,7 +1240,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-06-20 16:47:45 &#43;0800 &#43;0800">20 June 2024</time>
+  <time datetime="2024-05-22 09:46:05 &#43;0800 &#43;0800">22 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>526 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1248,7 +1256,7 @@ const loadScript = (url, onloadFunction) => {
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        DDD（领域驱动设计）是一种软件开发方法，强调以业务领域为核心，通过与领域专家合作，构建反映业务逻辑的模型。它注重领域语言、一致性边界和聚合，提升软件灵活性和可维护性。
+        Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。
       </div>
       
     </div>
@@ -1277,206 +1285,16 @@ const loadScript = (url, onloadFunction) => {
 
 
 
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/distributed/">
+  <a class="flex flex-wrap article " href="/posts/architecture/backend/high-concurrency/es/es-data/">
     
         
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/distributed/featured.png);"></div>
+        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/high-concurrency/es/es-data/featured.png);"></div>
         
       <div class=" mt-3 md:mt-0">
       <div class="items-center text-left text-xl font-semibold">
         
         <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/distributed/">Distributed Technology</div>
-        
-        
-        
-      </div>
-      <div class="text-sm text-neutral-500 dark:text-neutral-400">
-        
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-05-29 09:46:05 &#43;0800 &#43;0800">29 May 2024</time>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-      </div>
-      
-      <div class="py-1 max-w-fit prose dark:prose-invert">
-        主要研究分散式系统（Distributed system）如何进行计算。分散式系统是一组电脑，透过网路相互连接传递讯息与通讯后并协调它们的行为而形成的系统。
-      </div>
-      
-    </div>
-  </a>
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/spring/">
-    
-        
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/spring/featured.png);"></div>
-        
-      <div class=" mt-3 md:mt-0">
-      <div class="items-center text-left text-xl font-semibold">
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/spring/">Spring</div>
-        
-        
-        
-      </div>
-      <div class="text-sm text-neutral-500 dark:text-neutral-400">
-        
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-05-27 16:15:08 &#43;0800 &#43;0800">27 May 2024</time>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-      </div>
-      
-      <div class="py-1 max-w-fit prose dark:prose-invert">
-        Spring是一个开源容器框架，它集成各类型的工具，通过核心的Bean factory实现了底层的类的实例化和生命周期的管理。 在整个框架中，各类型的功能被抽象成一个个的Bean，这样就可以实现各种功能的管理，包括动态加载和切面编程。
-      </div>
-      
-    </div>
-  </a>
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/">
-    
-        
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/featured.png);"></div>
-        
-      <div class=" mt-3 md:mt-0">
-      <div class="items-center text-left text-xl font-semibold">
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/%E8%93%84%E6%B0%B4%E6%B1%A0%E6%8A%BD%E6%A0%B7%E7%AE%97%E6%B3%95/">蓄水池抽样算法（Reservoir Sampling）</div>
+          href="/posts/architecture/backend/high-concurrency/es/es-data/">Elasticsearch 底层数据结构</div>
         
         
         
@@ -1521,7 +1339,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-12 13:53:28 &#43;0800 &#43;0800">12 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>5 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-05-22 09:46:05 &#43;0800 &#43;0800">22 May 2024</time><span class="px-2 text-primary-500">&middot;</span><span>893 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">5 mins</span>
   
 
   
@@ -1537,205 +1355,7 @@ const loadScript = (url, onloadFunction) => {
       </div>
       
       <div class="py-1 max-w-fit prose dark:prose-invert">
-        我是在一次失败的面试经历中听说蓄水池算法的。之后上网搜了搜，知道是一个数据抽样算法，寥寥几行，却暗藏玄机。主要用来解决如下问题。
-      </div>
-      
-    </div>
-  </a>
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/">
-    
-        
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/featured.png);"></div>
-        
-      <div class=" mt-3 md:mt-0">
-      <div class="items-center text-left text-xl font-semibold">
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/%E5%89%8D%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B/">前后端请求加载流程</div>
-        
-        
-        
-      </div>
-      <div class="text-sm text-neutral-500 dark:text-neutral-400">
-        
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-03-18 13:53:28 &#43;0800 &#43;0800">18 March 2024</time><span class="px-2 text-primary-500">&middot;</span><span>29 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-      </div>
-      
-      <div class="py-1 max-w-fit prose dark:prose-invert">
-        前后端请求加载流程是前端与后端交互的基础，确保数据能够在客户端与服务器之间有效、安全地传输。
-      </div>
-      
-    </div>
-  </a>
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <a class="flex flex-wrap article " href="/posts/architecture/backend/vo-dto-bo-po-do/">
-    
-        
-        <div class="w-full md:w-auto h-full thumbnail nozoom thumbnailshadow md:mr-7" style="background-image:url(/posts/architecture/backend/vo-dto-bo-po-do/featured.png);"></div>
-        
-      <div class=" mt-3 md:mt-0">
-      <div class="items-center text-left text-xl font-semibold">
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/backend/vo-dto-bo-po-do/">VO、DTO、BO、PO、DO区别</div>
-        
-        
-        
-      </div>
-      <div class="text-sm text-neutral-500 dark:text-neutral-400">
-        
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2024-02-17 16:15:08 &#43;0800 &#43;0800">17 February 2024</time><span class="px-2 text-primary-500">&middot;</span><span>96 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-      </div>
-      
-      <div class="py-1 max-w-fit prose dark:prose-invert">
-        VO（View Object）视图对象；DTO（Data Transfer Object）数据传输对象；BO（Business Object）业务层对象；PO（Persistent Object）持久化对象；DO（Domain Object）领域对象。
+        Elasticsearch 是一个高可扩展、开源、全文本的搜索与数据分析引擎。它使您可以近实时地快速存储、搜索和分析大规模数据。它通常用作支持具有复杂搜索功能和要求的应用程序的底层引擎/技术。
       </div>
       
     </div>
