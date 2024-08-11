@@ -1197,6 +1197,29 @@ const loadScript = (url, onloadFunction) => {
 </ol>
 <p>其实是kafka的可靠性问题</p>
 <p>主要考虑 BCP 核对及定时任务主动刷新 ES 数据。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/reviews/25%E5%BA%94%E5%B1%8A/bilibili/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%918.1/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
 <p><a href="./%e7%be%8e%e5%9b%a2%e4%b8%9a%e5%8a%a1%e6%ad%a3%e7%a1%ae%e6%80%a7%e6%a0%a1%e9%aa%8c%e5%b9%b3%e5%8f%b0%20BCP%e7%9a%84%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%ae%9e%e8%b7%b5%e3%80%90tool.lu%e3%80%91.pdf"  >
     美团业务正确性校验平台 BCP的设计与实践【tool.lu】</a></p>
 <p>为了减少数据反复刷的成本，核心数据使用版本号的概念，相同版本号的数据不再刷新。</p>
