@@ -8,14 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>数据库分库分表 &middot; WFUing&#39;s Blog</title>
-  <meta name="title" content="数据库分库分表 &middot; WFUing&#39;s Blog" />
+  <title>一条 SQL 语句优化的基本思路 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="一条 SQL 语句优化的基本思路 &middot; WFUing&#39;s Blog" />
   
-  <meta name="description" content="数据库分库分表相关" />
+  <meta name="description" content="一条 SQL 语句优化的基本思路相关" />
   <meta name="keywords" content=", " />
   
   
-  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/database/mysql/sql-optimization/" />
   
   
   
@@ -48,8 +48,8 @@
   
   
   
-  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.1271c22a557a15f10b5d38d2c87e49503604cfeffebadc1e7c267934e4b9f3ba1b74d81371219f9681dab2141482fc4ed2a8b462b179f0ef43a5f76d0575e85b.js"
-    integrity="sha512-EnHCKlV6FfELXTjSyH5JUDYEz&#43;/&#43;utwefCZ5NOS587obdNgTcSGfloHashQUgvxO0qi0YrF58O9DpfdtBXXoWw==" data-copy="" data-copied=""></script>
+  <script defer type="text/javascript" id="script-bundle" src="/js/main.bundle.min.7ee3d0153e96d78a28093d1c97e8a649b6de332eeb66d2c28a48d1afcba0d47a6e7c45dc76a5c9c732c97307593e103bbb0f5fce2f2dab0efb6d411d63064c37.js"
+    integrity="sha512-fuPQFT6W14ooCT0cl&#43;imSbbeMy7rZtLCikjRr8ug1HpufEXcdqXJxzLJcwdZPhA7uw9fzi8tqw77bUEdYwZMNw==" data-copy="" data-copied=""></script>
   
   
   <script src="/js/zoom.min.js"></script>
@@ -67,17 +67,22 @@
   
   
   
-  <meta property="og:title" content="数据库分库分表" />
-<meta property="og:description" content="数据库分库分表相关" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" /><meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-04-03T13:53:28+08:00" />
-<meta property="article:modified_time" content="2024-04-03T13:53:28+08:00" />
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/sql-optimization/">
+  <meta property="og:site_name" content="WFUing&#39;s Blog">
+  <meta property="og:title" content="一条 SQL 语句优化的基本思路">
+  <meta property="og:description" content="一条 SQL 语句优化的基本思路相关">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-04-03T13:53:28+08:00">
+    <meta property="article:modified_time" content="2024-04-03T13:53:28+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/sql-optimization/featured.png">
 
-
-  <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png" /><meta name="twitter:title" content="数据库分库分表"/>
-<meta name="twitter:description" content="数据库分库分表相关"/>
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/sql-optimization/featured.png">
+  <meta name="twitter:title" content="一条 SQL 语句优化的基本思路">
+  <meta name="twitter:description" content="一条 SQL 语句优化的基本思路相关">
 
   
   <script type="application/ld+json">
@@ -85,12 +90,12 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "articleSection": "博客",
-    "name": "数据库分库分表",
-    "headline": "数据库分库分表",
+    "name": "一条 SQL 语句优化的基本思路",
+    "headline": "一条 SQL 语句优化的基本思路",
     
-    "abstract": "数据库分库分表相关",
+    "abstract": "一条 SQL 语句优化的基本思路相关",
     "inLanguage": "en",
-    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/database\/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8\/",
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/database\/mysql\/sql-optimization\/",
     "author" : {
       "@type": "Person",
       "name": "WFUing"
@@ -104,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "6"
+    "wordCount": "397"
   }]
   </script>
 
@@ -906,7 +911,7 @@ const loadScript = (url, onloadFunction) => {
 
     
     <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
-    style="background-image:url(/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/featured.png);">
+    style="background-image:url(/posts/architecture/backend/database/mysql/sql-optimization/featured.png);">
     
 
 
@@ -932,7 +937,7 @@ const loadScript = (url, onloadFunction) => {
   <header id="single_header" class="mt-5 max-w-prose">
     
     <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
-      数据库分库分表
+      一条 SQL 语句优化的基本思路
     </h1>
     <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       
@@ -977,7 +982,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-03 13:53:28 &#43;0800 CST">3 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>6 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  <time datetime="2024-04-03 13:53:28 &#43;0800 &#43;0800">3 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>397 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1114,83 +1119,7 @@ const loadScript = (url, onloadFunction) => {
   
   <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
     
-     <div
-      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
-      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
-
-         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
-  <summary
-    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#resources">Resources</a></li>
-  </ul>
-</nav>
-  </div>
-</details>
-<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
-  <summary
-    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
-    Table of Contents
-  </summary>
-  <div
-    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
-    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#resources">Resources</a></li>
-  </ul>
-</nav>
-  </div>
-</details>
-
- 
-<script>
-  (function () {
-    var $toc = $('#TableOfContents');
-    if ($toc.length > 0) {
-      var $window = $(window);
-
-      function onScroll() {
-        var currentScroll = $window.scrollTop();
-        var h = $('.anchor');
-        var id = "";
-        h.each(function (i, e) {
-          e = $(e);
-          if (e.offset().top - $(window).height()/3 <= currentScroll) {
-            id = e.attr('id');
-          }
-        });
-        var active = $toc.find('a.active');      
-        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
-
-        active.each(function (i, e) {
-           
-            $(e).removeClass('active').siblings('ul').hide();
-          
-        });
-        $toc.find('a[href="#' + id + '"]').addClass('active')
-        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
-          $(e).children('a').parents('ul').show();          
-        });
-      }
-
-      $window.on('scroll', onScroll);
-      $(document).ready(function () {
-         
-          $toc.find('a').parent('li').find('ul').hide();
-        
-        onScroll();
-      });
-    }
-  })();
-</script>
-   </div>
-      </div>
-      
+    
 
       <div class="min-w-0 min-h-0 max-w-fit">
         
@@ -1198,23 +1127,140 @@ const loadScript = (url, onloadFunction) => {
 
 
         <div class="article-content max-w-prose mb-20">
-          <h2 class="relative group">Resources 
-    <div id="resources" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
-        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#resources" aria-label="Anchor">#</a>
-    </span>        
-    
-</h2>
+          <p>SQL 语句优化是一个既熟悉又陌生的话题。面对千奇百怪的 SQL 语句，虽然数据库本身对 SQL 语句的优化一直在持续改进、提升，但是我们不能完全依赖数据库，应该在给到数据库之前就替它做好各种准备工作，这样才能让数据库来有精力做它自己擅长的事情。</p>
+<p>就拿 MySQL 来讲，一条 SQL 语句从客户端发出到数据库端返回结果一般会经历几个阶段：词法解析、语法解析、语义解析、逻辑优化、物理优化、最终执行并返回结果。那么这几个阶段，我们 DBA 能参与的也就是两个阶段：逻辑优化以及少许物理优化。所以在我们 DBA 这侧，对 SQL 语句的优化简单来讲就是让我们自己写的 SQL 语句能更好的适应数据库内置的优化规则，进一步让 SQL 语句在每个处理阶段能扫描更少的记录数量、字段数量来改善查询效果。</p>
+<p>逻辑优化可以理解为基于N多数据库内置规则的预处理，规则定义越全面，对 SQL 语句优化的就越极致。比如使用表关联代替子查询、分组聚合条件上推、在特定条件下用内连接来替换外连接、视图上推到基表等等一系列优化措施。</p>
+<p>物理优化可以理解为数据库按照当前 SQL 语句涉及到的表统计信息、列统计信息、索引个数、索引优劣、当前运行负载、当前硬件资源等可变因素来决定如何生成最优执行路径的方法。</p>
+<p>一般来讲，我们拿到一条“不是很优化”、“烂的”、“慢的” 等 SQL 语句（至于怎么拿到这条语句，不在本篇讨论范围），应该按照以下几个步骤来逐步分析：</p>
+<p><strong>一、定位该SQL 语句涉及到的表结构，确认是磁盘表还是视图，如果是磁盘表，那么该考虑以下几点</strong>：</p>
+<ol>
+<li>这些表是否统一为InnoDB引擎（MySQL 5.7 以及以前一些老旧版本可能会有非InnoDB引擎表），如果不是，转换表引擎为InnoDB。因为MySQL从5.5 版本开始，所有针对存储层的优化都是针对InnoDB引擎的。</li>
+<li>极个别表为临时表。查看临时表相关参数是否设置合理；或者说能否把临时表替换为磁盘表。</li>
+<li>查询每张表的字段类型，看有无不合理的部分。</li>
+<li>查询每张表的记录数，检查是否过大需要后续拆分。</li>
+<li>查询每张表的统计信息，检查是否及时做了更新。</li>
+<li>针对这些表结构做进一步分析，查看索引设计是否合理？大致会有以下几种结果：
 <ul>
-<li><a href="https://www.cnblogs.com/zwh-Seeking/articles/13297231.html"   target="_blank">
-    5个数据库性能测试工具哪个更好用？对比结果新鲜出炉！</a></li>
-<li><a href="https://blog.51cto.com/u_93011/7284757"   target="_blank">
-    mysql 的最大QPS支持 mysql单机qps最大能到多少? </a></li>
+<li>都没有索引，有的连主键都没有。</li>
+<li>都有主键或者唯一索引，但是没有二级索引。</li>
+<li>有主键或者唯一索引，也有一些二级索引，并且二级索引可选择性也比较优化。</li>
+<li>有主键或者唯一索引，也有一些二级索引，但是这些二级索引可选择性很差。</li>
 </ul>
-
+</li>
+</ol>
+<p><strong>二、如果有些表是视图，需要考虑以下几点</strong>：</p>
+<ul>
+<li>该视图内部的算法有两种，一种是临时表（TEMPTABLE）、另外一种是合并（MERGE ）。可以针对这两种算法来分别测试视图整体性能哪个较优化。</li>
+<li>该视图内部如果有很复杂的处理逻辑，想办法把这部分内容简化或者从数据库剥离转交给应用处理，避免数据库将其劣势放大。</li>
+<li>该视图如果非必须，可拆解为基表与上层SQL 语句做合并处理，这样效率较之前更优化（比如视图内部多表关联与上层基表再次关联，拆分后，优化器就会有更多更优的表关联顺序）。</li>
+</ul>
+<p><strong>三、到了这一步，如果是多张表关联，此处检查表关联键</strong>：</p>
+<ul>
+<li>表关联键为主键和外键，也即两表用来关联的字段在一张表唯一并且在另一张表被引用，这时需要补充额外的过滤条件来减少扫描记录数。</li>
+<li>表关联键为非主键，也即两表用来关联的字段都不唯一， 需要优化为唯一键值关联。</li>
+<li>表关联键字段编码不一致，需要人为转换字段编码并改为一致。</li>
+</ul>
+<p><strong>四、基于以上几点，表结构分析这块已经大致完毕。接下来从SQL 语句层面来分析，比如这条SQL语句能否修改为更加优化的方式。可以考虑以下两点</strong>：</p>
+<ul>
+<li>SQL语句本身很简单，没有必要做修改。 比如这条语句本身是20张表的内联查询，那它不够优化并不是因为写的不好，而是表关联个数实在太多。</li>
+<li>SQL语句本身很复杂，仔细分析后，可以简化这条语句的写法。 复杂SQL语句又可以分为很多类别，比如多张子表关联、多张表嵌套子查询、多个子查询合并输出、多个聚合类操作等等。每种都有不同的优化方法，后续我会一一介绍。</li>
+</ul>
+<p><strong>五、那么前面几点做完后，进一步分析优化后SQL 语句的执行计划（如果有条件模拟生产环境压力模型），一般考虑如下几点</strong>：</p>
+<ul>
+<li>改写后的语句执行计划很优化，走最合适的索引、语句本身也改的很简洁，那么这条语句改写完成。</li>
+<li>改写后的语句执行计划没有走合适的索引，可以考虑在表上建立合适的索引。如果建新索引后，这条语句执行效果很好，那么改写完成。</li>
+<li>改写后的语句走了合适的索引，执行效果依然不理想，这时可能有以下几种原因：
+<ol>
+<li>这条语句走的索引在不同过滤条件下，运行效果忽好忽坏。比如日期字段，过滤条件为昨天的查询记录数为100条，过滤条件为前天的查询记录数则变为1W条。</li>
+<li>这条语句走的索引较优，但是表记录数实在太大，走索引过滤的记录数也很多，需要从表结构这层做些优化。比如前面几期讲过的分区表、拆分表等方法；或者是从业务层面限制这条语句来扫描更少的记录数等等。</li>
+</ol>
+</li>
+</ul>
+<p>经过以上几个步骤，一般的语句基本上都能达到比较优化的结果。后续我将逐步介绍各种优化方法以及在MySQL里如何付诸于实践。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 使用表连接代替子查询
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 子查询形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;some_value&#39;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 表连接形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">col2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">col3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;some_value&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 分组聚合条件上推
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 原始形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 优化形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">.</span><span class="n">col2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 在特定条件下用内连接来替换外连接
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 外连接形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">ref_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 内连接形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">ref_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 视图上推到基表
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 视图定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">view_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用视图
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">view_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 优化：直接在基表上进行查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用 EXISTS 代替 IN
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- IN 子句形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- EXISTS 形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">col1</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 选择性投影
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 避免使用 SELECT *
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">col1</span><span class="p">,</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 避免在 WHERE 子句中使用函数或表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 原始形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SOME_VALUE&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 优化形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SOME_VALUE&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用 UNION ALL 代替 UNION
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- UNION 形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- UNION ALL 形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 索引列的使用
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 确保 WHERE 子句使用索引列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">indexed_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 避免在 WHERE 子句中使用 OR（如果条件允许）
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 原始形式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value1&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value2&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 优化形式（如果条件允许）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value1&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">col2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;value2&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用物化视图
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 物化视图定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="n">MATERIALIZED</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">mat_view_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用物化视图
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mat_view_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 使用合适的 JOIN 类型
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 根据数据的实际分布和查询需求选择合适的 JOIN 类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">condition</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
                 
         
@@ -1226,18 +1272,80 @@ const loadScript = (url, onloadFunction) => {
      
     
      <script>
-        var oid = "views_posts\/architecture\/backend\/database\/数据库分库分表\/index.md"
-        var oid_likes = "likes_posts\/architecture\/backend\/database\/数据库分库分表\/index.md"
+        var oid = "views_posts\/architecture\/backend\/database\/mysql\/sql-optimization\/index.md"
+        var oid_likes = "likes_posts\/architecture\/backend\/database\/mysql\/sql-optimization\/index.md"
       </script>
       
       
       
-      <script type="text/javascript" src="/js/page.min.5b1bad196a6075a1e11bae1dc95f24f67b610948a00525e347566c5a62338ea78f1c7224ab9a53873dcdb2a1a7d7d391b8a8ef45561297f68806c01315b0c4f6.js" integrity="sha512-WxutGWpgdaHhG64dyV8k9nthCUigBSXjR1ZsWmIzjqePHHIkq5pThz3NsqGn19ORuKjvRVYSl/aIBsATFbDE9g=="></script>
+      <script type="text/javascript" src="/js/page.min.f94e5beb747249fb2315a14fc6417e483411d48b59dc1376bbafa8c37fce65d397d5401be15c7461670ec7bb90ac2bf148d7d48eaf02f317cd9dc04d4851fd31.js" integrity="sha512-&#43;U5b63RySfsjFaFPxkF&#43;SDQR1ItZ3BN2u6&#43;ow3/OZdOX1UAb4Vx0YWcOx7uQrCvxSNfUjq8C8xfNncBNSFH9MQ=="></script>
   
     </section>
   <footer class="pt-8 max-w-prose print:hidden">
 
     
+  
+    
+    
+    
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="flex group mr-3" href="/posts/architecture/backend/database/mysql/temporary-table/">
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >mysql什么时候产生临时表_什么时候会用到临时表？</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-04-03 13:53:28 &#43;0800 &#43;0800">3 April 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/backend/database/mysql/sharding/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >数据库分库分表</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-04-03 13:53:28 &#43;0800 &#43;0800">3 April 2024</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
   
 
 
@@ -1346,7 +1454,7 @@ const loadScript = (url, onloadFunction) => {
   </script>
   
   
-  <script type="text/javascript" src="/js/process.min.62060bb247f4de2b6dde45903668fefb68d792f365587605177b1227c0cf43588701edaca0cb40e2c8e2789bd5ce67c1d2a215b9fb258c3496a7cd25e7cb5fdf.js" integrity="sha512-YgYLskf03itt3kWQNmj&#43;&#43;2jXkvNlWHYFF3sSJ8DPQ1iHAe2soMtA4sjieJvVzmfB0qIVufsljDSWp80l58tf3w=="></script>
+  <script type="text/javascript" src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js" integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
   
   
   <a rel="me" href="https://masto.ai/@blowfish"></a>

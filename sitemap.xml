@@ -765,7 +765,25 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</loc>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/mysql/</loc>
+    <lastmod>2024-04-03T13:53:28+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/mysql/temporary-table/</loc>
+    <lastmod>2024-04-03T13:53:28+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/mysql/sql-optimization/</loc>
+    <lastmod>2024-04-03T13:53:28+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/database/mysql/sharding/</loc>
     <lastmod>2024-04-03T13:53:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
