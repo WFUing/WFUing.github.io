@@ -3,6 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/25/minimax/</loc>
+    <lastmod>2024-08-15T21:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/25/</loc>
+    <lastmod>2024-08-15T21:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
     <lastmod>2024-08-13T13:53:28+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -118,12 +130,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/25/bilibili/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%918.1/</loc>
-    <lastmod>2024-08-01T21:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/</loc>
     <lastmod>2024-08-01T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
