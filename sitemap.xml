@@ -3,6 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/25/%E9%98%BF%E9%87%8C%E7%B3%BB/</loc>
+    <lastmod>2024-08-17T22:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/25/</loc>
+    <lastmod>2024-08-17T22:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/25/minimax/</loc>
     <lastmod>2024-08-15T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -10,12 +22,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/25/minimax/%E7%A7%8B%E6%8B%9B%E4%B8%80%E9%9D%A28.15/</loc>
-    <lastmod>2024-08-15T21:00:00+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/</loc>
     <lastmod>2024-08-15T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -551,12 +557,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/ai/online-ml/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9C%A8%E7%BA%BF%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2024-04-23T09:25:45+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/%E9%98%BF%E9%87%8C%E7%B3%BB/</loc>
-    <lastmod>2024-04-22T22:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
