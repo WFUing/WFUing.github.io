@@ -109,7 +109,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "667"
+    "wordCount": "616"
   }]
   </script>
 
@@ -982,7 +982,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-08-17 11:00:00 &#43;0800 &#43;0800">17 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>667 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+  <time datetime="2024-08-17 11:00:00 &#43;0800 &#43;0800">17 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>616 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1172,219 +1172,136 @@ D项错误，插入或删除操作在数组中通常是O(n)（因为可能需要
 第五个数字5不需要移动。
 第六个数字6不需要移动。
 第七个数字7不需要移动。
-```
-
-问题4：Java中volatile关键字的错误说法
-
-```
-选项：
+</code></pre><p>问题4：Java中volatile关键字的错误说法</p>
+<pre tabindex="0"><code>选项：
 A. volatile 能禁止进行指令重排序
 B. 能保证线程安全
 C. volatile关键字用在多线程同步中，可保证读取的可见性
 D. JVM保证从主内存加载到线程工作内存的值是最新的
-```
-
-解答：
-
-```
-A项正确，volatile关键字确实可以禁止指令重排序，确保指令按照代码中的顺序执行。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>A项正确，volatile关键字确实可以禁止指令重排序，确保指令按照代码中的顺序执行。
 C项正确，volatile关键字确保变量的修改对所有线程都是可见的，即一个线程修改了变量后，其他线程能够立即看到这个修改。
 D项正确，JVM确实会保证从主内存加载到线程工作内存的值是最新的。
 
 B项错误，volatile关键字并不能保证线程安全。它只能确保变量的可见性，但并不能保证复合操作的原子性。例如，对一个int类型的变量执行i++操作（读取-增加-存储）时，volatile关键字不能保证这个操作的原子性。
-```
-
-问题5：不可能的出队序列
-
-```
-选项：
+</code></pre><p>问题5：不可能的出队序列</p>
+<pre tabindex="0"><code>选项：
 A. 5,4,2,1,3
 B. 1,2,5,3,4
 C. 5,1,2,4,3
 D. 1,5,4,2,3
-```
-
-解答：
-```
-这个问题涉及到队列的操作规则。根据题目描述，队列允许在两端进行出队操作，但仅允许在一端进行入队操作。这意味着队列的元素可以从前或后端移除，但只能从一端添加。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>这个问题涉及到队列的操作规则。根据题目描述，队列允许在两端进行出队操作，但仅允许在一端进行入队操作。这意味着队列的元素可以从前或后端移除，但只能从一端添加。
 
 A项是可能的，因为可以这样操作：入队1,2,3,4,5，然后从后端出队5,4，再从前端出队2,1,3。
 B项也是可能的，因为可以这样操作：入队1,2,3,4,5，然后从前端出队1,2，再从后端出队5,3,4。
 C项是不可能的，因为5不可能是第一个出队的元素，因为入队操作只能在一端进行，所以5必须在队列的末端。
 D项是可能的，因为可以这样操作：入队1,5,4,2,3，然后从后端出队5,4，再从前端出队1,2,3。
-```
-
-问题6：代码结果
-
-```java
-public class Test6 {
-    public static void main(String[] args) {
-        String str = &#34;hello&#34;;
-        StringBuffer strBuff = new StringBuffer(&#34;hello&#34;);
-        change(str);
-        change(strBuff);
-        System.out.println(str + &#34;&#34; + strBuff);
-    }
-    static void change(String str) {
-        str = str + &#34;world&#34;;
-    }
-    static void change(StringBuffer strBuff) {
-        strBuff.append(&#34;world&#34;);
-    }
-}
-```
-
-问题8：从文件&#34;file.dat&#34;中读取第10个字节
-
-```
-选项：
+</code></pre><p>问题6：代码结果</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Test6</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;hello&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StringBuffer</span><span class="w"> </span><span class="n">strBuff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuffer</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">change</span><span class="p">(</span><span class="n">str</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">change</span><span class="p">(</span><span class="n">strBuff</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;&#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">strBuff</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&#34;world&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="n">StringBuffer</span><span class="w"> </span><span class="n">strBuff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">strBuff</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;world&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>问题8：从文件&quot;file.dat&quot;中读取第10个字节</p>
+<pre tabindex="0"><code>选项：
 A. RandomAccessFile in = new RandomAccessFile(&#34;file.dat&#34;): in.skip(7): int c = in.readByte();
 B. FileInputStream in = new FileInputStream(&#34;file.dat&#34;); in.skip(10); int c = in.read();
 C. FileInputStream in = new FileInputStream(&#34;file.dat); in.skip(9); int c = in.read();
 D. FileInputStream in = new FileInputStream(&#34;file.dat&#34;); int c = in.read();
-```
-
-**多选题**
-
-问题1：不能直接导致线程停止执行的操作
-
-```
-选项：
+</code></pre><p><strong>多选题</strong></p>
+<p>问题1：不能直接导致线程停止执行的操作</p>
+<pre tabindex="0"><code>选项：
 
 A 在InputStream对象上调用read方法。
 B 在对象上调用wait方法。
 C 使用synchronized block。
 D 调用对象的notify方法。
-```
-
-解答：
-
-```
-在InputStream对象上调用read方法：不会直接导致线程停止，但如果没有更多的数据可读，它会阻塞。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>在InputStream对象上调用read方法：不会直接导致线程停止，但如果没有更多的数据可读，它会阻塞。
 在对象上调用wait方法：会导致线程停止并释放锁，等待被通知或中断。
 使用synchronized block：不会直接导致线程停止，但可能会导致线程阻塞，如果它正在等待进入一个被其他线程持有的监视器。
 调用对象的notify方法：不会直接导致线程停止，但它会唤醒一个等待该对象锁的线程。
-```
-
-问题2：在使用消息队列进行系统解耦时必须考虑的特性
-
-```
-选项：
+</code></pre><p>问题2：在使用消息队列进行系统解耦时必须考虑的特性</p>
+<pre tabindex="0"><code>选项：
 
 A 高吞吐量和低延迟
 B 消息过滤和路由
 C 消息持久性
 D 消息顺序保证
-```
-
-解答：
-
-```
-所有选项都是在使用消息队列进行系统解耦时必须考虑的特性：
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>所有选项都是在使用消息队列进行系统解耦时必须考虑的特性：
 
 高吞吐量和低延迟：确保消息队列可以快速处理大量消息。
 消息过滤和路由：允许消息根据特定规则进行筛选和定向。
 消息持久性：确保消息在系统故障后不会丢失。
 消息顺序保证：确保消息按照发送的顺序被处理。
-```
-
-问题3：TCP连接中的错误结论
-```
-选项：
+</code></pre><p>问题3：TCP连接中的错误结论</p>
+<pre tabindex="0"><code>选项：
 
 A如果主机A当前的拥塞窗口大小为6000（B），此时主机A还可以向主机B发送的最大字节数为2000
 B如果主机A当前的拥塞窗口大小为3000（B），此时主机A还可以向主机B发送的最大字节数为1000
 C如果主机A当前的拥塞窗口大小为4000(B)，此时主机A还可以向主机B发送的最大字节数为1000
 D如果主机A当前的拥塞窗口大小为5000（B），此时主机A还可以向主机B发送的最大字节数为2000
-```
-
-解答：
-
-```
-A项错误，因为如果拥塞窗口大小为6000B，接收窗口大小为2000B，主机A可以发送的最大字节数应受限于接收窗口的大小，即2000B。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>A项错误，因为如果拥塞窗口大小为6000B，接收窗口大小为2000B，主机A可以发送的最大字节数应受限于接收窗口的大小，即2000B。
 B项正确，拥塞窗口为3000B时，减去已发送并确认的1000B，剩余2000B，但由于接收窗口限制，只能再发送1000B。
 C项正确，拥塞窗口为4000B时，减去已发送并确认的1000B，剩余3000B，但由于接收窗口限制，只能再发送1000B。
 D项错误，拥塞窗口为5000B时，减去已发送并确认的1000B，剩余4000B，但由于接收窗口限制，只能再发送2000B。
-```
-
-问题4：关于数据库事务的错误描述
-
-```
-选项：
+</code></pre><p>问题4：关于数据库事务的错误描述</p>
+<pre tabindex="0"><code>选项：
 
 事务具有持续性，一旦提交永久的改变数据库的数据
 事务具有一致性，事务中的操作要么全做要么全不做
 事务具有原子性，事务是逻辑工作的基本单位
 事务具有隔离性，所以不会引发死锁
-```
-
-解答：
-
-```
-事务确实具有持续性，一旦提交，对数据库的更改就是永久的。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>事务确实具有持续性，一旦提交，对数据库的更改就是永久的。
 事务具有一致性，确保事务中的操作要么全部完成，要么全部不做。
 事务具有原子性，是数据库操作的不可分割的工作单元。
 事务具有隔离性，但这并不意味着它不会引发死锁。隔离性只是确保事务之间不会互相影响，但不当的事务管理仍然可能导致死锁。
 因此，错误的描述是最后一个选项。
-```
-
-问题5：关于进程和资源的正确说法
-
-选项：
-
-```
-若此时每个进程需要占用5个独立资源，P1，P2，P3分别已占用3，2，2个资源，则存在安全序列P1,P3，P2
+</code></pre><p>问题5：关于进程和资源的正确说法</p>
+<p>选项：</p>
+<pre tabindex="0"><code>若此时每个进程需要占用5个独立资源，P1，P2，P3分别已占用3，2，2个资源，则存在安全序列P1,P3，P2
 至少有10个资源时，这三个进程无论什么情况都不会造成死锁
 这三个进程不可能造成死锁
 在资源合理分配的情况下，当前三个进程使用9个独占资源不会造成死锁
-```
-
-问题7：Java 8及以上版本引入的新特性
-
-选项：
-
-```
-Optional类
+</code></pre><p>问题7：Java 8及以上版本引入的新特性</p>
+<p>选项：</p>
+<pre tabindex="0"><code>Optional类
 Stream API
 Lambda表达式
 泛型
-```
-
-解答：
-
-```
-Optional类：Java 8引入。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>Optional类：Java 8引入。
 Stream API：Java 8引入。
 Lambda表达式：Java 8引入。
 泛型：在Java 5中引入，不是Java 8的新特性。
-```
-
-问题8：处理大规模数据集时减少内存使用的算法
-
-选项：
-
-```
-布隆过滤器
+</code></pre><p>问题8：处理大规模数据集时减少内存使用的算法</p>
+<p>选项：</p>
+<pre tabindex="0"><code>布隆过滤器
 基数排序算法
 外部排序算法
 贪心算法
-```
-
-解答：
-
-```
-布隆过滤器：可以减少内存使用，因为它允许在有限的空间内测试元素的存在性。
+</code></pre><p>解答：</p>
+<pre tabindex="0"><code>布隆过滤器：可以减少内存使用，因为它允许在有限的空间内测试元素的存在性。
 基数排序算法：不是专门设计来减少内存使用的，而是一种非比较排序算法。
 外部排序算法：设计用于在内存不足以容纳整个数据集时进行排序。
 贪心算法：是一种算法策略，不特定于减少内存使用。
-```
-
-**编程题**
-
-第一题-dfs,树
-
-```
-系统中存在n个进程，形成一个有根树结构。整数数组pid和ppid分别表示进程的ID和它的父进程的ID，其中pid[i]是第i个进程的ID，ppid[i]是第i个进程的父进程ID。每一个进程只有一个父进程，但是可能会有一个或者多个子进程。只有一个进程的ppid[i]是0，即这个进程没有父进程。
+</code></pre><p><strong>编程题</strong></p>
+<p>第一题-dfs,树</p>
+<pre tabindex="0"><code>系统中存在n个进程，形成一个有根树结构。整数数组pid和ppid分别表示进程的ID和它的父进程的ID，其中pid[i]是第i个进程的ID，ppid[i]是第i个进程的父进程ID。每一个进程只有一个父进程，但是可能会有一个或者多个子进程。只有一个进程的ppid[i]是0，即这个进程没有父进程。
 
 当一个进程被杀掉的时候，它所有的子进程和后代进程都要被杀掉。给定一个整数要杀掉进程的ID，返回该进程和它所有后代进程ID的列表。例如，如果pid=[1,3,10,5]，ppid=[3,0,5,3]，kill=5，返回[5,10]。
 
@@ -1393,70 +1310,63 @@ Lambda表达式：Java 8引入。
 示例1：
 输入：[1,3,10,5]，[3,0,5,3]，5
 输出：[5,10]
-```
-
-```java
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
-
-public class Solution {
-
-    class ProcessNode {
-        int id;
-        List&lt;ProcessNode&gt; children;
-
-        public ProcessNode(int id) {
-            this.id = id;
-            this.children = new ArrayList&lt;&gt;();
-        }
-    }
-
-    private Map&lt;Integer, ProcessNode&gt; processMap;
-
-    public List&lt;Integer&gt; killProcess(int[] pid, int[] ppid, int kill) {
-        // 构建进程树
-        processMap = new HashMap&lt;&gt;();
-        for (int i = 0; i &lt; pid.length; i++) {
-            processMap.put(pid[i], new ProcessNode(pid[i]));
-        }
-        for (int i = 0; i &lt; pid.length; i++) {
-            if (ppid[i] != 0) {
-                processMap.get(ppid[i]).children.add(processMap.get(pid[i]));
-            }
-        }
-
-        // 存储结果的列表
-        List&lt;Integer&gt; result = new ArrayList&lt;&gt;();
-
-        // 执行深度优先搜索
-        dfsKill(processMap.get(kill), result);
-
-        // 排序结果
-        Collections.sort(result);
-        return result;
-    }
-
-    private void dfsKill(ProcessNode node, List&lt;Integer&gt; result) {
-        if (node != null) {
-            // 将当前进程ID添加到结果列表
-            result.add(node.id);
-            // 遍历所有子进程
-            for (ProcessNode child : node.children) {
-                dfsKill(child, result);
-            }
-        }
-    }
-    
-}
-```
-
-第二题-模拟
-
-```
-找步进数问题描述：
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">class</span> <span class="nc">ProcessNode</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ProcessNode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">children</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">ProcessNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">ProcessNode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">processMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">killProcess</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">ppid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kill</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 构建进程树</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">processMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">processMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">pid</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessNode</span><span class="p">(</span><span class="n">pid</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pid</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ppid</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">processMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">ppid</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">).</span><span class="na">children</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">processMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">pid</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 存储结果的列表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 执行深度优先搜索</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dfsKill</span><span class="p">(</span><span class="n">processMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">kill</span><span class="p">),</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 排序结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">dfsKill</span><span class="p">(</span><span class="n">ProcessNode</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 将当前进程ID添加到结果列表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">result</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 遍历所有子进程</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ProcessNode</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">children</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">dfsKill</span><span class="p">(</span><span class="n">child</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>第二题-模拟</p>
+<pre tabindex="0"><code>找步进数问题描述：
 
 步进数定义：如果一个整数上的每一位数字与其相邻位上的数字的绝对差都是1，则称这个数为步进数。
 示例：321是步进数，421不是。
@@ -1464,92 +1374,79 @@ public class Solution {
 
 输入 10,100
 输出 10,12,21,23,32,34,43,45,54,56,65,67,76,78,87,89,98
-```
-
-这个问题是一个查找特定范围内所有满足特定条件整数的问题。我们可以通过遍历给定范围内的每个整数，然后检查它是否是步进数来解决这个问题。
-
-```java
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public class Solution {
-
-    public List&lt;Integer&gt; findStepNumbersInRange(int low, int high) {
-        List&lt;Integer&gt; stepNumbers = new ArrayList&lt;&gt;();
-        for (int i = low; i &lt;= high; i++) {
-            if (isStepNumber(i)) {
-                stepNumbers.add(i);
-            }
-        }
-        Collections.sort(stepNumbers); // 排序结果
-        return stepNumbers;
-    }
-
-    public boolean isStepNumber(int number) {
-        int originalNumber = number;
-        while (number &gt; 0) {
-            int digit = number % 10;
-            number /= 10;
-            if (number &gt; 0 &amp;&amp; Math.abs(digit - (number % 10)) != 1) {
-                return false; // 如果相邻位的数字绝对差不是1，返回false
-            }
-        }
-        return originalNumber != 0; // 确保原始数字不为0
-    }
-}
-```
-
-第三题-贪心
-
-```
-给定的整数数组nums切割成若干个非空子数组，每个子数组的首尾元素的最大公约数必须大于1，目标是求出最少可以切成多少个子数组。
+</code></pre><p>这个问题是一个查找特定范围内所有满足特定条件整数的问题。我们可以通过遍历给定范围内的每个整数，然后检查它是否是步进数来解决这个问题。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collections</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findStepNumbersInRange</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">high</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stepNumbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">low</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">high</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isStepNumber</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">stepNumbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">stepNumbers</span><span class="p">);</span><span class="w"> </span><span class="c1">// 排序结果</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stepNumbers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isStepNumber</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">originalNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">number</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">10</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">digit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">10</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果相邻位的数字绝对差不是1，返回false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">originalNumber</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 确保原始数字不为0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>第三题-贪心</p>
+<pre tabindex="0"><code>给定的整数数组nums切割成若干个非空子数组，每个子数组的首尾元素的最大公约数必须大于1，目标是求出最少可以切成多少个子数组。
 
 输入: [2,3,3,2,3,3]
 输出: 2
-```
-
-针对这个问题，我们需要一个算法来确定最少可以切成多少个子数组，使得每个子数组的首尾元素的最大公约数（GCD）大于1。这个问题可以通过贪心算法来解决，即每次遇到一个新的数，都需要判断它与当前子数组的最后一个数的GCD是否大于1，如果是，则这个数可以加入当前子数组；如果不是，则需要开始一个新的子数组。
-
-```java
-import java.util.*;
-
-
-public class Solution {
-    /**
-     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
-     *
-     *
-     * @param nums int整型一维数组
-     * @return int整型
-     */
-    public int splitArray (int[] nums) {
-        // write code here
-        int count = 1;
-        int lastGcd = nums[0];
-        for (int i = nums.length-1; i &gt; 0; i--) {
-            if (gcd(lastGcd, nums[i]) == 1) {
-                count++;
-                lastGcd = nums[i-1];
-            } else {
-                lastGcd = gcd(lastGcd, nums[i]);
-                break;
-            }
-        }
-        return count;
-    }
-
-    private int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-}
-```
-</code></pre>
+</code></pre><p>针对这个问题，我们需要一个算法来确定最少可以切成多少个子数组，使得每个子数组的首尾元素的最大公约数（GCD）大于1。这个问题可以通过贪心算法来解决，即每次遇到一个新的数，都需要判断它与当前子数组的最后一个数的GCD是否大于1，如果是，则这个数可以加入当前子数组；如果不是，则需要开始一个新的子数组。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param nums int整型一维数组
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return int整型
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">splitArray</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// write code here</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">lastGcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">0</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gcd</span><span class="p">(</span><span class="n">lastGcd</span><span class="p">,</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">lastGcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">-</span><span class="n">1</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">lastGcd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">lastGcd</span><span class="p">,</span><span class="w"> </span><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
                 
         
