@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
   data-auto-appearance="true"><head>
-	<meta name="generator" content="Hugo 0.133.0">
   <meta charset="utf-8" />
   
   <meta http-equiv="content-language" content="en" />
@@ -9,18 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>WFUing&#39;s Blog</title>
-  <meta name="title" content="WFUing&#39;s Blog" />
+  <title>Explain执行计划中各个字段的含义 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="Explain执行计划中各个字段的含义 &middot; WFUing&#39;s Blog" />
+  
+  <meta name="description" content="Explain执行计划中各个字段的含义相关" />
+  <meta name="keywords" content=", " />
   
   
-  
-  
-  
-  <link rel="canonical" href="https://WFUing.github.io/" />
-  
-  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="WFUing's Blog" />
-  
-  <link rel="alternate" type="application/json" href="/index.json" title="WFUing's Blog" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/architecture/backend/database/mysql/explain/" />
   
   
   
@@ -72,34 +67,50 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/explain/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="WFUing">
-  <meta property="og:description" content="WFUing A graduate who loves coding.">
+  <meta property="og:title" content="Explain执行计划中各个字段的含义">
+  <meta property="og:description" content="Explain执行计划中各个字段的含义相关">
   <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-19T13:53:28+08:00">
+    <meta property="article:modified_time" content="2024-08-19T13:53:28+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/explain/featured.png">
 
   
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="WFUing">
-  <meta name="twitter:description" content="WFUing A graduate who loves coding.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/architecture/backend/database/mysql/explain/featured.png">
+  <meta name="twitter:title" content="Explain执行计划中各个字段的含义">
+  <meta name="twitter:description" content="Explain执行计划中各个字段的含义相关">
 
   
   <script type="application/ld+json">
-  {
+  [{
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https:\/\/WFUing.github.io\/",
-    "name": "WFUing\u0027s Blog",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "Explain执行计划中各个字段的含义",
+    "headline": "Explain执行计划中各个字段的含义",
     
+    "abstract": "Explain执行计划中各个字段的含义相关",
     "inLanguage": "en",
-    "url": "https:\/\/WFUing.github.io\/",
-    
-    "publisher" : {
+    "url" : "https:\/\/WFUing.github.io\/posts\/architecture\/backend\/database\/mysql\/explain\/",
+    "author" : {
       "@type": "Person",
       "name": "WFUing"
-    }
-  }
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-08-19T13:53:28\u002b08:00",
+    "datePublished": "2024-08-19T13:53:28\u002b08:00",
+    
+    "dateModified": "2024-08-19T13:53:28\u002b08:00",
+    
+    "keywords": [""],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "136"
+  }]
   </script>
 
 
@@ -136,9 +147,6 @@
 
 
 
-
-
-<script defer src="/lib/typeit/typeit.umd.js" integrity=""></script>
 
 
 
@@ -887,744 +895,518 @@ const loadScript = (url, onloadFunction) => {
   <div class="relative flex flex-col grow">
     <main id="main-content" class="grow">
       
-  
-  
-    
-<article class="max-w-full prose dark:prose-invert">
-    <div class="relative">
-        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
-        <div class="mx-auto max-w-7xl p-0">
-            <div class="relative sm:overflow-hidden">
-                <div class="fixed inset-x-0 top-0" style="z-index:-10">
-                    
-                    
-                    
-                    
-                    <img class="w-full h-[1000px] object-cover m-0 nozoom" src="/img/background.jpg" role="presentation">
-                    <div
-                        class="absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
-                    </div>
-                    <div
-                        class="opacity-60 absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <section><center>
-<h1 id="typeit-6fb22d3943ec7794c447a8e7c1bb77a4"></h1>
 
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/architecture/backend/database/mysql/explain/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new TypeIt("#typeit-6fb22d3943ec7794c447a8e7c1bb77a4", {
-        strings: ["","Welcome to WFUing's blog!!!","I'm waiting for you!!!",""],
-        speed:  100 ,
-        lifeLike:  false ,
-        startDelay:  0 ,
-        breakLines:  false ,
-        waitUntilVisible:  true ,
-        loop:  true 
-      }).go();
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
     });
 </script>
-</center>
-<section class="grid-3"  >
 
+  
+  
 
-<div class="relative flex flex-col items-center justify-center text-center">
-  
-  
-  
-  
-  <img class="mb-2 rounded-full h-36 w-36" width="144" height="144"
-      alt="WFUing" src="/img/author.png" />
-  
-  
-  <span class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
-    WFUing
-  </span>
-  
-  <h4 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
-    A graduate who loves coding.
-  </h4>
-  
-  <div class="mt-3 mb-10 text-2xl">
+  <header id="single_header" class="mt-5 max-w-prose">
     
-    <div class="flex flex-wrap">
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      Explain执行计划中各个字段的含义
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-08-19 13:53:28 &#43;0800 &#43;0800">19 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>136 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
       
       
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="mailto:522023320072@smail.nju.edu.cn" target="_blank"
-         aria-label="Email" rel="me noopener noreferrer">
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
 
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://github.com/WFUing" target="_blank"
-         aria-label="Github" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
 
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://wfuing.github.io/img/qq.jpg" target="_blank"
-         aria-label="Qq" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://wfuing.github.io/img/wx.jpg" target="_blank"
-         aria-label="Wechat" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
   </span>
 
-</a>
+</span></a
+        >
       
-      
-    </div>
     
   </div>
+
 </div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-explain有什么用">1. Explain有什么用</a></li>
+    <li><a href="#2-explain有哪些信息">2. Explain有哪些信息</a></li>
+    <li><a href="#3-explain执行计划详解">3. Explain执行计划详解</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-explain有什么用">1. Explain有什么用</a></li>
+    <li><a href="#2-explain有哪些信息">2. Explain有哪些信息</a></li>
+    <li><a href="#3-explain执行计划详解">3. Explain执行计划详解</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
 
 
-<!-- two -->
-<div><h2 class="relative group">Interests 
-    <div id="interests" class="anchor"></div>
+        <div class="article-content max-w-prose mb-20">
+          <h2 class="relative group">1. Explain有什么用 
+    <div id="1-explain有什么用" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#interests" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#1-explain%e6%9c%89%e4%bb%80%e4%b9%88%e7%94%a8" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
-<ul>
-<li>Distributed computing platform（for cloud computing, big data and deep learning）</li>
-<li>Domain-Specific Language</li>
-<li>Proficient in spring, springboot, redis, Message Queue, mysql, etc</li>
-</ul>
-</div>
-
-
-<!-- three -->
-<div><h2 class="relative group">Education 
-    <div id="education" class="anchor"></div>
+<p>当Explain 与 SQL语句一起使用时，MySQL 会显示来自优化器关于SQL执行的信息。也就是说，MySQL解释了它将如何处理该语句，包括如何连接表以及什么顺序连接表等。</p>
+<h2 class="relative group">2. Explain有哪些信息 
+    <div id="2-explain有哪些信息" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#education" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#2-explain%e6%9c%89%e5%93%aa%e4%ba%9b%e4%bf%a1%e6%81%af" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<p>Explain 执行计划包含字段信息如下：分别是 id、select_type、table、partitions、type、possible_keys、key、key_len、ref、rows、filtered、Extra 12个字段。</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/posts/architecture/backend/database/mysql/explain/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<h2 class="relative group">3. Explain执行计划详解 
+    <div id="3-explain执行计划详解" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-explain%e6%89%a7%e8%a1%8c%e8%ae%a1%e5%88%92%e8%af%a6%e8%a7%a3" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<ol>
+<li>id：表示查询中执行select子句或者操作表的顺序，id的值越大，代表优先级越高，越先执行。</li>
+<li>select_type：表示 select 查询的类型，主要是用于区分各种复杂的查询，例如：普通查询、联合查询、子查询等。</li>
+</ol>
+<pre tabindex="0"><code>SIMPLE：表示最简单的 select 查询语句，也就是在查询中不包含子查询或者 union交并差集等操作
+PRIMARY：当查询语句中包含任何复杂的子部分，最外层查询则被标记为PRIMARY。
+SUBQUERY：当 select 或 where 列表中包含了子查询，该子查询被标记为：SUBQUERY 。
+DERIVED：表示包含在from子句中的子查询的select，在我们的 from 列表中包含的子查询会被标记为derived 。
+UNION：如果union后边又出现的select 语句，则会被标记为union；若 union 包含在 from 子句的子查询中，外层 select 将被标记为 derived。
+UNION RESULT：代表从union的临时表中读取数据，而table列的&lt;union1,4&gt;表示用第一个和第四个select的结果进行union操作。
+table:查询的表名，并不一定是真实存在的表，有别名显示别名，也可能为临时表，例如上边的DERIVED、 &lt;union1,4&gt;
+</code></pre><ol start="3">
+<li>table 查询的表名，并不一定是真实存在的表，有别名显示别名，也可能为临时表，例如上边的DERIVED、 &lt;union1,4&gt;等</li>
+<li>partitions 询时匹配到的分区信息，对于非分区表值为NULL，当查询的是分区表时，partitions显示分区表命中的分区情况。</li>
+<li>type：查询使用了何种类型，它在 SQL优化中是一个非常重要的指标，以下性能从好到坏依次是：</li>
+</ol>
+<pre tabindex="0"><code>system  &gt; const &gt; eq_ref &gt; ref  &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL
+system： 当表仅有一行记录时(系统表)，数据量很少，往往不需要进行磁盘IO，速度非常快。
+const：表示查询时命中 primary key 主键或者 unique 唯一索引，或者被连接的部分是一个常量(const)值。这类扫描效率极高，返回数据量少，速度非常快。
+eq_ref：查询时命中主键primary key 或者 unique key索引， type 就是 eq_ref。
+ref：区别于eq_ref ，ref表示使用非唯一性索引，会找到很多个符合条件的行。
+ref_or_null：这种连接类型类似于 ref，区别在于 MySQL会额外搜索包含NULL值的行。
+index_merge：使用了索引合并优化方法，查询使用了两个以上的索引
+unique_subquery：替换下面的 IN子查询，子查询返回不重复的集合
+index_subquery：区别于unique_subquery，用于非唯一索引，可以返回重复值。
+range：使用索引选择行，仅检索给定范围内的行。简单点说就是针对一个有索引的字段，给定范围检索数据。在where语句中使用 bettween...and、&lt;、&gt;、&lt;=、in 等条件查询 type 都是 range。
+index：Index 与ALL 其实都是读全表，区别在于index是遍历索引树读取，而ALL是从硬盘中读取。
+ALL：将遍历全表以找到匹配的行，性能最差。
+</code></pre><ol start="6">
+<li>possible_keys：表示在MySQL中通过哪些索引，能让我们在表中找到想要的记录，一旦查询涉及到的某个字段上存在索引，则索引将被列出，但这个索引并不定一会是最终查询数据时所被用到的索引</li>
+<li>key：区别于possible_keys，key是查询中实际使用到的索引，若没有使用索引，显示为NULL。 注意：当 type 为 index_merge 时，可能会显示多个索引。</li>
+<li>key_len：表示查询用到的索引长度（字节数），原则上长度越短越好 。
 <ul>
-<li>Bachelor: Department of Computer Science and Technology, Zhejiang Sci-Tech University</li>
-<li>Master: Department of Software Engineering, Nanjing University</li>
+<li>单列索引，那么需要将整个索引长度算进去；</li>
+<li>多列索引，不是所有列都能用到，需要计算查询中实际用到的列。</li>
 </ul>
-</div>
+</li>
+<li>ref：常见的有：const，func，null，字段名。
+<ul>
+<li>当使用常量等值查询，显示const，</li>
+<li>当关联查询时，会显示相应关联表的关联字段</li>
+<li>如果查询条件使用了表达式、函数，或者条件列发生内部隐式转换，可能显示为func</li>
+<li>其他情况null</li>
+</ul>
+</li>
+<li>rows：以表的统计信息和索引使用情况，估算要找到我们所需的记录，需要读取的行数。</li>
+<li>filtered 这个是一个百分比的值，表里符合条件的记录数的百分比。简单点说，这个字段表示存储引擎返回的数据在经过过滤后，剩下满足条件的记录数量的比例。</li>
+<li>Extra ：不适合在其他列中显示的信息，Explain 中的很多额外的信息会在 Extra 字段显示。</li>
+</ol>
 
+        </div>
+                
+        
 
-<!-- three -->
-<!-- <div><p>&ndash;&gt;</p>
-<!-- <img src='img/author2.png' alt='author'/> -->
-<!--</div>
- -->
+        
 
-</section>
-
-
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/architecture\/backend\/database\/mysql\/explain\/index.md"
+        var oid_likes = "likes_posts\/architecture\/backend\/database\/mysql\/explain\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.f94e5beb747249fb2315a14fc6417e483411d48b59dc1376bbafa8c37fce65d397d5401be15c7461670ec7bb90ac2bf148d7d48eaf02f317cd9dc04d4851fd31.js" integrity="sha512-&#43;U5b63RySfsjFaFPxkF&#43;SDQR1ItZ3BN2u6&#43;ow3/OZdOX1UAb4Vx0YWcOx7uQrCvxSNfUjq8C8xfNncBNSFH9MQ=="></script>
   
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
 
-
-
-<div
+    
   
-    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
-  >
-
-  <span
     
-      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
-    >
-
     
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-
-  </span>
-
-
-  </span>
-
-  <span
     
-      class="dark:text-neutral-300"
-    ><strong>Warning!</strong> Don&rsquo;t forget to follow me on <a href="https://github.com/WFUing"   target="_blank">
-    Github</a>.</span>
-</div>
-
-</section>
+      
+      
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+        </span>
+        <span>
+          
+            <a class="flex text-right group ml-3" href="/posts/architecture/backend/database/mysql/temporary-table/">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >mysql什么时候产生临时表_什么时候会用到临时表？</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-08-13 13:53:28 &#43;0800 &#43;0800">13 August 2024</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-3 text-neutral-700 group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-3 text-neutral-700 group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
     </div>
+  
+
+
+    
+    
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
 </article>
-<section>
-    
-
-
-
-
-
-<h2 class="mt-8 text-2xl font-extrabold mb-10">Recent</h2>
-
-
-  
-
-
-<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-  
-  
-
-  <a href="/posts/language/code-generation/telosys-code-generation-tool/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/img/loading.gif);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/language/code-generation/telosys-code-generation-tool/">Telosys: a Code Generation Tool by Laurent Guerin</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 19:29:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>6 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Resources # url: https://www.
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/devoops/overview/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/devoops/overview/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/devoops/overview/">DevOps 简介</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 17:16:02 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>182 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          DevOps 集文化理念、实践和工具于一身，它强调团队授权、跨团队沟通和协作以及技术自动化，其最终目标是优化质量和交付
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/leetcode/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/leetcode/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/reviews/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7/leetcode/">Leetcode</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 17:05:17 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>258 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Leetcode刷题记录
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/language/code-generation/code-generation-for-langium-based-dsls/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/img/loading.gif);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/language/code-generation/code-generation-for-langium-based-dsls/">Code generation for Langium-based DSLs</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 14:43:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>1152 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          DSL 和 DSL 工具的一个重要方面是代码生成。DSL 本身在形式化、指定和交流内容方面具有优势，因为它们具有特定领域的性质。但是，如果能从指定的内容中推导出实现代码，就能大大提高工作效率。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/language/code-generation/template-engine/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/img/loading.gif);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/language/code-generation/template-engine/">Template Engine</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 14:43:44 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>207 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          模板引擎 # 模板引擎（也称为模板处理器或模板解析器）是设计用于将模板与数据模型结合起来以生成结果文档的软件，编写模板所用的语言称为模板语言或模板语言。模板引擎通常作为 Web 模板系统或应用程序框架的一部分，也可以用作预处理器或过滤器。流行的模板引擎包括 Ejs、Jade、Pug、Mustache、HandlebarsJS、Jinja2 和 Blade。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/devoops/git/how-to-build-github-blog-with-hugo/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/devoops/git/how-to-build-github-blog-with-hugo/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/devoops/git/how-to-build-github-blog-with-hugo/">How to Build Github Blog With Hugo</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-12 14:39:05 &#43;0800 &#43;0800">12 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>34 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          今天花了一点时间搭建了自己的GitHub的博客，当然咯，试验阶段总会发生很多乱七八糟的问题，记录下处理问题过程中几个比较 nice 的 blog
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-</section>
-
-
-
-
-
-
-<div class="mt-10 flex justify-center">
-  <a href="/posts">
-    <button
-      class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold hover:text-white py-2 px-4 border border-primary-500 hover:border-transparent rounded">
-      Show More
-    </button>
-  </a>
-</div>
-
-
-</section>
-
-
-  
 
       <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
   <a href="#the-top"
