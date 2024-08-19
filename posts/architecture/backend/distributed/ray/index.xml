@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ray on WFUing&#39;s Blog</title>
+    <link>https://WFUing.github.io/posts/architecture/backend/distributed/ray/</link>
+    <description>Recent content in ray on WFUing&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 WFUing</copyright>
+    <lastBuildDate>Mon, 19 Aug 2024 15:46:05 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/backend/distributed/ray/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kafka 核心技术与实战</title>
+      <link>https://WFUing.github.io/posts/architecture/backend/distributed/ray/ray-base/</link>
+      <pubDate>Mon, 19 Aug 2024 15:46:05 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/backend/distributed/ray/ray-base/</guid>
+      <description>Ray 是一个为了给分布式提供通用的 API 发明出来的分布式计算框架，希望通过简单但通用的抽象编程方式，让系统自动完成所有的工作。Ray 的设计者基于这个理念让 Ray 可以跟 Python 紧密相连，能够通过很少的代码就能处理业务，而其它的并行、分布式内存管理等问题都不用担心，Ray 会根据这些资源的情况自动调度和缩放。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/distributed/ray/ray-base/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

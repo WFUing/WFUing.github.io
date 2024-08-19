@@ -3,8 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/graduation-project/</loc>
+    <lastmod>2024-08-19T19:22:18+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-08-19T13:53:28+08:00</lastmod>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/distributed/</loc>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/distributed/ray/ray-base/</loc>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/distributed/ray/</loc>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/architecture/backend/</loc>
+    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -16,18 +52,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/database/mysql/</loc>
-    <lastmod>2024-08-19T13:53:28+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
-    <lastmod>2024-08-19T13:53:28+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/</loc>
     <lastmod>2024-08-19T13:53:28+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -363,12 +387,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://WFUing.github.io/posts/architecture/backend/distributed/</loc>
-    <lastmod>2024-05-29T09:46:05+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/distributed/kafka/</loc>
     <lastmod>2024-05-29T09:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -677,12 +695,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/ai/ai-ci-cd/%E5%88%A9%E7%94%A8%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%BF%83%E8%BF%9B%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83/</loc>
     <lastmod>2024-04-14T20:22:18+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/graduation-project/</loc>
-    <lastmod>2024-04-14T19:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
