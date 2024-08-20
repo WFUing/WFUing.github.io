@@ -501,6 +501,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://WFUing.github.io/25/%E7%BE%8E%E5%9B%A2/%E5%AE%9E%E4%B9%A0/%E6%8F%90%E6%8A%A5%E7%B3%BB%E7%BB%9F/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2024-05-15T21:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/25/%E7%BE%8E%E5%9B%A2/</loc>
     <lastmod>2024-05-15T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -515,12 +521,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/distributed/rpc/rpc-%E5%AE%9E%E6%88%98%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/%E5%9F%BA%E7%A1%80%E7%AF%87/</loc>
     <lastmod>2024-05-15T19:07:16+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/%E7%BE%8E%E5%9B%A2/%E5%AE%9E%E4%B9%A0/%E6%8F%90%E6%8A%A5%E7%B3%BB%E7%BB%9F/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2024-05-14T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
