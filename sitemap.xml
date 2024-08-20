@@ -3,6 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/skills/idea-mac/</loc>
+    <lastmod>2024-08-20T11:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-08-20T11:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/skills/</loc>
+    <lastmod>2024-08-20T11:46:05+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/graduation-project/</loc>
     <lastmod>2024-08-19T19:22:18+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -28,12 +46,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/distributed/ray/ray-base/</loc>
-    <lastmod>2024-08-19T15:46:05+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-08-19T15:46:05+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -256,12 +268,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/skills/env/</loc>
-    <lastmod>2024-07-06T12:47:47+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/skills/</loc>
     <lastmod>2024-07-06T12:47:47+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
