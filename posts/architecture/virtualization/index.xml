@@ -7,15 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Sat, 01 Jun 2024 18:11:01 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/virtualization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Aug 2024 20:11:01 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/virtualization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>actor-platform 智能部署</title>
       <link>https://WFUing.github.io/posts/architecture/virtualization/ap-vm/</link>
-      <pubDate>Wed, 08 May 2024 08:11:01 +0800</pubDate>
+      <pubDate>Sun, 25 Aug 2024 20:11:01 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/virtualization/ap-vm/</guid>
       <description>actor-platform 智能部署</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/virtualization/ap-vm/featured.png" />
+    </item>
+    
+    <item>
+      <title>QEMU</title>
+      <link>https://WFUing.github.io/posts/architecture/virtualization/qemu/</link>
+      <pubDate>Sun, 25 Aug 2024 14:11:01 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/virtualization/qemu/</guid>
+      <description>QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/virtualization/qemu/featured.png" />
     </item>
     
     <item>
@@ -46,16 +56,6 @@
       <guid>https://WFUing.github.io/posts/architecture/virtualization/overview/</guid>
       <description>虚拟化是一个描述运行软件的广义计算机术语，通常体现为在单一系统上运行多个操作系统，这些操作系统同时运行，而每个操作系统又是相互独立的。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/virtualization/overview/featured.png" />
-    </item>
-    
-    <item>
-      <title>QEMU</title>
-      <link>https://WFUing.github.io/posts/architecture/virtualization/qemu/</link>
-      <pubDate>Fri, 26 Apr 2024 14:11:01 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/architecture/virtualization/qemu/</guid>
-      <description>QEMU（快速模拟器）是一个免费的开源机器模拟器和虚拟器，可以在单个主机系统上运行各种客户操作系统和体系结构。与传统的虚拟化解决方案不同，QEMU 不仅仅是一个虚拟机管理程序；它是一个模拟器，可以在各种主机平台上运行客户操作系统。它是用于软件开发、测试和部署的强大工具。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/virtualization/qemu/featured.png" />
     </item>
     
   </channel>

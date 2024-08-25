@@ -7,25 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© 2024 WFUing</copyright>
-    <lastBuildDate>Sun, 24 Mar 2024 08:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/tango/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tango Controls Architecture</title>
-      <link>https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/</link>
-      <pubDate>Sun, 24 Mar 2024 08:16:02 +0800</pubDate>
-      
-      <guid>https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/</guid>
-      <description>Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/featured.png" />
-    </item>
-    
+    <lastBuildDate>Sat, 24 Aug 2024 10:16:02 +0800</lastBuildDate><atom:link href="https://WFUing.github.io/posts/architecture/iot/tango/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TANGO idl definition</title>
       <link>https://WFUing.github.io/posts/architecture/iot/tango/tango-idl/</link>
-      <pubDate>Sun, 10 Mar 2024 10:16:02 +0800</pubDate>
+      <pubDate>Sat, 24 Aug 2024 10:16:02 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/iot/tango/tango-idl/</guid>
       <description>TANGO 的主要目标是将设备视为具有方法和数据的网络对象，使它们成为真正的 C++/Java 对象，可以像本地一样进行实例化和远程访问。</description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/tango/tango-idl/featured.png" />
+    </item>
+    
+    <item>
+      <title>Tango Controls Architecture</title>
+      <link>https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/</link>
+      <pubDate>Sat, 24 Aug 2024 08:16:02 +0800</pubDate>
+      
+      <guid>https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/</guid>
+      <description>Tango Controls 是一个面向对象的分布式控制系统框架，它定义了通信协议、应用程序程序员接口 (API)，并提供了一组工具和库来构建控制系统软件。它是围绕设备和设备类别的概念构建的。</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/featured.png" />
     </item>
     
   </channel>
