@@ -3,6 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/25/</loc>
+    <lastmod>2024-08-26T11:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/25/%E5%BF%AB%E6%89%8B/</loc>
+    <lastmod>2024-08-26T11:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/25/%E5%BF%AB%E6%89%8B/%E4%BA%8C%E9%9D%A28.26/</loc>
+    <lastmod>2024-08-26T11:00:00+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/posts/architecture/virtualization/ap-vm/</loc>
     <lastmod>2024-08-25T20:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -53,12 +71,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/iot/tango/tango-arch/</loc>
     <lastmod>2024-08-24T08:16:02+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/</loc>
-    <lastmod>2024-08-23T21:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -161,12 +173,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/database/</loc>
     <lastmod>2024-08-19T13:53:28+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/25/%E5%BF%AB%E6%89%8B/</loc>
-    <lastmod>2024-08-19T11:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
