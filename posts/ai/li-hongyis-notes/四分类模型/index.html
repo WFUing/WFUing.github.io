@@ -70,7 +70,6 @@
   <meta property="og:url" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
   <meta property="og:title" content="四、分类模型">
-  <meta property="og:description" content="4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -82,7 +81,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://WFUing.github.io/posts/ai/li-hongyis-notes/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B/featured.png">
   <meta name="twitter:title" content="四、分类模型">
-  <meta name="twitter:description" content="4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行">
 
   
   <script type="application/ld+json">
@@ -93,7 +91,7 @@
     "name": "四、分类模型",
     "headline": "四、分类模型",
     
-    "abstract": "4.1 分类简介及其与回归的区别 # 分类模型应用案例（Classification Cases） # 信用评分（Credit Scoring） 输入：收入、储蓄、职业、年龄、信用历史等等 输出：是否贷款 医疗诊断（Medical Diagnosis） 输入：现在症状、年龄、性别、病史 输出：哪种疾病 手写文字识别（Handwritten Character Recognition） 输入：文字图片 输出：是哪一个汉字 人脸识别（Face Recognition） 输入：面部图片 输出：是哪个人 把分类当成回归去做 # 不行",
+    
     "inLanguage": "en",
     "url" : "https:\/\/WFUing.github.io\/posts\/ai\/li-hongyis-notes\/%E5%9B%9B%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B\/",
     "author" : {
@@ -1571,31 +1569,31 @@ const loadScript = (url, onloadFunction) => {
 </h4>
 <p>假设训练集如下图所示，有2个类别 $C_1$ 和 $C_2$ ，下图表格中的每列为一个样本。</p>
 <table>
-<thead>
-<tr>
-<th>$x_1$</th>
-<th>$x_2$</th>
-<th>$x_3$</th>
-<th>&hellip;</th>
-<th>$x_N$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$C_1$</td>
-<td>$C_1$</td>
-<td>$C_2$</td>
-<td>&hellip;</td>
-<td>$C_1$</td>
-</tr>
-<tr>
-<td>$\hat{y_1} =1$</td>
-<td>$\hat{y_2} =1$</td>
-<td>$\hat{y_3} = 0$</td>
-<td>&hellip;</td>
-<td>$\hat{y_n} =1$</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">$x_1$</th>
+          <th style="text-align: left">$x_2$</th>
+          <th style="text-align: left">$x_3$</th>
+          <th style="text-align: left">&hellip;</th>
+          <th style="text-align: left">$x_N$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">$C_1$</td>
+          <td style="text-align: left">$C_1$</td>
+          <td style="text-align: left">$C_2$</td>
+          <td style="text-align: left">&hellip;</td>
+          <td style="text-align: left">$C_1$</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">$\hat{y_1} =1$</td>
+          <td style="text-align: left">$\hat{y_2} =1$</td>
+          <td style="text-align: left">$\hat{y_3} = 0$</td>
+          <td style="text-align: left">&hellip;</td>
+          <td style="text-align: left">$\hat{y_n} =1$</td>
+      </tr>
+  </tbody>
 </table>
 <p>例如，第一列表示样本 $x_1$ 的类别为 $C_1$ ，所以它标签是 $\hat{y_1}$ 是1。</p>
 <h4 class="relative group">模型定义 

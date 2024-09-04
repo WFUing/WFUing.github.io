@@ -1701,38 +1701,38 @@ const loadScript = (url, onloadFunction) => {
 <li>epoll 机制：在 Linux 2.6 版本提出。event poll。epoll中不再扫描所有的 FD，只将用户关心的 FD 的事件存放到内核的一个事件表当中。这样，就可以减少用户空间和内核空间之间需要拷贝的数据。</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">操作方式</th>
-<th style="text-align:center">底层实现</th>
-<th style="text-align:center">最大连接数</th>
-<th style="text-align:center">IO 效率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">select</td>
-<td style="text-align:center">遍历</td>
-<td style="text-align:center">受限于内核</td>
-<td style="text-align:center">一般</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">poll</td>
-<td style="text-align:center">遍历</td>
-<td style="text-align:center">链表</td>
-<td style="text-align:center">无上限 ｜  一般</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center">epoll</td>
-<td style="text-align:center">事件回调</td>
-<td style="text-align:center">红黑树</td>
-<td style="text-align:center">无上限</td>
-<td style="text-align:center">高</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">操作方式</th>
+          <th style="text-align: center">底层实现</th>
+          <th style="text-align: center">最大连接数</th>
+          <th style="text-align: center">IO 效率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">select</td>
+          <td style="text-align: center">遍历</td>
+          <td style="text-align: center">受限于内核</td>
+          <td style="text-align: center">一般</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">poll</td>
+          <td style="text-align: center">遍历</td>
+          <td style="text-align: center">链表</td>
+          <td style="text-align: center">无上限 ｜  一般</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">epoll</td>
+          <td style="text-align: center">事件回调</td>
+          <td style="text-align: center">红黑树</td>
+          <td style="text-align: center">无上限</td>
+          <td style="text-align: center">高</td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>java 的 NIO 当中使用的是哪种机制？</strong></p>
 <p>可以查看 DefaultSelectorProvider 源码。在 windows 下，WindowsSelectorProvider。而 Linux 下，根据 Linux 的内核版本2.6以上，就是 EPollSelectorProvider，否则就是默认的 PollSelectorProvider。</p>

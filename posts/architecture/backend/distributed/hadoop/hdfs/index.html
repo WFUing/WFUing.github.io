@@ -1743,145 +1743,145 @@ const loadScript = (url, onloadFunction) => {
     
 </h3>
 <table>
-<thead>
-<tr>
-<th>选项名称</th>
-<th>使用格式</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-ls</td>
-<td>-ls &lt;路径&gt;</td>
-<td>查看指定路径的当前目录结构</td>
-</tr>
-<tr>
-<td>-lsr</td>
-<td>-lsr &lt;路径&gt;</td>
-<td>递归查看指定路径的目录结构</td>
-</tr>
-<tr>
-<td>-du</td>
-<td>-du &lt;路径&gt;，统计文件夹需要添加-s</td>
-<td>统计目录下个文件大小</td>
-</tr>
-<tr>
-<td>-dus</td>
-<td>-dus &lt;路径&gt;</td>
-<td>汇总统计目录下文件(夹)大小</td>
-</tr>
-<tr>
-<td>-count</td>
-<td>-count [-q] &lt;路径&gt;</td>
-<td>统计文件(夹)数量</td>
-</tr>
-<tr>
-<td>-mv</td>
-<td>-mv &lt;源路径&gt; &lt;目的路径&gt;</td>
-<td>移动</td>
-</tr>
-<tr>
-<td>-cp</td>
-<td>-cp &lt;源路径&gt; &lt;目的路径&gt;</td>
-<td>复制</td>
-</tr>
-<tr>
-<td>-rm</td>
-<td>-rm [-skipTrash] &lt;路径&gt;</td>
-<td>删除文件/空白文件夹</td>
-</tr>
-<tr>
-<td>-rmr</td>
-<td>-rmr [-skipTrash] &lt;路径&gt;</td>
-<td>递归删除</td>
-</tr>
-<tr>
-<td>-put</td>
-<td>-put &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
-<td>上传文件</td>
-</tr>
-<tr>
-<td>-copyFromLocal</td>
-<td>-copyFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
-<td>从本地复制</td>
-</tr>
-<tr>
-<td>-moveFromLocal</td>
-<td>-moveFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
-<td>从本地移动</td>
-</tr>
-<tr>
-<td>-getmerge</td>
-<td>-getmerge &lt;源路径&gt; &lt;linux路径&gt;</td>
-<td>合并到本地</td>
-</tr>
-<tr>
-<td>-cat</td>
-<td>-cat &lt;hdfs路径&gt;</td>
-<td>查看文件内容</td>
-</tr>
-<tr>
-<td>-text</td>
-<td>-text &lt;hdfs路径&gt;</td>
-<td>查看文件内容</td>
-</tr>
-<tr>
-<td>-copyToLocal</td>
-<td>-copyToLocal [-ignoreCrc] [-crc] [hdfs源路径] [linux目的路径]</td>
-<td>从本地复制</td>
-</tr>
-<tr>
-<td>-moveToLocal</td>
-<td>-moveToLocal [-crc] &lt;hdfs源路径&gt; &lt;linux目的路径&gt;</td>
-<td>从本地移动</td>
-</tr>
-<tr>
-<td>-mkdir</td>
-<td>-mkdir &lt;hdfs路径&gt;</td>
-<td>创建空白文件夹</td>
-</tr>
-<tr>
-<td>-setrep</td>
-<td>-setrep [-R] [-w] &lt;副本数&gt; &lt;路径&gt;</td>
-<td>修改副本数量</td>
-</tr>
-<tr>
-<td>-touchz</td>
-<td>-touchz &lt;文件路径&gt;</td>
-<td>创建空白文件</td>
-</tr>
-<tr>
-<td>-stat</td>
-<td>-stat [format] &lt;路径&gt;</td>
-<td>显示文件统计信息</td>
-</tr>
-<tr>
-<td>-tail</td>
-<td>-tail [-f] &lt;文件&gt;</td>
-<td>查看文件尾部信息</td>
-</tr>
-<tr>
-<td>-chmod</td>
-<td>-chmod [-R] &lt;权限模式&gt; [路径]</td>
-<td>修改权限</td>
-</tr>
-<tr>
-<td>-chown</td>
-<td>-chown [-R] [属主][:[属组]] 路径</td>
-<td>修改属主</td>
-</tr>
-<tr>
-<td>-chgrp</td>
-<td>-chgrp [-R] 属组名称 路径</td>
-<td>修改属组</td>
-</tr>
-<tr>
-<td>-help</td>
-<td>-help [命令选项]</td>
-<td>帮助</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">选项名称</th>
+          <th style="text-align: left">使用格式</th>
+          <th style="text-align: left">含义</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">-ls</td>
+          <td style="text-align: left">-ls &lt;路径&gt;</td>
+          <td style="text-align: left">查看指定路径的当前目录结构</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-lsr</td>
+          <td style="text-align: left">-lsr &lt;路径&gt;</td>
+          <td style="text-align: left">递归查看指定路径的目录结构</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-du</td>
+          <td style="text-align: left">-du &lt;路径&gt;，统计文件夹需要添加-s</td>
+          <td style="text-align: left">统计目录下个文件大小</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-dus</td>
+          <td style="text-align: left">-dus &lt;路径&gt;</td>
+          <td style="text-align: left">汇总统计目录下文件(夹)大小</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-count</td>
+          <td style="text-align: left">-count [-q] &lt;路径&gt;</td>
+          <td style="text-align: left">统计文件(夹)数量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-mv</td>
+          <td style="text-align: left">-mv &lt;源路径&gt; &lt;目的路径&gt;</td>
+          <td style="text-align: left">移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-cp</td>
+          <td style="text-align: left">-cp &lt;源路径&gt; &lt;目的路径&gt;</td>
+          <td style="text-align: left">复制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-rm</td>
+          <td style="text-align: left">-rm [-skipTrash] &lt;路径&gt;</td>
+          <td style="text-align: left">删除文件/空白文件夹</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-rmr</td>
+          <td style="text-align: left">-rmr [-skipTrash] &lt;路径&gt;</td>
+          <td style="text-align: left">递归删除</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-put</td>
+          <td style="text-align: left">-put &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">上传文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-copyFromLocal</td>
+          <td style="text-align: left">-copyFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">从本地复制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-moveFromLocal</td>
+          <td style="text-align: left">-moveFromLocal &lt;多个linux上的文件&gt; &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">从本地移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-getmerge</td>
+          <td style="text-align: left">-getmerge &lt;源路径&gt; &lt;linux路径&gt;</td>
+          <td style="text-align: left">合并到本地</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-cat</td>
+          <td style="text-align: left">-cat &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">查看文件内容</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-text</td>
+          <td style="text-align: left">-text &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">查看文件内容</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-copyToLocal</td>
+          <td style="text-align: left">-copyToLocal [-ignoreCrc] [-crc] [hdfs源路径] [linux目的路径]</td>
+          <td style="text-align: left">从本地复制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-moveToLocal</td>
+          <td style="text-align: left">-moveToLocal [-crc] &lt;hdfs源路径&gt; &lt;linux目的路径&gt;</td>
+          <td style="text-align: left">从本地移动</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-mkdir</td>
+          <td style="text-align: left">-mkdir &lt;hdfs路径&gt;</td>
+          <td style="text-align: left">创建空白文件夹</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-setrep</td>
+          <td style="text-align: left">-setrep [-R] [-w] &lt;副本数&gt; &lt;路径&gt;</td>
+          <td style="text-align: left">修改副本数量</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-touchz</td>
+          <td style="text-align: left">-touchz &lt;文件路径&gt;</td>
+          <td style="text-align: left">创建空白文件</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-stat</td>
+          <td style="text-align: left">-stat [format] &lt;路径&gt;</td>
+          <td style="text-align: left">显示文件统计信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-tail</td>
+          <td style="text-align: left">-tail [-f] &lt;文件&gt;</td>
+          <td style="text-align: left">查看文件尾部信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-chmod</td>
+          <td style="text-align: left">-chmod [-R] &lt;权限模式&gt; [路径]</td>
+          <td style="text-align: left">修改权限</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-chown</td>
+          <td style="text-align: left">-chown [-R] [属主][:[属组]] 路径</td>
+          <td style="text-align: left">修改属主</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-chgrp</td>
+          <td style="text-align: left">-chgrp [-R] 属组名称 路径</td>
+          <td style="text-align: left">修改属组</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">-help</td>
+          <td style="text-align: left">-help [命令选项]</td>
+          <td style="text-align: left">帮助</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Shell常用命令介绍 
     <div id="shell常用命令介绍" class="anchor"></div>

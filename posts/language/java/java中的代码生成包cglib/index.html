@@ -1301,26 +1301,26 @@ const loadScript = (url, onloadFunction) => {
     
 </h2>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CGLIB 原理</td>
-<td>动态生成一个要代理类的子类，子类重写要代理的类的所有不是final的方法。在子类中采用方法拦截的技术拦截所有父类方法的调用，顺势织入横切逻辑。它比使用java反射的JDK动态代理要快。</td>
-</tr>
-<tr>
-<td>CGLIB 底层</td>
-<td>使用字节码处理框架ASM，来转换字节码并生成新的类。不鼓励直接使用ASM，因为它要求你必须对JVM内部结构包括class文件的格式和指令集都很熟悉。</td>
-</tr>
-<tr>
-<td>CGLIB 缺点</td>
-<td>对于final方法，无法进行代理。</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">解释</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">CGLIB 原理</td>
+          <td style="text-align: left">动态生成一个要代理类的子类，子类重写要代理的类的所有不是final的方法。在子类中采用方法拦截的技术拦截所有父类方法的调用，顺势织入横切逻辑。它比使用java反射的JDK动态代理要快。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CGLIB 底层</td>
+          <td style="text-align: left">使用字节码处理框架ASM，来转换字节码并生成新的类。不鼓励直接使用ASM，因为它要求你必须对JVM内部结构包括class文件的格式和指令集都很熟悉。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CGLIB 缺点</td>
+          <td style="text-align: left">对于final方法，无法进行代理。</td>
+      </tr>
+  </tbody>
 </table>
 <p>广泛的被许多 AOP 的框架使用，例如 Spring AOP 和 dynaop 。Hibernate 使用 CGLIB 来代理单端single-ended(多对一和一对一)关联。</p>
 <h2 class="relative group">2. 为什么使用 CGLIB? 
@@ -1580,38 +1580,38 @@ hello world
     
 </h3>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>net.sf.cglib.core</td>
-<td>底层字节码处理类，他们大部分与 ASM 有关系</td>
-</tr>
-<tr>
-<td>net.sf.cglib.transform</td>
-<td>编译期或运行期类和类文件的转换</td>
-</tr>
-<tr>
-<td>net.sf.cglib.proxy</td>
-<td>实现创建代理和方法拦截器的类</td>
-</tr>
-<tr>
-<td>net.sf.cglib.reflect</td>
-<td>实现快速反射和C#风格代理的类</td>
-</tr>
-<tr>
-<td>net.sf.cglib.util</td>
-<td>集合排序等工具类</td>
-</tr>
-<tr>
-<td>net.sf.cglib.beans</td>
-<td>JavaBean相关的工具类</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">名称</th>
+          <th style="text-align: left">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.core</td>
+          <td style="text-align: left">底层字节码处理类，他们大部分与 ASM 有关系</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.transform</td>
+          <td style="text-align: left">编译期或运行期类和类文件的转换</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.proxy</td>
+          <td style="text-align: left">实现创建代理和方法拦截器的类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.reflect</td>
+          <td style="text-align: left">实现快速反射和C#风格代理的类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.util</td>
+          <td style="text-align: left">集合排序等工具类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net.sf.cglib.beans</td>
+          <td style="text-align: left">JavaBean相关的工具类</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">4.3 例子 
     <div id="43-例子" class="anchor"></div>

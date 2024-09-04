@@ -14,7 +14,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-update/</guid>
-      <description>npm update # 更新所有依赖项。</description>
+      <description></description>
       
     </item>
     
@@ -24,7 +24,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-version/</guid>
-      <description>npm version # npm version用来指定模块的版本，然后会将新的版本号写入package.</description>
+      <description></description>
       
     </item>
     
@@ -34,7 +34,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-view/</guid>
-      <description>npm view 命令 # 查看某个模块发布过的所有版本。</description>
+      <description></description>
       
     </item>
     
@@ -44,7 +44,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-whoami/</guid>
-      <description>npm whoami # npm whoami命令返回当前登录的 npm 用户名。</description>
+      <description></description>
       
     </item>
     
@@ -54,7 +54,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npx/</guid>
-      <description>npx 使用教程 # npm 从5.</description>
+      <description></description>
       
     </item>
     
@@ -64,7 +64,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/package.json/</guid>
-      <description>package.json # files 字段 # files字段是一个数组，里面指定了一组文件。当模块发布到 NPM 网站时，这组文件会被包括。这个字段是可选的，如果没有指定内容，那么发布时所有文件都会被包括在内。如果files字段包含目录名，该目录里面的所有文件都会被计入。</description>
+      <description></description>
       
     </item>
     
@@ -74,7 +74,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/publish/</guid>
-      <description>发布 # 发布标签 # npm 支持为版本打上标签，这叫做发布标签（dist-tag）。如果不指定发布标签，默认就是latest。用户下载模块时，默认安装的就是latest标签指向的版本。</description>
+      <description></description>
       
     </item>
     
@@ -84,7 +84,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/scripts/</guid>
-      <description>脚本功能 # npm run # npm不仅可以用于模块管理，还可以用于执行脚本。package.</description>
+      <description></description>
       
     </item>
     
@@ -94,7 +94,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:22 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/yarn/</guid>
-      <description>Yarn 的用法 # 简介 # Yarn 是 Facebook 联合其他大公司推出的模块管理器。相比 npm，它有两个显著特点。</description>
+      <description></description>
       
     </item>
     
@@ -104,7 +104,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/basic/</guid>
-      <description>概述 # npm有两种含义。</description>
+      <description></description>
       
     </item>
     
@@ -114,7 +114,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/install/</guid>
-      <description>安装 # npm install # 基本用法 # npm install命令用于安装模块。npm i是该命令的别名。</description>
+      <description></description>
       
     </item>
     
@@ -124,7 +124,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-exec/</guid>
-      <description>npm exec 命令 # npm exec用来执行某个 npm 模块的内部命令，不管该模块在本地还是在远程。它有一个别名x，即npm exec等同于npm x。</description>
+      <description></description>
       
     </item>
     
@@ -134,7 +134,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-init/</guid>
-      <description>npm init 命令 # npm init命令的作用，是生成package.</description>
+      <description></description>
       
     </item>
     
@@ -144,7 +144,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-link/</guid>
-      <description>npm link 命令 # 有时候，我们在本地修改了一些模块，想先测试这些修改是否有效。那么，怎么才能让依赖于该模块的应用，能够加载这些本地模块呢？</description>
+      <description></description>
       
     </item>
     
@@ -154,7 +154,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-tag/</guid>
-      <description>npm tag # npm 允许为版本添加标签，方便用户安装特定版本。只要指定标签，就可以安装该标签下的最新版本。</description>
+      <description></description>
       
     </item>
     
@@ -164,7 +164,7 @@
       <pubDate>Mon, 23 Oct 2023 16:19:21 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/language/nodejs/npm/npm-token/</guid>
-      <description>npm token # npm token命令用来管理认证令牌。</description>
+      <description></description>
       
     </item>
     

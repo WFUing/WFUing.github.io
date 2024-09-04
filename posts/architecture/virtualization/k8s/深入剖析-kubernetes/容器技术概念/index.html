@@ -1669,54 +1669,54 @@ const loadScript = (url, onloadFunction) => {
 </h3>
 <p>Cgroup 是 Control group 的简称，是 Linux 内核提供的一个特性，用于限制和隔离一组进程对系统资源的使用。对不同资源的具体管理是由各个子系统分工完成的。</p>
 <table>
-<thead>
-<tr>
-<th>子系统</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>devices</td>
-<td>设备权限控制</td>
-</tr>
-<tr>
-<td>cpuset</td>
-<td>分配指定的CPU和内存节点</td>
-</tr>
-<tr>
-<td>CPU</td>
-<td>控制CPU使用率</td>
-</tr>
-<tr>
-<td>cpuacct</td>
-<td>统计CPU使用情况</td>
-</tr>
-<tr>
-<td>memory</td>
-<td>限制内存的使用上限</td>
-</tr>
-<tr>
-<td>freezer</td>
-<td>暂停Cgroup 中的进程</td>
-</tr>
-<tr>
-<td>net_cls</td>
-<td>配合流控限制网络带宽</td>
-</tr>
-<tr>
-<td>net_prio</td>
-<td>设置进程的网络流量优先级</td>
-</tr>
-<tr>
-<td>perf_event</td>
-<td>允许 Perf 工具基于 Cgroup 分组做性能检测</td>
-</tr>
-<tr>
-<td>huge_tlb</td>
-<td>限制 HugeTLB 的使用</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">子系统</th>
+          <th style="text-align: left">作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">devices</td>
+          <td style="text-align: left">设备权限控制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cpuset</td>
+          <td style="text-align: left">分配指定的CPU和内存节点</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CPU</td>
+          <td style="text-align: left">控制CPU使用率</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cpuacct</td>
+          <td style="text-align: left">统计CPU使用情况</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">memory</td>
+          <td style="text-align: left">限制内存的使用上限</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">freezer</td>
+          <td style="text-align: left">暂停Cgroup 中的进程</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net_cls</td>
+          <td style="text-align: left">配合流控限制网络带宽</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">net_prio</td>
+          <td style="text-align: left">设置进程的网络流量优先级</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">perf_event</td>
+          <td style="text-align: left">允许 Perf 工具基于 Cgroup 分组做性能检测</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">huge_tlb</td>
+          <td style="text-align: left">限制 HugeTLB 的使用</td>
+      </tr>
+  </tbody>
 </table>
 <p>在 Cgroup 出现之前，只能对一个进程做资源限制，如 ulimit 限制一个进程的打开文件上限、栈大小。而 Cgroup 可以对进程进行任意分组，如何分组由用户自定义。</p>
 <p><strong>子系统介绍</strong></p>
@@ -1797,38 +1797,38 @@ const loadScript = (url, onloadFunction) => {
 举个例子，执行 <code>sethostname</code> 这个系统调用会改变主机名，这个主机名就是全局资源，内核通过 UTS Namespace可以将不同的进程分隔在不同的 UTS Namespace 中，在某个 Namespace 修改主机名时，另一个 Namespace 的主机名保持不变。</p>
 <p>目前，Linux 内核实现了6种 Namespace。</p>
 <table>
-<thead>
-<tr>
-<th>Namespace</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IPC</td>
-<td>隔离 System V IPC 和 POSIX 消息队列</td>
-</tr>
-<tr>
-<td>Network</td>
-<td>隔离网络资源</td>
-</tr>
-<tr>
-<td>Mount</td>
-<td>隔离文件系统挂载点</td>
-</tr>
-<tr>
-<td>PID</td>
-<td>隔离进程ID</td>
-</tr>
-<tr>
-<td>UTS</td>
-<td>隔离主机名和域名</td>
-</tr>
-<tr>
-<td>User</td>
-<td>隔离用户和用户组</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Namespace</th>
+          <th style="text-align: left">作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">IPC</td>
+          <td style="text-align: left">隔离 System V IPC 和 POSIX 消息队列</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Network</td>
+          <td style="text-align: left">隔离网络资源</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Mount</td>
+          <td style="text-align: left">隔离文件系统挂载点</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PID</td>
+          <td style="text-align: left">隔离进程ID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">UTS</td>
+          <td style="text-align: left">隔离主机名和域名</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">User</td>
+          <td style="text-align: left">隔离用户和用户组</td>
+      </tr>
+  </tbody>
 </table>
 <p>与命名空间相关的三个系统调用：</p>
 <ul>

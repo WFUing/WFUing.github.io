@@ -1561,47 +1561,47 @@ const loadScript = (url, onloadFunction) => {
 </h3>
 <p>以下是提供组件定义顶层信息的属性。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Must be <code>ComponentDefinition</code></td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Must be <code>ComponentDefinition</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Entity metadata.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Entity metadata.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>The specification for the component definition.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The specification for the component definition.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Metadata 
     <div id="metadata" class="anchor"></div>
@@ -1615,38 +1615,38 @@ const loadScript = (url, onloadFunction) => {
 </h3>
 <p>该元数据部分由几个 top-level keys 组成。元数据提供有关对象内容的信息。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A name for the schematic. <code>name</code> is subject to the restrictions listed beneath this table.</td>
-</tr>
-<tr>
-<td><code>labels</code></td>
-<td><code>map[string]string</code></td>
-<td>N</td>
-<td></td>
-<td>A set of string key/value pairs used as arbitrary labels on this component. See the &ldquo;Label format&rdquo; section immediately below.</td>
-</tr>
-<tr>
-<td><code>annotations</code></td>
-<td><code>map[string]string</code></td>
-<td>N</td>
-<td></td>
-<td>A set of string key/value pairs used as arbitrary descriptive text associated with this object. See the &ldquo;Annotations format&rdquo; section immediately below.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A name for the schematic. <code>name</code> is subject to the restrictions listed beneath this table.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>labels</code></td>
+          <td style="text-align: left"><code>map[string]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A set of string key/value pairs used as arbitrary labels on this component. See the &ldquo;Label format&rdquo; section immediately below.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>annotations</code></td>
+          <td style="text-align: left"><code>map[string]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A set of string key/value pairs used as arbitrary descriptive text associated with this object. See the &ldquo;Annotations format&rdquo; section immediately below.</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li><code>name</code>：group、kind、name 的组合必须是唯一的。两个不同的种类（例如组件和特质）可以使用相同的名称，而不会造成冲突。Version 不是区分因素。</li>
@@ -1702,32 +1702,32 @@ const loadScript = (url, onloadFunction) => {
 </blockquote>
 <p>下列注释标签是 _predefined_ 和 RECOMMENDED</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>description</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>A short description of the component.</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>A user provided string defining the <a href="https://semver.org/"   target="_blank">
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>description</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A short description of the component.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>version</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A user provided string defining the <a href="https://semver.org/"   target="_blank">
     semantic version</a> of the component, e.g. the release version of this software</td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table>
 <p>如果未提供 <code>version</code> ，则根据 <a href="https://semver.org/"   target="_blank">
     SemVer</a> 规范，默认版本假定为 <code>0.1.0</code>。</p>
@@ -1844,34 +1844,34 @@ const loadScript = (url, onloadFunction) => {
     
 </h3>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>workload</code></td>
-<td><a href="#workloadtypedescriptor"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>workload</code></td>
+          <td style="text-align: left"><a href="#workloadtypedescriptor"  >
     <code>WorkloadTypeDescriptor</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Identifier to <a href="#4-workload-types"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Identifier to <a href="#4-workload-types"  >
     workload type</a> of this component.</td>
-</tr>
-<tr>
-<td><code>schematic</code></td>
-<td><a href="#schematic"  >
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>schematic</code></td>
+          <td style="text-align: left"><a href="#schematic"  >
     Schematic</a></td>
-<td>Y</td>
-<td></td>
-<td>Schematic information for this component.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Schematic information for this component.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">WorkloadTypeDescriptor 
     <div id="workloadtypedescriptor" class="anchor"></div>
@@ -1884,32 +1884,32 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>type</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A reference to a <code>WorkloadDefinition</code> via name.</td>
-</tr>
-<tr>
-<td><code>definition</code></td>
-<td><a href="#workloadgvk"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>type</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A reference to a <code>WorkloadDefinition</code> via name.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>definition</code></td>
+          <td style="text-align: left"><a href="#workloadgvk"  >
     WorkloadGVK</a></td>
-<td>Y</td>
-<td></td>
-<td>Mutually exclusive to <code>type</code>, a reference to <code>WorkloadDefinition</code> via group, version, and kind.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Mutually exclusive to <code>type</code>, a reference to <code>WorkloadDefinition</code> via group, version, and kind.</td>
+      </tr>
+  </tbody>
 </table>
 <h5 class="relative group">WorkloadGVK 
     <div id="workloadgvk" class="anchor"></div>
@@ -1922,31 +1922,31 @@ const loadScript = (url, onloadFunction) => {
     
 </h5>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The API version the workload type.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The API kind of the workload type.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The API version the workload type.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The API kind of the workload type.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Schematic 
     <div id="schematic" class="anchor"></div>
@@ -2118,47 +2118,47 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Must be <code>WorkloadDefinition</code></td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Must be <code>WorkloadDefinition</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Entity metadata.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Entity metadata.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>The specification for the workload definition.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The specification for the workload definition.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Spec 
     <div id="spec-1" class="anchor"></div>
@@ -2171,25 +2171,25 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>definitionRef</code></td>
-<td><a href="#definitionref"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>definitionRef</code></td>
+          <td style="text-align: left"><a href="#definitionref"  >
     <code>DefinitionRef</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Identifier to workload capability in the platform.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Identifier to workload capability in the platform.</td>
+      </tr>
+  </tbody>
 </table>
 <h5 class="relative group">DefinitionRef 
     <div id="definitionref" class="anchor"></div>
@@ -2202,38 +2202,38 @@ const loadScript = (url, onloadFunction) => {
     
 </h5>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Name identifier of the workload capability. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
-</tr>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>API version of the workload capability.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Kind of the workload capability.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Name identifier of the workload capability. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">API version of the workload capability.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Kind of the workload capability.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Characteristics of Workload Types 
     <div id="characteristics-of-workload-types" class="anchor"></div>
@@ -2248,35 +2248,35 @@ const loadScript = (url, onloadFunction) => {
 <p>下面工作负载定义中保留的 &ldquo;metadata.labels&rdquo; 用于表示工作负载类型的 _the distinguishing characteristics_。</p>
 <p>这些特征将通过 traits 系统的 _applies to_ 功能来实现。</p>
 <table>
-<thead>
-<tr>
-<th>Label</th>
-<th>Type</th>
-<th>Explain</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>workload.oam.dev/replicable</code></td>
-<td>boolean</td>
-<td>Whether they are replicable. If not, no replication or scaling traits may be assigned.</td>
-</tr>
-<tr>
-<td><code>workload.oam.dev/daemonized</code></td>
-<td>boolean</td>
-<td>Whether they are daemonized. For daemon types, if the workload exits, this is considered a fault, and the system must fix it. For non-daemonized types, exit is considered a success if no error is reported.</td>
-</tr>
-<tr>
-<td><code>workload.oam.dev/exposed</code></td>
-<td>boolean</td>
-<td>Whether they are exposed, i.e. have a service endpoint with a stable name for network traffic. Workload types that have a service endpoint need a virtual IP address (VIP) with a DNS name to represent the component as a whole, addressable within their network scope and can be assigned traffic routing traits.</td>
-</tr>
-<tr>
-<td><code>workload.oam.dev/podspecable</code></td>
-<td>boolean</td>
-<td>Whether this workload can be addressed by Kubernetes <code>PodSpec</code>. If yes, the implementation could manipulate the workload by leveraging <code>PodSpec</code> structure, instead of being agnostic of the workload&rsquo;s schematic.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Label</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Explain</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>workload.oam.dev/replicable</code></td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left">Whether they are replicable. If not, no replication or scaling traits may be assigned.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>workload.oam.dev/daemonized</code></td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left">Whether they are daemonized. For daemon types, if the workload exits, this is considered a fault, and the system must fix it. For non-daemonized types, exit is considered a success if no error is reported.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>workload.oam.dev/exposed</code></td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left">Whether they are exposed, i.e. have a service endpoint with a stable name for network traffic. Workload types that have a service endpoint need a virtual IP address (VIP) with a DNS name to represent the component as a whole, addressable within their network scope and can be assigned traffic routing traits.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>workload.oam.dev/podspecable</code></td>
+          <td style="text-align: left">boolean</td>
+          <td style="text-align: left">Whether this workload can be addressed by Kubernetes <code>PodSpec</code>. If yes, the implementation could manipulate the workload by leveraging <code>PodSpec</code> structure, instead of being agnostic of the workload&rsquo;s schematic.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Categories of Workload Types 
     <div id="categories-of-workload-types" class="anchor"></div>
@@ -2309,28 +2309,28 @@ const loadScript = (url, onloadFunction) => {
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">containerizedworkloads.core.oam.dev</span><span class="w">
 </span></span></span></code></pre></div><p>该 Workload Type 的说明：</p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Category</th>
-<th>Schema</th>
-<th>Exposed</th>
-<th>Replicable</th>
-<th>Daemonized</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#server"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Schema</th>
+          <th style="text-align: left">Exposed</th>
+          <th style="text-align: left">Replicable</th>
+          <th style="text-align: left">Daemonized</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="#server"  >
     Server</a></td>
-<td>Core</td>
-<td><a href="#containerized-workload"  >
+          <td style="text-align: left">Core</td>
+          <td style="text-align: left"><a href="#containerized-workload"  >
     ContainerizedWorkload</a></td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Yes</td>
+          <td style="text-align: left">Yes</td>
+          <td style="text-align: left">Yes</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Extended Workload Type 
     <div id="extended-workload-type" class="anchor"></div>
@@ -2444,47 +2444,47 @@ const loadScript = (url, onloadFunction) => {
 </h4>
 <p>这些属性提供了有关容器化工作负载的顶级信息。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td><code>core.oam.dev/v1alpha2</code></td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td><code>ContainerizedWorkload</code></td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>core.oam.dev/v1alpha2</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><code>ContainerizedWorkload</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>containerized workload metadata.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec-2"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">containerized workload metadata.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec-2"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>A container for the containerized workload spec.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A container for the containerized workload spec.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Spec 
     <div id="spec-2" class="anchor"></div>
@@ -2497,39 +2497,39 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>osType</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>The OS required to host (all of) the component&rsquo;s containers (since containers share a kernel with the underlying host). Possible values include:<ul><li>linux</li><li>windows</li></ul> For extended runtimes, this is passed in unaltered. Default can be none and let the runtime decide where to place the component.</td>
-</tr>
-<tr>
-<td><code>arch</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>The CPU architecture required to host (all of) the component&rsquo;s containers (since containers share physical hardware with the underlying host). Possible values include:<ul><li>i386</li><li>amd64</li><li>arm</li><li>arm64</li></ul> Default can be none and let the runtime chose architecture.</td>
-</tr>
-<tr>
-<td><code>containers</code></td>
-<td><a href="#container"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>osType</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The OS required to host (all of) the component&rsquo;s containers (since containers share a kernel with the underlying host). Possible values include:<ul><li>linux</li><li>windows</li></ul> For extended runtimes, this is passed in unaltered. Default can be none and let the runtime decide where to place the component.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>arch</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The CPU architecture required to host (all of) the component&rsquo;s containers (since containers share physical hardware with the underlying host). Possible values include:<ul><li>i386</li><li>amd64</li><li>arm</li><li>arm64</li></ul> Default can be none and let the runtime chose architecture.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>containers</code></td>
+          <td style="text-align: left"><a href="#container"  >
     <code>[]Container</code></a></td>
-<td>Y</td>
-<td></td>
-<td>The OCI container(s) that implement the component.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The OCI container(s) that implement the component.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Container 
     <div id="container" class="anchor"></div>
@@ -2543,100 +2543,100 @@ const loadScript = (url, onloadFunction) => {
 </h4>
 <p>本节介绍为该组件运行容器化工作负载所需的运行时配置。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The container&rsquo;s name. Must be unique per component.</td>
-</tr>
-<tr>
-<td><code>image</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A path-like or URI-like representation of the location of an OCI image. Where applicable, this MAY be prefixed with a registry address, SHOULD be suffixed with a tag.</td>
-</tr>
-<tr>
-<td><code>resources</code></td>
-<td><a href="#resources"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The container&rsquo;s name. Must be unique per component.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>image</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A path-like or URI-like representation of the location of an OCI image. Where applicable, this MAY be prefixed with a registry address, SHOULD be suffixed with a tag.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>resources</code></td>
+          <td style="text-align: left"><a href="#resources"  >
     <code>Resources</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Resources required by the container.</td>
-</tr>
-<tr>
-<td><code>cmd</code></td>
-<td><code>[]string</code></td>
-<td>N</td>
-<td></td>
-<td>Entrypoint array.</td>
-</tr>
-<tr>
-<td><code>args</code></td>
-<td><code>[]string</code></td>
-<td>N</td>
-<td></td>
-<td>Arguments to the entrypoint. The container image&rsquo;s CMD is used if this is not provided.</td>
-</tr>
-<tr>
-<td><code>env</code></td>
-<td><a href="#env"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Resources required by the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>cmd</code></td>
+          <td style="text-align: left"><code>[]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Entrypoint array.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>args</code></td>
+          <td style="text-align: left"><code>[]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Arguments to the entrypoint. The container image&rsquo;s CMD is used if this is not provided.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>env</code></td>
+          <td style="text-align: left"><a href="#env"  >
     <code>[]Env</code></a></td>
-<td>N</td>
-<td></td>
-<td>Environment variables for the container.</td>
-</tr>
-<tr>
-<td><code>config</code></td>
-<td><a href="#configfile"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Environment variables for the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>config</code></td>
+          <td style="text-align: left"><a href="#configfile"  >
     <code>[]ConfigFile</code></a></td>
-<td>N</td>
-<td></td>
-<td>Locations to write configuration as files accessible within the container</td>
-</tr>
-<tr>
-<td><code>ports</code></td>
-<td><a href="#port"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Locations to write configuration as files accessible within the container</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ports</code></td>
+          <td style="text-align: left"><a href="#port"  >
     <code>[]Port</code></a></td>
-<td>N</td>
-<td></td>
-<td>Ports exposed by the container.</td>
-</tr>
-<tr>
-<td><code>livenessProbe</code></td>
-<td><a href="#healthprobe"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Ports exposed by the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>livenessProbe</code></td>
+          <td style="text-align: left"><a href="#healthprobe"  >
     <code>HealthProbe</code></a></td>
-<td>N</td>
-<td></td>
-<td>Instructions for assessing whether the container is alive.</td>
-</tr>
-<tr>
-<td><code>readinessProbe</code></td>
-<td><a href="#healthprobe"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Instructions for assessing whether the container is alive.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>readinessProbe</code></td>
+          <td style="text-align: left"><a href="#healthprobe"  >
     <code>HealthProbe</code></a></td>
-<td>N</td>
-<td></td>
-<td>Instructions for assessing whether the container is in a suitable state to serve traffic.</td>
-</tr>
-<tr>
-<td><code>imagePullSecret</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Key that can be used to retrieve the credentials for pulling this secret.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Instructions for assessing whether the container is in a suitable state to serve traffic.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>imagePullSecret</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Key that can be used to retrieve the credentials for pulling this secret.</td>
+      </tr>
+  </tbody>
 </table>
 <h5 class="relative group">Resources 
     <div id="resources" class="anchor"></div>
@@ -2650,57 +2650,57 @@ const loadScript = (url, onloadFunction) => {
 </h5>
 <p>资源描述附加到运行时的计算资源。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cpu</code></td>
-<td><a href="#cpu"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>cpu</code></td>
+          <td style="text-align: left"><a href="#cpu"  >
     <code>CPU</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Specifies the attributes of the cpu resource required for the container.</td>
-</tr>
-<tr>
-<td><code>memory</code></td>
-<td><a href="#memory"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the attributes of the cpu resource required for the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>memory</code></td>
+          <td style="text-align: left"><a href="#memory"  >
     <code>Memory</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Specifies the attributes of the memory resource required for the container.</td>
-</tr>
-<tr>
-<td><code>gpu</code></td>
-<td><a href="#gpu"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the attributes of the memory resource required for the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>gpu</code></td>
+          <td style="text-align: left"><a href="#gpu"  >
     <code>GPU</code></a></td>
-<td>N</td>
-<td></td>
-<td>Specifies the attributes of the gpu resources required for the container.</td>
-</tr>
-<tr>
-<td><code>volumes</code></td>
-<td><a href="#volume"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the attributes of the gpu resources required for the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>volumes</code></td>
+          <td style="text-align: left"><a href="#volume"  >
     <code>[]Volume</code></a></td>
-<td>N</td>
-<td></td>
-<td>Specifies the attributes of the volumes that the container uses.</td>
-</tr>
-<tr>
-<td><code>extended</code></td>
-<td><a href="#extendedresource"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the attributes of the volumes that the container uses.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>extended</code></td>
+          <td style="text-align: left"><a href="#extendedresource"  >
     <code>[]ExtendedResource</code></a></td>
-<td>N</td>
-<td></td>
-<td>Implementation-specific extended resource requirements</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Implementation-specific extended resource requirements</td>
+      </tr>
+  </tbody>
 </table>
 <p>对于底层平台无法满足的任何资源，平台必须返回错误并停止部署。资源被视为一种需求，无法满足该需求意味着运行时不得部署应用程序。例如，如果应用程序请求 <code>1P</code> 内存，而内存量不可用，则应用程序部署必须失败。同样，如果应用程序需要 <code>1</code> 个 GPU，而运行时没有提供 GPU，则应用程序部署必须失败。</p>
 <h6 class="relative group">CPU 
@@ -2714,24 +2714,24 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>required</code></td>
-<td><code>double</code></td>
-<td>Y</td>
-<td></td>
-<td>The minimum number of logical cpus required for running this container.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>required</code></td>
+          <td style="text-align: left"><code>double</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The minimum number of logical cpus required for running this container.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">Memory 
     <div id="memory" class="anchor"></div>
@@ -2744,24 +2744,24 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>required</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The minimum amount of memory required for running this container. The value should be a positive integer with/without unit suffix: P, T, G, M, K. If no unit is given, it defaults to &lsquo;bytes&rsquo;.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>required</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The minimum amount of memory required for running this container. The value should be a positive integer with/without unit suffix: P, T, G, M, K. If no unit is given, it defaults to &lsquo;bytes&rsquo;.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">GPU 
     <div id="gpu" class="anchor"></div>
@@ -2774,24 +2774,24 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>required</code></td>
-<td><code>double</code></td>
-<td>Y</td>
-<td></td>
-<td>The minimum number of gpus  required for running this container.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>required</code></td>
+          <td style="text-align: left"><code>double</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The minimum number of gpus  required for running this container.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">Volume 
     <div id="volume" class="anchor"></div>
@@ -2806,53 +2806,53 @@ const loadScript = (url, onloadFunction) => {
 <p>卷描述了名称、挂载卷的位置、访问模式（如读/写或只读）以及挂载的共享策略。它还描述了卷所需的底层磁盘属性。</p>
 <p>路径格式取决于消费组件的操作系统，但实现应支持类似 UNIX 的路径表示法。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Specifies the name used to reference the path.</td>
-</tr>
-<tr>
-<td><code>mountPath</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Specifies the actual mount path in the filesystem.</td>
-</tr>
-<tr>
-<td><code>accessMode</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td><code>RW</code></td>
-<td>Specifies the access mode. Allowed values are <code>RW</code> (read/write) and <code>RO</code> (read-only).</td>
-</tr>
-<tr>
-<td><code>sharingPolicy</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td><code>Exclusive</code></td>
-<td>The sharing policy for the mount, indicating if it is expected to be shared or not. Allowed values are <code>Exclusive</code> and <code>Shared</code>.</td>
-</tr>
-<tr>
-<td><code>disk</code></td>
-<td><a href="#disk"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the name used to reference the path.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>mountPath</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the actual mount path in the filesystem.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>accessMode</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>RW</code></td>
+          <td style="text-align: left">Specifies the access mode. Allowed values are <code>RW</code> (read/write) and <code>RO</code> (read-only).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>sharingPolicy</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>Exclusive</code></td>
+          <td style="text-align: left">The sharing policy for the mount, indicating if it is expected to be shared or not. Allowed values are <code>Exclusive</code> and <code>Shared</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>disk</code></td>
+          <td style="text-align: left"><a href="#disk"  >
     <code>Disk</code></a></td>
-<td>N</td>
-<td></td>
-<td>Specifies the attributes of the underneath disk resources required by the volume.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies the attributes of the underneath disk resources required by the volume.</td>
+      </tr>
+  </tbody>
 </table>
 <p>Example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;configuration&#34;</span><span class="w">
@@ -2875,31 +2875,31 @@ const loadScript = (url, onloadFunction) => {
 </h6>
 <p>磁盘指定卷所使用磁盘的属性。它描述了最小磁盘大小和磁盘是否短暂等信息。短暂磁盘表示组件需要节点上最小的磁盘大小才能运行。例如，图像处理组件可能需要节点上更大的缓存才能运行，这时可以使用短暂磁盘。当短暂磁盘设置为假时，表示将使用外部磁盘。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>required</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The minimum disk size required for running this container. The value should be a positive value, greater than zero.</td>
-</tr>
-<tr>
-<td><code>ephemeral</code></td>
-<td><code>boolean</code></td>
-<td>N</td>
-<td></td>
-<td>Specifies whether external disk needs to be mounted or not.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>required</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The minimum disk size required for running this container. The value should be a positive value, greater than zero.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>ephemeral</code></td>
+          <td style="text-align: left"><code>boolean</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Specifies whether external disk needs to be mounted or not.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">ExtendedResource 
     <div id="extendedresource" class="anchor"></div>
@@ -2913,31 +2913,31 @@ const loadScript = (url, onloadFunction) => {
 </h6>
 <p>扩展资源是针对特定实施资源的资源需求声明。例如，兼容 OAM 的平台可能会暴露出特殊的硬件。通过该字段，容器可以指出，为了让容器运行，需要提供此类特殊硬件。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The name of the resource, as a Group/Version/Kind</td>
-</tr>
-<tr>
-<td><code>required</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The required condition.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The name of the resource, as a Group/Version/Kind</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>required</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The required condition.</td>
+      </tr>
+  </tbody>
 </table>
 <p><code>name</code> 字段必须是标识特定资源的 group/version/kind。</p>
 <p>Example:</p>
@@ -2959,31 +2959,31 @@ const loadScript = (url, onloadFunction) => {
 </h5>
 <p>Env 将环境变量描述为 name/value 的字符串。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The environment variable name. Must be unique per container.</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>The environment variable value.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The environment variable name. Must be unique per container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>value</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The environment variable value.</td>
+      </tr>
+  </tbody>
 </table>
 <p><code>name</code> 字段必须由有效的 Unicode 字母和数字字符以及 <code>_</code> 和 <code>-</code> 组成。</p>
 <p>Example:</p>
@@ -3002,38 +3002,38 @@ const loadScript = (url, onloadFunction) => {
 </h5>
 <p>ConfigFile 描述了容器内可用文件的路径，以及将写入该文件的数据。这提供了一种将配置文件注入容器的方法。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>An absolute path within the container.</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>The data to be written into the file at the specified path. If this is not supplied, <code>fromParam</code> must be supplied</td>
-</tr>
-<tr>
-<td><code>fromParam</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>The parameter whose value should be written into this file as a value</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>path</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">An absolute path within the container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>value</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The data to be written into the file at the specified path. If this is not supplied, <code>fromParam</code> must be supplied</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>fromParam</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The parameter whose value should be written into this file as a value</td>
+      </tr>
+  </tbody>
 </table>
 <p>path 字段必须包含一个遵守底层操作系统路径规则的路径。如果给出的是相对路径，实现必须假定该路径是相对于容器根目录的。如果使用这样的路径会违反安全措施或路径布局要求，实现可能会产生错误</p>
 <p>Example:</p>
@@ -3054,38 +3054,38 @@ const loadScript = (url, onloadFunction) => {
     
 </h5>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A descriptive name for the port. Must be unique per container.</td>
-</tr>
-<tr>
-<td><code>containerPort</code></td>
-<td><code>integer</code></td>
-<td>Y</td>
-<td></td>
-<td>The port number. Must be unique per container.</td>
-</tr>
-<tr>
-<td><code>protocol</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td><code>TCP</code></td>
-<td>Indicates the transport layer protocol used by the server listening on the port. Valid values are <code>TCP</code> and <code>UDP</code>.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A descriptive name for the port. Must be unique per container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>containerPort</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The port number. Must be unique per container.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>protocol</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>TCP</code></td>
+          <td style="text-align: left">Indicates the transport layer protocol used by the server listening on the port. Valid values are <code>TCP</code> and <code>UDP</code>.</td>
+      </tr>
+  </tbody>
 </table>
 <p><code>name</code> 字段必须是 ASCII 字符集（0061-007A）中的小写字母字符。</p>
 <h5 class="relative group">HealthProbe 
@@ -3100,76 +3100,76 @@ const loadScript = (url, onloadFunction) => {
 </h5>
 <p>HealthProbe 描述了如何执行探测操作以确定组件的健康状况。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>exec</code></td>
-<td><a href="#exec"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>exec</code></td>
+          <td style="text-align: left"><a href="#exec"  >
     <code>Exec</code></a></td>
-<td>N</td>
-<td></td>
-<td>Instructions for assessing container health by executing a command. Either this attribute or the <code>httpGet</code> attribute or the <code>tcpSocket</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>httpGet</code> attribute and the <code>tcpSocket</code> attribute.</td>
-</tr>
-<tr>
-<td><code>httpGet</code></td>
-<td><a href="#httpget"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Instructions for assessing container health by executing a command. Either this attribute or the <code>httpGet</code> attribute or the <code>tcpSocket</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>httpGet</code> attribute and the <code>tcpSocket</code> attribute.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>httpGet</code></td>
+          <td style="text-align: left"><a href="#httpget"  >
     <code>HTTPGet</code></a></td>
-<td>N</td>
-<td></td>
-<td>Instructions for assessing container health by executing an HTTP GET request. Either this attribute or the <code>exec</code> attribute or the <code>tcpSocket</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>exec</code> attribute and the <code>tcpSocket</code> attribute.</td>
-</tr>
-<tr>
-<td><code>tcpSocket</code></td>
-<td><a href="#tcpsocket"  >
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Instructions for assessing container health by executing an HTTP GET request. Either this attribute or the <code>exec</code> attribute or the <code>tcpSocket</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>exec</code> attribute and the <code>tcpSocket</code> attribute.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>tcpSocket</code></td>
+          <td style="text-align: left"><a href="#tcpsocket"  >
     <code>TCPSocket</code></a></td>
-<td>N</td>
-<td></td>
-<td>Instructions for assessing container health by probing a TCP socket. Either this attribute or the <code>exec</code> attribute or the <code>httpGet</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>exec</code> attribute and the <code>httpGet</code> attribute.</td>
-</tr>
-<tr>
-<td><code>initialDelaySeconds</code></td>
-<td><code>integer</code></td>
-<td>N</td>
-<td><code>0</code></td>
-<td>Number of seconds after the container is started before the first probe is initiated.</td>
-</tr>
-<tr>
-<td><code>periodSeconds</code></td>
-<td><code>integer</code></td>
-<td>N</td>
-<td><code>10</code></td>
-<td>How often, in seconds, to execute the probe.</td>
-</tr>
-<tr>
-<td><code>timeoutSeconds</code></td>
-<td><code>integer</code></td>
-<td>N</td>
-<td><code>1</code></td>
-<td>Number of seconds after which the probe times out.</td>
-</tr>
-<tr>
-<td><code>successThreshold</code></td>
-<td><code>integer</code></td>
-<td>N</td>
-<td><code>1</code></td>
-<td>Minimum consecutive successes for the probe to be considered successful after having failed.</td>
-</tr>
-<tr>
-<td><code>failureThreshold</code></td>
-<td><code>integer</code></td>
-<td>N</td>
-<td><code>3</code></td>
-<td>Number of consecutive failures required to determine the container is not alive (liveness probe) or not ready (readiness probe).</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Instructions for assessing container health by probing a TCP socket. Either this attribute or the <code>exec</code> attribute or the <code>httpGet</code> attribute MUST be specified. This attribute is mutually exclusive with both the <code>exec</code> attribute and the <code>httpGet</code> attribute.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>initialDelaySeconds</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>0</code></td>
+          <td style="text-align: left">Number of seconds after the container is started before the first probe is initiated.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>periodSeconds</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>10</code></td>
+          <td style="text-align: left">How often, in seconds, to execute the probe.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>timeoutSeconds</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>1</code></td>
+          <td style="text-align: left">Number of seconds after which the probe times out.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>successThreshold</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>1</code></td>
+          <td style="text-align: left">Minimum consecutive successes for the probe to be considered successful after having failed.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>failureThreshold</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"><code>3</code></td>
+          <td style="text-align: left">Number of consecutive failures required to determine the container is not alive (liveness probe) or not ready (readiness probe).</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">Exec 
     <div id="exec" class="anchor"></div>
@@ -3182,24 +3182,24 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>command</code></td>
-<td><code>[]string</code></td>
-<td>Y</td>
-<td></td>
-<td>A command to be executed inside the container to assess its health. Each space delimited token of the command is a separate array element. Commands exiting <code>0</code> are considered to be successful probes, whilst all other exit codes are considered failures.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>command</code></td>
+          <td style="text-align: left"><code>[]string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A command to be executed inside the container to assess its health. Each space delimited token of the command is a separate array element. Commands exiting <code>0</code> are considered to be successful probes, whilst all other exit codes are considered failures.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">HTTPGet 
     <div id="httpget" class="anchor"></div>
@@ -3212,39 +3212,39 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The endpoint, relative to the <code>port</code>, to which the HTTP GET request should be directed.</td>
-</tr>
-<tr>
-<td><code>port</code></td>
-<td><code>integer</code></td>
-<td>Y</td>
-<td></td>
-<td>The TCP socket within the container to which the HTTP GET request should be directed.</td>
-</tr>
-<tr>
-<td><code>httpHeaders</code></td>
-<td><a href="#httpheader"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>path</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The endpoint, relative to the <code>port</code>, to which the HTTP GET request should be directed.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>port</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The TCP socket within the container to which the HTTP GET request should be directed.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>httpHeaders</code></td>
+          <td style="text-align: left"><a href="#httpheader"  >
     <code>[]HTTPHeader</code></a></td>
-<td>N</td>
-<td></td>
-<td>Optional HTTP headers.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Optional HTTP headers.</td>
+      </tr>
+  </tbody>
 </table>
 <h6 class="relative group">HTTPHeader 
     <div id="httpheader" class="anchor"></div>
@@ -3257,31 +3257,31 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>An HTTP header name. This must be unique per HTTP GET-based probe.</td>
-</tr>
-<tr>
-<td><code>value</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>An HTTP header value.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">An HTTP header name. This must be unique per HTTP GET-based probe.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>value</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">An HTTP header value.</td>
+      </tr>
+  </tbody>
 </table>
 <p><code>name</code> 和 <code>value</code> 都必须遵守 HTTP/1.1 关于有效[标头值]的规范(<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2"   target="_blank">
     https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2</a>)</p>
@@ -3296,24 +3296,24 @@ const loadScript = (url, onloadFunction) => {
     
 </h6>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>port</code></td>
-<td><code>integer</code></td>
-<td>Y</td>
-<td></td>
-<td>The TCP socket within the container that should be probed to assess container health.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>port</code></td>
+          <td style="text-align: left"><code>integer</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The TCP socket within the container that should be probed to assess container health.</td>
+      </tr>
+  </tbody>
 </table>
 <p>端口必须是大于 0 的整数。</p>
 <h4 class="relative group">Units for Time, CPU, Memory, and Disk 
@@ -3856,47 +3856,47 @@ const loadScript = (url, onloadFunction) => {
 </h4>
 <p>这些属性提供了有关应用范围的顶级信息。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Must end with <code>ScopeDefinition</code>.</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of model.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Must end with <code>ScopeDefinition</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Entity metadata.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec-3"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Entity metadata.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec-3"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>A specification for scope attributes.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A specification for scope attributes.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Spec 
     <div id="spec-3" class="anchor"></div>
@@ -3910,32 +3910,32 @@ const loadScript = (url, onloadFunction) => {
 </h4>
 <p>该规范定义了作用域的构成部分。</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>allowComponentOverlap</code></td>
-<td><code>bool</code></td>
-<td>N</td>
-<td>true</td>
-<td>Determines whether a component is allowed to be in multiple instances of this scope type simultaneously. When false, the runtime implementation MUST produce an error and stop deployment if an attempt is made to place a component into more than one instance of this scope type simultaneously.</td>
-</tr>
-<tr>
-<td><code>definitionRef</code></td>
-<td><a href="#definitionref"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>allowComponentOverlap</code></td>
+          <td style="text-align: left"><code>bool</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left">true</td>
+          <td style="text-align: left">Determines whether a component is allowed to be in multiple instances of this scope type simultaneously. When false, the runtime implementation MUST produce an error and stop deployment if an attempt is made to place a component into more than one instance of this scope type simultaneously.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>definitionRef</code></td>
+          <td style="text-align: left"><a href="#definitionref"  >
     <code>DefinitionRef</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Identifier to scope capability in the platform.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Identifier to scope capability in the platform.</td>
+      </tr>
+  </tbody>
 </table>
 <h5 class="relative group">DefinitionRef 
     <div id="definitionref-1" class="anchor"></div>
@@ -3948,38 +3948,38 @@ const loadScript = (url, onloadFunction) => {
     
 </h5>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Name identifier of the scope capability. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
-</tr>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>API version of the scope capability.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Kind of the scope capability.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Name identifier of the scope capability. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">API version of the scope capability.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Kind of the scope capability.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Examples 
     <div id="examples" class="anchor"></div>
@@ -4023,31 +4023,31 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>probe-timeout</code></td>
-<td><code>int32</code></td>
-<td>Y</td>
-<td></td>
-<td>ProbeTimeout is the amount of time in seconds to wait when receiving a response before marked failure.</td>
-</tr>
-<tr>
-<td><code>probe-interval</code></td>
-<td><code>int32</code></td>
-<td>Y</td>
-<td></td>
-<td>ProbeInterval is the amount of time in seconds between probing tries.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>probe-timeout</code></td>
+          <td style="text-align: left"><code>int32</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">ProbeTimeout is the amount of time in seconds to wait when receiving a response before marked failure.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>probe-interval</code></td>
+          <td style="text-align: left"><code>int32</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">ProbeInterval is the amount of time in seconds between probing tries.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Instance Example 
     <div id="instance-example" class="anchor"></div>
@@ -4113,38 +4113,38 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>networkId</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The id of the network, e.g. vpc-id, VNet name.</td>
-</tr>
-<tr>
-<td><code>subnetIds</code></td>
-<td><code>array</code></td>
-<td>Y</td>
-<td></td>
-<td>A comma separated list of IDs of the subnets within the network. For example, &lsquo;vsw-123&rsquo; or &lsquo;vsw-123&rsquo;,&lsquo;vsw-456&rsquo;. There could be more than one subnet because there is a limit in the number of IPs in a subnet. If IPs are taken up, operators need to add another subnet into this network.</td>
-</tr>
-<tr>
-<td><code>internetGatewayType</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>The type of the gateway, options are &lsquo;public&rsquo;, &rsquo;nat&rsquo;. Empty string means no gateway.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>networkId</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The id of the network, e.g. vpc-id, VNet name.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>subnetIds</code></td>
+          <td style="text-align: left"><code>array</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A comma separated list of IDs of the subnets within the network. For example, &lsquo;vsw-123&rsquo; or &lsquo;vsw-123&rsquo;,&lsquo;vsw-456&rsquo;. There could be more than one subnet because there is a limit in the number of IPs in a subnet. If IPs are taken up, operators need to add another subnet into this network.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>internetGatewayType</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The type of the gateway, options are &lsquo;public&rsquo;, &rsquo;nat&rsquo;. Empty string means no gateway.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Instance Example 
     <div id="instance-example-1" class="anchor"></div>
@@ -4228,47 +4228,47 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of documentation.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Must be <code>TraitDefinition</code></td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of documentation.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Must be <code>TraitDefinition</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Information about the trait.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec-4"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Information about the trait.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec-4"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>A specification for trait attributes.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A specification for trait attributes.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Spec 
     <div id="spec-4" class="anchor"></div>
@@ -4281,40 +4281,40 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>appliesToWorkloads</code></td>
-<td><code>[]string</code></td>
-<td>*</td>
-<td></td>
-<td>The collection of <a href="#4-workload-types"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>appliesToWorkloads</code></td>
+          <td style="text-align: left"><code>[]string</code></td>
+          <td style="text-align: left">*</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The collection of <a href="#4-workload-types"  >
     workload type characteristics</a> to which this trait applies. If this field is empty or unspecified or specified as <code>&quot;*&quot;</code>, it means applies <em>any workload type</em>. A trait must apply to at least one workload type. This attribute must contain at least one value.</td>
-</tr>
-<tr>
-<td><code>conflictsWith</code></td>
-<td><code>[]string</code></td>
-<td>N</td>
-<td></td>
-<td>A list of traits that would be conflict with this trait when applied to same workload type. For example, <code>autoscaling</code> may conflict with <code>cron-autoscaling</code>.</td>
-</tr>
-<tr>
-<td><code>definitionRef</code></td>
-<td><a href="#definitionref"  >
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>conflictsWith</code></td>
+          <td style="text-align: left"><code>[]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A list of traits that would be conflict with this trait when applied to same workload type. For example, <code>autoscaling</code> may conflict with <code>cron-autoscaling</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>definitionRef</code></td>
+          <td style="text-align: left"><a href="#definitionref"  >
     <code>DefinitionRef</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Identifier of the trait capability.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Identifier of the trait capability.</td>
+      </tr>
+  </tbody>
 </table>
 <h5 class="relative group">DefinitionRef 
     <div id="definitionref-2" class="anchor"></div>
@@ -4327,38 +4327,38 @@ const loadScript = (url, onloadFunction) => {
     
 </h5>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Name identifier of the trait. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
-</tr>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>API version of the trait.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>N</td>
-<td></td>
-<td>Kind of trait.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Name identifier of the trait. Mutually exclusive to <code>apiVersion</code> and <code>kind</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">API version of the trait.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Kind of trait.</td>
+      </tr>
+  </tbody>
 </table>
 <p>建议使用 <a href="#group-version-and-kind"  >
     Group/Version/Kind</a> 来唯一标识特征能力。如果使用 <code>definitionRef.name</code>，则必须包含可用于唯一标识的信息。</p>
@@ -4443,47 +4443,47 @@ const loadScript = (url, onloadFunction) => {
     
 </h3>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of documentation.</td>
-</tr>
-<tr>
-<td><code>kind</code></td>
-<td><code>string</code></td>
-<td>Y</td>
-<td></td>
-<td>Must be <code>Application</code></td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td><a href="#metadata"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>apiVersion</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A string that identifies the version of the schema the object should have. The core types uses <code>core.oam.dev/v1beta1</code> in this version of documentation.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>kind</code></td>
+          <td style="text-align: left"><code>string</code></td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Must be <code>Application</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>metadata</code></td>
+          <td style="text-align: left"><a href="#metadata"  >
     <code>Metadata</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Information about the application.</td>
-</tr>
-<tr>
-<td><code>spec</code></td>
-<td><a href="#spec-5"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Information about the application.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>spec</code></td>
+          <td style="text-align: left"><a href="#spec-5"  >
     <code>Spec</code></a></td>
-<td>Y</td>
-<td></td>
-<td>A specification for application attributes.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A specification for application attributes.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">Spec 
     <div id="spec-5" class="anchor"></div>
@@ -4497,25 +4497,25 @@ const loadScript = (url, onloadFunction) => {
 </h3>
 <p>The specification of applications defines components to create, traits attached to each components, and a set of scopes the components drop in.</p>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>components</code></td>
-<td><a href="#component"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>components</code></td>
+          <td style="text-align: left"><a href="#component"  >
     <code>[]Component</code></a></td>
-<td>Y</td>
-<td></td>
-<td>Component specification.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Component specification.</td>
+      </tr>
+  </tbody>
 </table>
 <h4 class="relative group">Component 
     <div id="component" class="anchor"></div>
@@ -4528,56 +4528,56 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>Y</td>
-<td></td>
-<td>The name of the component instance.</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td>Y</td>
-<td></td>
-<td>A reference to the <a href="3.component_model.md"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>name</code></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The name of the component instance.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>type</code></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A reference to the <a href="3.component_model.md"  >
     component definition</a> that will be instantiated by the application. Optionally a namespaced component may be referenced as <code>&lt;namespace&gt;/&lt;component_name&gt;</code>. The meaning of <em>namespace</em> is implementation specific depending on the runtime being used and the target platform where entities are created. In the case of the Kubernetes, the concept of <code>namespace</code> matches the existing one in Kubernetes.</td>
-</tr>
-<tr>
-<td><code>properties</code></td>
-<td><a href="#properties"  >
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>properties</code></td>
+          <td style="text-align: left"><a href="#properties"  >
     <code>Properties</code></a></td>
-<td>Y</td>
-<td></td>
-<td>A set of values assigned to the parameters exposed from the <a href="3.component_model.md#schematic"  >
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A set of values assigned to the parameters exposed from the <a href="3.component_model.md#schematic"  >
     component schematic</a>.</td>
-</tr>
-<tr>
-<td><code>traits</code></td>
-<td><a href="#trait"  >
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>traits</code></td>
+          <td style="text-align: left"><a href="#trait"  >
     <code>[]Trait</code></a></td>
-<td>N</td>
-<td></td>
-<td>The traits to attach to this component instance.</td>
-</tr>
-<tr>
-<td><code>scopes</code></td>
-<td><code>map[string]string</code></td>
-<td>N</td>
-<td></td>
-<td>A map with the scopes the component belongs to. The map uses the qualified scope definition name as key (e.g., &ldquo;scope.company.com&rdquo;), and the name of the scope as value (e.g., &ldquo;myscope&rdquo;). Notice that this reference implies that an entity of the target scope with the specific name exists.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The traits to attach to this component instance.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>scopes</code></td>
+          <td style="text-align: left"><code>map[string]string</code></td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A map with the scopes the component belongs to. The map uses the qualified scope definition name as key (e.g., &ldquo;scope.company.com&rdquo;), and the name of the scope as value (e.g., &ldquo;myscope&rdquo;). Notice that this reference implies that an entity of the target scope with the specific name exists.</td>
+      </tr>
+  </tbody>
 </table>
 <p><code>name</code> 必须遵循这些命名规则：</p>
 <blockquote>
@@ -4594,32 +4594,32 @@ const loadScript = (url, onloadFunction) => {
     
 </h4>
 <table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td>N</td>
-<td></td>
-<td>A reference to the name of trait definition. For one type of trait, there could be only one configuration in one component.</td>
-</tr>
-<tr>
-<td><code>properties</code></td>
-<td><a href="#properties"  >
+  <thead>
+      <tr>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Type</th>
+          <th style="text-align: left">Required</th>
+          <th style="text-align: left">Default Value</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>type</code></td>
+          <td style="text-align: left">string</td>
+          <td style="text-align: left">N</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">A reference to the name of trait definition. For one type of trait, there could be only one configuration in one component.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>properties</code></td>
+          <td style="text-align: left"><a href="#properties"  >
     <code>Properties</code></a></td>
-<td>Y</td>
-<td></td>
-<td>The properties values to use this trait.</td>
-</tr>
-</tbody>
+          <td style="text-align: left">Y</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">The properties values to use this trait.</td>
+      </tr>
+  </tbody>
 </table>
 <p>注意 _Traits_ 不需要名称，因为 OAM 运行时负责实例化 traits。组件的名称预计将用于相关特质。</p>
 <h5 class="relative group">Properties 

@@ -104,7 +104,7 @@
       <pubDate>Thu, 15 Feb 2024 16:15:08 +0800</pubDate>
       
       <guid>https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
-      <description>对于普通的Java对象，当new的时候创建对象，当它没有任何引用的时候被垃圾回收机制回收。 而由Spring IoC容器托管的对象，它们的生命周期完全由容器控制。 概括Spring中Bean的生命周期 # Spring中每个Bean的生命周期如下：</description>
+      <description></description>
       <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://WFUing.github.io/posts/architecture/backend/spring/spring%E4%B8%ADbean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/featured.png" />
     </item>
     

@@ -1279,124 +1279,124 @@ const loadScript = (url, onloadFunction) => {
 
 </p>
 <table>
-<thead>
-<tr>
-<th>Block</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device</td>
-<td>TANGO device server object model 定义的抽象概念；它可以是一个硬件（互锁位）、硬件集合（连接到步进电机的屏幕）、逻辑设备（锥度）或所有这些的组合（加速器）。</td>
-</tr>
-<tr>
-<td>TANGO Class</td>
-<td>从面向对象编程的概念来看，这是开发人员必须实现的主要类。</td>
-</tr>
-<tr>
-<td>Device Server</td>
-<td>服务器（也称为设备服务器）是一个进程，其主要任务是向一个或多个客户端提供一项或多项服务。为此，服务器必须将大部分时间花在等待循环中，等待客户端连接到它。这些设备托管在服务器进程中。服务器能够托管多种类型的设备。简而言之，它是一个导出可用于接受请求的设备的过程。另请参阅术语表、设备服务器实例。</td>
-</tr>
-<tr>
-<td>Device Property</td>
-<td>存储在Tango 数据库中的配置参数。属性可以分配给设备类、设备或设备接口的元素（属性、 命令、管道）。属性也可以与设备无关——此类属性称为自由属性。Tango Controls系统的元素在启动期间经常使用属性值。这些通常提供配置硬件连接或调整用户首选项所需的信息。</td>
-</tr>
-<tr>
-<td>Attribute</td>
-<td>属性代表系统中的一个或多个过程值。它可能具有不同的格式或维度，例如标量 (0D)、频谱 (1D) 或图像 (2D)。该属性允许根据程序员定义的访问来读取和/或写入这些值。这些值可能具有不同的数据类型。此外，属性还提供一些元数据，例如属性质量、时间戳或配置属性。如需完整列表，请参阅手册。特定设备可用的属性列表由其类定义。</td>
-</tr>
-<tr>
-<td>Pipe</td>
-<td>管道允许从设备读取结构化数据和/或向设备写入结构化数据。数据可以由几种基本 Tango 数据类型构建。数据的结构由设备类定义并且不固定。它可以在运行时由设备本身更改，也可以根据客户端的请求根据 管道提供的set_pipe_config操作进行修改。设备可用的管道列表由其 设备类定义。</td>
-</tr>
-<tr>
-<td>Event</td>
-<td>事件是任何分布式控制系统的关键部分。他们的目标是提供一种快速高效的沟通机制。标准的CORBA通信范例是同步或异步的双向调用。对于对价值观始终感兴趣的客户来说，事件驱动的通信范式是一种更高效、更自然的编程方式。</td>
-</tr>
-<tr>
-<td>Command</td>
-<td>命令是用户可以在设备上调用的操作（例如SwitchOn、SwitchOff）。它还涉及到OOP（面向对象编程）中的一种具体方法。 Tango Controls 允许命令获取输入参数 (argin) 并返回值 (argout)。特定设备的可用命令列表由其设备类别定义。</td>
-</tr>
-<tr>
-<td>State</td>
-<td>设备可能处于运行时确定的某种状态。设备的状态可以反映与其连接的设备的状态或者以其他方式确定。该行为由实现状态机的设备类定义 。状态可以定义当前可用的属性、命令和管道操作。 Tango Controls 将设备可能处于的一组状态限制为 14 种：ON, OFF, CLOSE, OPEN, INSERT, EXTRACT, MOVING, STANDBY, FAULT, INIT, RUNNING, ALARM, DISABLE, and UNKNOWN</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>以格式化的 ascii 字符串表示的设备状态。</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Block</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Device</td>
+          <td style="text-align: left">TANGO device server object model 定义的抽象概念；它可以是一个硬件（互锁位）、硬件集合（连接到步进电机的屏幕）、逻辑设备（锥度）或所有这些的组合（加速器）。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TANGO Class</td>
+          <td style="text-align: left">从面向对象编程的概念来看，这是开发人员必须实现的主要类。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Device Server</td>
+          <td style="text-align: left">服务器（也称为设备服务器）是一个进程，其主要任务是向一个或多个客户端提供一项或多项服务。为此，服务器必须将大部分时间花在等待循环中，等待客户端连接到它。这些设备托管在服务器进程中。服务器能够托管多种类型的设备。简而言之，它是一个导出可用于接受请求的设备的过程。另请参阅术语表、设备服务器实例。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Device Property</td>
+          <td style="text-align: left">存储在Tango 数据库中的配置参数。属性可以分配给设备类、设备或设备接口的元素（属性、 命令、管道）。属性也可以与设备无关——此类属性称为自由属性。Tango Controls系统的元素在启动期间经常使用属性值。这些通常提供配置硬件连接或调整用户首选项所需的信息。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Attribute</td>
+          <td style="text-align: left">属性代表系统中的一个或多个过程值。它可能具有不同的格式或维度，例如标量 (0D)、频谱 (1D) 或图像 (2D)。该属性允许根据程序员定义的访问来读取和/或写入这些值。这些值可能具有不同的数据类型。此外，属性还提供一些元数据，例如属性质量、时间戳或配置属性。如需完整列表，请参阅手册。特定设备可用的属性列表由其类定义。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Pipe</td>
+          <td style="text-align: left">管道允许从设备读取结构化数据和/或向设备写入结构化数据。数据可以由几种基本 Tango 数据类型构建。数据的结构由设备类定义并且不固定。它可以在运行时由设备本身更改，也可以根据客户端的请求根据 管道提供的set_pipe_config操作进行修改。设备可用的管道列表由其 设备类定义。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Event</td>
+          <td style="text-align: left">事件是任何分布式控制系统的关键部分。他们的目标是提供一种快速高效的沟通机制。标准的CORBA通信范例是同步或异步的双向调用。对于对价值观始终感兴趣的客户来说，事件驱动的通信范式是一种更高效、更自然的编程方式。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Command</td>
+          <td style="text-align: left">命令是用户可以在设备上调用的操作（例如SwitchOn、SwitchOff）。它还涉及到OOP（面向对象编程）中的一种具体方法。 Tango Controls 允许命令获取输入参数 (argin) 并返回值 (argout)。特定设备的可用命令列表由其设备类别定义。</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">State</td>
+          <td style="text-align: left">设备可能处于运行时确定的某种状态。设备的状态可以反映与其连接的设备的状态或者以其他方式确定。该行为由实现状态机的设备类定义 。状态可以定义当前可用的属性、命令和管道操作。 Tango Controls 将设备可能处于的一组状态限制为 14 种：ON, OFF, CLOSE, OPEN, INSERT, EXTRACT, MOVING, STANDBY, FAULT, INIT, RUNNING, ALARM, DISABLE, and UNKNOWN</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Status</td>
+          <td style="text-align: left">以格式化的 ascii 字符串表示的设备状态。</td>
+      </tr>
+  </tbody>
 </table>
 <table>
-<thead>
-<tr>
-<th>Block</th>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device</td>
-<td>domain/family/member</td>
-<td>To identify the device</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Block</th>
+          <th style="text-align: left">Attribute</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Device</td>
+          <td style="text-align: left">domain/family/member</td>
+          <td style="text-align: left">To identify the device</td>
+      </tr>
+  </tbody>
 </table>
 <table>
-<thead>
-<tr>
-<th>Left Block</th>
-<th>Right Block</th>
-<th>Multiplicity</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Device</td>
-<td>TANGO Class</td>
-<td>1</td>
-<td>每个设备都属于 Tango 类</td>
-</tr>
-<tr>
-<td>Attribute</td>
-<td>Event</td>
-<td>0..*</td>
-<td>一个属性可以有多个关联事件</td>
-</tr>
-<tr>
-<td>Device</td>
-<td>DeviceProperty</td>
-<td>0..*</td>
-<td>一台设备可以有多个关联的设备属性</td>
-</tr>
-<tr>
-<td>DeviceServer</td>
-<td>Device</td>
-<td>1..*</td>
-<td>每个设备服务器内部都有许多设备</td>
-</tr>
-<tr>
-<td>TANGO Class</td>
-<td>Attribute</td>
-<td>0..*</td>
-<td>一个 TANGO Class 可以有多个关联属性</td>
-</tr>
-<tr>
-<td>TANGO Class</td>
-<td>Command</td>
-<td>0..*</td>
-<td>一个 TANGO Class 可以有多个关联命令</td>
-</tr>
-<tr>
-<td>TANGO Class</td>
-<td>Pipe</td>
-<td>0..*</td>
-<td>一个 TANGO Class 可以有多个关联的 Pipe</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Left Block</th>
+          <th style="text-align: left">Right Block</th>
+          <th style="text-align: left">Multiplicity</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Device</td>
+          <td style="text-align: left">TANGO Class</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">每个设备都属于 Tango 类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Attribute</td>
+          <td style="text-align: left">Event</td>
+          <td style="text-align: left">0..*</td>
+          <td style="text-align: left">一个属性可以有多个关联事件</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Device</td>
+          <td style="text-align: left">DeviceProperty</td>
+          <td style="text-align: left">0..*</td>
+          <td style="text-align: left">一台设备可以有多个关联的设备属性</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">DeviceServer</td>
+          <td style="text-align: left">Device</td>
+          <td style="text-align: left">1..*</td>
+          <td style="text-align: left">每个设备服务器内部都有许多设备</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TANGO Class</td>
+          <td style="text-align: left">Attribute</td>
+          <td style="text-align: left">0..*</td>
+          <td style="text-align: left">一个 TANGO Class 可以有多个关联属性</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TANGO Class</td>
+          <td style="text-align: left">Command</td>
+          <td style="text-align: left">0..*</td>
+          <td style="text-align: left">一个 TANGO Class 可以有多个关联命令</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">TANGO Class</td>
+          <td style="text-align: left">Pipe</td>
+          <td style="text-align: left">0..*</td>
+          <td style="text-align: left">一个 TANGO Class 可以有多个关联的 Pipe</td>
+      </tr>
+  </tbody>
 </table>
 <h2 class="relative group">Tango object 命名（device, attribute and property） 
     <div id="tango-object-命名device-attribute-and-property" class="anchor"></div>

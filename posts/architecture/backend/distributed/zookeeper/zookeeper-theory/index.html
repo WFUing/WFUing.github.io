@@ -1494,58 +1494,58 @@ const loadScript = (url, onloadFunction) => {
 <p>znode 上有一个<strong>顺序标志（ <code>SEQUENTIAL</code> ）</strong>。如果在创建 znode 时，设置了<strong>顺序标志（ <code>SEQUENTIAL</code> ）</strong>，那么 ZooKeeper 会使用计数器为 znode 添加一个单调递增的数值，即 <code>zxid</code>。ZooKeeper 正是利用 zxid 实现了严格的顺序访问控制能力。</p>
 <p>每个 znode 节点在存储数据的同时，都会维护一个叫做 <code>Stat</code> 的数据结构，里面存储了关于该节点的全部状态信息。如下：</p>
 <table>
-<thead>
-<tr>
-<th><strong>状态属性</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>czxid</td>
-<td>数据节点创建时的事务 ID</td>
-</tr>
-<tr>
-<td>ctime</td>
-<td>数据节点创建时的时间</td>
-</tr>
-<tr>
-<td>mzxid</td>
-<td>数据节点最后一次更新时的事务 ID</td>
-</tr>
-<tr>
-<td>mtime</td>
-<td>数据节点最后一次更新时的时间</td>
-</tr>
-<tr>
-<td>pzxid</td>
-<td>数据节点的子节点最后一次被修改时的事务 ID</td>
-</tr>
-<tr>
-<td>cversion</td>
-<td>子节点的更改次数</td>
-</tr>
-<tr>
-<td>version</td>
-<td>节点数据的更改次数</td>
-</tr>
-<tr>
-<td>aversion</td>
-<td>节点的 ACL 的更改次数</td>
-</tr>
-<tr>
-<td>ephemeralOwner</td>
-<td>如果节点是临时节点，则表示创建该节点的会话的 SessionID；如果节点是持久节点，则该属性值为 0</td>
-</tr>
-<tr>
-<td>dataLength</td>
-<td>数据内容的长度</td>
-</tr>
-<tr>
-<td>numChildren</td>
-<td>数据节点当前的子节点个数</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><strong>状态属性</strong></th>
+          <th style="text-align: left"><strong>说明</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">czxid</td>
+          <td style="text-align: left">数据节点创建时的事务 ID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ctime</td>
+          <td style="text-align: left">数据节点创建时的时间</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">mzxid</td>
+          <td style="text-align: left">数据节点最后一次更新时的事务 ID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">mtime</td>
+          <td style="text-align: left">数据节点最后一次更新时的时间</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">pzxid</td>
+          <td style="text-align: left">数据节点的子节点最后一次被修改时的事务 ID</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">cversion</td>
+          <td style="text-align: left">子节点的更改次数</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">version</td>
+          <td style="text-align: left">节点数据的更改次数</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">aversion</td>
+          <td style="text-align: left">节点的 ACL 的更改次数</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ephemeralOwner</td>
+          <td style="text-align: left">如果节点是临时节点，则表示创建该节点的会话的 SessionID；如果节点是持久节点，则该属性值为 0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">dataLength</td>
+          <td style="text-align: left">数据内容的长度</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">numChildren</td>
+          <td style="text-align: left">数据节点当前的子节点个数</td>
+      </tr>
+  </tbody>
 </table>
 <h3 class="relative group">集群角色 
     <div id="集群角色" class="anchor"></div>
