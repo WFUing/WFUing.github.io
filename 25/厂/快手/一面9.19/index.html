@@ -109,7 +109,7 @@
     "keywords": [""],
     
     "mainEntityOfPage": "true",
-    "wordCount": "275"
+    "wordCount": "318"
   }]
   </script>
 
@@ -982,7 +982,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-09-19 11:00:00 &#43;0800 &#43;0800">19 September 2024</time><span class="px-2 text-primary-500">&middot;</span><span>275 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
+  <time datetime="2024-09-19 11:00:00 &#43;0800 &#43;0800">19 September 2024</time><span class="px-2 text-primary-500">&middot;</span><span>318 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">2 mins</span>
   
 
   
@@ -1128,30 +1128,37 @@ const loadScript = (url, onloadFunction) => {
 
         <div class="article-content max-w-prose mb-20">
           <p>先自我介绍，然后就开始做题</p>
-<p>
+<pre tabindex="0"><code>算法题:
 
+给你一个按照非递减顺序排列的整数数组 nums,和一个目标值target。请你找出给定目标值在数组中的开始位置和结束位置。
 
+如果数组中不存在目标值 target,返回[-1,-1]。
 
+你必须设计并实现时间复杂度为O(log n)的算法解决此问题。
 
-  
-  
-    
-  
-  
-    <figure>
-      
-      <img
-        class="my-0 rounded-md"
-        src="/25/%E5%8E%82/%E5%BF%AB%E6%89%8B/%E4%B8%80%E9%9D%A29.19/IMG_1640.jpg"
-        alt=""
-      />
-      
-      
-    </figure>
-  
+示例1:
 
-</p>
-<p>5min秒了</p>
+输入: nums  =  [5,7,7,8,8,10], target =8 
+
+输出:  [3,4] 
+
+示例2:
+
+输入:  nums=[5,7,7,8,8,10] ,  target=6 
+
+输出:[-1,-1]
+
+示例3:
+
+输入: nums  =  [] , target=0 
+
+输出:[-1,-1]
+
+public static int[] searchRange(int[] nums, int target){//...
+
+return new int[]  {-1,-1} ;
+}
+</code></pre><p>5min秒了</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">5</span><span class="p">,</span><span class="w"> </span><span class="n">7</span><span class="p">,</span><span class="w"> </span><span class="n">7</span><span class="p">,</span><span class="w"> </span><span class="n">8</span><span class="p">,</span><span class="w"> </span><span class="n">8</span><span class="p">,</span><span class="w"> </span><span class="n">10</span><span class="p">};</span><span class="w">
