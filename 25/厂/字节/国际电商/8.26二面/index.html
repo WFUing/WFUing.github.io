@@ -110,7 +110,7 @@
     "keywords": ["review"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "0"
+    "wordCount": "146"
   }]
   </script>
 
@@ -962,7 +962,11 @@ const loadScript = (url, onloadFunction) => {
 
 
 
+  
 
+
+
+  
 
 
 
@@ -979,7 +983,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-08-20 21:00:00 &#43;0800 &#43;0800">20 August 2024</time>
+  <time datetime="2024-08-20 21:00:00 &#43;0800 &#43;0800">20 August 2024</time><span class="px-2 text-primary-500">&middot;</span><span>146 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
   
 
   
@@ -1124,7 +1128,102 @@ const loadScript = (url, onloadFunction) => {
 
 
         <div class="article-content max-w-prose mb-20">
-          
+          <p>无自我介绍，然后简单问简历里你觉得哪些是你的亮点。说了中间件。</p>
+<ol>
+<li>问kafka怎么实现可靠性？</li>
+<li>问怎么设计一个批处理订单的rpc接口？</li>
+<li>问redis的分布式锁？</li>
+<li>问项目细节，怎么设置价格的mysql变量？</li>
+</ol>
+<p>sql题</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/25/%E5%8E%82/%E5%AD%97%E8%8A%82/%E5%9B%BD%E9%99%85%E7%94%B5%E5%95%86/8.26%E4%BA%8C%E9%9D%A2/image.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">average_score</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">scores</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">average_score</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>算法题，秒了</p>
+<p>
+
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      
+      <img
+        class="my-0 rounded-md"
+        src="/25/%E5%8E%82/%E5%AD%97%E8%8A%82/%E5%9B%BD%E9%99%85%E7%94%B5%E5%95%86/8.26%E4%BA%8C%E9%9D%A2/image-1.png"
+        alt=""
+      />
+      
+      
+    </figure>
+  
+
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Comparator</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VersionComparator</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">versions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&#34;1.45.0&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;1.5&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;6&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;3.3.3.3.3.3.3&#34;</span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">versions</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">o1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">o2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">compareVersions</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span><span class="w"> </span><span class="n">o2</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;Sorted versions: &#34;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">versions</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareVersions</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">v2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">vals1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v1</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;\\.&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">vals2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v2</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&#34;\\.&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">vals1</span><span class="p">.</span><span class="na">length</span><span class="p">,</span><span class="w"> </span><span class="n">vals2</span><span class="p">.</span><span class="na">length</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// Convert the substring to integers to compare</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">val1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vals1</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">vals1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">val2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vals2</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">vals2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">val2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">val2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
                 
         
@@ -1221,7 +1320,13 @@ const loadScript = (url, onloadFunction) => {
   </footer>
 </article>
 
-      
+      <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top" title="Scroll to top">
+    &uarr;
+  </a>
+</div>
     </main><footer id="site-footer" class="py-10 print:hidden">
   
   
