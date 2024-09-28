@@ -3,6 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://WFUing.github.io/posts/ai/</loc>
+    <lastmod>2024-09-28T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/</loc>
+    <lastmod>2024-09-28T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/dnn-partion/ai-compute/</loc>
+    <lastmod>2024-09-28T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://WFUing.github.io/posts/ai/dnn-partion/</loc>
+    <lastmod>2024-09-28T09:25:45+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://WFUing.github.io/25/</loc>
     <lastmod>2024-09-25T19:00:00+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -136,12 +160,6 @@
   </url>
   <url>
     <loc>https://WFUing.github.io/posts/architecture/</loc>
-    <lastmod>2024-08-25T20:11:01+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/</loc>
     <lastmod>2024-08-25T20:11:01+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -617,12 +635,6 @@
   <url>
     <loc>https://WFUing.github.io/posts/architecture/backend/spring/spring-boot-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E5%86%99%E4%B8%80%E4%B8%AA-starter/</loc>
     <lastmod>2024-05-27T16:15:08+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://WFUing.github.io/posts/ai/</loc>
-    <lastmod>2024-05-24T09:25:45+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

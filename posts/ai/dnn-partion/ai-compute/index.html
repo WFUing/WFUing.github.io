@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth" data-default-appearance="light"
   data-auto-appearance="true"><head>
-	<meta name="generator" content="Hugo 0.135.0">
   <meta charset="utf-8" />
   
   <meta http-equiv="content-language" content="en" />
@@ -9,18 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
-  <title>WFUing&#39;s Blog</title>
-  <meta name="title" content="WFUing&#39;s Blog" />
+  <title>定量评估AI模型的层次需要多少计算资源 &middot; WFUing&#39;s Blog</title>
+  <meta name="title" content="定量评估AI模型的层次需要多少计算资源 &middot; WFUing&#39;s Blog" />
   
   
+  <meta name="keywords" content=", " />
   
   
-  
-  <link rel="canonical" href="https://WFUing.github.io/" />
-  
-  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="WFUing's Blog" />
-  
-  <link rel="alternate" type="application/json" href="/index.json" title="WFUing's Blog" />
+  <link rel="canonical" href="https://WFUing.github.io/posts/ai/dnn-partion/ai-compute/" />
   
   
   
@@ -72,32 +67,48 @@
   
   
   
-  <meta property="og:url" content="https://WFUing.github.io/">
+  <meta property="og:url" content="https://WFUing.github.io/posts/ai/dnn-partion/ai-compute/">
   <meta property="og:site_name" content="WFUing&#39;s Blog">
-  <meta property="og:title" content="WFUing">
+  <meta property="og:title" content="定量评估AI模型的层次需要多少计算资源">
   <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-28T09:25:45+08:00">
+    <meta property="article:modified_time" content="2024-09-28T09:25:45+08:00">
+    <meta property="og:image" content="https://WFUing.github.io/posts/ai/dnn-partion/ai-compute/featured.png">
 
   
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="WFUing">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://WFUing.github.io/posts/ai/dnn-partion/ai-compute/featured.png">
+  <meta name="twitter:title" content="定量评估AI模型的层次需要多少计算资源">
 
   
   <script type="application/ld+json">
-  {
+  [{
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https:\/\/WFUing.github.io\/",
-    "name": "WFUing\u0027s Blog",
+    "@type": "Article",
+    "articleSection": "博客",
+    "name": "定量评估AI模型的层次需要多少计算资源",
+    "headline": "定量评估AI模型的层次需要多少计算资源",
+    
     
     "inLanguage": "en",
-    "url": "https:\/\/WFUing.github.io\/",
-    
-    "publisher" : {
+    "url" : "https:\/\/WFUing.github.io\/posts\/ai\/dnn-partion\/ai-compute\/",
+    "author" : {
       "@type": "Person",
       "name": "WFUing"
-    }
-  }
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-09-28T09:25:45\u002b08:00",
+    "datePublished": "2024-09-28T09:25:45\u002b08:00",
+    
+    "dateModified": "2024-09-28T09:25:45\u002b08:00",
+    
+    "keywords": [""],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "169"
+  }]
   </script>
 
 
@@ -134,9 +145,6 @@
 
 
 
-
-
-<script defer src="/lib/typeit/typeit.umd.js" integrity=""></script>
 
 
 
@@ -885,744 +893,581 @@ const loadScript = (url, onloadFunction) => {
   <div class="relative flex flex-col grow">
     <main id="main-content" class="grow">
       
-  
-  
-    
-<article class="max-w-full prose dark:prose-invert">
-    <div class="relative">
-        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
-        <div class="mx-auto max-w-7xl p-0">
-            <div class="relative sm:overflow-hidden">
-                <div class="fixed inset-x-0 top-0" style="z-index:-10">
-                    
-                    
-                    
-                    
-                    <img class="w-full h-[1000px] object-cover m-0 nozoom" src="/img/background.jpg" role="presentation">
-                    <div
-                        class="absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
-                    </div>
-                    <div
-                        class="opacity-60 absolute inset-0 h-[1000px] bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <section><center>
-<h1 id="typeit-6fb22d3943ec7794c447a8e7c1bb77a4"></h1>
 
+
+<article>
+  
+  
+  
+  
+  
+  
+
+
+<div id="hero" class="h-[150px] md:h-[200px]"></div>
+
+
+    
+    <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom"
+    style="background-image:url(/posts/ai/dnn-partion/ai-compute/featured.png);">
+    
+
+
+    <div class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal">
+    </div>
+    <div
+        class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal">
+    </div>
+</div>
+
+<div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new TypeIt("#typeit-6fb22d3943ec7794c447a8e7c1bb77a4", {
-        strings: ["","Welcome to WFUing's blog!!!","I'm waiting for you!!!",""],
-        speed:  100 ,
-        lifeLike:  false ,
-        startDelay:  0 ,
-        breakLines:  false ,
-        waitUntilVisible:  true ,
-        loop:  true 
-      }).go();
+    window.addEventListener('scroll', function (e) {
+        var scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var background_blur = document.getElementById('background-blur');
+        background_blur.style.opacity = (scroll / 300)
     });
 </script>
-</center>
-<section class="grid-3"  >
 
+  
+  
 
-<div class="relative flex flex-col items-center justify-center text-center">
-  
-  
-  
-  
-  <img class="mb-2 rounded-full h-36 w-36" width="144" height="144"
-      alt="WFUing" src="/img/author.png" />
-  
-  
-  <span class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
-    WFUing
-  </span>
-  
-  <h4 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
-    A graduate who loves coding.
-  </h4>
-  
-  <div class="mt-3 mb-10 text-2xl">
+  <header id="single_header" class="mt-5 max-w-prose">
     
-    <div class="flex flex-wrap">
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      定量评估AI模型的层次需要多少计算资源
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flex flex-row flex-wrap items-center">
+  
+  
+  <time datetime="2024-09-28 09:25:45 &#43;0800 &#43;0800">28 September 2024</time><span class="px-2 text-primary-500">&middot;</span><span>169 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
+  
+
+  
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+    
+    
+
+    
       
       
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="mailto:522023320072@smail.nju.edu.cn" target="_blank"
-         aria-label="Email" rel="me noopener noreferrer">
+<div class="flex author">
+  
+  
+  
+  
+  <img class="!mt-0 !mb-0 h-24 w-24 rounded-full ltr:mr-4 rtl:ml-4" width="96" height="96"
+    alt="WFUing" src="/img/author.png" />
+  
+  
+  <div class="place-self-center">
+    
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Author
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      WFUing
+    </div>
+    
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-400">A graduate who loves coding.</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="mailto:522023320072@smail.nju.edu.cn"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
 
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://github.com/WFUing" target="_blank"
-         aria-label="Github" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/WFUing"
+          target="_blank"
+          aria-label="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
 
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://wfuing.github.io/img/qq.jpg" target="_blank"
-         aria-label="Qq" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/qq.jpg"
+          target="_blank"
+          aria-label="Qq"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg height="2500" viewBox="-1.94 0 124.879 145.085" width="2101" xmlns="http://www.w3.org/2000/svg"><path d="m60.503 142.237c-12.533 0-24.038-4.195-31.445-10.46-3.762 1.124-8.574 2.932-11.61 5.175-2.6 1.918-2.275 3.874-1.807 4.663 2.056 3.47 35.273 2.216 44.862 1.136zm0 0c12.535 0 24.039-4.195 31.447-10.46 3.76 1.124 8.573 2.932 11.61 5.175 2.598 1.918 2.274 3.874 1.805 4.663-2.056 3.47-35.272 2.216-44.862 1.136zm0 0" fill="#faab07"/><path d="m60.576 67.119c20.698-.14 37.286-4.147 42.907-5.683 1.34-.367 2.056-1.024 2.056-1.024.005-.189.085-3.37.085-5.01 0-27.634-13.044-55.401-45.124-55.402-32.08.001-45.125 27.769-45.125 55.401 0 1.642.08 4.822.086 5.01 0 0 .583.615 1.65.913 5.19 1.444 22.09 5.65 43.312 5.795zm56.245 23.02c-1.283-4.129-3.034-8.944-4.808-13.568 0 0-1.02-.126-1.537.023-15.913 4.623-35.202 7.57-49.9 7.392h-.153c-14.616.175-33.774-2.737-49.634-7.315-.606-.175-1.802-.1-1.802-.1-1.774 4.624-3.525 9.44-4.808 13.568-6.119 19.69-4.136 27.838-2.627 28.02 3.239.392 12.606-14.821 12.606-14.821 0 15.459 13.957 39.195 45.918 39.413h.848c31.96-.218 45.917-23.954 45.917-39.413 0 0 9.368 15.213 12.607 14.822 1.508-.183 3.491-8.332-2.627-28.021"/><path d="m49.085 40.824c-4.352.197-8.07-4.76-8.304-11.063-.236-6.305 3.098-11.576 7.45-11.773 4.347-.195 8.064 4.76 8.3 11.065.238 6.306-3.097 11.577-7.446 11.771m31.133-11.063c-.233 6.302-3.951 11.26-8.303 11.063-4.35-.195-7.684-5.465-7.446-11.77.236-6.305 3.952-11.26 8.3-11.066 4.352.197 7.686 5.468 7.449 11.773" fill="#fff"/><path d="m87.952 49.725c-1.162-2.575-12.875-5.445-27.374-5.445h-.156c-14.5 0-26.212 2.87-27.375 5.446a.863.863 0 0 0 -.085.367c0 .186.063.352.16.496.98 1.427 13.985 8.487 27.3 8.487h.156c13.314 0 26.319-7.058 27.299-8.487a.873.873 0 0 0 .16-.498.856.856 0 0 0 -.085-.365" fill="#faab07"/><path d="m54.434 29.854c.199 2.49-1.167 4.702-3.046 4.943-1.883.242-3.568-1.58-3.768-4.07-.197-2.492 1.167-4.704 3.043-4.944 1.886-.244 3.574 1.58 3.771 4.07m11.956.833c.385-.689 3.004-4.312 8.427-2.993 1.425.347 2.084.857 2.223 1.057.205.296.262.718.053 1.286-.412 1.126-1.263 1.095-1.734.875-.305-.142-4.082-2.66-7.562 1.097-.24.257-.668.346-1.073.04-.407-.308-.574-.93-.334-1.362"/><path d="m60.576 83.08h-.153c-9.996.12-22.116-1.204-33.854-3.518-1.004 5.818-1.61 13.132-1.09 21.853 1.316 22.043 14.407 35.9 34.614 36.1h.82c20.208-.2 33.298-14.057 34.616-36.1.52-8.723-.087-16.035-1.092-21.854-11.739 2.315-23.862 3.64-33.86 3.518" fill="#fff"/><g fill="#eb1923"><path d="m32.102 81.235v21.693s9.937 2.004 19.893.616v-20.009c-6.307-.357-13.109-1.152-19.893-2.3"/><path d="m105.539 60.412s-19.33 6.102-44.963 6.275h-.153c-25.591-.172-44.896-6.255-44.962-6.275l-6.474 16.158c16.193 4.882 36.261 8.028 51.436 7.845h.153c15.175.183 35.242-2.963 51.437-7.845zm0 0"/></g></svg>
   </span>
 
-</a>
+</span></a
+        >
       
+    
       
-      
-      <a class="px-1 hover:text-primary-400 text-primary-800 dark:text-primary-200" href="https://wfuing.github.io/img/wx.jpg" target="_blank"
-         aria-label="Wechat" rel="me noopener noreferrer">
+        <a
+          class="px-1 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://wfuing.github.io/img/wx.jpg"
+          target="_blank"
+          aria-label="Wechat"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom">
 
   <span class="relative block icon">
     <svg height="2009" width="2500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.36600000000001 90"><linearGradient id="a" x1="50.056%" x2="50.056%" y1="94.15%" y2=".437%"><stop offset="0" stop-color="#05cd66"/><stop offset="1" stop-color="#61f380"/><stop offset="1" stop-color="#9eee69"/></linearGradient><linearGradient id="b" x1="50.089%" x2="50.089%" y1="93.535%" y2="-.036%"><stop offset="0" stop-color="#e4e6e6"/><stop offset="1" stop-color="#f0f0f0"/></linearGradient><g fill="none" fill-rule="evenodd"><path d="M0 33.466c0 10.04 5.474 19.213 13.933 25.286.746.496 1.12 1.24 1.12 2.231 0 .248-.125.62-.125.868-.622 2.479-1.742 6.57-1.866 6.693-.124.372-.249.62-.249.992 0 .744.622 1.363 1.369 1.363.248 0 .497-.124.746-.248l8.832-5.082c.622-.371 1.369-.62 2.115-.62.374 0 .871 0 1.244.125 4.106 1.24 8.584 1.859 13.187 1.859 22.267 0 40.306-14.998 40.306-33.467S62.573 0 40.306 0C18.038 0 0 14.998 0 33.466" fill="url(#a)"/><path d="M77.86 86.628c3.847 0 7.57-.5 10.92-1.498.249-.125.621-.125.993-.125.62 0 1.241.25 1.738.5l7.322 4.245c.248.125.372.25.62.25.62 0 1.117-.5 1.117-1.124 0-.25-.124-.5-.124-.874 0-.125-.993-3.497-1.49-5.62-.123-.25-.123-.5-.123-.749 0-.75.372-1.374.993-1.873 7.073-5.12 11.54-12.738 11.54-21.23 0-15.485-15.015-28.098-33.506-28.098S44.353 42.92 44.353 58.53c0 15.485 15.016 28.098 33.507 28.098z" fill="url(#b)"/><path d="M32.05 22.662c0 2.891-2.288 5.18-5.18 5.18s-5.18-2.289-5.18-5.18 2.29-5.18 5.18-5.18 5.18 2.289 5.18 5.18M58.92 22.662c0 2.891-2.288 5.18-5.179 5.18s-5.18-2.289-5.18-5.18 2.289-5.18 5.18-5.18 5.18 2.289 5.18 5.18" fill="#168743"/><g fill="#919191"><path d="M84.82 49.856c0 2.518 2.015 4.532 4.533 4.532s4.532-2.014 4.532-4.532-2.014-4.532-4.532-4.532-4.533 2.014-4.533 4.532M62.482 49.856c0 2.518 2.014 4.532 4.532 4.532s4.533-2.014 4.533-4.532-2.015-4.532-4.533-4.532-4.532 2.014-4.532 4.532"/></g></g></svg>
   </span>
 
-</a>
+</span></a
+        >
       
-      
-    </div>
     
   </div>
+
 </div>
+  </div>
+</div>
+    
+
+    
+
+    
+
+    
+    <div class="mb-5"></div>
+    
+  
+  </header>
+  
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+    
+     <div
+      class="order-first lg:ml-auto px-0 lg:order-last ltr:lg:pl-8 rtl:lg:pr-8">
+      <div class="toc ltr:pl-5 rtl:pr-5 print:hidden lg:sticky lg:top-[140px]">
+
+         <details open class="toc-right mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-浮点运算数flops">1. 浮点运算数（FLOPs）</a></li>
+    <li><a href="#2-模型参数量">2. 模型参数量</a></li>
+    <li><a href="#3-内存占用memory-footprint">3. 内存占用（Memory Footprint）</a></li>
+    <li><a href="#4-计算时间">4. 计算时间</a></li>
+    <li><a href="#5-带宽与数据传输">5. 带宽与数据传输</a></li>
+    <li><a href="#6-并行性与优化">6. 并行性与优化</a></li>
+    <li><a href="#7-量化与精度">7. 量化与精度</a></li>
+    <li><a href="#8-层的类型">8. 层的类型</a></li>
+    <li><a href="#小结">小结</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 ltr:-ml-5 ltr:pl-5 rtl:-mr-5 rtl:pr-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 ltr:-ml-5 ltr:border-l ltr:pl-5 rtl:-mr-5 rtl:border-r rtl:pr-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-浮点运算数flops">1. 浮点运算数（FLOPs）</a></li>
+    <li><a href="#2-模型参数量">2. 模型参数量</a></li>
+    <li><a href="#3-内存占用memory-footprint">3. 内存占用（Memory Footprint）</a></li>
+    <li><a href="#4-计算时间">4. 计算时间</a></li>
+    <li><a href="#5-带宽与数据传输">5. 带宽与数据传输</a></li>
+    <li><a href="#6-并行性与优化">6. 并行性与优化</a></li>
+    <li><a href="#7-量化与精度">7. 量化与精度</a></li>
+    <li><a href="#8-层的类型">8. 层的类型</a></li>
+    <li><a href="#小结">小结</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+ 
+<script>
+  (function () {
+    var $toc = $('#TableOfContents');
+    if ($toc.length > 0) {
+      var $window = $(window);
+
+      function onScroll() {
+        var currentScroll = $window.scrollTop();
+        var h = $('.anchor');
+        var id = "";
+        h.each(function (i, e) {
+          e = $(e);
+          if (e.offset().top - $(window).height()/3 <= currentScroll) {
+            id = e.attr('id');
+          }
+        });
+        var active = $toc.find('a.active');      
+        if (active.length == 1 && active.eq(0).attr('href') == '#' + id) return true;
+
+        active.each(function (i, e) {
+           
+            $(e).removeClass('active').siblings('ul').hide();
+          
+        });
+        $toc.find('a[href="#' + id + '"]').addClass('active')
+        $toc.find('a[href="#' + id + '"]').parentsUntil('#TableOfContents').each(function (i, e) {
+          $(e).children('a').parents('ul').show();          
+        });
+      }
+
+      $window.on('scroll', onScroll);
+      $(document).ready(function () {
+         
+          $toc.find('a').parent('li').find('ul').hide();
+        
+        onScroll();
+      });
+    }
+  })();
+</script>
+   </div>
+      </div>
+      
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+        
 
 
-<!-- two -->
-<div><h2 class="relative group">Interests 
-    <div id="interests" class="anchor"></div>
+        <div class="article-content max-w-prose mb-20">
+          <p>要定量评估一个AI模型的层次（层级结构）需要多少计算资源，通常涉及以下几个关键方面的指标。这些指标可以帮助我们计算一个模型在推理过程中需要消耗多少的计算资源：</p>
+<h2 class="relative group">1. 浮点运算数（FLOPs） 
+    <div id="1-浮点运算数flops" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#interests" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#1-%e6%b5%ae%e7%82%b9%e8%bf%90%e7%ae%97%e6%95%b0flops" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<p>浮点运算次数（FLOPs，Floating Point Operations）是衡量神经网络计算量最常用的指标之一。FLOPs表示模型在一次前向传播中需要执行的浮点运算数。</p>
 <ul>
-<li>Distributed computing platform（for cloud computing, big data and deep learning）</li>
-<li>Domain-Specific Language</li>
-<li>Proficient in spring, springboot, redis, Message Queue, mysql, etc</li>
+<li>
+<p><strong>FLOPs的计算</strong>：对于不同的层，FLOPs的计算方式不同，尤其是卷积层、全连接层、激活函数等。以卷积层为例，其FLOPs可以通过以下公式计算：</p>
+<p>$$
+\text{FLOPs} = 2 \times C_{in} \times H_{out} \times W_{out} \times K_H \times K_W \times C_{out}
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$ C_{in} $：输入通道数</li>
+<li>$ H_{out} $、$ W_{out} $：输出特征图的高度和宽度</li>
+<li>$ K_H $、$ K_W $：卷积核的高度和宽度</li>
+<li>$ C_{out} $：输出通道数</li>
 </ul>
-</div>
-
-
-<!-- three -->
-<div><h2 class="relative group">Education 
-    <div id="education" class="anchor"></div>
+<p>对于全连接层，FLOPs的计算相对简单：</p>
+<p>$$
+\text{FLOPs} = 2 \times (\text{输入维度} \times \text{输出维度})
+$$</p>
+<p>通过计算FLOPs，可以得出每一层（或整个模型）所需的运算量。一般来说，FLOPs越高，所需的计算资源越多。</p>
+</li>
+</ul>
+<h2 class="relative group">2. 模型参数量 
+    <div id="2-模型参数量" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
         <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
-            style="text-decoration-line: none !important;" href="#education" aria-label="Anchor">#</a>
+            style="text-decoration-line: none !important;" href="#2-%e6%a8%a1%e5%9e%8b%e5%8f%82%e6%95%b0%e9%87%8f" aria-label="Anchor">#</a>
     </span>        
     
 </h2>
+<p>参数量（Number of Parameters）也是评估模型计算资源的另一个重要指标。每个参数代表网络中的一个权重或偏置，它们需要在推理过程中存储在内存中，并参与计算。较大的模型具有更多的参数，通常需要更多的内存和计算资源。</p>
 <ul>
-<li>Bachelor: Department of Computer Science and Technology, Zhejiang Sci-Tech University</li>
-<li>Master: Department of Software Engineering, Nanjing University</li>
+<li>
+<p><strong>卷积层的参数量</strong>：对于一个卷积层，其参数量可以通过以下公式计算：</p>
+<p>$$
+\text{参数量} = K_H \times K_W \times C_{in} \times C_{out} + C_{out}
+$$</p>
+<p>其中卷积核的参数量是 $ K_H \times K_W \times C_{in} \times C_{out} $，偏置参数量是 $ C_{out} $。</p>
+</li>
+<li>
+<p><strong>全连接层的参数量</strong>：对于全连接层，参数量是输入维度和输出维度的乘积：</p>
+<p>$$
+\text{参数量} = \text{输入维度} \times \text{输出维度} + \text{输出维度}
+$$</p>
+<p>参数量越大，模型在推理过程中需要占用的内存就越多，加载模型和更新模型参数时也会消耗更多计算资源。</p>
+</li>
 </ul>
-</div>
+<h2 class="relative group">3. 内存占用（Memory Footprint） 
+    <div id="3-内存占用memory-footprint" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#3-%e5%86%85%e5%ad%98%e5%8d%a0%e7%94%a8memory-footprint" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>模型的内存占用不仅取决于模型的参数量，还与推理过程中需要存储的中间激活值、特征图等有关。</p>
+<ul>
+<li>
+<p><strong>特征图的内存占用</strong>：在推理过程中，每层神经网络的输入和输出特征图（activation maps）都需要存储在内存中。特征图的内存占用可以通过以下公式计算：</p>
+<p>$$
+\text{特征图内存} = H_{out} \times W_{out} \times C_{out} \times \text{数据类型大小}
+$$</p>
+<p>其中：</p>
+<ul>
+<li>$ H_{out} $、$ W_{out} $：特征图的高度和宽度</li>
+<li>$ C_{out} $：输出通道数</li>
+<li>数据类型大小取决于你使用的数值精度，例如浮点数（32位）或半精度浮点数（16位）。</li>
+</ul>
+</li>
+<li>
+<p><strong>总内存占用</strong>：模型的总内存占用是模型参数和特征图内存占用的总和。在评估模型所需的内存时，通常会考虑整个推理过程中每层的激活值、参数、临时变量等。</p>
+</li>
+</ul>
+<h2 class="relative group">4. 计算时间 
+    <div id="4-计算时间" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#4-%e8%ae%a1%e7%ae%97%e6%97%b6%e9%97%b4" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>计算时间是模型在推理时需要的实际处理时间，通常由FLOPs和硬件性能决定。计算时间的度量可以通过实际硬件上运行模型时的前向传播时间来估算。</p>
+<ul>
+<li>
+<p><strong>硬件加速器性能</strong>：不同的硬件平台（如CPU、GPU、TPU）在处理神经网络任务时的性能不同。GPU和TPU等硬件加速器通常能显著加快计算过程，减少推理时间。</p>
+</li>
+<li>
+<p><strong>FLOPs与计算时间的关系</strong>：在相同的硬件环境下，FLOPs越高，通常推理时间越长。但具体的推理时间还会受到硬件的并行计算能力、内存带宽等因素的影响。因此，在评估模型的计算时间时，除了FLOPs，还需要考虑硬件特性。</p>
+</li>
+</ul>
+<h2 class="relative group">5. 带宽与数据传输 
+    <div id="5-带宽与数据传输" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#5-%e5%b8%a6%e5%ae%bd%e4%b8%8e%e6%95%b0%e6%8d%ae%e4%bc%a0%e8%be%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>在分布式推理或跨设备推理的场景中，数据传输也是影响计算资源的重要因素。特别是在需要频繁交换特征图或中间结果的情况下，带宽限制可能成为推理效率的瓶颈。</p>
+<ul>
+<li><strong>数据传输量</strong>：可以通过特征图的大小和层次间传递的数据量来计算。较大的特征图在网络中传输时会占用较多的带宽，增加通信延迟。</li>
+</ul>
+<h2 class="relative group">6. 并行性与优化 
+    <div id="6-并行性与优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#6-%e5%b9%b6%e8%a1%8c%e6%80%a7%e4%b8%8e%e4%bc%98%e5%8c%96" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>神经网络推理过程中，特别是深层网络，计算任务可以进行并行化处理。计算资源需求不仅取决于模型的计算量，也取决于如何利用硬件资源进行并行优化。</p>
+<ul>
+<li>
+<p><strong>层间并行</strong>：多个层次的运算可以通过流水线技术进行并行化处理。</p>
+</li>
+<li>
+<p><strong>操作并行</strong>：卷积操作、矩阵乘法等在GPU或TPU等硬件上可以并行执行，从而提高计算效率。</p>
+</li>
+</ul>
+<h2 class="relative group">7. 量化与精度 
+    <div id="7-量化与精度" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#7-%e9%87%8f%e5%8c%96%e4%b8%8e%e7%b2%be%e5%ba%a6" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>模型的量化与精度直接影响计算资源需求。通常使用较低精度的模型（如16位浮点数甚至8位整数）可以显著减少计算和存储需求，提升推理效率。</p>
+<ul>
+<li>
+<p><strong>量化后的FLOPs</strong>：量化后的模型计算量减少，同时需要的内存也减少，但推理精度可能会有所下降。</p>
+</li>
+<li>
+<p><strong>低精度推理</strong>：低精度计算（如8-bit整数运算）通常比32-bit浮点数运算快，且占用的资源少。</p>
+</li>
+</ul>
+<h2 class="relative group">8. 层的类型 
+    <div id="8-层的类型" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#8-%e5%b1%82%e7%9a%84%e7%b1%bb%e5%9e%8b" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>不同类型的网络层消耗的资源各不相同。以下是几种常见网络层的计算资源需求：</p>
+<ul>
+<li><strong>卷积层</strong>：通常是计算资源最密集的层，特别是在处理高分辨率图像时，卷积操作需要执行大量的乘法和加法操作。</li>
+<li><strong>全连接层</strong>：全连接层消耗的内存和计算资源与输入和输出维度成正比，通常在分类器部分最为显著。</li>
+<li><strong>池化层</strong>：池化层（如最大池化、平均池化）在减少特征图维度时，计算量相对较低，但对于高分辨率输入，也需要占用一定的内存。</li>
+<li><strong>归一化层</strong>：如Batch Normalization和Layer Normalization，计算量较小，但需要额外的存储资源来保存均值和方差等统计信息。</li>
+</ul>
+<h2 class="relative group">小结 
+    <div id="小结" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700"
+            style="text-decoration-line: none !important;" href="#%e5%b0%8f%e7%bb%93" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>要定量评估AI模型的层次需要多少计算资源，主要考虑以下几个关键指标：</p>
+<ol>
+<li><strong>FLOPs（浮点运算数）</strong>：衡量计算量。</li>
+<li><strong>参数量</strong>：衡量模型的存储需求。</li>
+<li><strong>内存占用</strong>：衡量推理过程中的存储需求，包括模型参数和中间特征图。</li>
+<li><strong>计算时间</strong>：通过实际推理时间来衡量资源需求。</li>
+<li><strong>带宽与数据传输</strong>：在分布式推理中的影响。</li>
+<li><strong>并行性与优化</strong>：通过硬件加速和并行化技术优化资源使用。</li>
+</ol>
+<p>通过这些量化指标，可以系统地评估一个AI模型每层在推理过程中所需的计算资源，并为推理优化和硬件部署提供依据。</p>
 
+        </div>
+                
+        
 
-<!-- three -->
-<!-- <div><p>&ndash;&gt;</p>
-<!-- <img src='img/author2.png' alt='author'/> -->
-<!--</div>
- -->
+        
 
-</section>
+          
+      </div>
+     
+    
+     <script>
+        var oid = "views_posts\/ai\/dnn-partion\/ai-compute\/index.md"
+        var oid_likes = "likes_posts\/ai\/dnn-partion\/ai-compute\/index.md"
+      </script>
+      
+      
+      
+      <script type="text/javascript" src="/js/page.min.f94e5beb747249fb2315a14fc6417e483411d48b59dc1376bbafa8c37fce65d397d5401be15c7461670ec7bb90ac2bf148d7d48eaf02f317cd9dc04d4851fd31.js" integrity="sha512-&#43;U5b63RySfsjFaFPxkF&#43;SDQR1ItZ3BN2u6&#43;ow3/OZdOX1UAb4Vx0YWcOx7uQrCvxSNfUjq8C8xfNncBNSFH9MQ=="></script>
+  
+    </section>
+  <footer class="pt-8 max-w-prose print:hidden">
 
-
+    
   
 
 
-
-<div
-  
-    class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900"
-  >
-
-  <span
     
-      class="text-primary-400 ltr:pr-3 rtl:pl-3 flex items-center"
-    >
-
     
-
-  <span class="relative block icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-
-  </span>
-
-
-  </span>
-
-  <span
-    
-      class="dark:text-neutral-300"
-    ><strong>Warning!</strong> Don&rsquo;t forget to follow me on <a href="https://github.com/WFUing"   target="_blank">
-    Github</a>.</span>
-</div>
-
-</section>
+    <div class="pt-3">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="pt-3">
+        
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
     </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/1.4.11/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "https://twikoo-api-three-gamma.vercel.app/",  
+            el: "#tcomment",
+            lang: 'zh-CN',
+            region: 'ap-guangzhou',  
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+      </div>
+    </div>
+    
+    
+  </footer>
 </article>
-<section>
-    
-
-
-
-
-
-<h2 class="mt-8 text-2xl font-extrabold mb-10">Recent</h2>
-
-
-  
-
-
-<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-  
-  
-
-  <a href="/posts/architecture/iot/akka-java/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/iot/akka-java/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/iot/akka-java/">快速入门 Akka Java 指南</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-30 09:16:13 &#43;0800 &#43;0800">30 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>2047 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">10 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Akka 是一个用于在 JVM 上构建高并发、分布式和可容错的事件驱动应用程序的运行时工具包。Akka 既可以用于 Java，也可以用于 Scala。本指南通过描述 Java 版本的<code>Hello World</code>示例来介绍 Akka。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/architecture/iot/concept/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/iot/concept/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/iot/concept/">术语与概念</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-28 22:05:13 &#43;0800 &#43;0800">28 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>59 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          试图建立一个通用的术语来定义一个坚实的基础以对并发、分布式系统这些 Akka 的目标问题展开交流。请注意，对于这些术语并没有一个统一的定义。我们只是为了寻找一些可行的定义以便在整个文档中进行引用。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/architecture/iot/reactive-manifesto/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/iot/reactive-manifesto/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/iot/reactive-manifesto/">响应式宣言(Reactive Manifesto)</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-28 21:16:13 &#43;0800 &#43;0800">28 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>20 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          响应式系统具有响应性、复原性、弹性和消息驱动性。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/architecture/iot/akka/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/architecture/iot/akka/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/architecture/iot/akka/">akka框架</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-27 09:16:13 &#43;0800 &#43;0800">27 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>681 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          Akka 是一个开源项目，基于 Apache 2 License。AKKA框架是用Scala写的，主要用于高并发与分布式应用，目前已经得到广泛地运用，例如Spark、Spray等框架在底层都使用了AKKA进行并发处理。
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/skills/markdown%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/">Markdown公式语法.md</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>4567 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">22 mins</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-  
-
-  <a href="/posts/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/" class="min-w-full">
-    
-    <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-        
-        <div class="w-full thumbnail_card nozoom" style="background-image:url(/posts/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/featured.png);"></div>
-        
-      
-
-      <div class="px-6 py-4">
-
-        
-        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral"
-          href="/posts/ai/li-hongyis-notes/%E4%B8%80%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA/">一、机器学习概论</div>
-        
-
-        <div class="text-sm text-neutral-500 dark:text-neutral-400">
-          
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="flex flex-row flex-wrap items-center">
-  
-  
-  <time datetime="2023-10-23 16:25:26 &#43;0800 &#43;0800">23 October 2023</time><span class="px-2 text-primary-500">&middot;</span><span>63 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">1 min</span>
-  
-
-  
-  
-</div>
-
-
-
-
-
-
-
-        </div>
-
-        
-        <div class="py-1 prose dark:prose-invert">
-          
-        </div>
-        
-      </div>
-      <div class="px-6 pt-4 pb-2">
-
-      </div>
-    </div>
-  </a>
-  
-</section>
-
-
-
-
-
-
-<div class="mt-10 flex justify-center">
-  <a href="/posts">
-    <button
-      class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold hover:text-white py-2 px-4 border border-primary-500 hover:border-transparent rounded">
-      Show More
-    </button>
-  </a>
-</div>
-
-
-</section>
-
-
-  
 
       <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
   <a href="#the-top"
