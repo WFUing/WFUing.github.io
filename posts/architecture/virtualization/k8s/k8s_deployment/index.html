@@ -110,7 +110,7 @@
     "keywords": ["kubevela"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "540"
+    "wordCount": "544"
   }]
   </script>
 
@@ -983,7 +983,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>540 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>544 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1431,6 +1431,7 @@ Environment=&#34;NO_PROXY=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168
 <p>下面给出 <a href="./calico.yaml"  >
     calico.yaml</a>，需要的可以直接 copy</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl apply -f calico.yaml 
+</span></span><span class="line"><span class="cl">kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 </span></span></code></pre></div><p>修改containd的网络配置</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo vim /etc/cni/net.d/10-containerd-net.conflist
 </span></span></code></pre></div><p>从 <a href="https://kubernetes.io/docs/tasks/administer-cluster/migrating-from-dockershim/troubleshooting-cni-plugin-related-errors/#an-example-containerd-configuration-file"   target="_blank">
