@@ -110,7 +110,7 @@
     "keywords": ["kubevela"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "525"
+    "wordCount": "540"
   }]
   </script>
 
@@ -983,7 +983,7 @@ const loadScript = (url, onloadFunction) => {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>525 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
+  <time datetime="2024-04-25 12:11:01 &#43;0800 &#43;0800">25 April 2024</time><span class="px-2 text-primary-500">&middot;</span><span>540 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">3 mins</span>
   
 
   
@@ -1160,7 +1160,12 @@ const loadScript = (url, onloadFunction) => {
   
 
 </p>
-<p>这里以通过 systemd 安装的 containerd 为例。</p>
+<p>containerd启动中，可能会遇到BoltDB的问题</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ls -l /var/lib/containerd/io.containerd.metadata.v1.bolt/meta.db
+</span></span><span class="line"><span class="cl"><span class="c1"># 重新初始化 BoltDB</span>
+</span></span><span class="line"><span class="cl">sudo rm -rf /var/lib/containerd/io.containerd.metadata.v1.bolt/meta.db
+</span></span><span class="line"><span class="cl">sudo systemctl restart containerd
+</span></span></code></pre></div><p>这里以通过 systemd 安装的 containerd 为例。</p>
 <p>containerd 的配置一般位于 <code>/etc/containerd/config.toml</code> 下，service 文件位于：<code>/lib/systemd/system/containerd.service</code> 配置 Proxy 可以通过 service 环境变量方式配置，具体如下：</p>
 <p>修改 <code>/etc/containerd/config.toml</code> 文件</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 1 </span>
